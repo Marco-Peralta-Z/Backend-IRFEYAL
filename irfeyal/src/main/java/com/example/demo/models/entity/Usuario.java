@@ -17,12 +17,14 @@ public class Usuario implements Serializable {
 	@Id
 	@Column(name="id_usuario")
 	private Integer idUsuario;
-
+	
+	@Column(name="contrasenia")
 	private String contrasenia;
 
 	@Column(name="est_usuario")
 	private String estUsuario;
 
+	@Column(name="usuario")
 	private String usuario;
 
 	
@@ -32,8 +34,7 @@ public class Usuario implements Serializable {
 	private Persona persona;
 
 	//bi-directional many-to-one association to Empresa
-	@OneToMany(mappedBy="usuario")
-	private List<Empresa> empresas;
+
 
 	//bi-directional many-to-one association to RolUsuario
 	@OneToMany(mappedBy="usuario")
@@ -81,28 +82,6 @@ public class Usuario implements Serializable {
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
-	}
-
-	public List<Empresa> getEmpresas() {
-		return this.empresas;
-	}
-
-	public void setEmpresas(List<Empresa> empresas) {
-		this.empresas = empresas;
-	}
-
-	public Empresa addEmpresa(Empresa empresa) {
-		getEmpresas().add(empresa);
-		empresa.setUsuario(this);
-
-		return empresa;
-	}
-
-	public Empresa removeEmpresa(Empresa empresa) {
-		getEmpresas().remove(empresa);
-		empresa.setUsuario(null);
-
-		return empresa;
 	}
 
 	public List<RolUsuario> getRolUsuarios() {

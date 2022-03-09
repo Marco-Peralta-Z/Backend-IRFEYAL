@@ -16,12 +16,14 @@ public class Extension implements Serializable {
 
 	@Id
 	@Column(name="id_extension")
-	private Integer idExtension;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id_extension;
 
+	@Column(name="extension")
 	private String extension;
 
 	//bi-directional many-to-one association to CorreoElectronico
-	@OneToMany(mappedBy="extension")
+	@OneToMany()
 	private List<CorreoElectronico> correoElectronicos;
 
 	
@@ -32,24 +34,24 @@ public class Extension implements Serializable {
 	private Direccion direccion;
 
 	//bi-directional many-to-one association to Empresa
-	@ManyToOne
-	@JoinColumn(name="id_empresa")
-	private Empresa empresa;
 
 	//bi-directional many-to-one association to Telefono
-	@OneToMany(mappedBy="extension")
+	@OneToMany()
 	private List<Telefono> telefonos;
 
 	public Extension() {
 	}
 
-	public Integer getIdExtension() {
-		return this.idExtension;
+
+	public Integer getId_extension() {
+		return id_extension;
 	}
 
-	public void setIdExtension(Integer idExtension) {
-		this.idExtension = idExtension;
+
+	public void setId_extension(Integer id_extension) {
+		this.id_extension = id_extension;
 	}
+
 
 	public String getExtension() {
 		return this.extension;
@@ -91,13 +93,6 @@ public class Extension implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public Empresa getEmpresa() {
-		return this.empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
 
 	public List<Telefono> getTelefonos() {
 		return this.telefonos;

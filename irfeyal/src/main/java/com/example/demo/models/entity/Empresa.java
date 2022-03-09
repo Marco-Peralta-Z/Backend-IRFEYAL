@@ -16,6 +16,7 @@ public class Empresa implements Serializable {
 
 	@Id
 	@Column(name="id_empresa")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idEmpresa;
 
 	private String empresa;
@@ -29,12 +30,13 @@ public class Empresa implements Serializable {
 	private List<Direccion> direccions;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumn(name="id_usuario")
-	private Usuario usuario;
+	@OneToMany()
+	@JoinColumn(name="id_extension")
+	private List<Usuario> usuarios;
 
 	//bi-directional many-to-one association to Extension
-	@OneToMany(mappedBy="empresa")
+	@OneToMany()
+	@JoinColumn(name="id_extension")
 	private List<Extension> extensions;
 
 	//bi-directional many-to-one association to Telefono
@@ -104,12 +106,14 @@ public class Empresa implements Serializable {
 		return direccion;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	public List<Extension> getExtensions() {
@@ -118,20 +122,6 @@ public class Empresa implements Serializable {
 
 	public void setExtensions(List<Extension> extensions) {
 		this.extensions = extensions;
-	}
-
-	public Extension addExtension(Extension extension) {
-		getExtensions().add(extension);
-		extension.setEmpresa(this);
-
-		return extension;
-	}
-
-	public Extension removeExtension(Extension extension) {
-		getExtensions().remove(extension);
-		extension.setEmpresa(null);
-
-		return extension;
 	}
 
 	public List<Telefono> getTelefonos() {

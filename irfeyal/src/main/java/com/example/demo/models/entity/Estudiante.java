@@ -25,7 +25,7 @@ public class Estudiante implements Serializable {
 	//bi-directional many-to-one association to Extension
 
 	@ManyToOne()
-	@JoinColumn(name="idExtension")
+	@JoinColumn(name="id_extension")
 	private Extension id_extension;
 
 	//bi-directional one-to-one association to Persona
