@@ -2,7 +2,6 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
