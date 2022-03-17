@@ -15,6 +15,7 @@ public class Canton implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_canton")
 	private Integer idCanton;
 

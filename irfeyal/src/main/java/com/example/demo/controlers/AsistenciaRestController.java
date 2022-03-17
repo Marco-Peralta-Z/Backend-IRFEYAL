@@ -1,4 +1,4 @@
-package com.example.demo.Controllers;
+package com.example.demo.controlers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.models.entity.Asignatura;
+
 import com.example.demo.models.entity.Asistencia;
-import com.example.demo.service.IAsistenciaService;
+import com.example.demo.services.IAsistenciaService;
 
 @CrossOrigin(origins = { "*" })
 @RestController

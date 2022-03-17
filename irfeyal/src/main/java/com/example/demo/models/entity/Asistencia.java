@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class Asistencia implements Serializable {
 	  private static final long serialVersionUID = 1L;
 	    @Id
-	 
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "id_asistencia")
 	    private Long idAsistencia;
 
@@ -36,7 +36,7 @@ public class Asistencia implements Serializable {
 	    private Clase idClase;
 	    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
 	    @ManyToOne(fetch = FetchType.LAZY)
-	    private Estudiantes idEstudiante;
+	    private Estudiante idEstudiante;
 
 	public Asistencia() {
 		super();
@@ -48,7 +48,7 @@ public class Asistencia implements Serializable {
 		this.idAsistencia = idAsistencia;
 	}
 
-	public Asistencia(Long idAsistencia, boolean estadoAsis, int numFaltas, Clase idClase, Estudiantes idEstudiante) {
+	public Asistencia(Long idAsistencia, boolean estadoAsis, int numFaltas, Clase idClase, Estudiante idEstudiante) {
 		super();
 		this.idAsistencia = idAsistencia;
 		this.estadoAsis = estadoAsis;
@@ -92,11 +92,11 @@ public class Asistencia implements Serializable {
 		this.idClase = idClase;
 	}
 
-	public Estudiantes getIdEstudiante() {
+	public Estudiante getIdEstudiante() {
 		return idEstudiante;
 	}
 
-	public void setIdEstudiante(Estudiantes idEstudiante) {
+	public void setIdEstudiante(Estudiante idEstudiante) {
 		this.idEstudiante = idEstudiante;
 	}
 

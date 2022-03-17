@@ -22,17 +22,18 @@ public class Empresa implements Serializable {
 	private String empresa;
 
 	//bi-directional many-to-one association to CorreoElectronico
-	@OneToMany(mappedBy="empresa")
+	@OneToMany()
 	private List<CorreoElectronico> correoElectronicos;
 
 	//bi-directional many-to-one association to Direccion
-	@OneToMany(mappedBy="empresa")
+	@OneToMany()
 	private List<Direccion> direccions;
 
 	//bi-directional many-to-one association to Usuario
 	@OneToMany()
-	@JoinColumn(name="id_extension")
-	private List<Usuario> usuarios;
+	@Column(name="id_usuario")
+	@JoinColumn(name="id_usuario")
+	private List<Usuario> id_usuario;
 
 	//bi-directional many-to-one association to Extension
 	@OneToMany()
@@ -108,12 +109,14 @@ public class Empresa implements Serializable {
 
 	
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
+	
+
+	public List<Usuario> getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public void setId_usuario(List<Usuario> id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	public List<Extension> getExtensions() {

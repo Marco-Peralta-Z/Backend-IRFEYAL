@@ -24,6 +24,7 @@ import com.sun.istack.NotNull;
 public class Clase implements Serializable {
 	   private static final long serialVersionUID = 1L;
 	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "id_clase")
 	    private Long idClase;
 	    @Column(name = "fec_clase")  

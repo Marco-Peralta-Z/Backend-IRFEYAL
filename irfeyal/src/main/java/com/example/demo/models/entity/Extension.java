@@ -27,7 +27,6 @@ public class Extension implements Serializable {
 	private List<CorreoElectronico> correoElectronicos;
 
 	
-
 	//bi-directional many-to-one association to Direccion
 	@ManyToOne
 	@JoinColumn(name="id_direccion")

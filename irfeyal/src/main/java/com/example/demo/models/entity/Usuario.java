@@ -15,8 +15,9 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_usuario")
-	private Integer idUsuario;
+	private Integer id_usuario;
 	
 	@Column(name="contrasenia")
 	private String contrasenia;
@@ -33,22 +34,21 @@ public class Usuario implements Serializable {
 	@JoinColumn(name="id_persona")
 	private Persona persona;
 
-	//bi-directional many-to-one association to Empresa
-
 
 	//bi-directional many-to-one association to RolUsuario
-	@OneToMany(mappedBy="usuario")
+	@OneToMany()
+	@JoinColumn(name="id_rolusuario")
 	private List<RolUsuario> rolUsuarios;
 
 	public Usuario() {
 	}
 
 	public Integer getIdUsuario() {
-		return this.idUsuario;
+		return this.id_usuario;
 	}
 
 	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
+		this.id_usuario = idUsuario;
 	}
 
 	public String getContrasenia() {

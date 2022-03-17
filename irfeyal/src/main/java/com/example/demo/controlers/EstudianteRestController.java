@@ -26,7 +26,7 @@ import com.example.demo.models.entity.Estudiante;
 import com.example.demo.services.IEstudianteService;
 
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"*"})
 @RestController
 @RequestMapping("/api")
 public class EstudianteRestController {
