@@ -2,6 +2,9 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -17,7 +20,7 @@ public class Empresa implements Serializable {
 	@Id
 	@Column(name="id_empresa")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idEmpresa;
+	private Long idEmpresa;
 
 	private String empresa;
 
@@ -31,14 +34,10 @@ public class Empresa implements Serializable {
 
 	//bi-directional many-to-one association to Usuario
 	@OneToMany()
-	@Column(name="id_usuario")
-	@JoinColumn(name="id_usuario")
 	private List<Usuario> id_usuario;
 
 	//bi-directional many-to-one association to Extension
-	@OneToMany()
-	@JoinColumn(name="id_extension")
-	private List<Extension> extensions;
+	
 
 	//bi-directional many-to-one association to Telefono
 	@OneToMany(mappedBy="empresa")
@@ -47,11 +46,11 @@ public class Empresa implements Serializable {
 	public Empresa() {
 	}
 
-	public Integer getIdEmpresa() {
+	public Long getIdEmpresa() {
 		return this.idEmpresa;
 	}
 
-	public void setIdEmpresa(Integer idEmpresa) {
+	public void setIdEmpresa(Long idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
 
@@ -107,9 +106,6 @@ public class Empresa implements Serializable {
 		return direccion;
 	}
 
-	
-
-	
 
 	public List<Usuario> getId_usuario() {
 		return id_usuario;
@@ -117,14 +113,6 @@ public class Empresa implements Serializable {
 
 	public void setId_usuario(List<Usuario> id_usuario) {
 		this.id_usuario = id_usuario;
-	}
-
-	public List<Extension> getExtensions() {
-		return this.extensions;
-	}
-
-	public void setExtensions(List<Extension> extensions) {
-		this.extensions = extensions;
 	}
 
 	public List<Telefono> getTelefonos() {

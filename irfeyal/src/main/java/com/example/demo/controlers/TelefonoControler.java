@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.entity.Telefono;
+import com.example.demo.services.TelefonoServicesI;
 
 
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -17,24 +18,24 @@ import com.example.demo.models.entity.Telefono;
 public class TelefonoControler {
 
 	@Autowired
-	 private TelefonoControler telefono;
+	 private TelefonoServicesI telefono;
 	
 	@GetMapping ("/telefono")
 	
 	public List<Telefono> telefono(){
-	 return telefono.telefono();
+	 return telefono.findAll();
 	}
 	
 	public List<Telefono> telefonodel(){
-		 return telefono.telefonodel();
+		 return telefono.findAll();
 		}
 		
 	public List<Telefono> telefonosav(){
-		 return telefono.telefonosav();
+		 return telefono.findAll();
 		}
 		
 	public List<Telefono> telefonoupd(){
-		 return telefono.telefonoupd();
+		 return telefono.findAll();
 		}
 	
 	

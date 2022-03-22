@@ -7,8 +7,6 @@ import com.example.demo.models.entity.Telefono;
 
 public interface TelefonoServicesI {
 
-	
-	@Autowired
 
 	public List<Telefono> findAll();
     public List<Telefono> saveTelefono();

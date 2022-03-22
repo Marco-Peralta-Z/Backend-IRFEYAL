@@ -2,6 +2,9 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -17,7 +20,7 @@ public class Extension implements Serializable {
 	@Id
 	@Column(name="id_extension")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_extension;
+	private Long id_extension;
 
 	@Column(name="extension")
 	private String extension;
@@ -31,7 +34,11 @@ public class Extension implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_direccion")
 	private Direccion direccion;
-
+	
+	@JsonIgnore
+	@ManyToOne()
+	@JoinColumn(name="id_empresa")
+	private Empresa id_empresa;
 	//bi-directional many-to-one association to Empresa
 
 	//bi-directional many-to-one association to Telefono
@@ -42,12 +49,12 @@ public class Extension implements Serializable {
 	}
 
 
-	public Integer getId_extension() {
+	public Long getId_extension() {
 		return id_extension;
 	}
 
 
-	public void setId_extension(Integer id_extension) {
+	public void setId_extension(Long id_extension) {
 		this.id_extension = id_extension;
 	}
 
@@ -82,7 +89,15 @@ public class Extension implements Serializable {
 		return correoElectronico;
 	}
 
-	
+	public Empresa getId_empresa() {
+		return id_empresa;
+	}
+
+
+	public void setId_empresa(Empresa id_empresa) {
+		this.id_empresa = id_empresa;
+	}
+
 
 	public Direccion getDireccion() {
 		return this.direccion;
