@@ -13,6 +13,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="extension")
 @NamedQuery(name="Extension.findAll", query="SELECT e FROM Extension e")
 public class Extension implements Serializable {
 	private static final long serialVersionUID = 1L;

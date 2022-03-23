@@ -3,7 +3,6 @@ package com.example.demo.models.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
@@ -13,6 +12,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="empresa")
 @NamedQuery(name="Empresa.findAll", query="SELECT e FROM Empresa e")
 public class Empresa implements Serializable {
 	private static final long serialVersionUID = 1L;
