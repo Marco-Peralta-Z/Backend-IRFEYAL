@@ -28,7 +28,7 @@ public class Modulo implements Serializable{
 	private String modulo;
 
 	//bi-directional many-to-one association to Rol Usuario
-	@OneToMany(mappedBy="modulo")
+	@OneToMany()
 	private List<RolUsuario> rolusuario;
 	
 	public Modulo () {

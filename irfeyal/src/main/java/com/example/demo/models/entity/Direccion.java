@@ -2,6 +2,9 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -32,6 +35,7 @@ public class Direccion implements Serializable {
 	private Canton canton;
 
 	//bi-directional many-to-one association to Empresa
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_empresa")
 	private Empresa empresa;
@@ -52,12 +56,14 @@ public class Direccion implements Serializable {
 	private Provincia provincia;
 
 	//bi-directional many-to-one association to Extension
+	@JsonIgnore
 	@OneToMany(mappedBy="direccion")
 	private List<Extension> extensions;
 
 	
 
 	//bi-directional many-to-one association to Persona
+	@JsonIgnore
 	@OneToMany(mappedBy="direccion")
 	private List<Persona> personas;
 

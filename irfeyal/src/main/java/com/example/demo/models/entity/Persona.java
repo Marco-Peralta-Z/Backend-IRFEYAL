@@ -2,6 +2,9 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -29,9 +32,8 @@ public class Persona implements Serializable {
 
 	private String nombre;
 
-	
-
 	//bi-directional many-to-one association to Usuario
+	@JsonIgnore
 	@OneToMany(mappedBy="persona")
 	private List<Usuario> usuarios;
 
@@ -41,7 +43,7 @@ public class Persona implements Serializable {
 
 	//bi-directional many-to-one association to Direccion
 	@ManyToOne
-	@JoinColumn(name="id_direccion")
+	@JoinColumn(name="idDireccion")
 	private Direccion direccion;
 
 	//bi-directional many-to-one association to Genero
@@ -52,6 +54,18 @@ public class Persona implements Serializable {
 	//bi-directional many-to-one association to Telefono
 	@OneToMany(mappedBy="persona")
 	private List<Telefono> telefonos;
+	
+	@JsonIgnore
+	@OneToOne()
+	private Estudiante estudiante;
+
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
+	}
 
 	public Persona() {
 	}

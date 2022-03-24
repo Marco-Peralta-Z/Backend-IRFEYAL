@@ -3,6 +3,9 @@ package com.example.demo.models.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * The persistent class for the estudiantes database table.
@@ -24,12 +27,14 @@ public class Estudiante implements Serializable {
 
 	//bi-directional many-to-one association to Extension
 
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@JoinColumn(name="id_extension")
 	private Extension id_extension;
 
 	//bi-directional one-to-one association to Persona
-	@OneToOne()
+	@OneToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@JoinColumn(name="id_persona")
 	private Persona id_persona;
 

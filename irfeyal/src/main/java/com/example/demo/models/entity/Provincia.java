@@ -2,6 +2,9 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -23,6 +26,7 @@ public class Provincia implements Serializable {
 	private String provincia;
 
 	//bi-directional many-to-one association to Direccion
+	@JsonIgnore
 	@OneToMany(mappedBy="provincia")
 	private List<Direccion> direccions;
 

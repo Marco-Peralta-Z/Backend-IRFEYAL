@@ -2,6 +2,9 @@ package com.example.demo.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -23,6 +26,7 @@ public class Canton implements Serializable {
 	private String canton;
 
 	//bi-directional many-to-one association to Direccion
+	@JsonIgnore
 	@OneToMany(mappedBy="canton")
 	private List<Direccion> direccions;
 

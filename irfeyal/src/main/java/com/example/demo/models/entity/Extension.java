@@ -32,6 +32,7 @@ public class Extension implements Serializable {
 
 	
 	//bi-directional many-to-one association to Direccion
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_direccion")
 	private Direccion direccion;

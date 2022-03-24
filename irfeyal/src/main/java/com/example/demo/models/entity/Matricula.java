@@ -2,7 +2,7 @@ package com.example.demo.models.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Timestamp;
 
@@ -25,27 +25,33 @@ public class Matricula implements Serializable {
 	@Column(name="fecha_matricula")
 	private Timestamp fechaMatricula;
 
-	@OneToOne()
+	
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_periodo")
 	private Periodo id_periodo;
 
 	//bi-directional many-to-one association to Curso
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_curso")
 	private Curso curso;
 
 	//bi-directional many-to-one association to Modalidad
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_modalidad")
 	private Modalidad modalidad;
 
 	//bi-directional many-to-one association to Usuario
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 
 	//bi-directional many-to-one association to Paralelo
-	@OneToOne()
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_paralelo")
 	private Paralelo id_paralelo;
 

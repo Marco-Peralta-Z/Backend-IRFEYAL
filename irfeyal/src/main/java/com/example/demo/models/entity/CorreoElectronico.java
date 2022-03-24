@@ -3,6 +3,8 @@ package com.example.demo.models.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the correo_electronico database table.
@@ -22,16 +24,19 @@ public class CorreoElectronico implements Serializable {
 	private String correo;
 
 	//bi-directional many-to-one association to Empresa
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_empresa")
 	private Empresa empresa;
 
 	//bi-directional many-to-one association to Extension
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_extension")
 	private Extension extension;
 
 	//bi-directional many-to-one association to Persona
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_persona")
 	private Persona persona;
