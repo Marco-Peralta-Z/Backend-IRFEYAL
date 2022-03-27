@@ -62,7 +62,7 @@ public class RolUsuario implements Serializable {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-
+	
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
@@ -70,7 +70,6 @@ public class RolUsuario implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
 	
 
 }

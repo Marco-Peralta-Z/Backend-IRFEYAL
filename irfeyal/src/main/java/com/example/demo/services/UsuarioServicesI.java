@@ -15,6 +15,4 @@ public interface UsuarioServicesI extends JpaRepository<Usuario, Integer>{
 @Query (value="SELECT * FROM usuario WHERE usuario=?1 AND contrasenia=?2", nativeQuery = true) 
  Usuario login (String usuario, String contrasenia);
 
-
-
 }

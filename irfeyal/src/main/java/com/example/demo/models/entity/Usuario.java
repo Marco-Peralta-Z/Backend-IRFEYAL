@@ -37,9 +37,9 @@ public class Usuario implements Serializable {
 
 
 	//bi-directional many-to-one association to RolUsuario
-	@OneToMany()
-	@JoinColumn(name="id_rolusuario")
-	private List<RolUsuario> rolUsuarios;
+	//@OneToMany()
+	//@JoinColumn(name="id_rolusuario")
+	//private List<RolUsuario> rolUsuarios;
 
 	public Usuario() {
 	}
@@ -84,7 +84,7 @@ public class Usuario implements Serializable {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-
+/*
 	public List<RolUsuario> getRolUsuarios() {
 		return this.rolUsuarios;
 	}
@@ -105,6 +105,6 @@ public class Usuario implements Serializable {
 		rolUsuario.setUsuario(null);
 
 		return rolUsuario;
-	}
+	}*/
 
 }

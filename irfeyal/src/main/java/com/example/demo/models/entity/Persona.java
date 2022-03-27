@@ -33,9 +33,9 @@ public class Persona implements Serializable {
 	private String nombre;
 
 	//bi-directional many-to-one association to Usuario
-	@JsonIgnore
-	@OneToMany(mappedBy="persona")
-	private List<Usuario> usuarios;
+	//@JsonIgnore
+	//@OneToMany(mappedBy="persona")
+	//private List<Usuario> usuarios;
 
 	//bi-directional many-to-one association to CorreoElectronico
 	@OneToMany(mappedBy="persona")
@@ -111,7 +111,7 @@ public class Persona implements Serializable {
 	}
 
 	
-
+/*
 	public List<Usuario> getUsuarios() {
 		return this.usuarios;
 	}
@@ -119,8 +119,8 @@ public class Persona implements Serializable {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-
-	public Usuario addUsuario(Usuario usuario) {
+*/
+	/*public Usuario addUsuario(Usuario usuario) {
 		getUsuarios().add(usuario);
 		usuario.setPersona(this);
 
@@ -132,7 +132,7 @@ public class Persona implements Serializable {
 		usuario.setPersona(null);
 
 		return usuario;
-	}
+	}*/
 
 	public List<CorreoElectronico> getCorreoElectronicos() {
 		return this.correoElectronicos;

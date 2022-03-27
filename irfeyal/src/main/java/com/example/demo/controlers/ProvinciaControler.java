@@ -13,7 +13,7 @@ import com.example.demo.models.entity.Provincia;
 
 import com.example.demo.services.ProvinciaServicesI;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+
 @RestController
 @RequestMapping ("/mapProv")
 public class ProvinciaControler {

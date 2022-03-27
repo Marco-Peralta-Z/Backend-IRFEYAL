@@ -23,8 +23,8 @@ public class Rol implements Serializable {
 	private String descripcion;
 
 	//bi-directional many-to-one association to RolUsuario
-	@OneToMany(mappedBy="rol")
-	private List<RolUsuario> rolUsuarios;
+	//@OneToMany(mappedBy="rol")
+	//private List<RolUsuario> rolUsuarios;
 
 	public Rol() {
 	}
@@ -44,7 +44,7 @@ public class Rol implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
+/*
 	public List<RolUsuario> getRolUsuarios() {
 		return this.rolUsuarios;
 	}
@@ -65,6 +65,6 @@ public class Rol implements Serializable {
 		rolUsuario.setRol(null);
 
 		return rolUsuario;
-	}
+	}*/
 
 }
