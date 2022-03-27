@@ -7,33 +7,17 @@ import com.example.demo.models.dao.UsuarioDAO;
 import com.example.demo.models.entity.Usuario;
 
 @Service
-public class UsuarioServices implements UsuarioServicesI{
+public class UsuarioServices {
 
 	@Autowired
-	  private UsuarioDAO usuariodao;
+	  private UsuarioServicesI usuarioInterface;
 
-	@Override
-	public List<Usuario> findAll() {
-		// TODO Auto-generated method stub
-		return (List<Usuario> ) usuariodao.findAll();
-	}
 
-	@Override
-	public List<Usuario> saveUsuario() {
-		// TODO Auto-generated method stub
-		return (List<Usuario> ) usuariodao.findAll();
-	}
+	
 
-	@Override
-	public List<Usuario> deleteUsuario() {
+	public Usuario login(String username, String password) {
 		// TODO Auto-generated method stub
-		return (List<Usuario> ) usuariodao.findAll();
-	}
-
-	@Override
-	public List<Usuario> updateUsuario() {
-		// TODO Auto-generated method stub
-		return (List<Usuario> ) usuariodao.findAll();
+		return usuarioInterface.login(username, password);
 	}
 	  
 	

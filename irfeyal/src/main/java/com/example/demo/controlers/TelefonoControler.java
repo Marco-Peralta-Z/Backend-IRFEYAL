@@ -11,32 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.models.entity.Telefono;
 import com.example.demo.services.TelefonoServicesI;
 
-
-@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping ("/mapTelenofo")
+@RequestMapping("/telefono")
+@CrossOrigin(origins = "*")
 public class TelefonoControler {
 
 	@Autowired
-	 private TelefonoServicesI telefono;
-	
-	@GetMapping ("/telefono")
-	
-	public List<Telefono> telefono(){
-	 return telefono.findAll();
+	private TelefonoServicesI telefono;
+
+	@GetMapping(path = "/list", produces = { "application/json" })
+	public List<Telefono> telefono() {
+		return telefono.findAll();
 	}
-	
-	public List<Telefono> telefonodel(){
-		 return telefono.findAll();
-		}
-		
-	public List<Telefono> telefonosav(){
-		 return telefono.findAll();
-		}
-		
-	public List<Telefono> telefonoupd(){
-		 return telefono.findAll();
-		}
-	
-	
+
 }
