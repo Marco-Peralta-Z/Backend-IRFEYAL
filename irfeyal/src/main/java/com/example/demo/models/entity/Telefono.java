@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  */
 @Entity
-@Table(name="telefono")
 @NamedQuery(name="Telefono.findAll", query="SELECT t FROM Telefono t")
 public class Telefono implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -26,29 +25,17 @@ public class Telefono implements Serializable {
 
 	private String telefono;
 
-	//bi-directional many-to-one association to Empresa
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="id_empresa")
-	private Empresa empresa;
-
 	//bi-directional many-to-one association to Extension
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_extension")
 	private Extension extension;
 
-	//bi-directional many-to-one association to Persona
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="id_persona")
-	private Persona persona;
-
 	public Telefono() {
 	}
 
 	public Integer getIdTelefono() {
-		return this.idTelefono;
+		return idTelefono;
 	}
 
 	public void setIdTelefono(Integer idTelefono) {
@@ -56,7 +43,7 @@ public class Telefono implements Serializable {
 	}
 
 	public String getNumCelular() {
-		return this.numCelular;
+		return numCelular;
 	}
 
 	public void setNumCelular(String numCelular) {
@@ -64,35 +51,25 @@ public class Telefono implements Serializable {
 	}
 
 	public String getTelefono() {
-		return this.telefono;
+		return telefono;
 	}
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-	public Empresa getEmpresa() {
-		return this.empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
 
 	public Extension getExtension() {
-		return this.extension;
+		return extension;
 	}
 
 	public void setExtension(Extension extension) {
 		this.extension = extension;
 	}
 
-	public Persona getPersona() {
-		return this.persona;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
+	
 }

@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.models.dao.EmpresaDAO;
 
 import com.example.demo.models.entity.Empresa;
+import com.example.demo.models.entity.Estudiante;
 
 @Service
 public class EmpresaService implements EmpresaServiceI{
@@ -22,10 +24,10 @@ public class EmpresaService implements EmpresaServiceI{
 	}
 
 	@Override
-	public List<Empresa> saveEmpresa() {
+	@Transactional
+	public Empresa saveEmpresa(Empresa empresa) {
 		// TODO Auto-generated method stub
-		return (List<Empresa>) empresadao.findAll();
-
+		return empresadao.save(empresa);
 	}
 
 	@Override
@@ -40,6 +42,13 @@ public class EmpresaService implements EmpresaServiceI{
 		// TODO Auto-generated method stub
 		return (List<Empresa>) empresadao.findAll();
 
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Empresa findById(Long id) {
+		// TODO Auto-generated method stub
+		return empresadao.findById(id).orElse(null);
 	}
 
 }

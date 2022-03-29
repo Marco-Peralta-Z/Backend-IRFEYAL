@@ -13,7 +13,6 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="genero")
 @NamedQuery(name="Genero.findAll", query="SELECT g FROM Genero g")
 public class Genero implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -27,8 +26,8 @@ public class Genero implements Serializable {
 
 	//bi-directional many-to-one association to Persona
 	@JsonIgnore
-	@OneToMany(mappedBy="genero")
-	private List<Persona> personas;
+	@OneToOne()
+	private Persona personas;
 
 	public Genero() {
 	}
@@ -49,26 +48,5 @@ public class Genero implements Serializable {
 		this.genero = genero;
 	}
 
-	public List<Persona> getPersonas() {
-		return this.personas;
-	}
-
-	public void setPersonas(List<Persona> personas) {
-		this.personas = personas;
-	}
-
-	public Persona addPersona(Persona persona) {
-		getPersonas().add(persona);
-		persona.setGenero(this);
-
-		return persona;
-	}
-
-	public Persona removePersona(Persona persona) {
-		getPersonas().remove(persona);
-		persona.setGenero(null);
-
-		return persona;
-	}
 
 }

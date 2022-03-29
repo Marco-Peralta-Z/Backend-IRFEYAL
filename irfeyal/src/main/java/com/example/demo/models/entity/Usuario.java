@@ -10,7 +10,6 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="usuario")
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -29,31 +28,19 @@ public class Usuario implements Serializable {
 	@Column(name="usuario")
 	private String usuario;
 
-	
-	//bi-directional many-to-one association to Persona
-	@ManyToOne
-	@JoinColumn(name="id_persona")
-	private Persona persona;
-
-
-	//bi-directional many-to-one association to RolUsuario
-	//@OneToMany()
-	//@JoinColumn(name="id_rolusuario")
-	//private List<RolUsuario> rolUsuarios;
-
 	public Usuario() {
 	}
 
-	public Long getIdUsuario() {
-		return this.id_usuario;
+	public Long getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setIdUsuario(Long idUsuario) {
-		this.id_usuario = idUsuario;
+	public void setId_usuario(Long id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	public String getContrasenia() {
-		return this.contrasenia;
+		return contrasenia;
 	}
 
 	public void setContrasenia(String contrasenia) {
@@ -61,7 +48,7 @@ public class Usuario implements Serializable {
 	}
 
 	public String getEstUsuario() {
-		return this.estUsuario;
+		return estUsuario;
 	}
 
 	public void setEstUsuario(String estUsuario) {
@@ -69,42 +56,16 @@ public class Usuario implements Serializable {
 	}
 
 	public String getUsuario() {
-		return this.usuario;
+		return usuario;
 	}
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
-	
-	public Persona getPersona() {
-		return this.persona;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-/*
-	public List<RolUsuario> getRolUsuarios() {
-		return this.rolUsuarios;
-	}
-
-	public void setRolUsuarios(List<RolUsuario> rolUsuarios) {
-		this.rolUsuarios = rolUsuarios;
-	}
-
-	public RolUsuario addRolUsuario(RolUsuario rolUsuario) {
-		getRolUsuarios().add(rolUsuario);
-		rolUsuario.setUsuario(this);
-
-		return rolUsuario;
-	}
-
-	public RolUsuario removeRolUsuario(RolUsuario rolUsuario) {
-		getRolUsuarios().remove(rolUsuario);
-		rolUsuario.setUsuario(null);
-
-		return rolUsuario;
-	}*/
 
 }

@@ -4,15 +4,12 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
-import java.util.List;
-
 
 /**
  * The persistent class for the empresa database table.
  * 
  */
 @Entity
-@Table(name="empresa")
 @NamedQuery(name="Empresa.findAll", query="SELECT e FROM Empresa e")
 public class Empresa implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,119 +19,70 @@ public class Empresa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEmpresa;
 
-	private String empresa;
+	private String nombre_empresa;
 
-	//bi-directional many-to-one association to CorreoElectronico
-	@OneToMany()
-	private List<CorreoElectronico> correoElectronicos;
-
-	//bi-directional many-to-one association to Direccion
-	@OneToMany()
-	private List<Direccion> direccions;
-
-	//bi-directional many-to-one association to Usuario
-	@OneToMany()
-	private List<Usuario> id_usuario;
-
-	//bi-directional many-to-one association to Extension
-	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_direccion")
+	private Direccion id_direccion;
 
 	//bi-directional many-to-one association to Telefono
-	@OneToMany(mappedBy="empresa")
-	private List<Telefono> telefonos;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idTelefono")
+	private Telefono id_telefono;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_correo")
+	private CorreoElectronico correo;
 
 	public Empresa() {
 	}
 
 	public Long getIdEmpresa() {
-		return this.idEmpresa;
+		return idEmpresa;
+	}
+
+	public String getNombre_empresa() {
+		return nombre_empresa;
+	}
+
+	public void setNombre_empresa(String nombre_empresa) {
+		this.nombre_empresa = nombre_empresa;
+	}
+
+	public Direccion getId_direccion() {
+		return id_direccion;
+	}
+
+	public void setId_direccion(Direccion id_direccion) {
+		this.id_direccion = id_direccion;
+	}
+
+	public Telefono getId_telefono() {
+		return id_telefono;
+	}
+
+	public void setId_telefono(Telefono id_telefono) {
+		this.id_telefono = id_telefono;
+	}
+
+	public CorreoElectronico getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(CorreoElectronico correo) {
+		this.correo = correo;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public void setIdEmpresa(Long idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
 
-	public String getEmpresa() {
-		return this.empresa;
-	}
+	
 
-	public void setEmpresa(String empresa) {
-		this.empresa = empresa;
-	}
-
-	public List<CorreoElectronico> getCorreoElectronicos() {
-		return this.correoElectronicos;
-	}
-
-	public void setCorreoElectronicos(List<CorreoElectronico> correoElectronicos) {
-		this.correoElectronicos = correoElectronicos;
-	}
-
-	public CorreoElectronico addCorreoElectronico(CorreoElectronico correoElectronico) {
-		getCorreoElectronicos().add(correoElectronico);
-		correoElectronico.setEmpresa(this);
-
-		return correoElectronico;
-	}
-
-	public CorreoElectronico removeCorreoElectronico(CorreoElectronico correoElectronico) {
-		getCorreoElectronicos().remove(correoElectronico);
-		correoElectronico.setEmpresa(null);
-
-		return correoElectronico;
-	}
-
-	public List<Direccion> getDireccions() {
-		return this.direccions;
-	}
-
-	public void setDireccions(List<Direccion> direccions) {
-		this.direccions = direccions;
-	}
-
-	public Direccion addDireccion(Direccion direccion) {
-		getDireccions().add(direccion);
-		direccion.setEmpresa(this);
-
-		return direccion;
-	}
-
-	public Direccion removeDireccion(Direccion direccion) {
-		getDireccions().remove(direccion);
-		direccion.setEmpresa(null);
-
-		return direccion;
-	}
-
-
-	public List<Usuario> getId_usuario() {
-		return id_usuario;
-	}
-
-	public void setId_usuario(List<Usuario> id_usuario) {
-		this.id_usuario = id_usuario;
-	}
-
-	public List<Telefono> getTelefonos() {
-		return this.telefonos;
-	}
-
-	public void setTelefonos(List<Telefono> telefonos) {
-		this.telefonos = telefonos;
-	}
-
-	public Telefono addTelefono(Telefono telefono) {
-		getTelefonos().add(telefono);
-		telefono.setEmpresa(this);
-
-		return telefono;
-	}
-
-	public Telefono removeTelefono(Telefono telefono) {
-		getTelefonos().remove(telefono);
-		telefono.setEmpresa(null);
-
-		return telefono;
-	}
-
+	
 }

@@ -23,11 +23,6 @@ public class CorreoElectronico implements Serializable {
 
 	private String correo;
 
-	//bi-directional many-to-one association to Empresa
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="id_empresa")
-	private Empresa empresa;
 
 	//bi-directional many-to-one association to Extension
 	@JsonIgnore
@@ -35,53 +30,44 @@ public class CorreoElectronico implements Serializable {
 	@JoinColumn(name="id_extension")
 	private Extension extension;
 
-	//bi-directional many-to-one association to Persona
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="id_persona")
-	private Persona persona;
 
 	public CorreoElectronico() {
 	}
 
+
 	public Integer getIdCorreo() {
-		return this.idCorreo;
+		return idCorreo;
 	}
+
 
 	public void setIdCorreo(Integer idCorreo) {
 		this.idCorreo = idCorreo;
 	}
 
+
 	public String getCorreo() {
-		return this.correo;
+		return correo;
 	}
+
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
 
-	public Empresa getEmpresa() {
-		return this.empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
 
 	public Extension getExtension() {
-		return this.extension;
+		return extension;
 	}
+
 
 	public void setExtension(Extension extension) {
 		this.extension = extension;
 	}
 
-	public Persona getPersona() {
-		return this.persona;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
+	
 }
