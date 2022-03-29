@@ -3,9 +3,6 @@ package com.example.demo.models.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 /**
  * The persistent class for the estudiantes database table.
@@ -27,19 +24,27 @@ public class Estudiante implements Serializable {
 
 	//bi-directional many-to-one association to Extension
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne()
 	@JoinColumn(name="id_extension")
 	private Extension id_extension;
 
 	//bi-directional one-to-one association to Persona
-	@OneToOne(fetch = FetchType.LAZY)
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_persona")
 	private Persona id_persona;
 
 	//bi-directional one-to-one association to Matricula
-
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idCorreo")
+	private CorreoElectronico correo;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idDireccion")
+	private Direccion direccion;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_telefono")
+	private Telefono telefono;
 
 	public Estudiante() {
 	}
@@ -74,6 +79,34 @@ public class Estudiante implements Serializable {
 
 	public void setId_persona(Persona id_persona) {
 		this.id_persona = id_persona;
+	}
+
+	public CorreoElectronico getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(CorreoElectronico correo) {
+		this.correo = correo;
+	}
+
+	public Telefono getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(Telefono telefono) {
+		this.telefono = telefono;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 	
 	
