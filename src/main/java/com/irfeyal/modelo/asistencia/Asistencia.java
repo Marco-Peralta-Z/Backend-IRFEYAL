@@ -1,6 +1,9 @@
 package com.irfeyal.modelo.asistencia;
-
 import java.io.Serializable;
+import java.util.List;
+
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,62 +12,64 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.irfeyal.modelo.matricula.Estudiante;
 
+
+
 @Entity
 @Table(name = "asistencia")
-//pueba
+
 public class Asistencia implements Serializable {
+	  private static final long serialVersionUID = 1L;
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    @Column(name = "id_asistencia")
+	    private Long idAsistencia;
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
-	private Long id_asistencia;
+	    @Column(name = "estado_asis")
+	    private String estadoAsis;
+	    @JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
+	    @ManyToOne(fetch = FetchType.LAZY)
+	    private Clase idClase;
+	    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
+	    @ManyToOne(fetch = FetchType.LAZY)
+	    private Estudiante idEstudiante;
 
-	@Column(name = "estado_asistencia")
-	private String estadoAsistencia;
-
-	@Column(name = "num_faltas")
-	private int numFaltas;
-	
-	@JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Clase idClase;
-	
-	@JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Estudiante id_estudiante;
-
-	public Asistencia(Long id_asistencia) {
-		this.id_asistencia = id_asistencia;
+	public Asistencia() {
+		super();
 	}
 
-	public Asistencia(Long id_asistencia, String estadoAsistencia, int numFaltas, Clase idClase, Estudiante id_estudiante) {
-		this.id_asistencia = id_asistencia;
-		this.estadoAsistencia = estadoAsistencia;
-		this.numFaltas = numFaltas;
+
+	public Asistencia(Long idAsistencia) {
+		super();
+		this.idAsistencia = idAsistencia;
+	}
+
+
+
+
+
+	public Asistencia(Long idAsistencia, String estadoAsis, Clase idClase, Estudiante idEstudiante) {
+		super();
+		this.idAsistencia = idAsistencia;
+		this.estadoAsis = estadoAsis;
 		this.idClase = idClase;
-		this.id_estudiante = id_estudiante;
+		this.idEstudiante = idEstudiante;
 	}
 
-	public Long getid_asistencia() {
-		return id_asistencia;
+
+	public Long getIdAsistencia() {
+		return idAsistencia;
 	}
 
-	public void setid_asistencia(Long id_asistencia) {
-		this.id_asistencia = id_asistencia;
+
+	public void setIdAsistencia(Long idAsistencia) {
+		this.idAsistencia = idAsistencia;
 	}
 
-	public int getNumFaltas() {
-		return numFaltas;
-	}
-
-	public void setNumFaltas(int numFaltas) {
-		this.numFaltas = numFaltas;
-	}
 
 	public Clase getIdClase() {
 		return idClase;
@@ -74,11 +79,36 @@ public class Asistencia implements Serializable {
 		this.idClase = idClase;
 	}
 
-	public Estudiante getid_estudiante() {
-		return id_estudiante;
+	public Estudiante getIdEstudiante() {
+		return idEstudiante;
 	}
 
-	public void setid_estudiante(Estudiante id_estudiante) {
-		this.id_estudiante = id_estudiante;
+	public void setIdEstudiante(Estudiante idEstudiante) {
+		this.idEstudiante = idEstudiante;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	 @Override
+	    public int hashCode() {
+	        int hash = 0;
+	        hash += (idAsistencia != null ? idAsistencia.hashCode() : 0);
+	        return hash;
+	    }
+
+	    @Override
+	    public boolean equals(Object object) {
+	        // TODO: Warning - this method won't work in the case the id fields are not set
+	        if (!(object instanceof Asistencia)) {
+	            return false;
+	        }
+	        Asistencia other = (Asistencia) object;
+	        if ((this.idAsistencia == null && other.idAsistencia != null) || (this.idAsistencia != null && !this.idAsistencia.equals(other.idAsistencia))) {
+	            return false;
+	        }
+	        return true;
+	    }
+
 }
