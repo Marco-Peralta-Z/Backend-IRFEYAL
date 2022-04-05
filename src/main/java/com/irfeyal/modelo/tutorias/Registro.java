@@ -7,7 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+
+
 
 @Entity
 @Table(name="registro")
@@ -60,6 +67,18 @@ private static final long serialVersionUID = 1L;
 	@Column
 	private int comportamiento;
 	
+//	@OneToOne()
+//	@JoinColumn(name="id_rol_usuario")
+//	private RolUsuario id_rol_usuario;
+	
+	 @OneToOne()
+		@JoinColumn(name="id_matricula")
+		private Matricula id_matricula;
+	 
+	 @OneToOne()
+		@JoinColumn(name="id_asignatura")
+		private Asignatura id_asignatura;
+	
 	
 	public Registro() {
 	}
@@ -90,6 +109,7 @@ private static final long serialVersionUID = 1L;
 		this.promedio_gracia = promedio_gracia;
 		this.comportamiento = comportamiento;
 	}
+	
 
 	public Long getId_registro() {
 		return id_registro;
@@ -250,6 +270,24 @@ private static final long serialVersionUID = 1L;
 	public void setComportamiento(int comportamiento) {
 		this.comportamiento = comportamiento;
 	}
+
+	public Matricula getId_matricula() {
+		return id_matricula;
+	}
+
+	public void setId_matricula(Matricula id_matricula) {
+		this.id_matricula = id_matricula;
+	}
+
+	public Asignatura getId_asignatura() {
+		return id_asignatura;
+	}
+
+	public void setId_asignatura(Asignatura id_asignatura) {
+		this.id_asignatura = id_asignatura;
+	}
+	
+	
 	
 	
 

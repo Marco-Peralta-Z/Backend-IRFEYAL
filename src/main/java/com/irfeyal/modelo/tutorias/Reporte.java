@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +31,12 @@ private static final long serialVersionUID = 1L;
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date fecha_reporte;
+	
+	@OneToOne
+	@JoinColumn(name = "id_registro")
+	private Registro id_registro;
 
+	
 	public Reporte() {
 	}
 
@@ -63,6 +70,16 @@ private static final long serialVersionUID = 1L;
 	public void setFecha_reporte(Date fecha_reporte) {
 		this.fecha_reporte = fecha_reporte;
 	}
+
+	public Registro getId_registro() {
+		return id_registro;
+	}
+
+	public void setId_registro(Registro id_registro) {
+		this.id_registro = id_registro;
+	}
+	
+	
 	
 	
 	
