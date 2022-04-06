@@ -2,10 +2,10 @@ package com.irfeyal.modelo.rolseguridad;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.List;
 
 @Entity
-@Table(name = "rol")
 @NamedQuery(name="Rol.findAll", query="SELECT r FROM Rol r")
 public class Rol implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -13,29 +13,42 @@ public class Rol implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_rol")
-	private Long id_rol;
+	private Integer idRol;
 
 	private String descripcion;
 
 	//bi-directional many-to-one association to RolUsuario
 	@OneToMany(mappedBy="rol")
 	private List<RolUsuario> rolUsuarios;
+	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_modulo")
+	private Modulo modulo;
 
 	public Rol() {
 	}
 
-	public Long getid_rol() {
-		return this.id_rol;
+	public Integer getIdRol() {
+		return this.idRol;
 	}
 
-	public void setid_rol(Long id_rol) {
-		this.id_rol = id_rol;
+	public void setIdRol(Integer idRol) {
+		this.idRol = idRol;
 	}
 
 	public String getDescripcion() {
 		return this.descripcion;
 	}
 
+	public Modulo getModulo() {
+		return modulo;
+	}
+
+
+	public void setModulo(Modulo modulo) {
+		this.modulo = modulo;
+	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
@@ -43,6 +56,7 @@ public class Rol implements Serializable {
 	public List<RolUsuario> getRolUsuarios() {
 		return this.rolUsuarios;
 	}
+
 
 	public void setRolUsuarios(List<RolUsuario> rolUsuarios) {
 		this.rolUsuarios = rolUsuarios;
