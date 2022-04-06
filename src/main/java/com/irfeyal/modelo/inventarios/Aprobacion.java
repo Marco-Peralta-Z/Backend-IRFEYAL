@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.modelo.rolseguridad.RolUsuario;
 
 /**
@@ -62,7 +63,7 @@ public class Aprobacion implements Serializable {
     
     @JoinColumn(name = "id_rol_usuario", referencedColumnName = "id_rol_usuario")
     @ManyToOne(optional = false)
-    private RolUsuario idRoluAdmin;
+    private Empleado id_empleado;
 
     public Aprobacion() {
     }
@@ -120,15 +121,25 @@ public class Aprobacion implements Serializable {
     }
 
 
-    public RolUsuario getIdRoluAdmin() {
-        return idRoluAdmin;
-    }
+    
 
-    public void setIdRoluAdmin(RolUsuario idRoluAdmin) {
-        this.idRoluAdmin = idRoluAdmin;
-    }
+    public Long getId_aprobacion() {
+		return id_aprobacion;
+	}
 
-    @Override
+	public void setId_aprobacion(Long id_aprobacion) {
+		this.id_aprobacion = id_aprobacion;
+	}
+
+	public Empleado getId_empleado() {
+		return id_empleado;
+	}
+
+	public void setId_empleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id_aprobacion != null ? id_aprobacion.hashCode() : 0);

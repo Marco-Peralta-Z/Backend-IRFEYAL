@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.modelo.rolseguridad.RolUsuario;
 
 /**
@@ -48,14 +49,37 @@ public class IngresoKit implements Serializable {
     @ManyToOne(optional = false)
     private Kit id_kid;
     
-    @JoinColumn(name = "id_rol_usuario", referencedColumnName = "id_rol_usuario")
+    @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
-    private RolUsuario id_rol_usuario;
+    private Empleado id_empleado;
 
     public IngresoKit() {
     }
 
-    public IngresoKit(Long id_ingreso_kid) {
+    
+    
+    
+    
+    
+    public Empleado getId_empleado() {
+		return id_empleado;
+	}
+
+
+
+
+
+
+	public void setId_empleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
+	}
+
+
+
+
+
+
+	public IngresoKit(Long id_ingreso_kid) {
         this.id_ingreso_kid = id_ingreso_kid;
     }
 
@@ -92,15 +116,25 @@ public class IngresoKit implements Serializable {
         this.id_kid = id_kid;
     }
 
-    public RolUsuario getid_rol_usuario() {
-        return id_rol_usuario;
-    }
+  
 
-    public void setid_rol_usuario(RolUsuario id_rol_usuario) {
-        this.id_rol_usuario = id_rol_usuario;
-    }
+    public Long getId_ingreso_kid() {
+		return id_ingreso_kid;
+	}
 
-    @Override
+	public void setId_ingreso_kid(Long id_ingreso_kid) {
+		this.id_ingreso_kid = id_ingreso_kid;
+	}
+
+	public Kit getId_kid() {
+		return id_kid;
+	}
+
+	public void setId_kid(Kit id_kid) {
+		this.id_kid = id_kid;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id_ingreso_kid != null ? id_ingreso_kid.hashCode() : 0);
