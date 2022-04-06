@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.irfeyal.modelo.matricula.Estudiante;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.modelo.rolseguridad.RolUsuario;
 
 /**
@@ -48,14 +50,26 @@ public class EntregaKit implements Serializable {
     @ManyToOne(optional = false)
     private Kit id_kid;
     
-    @JoinColumn(name = "id_rol_usuario", referencedColumnName = "id_rol_usuario")
+    @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
-    private RolUsuario id_rol_usuario;
+    private Estudiante id_estudiante;
 
     public EntregaKit() {
     }
 
-    public EntregaKit(Long id_entrega_kid) {
+    
+    public EntregaKit(Long id_entrega_kid, Date fechaEntregaKit, Aprobacion id_aprobacion, Kit id_kid,
+			Estudiante id_estudiante) {
+		super();
+		this.id_entrega_kid = id_entrega_kid;
+		this.fechaEntregaKit = fechaEntregaKit;
+		this.id_aprobacion = id_aprobacion;
+		this.id_kid = id_kid;
+		this.id_estudiante = id_estudiante;
+	}
+
+
+	public EntregaKit(Long id_entrega_kid) {
         this.id_entrega_kid = id_entrega_kid;
     }
 
@@ -91,12 +105,42 @@ public class EntregaKit implements Serializable {
         this.id_kid = id_kid;
     }
 
-    public RolUsuario getId_rol_usuario() {
-		return id_rol_usuario;
+    
+
+	public Long getId_entrega_kid() {
+		return id_entrega_kid;
 	}
 
-	public void setId_rol_usuario(RolUsuario id_rol_usuario) {
-		this.id_rol_usuario = id_rol_usuario;
+	public void setId_entrega_kid(Long id_entrega_kid) {
+		this.id_entrega_kid = id_entrega_kid;
+	}
+
+	public Aprobacion getId_aprobacion() {
+		return id_aprobacion;
+	}
+
+	public void setId_aprobacion(Aprobacion id_aprobacion) {
+		this.id_aprobacion = id_aprobacion;
+	}
+
+	public Kit getId_kid() {
+		return id_kid;
+	}
+
+	public void setId_kid(Kit id_kid) {
+		this.id_kid = id_kid;
+	}
+
+	
+	
+	
+	
+	public Estudiante getId_estudiante() {
+		return id_estudiante;
+	}
+
+	public void setId_estudiante(Estudiante id_estudiante) {
+		this.id_estudiante = id_estudiante;
 	}
 
 	@Override
