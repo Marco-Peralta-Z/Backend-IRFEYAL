@@ -1,7 +1,6 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,8 +15,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.irfeyal.modelo.matricula.Estudiante;
-import com.irfeyal.modelo.rolseguridad.Empleado;
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
 
 /**
  *
@@ -34,7 +31,6 @@ public class EntregaKit implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id_entrega_kid")
     private Long id_entrega_kid;
     
@@ -46,9 +42,9 @@ public class EntregaKit implements Serializable {
     @ManyToOne(optional = false)
     private Aprobacion id_aprobacion;
     
-    @JoinColumn(name = "id_kid", referencedColumnName = "id_kid")
+    @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
     @ManyToOne(optional = false)
-    private Kit id_kid;
+    private Kit id_kit;
     
     @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
     @ManyToOne(optional = false)
@@ -58,13 +54,13 @@ public class EntregaKit implements Serializable {
     }
 
     
-    public EntregaKit(Long id_entrega_kid, Date fechaEntregaKit, Aprobacion id_aprobacion, Kit id_kid,
+    public EntregaKit(Long id_entrega_kid, Date fechaEntregaKit, Aprobacion id_aprobacion, Kit id_kit,
 			Estudiante id_estudiante) {
 		super();
 		this.id_entrega_kid = id_entrega_kid;
 		this.fechaEntregaKit = fechaEntregaKit;
 		this.id_aprobacion = id_aprobacion;
-		this.id_kid = id_kid;
+		this.id_kit = id_kit;
 		this.id_estudiante = id_estudiante;
 	}
 
@@ -97,12 +93,12 @@ public class EntregaKit implements Serializable {
         this.id_aprobacion = id_aprobacion;
     }
 
-    public Kit getid_kid() {
-        return id_kid;
+    public Kit getid_kit() {
+        return id_kit;
     }
 
-    public void setid_kid(Kit id_kid) {
-        this.id_kid = id_kid;
+    public void setid_kit(Kit id_kit) {
+        this.id_kit = id_kit;
     }
 
     
@@ -122,18 +118,6 @@ public class EntregaKit implements Serializable {
 	public void setId_aprobacion(Aprobacion id_aprobacion) {
 		this.id_aprobacion = id_aprobacion;
 	}
-
-	public Kit getId_kid() {
-		return id_kid;
-	}
-
-	public void setId_kid(Kit id_kid) {
-		this.id_kid = id_kid;
-	}
-
-	
-	
-	
 	
 	public Estudiante getId_estudiante() {
 		return id_estudiante;

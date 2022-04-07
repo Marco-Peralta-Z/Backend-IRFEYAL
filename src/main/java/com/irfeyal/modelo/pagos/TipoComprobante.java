@@ -22,7 +22,7 @@ public class TipoComprobante implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	@Column(name = "id_tipo_comprobante")
 	private Long id_tipo_comprobante;
 
 	@Column
@@ -33,19 +33,19 @@ public class TipoComprobante implements Serializable {
 	private List<Periodo> id_periodo;
 
 	@OneToMany
-	@JoinColumn(name = "id_kid")
-	private List<Kit> id_kid;
+	@JoinColumn(name = "id_kit")
+	private List<Kit> id_kit;
 
 	public TipoComprobante() {
 
 	}
 
-	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, List<Periodo> id_periodo, List<Kit> id_kid) {
+	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, List<Periodo> id_periodo, List<Kit> id_kit) {
 		super();
 		this.id_tipo_comprobante = id_tipo_comprobante;
 		this.concepto_pago = concepto_pago;
 		this.id_periodo = id_periodo;
-		this.id_kid = id_kid;
+		this.id_kit = id_kit;
 	}
 
 	public Long getIdTipoComprobante() {
@@ -65,11 +65,11 @@ public class TipoComprobante implements Serializable {
 	}
 
 	public List<Kit> getKit() {
-		return id_kid;
+		return id_kit;
 	}
 
-	public void setKit(List<Kit> id_kid) {
-		this.id_kid = id_kid;
+	public void setKit(List<Kit> id_kit) {
+		this.id_kit = id_kit;
 	}
 
 	public List<Periodo> getId_periodo() {

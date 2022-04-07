@@ -1,8 +1,5 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,28 +7,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**
- *
- * @author Felipe Quichimbo check
- */
 @Entity
 @Table(name = "kit")
 @NamedQueries({
     @NamedQuery(name = "Kit.findAll", query = "SELECT k FROM Kit k"),
-    @NamedQuery(name = "Kit.findByid_kid", query = "SELECT k FROM Kit k WHERE k.id_kid = :id_kid"),
+    @NamedQuery(name = "Kit.findByid_kit", query = "SELECT k FROM Kit k WHERE k.id_kit = :id_kit"),
     @NamedQuery(name = "Kit.findByPrecioKit", query = "SELECT k FROM Kit k WHERE k.precioKit = :precioKit"),
     @NamedQuery(name = "Kit.findByPeriodo", query = "SELECT k FROM Kit k WHERE k.periodo = :periodo")})
 public class Kit implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id_kid")
-    private Long id_kid;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_kit")
+	private Long id_kit;
     
     @Column(name = "precio_kit")
     private Integer precioKit;
@@ -42,16 +33,16 @@ public class Kit implements Serializable {
     public Kit() {
     }
 
-    public Kit(Long id_kid) {
-        this.id_kid = id_kid;
+    public Kit(Long id_kit) {
+        this.id_kit = id_kit;
     }
 
-    public Long getid_kid() {
-        return id_kid;
+    public Long getid_kit() {
+        return id_kit;
     }
 
-    public void setid_kid(Long id_kid) {
-        this.id_kid = id_kid;
+    public void setid_kit(Long id_kit) {
+        this.id_kit = id_kit;
     }
 
     public Integer getPrecioKit() {
@@ -70,12 +61,11 @@ public class Kit implements Serializable {
         this.periodo = periodo;
     }
 
-  
-
+ 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id_kid != null ? id_kid.hashCode() : 0);
+        hash += (id_kit != null ? id_kit.hashCode() : 0);
         return hash;
     }
 
@@ -86,7 +76,7 @@ public class Kit implements Serializable {
             return false;
         }
         Kit other = (Kit) object;
-        if ((this.id_kid == null && other.id_kid != null) || (this.id_kid != null && !this.id_kid.equals(other.id_kid))) {
+        if ((this.id_kit == null && other.id_kit != null) || (this.id_kit != null && !this.id_kit.equals(other.id_kit))) {
             return false;
         }
         return true;
@@ -94,7 +84,7 @@ public class Kit implements Serializable {
 
     @Override
     public String toString() {
-        return "com.irfeyal.mapeoirfeyal.Kit[ id_kid=" + id_kid + " ]";
+        return "com.irfeyal.mapeoirfeyal.Kit[ id_kit=" + id_kit + " ]";
     }
     
 }

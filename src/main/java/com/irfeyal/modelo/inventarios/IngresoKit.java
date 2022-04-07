@@ -1,7 +1,6 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +15,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.irfeyal.modelo.rolseguridad.Empleado;
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
 
 /**
  *
@@ -33,7 +31,6 @@ public class IngresoKit implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id_ingreso_kid")
     private Long id_ingreso_kid;
     
@@ -45,9 +42,9 @@ public class IngresoKit implements Serializable {
     @ManyToOne(optional = false)
     private Aprobacion id_aprobacion;
     
-    @JoinColumn(name = "id_kid", referencedColumnName = "id_kid")
+    @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
     @ManyToOne(optional = false)
-    private Kit id_kid;
+    private Kit id_kit;
     
     @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
@@ -56,11 +53,7 @@ public class IngresoKit implements Serializable {
     public IngresoKit() {
     }
 
-    
-    
-    
-    
-    
+
     public Empleado getId_empleado() {
 		return id_empleado;
 	}
@@ -69,11 +62,6 @@ public class IngresoKit implements Serializable {
 	public void setId_empleado(Empleado id_empleado) {
 		this.id_empleado = id_empleado;
 	}
-
-
-
-
-
 
 	public IngresoKit(Long id_ingreso_kid) {
         this.id_ingreso_kid = id_ingreso_kid;
@@ -95,7 +83,6 @@ public class IngresoKit implements Serializable {
         this.fechaIngreso = fechaIngreso;
     }
 
-
     public Aprobacion getId_aprobacion() {
 		return id_aprobacion;
 	}
@@ -104,15 +91,14 @@ public class IngresoKit implements Serializable {
 		this.id_aprobacion = id_aprobacion;
 	}
 
-	public Kit getid_kid() {
-        return id_kid;
+	public Kit getid_kit() {
+        return id_kit;
     }
 
-    public void setid_kid(Kit id_kid) {
-        this.id_kid = id_kid;
+    public void setid_kit(Kit id_kit) {
+        this.id_kit = id_kit;
     }
 
-  
 
     public Long getId_ingreso_kid() {
 		return id_ingreso_kid;
@@ -121,14 +107,17 @@ public class IngresoKit implements Serializable {
 	public void setId_ingreso_kid(Long id_ingreso_kid) {
 		this.id_ingreso_kid = id_ingreso_kid;
 	}
+	
 
-	public Kit getId_kid() {
-		return id_kid;
+	public Kit getId_kit() {
+		return id_kit;
 	}
 
-	public void setId_kid(Kit id_kid) {
-		this.id_kid = id_kid;
+
+	public void setId_kit(Kit id_kit) {
+		this.id_kit = id_kit;
 	}
+
 
 	@Override
     public int hashCode() {

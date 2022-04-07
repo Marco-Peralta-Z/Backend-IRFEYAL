@@ -1,9 +1,6 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,13 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.irfeyal.modelo.rolseguridad.Empleado;
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
 
 /**
  *
@@ -37,12 +32,11 @@ import com.irfeyal.modelo.rolseguridad.RolUsuario;
     @NamedQuery(name = "Aprobacion.findByFechaControl", query = "SELECT a FROM Aprobacion a WHERE a.fechaControl = :fechaControl")})
 public class Aprobacion implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id_aprobacion")
-    private Long id_aprobacion;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_aprobacion")
+	private Long id_aprobacion;
     
     @Column(name = "observacion_aproba")
     private String observacionAproba;
