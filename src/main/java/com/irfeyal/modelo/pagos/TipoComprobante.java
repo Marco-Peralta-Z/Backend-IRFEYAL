@@ -28,11 +28,11 @@ public class TipoComprobante implements Serializable {
 	@Column
 	private String concepto_pago;
 
-	@OneToMany()
+	@OneToMany
 	@JoinColumn(name = "id_periodo")
 	private List<Periodo> id_periodo;
 
-	@OneToMany()
+	@OneToMany
 	@JoinColumn(name = "id_kid")
 	private List<Kit> id_kid;
 

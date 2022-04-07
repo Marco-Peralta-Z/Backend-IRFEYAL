@@ -66,10 +66,6 @@ public class IngresoKit implements Serializable {
 	}
 
 
-
-
-
-
 	public void setId_empleado(Empleado id_empleado) {
 		this.id_empleado = id_empleado;
 	}

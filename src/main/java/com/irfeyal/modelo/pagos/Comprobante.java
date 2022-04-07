@@ -32,7 +32,7 @@ public class Comprobante implements Serializable {
 	private boolean estado;
 
 	@ManyToOne
-	@JoinColumn(name = "id_id_matricula")
+	@JoinColumn(name = "id_matricula")
 	private Matricula id_matricula;
 
 	@OneToOne

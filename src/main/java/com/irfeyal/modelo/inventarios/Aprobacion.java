@@ -61,7 +61,7 @@ public class Aprobacion implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaControl;
     
-    @JoinColumn(name = "id_rol_usuario", referencedColumnName = "id_rol_usuario")
+    @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
     private Empleado id_empleado;
 

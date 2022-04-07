@@ -1,9 +1,5 @@
 package com.irfeyal.modelo.asistencia;
 import java.io.Serializable;
-import java.util.List;
-
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.irfeyal.modelo.matricula.Estudiante;
@@ -31,11 +26,11 @@ public class Asistencia implements Serializable {
 
 	    @Column(name = "estado_asis")
 	    private String estadoAsis;
+	    @ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
+	    private Clase idClase;	 
 	    @ManyToOne(fetch = FetchType.LAZY)
-	    private Clase idClase;
 	    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
-	    @ManyToOne(fetch = FetchType.LAZY)
 	    private Estudiante idEstudiante;
 
 	public Asistencia() {

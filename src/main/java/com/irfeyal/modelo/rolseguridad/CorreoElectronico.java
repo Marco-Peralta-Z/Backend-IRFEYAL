@@ -3,8 +3,6 @@ package com.irfeyal.modelo.rolseguridad;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 @Table(name="correo_electronico")
@@ -16,16 +14,12 @@ public class CorreoElectronico implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_correo")
 	private Long id_correo;
-
+	@Column(name="correo")
 	private String correo;
 
-
-	//bi-directional many-to-one association to Extension
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_extension")
 	private Extension extension;
-
 
 	public CorreoElectronico() {
 	}
@@ -43,6 +37,16 @@ public class CorreoElectronico implements Serializable {
 
 	public String getCorreo() {
 		return correo;
+	}
+
+
+	public Long getId_correo() {
+		return id_correo;
+	}
+
+
+	public void setId_correo(Long id_correo) {
+		this.id_correo = id_correo;
 	}
 
 

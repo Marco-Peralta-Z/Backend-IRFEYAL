@@ -1,31 +1,27 @@
 package com.irfeyal.modelo.rolseguridad;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name="rol_usuario")
+@Table(name = "rol_usuario")
 public class RolUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_rol_usuario")
+	@Column(name = "id_rol_usuario")
 	private Long id_rol_usuario;
-
+	@Column(name = "estado")
 	private Boolean estado;
 
-	
-//bi-directional many-to-one association to Rol
 	@ManyToOne
-	@JoinColumn(name="id_rol")
+	@JoinColumn(name = "id_rol")
 	private Rol rol;
 
-	//bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="id_usuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-
-
 
 	public RolUsuario() {
 	}
@@ -46,8 +42,6 @@ public class RolUsuario implements Serializable {
 		this.estado = estado;
 	}
 
-	
-
 	public Rol getRol() {
 		return this.rol;
 	}
@@ -63,7 +57,5 @@ public class RolUsuario implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
-	
 
 }

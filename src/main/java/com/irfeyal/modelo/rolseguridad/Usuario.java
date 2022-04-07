@@ -18,7 +18,7 @@ public class Usuario implements Serializable {
 	private String contrasenia;
 
 	@Column(name="est_usuario")
-	private String estUsuario;
+	private Boolean estUsuario;
 
 	@Column(name="usuario")
 	private String usuario;
@@ -42,11 +42,11 @@ public class Usuario implements Serializable {
 		this.contrasenia = contrasenia;
 	}
 
-	public String getEstUsuario() {
+	public Boolean getEstUsuario() {
 		return estUsuario;
 	}
 
-	public void setEstUsuario(String estUsuario) {
+	public void setEstUsuario(Boolean estUsuario) {
 		this.estUsuario = estUsuario;
 	}
 

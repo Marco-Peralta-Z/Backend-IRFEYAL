@@ -14,8 +14,6 @@ import javax.persistence.Table;
 import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
-
-
 @Entity
 @Table(name="registro")
 

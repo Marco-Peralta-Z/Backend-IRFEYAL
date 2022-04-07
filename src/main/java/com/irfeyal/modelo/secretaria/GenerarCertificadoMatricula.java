@@ -26,9 +26,7 @@ public class GenerarCertificadoMatricula implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
 	private Long id_generar_certificado_matricula;
-	
-	@Column
-	private int id;
+
 	@Column
 	private String rectora;
 	@Column
@@ -50,11 +48,10 @@ public class GenerarCertificadoMatricula implements Serializable{
 		
 	}
 
-	public GenerarCertificadoMatricula(Long id_generar_certificado_matricula, int id, String rectora, Date fecha,
+	public GenerarCertificadoMatricula(Long id_generar_certificado_matricula, String rectora, Date fecha,
 			RolUsuario id_rol_usuario, Matricula matricula, Direccion direccion) {
 		super();
 		this.id_generar_certificado_matricula = id_generar_certificado_matricula;
-		this.id = id;
 		this.rectora = rectora;
 		this.fecha = fecha;
 		this.id_rol_usuario = id_rol_usuario;
@@ -70,13 +67,6 @@ public class GenerarCertificadoMatricula implements Serializable{
 		this.id_generar_certificado_matricula = id_generar_certificado_matricula;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getRectora() {
 		return rectora;

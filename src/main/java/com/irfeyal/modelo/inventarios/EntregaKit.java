@@ -50,7 +50,7 @@ public class EntregaKit implements Serializable {
     @ManyToOne(optional = false)
     private Kit id_kid;
     
-    @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
+    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
     @ManyToOne(optional = false)
     private Estudiante id_estudiante;
 
