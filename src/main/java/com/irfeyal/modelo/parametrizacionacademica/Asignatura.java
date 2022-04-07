@@ -16,11 +16,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
+//Modificado por: Josué Quichimbo. Fecha: 07/04/22. Hora: 16:35
+
+@Data
 @Entity
 @Table(name = "asignatura")
 public class Asignatura implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
@@ -40,32 +46,4 @@ public class Asignatura implements Serializable{
 			inverseJoinColumns = { @JoinColumn(name = "id_malla") })
     private List<Malla> listaMallas;
 
-    public Asignatura() {
-        super();
-    }
-
-    public Long getIdAsignatura() {
-        return id_asignatura;
-    }
-
-    public void setIdAsignatura(Long id_asignatura) {
-        this.id_asignatura = id_asignatura;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Calendar getFecha_creacion() {
-        return fecha_creacion;
-    }
-
-    public void setFecha_creacion(Calendar fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
-    }
-
-}//fin()
+}
