@@ -1,6 +1,7 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,23 +35,23 @@ public class Paralelo implements Serializable {
 	private Long id_paralelo;
 
 	@Column(name = "descripcion")
-	private String descripcion_paralelo;
+	private String descripcion;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "fec_creacion")
-	private Date fec_creacion_paralelo;
+	@Column(name = "fecha_creacion")
+	private Date fecha_creacion_paralelo;
 	
 	@PrePersist
 	private void setFechaCreacion() {
-		this.fec_creacion_paralelo = new Date();
+		this.fecha_creacion_paralelo = new Date();
 	}
 	
+	//Relacion Curso-Paralelo, bidireccional, propietario Paralelo
 	@ManyToMany
 	@JoinTable(
 			name = "curso_paralelo",
 			joinColumns = { @JoinColumn(name = "id_paralelo") },
 			inverseJoinColumns = { @JoinColumn(name = "id_curso") })
-	private List<Curso> listaCursos;
+	private List<Curso> listaCursos = new ArrayList<Curso>();
 
-	// idMatricula
 }

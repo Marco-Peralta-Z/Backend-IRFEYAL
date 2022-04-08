@@ -42,8 +42,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		<!-- Añadido por: Josué Quichimbo. Fecha: 07/04/22. Hora: 16:33 -->
+	
+		<!--Modificado por: Josue Quichimbo. Fecha: 08/04/22. Hora: 9:14  -->	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -55,7 +55,7 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<!-- Fin añadido -->
+		<!-- Fin modificado -->
 	</dependencies>
 
 	<build>

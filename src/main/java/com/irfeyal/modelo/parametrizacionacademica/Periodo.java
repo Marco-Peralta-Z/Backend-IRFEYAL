@@ -37,8 +37,8 @@ public class Periodo implements Serializable{
     private String actividades;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "fecha_activiti")
-    private Date fecha_activiti;
+    @Column(name = "fecha_activitidad")
+    private Date fecha_activitidad;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_creacion")
@@ -58,9 +58,10 @@ public class Periodo implements Serializable{
     @Column(name = "costo_matricula")
     private Double costo_matricula;
 
+    //Relación Periodo-Malla, entidad propietaria Periodo, unidireccional
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_malla")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Malla id_malla;
+    private Malla malla;
 
 }

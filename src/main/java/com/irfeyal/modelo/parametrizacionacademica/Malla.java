@@ -1,6 +1,7 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -42,12 +43,17 @@ public class Malla implements Serializable{
 	@Column(name = "fecha_creacion")
 	private Calendar fecha_creacion;
 
-	//Data binding, tabla Curso
+	//Relación Malla-Curso, bidireccional, relación propietaria Malla
 	@ManyToMany
 	@JoinTable(
 			name = "malla_curso",
 			joinColumns = { @JoinColumn(name = "id_malla") },
 			inverseJoinColumns = { @JoinColumn(name = "id_curso") })
-	private List<Curso> listaCursos;
+	private List<Curso> listaCursos = new ArrayList<Curso>();
+	
+	//Relación Malla-Asignatura, bidireccional
+	@ManyToMany(mappedBy = "listaMallas")
+	private List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
+	
 
 }

@@ -1,6 +1,7 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,6 +46,6 @@ public class Modalidad implements Serializable{
 			name = "modalidad_curso",
 			joinColumns = { @JoinColumn(name = "id_modalidad") },
 			inverseJoinColumns = { @JoinColumn(name = "id_curso") })
-    private List<Curso> listaCursos;
+    private List<Curso> listaCursos = new ArrayList<Curso>();
    
 }

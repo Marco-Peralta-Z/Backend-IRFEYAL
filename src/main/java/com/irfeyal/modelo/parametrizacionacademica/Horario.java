@@ -1,11 +1,7 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
-
-import lombok.Data;
-
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +19,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.irfeyal.modelo.rolseguridad.Empleado;
+
+import lombok.Data;
 
 //Modificado por: Josué Quichimbo. Fecha: 07/04/22. Hora: 16:38.
 
@@ -59,16 +61,24 @@ public class Horario implements Serializable{
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Asignatura id_asignatura;
     
+    //Relación Curso-Horario, bidireccional, propietario Horario
     @ManyToMany
 	@JoinTable(
-			name = "cursos_horario",
+			name = "curso_horario",
 			joinColumns = { @JoinColumn(name = "id_horario") },
 			inverseJoinColumns = { @JoinColumn(name = "id_curso") })
-    private List<Curso> listaCursos;
+    private List<Curso> listaCursos = new ArrayList<Curso>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rol_usuario")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private RolUsuario id_rol_usuario;
+    //Relación Horario-Empleado, unidireccional,propietario Horario
+    @ManyToMany
+    @JoinTable(
+    		name= "horario_empleado",
+    		joinColumns = {@JoinColumn(name= "id_horario")},
+    		inverseJoinColumns = {@JoinColumn(name = "id_empleado")})
+    private List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+    
+    //Relación Asignatura-Horario, bidireccional
+    @ManyToMany(mappedBy = "listaHorarios")
+    private List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
    
 }

@@ -20,17 +20,7 @@ INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario,
 ----------------------------------------------------
 -- PARAMETRIZACION ACADEMICA
 ----------------------------------------------------
-INSERT INTO malla (estado, descripcion, fecha_creacion) VALUES (true, 'En la Unidad Educativa José María Vélaz, S. J. Extensión 105 – Cuenca la oferta educativa tiene la siguiente malla curricular, tanto para la modalidad Intensiva como para la modalidad No Intensiva. ', '2021/02/03');
---INSERT INTO periodo (actividades, fecha_activiti, fecha_creacion, fecha_inicio, fecha_fin, costo_mensualidad, costo_matricula, id_malla) VALUES ('Bachillerato General Unificado', '2021/02/03', '2022/02/03', '2021/02/03', '2022/02/03', 1, 1, 1);
-INSERT INTO curso (descripcion, tipo_curso, fec_creacion, id_rol_usuario) VALUES ('8vo', 'Educación General Básica Intensiva', '2022/03/02', 1); --OJO:id_rol_usuario
---INSERT INTO malla_curso (id_curso, id_malla, fec_creacion_mallacurso) VALUES(1, 1, '2022/02/03');
-INSERT INTO asignatura (descripcion, fecha_creacion) VALUES ('Matematicas', '2022/02/03');
---INSERT INTO malla_asignatura (id_asignatura, id_malla, fec_creacion_mallaasignatura) VALUES (1, 1, '2022/02/03');
-INSERT INTO modalidad (descripcion, hora_inicio, hora_fin) VALUES ('Matutino', '2022-12-05 07:30:10', '2022-12-05 07:30:10');
-INSERT INTO modalidad_curso (id_modalidad, id_curso) VALUES (1, 1);
-INSERT INTO horario (tiempo_inicio, tiempo_fin, dia, fecha_creacion, id_asignatura) VALUES ('2022-12-05 07:30:10', '2022-12-05 07:30:10', 1, '2022/02/03', 1); --OJOS:Tipos de datos de tiempo_inicio
-INSERT INTO paralelo (descripcion, fec_creacion) VALUES ('A', '2022/02/03');
-INSERT INTO curso_paralelo (id_paralelo, id_curso) VALUES (1, 1);
+
 ----------------------------------------------------
 --MATRICULA
 ----------------------------------------------------
