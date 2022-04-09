@@ -1,6 +1,4 @@
-﻿--
---ROLES Y SEGURIDAD
---
+﻿-- ROLES Y SEGURIDAD
 INSERT INTO pais (pais) VALUES ('Ecuador');
 INSERT INTO provincia (provincia) VALUES ('AZUAY');
 INSERT INTO canton (canton) VALUES ('CUENCA');
@@ -17,24 +15,7 @@ INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfey
 INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0987562111', '0723658988',1);
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalmatriz@edu.ec',1);
 INSERT INTO empleado (cargo,id_extension,id_direcion,id_telefono,id_usuario,id_correo,id_persona) VALUES ('tutor', 1, 1, 1, 1, 1, 1);
---
 -- PARAMETRIZACION ACADEMICA
-<<<<<<< HEAD
---
-INSERT INTO malla (estado, descripcion, fecha_creacion) VALUES (true, 'En la Unidad Educativa José María Vélaz, S. J. Extensión 105 – Cuenca la oferta educativa tiene la siguiente malla curricular, tanto para la modalidad Intensiva como para la modalidad No Intensiva. ', '2021/02/03');
-INSERT INTO periodo (actividades, fecha_activiti, fecha_creacion, fecha_inicio, fecha_fin, costo_mensualidad,costo_matricula,id_malla) VALUES ('Bachillerato General Unificado', '2021/02/03', '2022/02/03','2021/02/03', '2022/02/03', 1, 1, 1);
-INSERT INTO curso (descripcion, tipo_curso, fec_creacion, id_rol_usuario) VALUES ('8vo', 'Educación General Básica Intensiva', '2022/03/02', 1);--OJO:id_rol_usuario por id_empleado 
-INSERT INTO malla_curso (id_curso, id_malla) VALUES(1, 1);
-INSERT INTO asignatura (descripcion, fecha_creacion) VALUES ('Matematicas', '2022/02/03');
-INSERT INTO malla_asignatura (id_asignatura, id_malla) VALUES (1, 1);
-INSERT INTO modalidad (descripcion, hora_inicio, hora_fin) VALUES ('Matutino', '2022-12-05 07:30:10','2022-12-05 07:30:10');
-INSERT INTO modalidad_curso (id_modalidad, id_curso) VALUES (1, 1);
-INSERT INTO horario (tiempo_inicio, tiempo_fin, dia, fecha_creacion, id_asignatura) VALUES ('2022-12-05 07:30:10','2022-12-05 07:30:10', 1, '2022/02/03', 1);--OJOS:Tipos de datos de tiempo_inicio
-INSERT INTO paralelo (descripcion, fec_creacion) VALUES ('A', '2022/02/03');
-INSERT INTO curso_paralelo (id_paralelo, id_curso) VALUES (1, 1); 
---
-=======
-----------------------------------------------------
 
 -------------------MODALIDAD-----------------------------
 INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Nocturna', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
@@ -151,7 +132,6 @@ INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(1, 4);
 INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(1, 5);
 
 ----------------------------------------------------
->>>>>>> 0dcc21ab951c84f16672a4a16ea7d91cb28f1ac4
 --MATRICULA
 --
 INSERT INTO estudiantes (estado_estudiante, id_extension,id_persona,id_correo,id_direccion,id_telefono) VALUES (true, 1,1,1,1,1);--OJO:
