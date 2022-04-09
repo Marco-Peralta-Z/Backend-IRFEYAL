@@ -19,6 +19,7 @@ INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalmatriz@edu
 INSERT INTO empleado (cargo,id_extension,id_direcion,id_telefono,id_usuario,id_correo,id_persona) VALUES ('tutor', 1, 1, 1, 1, 1, 1);
 --
 -- PARAMETRIZACION ACADEMICA
+<<<<<<< HEAD
 --
 INSERT INTO malla (estado, descripcion, fecha_creacion) VALUES (true, 'En la Unidad Educativa José María Vélaz, S. J. Extensión 105 – Cuenca la oferta educativa tiene la siguiente malla curricular, tanto para la modalidad Intensiva como para la modalidad No Intensiva. ', '2021/02/03');
 INSERT INTO periodo (actividades, fecha_activiti, fecha_creacion, fecha_inicio, fecha_fin, costo_mensualidad,costo_matricula,id_malla) VALUES ('Bachillerato General Unificado', '2021/02/03', '2022/02/03','2021/02/03', '2022/02/03', 1, 1, 1);
@@ -32,6 +33,11 @@ INSERT INTO horario (tiempo_inicio, tiempo_fin, dia, fecha_creacion, id_asignatu
 INSERT INTO paralelo (descripcion, fec_creacion) VALUES ('A', '2022/02/03');
 INSERT INTO curso_paralelo (id_paralelo, id_curso) VALUES (1, 1); 
 --
+=======
+----------------------------------------------------
+
+----------------------------------------------------
+>>>>>>> 0dcc21ab951c84f16672a4a16ea7d91cb28f1ac4
 --MATRICULA
 --
 INSERT INTO estudiantes (estado_estudiante, id_extension,id_persona,id_correo,id_direccion,id_telefono) VALUES (true, 1,1,1,1,1);--OJO:

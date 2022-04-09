@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,9 +17,8 @@ import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
 @Entity
 @Table(name="registro")
-
+@NamedQuery(name="Registro.findAll", query="SELECT r FROM Registro r")
 public class Registro implements Serializable {
-	
 private static final long serialVersionUID = 1L;
 	
 	@Id

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -15,8 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="reporte")
-
-
+@NamedQuery(name="Reporte.findAll", query="SELECT re FROM Reporte re")
 public class Reporte implements Serializable {
 private static final long serialVersionUID = 1L;
 	

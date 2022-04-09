@@ -1,6 +1,10 @@
 package com.irfeyal.modelo.pagos;
 
 import java.io.Serializable;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0dcc21ab951c84f16672a4a16ea7d91cb28f1ac4
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -62,12 +66,21 @@ public class TipoComprobante implements Serializable {
 		this.concepto_pago = concepto_pago;
 	}
 
+<<<<<<< HEAD
 
 	public Kit getId_kit() {
 		return id_kit;
 	}
 
 	public void setId_kit(Kit id_kit) {
+=======
+	public Kit getKit() {
+		return id_kit;
+	}
+
+	public void setKit(Kit id_kit) {
+		
+>>>>>>> 0dcc21ab951c84f16672a4a16ea7d91cb28f1ac4
 		this.id_kit = id_kit;
 	}
 
