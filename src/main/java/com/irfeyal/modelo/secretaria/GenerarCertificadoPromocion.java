@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.modelo.tutorias.Registro;
 
 @Entity
@@ -39,8 +39,8 @@ private static final long serialVersionUID = 1L;
 	private String rectora;
 	
 	@OneToOne
-	@JoinColumn(name="id_rol_usuario")
-	private RolUsuario id_rol_usuario;
+	@JoinColumn(name="id_empleado")
+	private Empleado id_empleado;
 	
 	@OneToOne
 	@JoinColumn(name="id_registro")
@@ -55,7 +55,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	public GenerarCertificadoPromocion(Long id_generar_certificado_promocion, float promedio_general_num, String promedio_general_let, 
-			String descripcion, Date fecha, String rectora, RolUsuario id_rol_usuario, Registro registro, Curso curso) {
+			String descripcion, Date fecha, String rectora, Empleado id_empleado, Registro registro, Curso curso) {
 
 		this.id_generar_certificado_promocion = id_generar_certificado_promocion;
 		this.promedio_general_num = promedio_general_num;
@@ -63,7 +63,7 @@ private static final long serialVersionUID = 1L;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.rectora = rectora;
-		this.id_rol_usuario = id_rol_usuario;
+		this.id_empleado = id_empleado;
 		this.registro = registro;
 		this.curso = curso;
 	}
@@ -116,12 +116,12 @@ private static final long serialVersionUID = 1L;
 		this.rectora = rectora;
 	}
 
-	public RolUsuario getid_rol_usuario() {
-		return id_rol_usuario;
+	public Empleado getid_empleado() {
+		return id_empleado;
 	}
 
-	public void setid_rol_usuario(RolUsuario id_rol_usuario) {
-		this.id_rol_usuario = id_rol_usuario;
+	public void setid_empleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
 	}
 
 	public Registro getRegistro() {

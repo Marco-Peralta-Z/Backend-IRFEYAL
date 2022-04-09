@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.rolseguridad.Direccion;
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "generar_certificado_matricula")
@@ -33,8 +33,8 @@ public class GenerarCertificadoMatricula implements Serializable{
 	private Date fecha;
 	
 	@OneToOne
-	@JoinColumn(name = "id_rol_usuario")
-	private RolUsuario id_rol_usuario;
+	@JoinColumn(name = "id_empleado")
+	private Empleado id_empleado;
 	
 	@OneToOne
 	@JoinColumn(name = "id_matricula")
@@ -49,12 +49,12 @@ public class GenerarCertificadoMatricula implements Serializable{
 	}
 
 	public GenerarCertificadoMatricula(Long id_generar_certificado_matricula, String rectora, Date fecha,
-			RolUsuario id_rol_usuario, Matricula matricula, Direccion direccion) {
+			Empleado id_empleado, Matricula matricula, Direccion direccion) {
 		super();
 		this.id_generar_certificado_matricula = id_generar_certificado_matricula;
 		this.rectora = rectora;
 		this.fecha = fecha;
-		this.id_rol_usuario = id_rol_usuario;
+		this.id_empleado = id_empleado;
 		this.matricula = matricula;
 		this.direccion = direccion;
 	}
@@ -84,12 +84,12 @@ public class GenerarCertificadoMatricula implements Serializable{
 		this.fecha = fecha;
 	}
 
-	public RolUsuario getid_rol_usuario() {
-		return id_rol_usuario;
+	public Empleado getid_empleado() {
+		return id_empleado;
 	}
 
-	public void setid_rol_usuario(RolUsuario id_rol_usuario) {
-		this.id_rol_usuario = id_rol_usuario;
+	public void setid_empleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
 	}
 
 	public Matricula getMatricula() {
