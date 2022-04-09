@@ -62,7 +62,7 @@ public class Curso implements Serializable {
 	private List<Horario> listaHorario = new ArrayList<Horario>();
 	
 	@ManyToOne
-	@JoinColumn(name = "empleado", unique = true)
+	@JoinColumn(name = "id_empleado", unique = true)
 	private Empleado empleado;
 
 }

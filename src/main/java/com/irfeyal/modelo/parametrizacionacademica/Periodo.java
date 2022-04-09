@@ -37,8 +37,8 @@ public class Periodo implements Serializable{
     private String actividades;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "fecha_activitidad")
-    private Date fecha_activitidad;
+    @Column(name = "fecha_actividad")
+    private Date fecha_actividad;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_creacion")
