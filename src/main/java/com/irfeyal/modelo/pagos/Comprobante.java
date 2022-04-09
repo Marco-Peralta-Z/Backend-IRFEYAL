@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.irfeyal.modelo.matricula.Matricula;
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "comprobante")
@@ -36,8 +36,8 @@ public class Comprobante implements Serializable {
 	private Matricula id_matricula;
 
 	@OneToOne
-	@JoinColumn(name = "id_rol_usuario")
-	private RolUsuario id_rol_usuario;
+	@JoinColumn(name = "id_empleado")
+	private Empleado id_empleado;
 
 	@OneToOne
 	@JoinColumn(name = "id_tipo_comprobante")
@@ -52,7 +52,7 @@ public class Comprobante implements Serializable {
 	}
 
 	public Comprobante(Long id_comprobante, Date fecha, String imagen, float valor_total, boolean estado,
-			Matricula id_matricula, RolUsuario id_rol_usuario, TipoComprobante id_tipo_comprobante,
+			Matricula id_matricula, Empleado id_empleado, TipoComprobante id_tipo_comprobante,
 			TipoPago id_tipo_pago) {
 		this.id_comprobante = id_comprobante;
 		this.fecha = fecha;
@@ -60,7 +60,7 @@ public class Comprobante implements Serializable {
 		this.valor_total = valor_total;
 		this.estado = estado;
 		this.id_matricula = id_matricula;
-		this.id_rol_usuario = id_rol_usuario;
+		this.id_empleado = id_empleado;
 		this.id_tipo_comprobante = id_tipo_comprobante;
 		this.id_tipo_pago = id_tipo_pago;
 	}
@@ -113,12 +113,12 @@ public class Comprobante implements Serializable {
 		this.id_matricula = id_matricula;
 	}
 
-	public RolUsuario getRolusuario() {
-		return id_rol_usuario;
+	public Empleado getEmpleado() {
+		return id_empleado;
 	}
 
-	public void setRolusuario(RolUsuario id_rol_usuario) {
-		this.id_rol_usuario = id_rol_usuario;
+	public void setEmpleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
 	}
 
 	public TipoComprobante getTipoComprobante() {

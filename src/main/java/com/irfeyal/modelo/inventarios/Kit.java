@@ -1,5 +1,6 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -53,16 +54,18 @@ public class Kit implements Serializable {
         this.precioKit = precioKit;
     }
 
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
-    }
-
  
-    @Override
+
+
+	public String getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id_kit != null ? id_kit.hashCode() : 0);
