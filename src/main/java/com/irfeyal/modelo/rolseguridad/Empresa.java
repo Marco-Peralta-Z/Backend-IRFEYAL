@@ -21,14 +21,6 @@ public class Empresa implements Serializable {
 	public Empresa() {
 	}
 
-	public Long getid_empresa() {
-		return id_empresa;
-	}
-
-	public void setid_empresa(Long id_empresa) {
-		this.id_empresa = id_empresa;
-	}
-
 	public String getNombre_empresa() {
 		return nombre_empresa;
 	}

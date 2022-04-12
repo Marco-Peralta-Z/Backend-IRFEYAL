@@ -27,7 +27,8 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "asignatura")
-public class Asignatura implements Serializable{
+@JsonIgnoreProperties({ "hibernateLazyInitializer" })
+public class Asignatura implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -52,21 +53,18 @@ public class Asignatura implements Serializable{
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "malla_asignatura", joinColumns = { @JoinColumn(name = "id_asignatura") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_malla") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Malla> mallas = new ArrayList<Malla>();
 
 	// Relación asignatura_horario
 	@ManyToMany
 	@JoinTable(name = "asignatura_horario", joinColumns = {
 			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_horario") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Horario> horarios = new ArrayList<>();
 
 	// Relación asignatura_empleado
 	@ManyToMany
 	@JoinTable(name = "asignatura_empleado", joinColumns = {
 			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_empleado") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Empleado> empleados = new ArrayList<>();
 
 }

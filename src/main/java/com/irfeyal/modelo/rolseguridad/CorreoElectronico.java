@@ -24,17 +24,6 @@ public class CorreoElectronico implements Serializable {
 	public CorreoElectronico() {
 	}
 
-
-	public Long getid_correo() {
-		return id_correo;
-	}
-
-
-	public void setid_correo(Long id_correo) {
-		this.id_correo = id_correo;
-	}
-
-
 	public String getCorreo() {
 		return correo;
 	}
