@@ -53,6 +53,8 @@ public class Asistencia implements Serializable {
 		return idAsistencia;
 	}
 
+	
+	
 	public void setIdAsistencia(Long idAsistencia) {
 		this.idAsistencia = idAsistencia;
 	}
