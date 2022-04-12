@@ -16,11 +16,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
-
-//Modificado por: Josué Quichimbo. Fecha: 07/04/22. Hora: 16:40.
 
 @Data
 @Entity
@@ -28,7 +28,7 @@ import lombok.Data;
 public class Paralelo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
@@ -39,19 +39,18 @@ public class Paralelo implements Serializable {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "fecha_creacion")
-	private Date fecha_creacion_paralelo;
-	
+	private Date fecha_creacion;
+
 	@PrePersist
 	private void setFechaCreacion() {
-		this.fecha_creacion_paralelo = new Date();
+		this.fecha_creacion = new Date();
 	}
-	
-	//Relacion Curso-Paralelo, bidireccional, propietario Paralelo
+
+	// Relacion curso_paralelo
 	@ManyToMany
-	@JoinTable(
-			name = "curso_paralelo",
-			joinColumns = { @JoinColumn(name = "id_paralelo") },
-			inverseJoinColumns = { @JoinColumn(name = "id_curso") })
+	@JoinTable(name = "curso_paralelo", joinColumns = { @JoinColumn(name = "id_paralelo") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_curso") })
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
 
 }

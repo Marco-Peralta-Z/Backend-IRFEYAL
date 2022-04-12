@@ -2,7 +2,7 @@ package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,21 +13,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-//Modificado por: Josué Quichimbo. Fecha: 07/04/22. Hora: 16:39
+import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "malla")
-public class Malla implements Serializable{
+public class Malla implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
@@ -41,19 +42,18 @@ public class Malla implements Serializable{
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_creacion")
-	private Calendar fecha_creacion;
+	private Date fecha_creacion;
 
-	//Relación Malla-Curso, bidireccional, relación propietaria Malla
+	@PrePersist
+	private void setDateFecha(){
+		this.fecha_creacion = new Date();
+	}
+
+	// Relación Malla-Curso
 	@ManyToMany
-	@JoinTable(
-			name = "malla_curso",
-			joinColumns = { @JoinColumn(name = "id_malla") },
-			inverseJoinColumns = { @JoinColumn(name = "id_curso") })
+	@JoinTable(name = "malla_curso", joinColumns = { @JoinColumn(name = "id_malla") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_curso") })
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
-	
-	//Relación Malla-Asignatura, bidireccional
-	@ManyToMany(mappedBy = "listaMallas")
-	private List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
-	
 
 }

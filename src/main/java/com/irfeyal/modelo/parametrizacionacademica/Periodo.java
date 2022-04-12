@@ -1,12 +1,8 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import lombok.Data;
-
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,10 +11,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.Data;
 
 //Modificado por: Josué Quichimbo. Fecha: 07/04/22. Hora: 16:41.
 
@@ -40,10 +42,6 @@ public class Periodo implements Serializable{
     @Column(name = "fecha_actividad")
     private Date fecha_actividad;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "fecha_creacion")
-    private Calendar fecha_creacion;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_inicio")
     private Date fecha_inicio;
@@ -58,7 +56,16 @@ public class Periodo implements Serializable{
     @Column(name = "costo_matricula")
     private Double costo_matricula;
 
-    //Relación Periodo-Malla, entidad propietaria Periodo, unidireccional
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "fecha_creacion")
+    private Date fecha_creacion;
+
+    @PrePersist
+    private void setDateFecha(){
+        this.fecha_creacion = new Date();
+    }
+
+    //Relación Periodo-Malla
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_malla")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

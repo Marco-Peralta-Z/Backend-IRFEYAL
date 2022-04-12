@@ -59,13 +59,13 @@ INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fec
 INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('Octavo', '07/04/2022', 'nuevo', 1);
 
 -------------------------HORARIO-----------------------
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio, id_asignatura) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00', 1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio, id_asignatura) VALUES(2, '07/04/2022', '08/09/2022 08:00:00', '07/12/2022 09:00:00', 2);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio, id_asignatura) VALUES(3, '07/04/2022', '08/09/2022 09:00:00', '07/12/2022 10:00:00', 3);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio, id_asignatura) VALUES(4, '07/04/2022', '08/09/2022 10:00:00', '07/12/2022 11:00:00', 9);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio, id_asignatura) VALUES(5, '07/04/2022', '08/09/2022 11:00:00', '07/12/2022 12:00:00', 5);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio, id_asignatura) VALUES(6, '07/04/2022', '08/09/2022 12:00:00', '07/12/2022 13:00:00', 6);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio, id_asignatura) VALUES(7, '07/04/2022', '08/09/2022 13:00:00', '07/12/2022 14:00:00', 7);
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00');
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(2, '07/04/2022', '08/09/2022 08:00:00', '07/12/2022 09:00:00');
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(3, '07/04/2022', '08/09/2022 09:00:00', '07/12/2022 10:00:00');
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(4, '07/04/2022', '08/09/2022 10:00:00', '07/12/2022 11:00:00');
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(5, '07/04/2022', '08/09/2022 11:00:00', '07/12/2022 12:00:00');
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(6, '07/04/2022', '08/09/2022 12:00:00', '07/12/2022 13:00:00');
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(7, '07/04/2022', '08/09/2022 13:00:00', '07/12/2022 14:00:00');
 
 ------------------------HORARIO EMPLEADO-------------------	
 INSERT INTO public.horario_empleado (id_empleado, id_horario) VALUES(1, 1);

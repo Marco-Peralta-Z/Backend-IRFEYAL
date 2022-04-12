@@ -1,9 +1,7 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,8 +18,6 @@ import javax.persistence.TemporalType;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 import lombok.Data;
-
-//Modificado por: Josué Quichimbo. Fecha: 07/04/22. Hora: 16:35
 
 @Data
 @Entity
@@ -43,26 +39,16 @@ public class Curso implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_creacion")
-	private Calendar fecha_creacion;
-
-	// Relación Malla-Curso, bidireccional
-	@ManyToMany(mappedBy = "listaCursos")
-	private List<Malla> listaMallas = new ArrayList<Malla>();
+	private Date fecha_creacion;
 	
-	//Relación Modalidad-Curso, bidireccional
-	@ManyToMany(mappedBy = "listaCursos")
-	private List<Modalidad> listaModalidad = new ArrayList<Modalidad>();
+	@PrePersist
+	private void setDateFecha() {
+		this.fecha_creacion = new Date();
+	}
 	
-	//Relación Curso-Paralelo, bidireccional
-	@ManyToMany(mappedBy = "listaCursos")
-	private List<Paralelo> listaParalelo = new ArrayList<Paralelo>();
-	
-	//Relación Curso-Horario, bidireccional
-	@ManyToMany(mappedBy = "listaCursos")
-	private List<Horario> listaHorario = new ArrayList<Horario>();
-	
+	//Relación con la tabla empleado
 	@ManyToOne
-	@JoinColumn(name = "id_empleado", unique = true)
+	@JoinColumn(name = "id_empleado")
 	private Empleado empleado;
 
 }
