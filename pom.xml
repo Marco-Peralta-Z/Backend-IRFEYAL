@@ -42,9 +42,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	
-		<!--Modificado por: Josue Quichimbo. Fecha: 08/04/22. Hora: 9:14  -->	
+		
+		<!-- Modificado por: Francisco Vicente Fecha: 12/04/2022 Hora: 22:26 -->
 		<dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+	    </dependency>
+	
+			
+		<dependency> <!--Modificado por: Josue Quichimbo. Fecha: 08/04/22. Hora: 9:14  -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
@@ -54,8 +60,8 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<!-- Fin modificado -->
+		</dependency> <!-- Fin modificado -->
+		
 	</dependencies>
 
 	<build>
