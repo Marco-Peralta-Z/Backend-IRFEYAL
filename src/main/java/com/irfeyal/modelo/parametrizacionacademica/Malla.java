@@ -1,6 +1,7 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -16,11 +17,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
+//Modificado por: Josué Quichimbo. Fecha: 07/04/22. Hora: 16:39
+
+@Data
 @Entity
 @Table(name = "malla")
 public class Malla implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
@@ -36,48 +43,17 @@ public class Malla implements Serializable{
 	@Column(name = "fecha_creacion")
 	private Calendar fecha_creacion;
 
-	//Data binding, tabla Curso
+	//Relación Malla-Curso, bidireccional, relación propietaria Malla
 	@ManyToMany
 	@JoinTable(
 			name = "malla_curso",
 			joinColumns = { @JoinColumn(name = "id_malla") },
 			inverseJoinColumns = { @JoinColumn(name = "id_curso") })
-	private List<Curso> listaCursos;
+	private List<Curso> listaCursos = new ArrayList<Curso>();
+	
+	//Relación Malla-Asignatura, bidireccional
+	@ManyToMany(mappedBy = "listaMallas")
+	private List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
+	
 
-	public Malla() {
-		super();
-	}
-
-	public Long getId_malla() {
-		return id_malla;
-	}
-
-	public void setId_malla(Long id_malla) {
-		this.id_malla = id_malla;
-	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Calendar getFecha_creacion() {
-		return fecha_creacion;
-	}
-
-	public void setFecha_creacion(Calendar fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
-	}
-
-}// fin()
+}

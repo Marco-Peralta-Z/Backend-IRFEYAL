@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 import java.sql.Timestamp;
 import javax.persistence.JoinColumn;
@@ -41,8 +41,8 @@ public class RegistroBitacora implements Serializable{
 	private String estado;
 	
 	@OneToOne
-	@JoinColumn(name = "id_rol_usuario")
-	private RolUsuario id_rol_usuario;
+	@JoinColumn(name = "id_empleado")
+	private Empleado id_empleado;
 
 	
 	@OneToOne
@@ -55,7 +55,7 @@ public class RegistroBitacora implements Serializable{
 	}
 
 	public RegistroBitacora(Long id_registro_bitacora, String solicitante, String emisor, Timestamp fecha,
-			Timestamp hora, String estado, RolUsuario id_rol_usuario, Documento documento) {
+			Timestamp hora, String estado, Empleado id_empleado, Documento documento) {
 		super();
 		this.id_registro_bitacora = id_registro_bitacora;
 		this.solicitante = solicitante;
@@ -63,7 +63,7 @@ public class RegistroBitacora implements Serializable{
 		this.fecha = fecha;
 		this.hora = hora;
 		this.estado = estado;
-		this.id_rol_usuario = id_rol_usuario;
+		this.id_empleado = id_empleado;
 		this.documento = documento;
 	}
 
@@ -107,12 +107,12 @@ public class RegistroBitacora implements Serializable{
 		this.hora = hora;
 	}
 
-	public RolUsuario getid_rol_usuario() {
-		return id_rol_usuario;
+	public Empleado getid_empleado() {
+		return id_empleado;
 	}
 
-	public void setid_rol_usuario(RolUsuario id_rol_usuario) {
-		this.id_rol_usuario = id_rol_usuario;
+	public void setid_empleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
 	}
 
 	public Documento getDocumento() {

@@ -1,7 +1,6 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.irfeyal.modelo.rolseguridad.RolUsuario;
+import com.irfeyal.modelo.matricula.Estudiante;
 
 /**
  *
@@ -32,7 +31,6 @@ public class EntregaKit implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id_entrega_kid")
     private Long id_entrega_kid;
     
@@ -44,18 +42,30 @@ public class EntregaKit implements Serializable {
     @ManyToOne(optional = false)
     private Aprobacion id_aprobacion;
     
-    @JoinColumn(name = "id_kid", referencedColumnName = "id_kid")
+    @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
     @ManyToOne(optional = false)
-    private Kit id_kid;
+    private Kit id_kit;
     
-    @JoinColumn(name = "id_rol_usuario", referencedColumnName = "id_rol_usuario")
+    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
     @ManyToOne(optional = false)
-    private RolUsuario id_rol_usuario;
+    private Estudiante id_estudiante;
 
     public EntregaKit() {
     }
 
-    public EntregaKit(Long id_entrega_kid) {
+    
+    public EntregaKit(Long id_entrega_kid, Date fechaEntregaKit, Aprobacion id_aprobacion, Kit id_kit,
+			Estudiante id_estudiante) {
+		super();
+		this.id_entrega_kid = id_entrega_kid;
+		this.fechaEntregaKit = fechaEntregaKit;
+		this.id_aprobacion = id_aprobacion;
+		this.id_kit = id_kit;
+		this.id_estudiante = id_estudiante;
+	}
+
+
+	public EntregaKit(Long id_entrega_kid) {
         this.id_entrega_kid = id_entrega_kid;
     }
 
@@ -83,20 +93,38 @@ public class EntregaKit implements Serializable {
         this.id_aprobacion = id_aprobacion;
     }
 
-    public Kit getid_kid() {
-        return id_kid;
+    public Kit getid_kit() {
+        return id_kit;
     }
 
-    public void setid_kid(Kit id_kid) {
-        this.id_kid = id_kid;
+    public void setid_kit(Kit id_kit) {
+        this.id_kit = id_kit;
     }
 
-    public RolUsuario getId_rol_usuario() {
-		return id_rol_usuario;
+    
+
+	public Long getId_entrega_kid() {
+		return id_entrega_kid;
 	}
 
-	public void setId_rol_usuario(RolUsuario id_rol_usuario) {
-		this.id_rol_usuario = id_rol_usuario;
+	public void setId_entrega_kid(Long id_entrega_kid) {
+		this.id_entrega_kid = id_entrega_kid;
+	}
+
+	public Aprobacion getId_aprobacion() {
+		return id_aprobacion;
+	}
+
+	public void setId_aprobacion(Aprobacion id_aprobacion) {
+		this.id_aprobacion = id_aprobacion;
+	}
+	
+	public Estudiante getId_estudiante() {
+		return id_estudiante;
+	}
+
+	public void setId_estudiante(Estudiante id_estudiante) {
+		this.id_estudiante = id_estudiante;
 	}
 
 	@Override

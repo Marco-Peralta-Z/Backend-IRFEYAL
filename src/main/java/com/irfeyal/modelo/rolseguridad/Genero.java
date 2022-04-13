@@ -3,10 +3,6 @@ package com.irfeyal.modelo.rolseguridad;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.List;
-
 @Entity
 @Table(name = "genero")
 @NamedQuery(name="Genero.findAll", query="SELECT g FROM Genero g")
@@ -19,11 +15,6 @@ public class Genero implements Serializable {
 	private Long id_genero;
 
 	private String genero;
-
-	//bi-directional many-to-one association to Persona
-	@JsonIgnore
-	@OneToOne()
-	private Persona personas;
 
 	public Genero() {
 	}

@@ -2,8 +2,6 @@ package com.irfeyal.modelo.asistencia;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,16 +18,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.rolseguridad.Empleado;
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "clase")
@@ -42,27 +36,32 @@ public class Clase implements Serializable {
 	    @Column(name = "fec_clase")
 	    @Temporal(TemporalType.DATE)
 	    private Date fecClase;
+	    
 	    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idClase")
 	    private Collection<Asistencia> asistenciaCollection;
+	    
 	    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso", nullable = false)
 	    @ManyToOne(optional = false)
 	    private Curso idCurso;
+	    
 	    @OneToOne(fetch = FetchType.LAZY)
 	    private Modalidad id_modalidad;
+	    
 	    @OneToOne(fetch = FetchType.LAZY)
 	    private Periodo id_periodo;
+	    
 	    @JoinColumn(name = "id_paralelo", referencedColumnName = "id_paralelo", nullable = false)
 	    @ManyToOne(optional = false)
 	    private Paralelo idParalelo;
+	    
 	    @JoinColumn(name = "id_asignatura", referencedColumnName = "id_asignatura", nullable = false)
 	    @ManyToOne(optional = false)
 	    private Asignatura idAsignatura;
+	    
 	    @JoinColumn(name = "id_docente", referencedColumnName = "id_empleado", nullable = false)
 	    @ManyToOne(optional = false)
 	    private Empleado idDocente;
-	    
-
-	
+	    	
 	 public Clase() {
 	    }
 

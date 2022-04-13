@@ -3,29 +3,24 @@ package com.irfeyal.modelo.rolseguridad;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 @Entity
 @Table(name = "telefono")
-@NamedQuery(name="Telefono.findAll", query="SELECT t FROM Telefono t")
+@NamedQuery(name = "Telefono.findAll", query = "SELECT t FROM Telefono t")
 public class Telefono implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_telefono")
+	@Column(name = "id_telefono")
 	private Long id_telefono;
 
-	@Column(name="num_celular")
+	@Column(name = "num_celular")
 	private String numCelular;
 
 	private String telefono;
 
-	//bi-directional many-to-one association to Extension
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="id_extension")
+	@JoinColumn(name = "id_extension")
 	private Extension extension;
 
 	public Telefono() {
@@ -55,7 +50,6 @@ public class Telefono implements Serializable {
 		this.telefono = telefono;
 	}
 
-
 	public Extension getExtension() {
 		return extension;
 	}
@@ -68,5 +62,4 @@ public class Telefono implements Serializable {
 		return serialVersionUID;
 	}
 
-	
 }

@@ -1,15 +1,13 @@
 package com.irfeyal.modelo.pagos;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.irfeyal.modelo.inventarios.Kit;
@@ -22,30 +20,30 @@ public class TipoComprobante implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	@Column(name = "id_tipo_comprobante")
 	private Long id_tipo_comprobante;
 
 	@Column
 	private String concepto_pago;
 
-	@OneToMany()
+	@OneToOne
 	@JoinColumn(name = "id_periodo")
-	private List<Periodo> id_periodo;
+	private Periodo id_periodo;
 
-	@OneToMany()
-	@JoinColumn(name = "id_kid")
-	private List<Kit> id_kid;
+	@OneToOne
+	@JoinColumn(name = "id_kit")
+	private Kit id_kit;
 
 	public TipoComprobante() {
 
 	}
 
-	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, List<Periodo> id_periodo, List<Kit> id_kid) {
+	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, Periodo id_periodo, Kit id_kit) {
 		super();
 		this.id_tipo_comprobante = id_tipo_comprobante;
 		this.concepto_pago = concepto_pago;
 		this.id_periodo = id_periodo;
-		this.id_kid = id_kid;
+		this.id_kit = id_kit;
 	}
 
 	public Long getIdTipoComprobante() {
@@ -64,19 +62,28 @@ public class TipoComprobante implements Serializable {
 		this.concepto_pago = concepto_pago;
 	}
 
-	public List<Kit> getKit() {
-		return id_kid;
+	public Kit getId_kit() {
+		return id_kit;
 	}
 
-	public void setKit(List<Kit> id_kid) {
-		this.id_kid = id_kid;
+	public void setId_kit(Kit id_kit) {
+		this.id_kit = id_kit;
 	}
 
-	public List<Periodo> getId_periodo() {
+	public Kit getKit() {
+		return id_kit;
+	}
+
+	public void setKit(Kit id_kit) {
+
+		this.id_kit = id_kit;
+	}
+
+	public Periodo getId_periodo() {
 		return id_periodo;
 	}
 
-	public void setId_periodo(List<Periodo> id_periodo) {
+	public void setId_periodo(Periodo id_periodo) {
 		this.id_periodo = id_periodo;
 	}
 

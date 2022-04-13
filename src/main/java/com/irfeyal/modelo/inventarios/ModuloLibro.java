@@ -32,8 +32,7 @@ public class ModuloLibro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "modulolibro_id")
+    @Column(name = "id_modulo_libro")
     private Long id_modulo_libro;
     
     @Basic(optional = false)
@@ -55,9 +54,9 @@ public class ModuloLibro implements Serializable {
     @Column(name = "numero_modulo")
     private String numeroModulo;
     
-    @JoinColumn(name = "id_kid", referencedColumnName = "id_kid")
+    @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
     @ManyToOne(optional = false)
-    private Kit id_kid;
+    private Kit id_kit;
 
     public ModuloLibro() {
     }
@@ -127,12 +126,12 @@ public class ModuloLibro implements Serializable {
         this.numeroModulo = numeroModulo;
     }
 
-    public Kit getid_kid() {
-        return id_kid;
+    public Kit getid_kit() {
+        return id_kit;
     }
 
-    public void setid_kid(Kit id_kid) {
-        this.id_kid = id_kid;
+    public void setid_kit(Kit id_kit) {
+        this.id_kit = id_kit;
     }
 
     @Override
