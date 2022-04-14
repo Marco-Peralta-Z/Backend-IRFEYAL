@@ -26,52 +26,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.parametrizacionacademica.CursoServices;
-import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.interfaces.parametrizacionacademica.HorarioServices;
+import com.irfeyal.modelo.parametrizacionacademica.Horario;
 
 @CrossOrigin(origins = "", maxAge = 3600)
 @RestController
-@RequestMapping("/curso")
-public class CursoController {
+@RequestMapping("/horario")
+public class HorarioController {
 
 	@Autowired
-	private CursoServices cursoService;
+	private HorarioServices horarioService;
 
 	@GetMapping(path = "", produces = "application/json")
-	public ResponseEntity<?> getCursos() {
-		return new ResponseEntity<>(cursoService.getAllCurso(), HttpStatus.OK);
+	public ResponseEntity<?> getHorarios() {
+		return new ResponseEntity<>(horarioService.getAllHorario(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/", produces = "application/json")
-	public ResponseEntity<?> getAllCursos(@RequestParam(name = "page", defaultValue = "0") int page,
+	public ResponseEntity<?> getAllHorarios(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
 		Pageable pageable = PageRequest.of(page, size);
-		return new ResponseEntity<>(cursoService.getAllCurso(pageable), HttpStatus.OK);
-
+		return new ResponseEntity<>(horarioService.getAllHorario(pageable), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<?> getCursoById(@PathVariable("id") Long idCurso) {
-		Optional<Curso> curso = null;
+	public ResponseEntity<?> getHorarioById(@PathVariable("id") Long idHorario) {
+		Optional<Horario> horario = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			curso = cursoService.getCursoById(idCurso);
+			horario = horarioService.getHorarioById(idHorario);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar la consulta en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if (curso.isEmpty()) {
+		if (horario.isEmpty()) {
 			respuesta.put("mensaje",
-					"El curso ID: ".concat(idCurso.toString().concat(": no existe en la base de datos")));
+					"El Horario ID: ".concat(idHorario.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<>(curso, HttpStatus.OK);
+		return new ResponseEntity<>(horario, HttpStatus.OK);
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createCurso(@Valid @RequestBody Curso curso, BindingResult result) {
-		Curso cursoNuevo = null;
+	public ResponseEntity<Map<String, Object>> createHorario(@Valid @RequestBody Horario horario,
+			BindingResult result) {
+		Horario horarioNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
@@ -81,22 +81,22 @@ public class CursoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			cursoNuevo = cursoService.saveCurso(curso);
+			horarioNuevo = horarioService.saveHorario(horario);
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al crear el curso en la base de datos");
+			respuesta.put("mensaje", "Error al crear el Horario en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El curso ha sido creado con éxito!");
-		respuesta.put("curso", cursoNuevo);
+		respuesta.put("mensaje", "El Horario ha sido creado con éxito!");
+		respuesta.put("horario", horarioNuevo);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateCurso(@PathVariable("id") Long idCurso, @Valid @RequestBody Curso curso,
+	public ResponseEntity<?> updateHorario(@PathVariable("id") Long idHorario, @Valid @RequestBody Horario horario,
 			BindingResult result) {
-		Optional<Curso> cursoActual = cursoService.getCursoById(idCurso);
-		Curso cursoUpdated = null;
+		Optional<Horario> horarioActual = horarioService.getHorarioById(idHorario);
+		Horario horarioUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
@@ -105,42 +105,42 @@ public class CursoController {
 			respuesta.put("errors", errors);
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		if (cursoActual.isEmpty()) {
-			respuesta.put("mensaje", "Error: no se pudo editar el curso: "
-					.concat(idCurso.toString().concat(" no existe en la base de datos")));
+		if (horarioActual.isEmpty()) {
+			respuesta.put("mensaje", "Error: no se pudo editar el Horario ID: "
+					.concat(idHorario.toString().concat(", no existe en la base de datos")));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			cursoActual.get().setDescripcion(curso.getDescripcion());
-			cursoActual.get().setTipo_curso(curso.getTipo_curso());
-			// Verificar si se guarda el empleado
-			cursoUpdated = cursoService.saveCurso(cursoActual.get());
+			horarioActual.get().setTiempo_inicio(horario.getTiempo_inicio());
+			horarioActual.get().setTiempo_fin(horario.getTiempo_fin());
+			horarioActual.get().setDia(horario.getDia());
+			horarioUpdated = horarioService.saveHorario(horarioActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 
-		respuesta.put("mensaje", "El curso ha sido actualizado con éxito");
-		respuesta.put("curso", cursoUpdated);
+		respuesta.put("mensaje", "El Horario ha sido actualizado con éxito");
+		respuesta.put("Horario", horarioUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> deleteCurso(@PathVariable("id") Long idCurso) {
+	public ResponseEntity<Map<String, Object>> deleteHorario(@PathVariable("id") Long idHorario) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			Curso cursoRecu = cursoService.deleteCurso(idCurso);
-			if (cursoRecu == null) {
-				respuesta.put("mensaje", "El curso ID: " + idCurso + " no existe en la base de datos");
+			Horario horarioRecu = horarioService.deleteHorario(idHorario);
+			if (horarioRecu == null) {
+				respuesta.put("mensaje", "El Horario ID: " + idHorario + " no existe en la base de datos");
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
 			}
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al eliminar el Curso de la base de datos");
+			respuesta.put("mensaje", "Error al eliminar el horario de la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El curso ha sido eliminado");
+		respuesta.put("mensaje", "El Horario ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 }

@@ -17,7 +17,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,17 +40,19 @@ public class Horario implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_horario;
 
-	@NotEmpty(message = "Debe ingresar un tiempo de inicio")
+	@NotNull(message = "Debe ingresar el tiempo de inicio")
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "tiempo_inicio")
 	private Date tiempo_inicio;
 
-	@NotEmpty(message = "Debe ingresar un tiempo de fin")
+	@NotNull(message = "Debe ingresar el tiempo de fin")
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "tiempo_fin")
 	private Date tiempo_fin;
 
-	@NotEmpty(message = "Debe ingresar un dia para el curso")
+	@NotNull(message = "Debe ingresar un dia para el Horario")
+	@Min(value = 1, message = "El día no debe ser menor que 1")
+	@Max(value = 7, message = "El día no debe ser mayor a 7")
 	@Column(name = "dia")
 	private int dia;
 
@@ -57,7 +61,7 @@ public class Horario implements Serializable {
 	private Date fecha_creacion;
 
 	@PrePersist
-	private void setDateFecha(){
+	private void setDateFecha() {
 		this.fecha_creacion = new Date();
 	}
 
