@@ -1,6 +1,7 @@
 package com.irfeyal.interfaces.parametrizacionacademica;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
@@ -13,7 +14,7 @@ public interface AsignaturaServices {
 
     public Page<Asignatura> getAllAsignatura(Pageable pageable);
 
-    public Asignatura getAsignaturaById(Long idAsignatura);
+    public Optional<Asignatura> getAsignaturaById(Long idAsignatura);
 
     public Asignatura saveAsignatura(Asignatura asignatura);
 

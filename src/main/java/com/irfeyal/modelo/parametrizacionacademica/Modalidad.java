@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -33,13 +34,16 @@ public class Modalidad implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_modalidad;
 
+	@NotEmpty(message = "Debe ingresar una descripción para le Modalidad")
 	@Column(name = "descripcion")
 	private String descripcion;
 
+	@NotEmpty(message = "Debe ingresar una fecha de inicio para la Modalidad")
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "hora_inicio")
 	private Date hora_inicio;
 
+	@NotEmpty(message = "Debe ingresar una fecha de fin para la Modalidad")
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "hora_fin")
 	private Date hora_fin;

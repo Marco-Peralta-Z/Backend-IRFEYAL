@@ -17,6 +17,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,14 +38,17 @@ public class Horario implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_horario;
 
+	@NotEmpty(message = "Debe ingresar un tiempo de inicio")
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "tiempo_inicio")
 	private Date tiempo_inicio;
 
+	@NotEmpty(message = "Debe ingresar un tiempo de fin")
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "tiempo_fin")
 	private Date tiempo_fin;
 
+	@NotEmpty(message = "Debe ingresar un dia para el curso")
 	@Column(name = "dia")
 	private int dia;
 
