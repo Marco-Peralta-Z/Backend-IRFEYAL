@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -35,7 +36,7 @@ public class Malla implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_malla;
 
-	@NotEmpty(message = "Debe ingresar un estado para la Malla")
+	@NotNull(message = "Debe ingresar un estado para la Malla")
 	@Column(name = "estado")
 	private Boolean estado;
 	

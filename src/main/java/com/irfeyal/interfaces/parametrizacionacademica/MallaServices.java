@@ -1,6 +1,7 @@
 package com.irfeyal.interfaces.parametrizacionacademica;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.irfeyal.modelo.parametrizacionacademica.Malla;
 
@@ -13,7 +14,7 @@ public interface MallaServices {
 
     public Page<Malla> getAllMalla(Pageable pageable);
 
-    public Malla getMallaById(Long idMalla);
+    public Optional<Malla> getMallaById(Long idMalla);
 
     public Malla saveMalla(Malla malla);
 

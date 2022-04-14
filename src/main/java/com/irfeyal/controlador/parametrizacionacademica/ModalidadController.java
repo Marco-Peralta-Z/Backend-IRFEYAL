@@ -26,52 +26,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.parametrizacionacademica.HorarioServices;
-import com.irfeyal.modelo.parametrizacionacademica.Horario;
+import com.irfeyal.interfaces.parametrizacionacademica.ModalidadServices;
+import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 
 @CrossOrigin(origins = "", maxAge = 3600)
 @RestController
-@RequestMapping("/horario")
-public class HorarioController {
+@RequestMapping("/modalidad")
+public class ModalidadController {
 
 	@Autowired
-	private HorarioServices horarioService;
+	private ModalidadServices modalidadService;
 
 	@GetMapping(path = "", produces = "application/json")
-	public ResponseEntity<?> getHorarios() {
-		return new ResponseEntity<>(horarioService.getAllHorario(), HttpStatus.OK);
+	public ResponseEntity<?> getModalidad() {
+		return new ResponseEntity<>(modalidadService.getAllModalidad(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/", produces = "application/json")
-	public ResponseEntity<?> getAllHorarios(@RequestParam(name = "page", defaultValue = "0") int page,
+	public ResponseEntity<?> getAllModalidad(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
 		Pageable pageable = PageRequest.of(page, size);
-		return new ResponseEntity<>(horarioService.getAllHorario(pageable), HttpStatus.OK);
+		return new ResponseEntity<>(modalidadService.getAllModalidad(pageable), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<?> getHorarioById(@PathVariable("id") Long idHorario) {
-		Optional<Horario> horario = null;
+	public ResponseEntity<?> getModalidadById(@PathVariable("id") Long idModalidad) {
+		Optional<Modalidad> modalidad = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			horario = horarioService.getHorarioById(idHorario);
+			modalidad = modalidadService.getModalidadById(idModalidad);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar la consulta en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if (horario.isEmpty()) {
+		if (modalidad.isEmpty()) {
 			respuesta.put("mensaje",
-					"El Horario ID: ".concat(idHorario.toString().concat(": no existe en la base de datos")));
+					"La Modalidad ID: ".concat(idModalidad.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<>(horario, HttpStatus.OK);
+		return new ResponseEntity<>(modalidad, HttpStatus.OK);
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createHorario(@Valid @RequestBody Horario horario,
+	public ResponseEntity<Map<String, Object>> createModalidad(@Valid @RequestBody Modalidad modalidad,
 			BindingResult result) {
-		Horario horarioNuevo = null;
+		Modalidad modalidadNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
@@ -81,22 +81,22 @@ public class HorarioController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			horarioNuevo = horarioService.saveHorario(horario);
+			modalidadNuevo = modalidadService.saveModalidad(modalidad);
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al crear el Horario en la base de datos");
+			respuesta.put("mensaje", "Error al crear la modalidad en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El Horario ha sido creado con éxito!");
-		respuesta.put("horario", horarioNuevo);
+		respuesta.put("mensaje", "La Modadlidad ha sido creada con éxito!");
+		respuesta.put("modalidad", modalidadNuevo);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateHorario(@PathVariable("id") Long idHorario, @Valid @RequestBody Horario horario,
+	public ResponseEntity<?> updateModalidad(@PathVariable("id") Long idModalidad, @Valid @RequestBody Modalidad modalidad,
 			BindingResult result) {
-		Optional<Horario> horarioActual = horarioService.getHorarioById(idHorario);
-		Horario horarioUpdated = null;
+		Optional<Modalidad> modalidadActual = modalidadService.getModalidadById(idModalidad);
+		Modalidad modalidadUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
@@ -105,42 +105,42 @@ public class HorarioController {
 			respuesta.put("errors", errors);
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		if (horarioActual.isEmpty()) {
-			respuesta.put("mensaje", "Error: no se pudo editar el Horario ID: "
-					.concat(idHorario.toString().concat(", no existe en la base de datos")));
+		if (modalidadActual.isEmpty()) {
+			respuesta.put("mensaje", "Error: no se pudo editar la Modalidad ID: "
+					.concat(idModalidad.toString().concat(", no existe en la base de datos")));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			horarioActual.get().setTiempo_inicio(horario.getTiempo_inicio());
-			horarioActual.get().setTiempo_fin(horario.getTiempo_fin());
-			horarioActual.get().setDia(horario.getDia());
-			horarioUpdated = horarioService.saveHorario(horarioActual.get());
+			modalidadActual.get().setDescripcion(modalidad.getDescripcion());
+			modalidadActual.get().setHora_inicio(modalidad.getHora_inicio());
+			modalidadActual.get().setHora_fin(modalidad.getHora_fin());
+			modalidadUpdated = modalidadService.saveModalidad(modalidadActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 
-		respuesta.put("mensaje", "El Horario ha sido actualizado con éxito");
-		respuesta.put("Horario", horarioUpdated);
+		respuesta.put("mensaje", "La Modalidad ha sido actualizado con éxito");
+		respuesta.put("modalidad", modalidadUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> deleteHorario(@PathVariable("id") Long idHorario) {
+	public ResponseEntity<Map<String, Object>> deleteModalidad(@PathVariable("id") Long idModalidad) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			Horario horarioRecu = horarioService.deleteHorario(idHorario);
-			if (horarioRecu == null) {
-				respuesta.put("mensaje", "El Horario ID: " + idHorario + " no existe en la base de datos");
+			Modalidad modalidad = modalidadService.deleteModalidad(idModalidad);
+			if (modalidad == null) {
+				respuesta.put("mensaje", "La Modalidad ID: " + idModalidad + " no existe en la base de datos");
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
 			}
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al eliminar el horario de la base de datos");
+			respuesta.put("mensaje", "Error al eliminar la Modalidad de la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El Horario ha sido eliminado");
+		respuesta.put("mensaje", "La Modalidad ID: " + idModalidad + ", ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 

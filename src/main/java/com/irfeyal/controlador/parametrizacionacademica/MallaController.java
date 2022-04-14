@@ -26,52 +26,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.parametrizacionacademica.HorarioServices;
-import com.irfeyal.modelo.parametrizacionacademica.Horario;
+import com.irfeyal.interfaces.parametrizacionacademica.MallaServices;
+import com.irfeyal.modelo.parametrizacionacademica.Malla;
 
 @CrossOrigin(origins = "", maxAge = 3600)
 @RestController
-@RequestMapping("/horario")
-public class HorarioController {
+@RequestMapping("/malla")
+public class MallaController {
 
 	@Autowired
-	private HorarioServices horarioService;
+	private MallaServices mallaService;
 
 	@GetMapping(path = "", produces = "application/json")
-	public ResponseEntity<?> getHorarios() {
-		return new ResponseEntity<>(horarioService.getAllHorario(), HttpStatus.OK);
+	public ResponseEntity<?> getMallas() {
+		return new ResponseEntity<>(mallaService.getAllMalla(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/", produces = "application/json")
-	public ResponseEntity<?> getAllHorarios(@RequestParam(name = "page", defaultValue = "0") int page,
+	public ResponseEntity<?> getAllMallas(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
 		Pageable pageable = PageRequest.of(page, size);
-		return new ResponseEntity<>(horarioService.getAllHorario(pageable), HttpStatus.OK);
+		return new ResponseEntity<>(mallaService.getAllMalla(pageable), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<?> getHorarioById(@PathVariable("id") Long idHorario) {
-		Optional<Horario> horario = null;
+	public ResponseEntity<?> getMallaById(@PathVariable("id") Long idMalla) {
+		Optional<Malla> malla = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			horario = horarioService.getHorarioById(idHorario);
+			malla = mallaService.getMallaById(idMalla);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar la consulta en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if (horario.isEmpty()) {
+		if (malla.isEmpty()) {
 			respuesta.put("mensaje",
-					"El Horario ID: ".concat(idHorario.toString().concat(": no existe en la base de datos")));
+					"La Malla ID: ".concat(idMalla.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<>(horario, HttpStatus.OK);
+		return new ResponseEntity<>(malla, HttpStatus.OK);
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createHorario(@Valid @RequestBody Horario horario,
-			BindingResult result) {
-		Horario horarioNuevo = null;
+	public ResponseEntity<Map<String, Object>> createMalla(@Valid @RequestBody Malla malla, BindingResult result) {
+		Malla mallaNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
@@ -81,22 +80,22 @@ public class HorarioController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			horarioNuevo = horarioService.saveHorario(horario);
+			mallaNuevo = mallaService.saveMalla(malla);
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al crear el Horario en la base de datos");
+			respuesta.put("mensaje", "Error al crear la malla en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El Horario ha sido creado con éxito!");
-		respuesta.put("horario", horarioNuevo);
+		respuesta.put("mensaje", "La Malla ha sido creado con éxito!");
+		respuesta.put("malla", mallaNuevo);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateHorario(@PathVariable("id") Long idHorario, @Valid @RequestBody Horario horario,
+	public ResponseEntity<?> updateMalla(@PathVariable("id") Long idMalla, @Valid @RequestBody Malla malla,
 			BindingResult result) {
-		Optional<Horario> horarioActual = horarioService.getHorarioById(idHorario);
-		Horario horarioUpdated = null;
+		Optional<Malla> mallaActual = mallaService.getMallaById(idMalla);
+		Malla mallaUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
@@ -105,42 +104,41 @@ public class HorarioController {
 			respuesta.put("errors", errors);
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		if (horarioActual.isEmpty()) {
-			respuesta.put("mensaje", "Error: no se pudo editar el Horario ID: "
-					.concat(idHorario.toString().concat(", no existe en la base de datos")));
+		if (mallaActual.isEmpty()) {
+			respuesta.put("mensaje", "Error: no se pudo editar la Malla ID: "
+					.concat(idMalla.toString().concat(", no existe en la base de datos")));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			horarioActual.get().setTiempo_inicio(horario.getTiempo_inicio());
-			horarioActual.get().setTiempo_fin(horario.getTiempo_fin());
-			horarioActual.get().setDia(horario.getDia());
-			horarioUpdated = horarioService.saveHorario(horarioActual.get());
+			mallaActual.get().setEstado(malla.getEstado());
+			mallaActual.get().setDescripcion(malla.getDescripcion());
+			mallaUpdated = mallaService.saveMalla(mallaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 
-		respuesta.put("mensaje", "El Horario ha sido actualizado con éxito");
-		respuesta.put("Horario", horarioUpdated);
+		respuesta.put("mensaje", "La Malla ha sido actualizado con éxito");
+		respuesta.put("malla", mallaUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> deleteHorario(@PathVariable("id") Long idHorario) {
+	public ResponseEntity<Map<String, Object>> deleteMalla(@PathVariable("id") Long idMalla) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			Horario horarioRecu = horarioService.deleteHorario(idHorario);
-			if (horarioRecu == null) {
-				respuesta.put("mensaje", "El Horario ID: " + idHorario + " no existe en la base de datos");
+			Malla mallaRecu = mallaService.deleteMalla(idMalla);
+			if (mallaRecu == null) {
+				respuesta.put("mensaje", "La Malla ID: " + idMalla + " no existe en la base de datos");
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
 			}
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al eliminar el horario de la base de datos");
+			respuesta.put("mensaje", "Error al eliminar la Malla de la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El Horario ha sido eliminado");
+		respuesta.put("mensaje", "La Malla ID: " + idMalla + ", ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 
