@@ -2,6 +2,7 @@ package com.irfeyal.servicio.parametrizacionacademica;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,8 +30,8 @@ public class ParaleloServicesImp implements ParaleloServices {
 	}
 
 	@Override
-	public Paralelo getParaleloById(Long idParalelo) {
-		return paraleloRepo.getById(idParalelo);
+	public Optional<Paralelo> getParaleloById(Long idParalelo) {
+		return paraleloRepo.findById(idParalelo);
 	}
 
 	@Override
