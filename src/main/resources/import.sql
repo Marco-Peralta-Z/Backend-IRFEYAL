@@ -1,4 +1,22 @@
-﻿
+﻿-- ROLES Y SEGURIDAD
+INSERT INTO pais (pais) VALUES ('Ecuador');
+INSERT INTO provincia (provincia) VALUES ('AZUAY');
+INSERT INTO canton (canton) VALUES ('CUENCA');
+INSERT INTO parroquia (parroquia) VALUES ('BELLAVISTA');
+INSERT INTO genero (genero) VALUES ('FEMENINO');
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Guayllas', '0102184322', '1998-04-17 19:00:00', 'magaly', 1);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('nueva calle', 'calle vieja', 1, 1, 1, 1);
+INSERT INTO usuario (contrasenia, est_usuario, usuario) VALUES ('123', true, 'tutor');
+INSERT INTO rol (descripcion) VALUES ('Administrador'), ('gerente'), ('secretaria'), ('estudiante'), ('coordinador de desarrollo'), ('coordinador administrativo'), ('rectora');
+INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true, 1, 1);
+INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('matriculas','http//localhost/modmatricula.php',1);
+INSERT INTO empresa (nombre_empresa) VALUES ('irfeyal prueba');
+INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_1', 1,1);
+INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0987562111', '0723658988',1);
+INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalmatriz@edu.ec',1);
+INSERT INTO empleado (cargo,id_extension,id_direcion,id_telefono,id_usuario,id_correo,id_persona) VALUES ('tutor', 1, 1, 1, 1, 1, 1);
+
+
 -- PARAMETRIZACION ACADEMICA
 
 -------------------MODALIDAD-----------------------------
