@@ -15,7 +15,7 @@ import com.irfeyal.modelo.rolseguridad.Canton;
 public interface CantonInterface {
 	
 public List<Canton> findAll();
-	
+@Autowired (required=true)
 	public Page<Canton> findAll(Pageable pageable);
 	
 	public Canton findById(Long id);

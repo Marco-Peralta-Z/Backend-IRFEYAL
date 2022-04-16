@@ -5,16 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.irfeyal.modelo.rolseguridad.CorreoElectronico;
 
 
-
+@Service
 
 
 public interface CorreoElectronicoInterface {
 
-
+	@Autowired (required=true)
 public List<CorreoElectronico> findAll();
 	
 	public Page<CorreoElectronico> findAll(Pageable pageable);
