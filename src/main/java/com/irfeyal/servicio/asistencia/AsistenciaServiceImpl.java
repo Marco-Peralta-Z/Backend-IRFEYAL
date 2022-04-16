@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.irfeyal.modelo.asistencia.Asistencia;
 import com.irfeyal.modelo.dao.asistencia.IAsistenciaDao;
 import com.irfeyal.modelo.dao.asistencia.IClaseDao;
-import com.irfeyal.modelo.dao.asistencia.IEstudianteDao;
-import com.irfeyal.modelo.dao.asistencia.IPersonaDao;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.rolseguridad.Persona;
@@ -17,10 +15,10 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	
 	@Autowired
 	private IAsistenciaDao asistenciadao;
-	@Autowired
-	private IPersonaDao personadao;
-	@Autowired
-	private IEstudianteDao estudiantedao;
+	//@Autowired
+	//private IPersonaDao personadao;
+	//@Autowired
+	//private IEstudianteDao estudiantedao;
 	@Autowired
 	private IClaseDao clasedao;
 	
@@ -48,18 +46,18 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 		asistenciadao.deleteById(id);
 		
 	}
-
+	
 	@Override
 	public List <Persona> buscarcurso(Long id) {
-		// TODO Auto-generated method stub
-		return personadao.buscarcurso(id);
+			// TODO Auto-generated method stub
+		return null; //personadao.buscarcurso(id);
 	}
 
 	@Override
 	public List<Estudiante> buscarcursomodalidad(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura) {
 		
-		
-			if ( id_periodo==0 && id_paralelo==0 && id_asignatura==0) {
+		return null;
+			/*if ( id_periodo==0 && id_paralelo==0 && id_asignatura==0) {
 				return estudiantedao.buscarcursomodalidad(id_mod);
 				
 			}else {
@@ -123,14 +121,14 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 						}
 					}
 				}
-			}
+			}*/
 
    }
 
 	@Override
 	public Estudiante buscarceduestudiante(String cedula) {
 		
-		return estudiantedao.buscarcedulaestudiante(cedula);
+		return null;//estudiantedao.buscarcedulaestudiante(cedula);
 	}
 
 	@Override
@@ -138,5 +136,6 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }
