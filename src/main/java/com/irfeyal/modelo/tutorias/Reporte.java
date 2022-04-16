@@ -36,7 +36,7 @@ private static final long serialVersionUID = 1L;
 	@JoinColumn(name = "id_registro")
 	private Registro id_registro;
 
-	
+	// subir controladores
 	public Reporte() {
 	}
 
