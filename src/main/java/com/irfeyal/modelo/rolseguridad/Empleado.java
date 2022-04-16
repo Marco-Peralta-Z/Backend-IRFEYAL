@@ -123,10 +123,6 @@ public class Empleado implements Serializable {
 		this.correo = correo;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public Persona getId_persona() {
 		return id_persona;
 	}
@@ -134,6 +130,12 @@ public class Empleado implements Serializable {
 	public void setId_persona(Persona id_persona) {
 		this.id_persona = id_persona;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
 
 
 }
