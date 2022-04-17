@@ -56,81 +56,53 @@ public class DetallebajaArti implements Serializable {
     public DetallebajaArti() {
     }
 
-    public DetallebajaArti(Long id_det_baja_art) {
-        this.id_det_baja_art = id_det_baja_art;
-    }
+	public Long getId_det_baja_art() {
+		return id_det_baja_art;
+	}
 
-    public Long getid_det_baja_art() {
-        return id_det_baja_art;
-    }
+	public void setId_det_baja_art(Long id_det_baja_art) {
+		this.id_det_baja_art = id_det_baja_art;
+	}
 
-    public void setid_det_baja_art(Long id_det_baja_art) {
-        this.id_det_baja_art = id_det_baja_art;
-    }
+	public String getCodigo() {
+		return codigo;
+	}
 
-    public String getCodigo() {
-        return codigo;
-    }
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+	public Long getCantidad() {
+		return cantidad;
+	}
 
-    public Long getCantidad() {
-        return cantidad;
-    }
+	public void setCantidad(Long cantidad) {
+		this.cantidad = cantidad;
+	}
 
-    public void setCantidad(Long cantidad) {
-        this.cantidad = cantidad;
-    }
+	public String getMotivo() {
+		return motivo;
+	}
 
-    public String getMotivo() {
-        return motivo;
-    }
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
+	}
 
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
-    }
+	public Date getFechaBaja() {
+		return fechaBaja;
+	}
 
-    public Date getFechaBaja() {
-        return fechaBaja;
-    }
+	public void setFechaBaja(Date fechaBaja) {
+		this.fechaBaja = fechaBaja;
+	}
 
-    public void setFechaBaja(Date fechaBaja) {
-        this.fechaBaja = fechaBaja;
-    }
+	public Inventario getId_inventario() {
+		return id_inventario;
+	}
 
-    public Inventario getid_inventario() {
-        return id_inventario;
-    }
+	public void setId_inventario(Inventario id_inventario) {
+		this.id_inventario = id_inventario;
+	}
 
-    public void setid_inventario(Inventario id_inventario) {
-        this.id_inventario = id_inventario;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_det_baja_art != null ? id_det_baja_art.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DetallebajaArti)) {
-            return false;
-        }
-        DetallebajaArti other = (DetallebajaArti) object;
-        if ((this.id_det_baja_art == null && other.id_det_baja_art != null) || (this.id_det_baja_art != null && !this.id_det_baja_art.equals(other.id_det_baja_art))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.DetallebajaArti[ id_det_baja_art=" + id_det_baja_art + " ]";
-    }
     
 }

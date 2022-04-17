@@ -53,37 +53,23 @@ public class IngresoKit implements Serializable {
     public IngresoKit() {
     }
 
-
-    public Empleado getId_empleado() {
-		return id_empleado;
+	public Long getId_ingreso_kid() {
+		return id_ingreso_kid;
 	}
 
-
-	public void setId_empleado(Empleado id_empleado) {
-		this.id_empleado = id_empleado;
+	public void setId_ingreso_kid(Long id_ingreso_kid) {
+		this.id_ingreso_kid = id_ingreso_kid;
 	}
 
-	public IngresoKit(Long id_ingreso_kid) {
-        this.id_ingreso_kid = id_ingreso_kid;
-    }
+	public Date getFechaIngreso() {
+		return fechaIngreso;
+	}
 
-    public Long getid_ingreso_kid() {
-        return id_ingreso_kid;
-    }
+	public void setFechaIngreso(Date fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
 
-    public void setid_ingreso_kid(Long id_ingreso_kid) {
-        this.id_ingreso_kid = id_ingreso_kid;
-    }
-
-    public Date getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(Date fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
-    public Aprobacion getId_aprobacion() {
+	public Aprobacion getId_aprobacion() {
 		return id_aprobacion;
 	}
 
@@ -91,57 +77,20 @@ public class IngresoKit implements Serializable {
 		this.id_aprobacion = id_aprobacion;
 	}
 
-	public Kit getid_kit() {
-        return id_kit;
-    }
-
-    public void setid_kit(Kit id_kit) {
-        this.id_kit = id_kit;
-    }
-
-
-    public Long getId_ingreso_kid() {
-		return id_ingreso_kid;
-	}
-
-	public void setId_ingreso_kid(Long id_ingreso_kid) {
-		this.id_ingreso_kid = id_ingreso_kid;
-	}
-	
-
 	public Kit getId_kit() {
 		return id_kit;
 	}
-
 
 	public void setId_kit(Kit id_kit) {
 		this.id_kit = id_kit;
 	}
 
+	public Empleado getId_empleado() {
+		return id_empleado;
+	}
 
-	@Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_ingreso_kid != null ? id_ingreso_kid.hashCode() : 0);
-        return hash;
-    }
+	public void setId_empleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof IngresoKit)) {
-            return false;
-        }
-        IngresoKit other = (IngresoKit) object;
-        if ((this.id_ingreso_kid == null && other.id_ingreso_kid != null) || (this.id_ingreso_kid != null && !this.id_ingreso_kid.equals(other.id_ingreso_kid))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.IngresoKit[ id_ingreso_kid=" + id_ingreso_kid + " ]";
-    }
-    
 }
