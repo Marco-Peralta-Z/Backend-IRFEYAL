@@ -18,7 +18,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
@@ -38,7 +38,7 @@ public class Asignatura implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_asignatura;
 
-	@NotEmpty(message = "Debe ingresar una descripción para la Asignatura")
+	@NotBlank(message = "Debe ingresar una descripcion para la asignatura")
 	@Column(name = "descripcion", length = 999)
 	private String descripcion;
 

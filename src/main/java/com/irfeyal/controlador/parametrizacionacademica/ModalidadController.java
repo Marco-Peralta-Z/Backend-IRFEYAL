@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
+import com.irfeyal.interfaces.parametrizacionacademica.ModalidadServices;
+import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.irfeyal.interfaces.parametrizacionacademica.ModalidadServices;
-import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 
 @CrossOrigin(origins = "", maxAge = 3600)
 @RestController
@@ -69,7 +68,7 @@ public class ModalidadController {
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createModalidad(@Valid @RequestBody Modalidad modalidad,
+	public ResponseEntity<Map<String, Object>> createModalidad(@Validated @RequestBody Modalidad modalidad,
 			BindingResult result) {
 		Modalidad modalidadNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -93,7 +92,7 @@ public class ModalidadController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateModalidad(@PathVariable("id") Long idModalidad, @Valid @RequestBody Modalidad modalidad,
+	public ResponseEntity<?> updateModalidad(@PathVariable("id") Long idModalidad,@Validated @RequestBody Modalidad modalidad,
 			BindingResult result) {
 		Optional<Modalidad> modalidadActual = modalidadService.getModalidadById(idModalidad);
 		Modalidad modalidadUpdated = null;

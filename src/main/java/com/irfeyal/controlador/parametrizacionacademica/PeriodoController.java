@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,7 +74,7 @@ public class PeriodoController {
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> createPeriodo(@RequestParam("idmalla") Long idMalla,
-			@Valid @RequestBody Periodo periodo, BindingResult result) {
+			@Validated @RequestBody Periodo periodo, BindingResult result) {
 		Periodo periodoNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
@@ -106,7 +105,7 @@ public class PeriodoController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updatePeriodo(@PathVariable("id") Long idPeriodo, @Valid @RequestBody Periodo periodo,
+	public ResponseEntity<?> updatePeriodo(@PathVariable("id") Long idPeriodo,@Validated @RequestBody Periodo periodo,
 			BindingResult result) {
 		Optional<Periodo> periodoActual = periodoService.getPeriodoById(idPeriodo);
 		Periodo periodoUpdated = null;

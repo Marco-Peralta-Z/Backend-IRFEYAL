@@ -15,11 +15,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -35,7 +35,7 @@ public class Paralelo implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_paralelo;
 
-	@NotEmpty(message = "Debe ingresar una descripción para el Paralelo")
+	@NotBlank(message = "Debe ingresar una descripción para el Paralelo")
 	@Column(name = "descripcion")
 	private String descripcion;
 

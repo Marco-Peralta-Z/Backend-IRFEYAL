@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,7 +69,7 @@ public class CursoController {
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createCurso(@Valid @RequestBody Curso curso, BindingResult result) {
+	public ResponseEntity<Map<String, Object>> createCurso(@Validated @RequestBody Curso curso, BindingResult result) {
 		Curso cursoNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
@@ -93,7 +92,7 @@ public class CursoController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateCurso(@PathVariable("id") Long idCurso, @Valid @RequestBody Curso curso,
+	public ResponseEntity<?> updateCurso(@PathVariable("id") Long idCurso,@Validated @RequestBody Curso curso,
 			BindingResult result) {
 		Optional<Curso> cursoActual = cursoService.getCursoById(idCurso);
 		Curso cursoUpdated = null;

@@ -14,7 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
@@ -34,11 +34,11 @@ public class Curso implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_curso;
 
-	@NotEmpty(message = "La descripción del Curso no debe estar vacía")
+	@NotBlank(message = "La descripción del Curso no debe estar vacía")
 	@Column(name = "descripcion")
 	private String descripcion;
 
-	@NotEmpty(message = "El tipo de Curso no debe estar vacío")
+	@NotBlank(message = "El tipo de Curso no debe estar vacío")
 	@Column(name = "tipo_curso")
 	private String tipo_curso;
 

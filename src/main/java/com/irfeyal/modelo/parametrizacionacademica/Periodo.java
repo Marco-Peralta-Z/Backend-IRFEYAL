@@ -14,7 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,7 +34,7 @@ public class Periodo implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_periodo;
 
-	@NotEmpty(message = "Debe ingresar las actividades para el Periodo")
+	@NotBlank(message = "Debe ingresar las actividades para el Periodo")
 	@Column(name = "actividades")
 	private String actividades;
 

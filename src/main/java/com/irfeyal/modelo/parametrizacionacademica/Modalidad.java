@@ -14,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,7 +35,7 @@ public class Modalidad implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_modalidad;
 
-	@NotEmpty(message = "Debe ingresar una descripción para la Modalidad")
+	@NotBlank(message = "Debe ingresar una descripción para la Modalidad")
 	@Column(name = "descripcion")
 	private String descripcion;
 

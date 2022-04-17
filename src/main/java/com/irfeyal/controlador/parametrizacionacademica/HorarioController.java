@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
+import com.irfeyal.interfaces.parametrizacionacademica.HorarioServices;
+import com.irfeyal.modelo.parametrizacionacademica.Horario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.irfeyal.interfaces.parametrizacionacademica.HorarioServices;
-import com.irfeyal.modelo.parametrizacionacademica.Horario;
 
 @CrossOrigin(origins = "", maxAge = 3600)
 @RestController
@@ -69,7 +68,7 @@ public class HorarioController {
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createHorario(@Valid @RequestBody Horario horario,
+	public ResponseEntity<Map<String, Object>> createHorario(@Validated @RequestBody Horario horario,
 			BindingResult result) {
 		Horario horarioNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -93,7 +92,7 @@ public class HorarioController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateHorario(@PathVariable("id") Long idHorario, @Valid @RequestBody Horario horario,
+	public ResponseEntity<?> updateHorario(@PathVariable("id") Long idHorario,@Validated @RequestBody Horario horario,
 			BindingResult result) {
 		Optional<Horario> horarioActual = horarioService.getHorarioById(idHorario);
 		Horario horarioUpdated = null;
