@@ -23,9 +23,6 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name = "asignatura")
 @JsonIgnoreProperties({ "hibernateLazyInitializer" })
@@ -68,5 +65,60 @@ public class Asignatura implements Serializable {
 	@JoinTable(name = "asignatura_empleado", joinColumns = {
 			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_empleado") })
 	private List<Empleado> empleados = new ArrayList<>();
+
+	public Long getId_asignatura() {
+		return id_asignatura;
+	}
+
+	public void setId_asignatura(Long id_asignatura) {
+		this.id_asignatura = id_asignatura;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+	public List<Malla> getMallas() {
+		return mallas;
+	}
+
+	public void setMallas(List<Malla> mallas) {
+		this.mallas = mallas;
+	}
+
+	public List<Horario> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(List<Horario> horarios) {
+		this.horarios = horarios;
+	}
+
+	public List<Empleado> getEmpleados() {
+		return empleados;
+	}
+
+	public void setEmpleados(List<Empleado> empleados) {
+		this.empleados = empleados;
+	}
+
+	@Override
+	public String toString() {
+		return "Asignatura [descripcion=" + descripcion + ", empleados=" + empleados + ", fecha_creacion="
+				+ fecha_creacion + ", horarios=" + horarios + ", id_asignatura=" + id_asignatura + ", mallas=" + mallas
+				+ "]";
+	}
 
 }

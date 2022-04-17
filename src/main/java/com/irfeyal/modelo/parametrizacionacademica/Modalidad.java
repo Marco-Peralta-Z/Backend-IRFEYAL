@@ -21,9 +21,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name = "modalidad")
 public class Modalidad implements Serializable {
@@ -55,5 +52,51 @@ public class Modalidad implements Serializable {
 			@JoinColumn(name = "id_curso") })
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
+
+	public Long getId_modalidad() {
+		return id_modalidad;
+	}
+
+	public void setId_modalidad(Long id_modalidad) {
+		this.id_modalidad = id_modalidad;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Date getHora_inicio() {
+		return hora_inicio;
+	}
+
+	public void setHora_inicio(Date hora_inicio) {
+		this.hora_inicio = hora_inicio;
+	}
+
+	public Date getHora_fin() {
+		return hora_fin;
+	}
+
+	public void setHora_fin(Date hora_fin) {
+		this.hora_fin = hora_fin;
+	}
+
+	public List<Curso> getListaCursos() {
+		return listaCursos;
+	}
+
+	public void setListaCursos(List<Curso> listaCursos) {
+		this.listaCursos = listaCursos;
+	}
+
+	@Override
+	public String toString() {
+		return "Modalidad [descripcion=" + descripcion + ", hora_fin=" + hora_fin + ", hora_inicio=" + hora_inicio
+				+ ", id_modalidad=" + id_modalidad + ", listaCursos=" + listaCursos + "]";
+	}
 
 }
