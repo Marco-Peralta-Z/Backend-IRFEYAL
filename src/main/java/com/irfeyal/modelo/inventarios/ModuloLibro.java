@@ -11,6 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.FetchType;
 
 /**
@@ -55,6 +59,7 @@ public class ModuloLibro implements Serializable {
     @Column(name = "numero_modulo")
     private String numeroModulo;
     
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_kit")
     private Kit kit;

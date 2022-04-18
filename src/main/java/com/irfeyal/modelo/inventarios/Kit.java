@@ -1,27 +1,21 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
-import net.bytebuddy.dynamic.TypeResolutionStrategy.Lazy;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "kit")
@@ -44,18 +38,9 @@ public class Kit implements Serializable {
     @Column(name = "periodo")
     private String periodo;
 
-    //@OneToMany(mappedBy = "kit", cascade = CascadeType.ALL, orphanRemoval = true)
-    //private List<ModuloLibro> id_modulo_libro;
-    
-    //@JoinColumn(name = "id_modulo_libro", referencedColumnName = "id_modulo_libro")
-    //@OneToMany(mappedBy = "id_modulo_libro", cascade = CascadeType.ALL, orphanRemoval = true)
-    //private List<ModuloLibro> id_modulo_libro;
-    
-    
-    @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "kit")
+    @OneToMany(mappedBy = "kit")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<ModuloLibro> moduloLibro;
-    
     
     
     public Kit() {
@@ -84,12 +69,12 @@ public class Kit implements Serializable {
 	public void setPeriodo(String periodo) {
 		this.periodo = periodo;
 	}
-
-	@JsonIgnore
+	
+	
 	public List<ModuloLibro> getModuloLibro() {
 		return moduloLibro;
 	}
-
+	
 	public void setModuloLibro(List<ModuloLibro> moduloLibro) {
 		this.moduloLibro = moduloLibro;
 	}
