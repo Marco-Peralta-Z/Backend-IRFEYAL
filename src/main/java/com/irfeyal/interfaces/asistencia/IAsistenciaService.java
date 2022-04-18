@@ -1,4 +1,4 @@
-package com.irfeyal.servicio.asistencia;
+package com.irfeyal.interfaces.asistencia;
 
 import java.util.List;
 
@@ -7,10 +7,7 @@ import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.rolseguridad.Persona;
 
-
-
 public interface IAsistenciaService {
-	
 	public List<Asistencia> findAll();
 	public Asistencia findById(Long id);
 	public Asistencia save(Asistencia asistencia);
@@ -20,5 +17,4 @@ public interface IAsistenciaService {
 	public Estudiante buscarceduestudiante(String cedula);
 	
 	public List<Modalidad> modalidaddocente(Integer id_docente);
-	
 }
