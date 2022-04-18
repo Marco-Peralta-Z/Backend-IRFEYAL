@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.FetchType;
 
 /**
  *
@@ -54,7 +55,9 @@ public class ModuloLibro implements Serializable {
     @Column(name = "numero_modulo")
     private String numeroModulo;
     
-    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_kit")
+    private Kit kit;
 
     public ModuloLibro() {
     }
@@ -113,6 +116,14 @@ public class ModuloLibro implements Serializable {
 
 	public void setNumeroModulo(String numeroModulo) {
 		this.numeroModulo = numeroModulo;
+	}
+
+	public Kit getKit() {
+		return kit;
+	}
+
+	public void setKit(Kit kit) {
+		this.kit = kit;
 	}
 
 	

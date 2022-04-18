@@ -18,6 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import net.bytebuddy.dynamic.TypeResolutionStrategy.Lazy;
 
 @Entity
@@ -49,10 +52,9 @@ public class Kit implements Serializable {
     //private List<ModuloLibro> id_modulo_libro;
     
     
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_modulo_libro")
-    private Set<ModuloLibro> moduloLibro;
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "kit")
+    private List<ModuloLibro> moduloLibro;
     
     
     
@@ -83,16 +85,17 @@ public class Kit implements Serializable {
 		this.periodo = periodo;
 	}
 
-	public Set<ModuloLibro> getModuloLibro() {
+	@JsonIgnore
+	public List<ModuloLibro> getModuloLibro() {
 		return moduloLibro;
 	}
 
-	public void setModuloLibro(Set<ModuloLibro> moduloLibro) {
+	public void setModuloLibro(List<ModuloLibro> moduloLibro) {
 		this.moduloLibro = moduloLibro;
 	}
 
 
-
+	
 
 
 }
