@@ -8,10 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.irfeyal.modelo.rolseguridad.Empleado;
-@Service
+
 public interface EmpleadoInterface {
 
-	@Autowired (required=true)
+	
 public List<Empleado> findAll();
 	
 	public Page<Empleado> findAll(Pageable pageable);

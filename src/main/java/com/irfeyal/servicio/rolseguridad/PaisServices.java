@@ -19,7 +19,7 @@ public class PaisServices implements PaisInterface {
 	
  
 	
-	@Autowired
+	@Autowired (required = true)
   private PaisDAO paisdao;
 
 	@Override

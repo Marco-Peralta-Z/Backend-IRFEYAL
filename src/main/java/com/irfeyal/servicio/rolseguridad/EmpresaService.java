@@ -13,7 +13,7 @@ import com.irfeyal.modelo.rolseguridad.Empresa;
 @Service
 public class EmpresaService implements EmpresaInterface{
 
-	@Autowired
+	@Autowired (required = true)
 	  private EmpresaDAO empresadao;
 
 	@Override

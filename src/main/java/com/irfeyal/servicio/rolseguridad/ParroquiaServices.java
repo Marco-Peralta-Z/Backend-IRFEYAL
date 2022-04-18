@@ -16,7 +16,7 @@ import com.irfeyal.modelo.rolseguridad.Parroquia;
 public class ParroquiaServices implements ParroquiaInterface {
 
 	
-	@Autowired
+	@Autowired (required = true)
   private ParroquiaDAO parroquiadao;
 
 	@Override

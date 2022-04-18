@@ -14,7 +14,7 @@ import com.irfeyal.modelo.rolseguridad.Telefono;
 @Service
 public class TelefonoServices implements TelefonoInterface {
 
-	@Autowired
+	@Autowired (required = true)
 	  private TelefonoDAO telfdao;
 
 	@Override

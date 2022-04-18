@@ -14,7 +14,7 @@ import com.irfeyal.modelo.rolseguridad.Persona;
 @Service
 public class PersonaServices implements PersonaInterface{
 
-	@Autowired
+	@Autowired (required = true)
   private PersonaDAO personadao;
 
 	@Override

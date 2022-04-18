@@ -10,11 +10,9 @@ import com.irfeyal.modelo.rolseguridad.Genero;
 
 
 
-@Service
 
 public interface GeneroInterface {
 	
-	@Autowired (required=true)
 public List<Genero> findAll();
 	
 	public Page<Genero> findAll(Pageable pageable);

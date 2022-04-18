@@ -17,7 +17,7 @@ import com.irfeyal.interfaces.rolseguridad.CantonInterface;
 @Service
 public class CantonService implements CantonInterface {
 	
-	@Autowired
+	@Autowired (required = true)
 	  private CantonDAO cantdao;
 
 	@Override

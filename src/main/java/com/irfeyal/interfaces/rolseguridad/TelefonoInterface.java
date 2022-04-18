@@ -8,10 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.irfeyal.modelo.rolseguridad.Telefono;
-@Service
+ 
 public interface TelefonoInterface {
 
-	@Autowired (required=true)
+ 
 
 public List<Telefono> findAll();
 	

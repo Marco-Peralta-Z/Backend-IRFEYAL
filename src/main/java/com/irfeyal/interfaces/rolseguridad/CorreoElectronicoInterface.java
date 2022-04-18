@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import com.irfeyal.modelo.rolseguridad.CorreoElectronico;
 
 
-@Service
+
 
 
 public interface CorreoElectronicoInterface {
 
-	@Autowired (required=true)
+
 public List<CorreoElectronico> findAll();
 	
 	public Page<CorreoElectronico> findAll(Pageable pageable);

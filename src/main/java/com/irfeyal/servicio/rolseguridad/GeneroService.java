@@ -13,7 +13,7 @@ import com.irfeyal.modelo.rolseguridad.Genero;
 
 @Service
 public class GeneroService implements GeneroInterface {
-	@Autowired
+	@Autowired (required = true)
 	  private GeneroDAO generodao;
 
 	@Override

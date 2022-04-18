@@ -15,7 +15,7 @@ import com.irfeyal.modelo.rolseguridad.Extension;
 @Service
 public class ExtensionServices implements ExtensionInterface {
 
-	@Autowired
+	@Autowired (required = true)
 	  private ExtensionDAO extension;
 
 	@Override

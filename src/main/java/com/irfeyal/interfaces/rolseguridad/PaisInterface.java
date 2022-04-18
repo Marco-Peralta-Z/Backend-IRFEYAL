@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.irfeyal.modelo.rolseguridad.Pais;
 
-@Service
+
 public interface PaisInterface  {
-	@Autowired (required=true)
+
 
 public List<Pais> findAll();
 	

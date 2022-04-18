@@ -18,7 +18,7 @@ import com.irfeyal.modelo.rolseguridad.CorreoElectronico;
 @Service
 public class CorreoElectronicoServices implements CorreoElectronicoInterface{
 	
-	@Autowired
+	@Autowired (required = true)
 	  private CorreoElectronicoDAO correodao;
 
 	@Override

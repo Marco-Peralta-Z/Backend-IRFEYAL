@@ -14,7 +14,7 @@ import com.irfeyal.modelo.rolseguridad.Usuario;
 @Service
 public class UsuarioServices implements UsuarioInterface{
 
-	@Autowired
+	@Autowired (required = true)
 	  private UsuarioDAO usuariodao;
 
 	@Override
