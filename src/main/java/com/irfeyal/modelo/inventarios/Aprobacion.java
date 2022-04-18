@@ -62,67 +62,52 @@ public class Aprobacion implements Serializable {
     public Aprobacion() {
     }
 
-    public Aprobacion(Long id_aprobacion) {
-        this.id_aprobacion = id_aprobacion;
-    }
-
-    public Long getid_aprobacion() {
-        return id_aprobacion;
-    }
-
-    public void setid_aprobacion(Long id_aprobacion) {
-        this.id_aprobacion = id_aprobacion;
-    }
-
-    public String getObservacionAproba() {
-        return observacionAproba;
-    }
-
-    public void setObservacionAproba(String observacionAproba) {
-        this.observacionAproba = observacionAproba;
-    }
-
-    public Boolean getEstadoAproba() {
-        return estadoAproba;
-    }
-
-    public void setEstadoAproba(Boolean estadoAproba) {
-        this.estadoAproba = estadoAproba;
-    }
-
-    public String getDetalleControl() {
-        return detalleControl;
-    }
-
-    public void setDetalleControl(String detalleControl) {
-        this.detalleControl = detalleControl;
-    }
-
-    public Date getFechaAprobacion() {
-        return fechaAprobacion;
-    }
-
-    public void setFechaAprobacion(Date fechaAprobacion) {
-        this.fechaAprobacion = fechaAprobacion;
-    }
-
-    public Date getFechaControl() {
-        return fechaControl;
-    }
-
-    public void setFechaControl(Date fechaControl) {
-        this.fechaControl = fechaControl;
-    }
-
-
-    
-
-    public Long getId_aprobacion() {
+	public Long getId_aprobacion() {
 		return id_aprobacion;
 	}
 
 	public void setId_aprobacion(Long id_aprobacion) {
 		this.id_aprobacion = id_aprobacion;
+	}
+
+	public String getObservacionAproba() {
+		return observacionAproba;
+	}
+
+	public void setObservacionAproba(String observacionAproba) {
+		this.observacionAproba = observacionAproba;
+	}
+
+	public Boolean getEstadoAproba() {
+		return estadoAproba;
+	}
+
+	public void setEstadoAproba(Boolean estadoAproba) {
+		this.estadoAproba = estadoAproba;
+	}
+
+	public String getDetalleControl() {
+		return detalleControl;
+	}
+
+	public void setDetalleControl(String detalleControl) {
+		this.detalleControl = detalleControl;
+	}
+
+	public Date getFechaAprobacion() {
+		return fechaAprobacion;
+	}
+
+	public void setFechaAprobacion(Date fechaAprobacion) {
+		this.fechaAprobacion = fechaAprobacion;
+	}
+
+	public Date getFechaControl() {
+		return fechaControl;
+	}
+
+	public void setFechaControl(Date fechaControl) {
+		this.fechaControl = fechaControl;
 	}
 
 	public Empleado getId_empleado() {
@@ -133,29 +118,4 @@ public class Aprobacion implements Serializable {
 		this.id_empleado = id_empleado;
 	}
 
-	@Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_aprobacion != null ? id_aprobacion.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Aprobacion)) {
-            return false;
-        }
-        Aprobacion other = (Aprobacion) object;
-        if ((this.id_aprobacion == null && other.id_aprobacion != null) || (this.id_aprobacion != null && !this.id_aprobacion.equals(other.id_aprobacion))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.Aprobacion[ id_aprobacion=" + id_aprobacion + " ]";
-    }
-    
 }

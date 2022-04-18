@@ -7,9 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.irfeyal.modelo.rolseguridad.Modulo;
-@Service
+
 public interface ModuloInterface {
-	@Autowired (required=true)
+	
 public List<Modulo> findAll();
 	
 	public Page<Modulo> findAll(Pageable pageable);

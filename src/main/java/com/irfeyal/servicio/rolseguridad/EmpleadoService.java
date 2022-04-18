@@ -17,7 +17,7 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 public class EmpleadoService implements EmpleadoInterface{
 
 	
-	@Autowired
+	@Autowired (required = true)
 	private EmpleadoDAO empleadoDao;
 
 	@Override

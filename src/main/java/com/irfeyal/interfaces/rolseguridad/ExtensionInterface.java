@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import com.irfeyal.modelo.rolseguridad.Extension;
 
 
-@Service
+
 
 public interface ExtensionInterface {
-	@Autowired (required=true)
+	
 public List<Extension> findAll();
 	
 	public Page<Extension> findAll(Pageable pageable);

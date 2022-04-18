@@ -14,7 +14,7 @@ import com.irfeyal.modelo.rolseguridad.Provincia;
 
 @Service
 public class ProvinciaServices implements ProvinciaInterface {
-	@Autowired
+	@Autowired (required = true)
 	  private ProvinciaDAO provdao;
 
 	@Override

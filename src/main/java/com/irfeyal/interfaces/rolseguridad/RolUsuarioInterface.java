@@ -8,9 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.irfeyal.modelo.rolseguridad.RolUsuario;
-@Service
+ 
 public interface RolUsuarioInterface {
-	@Autowired (required=true)
+ 
 
 public List<RolUsuario> findAll();
 	

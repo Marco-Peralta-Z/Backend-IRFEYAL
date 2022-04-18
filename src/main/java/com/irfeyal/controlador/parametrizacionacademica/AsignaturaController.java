@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
+import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
-import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
 @CrossOrigin(origins = "", maxAge = 3600)
 @RestController
@@ -69,7 +68,7 @@ public class AsignaturaController {
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createAsignatura(@Valid @RequestBody Asignatura asignatura,
+	public ResponseEntity<Map<String, Object>> createAsignatura(@Validated @RequestBody Asignatura asignatura,
 			BindingResult result) {
 		Asignatura asignaturaNueva = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -93,7 +92,7 @@ public class AsignaturaController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateAsignatura(@PathVariable("id") Long idAsignatura, @Valid @RequestBody Asignatura asignatura,
+	public ResponseEntity<?> updateAsignatura(@PathVariable("id") Long idAsignatura,@Validated @RequestBody Asignatura asignatura,
 			BindingResult result) {
 		Optional<Asignatura> asignaturaActual = asignaturaService.getAsignaturaById(idAsignatura);
 		Asignatura asignaturaUpdated = null;

@@ -12,7 +12,7 @@ import com.irfeyal.modelo.rolseguridad.Modulo;
 
 
 public class ModuloServices implements ModuloInterface{
-	@Autowired
+	@Autowired (required = true)
 	private ModuloDAO modulodao;
 
 	@Override

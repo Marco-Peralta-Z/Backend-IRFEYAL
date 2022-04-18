@@ -26,9 +26,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name = "horario")
 public class Horario implements Serializable {
@@ -78,5 +75,68 @@ public class Horario implements Serializable {
 			@JoinColumn(name = "id_empleado") })
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Empleado> listaEmpleados = new ArrayList<>();
+
+	public Long getId_horario() {
+		return id_horario;
+	}
+
+	public void setId_horario(Long id_horario) {
+		this.id_horario = id_horario;
+	}
+
+	public Date getTiempo_inicio() {
+		return tiempo_inicio;
+	}
+
+	public void setTiempo_inicio(Date tiempo_inicio) {
+		this.tiempo_inicio = tiempo_inicio;
+	}
+
+	public Date getTiempo_fin() {
+		return tiempo_fin;
+	}
+
+	public void setTiempo_fin(Date tiempo_fin) {
+		this.tiempo_fin = tiempo_fin;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+	public List<Curso> getListaCursos() {
+		return listaCursos;
+	}
+
+	public void setListaCursos(List<Curso> listaCursos) {
+		this.listaCursos = listaCursos;
+	}
+
+	public List<Empleado> getListaEmpleados() {
+		return listaEmpleados;
+	}
+
+	public void setListaEmpleados(List<Empleado> listaEmpleados) {
+		this.listaEmpleados = listaEmpleados;
+	}
+
+	@Override
+	public String toString() {
+		return "Horario [dia=" + dia + ", fecha_creacion=" + fecha_creacion + ", id_horario=" + id_horario
+				+ ", listaCursos=" + listaCursos + ", listaEmpleados=" + listaEmpleados + ", tiempo_fin=" + tiempo_fin
+				+ ", tiempo_inicio=" + tiempo_inicio + "]";
+	}
 
 }

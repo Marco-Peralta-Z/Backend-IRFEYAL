@@ -17,14 +17,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name = "malla")
 public class Malla implements Serializable {
@@ -39,8 +36,8 @@ public class Malla implements Serializable {
 	@NotNull(message = "Debe ingresar un estado para la Malla")
 	@Column(name = "estado")
 	private Boolean estado;
-	
-	@NotEmpty(message = "Debe ingresar una descripción para la Malla")
+
+	@NotBlank(message = "Debe ingresar una descripción para la Malla")
 	@Column(name = "descripcion")
 	private String descripcion;
 
@@ -49,7 +46,7 @@ public class Malla implements Serializable {
 	private Date fecha_creacion;
 
 	@PrePersist
-	private void setDateFecha(){
+	private void setDateFecha() {
 		this.fecha_creacion = new Date();
 	}
 
@@ -59,5 +56,51 @@ public class Malla implements Serializable {
 			@JoinColumn(name = "id_curso") })
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
+
+	public Long getId_malla() {
+		return id_malla;
+	}
+
+	public void setId_malla(Long id_malla) {
+		this.id_malla = id_malla;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+	public List<Curso> getListaCursos() {
+		return listaCursos;
+	}
+
+	public void setListaCursos(List<Curso> listaCursos) {
+		this.listaCursos = listaCursos;
+	}
+
+	@Override
+	public String toString() {
+		return "Malla [descripcion=" + descripcion + ", estado=" + estado + ", fecha_creacion=" + fecha_creacion
+				+ ", id_malla=" + id_malla + ", listaCursos=" + listaCursos + "]";
+	}
 
 }

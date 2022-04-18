@@ -1,6 +1,6 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
-
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "kit")
@@ -31,31 +38,29 @@ public class Kit implements Serializable {
     @Column(name = "periodo")
     private String periodo;
 
+    @OneToMany(mappedBy = "kit")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<ModuloLibro> moduloLibro;
+    
+    
     public Kit() {
     }
 
-    public Kit(Long id_kit) {
-        this.id_kit = id_kit;
-    }
+	public Long getId_kit() {
+		return id_kit;
+	}
 
-    public Long getid_kit() {
-        return id_kit;
-    }
+	public void setId_kit(Long id_kit) {
+		this.id_kit = id_kit;
+	}
 
-    public void setid_kit(Long id_kit) {
-        this.id_kit = id_kit;
-    }
+	public Integer getPrecioKit() {
+		return precioKit;
+	}
 
-    public Integer getPrecioKit() {
-        return precioKit;
-    }
-
-    public void setPrecioKit(Integer precioKit) {
-        this.precioKit = precioKit;
-    }
-
- 
-
+	public void setPrecioKit(Integer precioKit) {
+		this.precioKit = precioKit;
+	}
 
 	public String getPeriodo() {
 		return periodo;
@@ -64,30 +69,18 @@ public class Kit implements Serializable {
 	public void setPeriodo(String periodo) {
 		this.periodo = periodo;
 	}
+	
+	
+	public List<ModuloLibro> getModuloLibro() {
+		return moduloLibro;
+	}
+	
+	public void setModuloLibro(List<ModuloLibro> moduloLibro) {
+		this.moduloLibro = moduloLibro;
+	}
 
-	@Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_kit != null ? id_kit.hashCode() : 0);
-        return hash;
-    }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Kit)) {
-            return false;
-        }
-        Kit other = (Kit) object;
-        if ((this.id_kit == null && other.id_kit != null) || (this.id_kit != null && !this.id_kit.equals(other.id_kit))) {
-            return false;
-        }
-        return true;
-    }
+	
 
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.Kit[ id_kit=" + id_kit + " ]";
-    }
-    
+
 }

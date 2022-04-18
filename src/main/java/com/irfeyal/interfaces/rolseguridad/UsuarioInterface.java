@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.irfeyal.modelo.rolseguridad.Usuario;
 
-@Service
+
 public interface UsuarioInterface {
 
-	@Autowired (required=true)
 public List<Usuario> findAll();
 	
 	public Page<Usuario> findAll(Pageable pageable);

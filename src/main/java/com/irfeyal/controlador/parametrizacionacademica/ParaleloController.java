@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,7 +69,7 @@ public class ParaleloController {
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createParalelo(@Valid @RequestBody Paralelo paralelo,
+	public ResponseEntity<Map<String, Object>> createParalelo(@Validated @RequestBody Paralelo paralelo,
 			BindingResult result) {
 		Paralelo paraleloNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -94,7 +93,7 @@ public class ParaleloController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateParalelo(@PathVariable("id") Long idParalelo, @Valid @RequestBody Paralelo paralelo,
+	public ResponseEntity<?> updateParalelo(@PathVariable("id") Long idParalelo,@Validated @RequestBody Paralelo paralelo,
 			BindingResult result) {
 		Optional<Paralelo> paraleloActual = paraleloService.getParaleloById(idParalelo);
 		Paralelo paraleloUpdated = null;

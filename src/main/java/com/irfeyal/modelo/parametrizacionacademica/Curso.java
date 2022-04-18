@@ -14,14 +14,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
-import lombok.Data;
-
-@Data
 @Entity
 @Table(name = "curso")
 @JsonIgnoreProperties({ "hibernateLazyInitializer" })
@@ -34,27 +31,73 @@ public class Curso implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_curso;
 
-	@NotEmpty(message = "La descripción del Curso no debe estar vacía")
+	@NotBlank(message = "La descripción del Curso no debe estar vacía")
 	@Column(name = "descripcion")
 	private String descripcion;
 
-	@NotEmpty(message = "El tipo de Curso no debe estar vacío")
+	@NotBlank(message = "El tipo de Curso no debe estar vacío")
 	@Column(name = "tipo_curso")
 	private String tipo_curso;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_creacion")
 	private Date fecha_creacion;
-	
+
 	@PrePersist
 	private void setDateFecha() {
 		this.fecha_creacion = new Date();
 	}
-	
-	//Relación con la tabla empleado, 
-	//Preguntar tiene que tener obligatoriamente un empleado
+
+	// Relación con la tabla empleado,
+	// Preguntar tiene que tener obligatoriamente un empleado
 	@ManyToOne
 	@JoinColumn(name = "id_empleado")
 	private Empleado empleado;
+
+	public Long getId_curso() {
+		return id_curso;
+	}
+
+	public void setId_curso(Long id_curso) {
+		this.id_curso = id_curso;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getTipo_curso() {
+		return tipo_curso;
+	}
+
+	public void setTipo_curso(String tipo_curso) {
+		this.tipo_curso = tipo_curso;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
+	@Override
+	public String toString() {
+		return "Curso [descripcion=" + descripcion + ", empleado=" + empleado + ", fecha_creacion=" + fecha_creacion
+				+ ", id_curso=" + id_curso + ", tipo_curso=" + tipo_curso + "]";
+	}
 
 }

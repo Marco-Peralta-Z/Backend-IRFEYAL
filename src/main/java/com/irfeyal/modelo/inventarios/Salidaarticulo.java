@@ -43,50 +43,44 @@ public class Salidaarticulo implements Serializable {
     public Salidaarticulo() {
     }
 
-    public Salidaarticulo(Long id_salida_art) {
-        this.id_salida_art = id_salida_art;
-    }
+	public Long getId_salida_art() {
+		return id_salida_art;
+	}
 
+	public void setId_salida_art(Long id_salida_art) {
+		this.id_salida_art = id_salida_art;
+	}
 
-    public Long getid_salida_art() {
-        return id_salida_art;
-    }
+	public Date getFechaSalida() {
+		return fechaSalida;
+	}
 
-    public void setid_salida_art(Long id_salida_art) {
-        this.id_salida_art = id_salida_art;
-    }
+	public void setFechaSalida(Date fechaSalida) {
+		this.fechaSalida = fechaSalida;
+	}
 
-    public Date getFechaSalida() {
-        return fechaSalida;
-    }
+	public String getCodigo() {
+		return codigo;
+	}
 
-    public void setFechaSalida(Date fechaSalida) {
-        this.fechaSalida = fechaSalida;
-    }
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
-    public String getCodigo() {
-        return codigo;
-    }
+	public String getDetallesalida() {
+		return detallesalida;
+	}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+	public void setDetallesalida(String detallesalida) {
+		this.detallesalida = detallesalida;
+	}
 
-    public String getDetallesalida() {
-        return detallesalida;
-    }
+	public Aprobacion getId_aprobacion() {
+		return id_aprobacion;
+	}
 
-    public void setDetallesalida(String detallesalida) {
-        this.detallesalida = detallesalida;
-    }
+	public void setId_aprobacion(Aprobacion id_aprobacion) {
+		this.id_aprobacion = id_aprobacion;
+	}
 
-
-    public Aprobacion getid_aprobacion() {
-        return id_aprobacion;
-    }
-
-    public void setid_aprobacion(Aprobacion id_aprobacion) {
-        this.id_aprobacion = id_aprobacion;
-    }
-    
 }

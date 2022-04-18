@@ -15,8 +15,6 @@ INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfey
 INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0987562111', '0723658988',1);
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalmatriz@edu.ec',1);
 INSERT INTO empleado (cargo,id_extension,id_direcion,id_telefono,id_usuario,id_correo,id_persona) VALUES ('tutor', 1, 1, 1, 1, 1, 1);
-
-
 -- PARAMETRIZACION ACADEMICA
 
 -------------------MODALIDAD-----------------------------
@@ -147,16 +145,7 @@ INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 1, 1);
 --DOCUMENTOS ACADEMICOS
 --
 INSERT INTO unidad (nombre_unidad) VALUES ('Unidad 1'), ('Unidad 2'), ('Unidad 3'), ('Unidad 4'), ('Unidad 5'), ('Unidad 6'), ('Unidad 7'), ('Unidad 8'), ('Unidad 9'), ('Unidad 10');
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Matematicas', 'Objetivo1', 'Contenido1', 'Criterio1', 'Destreza1', '01-09-2022', '30-06-2023', 1, 2, 3, 1, 'Pendiente', 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Lengua y Literatura', 'Objetivo2', 'Contenido2', 'Criterio2', 'Destreza2', '01-09-2022', '30-06-2023', 3, 4, 2, 3, 'Aprobado', 3);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Historia y Ciencias Sociales', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 2, 1, 3, 5, 'Aprobado', 4);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Ciencias', 'Objetivo4', 'Contenido4', 'Criterio4', 'Destreza4', '01-09-2022', '30-06-2023', 3, 2, 2, 1, 'Rechazado', 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Quimica', 'Objetivo5', 'Contenido5', 'Criterio5', 'Destreza5', '01-09-2022', '30-06-2023', 1, 5, 2, 4, 'Aprobado', 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Fisica', 'Objetivo6', 'Contenido6', 'Criterio6', 'Destreza6', '01-09-2022', '30-06-2023', 4, 2, 1, 4, 'Rechazado', 3);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Ingles', 'Objetivo7', 'Contenido7', 'Criterio7', 'Destreza7', '01-09-2022', '30-06-2023', 5, 4, 3, 1, 'Pendiente', 5);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Biologia', 'Objetivo8', 'Contenido8', 'Criterio8', 'Destreza8', '01-09-2022', '30-06-2023', 2, 2, 1, 5, 'Aprobado', 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Educación física', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 3, 1, 2, 4, 'Pendiente', 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Informática', 'Objetivo10', 'Contenido10', 'Criterio10', 'Destreza10', '01-09-2022', '30-06-2023', 5, 1, 2, 1, 'Rechazado', 4);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_horario,id_modalidad, id_periodo,estado,id_curso_paralelo) values ('Lengua y Literatura', 'Objetivo2', 'Contenido2', 'Criterio2', 'Destreza2', '01-09-2022', '30-06-2023', 1, 1, 1, 1, 'activo', 1);
 --
 --INVENTARIOS 
 --SOLO KIT PARA tipo_comprobante 
@@ -189,7 +178,9 @@ INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso,
 INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo1', '001', 10, 'casa', 'en uso', 'nike', 1, 1);
 INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0001', 25, '2022/02/12', '2022/02/12', 2, 'Marco', 1);
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0001', 25, 'viejo', '2022/02/12', 1);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (1, 'CursoUno',' modulUno', 1, 1, 'NumeroMod2', 1);--OJO:Necesito id del kit que esta con error en el insert 
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo,id_kit) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno',1);--OJO:Necesito id del kit que esta con error en el insert\
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo,id_kit) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno',1);--OJO:Necesito id del kit que esta con error en el insert
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo,id_kit) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno',1);--OJO:Necesito id del kit que esta con error en el insert 
 INSERT INTO ingreso_kit (id_empleado, id_aprobacion, fecha_ingreso, id_kit) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert
 INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert y pilas con id_estudiante por id_empleado 
 INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/12', '001', 'recibido', 1);

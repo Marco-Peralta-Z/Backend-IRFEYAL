@@ -14,8 +14,7 @@ import com.irfeyal.modelo.rolseguridad.Direccion;
 
 @Service
 public class DireccionServices implements DireccionInterface {
-
-	@Autowired
+	@Autowired (required = true)
   private DireccionDAO direcciondao;
 
 	@Override

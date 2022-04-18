@@ -10,9 +10,8 @@ import org.springframework.stereotype.Service;
 import com.irfeyal.modelo.rolseguridad.Direccion;
 
 
-@Service
 public interface DireccionInterface {
-	@Autowired (required=true)
+	
 public List<Direccion> findAll();
 	
 	public Page<Direccion> findAll(Pageable pageable);

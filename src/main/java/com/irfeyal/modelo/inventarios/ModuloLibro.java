@@ -12,6 +12,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.FetchType;
+
 /**
  *
  * @author Felipe Quichimbo check
@@ -54,55 +59,47 @@ public class ModuloLibro implements Serializable {
     @Column(name = "numero_modulo")
     private String numeroModulo;
     
-    @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
-    @ManyToOne(optional = false)
-    private Kit id_kit;
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_kit")
+    private Kit kit;
 
     public ModuloLibro() {
     }
 
-    public ModuloLibro(Long id_modulo_libro) {
-        this.id_modulo_libro = id_modulo_libro;
-    }
+	public Long getId_modulo_libro() {
+		return id_modulo_libro;
+	}
 
-    public ModuloLibro(Long id_modulo_libro, int codModulo) {
-        this.id_modulo_libro = id_modulo_libro;
-        this.codModulo = codModulo;
-    }
+	public void setId_modulo_libro(Long id_modulo_libro) {
+		this.id_modulo_libro = id_modulo_libro;
+	}
 
-    public Long getid_modulo_libro() {
-        return id_modulo_libro;
-    }
+	public int getCodModulo() {
+		return codModulo;
+	}
 
-    public void setid_modulo_libro(Long id_modulo_libro) {
-        this.id_modulo_libro = id_modulo_libro;
-    }
+	public void setCodModulo(int codModulo) {
+		this.codModulo = codModulo;
+	}
 
-    public int getCodModulo() {
-        return codModulo;
-    }
+	public String getNombreModulo() {
+		return nombreModulo;
+	}
 
-    public void setCodModulo(int codModulo) {
-        this.codModulo = codModulo;
-    }
+	public void setNombreModulo(String nombreModulo) {
+		this.nombreModulo = nombreModulo;
+	}
 
-    public String getNombreModulo() {
-        return nombreModulo;
-    }
+	public String getCurso() {
+		return curso;
+	}
 
-    public void setNombreModulo(String nombreModulo) {
-        this.nombreModulo = nombreModulo;
-    }
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
 
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public Integer getCantidad() {
+	public Integer getCantidad() {
 		return cantidad;
 	}
 
@@ -119,44 +116,25 @@ public class ModuloLibro implements Serializable {
 	}
 
 	public String getNumeroModulo() {
-        return numeroModulo;
-    }
+		return numeroModulo;
+	}
 
-    public void setNumeroModulo(String numeroModulo) {
-        this.numeroModulo = numeroModulo;
-    }
+	public void setNumeroModulo(String numeroModulo) {
+		this.numeroModulo = numeroModulo;
+	}
 
-    public Kit getid_kit() {
-        return id_kit;
-    }
+	public Kit getKit() {
+		return kit;
+	}
 
-    public void setid_kit(Kit id_kit) {
-        this.id_kit = id_kit;
-    }
+	public void setKit(Kit kit) {
+		this.kit = kit;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_modulo_libro != null ? id_modulo_libro.hashCode() : 0);
-        return hash;
-    }
+	
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ModuloLibro)) {
-            return false;
-        }
-        ModuloLibro other = (ModuloLibro) object;
-        if ((this.id_modulo_libro == null && other.id_modulo_libro != null) || (this.id_modulo_libro != null && !this.id_modulo_libro.equals(other.id_modulo_libro))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.ModuloLibro[ id_modulo_libro=" + id_modulo_libro + " ]";
-    }
+    
+    
+    
     
 }

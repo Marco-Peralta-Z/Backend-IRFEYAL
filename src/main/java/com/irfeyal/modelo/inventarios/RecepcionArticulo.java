@@ -48,73 +48,46 @@ public class RecepcionArticulo implements Serializable {
     public RecepcionArticulo() {
     }
 
-    public RecepcionArticulo(Long id_recepcion_art) {
-        this.id_recepcion_art = id_recepcion_art;
-    }
+	public Long getId_recepcion_art() {
+		return id_recepcion_art;
+	}
 
-    public Long getid_recepcion_art() {
-        return id_recepcion_art;
-    }
+	public void setId_recepcion_art(Long id_recepcion_art) {
+		this.id_recepcion_art = id_recepcion_art;
+	}
 
-    public void setid_recepcion_art(Long id_recepcion_art) {
-        this.id_recepcion_art = id_recepcion_art;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    public Date getFecha() {
-        return fecha;
-    }
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+	public String getCodigo() {
+		return codigo;
+	}
 
-    public String getCodigo() {
-        return codigo;
-    }
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+	public String getDetallerecep() {
+		return detallerecep;
+	}
 
-    public String getDetallerecep() {
-        return detallerecep;
-    }
+	public void setDetallerecep(String detallerecep) {
+		this.detallerecep = detallerecep;
+	}
 
-    public void setDetallerecep(String detallerecep) {
-        this.detallerecep = detallerecep;
-    }
+	public DetalIngreArti getId_det_ingre_art() {
+		return id_det_ingre_art;
+	}
 
-    public DetalIngreArti getid_det_ingre_art() {
-        return id_det_ingre_art;
-    }
+	public void setId_det_ingre_art(DetalIngreArti id_det_ingre_art) {
+		this.id_det_ingre_art = id_det_ingre_art;
+	}
 
-    public void setid_det_ingre_art(DetalIngreArti id_det_ingre_art) {
-        this.id_det_ingre_art = id_det_ingre_art;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_recepcion_art != null ? id_recepcion_art.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RecepcionArticulo)) {
-            return false;
-        }
-        RecepcionArticulo other = (RecepcionArticulo) object;
-        if ((this.id_recepcion_art == null && other.id_recepcion_art != null) || (this.id_recepcion_art != null && !this.id_recepcion_art.equals(other.id_recepcion_art))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.RecepcionArticulo[ id_recepcion_art=" + id_recepcion_art + " ]";
-    }
+    
     
 }

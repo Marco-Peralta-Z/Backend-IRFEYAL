@@ -56,86 +56,64 @@ public class DetalIngreArti implements Serializable {
     public DetalIngreArti() {
     }
 
-    public DetalIngreArti(Long id_det_ingre_art) {
-        this.id_det_ingre_art = id_det_ingre_art;
-    }
 
-    public DetalIngreArti(Long id_det_ingre_art, int id_aprobacion) {
-        this.id_det_ingre_art = id_det_ingre_art;
-        this.id_aprobacion = id_aprobacion;
-    }
+	public Long getId_det_ingre_art() {
+		return id_det_ingre_art;
+	}
 
-    public Long getid_det_ingre_art() {
-        return id_det_ingre_art;
-    }
 
-    public void setid_det_ingre_art(Long id_det_ingre_art) {
-        this.id_det_ingre_art = id_det_ingre_art;
-    }
+	public void setId_det_ingre_art(Long id_det_ingre_art) {
+		this.id_det_ingre_art = id_det_ingre_art;
+	}
 
-    public Date getFechaingreso() {
-        return fechaingreso;
-    }
 
-    public void setFechaingreso(Date fechaingreso) {
-        this.fechaingreso = fechaingreso;
-    }
+	public Date getFechaingreso() {
+		return fechaingreso;
+	}
 
-    public Long getCantidad() {
-        return cantidad;
-    }
 
-    public void setCantidad(Long cantidad) {
-        this.cantidad = cantidad;
-    }
+	public void setFechaingreso(Date fechaingreso) {
+		this.fechaingreso = fechaingreso;
+	}
 
-    public String getObservacion() {
-        return observacion;
-    }
 
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
-    }
+	public Long getCantidad() {
+		return cantidad;
+	}
 
-    public String getTipoIngreso() {
-        return tipoIngreso;
-    }
 
-    public void setTipoIngreso(String tipoIngreso) {
-        this.tipoIngreso = tipoIngreso;
-    }
+	public void setCantidad(Long cantidad) {
+		this.cantidad = cantidad;
+	}
 
-    public int getid_aprobacion() {
-        return id_aprobacion;
-    }
 
-    public void setid_aprobacion(int id_aprobacion) {
-        this.id_aprobacion = id_aprobacion;
-    }
+	public String getObservacion() {
+		return observacion;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_det_ingre_art != null ? id_det_ingre_art.hashCode() : 0);
-        return hash;
-    }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DetalIngreArti)) {
-            return false;
-        }
-        DetalIngreArti other = (DetalIngreArti) object;
-        if ((this.id_det_ingre_art == null && other.id_det_ingre_art != null) || (this.id_det_ingre_art != null && !this.id_det_ingre_art.equals(other.id_det_ingre_art))) {
-            return false;
-        }
-        return true;
-    }
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
 
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.DetalIngreArti[ id_det_ingre_art=" + id_det_ingre_art + " ]";
-    }
-    
+
+	public String getTipoIngreso() {
+		return tipoIngreso;
+	}
+
+
+	public void setTipoIngreso(String tipoIngreso) {
+		this.tipoIngreso = tipoIngreso;
+	}
+
+
+	public int getId_aprobacion() {
+		return id_aprobacion;
+	}
+
+
+	public void setId_aprobacion(int id_aprobacion) {
+		this.id_aprobacion = id_aprobacion;
+	}
+
 }

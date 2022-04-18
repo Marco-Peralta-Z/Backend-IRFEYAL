@@ -15,15 +15,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Data
 @Entity
 @Table(name = "paralelo")
 public class Paralelo implements Serializable {
@@ -35,7 +32,7 @@ public class Paralelo implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_paralelo;
 
-	@NotEmpty(message = "Debe ingresar una descripción para el Paralelo")
+	@NotBlank(message = "Debe ingresar una descripción para el Paralelo")
 	@Column(name = "descripcion")
 	private String descripcion;
 
@@ -54,5 +51,43 @@ public class Paralelo implements Serializable {
 			@JoinColumn(name = "id_curso") })
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
+
+	public Long getId_paralelo() {
+		return id_paralelo;
+	}
+
+	public void setId_paralelo(Long id_paralelo) {
+		this.id_paralelo = id_paralelo;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+	public List<Curso> getListaCursos() {
+		return listaCursos;
+	}
+
+	public void setListaCursos(List<Curso> listaCursos) {
+		this.listaCursos = listaCursos;
+	}
+
+	@Override
+	public String toString() {
+		return "Paralelo [descripcion=" + descripcion + ", fecha_creacion=" + fecha_creacion + ", id_paralelo="
+				+ id_paralelo + ", listaCursos=" + listaCursos + "]";
+	}
 
 }

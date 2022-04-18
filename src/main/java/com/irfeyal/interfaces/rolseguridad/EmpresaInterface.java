@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.irfeyal.modelo.rolseguridad.Empresa;
-@Service
+
 
 public interface EmpresaInterface {
 
-	@Autowired (required=true)
+	
 	public List<Empresa> findAll();
     public Empresa  saveEmpresa(Empresa empresa);
     public Empresa findById(Long id);

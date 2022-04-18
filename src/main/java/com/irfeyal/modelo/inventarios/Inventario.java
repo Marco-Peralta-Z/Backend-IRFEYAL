@@ -65,33 +65,44 @@ public class Inventario implements Serializable {
     public Inventario() {
     }
 
-    public Inventario(Long id_inventario) {
-        this.id_inventario = id_inventario;
-    }
+	public Long getId_inventario() {
+		return id_inventario;
+	}
 
-    public Long getid_inventario() {
-        return id_inventario;
-    }
+	public void setId_inventario(Long id_inventario) {
+		this.id_inventario = id_inventario;
+	}
 
-    public void setid_inventario(Long id_inventario) {
-        this.id_inventario = id_inventario;
-    }
+	public String getCodigo() {
+		return codigo;
+	}
 
-    public String getCodigo() {
-        return codigo;
-    }
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-
-    public Integer getCantidad() {
+	public Integer getCantidad() {
 		return cantidad;
 	}
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	public Date getFechaingreso() {
+		return fechaingreso;
+	}
+
+	public void setFechaingreso(Date fechaingreso) {
+		this.fechaingreso = fechaingreso;
+	}
+
+	public Date getFechaegreso() {
+		return fechaegreso;
+	}
+
+	public void setFechaegreso(Date fechaegreso) {
+		this.fechaegreso = fechaegreso;
 	}
 
 	public Integer getDisponibilidad() {
@@ -102,64 +113,23 @@ public class Inventario implements Serializable {
 		this.disponibilidad = disponibilidad;
 	}
 
-	public Date getFechaingreso() {
-        return fechaingreso;
-    }
+	public String getIngresadoPor() {
+		return ingresadoPor;
+	}
 
-    public void setFechaingreso(Date fechaingreso) {
-        this.fechaingreso = fechaingreso;
-    }
+	public void setIngresadoPor(String ingresadoPor) {
+		this.ingresadoPor = ingresadoPor;
+	}
 
-    public Date getFechaegreso() {
-        return fechaegreso;
-    }
+	public Articulo getId_Articulo() {
+		return id_Articulo;
+	}
 
-    public void setFechaegreso(Date fechaegreso) {
-        this.fechaegreso = fechaegreso;
-    }
-
-
-    public String getIngresadoPor() {
-        return ingresadoPor;
-    }
-
-    public void setIngresadoPor(String ingresadoPor) {
-        this.ingresadoPor = ingresadoPor;
-    }
-
-    public Articulo getid_Articulo() {
-        return id_Articulo;
-    }
-
-    public void setid_Articulo(Articulo id_Articulo) {
-        this.id_Articulo = id_Articulo;
-    }
+	public void setId_Articulo(Articulo id_Articulo) {
+		this.id_Articulo = id_Articulo;
+	}
 
     
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_inventario != null ? id_inventario.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Inventario)) {
-            return false;
-        }
-        Inventario other = (Inventario) object;
-        if ((this.id_inventario == null && other.id_inventario != null) || (this.id_inventario != null && !this.id_inventario.equals(other.id_inventario))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.Inventario[ id_inventario=" + id_inventario + " ]";
-    }
+    
     
 }

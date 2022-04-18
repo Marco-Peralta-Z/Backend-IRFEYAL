@@ -17,7 +17,7 @@ import com.irfeyal.modelo.rolseguridad.Rol;
 public class RolServices implements RolInterface{
 	
 
-	@Autowired
+	@Autowired (required = true)
   private RolDAO roldao;
 
 	@Override

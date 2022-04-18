@@ -65,105 +65,76 @@ public class Articulo implements Serializable {
     public Articulo() {
     }
 
-    public Articulo(Long id_articulo) {
-        this.id_articulo = id_articulo;
-    }
+	public Long getId_articulo() {
+		return id_articulo;
+	}
 
-    public Long getid_articulo() {
-        return id_articulo;
-    }
+	public void setId_articulo(Long id_articulo) {
+		this.id_articulo = id_articulo;
+	}
 
-    public void setid_articulo(Long id_articulo) {
-        this.id_articulo = id_articulo;
-    }
+	public String getArtinombre() {
+		return artinombre;
+	}
 
-    public String getArtinombre() {
-        return artinombre;
-    }
+	public void setArtinombre(String artinombre) {
+		this.artinombre = artinombre;
+	}
 
-    public void setArtinombre(String artinombre) {
-        this.artinombre = artinombre;
-    }
+	public String getArticodigo() {
+		return articodigo;
+	}
 
-    public String getArticodigo() {
-        return articodigo;
-    }
+	public void setArticodigo(String articodigo) {
+		this.articodigo = articodigo;
+	}
 
-    public void setArticodigo(String articodigo) {
-        this.articodigo = articodigo;
-    }
+	public BigDecimal getArtiprecio() {
+		return artiprecio;
+	}
 
-    public BigDecimal getArtiprecio() {
-        return artiprecio;
-    }
+	public void setArtiprecio(BigDecimal artiprecio) {
+		this.artiprecio = artiprecio;
+	}
 
-    public void setArtiprecio(BigDecimal artiprecio) {
-        this.artiprecio = artiprecio;
-    }
+	public String getArtidescrip() {
+		return artidescrip;
+	}
 
-    public String getArtidescrip() {
-        return artidescrip;
-    }
+	public void setArtidescrip(String artidescrip) {
+		this.artidescrip = artidescrip;
+	}
 
-    public void setArtidescrip(String artidescrip) {
-        this.artidescrip = artidescrip;
-    }
+	public String getArtiestado() {
+		return artiestado;
+	}
 
-    public String getArtiestado() {
-        return artiestado;
-    }
+	public void setArtiestado(String artiestado) {
+		this.artiestado = artiestado;
+	}
 
-    public void setArtiestado(String artiestado) {
-        this.artiestado = artiestado;
-    }
+	public String getArtimarca() {
+		return artimarca;
+	}
 
-    public String getArtimarca() {
-        return artimarca;
-    }
+	public void setArtimarca(String artimarca) {
+		this.artimarca = artimarca;
+	}
 
-    public void setArtimarca(String artimarca) {
-        this.artimarca = artimarca;
-    }
+	public Categoria getCateId() {
+		return cateId;
+	}
 
-    public Categoria getCateId() {
-        return cateId;
-    }
+	public void setCateId(Categoria cateId) {
+		this.cateId = cateId;
+	}
 
-    public void setCateId(Categoria cateId) {
-        this.cateId = cateId;
-    }
+	public DetalIngreArti getId_det_ingre_art() {
+		return id_det_ingre_art;
+	}
 
-    public DetalIngreArti getDeinarictId() {
-        return id_det_ingre_art;
-    }
+	public void setId_det_ingre_art(DetalIngreArti id_det_ingre_art) {
+		this.id_det_ingre_art = id_det_ingre_art;
+	}
 
-    public void setDeinarictId(DetalIngreArti id_det_ingre_art) {
-        this.id_det_ingre_art = id_det_ingre_art;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id_articulo != null ? id_articulo.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Articulo)) {
-            return false;
-        }
-        Articulo other = (Articulo) object;
-        if ((this.id_articulo == null && other.id_articulo != null) || (this.id_articulo != null && !this.id_articulo.equals(other.id_articulo))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.irfeyal.mapeoirfeyal.Articulo[ id_articulo=" + id_articulo + " ]";
-    }
-    
 }
