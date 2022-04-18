@@ -178,7 +178,7 @@ INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso,
 INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo1', '001', 10, 'casa', 'en uso', 'nike', 1, 1);
 INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0001', 25, '2022/02/12', '2022/02/12', 2, 'Marco', 1);
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0001', 25, 'viejo', '2022/02/12', 1);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (1, 'CursoUno',' modulUno', 1, 1, 'NumeroMod2', 1);--OJO:Necesito id del kit que esta con error en el insert 
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (1, 'CursoUno',' modulUno', 1, 1, 'NumeroMod2');--OJO:Necesito id del kit que esta con error en el insert 
 INSERT INTO ingreso_kit (id_empleado, id_aprobacion, fecha_ingreso, id_kit) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert
 INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert y pilas con id_estudiante por id_empleado 
 INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/12', '001', 'recibido', 1);
