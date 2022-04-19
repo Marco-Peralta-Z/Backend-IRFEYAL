@@ -16,5 +16,6 @@ public interface IAsistenciaService {
 	public List <Estudiante> buscarcursomodalidad(Long id_mod,Long id_periodo,Long id_paralelo,Long id_asignatura);
 	public Estudiante buscarceduestudiante(String cedula);
 	
+	
 	public List<Modalidad> modalidaddocente(Integer id_docente);
 }
