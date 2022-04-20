@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+import com.irfeyal.interfaces.asistencia.IClaseService;
 import com.irfeyal.modelo.asistencia.Clase;
 import com.irfeyal.modelo.dao.asistencia.IClaseDao;
 
