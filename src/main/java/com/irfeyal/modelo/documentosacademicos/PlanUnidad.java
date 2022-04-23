@@ -11,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.CursoParalelo;
-import com.irfeyal.modelo.parametrizacionacademica.Horario;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
@@ -40,30 +40,30 @@ public class PlanUnidad implements Serializable{
 	private Unidad unidad;
 	
 	@ManyToOne
-	@JoinColumn (name = "id_horario")
-	private Horario id_horario;
+	@JoinColumn (name = "id_asignatura")
+	private Asignatura asignatura;
 	
 	//----------------
 	@ManyToOne
 	@JoinColumn (name = "id_curso_paralelo")
-	private CursoParalelo id_curso_paralelo;
+	private CursoParalelo curso_paralelo;
 	
 	//----------------
 	
 	@ManyToOne
 	@JoinColumn (name = "id_modalidad")
-	private Modalidad id_modalidad;
+	private Modalidad modalidad;
 	
 	@ManyToOne
 	@JoinColumn (name = "id_periodo")
-	private Periodo id_periodo;
+	private Periodo periodo;
 	
 	public PlanUnidad() {
 	}
 
-	public PlanUnidad(Long id_plan_unidad, String titulo_unidad, String objetivos, String contenidos, String criterios_evaluacion,
-			String destrezas, Date fecha_inicio, Date fecha_fin, String estado, Unidad unidad, Horario id_horario,
-			CursoParalelo id_curso_paralelo, Modalidad id_modalidad, Periodo id_periodo) {
+	public PlanUnidad(Long id_plan_unidad, String titulo_unidad, String objetivos, String contenidos,
+			String criterios_evaluacion, String destrezas, Date fecha_inicio, Date fecha_fin, String estado,
+			Unidad unidad, Asignatura asignatura, CursoParalelo curso_paralelo, Modalidad modalidad, Periodo periodo) {
 		super();
 		this.id_plan_unidad = id_plan_unidad;
 		this.titulo_unidad = titulo_unidad;
@@ -75,17 +75,19 @@ public class PlanUnidad implements Serializable{
 		this.fecha_fin = fecha_fin;
 		this.estado = estado;
 		this.unidad = unidad;
-		this.id_horario = id_horario;
-		this.id_curso_paralelo = id_curso_paralelo;
-		this.id_modalidad = id_modalidad;
-		this.id_periodo = id_periodo;
+		this.asignatura = asignatura;
+		this.curso_paralelo = curso_paralelo;
+		this.modalidad = modalidad;
+		this.periodo = periodo;
 	}
 
-	public Long getIdPlanUnidad() {
+
+
+	public Long getId_plan_unidad() {
 		return id_plan_unidad;
 	}
 
-	public void setIdPlanUnidad(Long id_plan_unidad) {
+	public void setId_plan_unidad(Long id_plan_unidad) {
 		this.id_plan_unidad = id_plan_unidad;
 	}
 
@@ -161,36 +163,36 @@ public class PlanUnidad implements Serializable{
 		this.unidad = unidad;
 	}
 
-	public Horario getHorario() {
-		return id_horario;
+	public Asignatura getAsignatura() {
+		return asignatura;
 	}
 
-	public void setHorario(Horario id_horario) {
-		this.id_horario = id_horario;
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
 	}
 
-	public CursoParalelo getid_curso_paralelo() {
-		return id_curso_paralelo;
+	public CursoParalelo getCurso_paralelo() {
+		return curso_paralelo;
 	}
 
-	public void setid_curso_paralelo(CursoParalelo id_curso_paralelo) {
-		this.id_curso_paralelo = id_curso_paralelo;
+	public void setCurso_paralelo(CursoParalelo curso_paralelo) {
+		this.curso_paralelo = curso_paralelo;
 	}
 
 	public Modalidad getModalidad() {
-		return id_modalidad;
+		return modalidad;
 	}
 
-	public void setModalidad(Modalidad id_modalidad) {
-		this.id_modalidad = id_modalidad;
+	public void setModalidad(Modalidad modalidad) {
+		this.modalidad = modalidad;
 	}
 
 	public Periodo getPeriodo() {
-		return id_periodo;
+		return periodo;
 	}
 
-	public void setPeriodo(Periodo id_periodo) {
-		this.id_periodo = id_periodo;
+	public void setPeriodo(Periodo periodo) {
+		this.periodo = periodo;
 	}
 	
 
