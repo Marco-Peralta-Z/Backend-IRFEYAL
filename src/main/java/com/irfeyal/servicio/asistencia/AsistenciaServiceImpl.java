@@ -3,22 +3,27 @@ package com.irfeyal.servicio.asistencia;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.irfeyal.interfaces.asistencia.IAsistenciaService;
 import com.irfeyal.modelo.asistencia.Asistencia;
 import com.irfeyal.modelo.dao.asistencia.IAsistenciaDao;
 import com.irfeyal.modelo.dao.asistencia.IClaseDao;
+import com.irfeyal.modelo.dao.matricula.IEstudianteDao;
+import com.irfeyal.modelo.dao.rolseguridad.PersonaDAO;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.rolseguridad.Persona;
 
+@Service
 public class AsistenciaServiceImpl implements IAsistenciaService{
 	
 	@Autowired
 	private IAsistenciaDao asistenciadao;
-	//@Autowired
-	//private IPersonaDao personadao;
-	//@Autowired
-	//private IEstudianteDao estudiantedao;
+	@Autowired
+	private PersonaDAO personadao;
+	@Autowired
+	private IEstudianteDao estudiantedao;
 	@Autowired
 	private IClaseDao clasedao;
 	
@@ -50,14 +55,14 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	@Override
 	public List <Persona> buscarcurso(Long id) {
 			// TODO Auto-generated method stub
-		return null; //personadao.buscarcurso(id);
+		return personadao.buscarcurso(id);
 	}
 
 	@Override
 	public List<Estudiante> buscarcursomodalidad(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura) {
 		
-		return null;
-			/*if ( id_periodo==0 && id_paralelo==0 && id_asignatura==0) {
+		
+			if ( id_periodo==0 && id_paralelo==0 && id_asignatura==0) {
 				return estudiantedao.buscarcursomodalidad(id_mod);
 				
 			}else {
@@ -121,14 +126,14 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 						}
 					}
 				}
-			}*/
+			}
 
    }
 
 	@Override
 	public Estudiante buscarceduestudiante(String cedula) {
 		
-		return null;//estudiantedao.buscarcedulaestudiante(cedula);
+		return estudiantedao.buscarcedulaestudiante(cedula);
 	}
 
 	@Override

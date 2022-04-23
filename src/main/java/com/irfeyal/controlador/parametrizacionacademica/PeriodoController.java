@@ -73,7 +73,7 @@ public class PeriodoController {
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createPeriodo(@RequestParam("idmalla") Long idMalla,
+	public ResponseEntity<Map<String, Object>> createPeriodo(@RequestParam("malla") Long idMalla,
 			@Validated @RequestBody Periodo periodo, BindingResult result) {
 		Periodo periodoNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -85,7 +85,6 @@ public class PeriodoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// ¿El periodo puede tener o no tener mallas?
 			Optional<Malla> malla = mallaService.getMallaById(idMalla);
 			if (!malla.isEmpty()) {
 				periodo.setMalla(malla.get());
@@ -105,7 +104,7 @@ public class PeriodoController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updatePeriodo(@PathVariable("id") Long idPeriodo,@Validated @RequestBody Periodo periodo,
+	public ResponseEntity<?> updatePeriodo(@PathVariable("id") Long idPeriodo, @Validated @RequestBody Periodo periodo,
 			BindingResult result) {
 		Optional<Periodo> periodoActual = periodoService.getPeriodoById(idPeriodo);
 		Periodo periodoUpdated = null;
@@ -129,13 +128,13 @@ public class PeriodoController {
 			periodoActual.get().setFecha_fin(periodo.getFecha_fin());
 			periodoActual.get().setCosto_matricula(periodo.getCosto_matricula());
 			periodoActual.get().setCosto_mensualidad(periodo.getCosto_mensualidad());
+			periodoActual.get().setMalla(periodo.getMalla());
 			periodoUpdated = periodoService.savePeriodo(periodoActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-
 		respuesta.put("mensaje", "El Periodo ha sido actualizado con éxito");
 		respuesta.put("periodo", periodoUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);

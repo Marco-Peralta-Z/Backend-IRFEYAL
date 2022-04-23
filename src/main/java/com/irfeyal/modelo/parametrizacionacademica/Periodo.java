@@ -67,7 +67,7 @@ public class Periodo implements Serializable {
 
 	// Relación Periodo-Malla
 	@ManyToOne
-	@JoinColumn(name = "id_malla")
+	@JoinColumn(name = "id_malla", nullable = true)
 	private Malla malla;
 
 	public Long getId_periodo() {
