@@ -3,6 +3,7 @@ package com.irfeyal.servicio.asistencia;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.irfeyal.interfaces.asistencia.IAsistenciaService;
 import com.irfeyal.modelo.asistencia.Asistencia;
@@ -14,6 +15,7 @@ import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.rolseguridad.Persona;
 
+@Service
 public class AsistenciaServiceImpl implements IAsistenciaService{
 	
 	@Autowired
@@ -53,7 +55,7 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	@Override
 	public List <Persona> buscarcurso(Long id) {
 			// TODO Auto-generated method stub
-		return null; //personadao.buscarcurso(id);
+		return personadao.buscarcurso(id);
 	}
 
 	@Override
