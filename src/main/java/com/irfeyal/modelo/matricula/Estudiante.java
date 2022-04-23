@@ -23,18 +23,14 @@ public class Estudiante implements Serializable {
 	@Column(name="estado_estudiante")
 	private Boolean estadoEstudiante;
 
-	//bi-directional many-to-one association to Extension
-
 	@ManyToOne()
 	@JoinColumn(name="id_extension")
 	private Extension id_extension;
 
-	//bi-directional one-to-one association to Persona
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_persona")
 	private Persona id_persona;
 
-	//bi-directional one-to-one association to Matricula
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_correo")
 	private CorreoElectronico correo;

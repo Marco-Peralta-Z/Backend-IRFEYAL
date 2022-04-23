@@ -18,19 +18,20 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.matricula.IEstudianteService;
 import com.irfeyal.modelo.matricula.Estudiante;
+import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
 
 @CrossOrigin(origins= {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
 public class EstudianteRestController {
 	@Autowired
-	private IEstudianteService estudianteService;
+	private EstudianteServiceImpl estudianteService;
 	
 	
 	@GetMapping("/estudiantes")
@@ -72,6 +73,48 @@ public class EstudianteRestController {
 		
 		response.put("mensaje",	"El estudiante fue creado con exito");
 		response.put("estudiante", estudentNew);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+	}
+	
+	@PutMapping("/estudiante/{id}")
+	public ResponseEntity<?> update(@Validated @RequestBody Estudiante estudiante, BindingResult result, @PathVariable Long id){
+		
+		Estudiante estudianteActual= estudianteService.findById(id);
+		Estudiante estudianteUpdate= null;
+		Map<String, Object> response = new HashMap<>();
+		if (result.hasErrors()) {
+			List<String> errors= result.getFieldErrors()
+					.stream()
+					.map(err -> "El campo '"+ err.getField() +" '" + err.getDefaultMessage())
+					.collect(Collectors.toList());
+			
+			response.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.BAD_REQUEST);
+			
+		}
+		
+		if (estudianteActual==null) {
+			response.put("mensaje", "Error: no se pudo editar, el estudiante ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
+		}
+		
+		try {
+			estudianteActual.setEstadoEstudiante(estudiante.getEstadoEstudiante());
+			estudianteActual.setId_extension(estudiante.getId_extension());
+			estudianteActual.setId_persona(estudiante.getId_persona());
+			estudianteActual.setCorreo(estudiante.getCorreo());
+			estudianteActual.setDireccion(estudiante.getDireccion());
+			estudianteActual.setTelefono(estudiante.getTelefono());
+			estudianteUpdate= estudianteService.save(estudianteActual);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Erros al actualizar el cliente en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+
+		response.put("mensaje","Estudiante actualizado con exito");
+		response.put("estudiante",estudianteUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 }

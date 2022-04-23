@@ -1,4 +1,4 @@
-﻿----------ROLES Y SEGURIDAD
+﻿----------ROLES Y SEGURIDAD------------------
 
 -------------------PAIS-------------------
 INSERT INTO pais (pais) VALUES ('Ecuador');
@@ -248,21 +248,21 @@ INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(1, 3);
 INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(1, 4);
 INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(1, 5);
 
---MATRICULA
+--MATRICULA---------
 
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,1,1,1,1);--OJO:
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,1,1,1,1);
 INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,2,2,2,2);
 INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,3,3,3,3);
 INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,4,4,4,4);
 INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,5,5,5,5);
 
-INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,1,1,1);--OJO:error al ingresar PERDIODO en el modulo de parametrizacion
+INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,1,1,1);
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,2,2,2);
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',3,3,3,3,3,3);
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,4,4,4,4);
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,5,5,5,5);
 
---ASISTENCIA
+--ASISTENCIA-------------
 
 INSERT INTO clase (fec_clase,id_asignatura,id_curso,id_docente,id_paralelo,id_modalidad_id_modalidad,id_periodo_id_periodo) values ('2022/02/01',1, 1, 1, 1,1,1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
 INSERT INTO clase (fec_clase,id_asignatura,id_curso,id_docente,id_paralelo,id_modalidad_id_modalidad,id_periodo_id_periodo) values ('2022/02/02',2, 2, 2, 2,1,2);
@@ -276,7 +276,7 @@ INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 3, 3);
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 4, 4);
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 5, 5);
 
---DOCUMENTOS ACADEMICOS
+--DOCUMENTOS ACADEMICOS-----------
 
 INSERT INTO unidad (nombre_unidad) VALUES ('Unidad 1'), ('Unidad 2'), ('Unidad 3'), ('Unidad 4'), ('Unidad 5'), ('Unidad 6'), ('Unidad 7'), ('Unidad 8'), ('Unidad 9'), ('Unidad 10');
 
@@ -291,16 +291,16 @@ INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluac
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso_paralelo) values ('Educación física', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 3, 1, 5, 4, 'Pendiente', 2);
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso_paralelo) values ('Informática', 'Objetivo10', 'Contenido10', 'Criterio10', 'Destreza10', '01-09-2022', '30-06-2023', 5, 1, 2, 1, 'Rechazado', 4);
 
---INVENTARIOS
+--INVENTARIOS----------
 
---SOLO KIT PARA tipo_comprobante 
+--SOLO KIT PARA tipo_comprobante----------
 INSERT INTO kit(precio_kit, periodo) values (35, '2022/02/02');
 INSERT INTO kit(precio_kit, periodo) values (15, '2022/02/02');
 INSERT INTO kit(precio_kit, periodo) values (25, '2022/02/02');
 INSERT INTO kit(precio_kit, periodo) values (45, '2022/02/02');
 INSERT INTO kit(precio_kit, periodo) values (55, '2022/02/02');
 
---PAGOS
+--PAGOS-----------
 
 INSERT INTO tipo_pago (descripcion) VALUES ('Efectivo');
 INSERT INTO tipo_pago (descripcion) VALUES ('Deposito');

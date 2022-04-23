@@ -29,41 +29,27 @@ public class Matricula implements Serializable {
 	@JoinColumn(name = "id_periodo")
 	private Periodo id_periodo;
 
-	//bi-directional many-to-one association to Curso
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="id_curso")
 	private Curso curso;
 
-	//bi-directional many-to-one association to Modalidad
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="id_modalidad")
 	private Modalidad modalidad;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 
-	//bi-directional many-to-one association to Paralelo
+
 	@OneToOne()
 	@JoinColumn(name="id_paralelo")
 	private Paralelo id_paralelo;
-
-	//bi-directional one-to-one association to Estudiante
-	/*@OneToOne(fetch=FetchType.LAZY)
-	@Column(name="id_estudiante")
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	private Estudiante estudiante;
-*/
-	
-//	 referencedColumnName = "id_estudiante", insertable = false, updatable = false
 	
 	@OneToOne()
 	@JoinColumn(name = "id_estudiante")
 	private Estudiante estudiante;
 
-	
-	
 	public Matricula() {
 	}
 	
