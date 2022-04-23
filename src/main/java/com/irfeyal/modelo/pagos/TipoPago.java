@@ -19,18 +19,13 @@ public class TipoPago implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	//@Column(columnDefinition = "serial")
 	private Long id_tipo_pago;
 	
 	@Column
 	private String descripcion;
 	
 	public TipoPago() {
-	}
-
-	public TipoPago(Long id_tipo_pago, String descripcion) {
-		this.id_tipo_pago = id_tipo_pago;
-		this.descripcion = descripcion;
 	}
 
 	public Long getId_tipo_pago() {

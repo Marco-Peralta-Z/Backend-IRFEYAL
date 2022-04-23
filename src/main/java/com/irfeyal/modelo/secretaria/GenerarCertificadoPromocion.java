@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,13 +19,13 @@ import com.irfeyal.modelo.tutorias.Registro;
 
 @Entity
 @Table(name = "generar_certificado_promocion")
-
+@NamedQuery(name="GenerarCertificadoPromocion.findall", query = "SELECT p FROM GenerarCertificadoPromocion p")
 public class GenerarCertificadoPromocion implements Serializable {
 private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	
 	private Long id_generar_certificado_promocion;
 	
 	@Column
@@ -54,19 +55,6 @@ private static final long serialVersionUID = 1L;
 		
 	}
 
-	public GenerarCertificadoPromocion(Long id_generar_certificado_promocion, float promedio_general_num, String promedio_general_let, 
-			String descripcion, Date fecha, String rectora, Empleado id_empleado, Registro registro, Curso curso) {
-
-		this.id_generar_certificado_promocion = id_generar_certificado_promocion;
-		this.promedio_general_num = promedio_general_num;
-		this.promedio_general_let = promedio_general_let;
-		this.descripcion = descripcion;
-		this.fecha = fecha;
-		this.rectora = rectora;
-		this.id_empleado = id_empleado;
-		this.registro = registro;
-		this.curso = curso;
-	}
 
 	public Long getId_generar_certificado_promocion() {
 		return id_generar_certificado_promocion;

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,14 +18,14 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "generar_certificado_matricula")
-
+@NamedQuery(name="GenerarCertificadoMatricula.findall", query = "SELECT g FROM GenerarCertificadoMatricula g")
 public class GenerarCertificadoMatricula implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	
 	private Long id_generar_certificado_matricula;
 
 	@Column
@@ -48,16 +49,6 @@ public class GenerarCertificadoMatricula implements Serializable{
 		
 	}
 
-	public GenerarCertificadoMatricula(Long id_generar_certificado_matricula, String rectora, Date fecha,
-			Empleado id_empleado, Matricula matricula, Direccion direccion) {
-		super();
-		this.id_generar_certificado_matricula = id_generar_certificado_matricula;
-		this.rectora = rectora;
-		this.fecha = fecha;
-		this.id_empleado = id_empleado;
-		this.matricula = matricula;
-		this.direccion = direccion;
-	}
 
 	public Long getId_generar_certificado_matricula() {
 		return id_generar_certificado_matricula;

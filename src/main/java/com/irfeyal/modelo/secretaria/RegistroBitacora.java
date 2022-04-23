@@ -2,6 +2,7 @@ package com.irfeyal.modelo.secretaria;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,12 +14,13 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 import java.sql.Timestamp;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 
 @Entity
 @Table (name = "registro_bitacora")
-
+@NamedQuery(name="RegistroBitacora.findAll", query="SELECT r FROM RegistroBitacora r")
 public class RegistroBitacora implements Serializable{
 
 	
@@ -26,7 +28,7 @@ public class RegistroBitacora implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	
 	private Long id_registro_bitacora;
 	
 	@Column
@@ -40,32 +42,21 @@ public class RegistroBitacora implements Serializable{
 	@Column
 	private String estado;
 	
-	@OneToOne
+	@OneToOne()
 	@JoinColumn(name = "id_empleado")
 	private Empleado id_empleado;
 
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_documento")
 	private Documento documento;
 	
 	
 	public RegistroBitacora() {
-		super();
+		
 	}
 
-	public RegistroBitacora(Long id_registro_bitacora, String solicitante, String emisor, Timestamp fecha,
-			Timestamp hora, String estado, Empleado id_empleado, Documento documento) {
-		super();
-		this.id_registro_bitacora = id_registro_bitacora;
-		this.solicitante = solicitante;
-		this.emisor = emisor;
-		this.fecha = fecha;
-		this.hora = hora;
-		this.estado = estado;
-		this.id_empleado = id_empleado;
-		this.documento = documento;
-	}
+	
 
 	public Long getId_registro_bitacora() {
 		return id_registro_bitacora;

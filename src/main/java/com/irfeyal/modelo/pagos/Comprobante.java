@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,12 +19,13 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "comprobante")
+@NamedQuery(name="Comprobante.findAll", query="SELECT c FROM Comprobante c")
 public class Comprobante implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	//@Column(columnDefinition = "serial")
 	private Long id_comprobante;
 
 	private Date fecha;
@@ -51,19 +53,19 @@ public class Comprobante implements Serializable {
 
 	}
 
-	public Comprobante(Long id_comprobante, Date fecha, String imagen, float valor_total, boolean estado,
-			Matricula id_matricula, Empleado id_empleado, TipoComprobante id_tipo_comprobante,
-			TipoPago id_tipo_pago) {
-		this.id_comprobante = id_comprobante;
-		this.fecha = fecha;
-		this.imagen = imagen;
-		this.valor_total = valor_total;
-		this.estado = estado;
-		this.id_matricula = id_matricula;
-		this.id_empleado = id_empleado;
-		this.id_tipo_comprobante = id_tipo_comprobante;
-		this.id_tipo_pago = id_tipo_pago;
-	}
+	//public Comprobante(Long id_comprobante, Date fecha, String imagen, float valor_total, boolean estado,
+		//	Matricula id_matricula, Empleado id_empleado, TipoComprobante id_tipo_comprobante,
+		//	TipoPago id_tipo_pago) {
+	//	this.id_comprobante = id_comprobante;
+	//	this.fecha = fecha;
+	//	this.imagen = imagen;
+	//	this.valor_total = valor_total;
+	//	this.estado = estado;
+	//	this.id_matricula = id_matricula;
+	//	this.id_empleado = id_empleado;
+	//	this.id_tipo_comprobante = id_tipo_comprobante;
+	//	this.id_tipo_pago = id_tipo_pago;
+//	}
 
 	public Long getId() {
 		return id_comprobante;

@@ -1,12 +1,15 @@
-package com.irfeyal.modelo.pagos;
+package com.irfeyal.modelo.pagos; 
 
 import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,6 +18,7 @@ import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 @Entity
 @Table(name = "tipo_comprobante")
+@NamedQuery(name= "TipoComprobante.findAll", query = "SELECT t FROM TipoComprobante t")
 public class TipoComprobante implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -26,11 +30,11 @@ public class TipoComprobante implements Serializable {
 	@Column
 	private String concepto_pago;
 
-	@OneToOne
+	@OneToOne()
 	@JoinColumn(name = "id_periodo")
 	private Periodo id_periodo;
 
-	@OneToOne
+	@OneToOne()
 	@JoinColumn(name = "id_kit")
 	private Kit id_kit;
 
@@ -38,13 +42,13 @@ public class TipoComprobante implements Serializable {
 
 	}
 
-	public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, Periodo id_periodo, Kit id_kit) {
-		super();
-		this.id_tipo_comprobante = id_tipo_comprobante;
-		this.concepto_pago = concepto_pago;
-		this.id_periodo = id_periodo;
-		this.id_kit = id_kit;
-	}
+	//public TipoComprobante(Long id_tipo_comprobante, String concepto_pago, Periodo id_periodo, Kit id_kit) {
+	//	super();
+	//	this.id_tipo_comprobante = id_tipo_comprobante;
+	//	this.concepto_pago = concepto_pago;
+	//	this.id_periodo = id_periodo;
+	//	this.id_kit = id_kit;
+//	}
 
 	public Long getIdTipoComprobante() {
 		return id_tipo_comprobante;

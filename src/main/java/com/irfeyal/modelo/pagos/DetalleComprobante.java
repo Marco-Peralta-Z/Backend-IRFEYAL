@@ -8,18 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "detalle_comprobante")
-
+@NamedQuery(name="DetalleComprobante.findAll", query="SELECT d FROM DetalleComprobante d")
 public class DetalleComprobante implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+	//@Column(columnDefinition = "serial")
 	private Long id_detalle_comprobante;
 	
 	private float valor;
@@ -33,12 +34,12 @@ public class DetalleComprobante implements Serializable{
 		
 	}
 
-	public DetalleComprobante(Long id_detalle_comprobante, float valor, String detalle, Comprobante id_comprobante) {
-		this.id_detalle_comprobante = id_detalle_comprobante;
-		this.valor = valor;
-		this.detalle = detalle;
-		this.id_comprobante = id_comprobante;
-	}
+//	public DetalleComprobante(Long id_detalle_comprobante, float valor, String detalle, Comprobante id_comprobante) {
+	//	this.id_detalle_comprobante = id_detalle_comprobante;
+	//	this.valor = valor;
+	//	this.detalle = detalle;
+	//	this.id_comprobante = id_comprobante;
+//	}
 
 	public Long getIdDetalleComprobante() {
 		return id_detalle_comprobante;
