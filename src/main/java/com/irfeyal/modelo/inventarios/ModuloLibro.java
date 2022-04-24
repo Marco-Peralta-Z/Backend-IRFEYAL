@@ -66,7 +66,9 @@ public class ModuloLibro implements Serializable {
 
     public ModuloLibro() {
     }
-
+    
+    
+ 
 	public Long getId_modulo_libro() {
 		return id_modulo_libro;
 	}

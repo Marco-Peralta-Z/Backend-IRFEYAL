@@ -15,4 +15,6 @@ public interface ModuloLibroInterface {
 	public abstract ModuloLibro update(Long moduloLibroId, double nuevoModuloLibro);
 
 	public abstract boolean delete(Long moduloLibroId);
+	
+	
 }

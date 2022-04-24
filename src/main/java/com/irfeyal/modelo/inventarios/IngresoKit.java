@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 /**
@@ -38,6 +40,7 @@ public class IngresoKit implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaIngreso;
     
+    
     @JoinColumn(name = "id_aprobacion", referencedColumnName = "id_aprobacion")
     @ManyToOne(optional = false)
     private Aprobacion id_aprobacion;
@@ -46,12 +49,15 @@ public class IngresoKit implements Serializable {
     @ManyToOne(optional = false)
     private Kit id_kit;
     
-    @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
+    @JoinColumn(name = "id_secretaria", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
-    private Empleado id_empleado;
+    private Empleado id_secretaria;
 
     public IngresoKit() {
     }
+    
+    
+
 
 	public Long getId_ingreso_kid() {
 		return id_ingreso_kid;
@@ -85,12 +91,26 @@ public class IngresoKit implements Serializable {
 		this.id_kit = id_kit;
 	}
 
-	public Empleado getId_empleado() {
-		return id_empleado;
+
+
+
+
+
+
+	public Empleado getId_secretaria() {
+		return id_secretaria;
 	}
 
-	public void setId_empleado(Empleado id_empleado) {
-		this.id_empleado = id_empleado;
+
+
+
+
+
+
+	public void setId_secretaria(Empleado id_secretaria) {
+		this.id_secretaria = id_secretaria;
 	}
+
+
 
 }

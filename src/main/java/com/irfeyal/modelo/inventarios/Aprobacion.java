@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 /**
@@ -47,6 +49,7 @@ public class Aprobacion implements Serializable {
     @Column(name = "detalle_control")
     private String detalleControl;
     
+    
     @Column(name = "fecha_aprobacion")
     @Temporal(TemporalType.DATE)
     private Date fechaAprobacion;
@@ -55,12 +58,13 @@ public class Aprobacion implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaControl;
     
-    @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
+    @JoinColumn(name = "id_empleado_admin", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
-    private Empleado id_empleado;
+    private Empleado id_empleado_admin;
 
     public Aprobacion() {
     }
+    
 
 	public Long getId_aprobacion() {
 		return id_aprobacion;
@@ -110,12 +114,16 @@ public class Aprobacion implements Serializable {
 		this.fechaControl = fechaControl;
 	}
 
-	public Empleado getId_empleado() {
-		return id_empleado;
+
+	public Empleado getId_empleado_admin() {
+		return id_empleado_admin;
 	}
 
-	public void setId_empleado(Empleado id_empleado) {
-		this.id_empleado = id_empleado;
+
+	public void setId_empleado_admin(Empleado id_empleado_admin) {
+		this.id_empleado_admin = id_empleado_admin;
 	}
+
+	
 
 }

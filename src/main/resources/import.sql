@@ -372,11 +372,11 @@ INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 3'
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 4', 'cositas 4', 'ocupado');
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 5', 'cositas 5', 'desocupado');
 
-INSERT INTO aprobacion (id_empleado, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (1, 'obs 1', true, 'detacontrol 2', '2022/02/12', '2022/02/12');
-INSERT INTO aprobacion (id_empleado, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (2, 'obs 2', true, 'detacontrol 3', '2022/02/13', '2022/02/13');
-INSERT INTO aprobacion (id_empleado, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (3, 'obs 3', true, 'detacontrol 4', '2022/02/14', '2022/02/14');
-INSERT INTO aprobacion (id_empleado, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (4, 'obs 4', true, 'detacontrol 5', '2022/02/15', '2022/02/15');
-INSERT INTO aprobacion (id_empleado, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (5, 'obs 5', true, 'detacontrol 6', '2022/02/16', '2022/02/16');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (1, 'obs 1', true, 'detacontrol 2', '2022/02/12', '2022/02/12');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (2, 'obs 2', true, 'detacontrol 3', '2022/02/13', '2022/02/13');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (3, 'obs 3', true, 'detacontrol 4', '2022/02/14', '2022/02/14');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (4, 'obs 4', true, 'detacontrol 5', '2022/02/15', '2022/02/15');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (5, 'obs 5', true, 'detacontrol 6', '2022/02/16', '2022/02/16');
 
 INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/12', 2, 'usado', 'manual', 1);
 INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/13', 1, 'usado', 'manual', 2);
@@ -420,11 +420,11 @@ INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, n
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (4, 'CursoCuatro_kitCuatro',' modulUno_kitCuatro', 4, 4, 'NumeroMod2_kitCuatro',4);
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (5, 'CursoCinco_kitCinco',' modulUno_kitCincoo', 5, 5, 'NumeroMod2_kitCinco',5);
 
-INSERT INTO ingreso_kit (id_empleado, id_aprobacion, fecha_ingreso, id_kit) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert
-INSERT INTO ingreso_kit (id_empleado, id_aprobacion, fecha_ingreso, id_kit) values (2, 2, '2022/02/13', 2);
-INSERT INTO ingreso_kit (id_empleado, id_aprobacion, fecha_ingreso, id_kit) values (3, 3, '2022/02/14', 3);
-INSERT INTO ingreso_kit (id_empleado, id_aprobacion, fecha_ingreso, id_kit) values (4, 4, '2022/02/15', 4);
-INSERT INTO ingreso_kit (id_empleado, id_aprobacion, fecha_ingreso, id_kit) values (5, 5, '2022/02/16', 5);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (2, 2, '2022/02/13', 2);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (3, 3, '2022/02/14', 3);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (4, 4, '2022/02/15', 4);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (5, 5, '2022/02/16', 5);
 
 INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert y pilas con id_estudiante por id_empleado 
 INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (2, 2, '2022/02/13', 2);

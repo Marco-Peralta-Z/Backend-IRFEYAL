@@ -3,7 +3,10 @@ package com.irfeyal.controlador.inventarios;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import com.irfeyal.modelo.inventarios.Kit;
+import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.servicio.inventarios.IKitService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -37,6 +41,23 @@ public class KitControlador {
 		return kitService.listAllKit();
 		
 	}
+	
+	@RequestMapping(value = "/crearkit", method = RequestMethod.POST)
+    public ResponseEntity<Kit> create(@Valid @RequestBody Kit kit) {
+		
+		//System.out.print("------------>"+moduloLibro.getCodModulo());
+        Kit kitReturn = kitService.save(kit);
+        
+        if(kitReturn != null) {
+        	System.out.print("------------>Entidad creada");
+        }else {
+        	System.out.print("------------>No se pudo gardar");
+        }
+        
+        return new ResponseEntity(kitReturn, HttpStatus.CREATED);
+        
+        
+    }
 	
 	@GetMapping(path="/id/", produces = {"application/json"})
 	public ResponseEntity<Kit> obtenerKit(@PathVariable("id") Long id){
