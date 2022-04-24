@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.servicio.documentosacademicos.PlanUnidadService;
-import com.irfeyal.servicio.parametrizacionacademica.AsignaturaServicesImp;
+import com.irfeyal.servicio.parametrizacionacademica.CursoServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.ModalidadServicesImp;
+import com.irfeyal.servicio.parametrizacionacademica.ParaleloServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.PeriodoServicesImp;
 
 @RestController
@@ -30,13 +31,16 @@ public class PlanUnidadController {
 	private PlanUnidadService planUnidadService;
 	
 	@Autowired
-	private AsignaturaServicesImp asignaturaService;
-	
-	@Autowired
 	private ModalidadServicesImp modalidadService;
 	
 	@Autowired
 	private PeriodoServicesImp periodoService;
+	
+	@Autowired
+	private CursoServicesImp cursosService;
+	
+	@Autowired
+	private ParaleloServicesImp paraleloService;
 	
 	@GetMapping
 	private ResponseEntity<List<PlanUnidad>> getAllPlanUnidad (){
@@ -73,11 +77,6 @@ public class PlanUnidadController {
 		
 	}
 	
-	@GetMapping(path = "asignaturas")
-	public ResponseEntity<?> getAsignaturas() {
-		return new ResponseEntity<>(asignaturaService.getAllAsignatura(), HttpStatus.OK);
-	}
-	
 	@GetMapping(path = "modalidades")
 	public ResponseEntity<?> getAllModalidades() {
 		return new ResponseEntity<>(modalidadService.getAllModalidad(), HttpStatus.OK);
@@ -97,4 +96,15 @@ public class PlanUnidadController {
 		}
 		
 	}
+	
+	@GetMapping(path = "cursos")
+	public ResponseEntity<?> getAllCursos() {
+		return new ResponseEntity<>(cursosService.getAllCurso(), HttpStatus.OK);
+	}
+	
+	@GetMapping(path = "paralelos")
+	public ResponseEntity<?> getAllParalelos() {
+		return new ResponseEntity<>(paraleloService.getAllParalelo(), HttpStatus.OK);
+	}
+	
 }

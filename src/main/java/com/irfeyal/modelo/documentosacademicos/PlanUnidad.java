@@ -12,8 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.CursoParalelo;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
+import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 @Entity
@@ -45,8 +47,12 @@ public class PlanUnidad implements Serializable{
 	
 	//----------------
 	@ManyToOne
-	@JoinColumn (name = "id_curso_paralelo")
-	private CursoParalelo curso_paralelo;
+	@JoinColumn (name = "id_curso")
+	private Curso curso;
+	
+	@ManyToOne
+	@JoinColumn (name = "id_paralelo")
+	private Paralelo paralelo;
 	
 	//----------------
 	
@@ -63,7 +69,8 @@ public class PlanUnidad implements Serializable{
 
 	public PlanUnidad(Long id_plan_unidad, String titulo_unidad, String objetivos, String contenidos,
 			String criterios_evaluacion, String destrezas, Date fecha_inicio, Date fecha_fin, String estado,
-			Unidad unidad, Asignatura asignatura, CursoParalelo curso_paralelo, Modalidad modalidad, Periodo periodo) {
+			Unidad unidad, Asignatura asignatura, Curso curso, Paralelo paralelo, Modalidad modalidad,
+			Periodo periodo) {
 		super();
 		this.id_plan_unidad = id_plan_unidad;
 		this.titulo_unidad = titulo_unidad;
@@ -76,10 +83,13 @@ public class PlanUnidad implements Serializable{
 		this.estado = estado;
 		this.unidad = unidad;
 		this.asignatura = asignatura;
-		this.curso_paralelo = curso_paralelo;
+		this.curso = curso;
+		this.paralelo = paralelo;
 		this.modalidad = modalidad;
 		this.periodo = periodo;
 	}
+
+
 
 
 
@@ -171,12 +181,20 @@ public class PlanUnidad implements Serializable{
 		this.asignatura = asignatura;
 	}
 
-	public CursoParalelo getCurso_paralelo() {
-		return curso_paralelo;
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setCurso_paralelo(CursoParalelo curso_paralelo) {
-		this.curso_paralelo = curso_paralelo;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public Paralelo getParalelo() {
+		return paralelo;
+	}
+
+	public void setParalelo(Paralelo paralelo) {
+		this.paralelo = paralelo;
 	}
 
 	public Modalidad getModalidad() {
