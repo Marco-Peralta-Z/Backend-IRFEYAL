@@ -36,10 +36,10 @@ public class ClaseServiceImpl implements IClaseService{
 	//CORREGIR 
 	
 	
-	/*@Override
+	@Override
 	public Clase ultimoingreso() {
 		// TODO Auto-generated method stub
 		return clasedao.findclaseingreseda();
 	}
-	*/
+	
 }
