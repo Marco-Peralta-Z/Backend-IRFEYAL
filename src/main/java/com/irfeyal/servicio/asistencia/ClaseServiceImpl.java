@@ -33,10 +33,13 @@ public class ClaseServiceImpl implements IClaseService{
 		return clasedao.mostrarfechasid(idestudiante, iddocente);
 	}
 
-	@Override
+	//CORREGIR 
+	
+	
+	/*@Override
 	public Clase ultimoingreso() {
 		// TODO Auto-generated method stub
 		return clasedao.findclaseingreseda();
 	}
-	
+	*/
 }

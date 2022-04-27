@@ -125,7 +125,8 @@ public class AsistenciaController {
 
 	@GetMapping("/claseingresada")
 	public Clase claseingresada(){
-		return claseservice.ultimoingreso();
+		//corregir return claseservice.ultimoingreso();
+		return null;
 	}
 	
 
