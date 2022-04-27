@@ -17,7 +17,13 @@ public List<Usuario> findAll();
 	
 	public Usuario findById(Long id);
 	
+	public  Usuario Login(String usuario, String contrasena);
+	
 	public Usuario saveUsuario(Usuario usuario);
 	
+	public  List<Usuario> listAllUsuario();
+	
 	public void deleteUsuario (Long id);
+	
+	public  Usuario update(Long id_usuario, double nuevaAprobacion);
 }

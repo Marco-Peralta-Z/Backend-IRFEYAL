@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.interfaces.rolseguridad.UsuarioInterface;
@@ -42,6 +43,22 @@ public class UsuarioControler {
 	public List<Usuario> index(){
 		return usuarioSer.findAll();
 	}
+	
+	
+	//metodo de busqueda 
+	
+	@GetMapping(path = "/list", produces = { "application/json" })
+	public List<Usuario> listausuarios() {
+		return usuarioSer.listAllUsuario();
+	}
+
+	@GetMapping(path = "/login", produces = { "application/json" })
+	public Usuario login(@RequestParam(value = "usuario") String usuario, @RequestParam(value = "contrasena") String contrasena) {
+		System.out.print("holaaaaaaaaaaaa");
+		return usuarioSer.Login(usuario, contrasena);
+	}
+	
+	
 	
 	
 	@DeleteMapping("/usuario/{id}")
