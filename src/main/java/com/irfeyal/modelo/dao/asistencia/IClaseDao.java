@@ -16,4 +16,7 @@ public interface IClaseDao extends JpaRepository<Clase, Long>{
 			+ "WHERE e.id_estudiante=?1 and c.id_docente_id_rolusuario=?2",nativeQuery=true)
 	List<Clase> mostrarfechasid(Long idestudiante, Integer iddocente);
 
+	
+	@Query(value="SELECT * FROM clase ORDER BY id_clase DESC LIMIT 1"  ,nativeQuery=true)
+	 Clase findclaseingreseda();
 }

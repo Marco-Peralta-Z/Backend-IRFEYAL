@@ -53,6 +53,18 @@ public class Paralelo implements Serializable {
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
 
+	
+	public Paralelo() {
+		super();
+	}
+	
+
+	public Paralelo(Long id_paralelo) {
+		super();
+		this.id_paralelo = id_paralelo;
+	}
+
+
 	public Long getId_paralelo() {
 		return id_paralelo;
 	}

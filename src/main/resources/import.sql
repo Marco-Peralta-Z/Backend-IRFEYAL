@@ -271,10 +271,10 @@ INSERT INTO clase (fec_clase,id_asignatura,id_curso,id_docente,id_paralelo,id_mo
 INSERT INTO clase (fec_clase,id_asignatura,id_curso,id_docente,id_paralelo,id_modalidad_id_modalidad,id_periodo_id_periodo) values ('2022/02/05',5, 5, 5, 5,3,5);
 
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 1, 1);--OJO:Necesito la clase 
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 2, 2);
+INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 2, 2);
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 3, 3);
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 4, 4);
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 5, 5);
+INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 5, 5);
 
 --DOCUMENTOS ACADEMICOS-----------
 
