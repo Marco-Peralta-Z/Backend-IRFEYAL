@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
@@ -36,13 +38,14 @@ public class Clase implements Serializable {
 	    @Column(name = "fec_clase")
 	    @Temporal(TemporalType.DATE)
 	    private Date fecClase;
-	    
+       @JsonIgnore
 	    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idClase")
 	    private Collection<Asistencia> asistenciaCollection;
 	    
 	    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso", nullable = false)
 	    @ManyToOne(optional = false)
 	    private Curso idCurso;
+	    
 	    
 	    @OneToOne(fetch = FetchType.LAZY)
 	    private Modalidad id_modalidad;
@@ -68,6 +71,7 @@ public class Clase implements Serializable {
 	    public Clase(Long idClase) {
 	        this.idClase = idClase;
 	    }
+	    
 
 	    public Clase(Long idClase, Date fecClase) {
 	        this.idClase = idClase;
@@ -146,7 +150,23 @@ public class Clase implements Serializable {
 	        this.id_periodo = idPeriodo;
 	    }
 
-	    @Override
+	    public Modalidad getId_modalidad() {
+			return id_modalidad;
+		}
+
+		public void setId_modalidad(Modalidad id_modalidad) {
+			this.id_modalidad = id_modalidad;
+		}
+
+		public Periodo getId_periodo() {
+			return id_periodo;
+		}
+
+		public void setId_periodo(Periodo id_periodo) {
+			this.id_periodo = id_periodo;
+		}
+
+		@Override
 	    public int hashCode() {
 	        int hash = 0;
 	        hash += (idClase != null ? idClase.hashCode() : 0);

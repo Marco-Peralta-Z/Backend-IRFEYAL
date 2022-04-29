@@ -21,7 +21,6 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "curso")
-@JsonIgnoreProperties({ "hibernateLazyInitializer" })
 public class Curso implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -53,6 +52,17 @@ public class Curso implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_empleado")
 	private Empleado empleado;
+	
+	
+
+	public Curso() {
+		super();
+	}
+
+	public Curso(Long id_curso) {
+		super();
+		this.id_curso = id_curso;
+	}
 
 	public Long getId_curso() {
 		return id_curso;

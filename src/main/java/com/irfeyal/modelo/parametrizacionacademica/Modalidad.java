@@ -54,6 +54,23 @@ public class Modalidad implements Serializable {
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
 
+	
+	
+	
+	public Modalidad() {
+		super();
+	}
+
+	public Modalidad(Long id_modalidad) {
+		super();
+		this.id_modalidad = id_modalidad;
+	}
+
+	
+	
+	
+	
+	
 	public Long getId_modalidad() {
 		return id_modalidad;
 	}

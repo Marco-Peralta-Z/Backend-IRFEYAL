@@ -53,6 +53,15 @@ public class Empleado implements Serializable {
 	public Empleado() {
 		super();
 	}
+	
+	
+
+	public Empleado(Long id_empleado) {
+		super();
+		this.id_empleado = id_empleado;
+	}
+
+
 
 	public Empleado(Long id_empleado, String cargo, Extension extension, Direccion direccion, Telefono telefono,
 			Usuario usuario, CorreoElectronico correo, Persona id_persona) {

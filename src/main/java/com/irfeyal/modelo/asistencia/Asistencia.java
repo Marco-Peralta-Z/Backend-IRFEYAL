@@ -24,7 +24,7 @@ public class Asistencia implements Serializable {
 	private Long idAsistencia;
 
 	@Column(name = "estado_asis")
-	private String estadoAsis;
+	private Boolean estadoAsis;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
 	private Clase idClase;
@@ -41,7 +41,7 @@ public class Asistencia implements Serializable {
 		this.idAsistencia = idAsistencia;
 	}
 
-	public Asistencia(Long idAsistencia, String estadoAsis, Clase idClase, Estudiante idEstudiante) {
+	public Asistencia(Long idAsistencia, Boolean estadoAsis, Clase idClase, Estudiante idEstudiante) {
 		super();
 		this.idAsistencia = idAsistencia;
 		this.estadoAsis = estadoAsis;
@@ -55,6 +55,14 @@ public class Asistencia implements Serializable {
 
 	
 	
+	public Boolean getEstadoAsis() {
+		return estadoAsis;
+	}
+
+	public void setEstadoAsis(Boolean estadoAsis) {
+		this.estadoAsis = estadoAsis;
+	}
+
 	public void setIdAsistencia(Long idAsistencia) {
 		this.idAsistencia = idAsistencia;
 	}
