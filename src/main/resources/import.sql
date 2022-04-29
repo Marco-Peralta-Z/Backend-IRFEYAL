@@ -230,16 +230,16 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(4, 4);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(5, 5);
 
 ------------------PARALELO---------------------
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Quisquam ', '02/02/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Consectetur', '01/01/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Dolorem  ', '07/03/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Eleifend ', '08/03/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Vulputate ', '12/02/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Sollicitudin ', '22/01/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Nimperdiet', '17/03/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Praesent', '15/02/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Commodo', '11/01/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Ultricies', '03/01/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('A', '02/02/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('B', '01/01/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('C', '07/03/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('D', '08/03/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('E', '12/02/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('F', '22/01/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('G', '17/03/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('H', '15/02/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('I', '11/01/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('J', '03/01/2022');
 
 --------------------------CURSO PARALELO--------------------------
 INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(1, 1);

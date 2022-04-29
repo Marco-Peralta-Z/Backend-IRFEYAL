@@ -7,7 +7,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
+import com.irfeyal.interfaces.parametrizacionacademica.EmpleadoServices;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -36,6 +38,9 @@ public class AsignaturaController {
 	@Autowired
 	private AsignaturaServices asignaturaService;
 
+	@Autowired
+	private EmpleadoServices empleadoService;
+
 	@GetMapping(path = "", produces = "application/json")
 	public ResponseEntity<?> getAsignaturas() {
 		return new ResponseEntity<>(asignaturaService.getAllAsignatura(), HttpStatus.OK);
@@ -60,11 +65,30 @@ public class AsignaturaController {
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (asignatura.isEmpty()) {
-			respuesta.put("mensaeje",
+			respuesta.put("mensaje",
 					"La Asignatura ID: ".concat(idAsignatura.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(asignatura, HttpStatus.OK);
+	}
+
+	//Getting para obtener los empleados con cargo de tutor
+	@GetMapping(path = "/tutor", produces = "application/json")
+	public ResponseEntity<?> getTutores() {
+		List<Empleado> listaDocentes = null;
+		Map<String, Object> respuesta = new HashMap<>();
+		try {
+			listaDocentes = empleadoService.empleadoPorCargo("tutor");
+		} catch (DataAccessException e) {
+			respuesta.put("mensaje", "Error al realizar la consulta en la base de datos");
+			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if (listaDocentes == null) {
+			respuesta.put("mensaje", "No hay empleados docentes en la base de datos");
+			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(listaDocentes, HttpStatus.OK);
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
@@ -92,8 +116,8 @@ public class AsignaturaController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateAsignatura(@PathVariable("id") Long idAsignatura,@Validated @RequestBody Asignatura asignatura,
-			BindingResult result) {
+	public ResponseEntity<?> updateAsignatura(@PathVariable("id") Long idAsignatura,
+			@Validated @RequestBody Asignatura asignatura, BindingResult result) {
 		Optional<Asignatura> asignaturaActual = asignaturaService.getAsignaturaById(idAsignatura);
 		Asignatura asignaturaUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();

@@ -16,7 +16,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
@@ -52,8 +51,6 @@ public class Curso implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_empleado")
 	private Empleado empleado;
-	
-	
 
 	public Curso() {
 		super();

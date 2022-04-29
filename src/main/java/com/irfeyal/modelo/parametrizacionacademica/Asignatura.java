@@ -66,17 +66,14 @@ public class Asignatura implements Serializable {
 			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_empleado") })
 	private List<Empleado> empleados = new ArrayList<>();
 
-	
 	public Asignatura() {
 		super();
 	}
-	
 
 	public Asignatura(Long id_asignatura) {
 		super();
 		this.id_asignatura = id_asignatura;
 	}
-
 
 	public Long getId_asignatura() {
 		return id_asignatura;

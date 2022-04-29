@@ -73,21 +73,14 @@ public class Periodo implements Serializable {
 	@JoinColumn(name = "id_malla", nullable = true)
 	private Malla malla;
 
-	
-	
-	
 	public Periodo() {
 		super();
 	}
-
-
 
 	public Periodo(Long id_periodo) {
 		super();
 		this.id_periodo = id_periodo;
 	}
-	
-	
 
 	public Long getId_periodo() {
 		return id_periodo;
