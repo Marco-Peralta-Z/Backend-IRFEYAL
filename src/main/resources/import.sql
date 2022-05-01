@@ -260,7 +260,7 @@ INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,2,2,2);
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',3,3,3,3,3,3);
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,4,4,4,4);
-INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,5,5,5,5);
+INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,1,1,5);
 
 --ASISTENCIA-------------
 
@@ -275,6 +275,7 @@ INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 2, 2)
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 3, 3);
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 4, 4);
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 5, 5);
+
 
 --DOCUMENTOS ACADEMICOS-----------
 
