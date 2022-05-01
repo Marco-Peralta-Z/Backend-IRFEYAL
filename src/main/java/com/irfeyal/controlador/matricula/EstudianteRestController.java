@@ -76,6 +76,26 @@ public class EstudianteRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
+	
+	@GetMapping("buscarEstudiante/{cedula}")
+	public ResponseEntity<?> buscarByCedula(@PathVariable String cedula){
+		Estudiante estudianteExiste= null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			estudianteExiste=estudianteService.findByCedula(cedula);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error no se pudo realizar la consulta");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if (estudianteExiste==null) {
+			response.put("mensaje", "Estudiante con numero de cedula: ".concat(cedula.toString().concat(", no existe en la base de datos!")));
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Estudiante>(estudianteExiste, HttpStatus.OK);
+	}
+	
 	@PutMapping("/estudiante/{id}")
 	public ResponseEntity<?> update(@Validated @RequestBody Estudiante estudiante, BindingResult result, @PathVariable Long id){
 		
