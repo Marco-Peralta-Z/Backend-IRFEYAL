@@ -56,7 +56,8 @@ public class UsuarioServices implements UsuarioInterface{
 	@Override
 	public Usuario Login(String usuario, String contrasena) {
 		// TODO Auto-generated method stub
-		return usuariodao.login(usuario, contrasena);
+		//return usuariodao.login(usuario, contrasena);
+		return null;
 	}
 
 	@Override

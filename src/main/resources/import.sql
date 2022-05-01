@@ -2,6 +2,9 @@
 
 -------------------PAIS-------------------
 INSERT INTO pais (pais) VALUES ('Ecuador');
+INSERT INTO pais (pais) VALUES ('colombia');
+INSERT INTO pais (pais) VALUES ('peru');
+INSERT INTO pais (pais) VALUES ('chile');
 
 -------------------PROVINCIA-------------------
 
@@ -52,41 +55,43 @@ INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parro
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('americas', 'lazo',7,1,5,4);
 
 -------------------USUARIO-------------------
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('123',true,'tutor');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('abc',true,'secretaria 1');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1abc',true,'estudiante');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('abc1',true,'tutor 2');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('def',true,'coordinador');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('123a',true,'rector 2');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1234',true,'gerente');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1234a',true,'corAdmi');
+INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('123',true,'usuario_1');
+INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('abc',true,'usuario_2');
+INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1abc',true,'usuario_3');
+INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('abc1',true,'usuario_4');
+INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('def',true,'usuario_5');
+INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('123a',true,'usuario_6');
+INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1234',true,'usuario_7');
+INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1234a',true,'usuario_8');
 
 -------------------ROL-------------------
 INSERT INTO rol (descripcion) VALUES ('Administrador');
 INSERT INTO rol (descripcion) VALUES('gerente');
 INSERT INTO rol (descripcion) VALUES ('secretaria');
-INSERT INTO rol (descripcion) VALUES ('estudiante');
 INSERT INTO rol (descripcion) VALUES ('coordinador de desarrollo');
 INSERT INTO rol (descripcion) VALUES ('coordinador administrativo');
 INSERT INTO rol (descripcion) VALUES ('rectora');
-
--------------------ROL_USUARIO-------------------
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true, 1, 1);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,2,2);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,3,3);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,4,4);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,5,5);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,6,6);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,7,7);
+INSERT INTO rol (descripcion) VALUES ('docente');
+INSERT INTO rol (descripcion) VALUES ('tutor');
 
 -------------------MODULO-------------------
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('matriculas','http//localhost/modmatricula.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('asistencia','http//localhost/modasistencia.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('documentos academicos','http//localhost/moddocumentos.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('inventarios','http//localhost/modinventarios.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('pagos','http//localhost/modpagos.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('gestion de tutorias','http//localhost/modtutorias.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('secretaria','http//localhost/modsecretaria.php',1);
+INSERT INTO modulo (modulo,url) VALUES ('matriculas','http//localhost/modmatricula.php');
+INSERT INTO modulo (modulo,url) VALUES ('asistencia','http//localhost/modasistencia.php');
+INSERT INTO modulo (modulo,url) VALUES ('documentos academicos','http//localhost/moddocumentos.php');
+INSERT INTO modulo (modulo,url) VALUES ('inventarios','http//localhost/modinventarios.php');
+INSERT INTO modulo (modulo,url) VALUES ('pagos','http//localhost/modpagos.php');
+INSERT INTO modulo (modulo,url) VALUES ('gestion de tutorias','http//localhost/modtutorias.php');
+INSERT INTO modulo (modulo,url) VALUES ('secretaria','http//localhost/modsecretaria.php');
+
+-------------------ROL_USUARIO-------------------
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true, 1,2,1);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,1,2);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,3);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,4);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,5);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,6);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,7);
+
 
 ------------------- EMPRESA-------------------
 INSERT INTO empresa (nombre_empresa) VALUES ('irfeyal prueba');
@@ -260,7 +265,7 @@ INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,2,2,2);
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',3,3,3,3,3,3);
 INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,4,4,4,4);
-INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,1,1,5);
+INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,5,5,5,5);
 
 --ASISTENCIA-------------
 
@@ -271,11 +276,10 @@ INSERT INTO clase (fec_clase,id_asignatura,id_curso,id_docente,id_paralelo,id_mo
 INSERT INTO clase (fec_clase,id_asignatura,id_curso,id_docente,id_paralelo,id_modalidad_id_modalidad,id_periodo_id_periodo) values ('2022/02/05',5, 5, 5, 5,3,5);
 
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 1, 1);--OJO:Necesito la clase 
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 2, 2);
+INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 2, 2);
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 3, 3);
 INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 4, 4);
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 5, 5);
-
+INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 5, 5);
 
 --DOCUMENTOS ACADEMICOS-----------
 
