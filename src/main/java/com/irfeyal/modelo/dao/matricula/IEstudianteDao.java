@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.irfeyal.modelo.matricula.Estudiante;
 
@@ -14,6 +15,10 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 	
 	Page<Estudiante> findAll(Pageable pageable);
 	
+	
+	@Query(value = "select e from Estudiante e join "
+			+ "Persona p on p.id_persona = e.id_persona where p.cedula like :cedula", nativeQuery = false)
+	Estudiante findByCedula(@Param("cedula") String cedula );
 	
 	//-----------------------Modulo Asistencia--------------------
 	

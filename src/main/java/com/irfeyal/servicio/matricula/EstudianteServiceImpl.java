@@ -52,4 +52,11 @@ public class EstudianteServiceImpl implements IEstudianteService {
 		estudianteDao.deleteById(id);
 	}
 
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Estudiante findByCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return estudianteDao.findByCedula(cedula);
+	}
 }
