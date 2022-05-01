@@ -193,7 +193,7 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 	@Query(value="SELECT e.id_estudiante,e.estado_estudiante,e.id_correo,e.id_direccion,e.id_extension,e.id_persona,e.id_telefono "
 			+ "FROM Estudiantes e "
 			+ "RIGHT JOIN matriculas m on e.id_estudiante=m.id_estudiante "
-			+ "where m.id_modalidad=?1 m.id_periodo=?2 and m.id_paralelo=?3 and m.id_curso=?4",nativeQuery=true)
+			+ "where m.id_modalidad=?1 and m.id_periodo=?2 and m.id_paralelo=?3 and m.id_curso=?4",nativeQuery=true)
 	List<Estudiante> buscarcursomodperparcur( Long id_mod, Long id_periodo, Long id_paralelo,Long id_curso);
 	@Query(value="SELECT e.id_estudiante,e.estado_estudiante,e.id_correo,e.id_direccion,e.id_extension,e.id_persona,e.id_telefono "
 			+ " FROM Estudiantes e "

@@ -12,7 +12,7 @@ import com.irfeyal.modelo.asistencia.Asistencia;
 public interface IAsistenciaDao extends JpaRepository<Asistencia, Long>{
 	
 	
-	@Query(value="SELECT asis.id_estudiante,asis.estado_asis "
+	@Query(value="SELECT * "
 			+ "FROM Asistencia asis "
 			+ "join clase c on c.id_clase=asis.id_clase "
 			+ "WHERE  c.id_modalidad_id_modalidad=?1 and c.id_periodo_id_periodo=?2 and c.id_paralelo=?3 and c.id_asignatura=?4 and c.id_curso=?5 and c.fec_clase=?6",nativeQuery=true)
