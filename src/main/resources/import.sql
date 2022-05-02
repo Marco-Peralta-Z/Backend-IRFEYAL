@@ -68,11 +68,10 @@ INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1234a',tru
 INSERT INTO rol (descripcion) VALUES ('Administrador');
 INSERT INTO rol (descripcion) VALUES('gerente');
 INSERT INTO rol (descripcion) VALUES ('secretaria');
+INSERT INTO rol (descripcion) VALUES ('estudiante');
 INSERT INTO rol (descripcion) VALUES ('coordinador de desarrollo');
 INSERT INTO rol (descripcion) VALUES ('coordinador administrativo');
 INSERT INTO rol (descripcion) VALUES ('rectora');
-INSERT INTO rol (descripcion) VALUES ('docente');
-INSERT INTO rol (descripcion) VALUES ('tutor');
 
 -------------------MODULO-------------------
 INSERT INTO modulo (modulo,url) VALUES ('matriculas','http//localhost/modmatricula.php');

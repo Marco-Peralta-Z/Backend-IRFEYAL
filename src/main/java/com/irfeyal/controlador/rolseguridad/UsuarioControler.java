@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.interfaces.rolseguridad.UsuarioInterface;
 import com.irfeyal.modelo.rolseguridad.Usuario;
+import com.irfeyal.modelo.rolseguridad.UsuarioLogin;
+import com.irfeyal.servicio.rolseguridad.UsuarioLoginServices2;
 import com.irfeyal.servicio.rolseguridad.UsuarioServices;
 
 
@@ -38,6 +40,8 @@ public class UsuarioControler {
 	
 	@Autowired
 	 private UsuarioServices usuarioSer;
+	@Autowired
+	private UsuarioLoginServices2 usuarioLoginSer;
 	
 	@GetMapping("/Usuario")
 	public List<Usuario> index(){
@@ -53,9 +57,11 @@ public class UsuarioControler {
 	}
 
 	@GetMapping(path = "/login", produces = { "application/json" })
-	public Usuario login(@RequestParam(value = "usuario") String usuario, @RequestParam(value = "contrasena") String contrasena) {
-		System.out.print("holaaaaaaaaaaaa");
-		return usuarioSer.Login(usuario, contrasena);
+	public UsuarioLogin login(@RequestParam(value = "usuario") String usuario, @RequestParam(value = "contrasenia") String contrasenia) {
+		System.out.println("*********************************************");
+		System.out.print( usuarioLoginSer.LoginUser(usuario, contrasenia));
+		
+		return usuarioLoginSer.LoginUser(usuario, contrasenia);
 	}
 	
 	
