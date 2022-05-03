@@ -48,6 +48,25 @@ public class UsuarioServices implements UsuarioInterface{
 		usuariodao.deleteById(id);
 	}
 
+	@Override
+	public List<Usuario> listAllUsuario() {
+		return (List<Usuario>) usuariodao.findAll();
+	}
+
+	@Override
+	public Usuario Login(String usuario, String contrasena) {
+		// TODO Auto-generated method stub
+		//return usuariodao.login(usuario, contrasena);
+		return null;
+	}
+
+	@Override
+	public Usuario update(Long id_usuario, double nuevaAprobacion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 	
 	

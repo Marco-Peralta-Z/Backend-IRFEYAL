@@ -20,4 +20,6 @@ public interface IEstudianteService {
 	
 	public void delete (Long id);
 	
+	public Estudiante findByCedula(String cedula);
+	
 }
