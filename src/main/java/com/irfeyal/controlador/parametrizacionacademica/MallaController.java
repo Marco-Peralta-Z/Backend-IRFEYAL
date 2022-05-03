@@ -79,6 +79,8 @@ public class MallaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			//Guardar malla
+			malla.setDescripcion(malla.getDescripcion().toUpperCase());
 			mallaNuevo = mallaService.saveMalla(malla);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear la malla en la base de datos");
@@ -109,8 +111,9 @@ public class MallaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			//Actualización malla
 			mallaActual.get().setEstado(malla.getEstado());
-			mallaActual.get().setDescripcion(malla.getDescripcion());
+			mallaActual.get().setDescripcion(malla.getDescripcion().toUpperCase());
 			mallaUpdated = mallaService.saveMalla(mallaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

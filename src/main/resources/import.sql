@@ -131,49 +131,49 @@ INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario,
 -- PARAMETRIZACION ACADEMICA
 
 -------------------MODALIDAD-----------------------------
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Matutina', '2022-01-01 07:00:00', '2022-01-01 12:00:00');
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Vespertina', '2022-01-01 13:00:00', '2022-01-01 18:00:00');
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Nocturna', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Atardecer', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Amanecer', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
+INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('MATUTINA', '2022-01-01 07:00:00', '2022-01-01 12:00:00');
+INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('VESPERTINA', '2022-01-01 13:00:00', '2022-01-01 18:00:00');
+INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('NOCTURNA', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
+INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('PRESENCIAL', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
+INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('SEMIPRESENCIAL', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
 
 ---------------------MALLA-------------------------------
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Educacion Basica', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Primaria', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Secundaria', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Preparatoria', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Bachillerato', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Basica', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Jardin', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Inicial', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Unificado', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('General', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('EDUCACION BASICA', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('PRIMARIO', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('SECUNDARIA', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('PREPARATORIA', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('BACHILLERATO', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('BASICA', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('JARDIN', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('INICIAL', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('UNIFICADO', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('GENERAL', true,'07/04/2022');
 
 ------------------------ASIGNATURA--------------------------
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Matematicas', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Ingles', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Literatura', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Biologia', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('MATEMATICAS', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('INGLES', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('LITERATURA', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('BIOLOGIA', '07/04/2022');
 INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Quimica', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Fisica', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Estudios Sociales', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Psicologia', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Lenguaje', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Electronica', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('FISICA', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('ESTUDIOS SOCIALES', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('PSICOLOGIA', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('LENGUAJE', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('ELECTRONICA', '07/04/2022');
 
 -------------------------------PERIODO---------------------------
-INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('Ninguna 1', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 1);
-INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('Ninguna 2', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 2);
-INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('Ninguna 3', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 3);
-INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('Ninguna 4', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 4);
-INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('Ninguna 5', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 5);
+INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('ACTIVIDAD 1', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 1);
+INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('ACTIVIDAD 2', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 2);
+INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('ACTIVIDAD 3', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 3);
+INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('ACTIVIDAD 4', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 4);
+INSERT INTO public.periodo (actividades, costo_matricula, costo_mensualidad, fecha_actividad, fecha_creacion, fecha_fin, fecha_inicio, id_malla) VALUES('ACTIVIDAD 5', 30.0, 50.0, '08/8/2022', '07/04/2022', '11/11/2022', '09/01/2022', 5);
 
 -------------------------------CURSO---------------------------
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('Octavo', '07/04/2022', 'nuevo', 1);
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('Noveno', '08/04/2022', 'nuevo', 1);
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('Decimo', '09/04/2022', 'nuevo', 1);
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('Primero Bachillerato', '10/04/2022', 'nuevo', 1);
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('Segundo Bachillerato', '11/04/2022', 'nuevo', 1);
+INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('OCTAVO', '07/04/2022', 'NUEVO', 1);
+INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('NOVENO', '08/04/2022', 'NUEVO', 1);
+INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('DECIMO', '09/04/2022', 'NUEVO', 1);
+INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('PRIMERO BACHILLERATO', '10/04/2022', 'NUEVO', 1);
+INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado) VALUES('SEGUNDO BACHILLERATO', '11/04/2022', 'NUEVO', 1);
 
 -------------------------HORARIO-----------------------
 INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00');

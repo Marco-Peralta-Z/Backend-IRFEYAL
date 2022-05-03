@@ -25,7 +25,7 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "asignatura")
-@JsonIgnoreProperties({ "hibernateLazyInitializer" })
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Asignatura implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -67,12 +67,6 @@ public class Asignatura implements Serializable {
 	private List<Empleado> empleados = new ArrayList<>();
 
 	public Asignatura() {
-		super();
-	}
-
-	public Asignatura(Long id_asignatura) {
-		super();
-		this.id_asignatura = id_asignatura;
 	}
 
 	public Long getId_asignatura() {

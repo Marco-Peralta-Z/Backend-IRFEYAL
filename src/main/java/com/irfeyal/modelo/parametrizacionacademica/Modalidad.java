@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "modalidad")
-@JsonIgnoreProperties({ "hibernateLazyInitializer" })
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Modalidad implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -51,26 +51,11 @@ public class Modalidad implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "modalidad_curso", joinColumns = { @JoinColumn(name = "id_modalidad") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_curso") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
 
-	
-	
-	
 	public Modalidad() {
-		super();
 	}
 
-	public Modalidad(Long id_modalidad) {
-		super();
-		this.id_modalidad = id_modalidad;
-	}
-
-	
-	
-	
-	
-	
 	public Long getId_modalidad() {
 		return id_modalidad;
 	}

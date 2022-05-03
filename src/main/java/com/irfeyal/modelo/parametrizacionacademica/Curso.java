@@ -46,19 +46,12 @@ public class Curso implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
-	// Relación con la tabla empleado,
-	// Preguntar tiene que tener obligatoriamente un empleado
+	// Relación con la tabla empleado
 	@ManyToOne
 	@JoinColumn(name = "id_empleado")
 	private Empleado empleado;
 
 	public Curso() {
-		super();
-	}
-
-	public Curso(Long id_curso) {
-		super();
-		this.id_curso = id_curso;
 	}
 
 	public Long getId_curso() {

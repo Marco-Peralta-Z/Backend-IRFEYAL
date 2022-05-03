@@ -87,6 +87,8 @@ public class PeriodoController {
 		try {
 			Optional<Malla> malla = mallaService.getMallaById(idMalla);
 			if (!malla.isEmpty()) {
+				//Guardando periodo junto con la malla
+				periodo.setActividades(periodo.getActividades().toUpperCase());
 				periodo.setMalla(malla.get());
 				periodoNuevo = periodoService.savePeriodo(periodo);
 			} else {
@@ -122,7 +124,8 @@ public class PeriodoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			periodoActual.get().setActividades(periodo.getActividades());
+			//Actualizando periodo
+			periodoActual.get().setActividades(periodo.getActividades().toUpperCase());
 			periodoActual.get().setFecha_actividad(periodo.getFecha_actividad());
 			periodoActual.get().setFecha_inicio(periodo.getFecha_inicio());
 			periodoActual.get().setFecha_fin(periodo.getFecha_fin());

@@ -28,7 +28,7 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "horario")
-@JsonIgnoreProperties({ "hibernateLazyInitializer" })
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Horario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -67,14 +67,12 @@ public class Horario implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "curso_horario", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_curso") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<>();
 
 	// Relación horario_empleado
 	@ManyToMany
 	@JoinTable(name = "horario_empleado", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_empleado") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Empleado> listaEmpleados = new ArrayList<>();
 
 	public Long getId_horario() {

@@ -6,11 +6,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
-import com.irfeyal.interfaces.parametrizacionacademica.EmpleadoServices;
-import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
-import com.irfeyal.modelo.rolseguridad.Empleado;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -30,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+
 @CrossOrigin(origins = "", maxAge = 3600)
 @RestController
 @RequestMapping("/asignatura")
@@ -38,14 +36,11 @@ public class AsignaturaController {
 	@Autowired
 	private AsignaturaServices asignaturaService;
 
-	@Autowired
-	private EmpleadoServices empleadoService;
-
 	@GetMapping(path = "", produces = "application/json")
 	public ResponseEntity<?> getAsignaturas() {
 		return new ResponseEntity<>(asignaturaService.getAllAsignatura(), HttpStatus.OK);
 	}
-
+	
 	@GetMapping(path = "/", produces = "application/json")
 	public ResponseEntity<?> getAllAsignaturas(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
@@ -72,25 +67,6 @@ public class AsignaturaController {
 		return new ResponseEntity<>(asignatura, HttpStatus.OK);
 	}
 
-	//Getting para obtener los empleados con cargo de tutor
-	@GetMapping(path = "/tutor", produces = "application/json")
-	public ResponseEntity<?> getTutores() {
-		List<Empleado> listaDocentes = null;
-		Map<String, Object> respuesta = new HashMap<>();
-		try {
-			listaDocentes = empleadoService.empleadoPorCargo("tutor");
-		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al realizar la consulta en la base de datos");
-			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		if (listaDocentes == null) {
-			respuesta.put("mensaje", "No hay empleados docentes en la base de datos");
-			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		return new ResponseEntity<>(listaDocentes, HttpStatus.OK);
-	}
-
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> createAsignatura(@Validated @RequestBody Asignatura asignatura,
 			BindingResult result) {
@@ -104,6 +80,7 @@ public class AsignaturaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			asignatura.setDescripcion(asignatura.getDescripcion().toUpperCase());
 			asignaturaNueva = asignaturaService.saveAsignatura(asignatura);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear la asignatura en la base de datos");
@@ -134,7 +111,11 @@ public class AsignaturaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			asignaturaActual.get().setDescripcion(asignatura.getDescripcion());
+			//Actualización de asignatura 
+			asignaturaActual.get().setDescripcion(asignatura.getDescripcion().toUpperCase());
+			asignaturaActual.get().setHorarios(asignatura.getHorarios());
+			asignaturaActual.get().setEmpleados(asignatura.getEmpleados());
+			asignaturaActual.get().setMallas(asignatura.getMallas());
 			asignaturaUpdated = asignaturaService.saveAsignatura(asignaturaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
