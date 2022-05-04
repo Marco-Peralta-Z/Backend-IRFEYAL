@@ -246,8 +246,8 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 	List<Estudiante> cargarest( Integer iddocente);
 	
 	@Query(value="SELECT * FROM Estudiantes e "
-			+ "WHERE c.id_estudiante=?1",nativeQuery=true)
-	Estudiante findestudiante( Long id);
+			+ "WHERE e.id_estudiante=?1",nativeQuery=true)
+	List<Estudiante> findestudianteid(Long idestu);
 	//-----------------------------Fin Modulo Asistencia-----------------------
 
 }

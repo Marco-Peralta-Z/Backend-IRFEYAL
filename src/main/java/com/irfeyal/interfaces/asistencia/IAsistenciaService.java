@@ -26,8 +26,8 @@ public interface IAsistenciaService {
 	public List<Modalidad> findAllModalidad();
 	public List<Periodo> findAllperio();
 	public List<Curso>findAllcurso();
-	
-	public Asistencia burcarasistencia(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso,Date fecha);
+	public List<Estudiante>mostrarinformacion(long id);
+	public List<Asistencia> burcarasistencia(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso,Date fecha);
 	
 	public List<Modalidad> modalidaddocente(Integer id_docente);
 }

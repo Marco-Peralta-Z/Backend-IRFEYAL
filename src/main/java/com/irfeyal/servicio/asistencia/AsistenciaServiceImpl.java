@@ -247,10 +247,16 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	}
 
 	@Override
-	public Asistencia burcarasistencia(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,
+	public List<Asistencia> burcarasistencia(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,
 			Long id_curso, Date fecha) {
 		// TODO Auto-generated method stub
 		return asistenciadao.buscarasistencia(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, fecha);
+	}
+
+	@Override
+	public List<Estudiante> mostrarinformacion(long id) {
+		// TODO Auto-generated method stub
+		return estudiantedao.findestudianteid(id);
 	}
 
 	

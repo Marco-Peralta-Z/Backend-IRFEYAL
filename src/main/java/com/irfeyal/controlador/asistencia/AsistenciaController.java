@@ -1,5 +1,8 @@
 package com.irfeyal.controlador.asistencia;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -126,15 +130,15 @@ public class AsistenciaController {
 	@GetMapping("/claseingresada")
 	public Clase claseingresada(){
 		//corregir return claseservice.ultimoingreso();
-		return null;
+		return claseservice.ultimoingreso();
 	}
 	
 
 	@PostMapping("/clasesave")
 	@ResponseStatus(HttpStatus.CREATED)
-public ResponseEntity<?> createclase(@Validated @RequestBody Clase asistencia, BindingResult result) {
+public ResponseEntity<?> createclase(@Validated @RequestBody Clase clase, BindingResult result) {
 		
-		Clase asistenciaNew = null;
+		Clase claseNew = null;
 		Map<String, Object> response = new HashMap<>();
 		
 		if(result.hasErrors()) {
@@ -149,15 +153,15 @@ public ResponseEntity<?> createclase(@Validated @RequestBody Clase asistencia, B
 		}
 		
 		try {
-			asistenciaNew = claseservice.save(asistencia);
+			claseNew = claseservice.save(clase);
 		} catch(DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje", "El cliente ha sido creado con éxito!");
-		response.put("cliente", asistenciaNew);
+		response.put("mensaje", "la clase ha sido creado con éxito!");
+		response.put("cliente", claseNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -215,4 +219,69 @@ public ResponseEntity<?> createclase(@Validated @RequestBody Clase asistencia, B
 		
 	}
 	
+	@GetMapping("/buscarestudianteid/{id}")
+	public List<Estudiante> estudianteid(@PathVariable Long id ){
+		
+		
+		return asistenciaservice.mostrarinformacion(id);
+		
+	}
+	
+	
+	@GetMapping("/buscaractualizar/{id_mod}/{id_periodo}/{id_paralelo}/{id_asignatura}/{id_curso}/{fecha}")
+	public List<Asistencia> buscaractualizar(@PathVariable Long id_mod,@PathVariable Long id_periodo,@PathVariable Long id_paralelo,@PathVariable Long id_asignatura,@PathVariable Long id_curso,@PathVariable String fecha ) throws ParseException{
+SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
+	Date auxfecha= formato.parse(fecha);
+		return asistenciaservice.burcarasistencia(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, auxfecha);
+	}
+	
+	
+	@PutMapping("/updateasistencia/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	
+	public ResponseEntity<?> update(@Validated @RequestBody Asistencia usuario, BindingResult result, @PathVariable Long id) {
+
+	Asistencia usuActual = asistenciaservice.findById(id);
+
+	Asistencia usuUpdated = null;
+
+		Map<String, Object> response = new HashMap<>();
+
+		if(result.hasErrors()) {
+
+			List<String> errors = result.getFieldErrors()
+					.stream()
+					.map(err -> "El campo '" + err.getField() +"' "+ err.getDefaultMessage())
+					.collect(Collectors.toList());
+			
+			response.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+		}
+		
+		if (usuActual == null) {
+			response.put("mensaje", "Error: no se pudo editar, el cliente ID: "
+					.concat(id.toString().concat(" no existe en la base de datos!")));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+
+		try {
+
+			usuActual.setEstadoAsis(usuario.getEstadoAsis());
+			
+
+			usuUpdated = asistenciaservice.save(usuActual);
+
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al actualizar la falta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		response.put("mensaje", "El cliente ha sido actualizado con éxito!");
+		response.put("cliente", usuUpdated);
+
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+	}
+	
+
 }

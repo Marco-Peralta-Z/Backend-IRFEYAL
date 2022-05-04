@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.matricula.Estudiante;
 
 @Entity
@@ -26,8 +27,10 @@ public class Asistencia implements Serializable {
 	@Column(name = "estado_asis")
 	private Boolean estadoAsis;
 	@ManyToOne(fetch = FetchType.LAZY)
+ @JsonIgnoreProperties({"id_clase","hibernateLazyInitializer", "handler" })
 	@JoinColumn(name = "id_clase", referencedColumnName = "id_clase")
 	private Clase idClase;
+	@JsonIgnoreProperties({"id_estudiante","hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_estudiante", referencedColumnName = "id_estudiante")
 	private Estudiante idEstudiante;
@@ -58,6 +61,7 @@ public class Asistencia implements Serializable {
 	public Boolean getEstadoAsis() {
 		return estadoAsis;
 	}
+	
 
 	public void setEstadoAsis(Boolean estadoAsis) {
 		this.estadoAsis = estadoAsis;
