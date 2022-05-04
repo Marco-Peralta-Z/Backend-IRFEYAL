@@ -49,7 +49,7 @@ public class Asignatura implements Serializable {
 	}
 
 	// Relación malla_asignatura
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinTable(name = "malla_asignatura", joinColumns = { @JoinColumn(name = "id_asignatura") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_malla") })
 	private List<Malla> mallas = new ArrayList<Malla>();
