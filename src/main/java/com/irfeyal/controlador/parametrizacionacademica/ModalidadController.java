@@ -80,6 +80,8 @@ public class ModalidadController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			//Guardando modalidad
+			modalidad.setDescripcion(modalidad.getDescripcion().toUpperCase());
 			modalidadNuevo = modalidadService.saveModalidad(modalidad);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear la modalidad en la base de datos");
@@ -110,7 +112,8 @@ public class ModalidadController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			modalidadActual.get().setDescripcion(modalidad.getDescripcion());
+			//Actualización modalidad
+			modalidadActual.get().setDescripcion(modalidad.getDescripcion().toUpperCase());
 			modalidadActual.get().setHora_inicio(modalidad.getHora_inicio());
 			modalidadActual.get().setHora_fin(modalidad.getHora_fin());
 			modalidadUpdated = modalidadService.saveModalidad(modalidadActual.get());

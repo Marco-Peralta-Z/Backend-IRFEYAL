@@ -117,7 +117,7 @@ public class ModuloControler {
 		moduloActual.setIdModulo(modulo.getIdModulo());
 		moduloActual.setModulo(modulo.getModulo());
 		moduloActual.setUrl(modulo.getUrl());
-		moduloActual.setId_rol_usuario(modulo.getId_rol_usuario());
+		//moduloActual.setId_rol_usuario(modulo.getId_rol_usuario());
 		moduloUpdate= moduloSer.saveModulo(moduloActual);
 			
 		} catch (DataAccessException e) {

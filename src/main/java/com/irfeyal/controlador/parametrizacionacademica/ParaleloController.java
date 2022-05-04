@@ -81,6 +81,8 @@ public class ParaleloController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			//Guardando paralelo
+			paralelo.setDescripcion(paralelo.getDescripcion().toUpperCase());
 			paraleloNuevo = paraleloService.saveParalelo(paralelo);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear el Paralelo en la base de datos");
@@ -111,7 +113,8 @@ public class ParaleloController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			paraleloActual.get().setDescripcion(paralelo.getDescripcion());
+			//Actualizando paralelo
+			paraleloActual.get().setDescripcion(paralelo.getDescripcion().toUpperCase());
 			paraleloUpdated = paraleloService.saveParalelo(paraleloActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

@@ -22,9 +22,15 @@ public class RolUsuario implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_modulo")
+	private Modulo id_modulo;
 
 	public RolUsuario() {
+	
 	}
+
 
 	public Long getid_rol_usuario() {
 		return this.id_rol_usuario;
@@ -56,6 +62,13 @@ public class RolUsuario implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	public Modulo getId_modulo() {
+		return this.id_modulo;
+	}
+
+	public void setId_modulo(Modulo id_modulo) {
+		this.id_modulo = id_modulo;
 	}
 
 }

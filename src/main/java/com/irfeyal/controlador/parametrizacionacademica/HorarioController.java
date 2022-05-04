@@ -110,6 +110,7 @@ public class HorarioController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			//Actualización horario
 			horarioActual.get().setTiempo_inicio(horario.getTiempo_inicio());
 			horarioActual.get().setTiempo_fin(horario.getTiempo_fin());
 			horarioActual.get().setDia(horario.getDia());

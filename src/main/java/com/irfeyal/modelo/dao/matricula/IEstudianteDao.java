@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.irfeyal.modelo.matricula.Estudiante;
 
@@ -14,6 +15,10 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 	
 	Page<Estudiante> findAll(Pageable pageable);
 	
+	
+	@Query(value = "select e from Estudiante e join "
+			+ "Persona p on p.id_persona = e.id_persona where p.cedula like :cedula", nativeQuery = false)
+	Estudiante findByCedula(@Param("cedula") String cedula );
 	
 	//-----------------------Modulo Asistencia--------------------
 	
@@ -193,7 +198,7 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 	@Query(value="SELECT e.id_estudiante,e.estado_estudiante,e.id_correo,e.id_direccion,e.id_extension,e.id_persona,e.id_telefono "
 			+ "FROM Estudiantes e "
 			+ "RIGHT JOIN matriculas m on e.id_estudiante=m.id_estudiante "
-			+ "where m.id_modalidad=?1 m.id_periodo=?2 and m.id_paralelo=?3 and m.id_curso=?4",nativeQuery=true)
+			+ "where m.id_modalidad=?1 and m.id_periodo=?2 and m.id_paralelo=?3 and m.id_curso=?4",nativeQuery=true)
 	List<Estudiante> buscarcursomodperparcur( Long id_mod, Long id_periodo, Long id_paralelo,Long id_curso);
 	@Query(value="SELECT e.id_estudiante,e.estado_estudiante,e.id_correo,e.id_direccion,e.id_extension,e.id_persona,e.id_telefono "
 			+ " FROM Estudiantes e "
