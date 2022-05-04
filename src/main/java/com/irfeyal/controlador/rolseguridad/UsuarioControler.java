@@ -144,6 +144,8 @@ public class UsuarioControler {
 		usuarioActual.setUsuario(usuario.getUsuario());
 		usuarioActual.setContrasenia(usuario.getContrasenia());
 		usuarioActual.setEstUsuario(usuario.getEstUsuario());
+
+		usuarioActual.setEmpleado(usuario.getEmpleado());
 		usuarioUpdate= usuarioSer.saveUsuario(usuarioActual);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al actualizar el usuario en la base de datos");

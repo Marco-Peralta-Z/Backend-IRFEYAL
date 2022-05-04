@@ -112,7 +112,6 @@ public class EmpleadoControler {
 			empleadoActual.setExtension(empleado.getExtension());
 			empleadoActual.setId_persona(empleado.getId_persona());
 			empleadoActual.setTelefono(empleado.getTelefono());
-			empleadoActual.setUsuario(empleado.getUsuario());
 			empleadoUpdate = empleadoSer.saveEmpleado(empleadoActual);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al actualizar el emplado en la base de datos");
