@@ -1,8 +1,11 @@
 package com.irfeyal.interfaces.tutorias;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.tutorias.Registro;
+
 
 public interface IRegistroService {
 
@@ -19,7 +22,7 @@ public interface IRegistroService {
 
 	
 
-
+	public List<Periodo> findAllperiodo();
 
 
 }
