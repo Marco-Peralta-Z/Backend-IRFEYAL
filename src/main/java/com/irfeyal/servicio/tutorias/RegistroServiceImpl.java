@@ -1,6 +1,7 @@
 package com.irfeyal.servicio.tutorias;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -8,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.irfeyal.interfaces.tutorias.IRegistroService;
+import com.irfeyal.modelo.dao.parametrizacionacademica.PeriodoRepository;
 import com.irfeyal.modelo.dao.tutorias.IRegistroDao;
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.tutorias.Registro;
+
 
 @Service
 public class RegistroServiceImpl implements IRegistroService {
@@ -17,6 +21,9 @@ public class RegistroServiceImpl implements IRegistroService {
 	@Autowired
 	
 	private IRegistroDao iregistrodao;
+	
+	@Autowired
+	private PeriodoRepository periodo;
 	
 	public Registro save(Registro registro) {
 		return iregistrodao.save(registro);
@@ -47,6 +54,12 @@ public class RegistroServiceImpl implements IRegistroService {
 		public ArrayList<Registro> findAll() {
 			// TODO Auto-generated method stub
 			return null;
+		}
+
+
+		@Override
+		public List<Periodo> findAllperiodo() {
+			return periodo.findAll();
 		}
 
 		/*
