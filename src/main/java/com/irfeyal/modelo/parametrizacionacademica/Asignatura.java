@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
@@ -49,10 +49,14 @@ public class Asignatura implements Serializable {
 	}
 
 	// Relación malla_asignatura
-	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
-	@JoinTable(name = "malla_asignatura", joinColumns = { @JoinColumn(name = "id_asignatura") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_malla") })
-	private List<Malla> mallas = new ArrayList<Malla>();
+	// @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
+	// CascadeType.REFRESH })
+	// @JoinTable(name = "malla_asignatura", joinColumns = { @JoinColumn(name =
+	// "id_asignatura") }, inverseJoinColumns = {
+	// @JoinColumn(name = "id_malla") })
+	// private List<Malla> mallas = new ArrayList<Malla>();
+	@ManyToMany(mappedBy = "listaAsignaturas")
+	private List<Malla> mallas = new ArrayList<>();
 
 	// Relación asignatura_horario
 	@ManyToMany
@@ -93,6 +97,7 @@ public class Asignatura implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
+	@JsonIgnore
 	public List<Malla> getMallas() {
 		return mallas;
 	}
@@ -120,8 +125,7 @@ public class Asignatura implements Serializable {
 	@Override
 	public String toString() {
 		return "Asignatura [descripcion=" + descripcion + ", empleados=" + empleados + ", fecha_creacion="
-				+ fecha_creacion + ", horarios=" + horarios + ", id_asignatura=" + id_asignatura + ", mallas=" + mallas
-				+ "]";
+				+ fecha_creacion + ", horarios=" + horarios + ", id_asignatura=" + id_asignatura + "]";
 	}
 
 }
