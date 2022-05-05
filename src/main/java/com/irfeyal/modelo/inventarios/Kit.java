@@ -31,6 +31,9 @@ public class Kit implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_kit")
 	private Long id_kit;
+	
+    @Column(name = "nombrekit")
+    private String nombrekit;
     
     @Column(name = "precio_kit")
     private Integer precioKit;
@@ -77,6 +80,14 @@ public class Kit implements Serializable {
 	
 	public void setModuloLibro(List<ModuloLibro> moduloLibro) {
 		this.moduloLibro = moduloLibro;
+	}
+
+	public String getNombrekit() {
+		return nombrekit;
+	}
+
+	public void setNombrekit(String nombrekit) {
+		this.nombrekit = nombrekit;
 	}
 
 

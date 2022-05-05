@@ -35,7 +35,7 @@ public class EntregaKitService implements EntregaKitInterface{
 	@Override
 	public Optional<EntregaKit> getById(Long entregaKitId) {
 		// TODO Auto-generated method stub
-		return null;
+		return entregakitRepo.findById(entregaKitId);
 	}
 
 	@Override

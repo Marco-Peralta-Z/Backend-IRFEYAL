@@ -1,11 +1,15 @@
 package com.irfeyal.controlador.inventarios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.inventarios.Aprobacion;
@@ -25,5 +29,25 @@ public class ArticuloControlador {
 	public List<Articulo> listArticulo(){
 		return articuloService.listAllArticulo();
 	}
+	
+	
+	@GetMapping(produces = {"application/json"})
+	public ResponseEntity<Aprobacion> obtenerArticulo(@RequestParam("id") Long id){
+		Optional<Articulo> articulo = this.articuloService.getById(id);
+		if(articulo.isPresent()) {
+			return new ResponseEntity(articulo.get(),HttpStatus.OK);
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	
+	
+	@GetMapping(produces = {"application/json"},value = "/eliminar/")
+	public boolean eliminarArticulo(@RequestParam("id") Long id){
+		boolean aprobacion = this.articuloService.delete(id);
+		return aprobacion;
+	}
+
 
 }

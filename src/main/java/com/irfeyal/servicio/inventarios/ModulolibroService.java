@@ -42,7 +42,7 @@ public class ModulolibroService implements ModuloLibroInterface {
 	@Override
 	public Optional<ModuloLibro> getById(Long moduloLibroId) {
 		// TODO Auto-generated method stub
-		return null;
+		return moduloLibroRepo.findById(moduloLibroId);
 	}
 
 	@Override
@@ -53,8 +53,15 @@ public class ModulolibroService implements ModuloLibroInterface {
 
 	@Override
 	public boolean delete(Long moduloLibroId) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		Optional<ModuloLibro> moduloLibro = moduloLibroRepo.findById(moduloLibroId);
+		
+		if(moduloLibro != null) {
+			moduloLibroRepo.deleteById(moduloLibroId);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	  public boolean ValidarModuloLibro(ModuloLibro moduloLibro){

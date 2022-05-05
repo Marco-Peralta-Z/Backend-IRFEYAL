@@ -33,8 +33,8 @@ public class ArticuloService implements ArticuloInterface {
 
 	@Override
 	public Optional<Articulo> getById(Long id_articulo) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return articuloDao.findById(id_articulo);
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class ArticuloService implements ArticuloInterface {
 
 	@Override
 	public boolean delete(Long id_articulo) {
-		// TODO Auto-generated method stub
+	
 		return false;
 	}
 

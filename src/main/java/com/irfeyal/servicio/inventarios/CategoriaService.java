@@ -34,7 +34,7 @@ public class CategoriaService implements CategoriaInterface {
 	@Override
 	public Optional<Categoria> getById(Long id_categoria) {
 		// TODO Auto-generated method stub
-		return null;
+		return categoriaDao.findById(id_categoria);
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class SalidaArticuloService implements SalidaArticuloInterface {
 	@Override
 	public Optional<Salidaarticulo> getById(Long id_Salidaarticulo) {
 		// TODO Auto-generated method stub
-		return null;
+		return salidaArticuloDao.findById(id_Salidaarticulo);
 	}
 
 	@Override
