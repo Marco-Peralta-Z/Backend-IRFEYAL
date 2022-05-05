@@ -49,20 +49,15 @@ public class Asignatura implements Serializable {
 	}
 
 	// Relación malla_asignatura
-	// @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
-	// CascadeType.REFRESH })
-	// @JoinTable(name = "malla_asignatura", joinColumns = { @JoinColumn(name =
-	// "id_asignatura") }, inverseJoinColumns = {
-	// @JoinColumn(name = "id_malla") })
-	// private List<Malla> mallas = new ArrayList<Malla>();
 	@ManyToMany(mappedBy = "listaAsignaturas")
 	private List<Malla> mallas = new ArrayList<>();
 
 	// Relación asignatura_horario
-	@ManyToMany
-	@JoinTable(name = "asignatura_horario", joinColumns = {
-			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_horario") })
-	private List<Horario> horarios = new ArrayList<>();
+	// @ManyToMany
+	// @JoinTable(name = "asignatura_horario", joinColumns = {
+	// @JoinColumn(name = "id_asignatura") }, inverseJoinColumns = {
+	// @JoinColumn(name = "id_horario") })
+	// private List<Horario> horarios = new ArrayList<>();
 
 	// Relación asignatura_empleado
 	@ManyToMany
@@ -106,14 +101,6 @@ public class Asignatura implements Serializable {
 		this.mallas = mallas;
 	}
 
-	public List<Horario> getHorarios() {
-		return horarios;
-	}
-
-	public void setHorarios(List<Horario> horarios) {
-		this.horarios = horarios;
-	}
-
 	public List<Empleado> getEmpleados() {
 		return empleados;
 	}
@@ -125,7 +112,7 @@ public class Asignatura implements Serializable {
 	@Override
 	public String toString() {
 		return "Asignatura [descripcion=" + descripcion + ", empleados=" + empleados + ", fecha_creacion="
-				+ fecha_creacion + ", horarios=" + horarios + ", id_asignatura=" + id_asignatura + "]";
+				+ fecha_creacion + ", id_asignatura=" + id_asignatura + ", mallas=" + mallas + "]";
 	}
 
 }
