@@ -87,6 +87,7 @@ public class UsuarioServices implements UsuarioInterface, UserDetailsService {
 			System.out.println("=======> Error en el login : No existe el usuario: "+ username + " en el sistema.");
 			throw new UsernameNotFoundException("Error en el login : No existe el usuario: "+ username + " en el sistema.");
 		}
+		
 		List<GrantedAuthority> authorities = usuario.getRoles()
 				.stream()
 				.map(rolUsuario -> new SimpleGrantedAuthority( rolUsuario.getRol().getDescripcion() ))
