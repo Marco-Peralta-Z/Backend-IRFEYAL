@@ -15,7 +15,7 @@ public interface UsuarioDAO extends CrudRepository<Usuario, Long>{
 	 * Search by user name and state in true
 	 * */
 	
-	public Usuario findByUsuarioAndEstUsuario(String usuario, Boolean estUsuario);
+	public Usuario findByUsuario(String usuario);
 	
 	@Query (value="SELECT * FROM usuario WHERE usuario=?1 AND contrasenia=?2", nativeQuery = true) 
 	 Usuario login (String usuario, String contrasenia);
