@@ -28,15 +28,20 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		// TODO Auto-generated method stub
-		super.configure(security);
+		// permitimos el acceso a todo los usuario al endpoint /oauth/token/
+		security.tokenKeyAccess("permitAll()") // generar token
+		.checkTokenAccess("isAuthenticated()"); // revisa token
 	}
 
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		// TODO Auto-generated method stub
-		super.configure(clients);
+		clients.inMemory().withClient("frontirfeyalapp")
+		.secret(passwordEncoder.encode("12345"))
+		.scopes("read", "write")
+		.authorizedGrantTypes("password", "refresh_token")
+		.accessTokenValiditySeconds(3600)
+		.refreshTokenValiditySeconds(3600);
 	}
 
 
