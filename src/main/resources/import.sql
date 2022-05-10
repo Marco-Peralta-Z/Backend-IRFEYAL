@@ -92,14 +92,22 @@ INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, 
 
 
 -------------------USUARIO-------------------
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123',true,'usuario_1',1);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc',true,'usuario_2',2);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1abc',true,'usuario_3',3);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc1',true,'usuario_4',4);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('def',true,'usuario_5',5);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123a',true,'usuario_6',6);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1234',true,'usuario_7',7);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1234a',true,'usuario_8',8);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$nau04Ps5X18uv9e/X0x1xOzXm9iV7yiGOdP57gtLalbP9YAA8g6k2',true,'usuario_1',1);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$39Thszk62DPiSgdigkVNquHGuNQPPlyZpxK7GUOQIpd/DLinvL8Mq',true,'usuario_2',2);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$/e8KsXdeGrGWjlrWj7unCORNcjJWrzWkq00qKFiQY5vYA5RrSxj5O',true,'usuario_3',3);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7Zqo8bxy42s8GyZ8frzQUebr6eMGo4tFUrAHeETvw7PUjd5MzT4IC',true,'usuario_4',4);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$KgudhTCVpOXApMV7x/qDyOBHVXO8NqUHLviBgJ4z8FBF/09BNuBYK',true,'usuario_5',5);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$oor3IUso1XvSYlSUVMp/IuOJjnQcZblV1KaGLq9j9/TCoQyz2QiCW',true,'usuario_6',6);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$MlbvclpzIV74LgAoTkWTNua.KZEMKPVssf6zAHcmoQP1fRZ.qIww2',true,'usuario_7',7);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7257qhHd6F0p4hm7p8zTk.VLvMwHGVl0StBmtgRdFqdUP.3OjwLyK',true,'usuario_8',8);
+-- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123',true,'usuario_1',1);
+-- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc',true,'usuario_2',2);
+-- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1abc',true,'usuario_3',3);
+-- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc1',true,'usuario_4',4);
+-- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('def',true,'usuario_5',5);
+-- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123a',true,'usuario_6',6);
+-- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1234',true,'usuario_7',7);
+-- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1234a',true,'usuario_8',8);
 
 -------------------ROL-------------------
 INSERT INTO rol (descripcion) VALUES ('Administrador');

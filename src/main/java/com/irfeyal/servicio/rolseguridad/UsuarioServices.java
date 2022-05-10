@@ -90,7 +90,7 @@ public class UsuarioServices implements UsuarioInterface, UserDetailsService {
 		
 		List<GrantedAuthority> authorities = usuario.getRoles()
 				.stream()
-				.map(rolUsuario -> new SimpleGrantedAuthority( rolUsuario.getRol().getDescripcion() ))
+				.map(rolUsuario -> new SimpleGrantedAuthority("ROLE_" + rolUsuario.getRol().getDescripcion() ))
 				.peek(rol -> System.out.print(" ==========> Rol: "+rol))
 				.collect( Collectors.toList() );
 		return new User(usuario.getUsuario(), usuario.getContrasenia(), usuario.getEstUsuario(), true, true, true, authorities);
