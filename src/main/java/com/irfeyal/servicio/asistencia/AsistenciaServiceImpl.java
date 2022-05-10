@@ -247,6 +247,7 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	}
 
 	@Override
+
 	public List<Asistencia> burcarasistencia(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,
 			Long id_curso, Date fecha) {
 		// TODO Auto-generated method stub
@@ -287,6 +288,13 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	public List<Asignatura> listarasignatura(Long empelado, Long idperiodo, Long idcurso, Long idparalelo) {
 		// TODO Auto-generated method stub
 		return asignatura.listarasignaturaasistencia(empelado, idperiodo, idcurso, idparalelo);
+		
+	}
+
+	public List<Asistencia> actualizarfiltros(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,
+			Long id_curso, Date fecha) {
+		// TODO Auto-generated method stub
+		return asistenciadao.actualizarfiltros(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, fecha);
 	}
 
 	

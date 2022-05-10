@@ -35,4 +35,5 @@ public interface IAsistenciaService {
 	public List<Paralelo> listarparalelo(Long emple,Long idcurso);
 	public List<Asignatura> listarasignatura(Long empelado , Long idperiodo,Long idcurso,Long idparalelo);
 	public List<Modalidad> modalidaddocente(Integer id_docente);
+	public List<Asistencia>actualizarfiltros(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso,Date fecha);
 }
