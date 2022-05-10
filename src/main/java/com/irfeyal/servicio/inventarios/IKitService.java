@@ -49,8 +49,7 @@ public class IKitService implements KitInterface {
 
 	@Override
 	public Optional<Kit> getById(Long kitId) {
-		// TODO Auto-generated method stub
-		return null;
+		return  kitRepo.findById(kitId) ;
 	}
 
 	@Override

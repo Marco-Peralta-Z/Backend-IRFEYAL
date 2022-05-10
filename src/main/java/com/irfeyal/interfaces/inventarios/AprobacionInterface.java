@@ -8,7 +8,7 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 public interface AprobacionInterface  {
 	
-	public abstract Aprobacion save(Aprobacion id_aprobacion,Empleado empleado);
+	public abstract Aprobacion save(Aprobacion id_aprobacion, Empleado empleado);
 
 	public abstract List<Aprobacion> listAllAprobacion();
 	

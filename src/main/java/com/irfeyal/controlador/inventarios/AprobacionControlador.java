@@ -1,6 +1,7 @@
 package com.irfeyal.controlador.inventarios;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.inventarios.Aprobacion;
@@ -61,9 +63,20 @@ public class AprobacionControlador {
 
 	}
 
-	@GetMapping(path = "detalleapro/{id}")
-	public Object obtenerAprobacionId(@PathVariable("id") Integer id) {
-		return aprobacionService.getDetalleAprobacion(id);
+	@GetMapping(produces = {"application/json"})
+	public ResponseEntity<Aprobacion> buscarAprobaId(@RequestParam("id") Long id){
+		Optional<Aprobacion> aprobacion = this.aprobacionService.getById(id);
+		if(aprobacion.isPresent()) {
+			return new ResponseEntity(aprobacion.get(),HttpStatus.OK);
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@GetMapping(produces = {"application/json"},value = "/eliminar/")
+	public boolean eliminarAprobaId(@RequestParam("id") Long id){
+		boolean aprobacion = this.aprobacionService.delete(id);
+		return aprobacion;
 	}
 
 }

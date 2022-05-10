@@ -79,7 +79,7 @@ public class IingresoKitService implements IngresoKitInterface {
 	@Override
 	public Optional<IngresoKit> getById(Long ingresoKitId) {
 		// TODO Auto-generated method stub
-		return null;
+		return ingresoKitRepo.findById(ingresoKitId);
 	}
 
 	@Override

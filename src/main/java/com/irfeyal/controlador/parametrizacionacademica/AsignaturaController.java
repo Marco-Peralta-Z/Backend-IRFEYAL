@@ -113,7 +113,7 @@ public class AsignaturaController {
 		try {
 			//Actualización de asignatura 
 			asignaturaActual.get().setDescripcion(asignatura.getDescripcion().toUpperCase());
-			asignaturaActual.get().setHorarios(asignatura.getHorarios());
+			//asignaturaActual.get().setHorarios(asignatura.getHorarios());
 			asignaturaActual.get().setEmpleados(asignatura.getEmpleados());
 			asignaturaActual.get().setMallas(asignatura.getMallas());
 			asignaturaUpdated = asignaturaService.saveAsignatura(asignaturaActual.get());

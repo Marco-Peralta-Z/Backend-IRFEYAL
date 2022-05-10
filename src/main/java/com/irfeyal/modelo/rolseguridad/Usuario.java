@@ -23,6 +23,10 @@ public class Usuario implements Serializable {
 	@Column(name="usuario")
 	private String usuario;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_empleado")
+	private Empleado empleado;
+	
 	public Usuario() {
 	}
 
@@ -60,6 +64,14 @@ public class Usuario implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
 

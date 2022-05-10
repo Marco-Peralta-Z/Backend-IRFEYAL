@@ -1,6 +1,7 @@
 package com.irfeyal.controlador.inventarios;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.EntregaKit;
 import com.irfeyal.modelo.inventarios.IngresoKit;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.rolseguridad.Empleado;
@@ -33,11 +37,6 @@ public class IngresoKitControlador {
 	
 	
 	
-	
-	@PostMapping(path = "/add/")
-	public IngresoKit guardarIngresoKit(@RequestBody IngresoKit ingresoKit) {
-		return this.ingresoKitServicio.save(ingresoKit);
-	}
 	
 	
 	@RequestMapping(value = "/crearingresokit", method = RequestMethod.POST)
@@ -61,7 +60,8 @@ public class IngresoKitControlador {
 		}
 		
 		
-		
+
+	
 		
 		
 		
@@ -73,6 +73,19 @@ public class IngresoKitControlador {
 		return ingresoKitServicio.listAllIngresoKit();
 		
 	}
+	
+	@GetMapping(produces = {"application/json"})
+	public ResponseEntity<Aprobacion> obtenerKit(@RequestParam("id") Long id){
+		Optional<IngresoKit> ingresKit = this.ingresoKitServicio.getById(id);
+		if(ingresKit.isPresent()) {
+			return new ResponseEntity(ingresKit.get(),HttpStatus.OK);
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	
+	
 	
 
 }

@@ -18,14 +18,16 @@ public class RolUsuario implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_rol")
 	private Rol rol;
-
-	@ManyToOne
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_modulo")
 	private Modulo id_modulo;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
+	
+	
 
 	public RolUsuario() {
 	

@@ -36,7 +36,7 @@ public class DetalleIngreArtiService implements DetallingreArticuloInterface{
 	@Override
 	public Optional<DetalIngreArti> getById(Long id_detalIngreArti) {
 		// TODO Auto-generated method stub
-		return null;
+		return detallIngreArtiDao.findById(id_detalIngreArti);
 	}
 
 	@Override

@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.tutorias.Registro;
 import com.irfeyal.servicio.tutorias.RegistroServiceImpl;
+
 
 @RestController
 @RequestMapping("/registro")
@@ -76,6 +78,12 @@ public class RegistroController {
 		@DeleteMapping(path="{id_registro}")
 		public void delete( @PathVariable Long id_registro) {
 			registroserviceimpl.delete(id_registro);	
+		}
+		
+		
+		@GetMapping("/Periodo")
+		public List<Periodo> listarPeridod() {
+			return registroserviceimpl.findAllperiodo();
 		}
 		
 }
