@@ -43,12 +43,12 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 			+ "left JOIN malla_curso l on m.id_curso= l.id_curso "
 			+ "left join malla_asignatura a on l.id_malla= a.id_malla  "
 			+ "left join asignatura s on a.id_asignatura= s.id_asignatura "
-			+ "where s.id_asignatura=?1 ",nativeQuery=true)
+			+ "where s.id_asignatura=?1 group by e.id_estudiante",nativeQuery=true)
 	List<Estudiante> buscarcursoasignatura(Long id_asignatura);
 	@Query(value="SELECT e.id_estudiante,e.estado_estudiante,e.id_correo,e.id_direccion,e.id_extension,e.id_persona,e.id_telefono "
 			+ "FROM Estudiantes e "
 			+ "RIGHT JOIN matriculas m on e.id_estudiante=m.id_estudiante "
-			+ "where m.id_curso=?1",nativeQuery=true)
+			+ "where m.id_curso=?1 group by e.id_estudiante",nativeQuery=true)
 	List<Estudiante> buscarcursocurso(Long id_curso);
 	
 	

@@ -98,6 +98,27 @@ public class AsistenciaController {
 	public List<Periodo> listarPeridod() {
 		return asistenciaservice.findAllperio();
 	}
+	@GetMapping("/Periodos/{idempl}")
+	public List<Periodo> listarPeridods(@PathVariable Long idempl) {
+		return asistenciaservice.listarpaeriodo(idempl);
+	}
+	@GetMapping("/modalidades/{idempl}/{idmod}")
+	public List<Modalidad> listarmodalidades(@PathVariable Long idempl,@PathVariable Long idmod) {
+		return asistenciaservice.listarmodalidad(idempl, idmod);
+	}
+	@GetMapping("/cursos/{idempl}/{idmod}")
+	public List<Curso> listarcurso(@PathVariable Long idempl,@PathVariable Long idmod) {
+		return asistenciaservice.listarcurso(idempl, idmod);
+	}
+	@GetMapping("/paralelos/{idempl}/{idcurso}")
+	public List<Paralelo> listarparalelo(@PathVariable Long idempl,@PathVariable Long idcurso) {
+		return asistenciaservice.listarparalelo(idempl, idcurso);
+	}
+	@GetMapping("/asignaturas/{empelado}/{idperiodo}/{idcurso}/{idparalelo}")
+	public List<Asignatura> listarasignatura(@PathVariable Long empelado , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
+		return asistenciaservice.listarasignatura(empelado, idperiodo, idcurso, idparalelo);
+	}
+
 
 	@GetMapping("/Curso")
 	public List<Curso> listarCurso() {

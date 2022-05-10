@@ -259,6 +259,36 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 		return estudiantedao.findestudianteid(id);
 	}
 
+	@Override
+	public List<Periodo> listarpaeriodo(Long empleado) {
+		// TODO Auto-generated method stub
+		return periodo.listarperiodoasistencia(empleado);
+	}
+
+	@Override
+	public List<Modalidad> listarmodalidad(Long emplead, Long idperiodo) {
+		// TODO Auto-generated method stub
+		return modalidad.listarmodalidadasistencia(emplead, idperiodo);
+	}
+
+	@Override
+	public List<Curso> listarcurso(Long emplead, Long idmodalidad) {
+		// TODO Auto-generated method stub
+		return curso.listarcursoasistencia(emplead, idmodalidad);
+	}
+
+	@Override
+	public List<Paralelo> listarparalelo(Long emple, Long idcurso) {
+		// TODO Auto-generated method stub
+		return paralelo.listarparaleloasistencia(emple, idcurso);
+	}
+
+	@Override
+	public List<Asignatura> listarasignatura(Long empelado, Long idperiodo, Long idcurso, Long idparalelo) {
+		// TODO Auto-generated method stub
+		return asignatura.listarasignaturaasistencia(empelado, idperiodo, idcurso, idparalelo);
+	}
+
 	
 	
 
