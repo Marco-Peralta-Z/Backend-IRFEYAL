@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -42,6 +43,9 @@ public class UsuarioControler {
 	 private UsuarioServices usuarioSer;
 	@Autowired
 	private UsuarioLoginServices2 usuarioLoginSer;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@GetMapping("/Usuario")
 	public List<Usuario> index(){
@@ -101,9 +105,10 @@ public class UsuarioControler {
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.BAD_REQUEST);
 		}
 		
-		
+		// encriptamos la contraseña
+		usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
 		try {
-			usuarioNew= usuarioSer.saveUsuario(usuarioNew);
+			usuarioNew= usuarioSer.saveUsuario(usuario);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -142,7 +147,7 @@ public class UsuarioControler {
 		try {
 		
 		usuarioActual.setUsuario(usuario.getUsuario());
-		usuarioActual.setContrasenia(usuario.getContrasenia());
+		usuarioActual.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
 		usuarioActual.setEstUsuario(usuario.getEstUsuario());
 
 		usuarioActual.setEmpleado(usuario.getEmpleado());
