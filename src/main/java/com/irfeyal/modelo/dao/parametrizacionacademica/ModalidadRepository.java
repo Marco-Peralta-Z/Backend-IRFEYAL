@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
+	
+	
+	/*MODULO ASISTENCIA*/
 
 	@Query(value="SELECT m.id_modalidad, m.descripcion,m.hora_inicio, m.hora_fin   "
 			+ "FROM modalidad m "
@@ -21,4 +24,18 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
 			+ "join periodo per on per.id_malla = mal.id_malla  "
 			+ "where  c.id_empleado=?1 and per.id_periodo=?2 group by m.id_modalidad",nativeQuery=true)
 	List<Modalidad> listarmodalidadasistencia(Long empelado , Long idperiodo);
+	
+	
+	/*MODULO TUTORIAS*/
+	
+	@Query(value = "SELECT mo.id_modalidad, mo.descripcion, mo.hora_inicio, mo.hora_fin " 
+	        + "	FROM modalidad mo "
+			+ "	inner join modalidad_curso mc on mo.id_modalidad = mc.id_modalidad  "
+			+ " inner join curso c on c.id_curso = mc.id_curso "
+			+ "	inner join malla_curso mcur on mcur.id_curso = c.id_curso "
+			+ "	inner join malla mal on mal.id_malla = mcur.id_malla  "
+			+ "	inner join periodo per on per.id_malla = mal.id_malla  "
+			+ "	where  c.id_empleado=?1 and per.id_periodo=?2 group by mo.id_modalidad ", nativeQuery = true)
+	List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo);
+	
 }

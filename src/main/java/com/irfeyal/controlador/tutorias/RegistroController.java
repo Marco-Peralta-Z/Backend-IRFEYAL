@@ -17,17 +17,25 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.irfeyal.interfaces.tutorias.IRegistroService;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
+import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.tutorias.Registro;
 import com.irfeyal.servicio.tutorias.RegistroServiceImpl;
 
 
 @RestController
-@RequestMapping("/registro")
+@RequestMapping("/Registro")
 public class RegistroController {
 
 	@Autowired
 	private RegistroServiceImpl registroserviceimpl;
+	
+	@Autowired
+	private IRegistroService registroservice;
 	
 	//Lista los registros
 	@GetMapping()
@@ -85,5 +93,29 @@ public class RegistroController {
 		public List<Periodo> listarPeridod() {
 			return registroserviceimpl.findAllperiodo();
 		}
+		
+		
+		@GetMapping("/Periodos/{idemple}")
+		public List<Periodo> listperiodos(@PathVariable Long idemple) {
+			return registroservice.Listperiodosempelados(idemple);
+		}
+		@GetMapping("/Modalidades/{idemple}/{idmod}")
+		public List<Modalidad> listmodalidades(@PathVariable Long idemple,@PathVariable Long idmod) {
+			return registroservice.listmodalidadempelados(idemple, idmod);
+		}
+		@GetMapping("/Cursos/{idemple}/{idmod}")
+		public List<Curso> listcurso(@PathVariable Long idemple,@PathVariable Long idmod) {
+			return registroservice.ListCursosempelados(idemple, idmod);
+		}
+		@GetMapping("/Paralelos/{idemple}/{idcurso}")
+		public List<Paralelo> listparalelo(@PathVariable Long idemple,@PathVariable Long idcurso) {
+			return registroservice.ListParaleloempleados(idemple, idcurso);
+		}
+		@GetMapping("/Asignaturas/{idemple}/{idperiodo}/{idcurso}/{idparalelo}")
+		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
+			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo);
+		}
+		
+		
 		
 }

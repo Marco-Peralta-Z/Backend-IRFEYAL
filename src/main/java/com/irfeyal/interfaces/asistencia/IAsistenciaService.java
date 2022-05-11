@@ -21,11 +21,15 @@ public interface IAsistenciaService {
 	public List <Persona> buscarcurso(Long id);
 	public List <Estudiante> buscarcursomodalidad(Long id_mod,Long id_periodo,Long id_paralelo,Long id_asignatura, Long id_curs);
 	public Estudiante buscarceduestudiante(String cedula);
-	public List<Asignatura> findAllAsignaturas();
+	
+	/*NO FUNCIONALES*/
+    public List<Asignatura> findAllAsignaturas();
 	public List<Paralelo>findAllParalelo();
 	public List<Modalidad> findAllModalidad();
 	public List<Periodo> findAllperio();
 	public List<Curso>findAllcurso();
+	/*----*/
+	
 	public List<Estudiante>mostrarinformacion(long id);
 	public List<Asistencia> burcarasistencia(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso,Date fecha);
 	

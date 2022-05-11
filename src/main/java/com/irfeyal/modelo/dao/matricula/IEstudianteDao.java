@@ -244,6 +244,7 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 			+ "WHERE p.cedula =?1",nativeQuery=true)
 	Estudiante buscarcedulaestudiante(String cedula);
 	
+	/*MUESTRA LOS ESTUDIANTES EN BASE AL DOCENTE INGRESADO*/
 	@Query(value="SELECT e.id_estudiante,e.estado_estudiante,e.id_correo,e.id_direccion,e.id_extension,e.id_persona,e.id_telefono "
 			+ "FROM clase c JOIN asistencia a ON a.id_clase=c.id_clase "
 			+ "JOIN estudiantes e  on e.id_estudiante = a.id_estudiante "

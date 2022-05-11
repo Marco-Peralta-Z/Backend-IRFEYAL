@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Long> {
+	
+	
+	/*MODULO ASISTENCIA*/
 
 	@Query(value="SELECT c.id_curso,c.descripcion,c.tipo_curso,c.fecha_creacion, c.id_empleado   "
 			+ "FROM curso c "
@@ -18,6 +21,15 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
 			+ "join modalidad m on m.id_modalidad = mc.id_modalidad "
 			+ "where c.id_empleado=?1 and mc.id_modalidad=?2 group by c.id_curso",nativeQuery=true)
 	List<Curso> listarcursoasistencia(Long empelado , Long idmoda);
+	
+	/*MODULO TUTORIAS*/
+	
+	@Query(value = " SELECT c.id_curso,c.descripcion, c.tipo_curso, c.fecha_creacion, c.id_empleado " 
+	        + "	FROM curso c "
+			+ "	inner join  modalidad_curso mcur on mcur.id_curso = c.id_curso "
+			+ "	inner join modalidad m on m.id_modalidad = mcur.id_modalidad "
+			+ "	where c.id_empleado=?1 and mcur.id_modalidad=?2 group by c.id_curso", nativeQuery = true)
+	List<Curso> ListCursosempelados(Long empleado, Long id_modalidad);
 	
 	
 }
