@@ -96,6 +96,12 @@ public class UsuarioServices implements UsuarioInterface, UserDetailsService {
 		return new User(usuario.getUsuario(), usuario.getContrasenia(), usuario.getEstUsuario(), true, true, true, authorities);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Usuario findByUsuario(String usuario) {
+		return usuariodao.findByUsuario(usuario);
+	}
+
 
 
 }
