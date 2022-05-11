@@ -1,6 +1,6 @@
 package com.irfeyal.interfaces.tutorias;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
@@ -15,7 +15,7 @@ public interface IRegistroService {
 
 	
 	public Registro save(Registro registro);
-	public ArrayList<Registro> findAll();
+	public List<Registro> findAll();
 	public void delete(Long id_registro);
 	public Registro findById(Long id_registro);
 	public List<Periodo> findAllperiodo();

@@ -27,8 +27,7 @@ import com.irfeyal.modelo.tutorias.Registro;
 public class RegistroServiceImpl implements IRegistroService {
 	
 	@Autowired
-	
-	private IRegistroDao iregistrodao;
+	private IRegistroDao registrodao;
 	
 	@Autowired
 	private PeriodoRepository periodo;
@@ -46,34 +45,27 @@ public class RegistroServiceImpl implements IRegistroService {
 	private AsignaturaRepository asignatura;
 	
 	public Registro save(Registro registro) {
-		return iregistrodao.save(registro);
+		return registrodao.save(registro);
 	}
 	
 	
-	//Listar Registros
+	/*//Listar Registros
 	public ArrayList<Registro>listarRegistro(){
 		return (ArrayList<Registro>) iregistrodao.findAll(); 
-	}
+	}*/
 	
 	// buscar por id
 		@Override
 		//@Transactional(readOnly = true)
 		public Registro findById(Long id_registro) {
 			// TODO Auto-generated method stub
-			return iregistrodao.findById(id_registro).orElse(null);
+			return registrodao.findById(id_registro).orElse(null);
 		}
 		
 		@Override
 		@Transactional 
 		public void delete(Long id_registro) {	
-			iregistrodao.deleteById(id_registro);
-		}
-
-
-		@Override
-		public ArrayList<Registro> findAll() {
-			// TODO Auto-generated method stub
-			return null;
+			registrodao.deleteById(id_registro);
 		}
 
 
@@ -111,6 +103,13 @@ public class RegistroServiceImpl implements IRegistroService {
 		@Override
 		public List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo) {
 			return modalidad.listmodalidadempelados(empleado, id_periodo);
+		}
+
+
+		@Override
+		public List<Registro> findAll() {
+			
+			return (List<Registro>)registrodao.findAll();
 		}
 
 		

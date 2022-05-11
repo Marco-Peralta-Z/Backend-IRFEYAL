@@ -38,7 +38,7 @@ public class RegistroController {
 	private IRegistroService registroservice;
 	
 	//Lista los registros
-	@GetMapping()
+	@GetMapping("/ListarRegistros")
 	public List<Registro> index(){
 		return registroserviceimpl.findAll();
 	}
@@ -99,7 +99,7 @@ public class RegistroController {
 		public List<Periodo> listperiodos(@PathVariable Long idemple) {
 			return registroservice.Listperiodosempelados(idemple);
 		}
-		@GetMapping("/Modalidades/{idemple}/{idmod}")
+		@GetMapping("/Modalidades/{idemple}/{per}")
 		public List<Modalidad> listmodalidades(@PathVariable Long idemple,@PathVariable Long idmod) {
 			return registroservice.listmodalidadempelados(idemple, idmod);
 		}
@@ -116,6 +116,12 @@ public class RegistroController {
 			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo);
 		}
 		
+		/*
+		@GetMapping("/MostrarNotas/{idemple}/{idperiodo}/{idcurso}/{idparalelo}/{Asignatura}")
+		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
+			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo);
+		}
 		
+		*/
 		
 }
