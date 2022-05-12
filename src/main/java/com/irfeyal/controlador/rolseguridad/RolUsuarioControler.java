@@ -71,7 +71,7 @@ public class RolUsuarioControler {
 		
 		
 		try {
-			rolUsuarioNew= rolusuarioSer.saveRolUsuario(rolUsuarioNew);
+			rolUsuarioNew= rolusuarioSer.saveRolUsuario(rolUsuario);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
