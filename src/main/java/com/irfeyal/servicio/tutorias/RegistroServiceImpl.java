@@ -1,6 +1,6 @@
 package com.irfeyal.servicio.tutorias;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,12 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.irfeyal.interfaces.tutorias.IRegistroService;
+import com.irfeyal.modelo.dao.matricula.IMatriculaDao;
+import com.irfeyal.modelo.dao.pagos.IComprobanteDao;
 import com.irfeyal.modelo.dao.parametrizacionacademica.AsignaturaRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.CursoRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.ModalidadRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.ParaleloRespository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.PeriodoRepository;
 import com.irfeyal.modelo.dao.tutorias.IRegistroDao;
+import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.pagos.Comprobante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
@@ -43,6 +47,12 @@ public class RegistroServiceImpl implements IRegistroService {
 	
 	@Autowired
 	private AsignaturaRepository asignatura;
+	
+	@Autowired
+	private IMatriculaDao matricula;
+	
+	@Autowired
+	private IComprobanteDao comprobante;
 	
 	public Registro save(Registro registro) {
 		return registrodao.save(registro);
@@ -82,22 +92,10 @@ public class RegistroServiceImpl implements IRegistroService {
 		}
 
 		@Override
-		public List<Curso> ListCursosempelados(Long empleado, Long id_modalidad) {
-			return curso.ListCursosempelados(empleado, id_modalidad);
+		public List<Curso> ListCursosempelados(Long empleado, Long id_modalidad, Long id_periodo) {
+			return curso.ListCursosempelados(empleado, id_modalidad, id_periodo);
 		}
 
-
-		@Override
-		public List<Paralelo> ListParaleloempleados(Long empleado, Long id_curso) {
-			return paralelo.ListParaleloempleados(empleado, id_curso);
-		}
-
-
-		@Override
-		public List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_curso,
-				Long id_paralelo) {
-			return asignatura.ListAsignaturaempleados(empleado, id_periodo, id_curso, id_paralelo);
-		}
 
 
 		@Override
@@ -111,6 +109,38 @@ public class RegistroServiceImpl implements IRegistroService {
 			
 			return (List<Registro>)registrodao.findAll();
 		}
+
+
+		@Override
+		public List<Paralelo> ListParaleloempleados(Long empleado, Long id_curso, Long id_periodo, Long id_modalidad) {
+			return paralelo.ListParaleloempleados(empleado, id_curso, id_modalidad, id_periodo);
+		}
+
+
+		@Override
+		public List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_curso, Long id_paralelo,
+				Long id_modalidad) {
+			
+			return asignatura.ListAsignaturaempleados(empleado, id_periodo, id_curso, id_paralelo, id_modalidad);
+		}
+
+
+		@Override
+		public List<Matricula> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo,
+				Long id_asignatura) {
+			
+			return matricula.filtrocompleto(id_periodo, id_modalidad, id_curso, id_paralelo, id_asignatura);
+		}
+
+
+		@Override
+		public List<Comprobante> Buscardeudas(String cedula) {
+			
+			return comprobante.Buscardeudas(cedula);
+		}
+
+
+
 
 		
 }

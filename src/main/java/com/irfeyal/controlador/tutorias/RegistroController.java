@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.irfeyal.interfaces.tutorias.IRegistroService;
+import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.pagos.Comprobante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
@@ -45,7 +47,7 @@ public class RegistroController {
 	
 	
 	//Inserta un nuevo registro
-	@PostMapping()
+	@PostMapping("/Nuevoregistro")
 	public ResponseEntity<Map<String, Object>> insertarRegistro(@RequestBody Registro registro) {
 		Map<String, Object> mensaje = new HashMap<>();
 		try {
@@ -100,20 +102,30 @@ public class RegistroController {
 			return registroservice.Listperiodosempelados(idemple);
 		}
 		@GetMapping("/Modalidades/{idemple}/{per}")
-		public List<Modalidad> listmodalidades(@PathVariable Long idemple,@PathVariable Long idmod) {
-			return registroservice.listmodalidadempelados(idemple, idmod);
+		public List<Modalidad> listmodalidades(@PathVariable Long idemple,@PathVariable Long per) {
+			return registroservice.listmodalidadempelados(idemple, per);
 		}
-		@GetMapping("/Cursos/{idemple}/{idmod}")
-		public List<Curso> listcurso(@PathVariable Long idemple,@PathVariable Long idmod) {
-			return registroservice.ListCursosempelados(idemple, idmod);
+		@GetMapping("/Cursos/{idemple}/{idmod}/{per}")
+		public List<Curso> listcurso(@PathVariable Long idemple,@PathVariable Long idmod, @PathVariable Long per ) {
+			return registroservice.ListCursosempelados(idemple, idmod, per);
 		}
-		@GetMapping("/Paralelos/{idemple}/{idcurso}")
-		public List<Paralelo> listparalelo(@PathVariable Long idemple,@PathVariable Long idcurso) {
-			return registroservice.ListParaleloempleados(idemple, idcurso);
+		@GetMapping("/Paralelos/{idemple}/{idcurso}/{idmod}/{per}")
+		public List<Paralelo> listparalelo(@PathVariable Long idemple,@PathVariable Long idcurso, @PathVariable Long idmod, @PathVariable Long per) {
+			return registroservice.ListParaleloempleados(idemple, idcurso, idmod, per);
 		}
-		@GetMapping("/Asignaturas/{idemple}/{idperiodo}/{idcurso}/{idparalelo}")
-		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
-			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo);
+		@GetMapping("/Asignaturas/{idemple}/{idperiodo}/{idcurso}/{idparalelo}/{idmod}")
+		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo, @PathVariable Long idmod) {
+			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo, idmod);
+		}
+		
+		@GetMapping("/Filtrocompleto/{idasig}/{idperiodo}/{idcurso}/{idparalelo}/{idmod}")
+		public List<Matricula> listcompleta(@PathVariable Long idasig , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo, @PathVariable Long idmod) {
+			return registroservice.filtrocompleto(idasig,idperiodo,idcurso, idparalelo, idmod);
+		}
+		
+		@GetMapping("/Buscardeudas/{ced}")
+		public List<Comprobante> listdeudas(@PathVariable String ced) {
+			return registroservice.Buscardeudas(ced);
 		}
 		
 		/*
