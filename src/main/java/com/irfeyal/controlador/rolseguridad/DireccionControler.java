@@ -45,7 +45,7 @@ public class DireccionControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Direccion direccionNew =direccionSer.findById(id);
+			direccionSer.findById(id);
 			direccionSer.deleteDireccion(id);	
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar la direccion de la base de datos");
@@ -75,7 +75,7 @@ public class DireccionControler {
 		
 		
 		try {
-			direccionNew= direccionSer.saveDireccion(direccionNew);
+			direccionNew= direccionSer.saveDireccion(direccion);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

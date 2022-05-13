@@ -41,7 +41,7 @@ public class RolControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Rol rolNew =rolSer.findById(id);
+			rolSer.findById(id);
 			rolSer.deleteRol(id);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar el rol de la base de datos");
@@ -72,7 +72,7 @@ public class RolControler {
 		
 		
 		try {
-			rolNew= rolSer.saveRol(rolNew);
+			rolNew= rolSer.saveRol(rol);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -119,7 +119,7 @@ public class RolControler {
 		}
 		
 		response.put("mensaje","El Rol ha sido actualizado con exito");
-		response.put("cliente", rolUpdate);
+		response.put("rol", rolUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}

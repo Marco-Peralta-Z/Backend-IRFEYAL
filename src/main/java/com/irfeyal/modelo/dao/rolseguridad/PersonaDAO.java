@@ -23,4 +23,5 @@ public interface PersonaDAO extends CrudRepository<Persona, Long> {
 	List <Persona> buscarcurso(Long id);
 	
 	//---------------------Fin Modulo Asistencia--------------------------
+	
 }

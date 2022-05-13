@@ -44,14 +44,14 @@ public class GeneroControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Genero newgenero =generoSer.findById(id);
+			generoSer.findById(id);
 			generoSer.deleteGenero(id);	
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al eliminar el genero de la base de datos");
+			response.put("mensaje", "Erros al eliminar el género de la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "Genero eliminado con éxito!");
+		response.put("mensaje", "Género eliminado con éxito!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 		
 	}
@@ -75,14 +75,14 @@ public class GeneroControler {
 		
 		
 		try {
-			generoNew= generoSer.saveGenero(generoNew);
+			generoNew= generoSer.saveGenero(genero);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje","El genero ha sido creado con exito");
-		response.put("cliente", generoNew);
+		response.put("mensaje","El género ha sido creado con exito");
+		response.put("genero", generoNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -106,24 +106,22 @@ public class GeneroControler {
 		
 		
 		if (generoActual == null) {
-			response.put("mensaje", "Error: no se pudo editar, el cliente ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
+			response.put("mensaje", "Error: no se pudo editar, el género ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		
 			
 		try {
-		
-
-	      generoActual.setGenero(genero.getGenero());
-	      generoUpdate= generoSer.saveGenero(generoActual);
+			generoActual.setGenero(genero.getGenero());
+	      	generoUpdate= generoSer.saveGenero(generoActual);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al actualizar el genero en la base de datos");
+			response.put("mensaje", "Erros al actualizar el género en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje","El Genero ha sido actualizado con exito");
-		response.put("cliente", generoUpdate);
+		response.put("mensaje","El Género ha sido actualizado con exito");
+		response.put("genero", generoUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}

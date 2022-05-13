@@ -43,14 +43,14 @@ public class CantonControler {
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			Canton newCanton = cantonSer.findById(id);
+			cantonSer.findById(id);
 			cantonSer.deleteCanton(id);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al eliminar el cliente de la base de datos");
+			response.put("mensaje", "Erros al eliminar el Cantón de la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "Canton eliminado con éxito!");
+		response.put("mensaje", "Cantón eliminado con éxito!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 
 	}
@@ -71,14 +71,14 @@ public class CantonControler {
 		}
 
 		try {
-			cantonNew = cantonSer.saveCanton(cantonNew);
+			cantonNew = cantonSer.saveCanton(canton);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "El cliente ha sido creado con exito");
-		response.put("cliente", cantonNew);
+		response.put("mensaje", "El cantón ha sido creado con exito");
+		response.put("canton", cantonNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
@@ -98,23 +98,22 @@ public class CantonControler {
 		}
 
 		if (cantonActual == null) {
-			response.put("mensaje", "Error: no se pudo editar, el cliente ID: "
+			response.put("mensaje", "Error: no se pudo editar, el cantón: "
 					.concat(id.toString().concat(", no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 
 		try {
-
 			cantonActual.setCanton(canton.getCanton());
 			cantonUpdate = cantonSer.saveCanton(cantonActual);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al actualizar el cliente en la base de datos");
+			response.put("mensaje", "Erros al actualizar el cantón en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		response.put("mensaje", "La empresa ha sido actualizado con exito");
-		response.put("cliente", cantonUpdate);
+		response.put("mensaje", "El cantón ha sido actualizado con exito");
+		response.put("canton", cantonUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 
 	}

@@ -23,7 +23,7 @@ import com.irfeyal.modelo.rolseguridad.Usuario;
 public class UsuarioServices implements UsuarioInterface, UserDetailsService {
 
 	@Autowired (required = true)
-	  private UsuarioDAO usuariodao;
+	 private UsuarioDAO usuariodao;
 
 	@Override
 	public List<Usuario> findAll() {
@@ -79,15 +79,15 @@ public class UsuarioServices implements UsuarioInterface, UserDetailsService {
 	 * */
 	@Override
 	@Transactional(readOnly = true)
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String cedula) throws UsernameNotFoundException {
 		
-		Usuario usuario = usuariodao.findByUsuario(username);
+		Usuario usuario = usuariodao.findByCedulaPersona(cedula);
 		
 		if ( usuario == null ) {
-			System.out.println("=======> Error en el login : No existe el usuario: "+ username + " en el sistema.");
-			throw new UsernameNotFoundException("Error en el login : No existe el usuario: "+ username + " en el sistema.");
+			System.out.println("=======> Error en el login : No existe el usuario: "+ cedula + " en el sistema.");
+			throw new UsernameNotFoundException("Error en el login : No existe el usuario: "+ cedula + " en el sistema.");
 		}
-		
+				
 		List<GrantedAuthority> authorities = usuario.getRoles()
 				.stream()
 				.map(rolUsuario -> new SimpleGrantedAuthority("ROLE_" + rolUsuario.getRol().getDescripcion() ))
@@ -101,7 +101,6 @@ public class UsuarioServices implements UsuarioInterface, UserDetailsService {
 	public Usuario findByUsuario(String usuario) {
 		return usuariodao.findByUsuario(usuario);
 	}
-
 
 
 }

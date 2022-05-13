@@ -10,5 +10,7 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 
 public interface EmpleadoDAO extends CrudRepository<Empleado, Long>{
+	
 	Page<Empleado> findAll(Pageable pageable);
+	
 }

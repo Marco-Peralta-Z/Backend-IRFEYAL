@@ -43,7 +43,7 @@ public class ProvinciaControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Provincia provinciaNew =provinciaSer.findById(id);
+			provinciaSer.findById(id);
 			provinciaSer.deleteProvincia(id);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar la provincia de la base de datos");
@@ -74,14 +74,14 @@ public class ProvinciaControler {
 		
 		
 		try {
-			provinciaNew= provinciaSer.saveProvincia(provinciaNew);
+			provinciaNew= provinciaSer.saveProvincia(provincia);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje","La Provincia ha sido creado con exito");
-		response.put("cliente", provinciaNew);
+		response.put("provincia", provinciaNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -111,9 +111,8 @@ public class ProvinciaControler {
 		
 			
 		try {
-		
-		provinciaActual.setProvincia(provincia.getProvincia());
-		provinciaUpdate = provinciaSer.saveProvincia(provinciaActual);
+			provinciaActual.setProvincia(provincia.getProvincia());
+			provinciaUpdate = provinciaSer.saveProvincia(provinciaActual);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al actualizar la provincia en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -128,4 +127,4 @@ public class ProvinciaControler {
 		
 		
 
-	}
+}

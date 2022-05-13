@@ -4,20 +4,18 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name="pais")
-@NamedQuery(name="Pais.findAll", query="SELECT p FROM Pais p")
+@Table(name = "pais")
+@NamedQuery(name = "Pais.findAll", query = "SELECT p FROM Pais p")
 public class Pais implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_pais")
+	@Column(name = "id_pais")
 	private Long id_pais;
 
-	@Column(name="pais")
+	@Column(name = "pais")
 	private String pais;
-
-	
 
 	public Pais() {
 	}
@@ -37,8 +35,5 @@ public class Pais implements Serializable {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-
-	
-	
 
 }

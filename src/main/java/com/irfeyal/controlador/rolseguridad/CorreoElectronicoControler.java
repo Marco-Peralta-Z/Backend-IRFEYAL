@@ -36,21 +36,22 @@ public class CorreoElectronicoControler {
 	@GetMapping ("/correo")
 	
 	public List<CorreoElectronico> correo(){
-	 return correoSer.findAll();
+		return correoSer.findAll();
 	}
+	
 	@DeleteMapping("/correo/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			CorreoElectronico newCorreo =correoSer.findById(id);
+			correoSer.findById(id);
 			correoSer.deleteCorreo(id);	
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al eliminar el cliente de la base de datos");
+			response.put("mensaje", "Erros al eliminar el correo de la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "Canton eliminado con éxito!");
+		response.put("mensaje", "Correo eliminado con éxito!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 		
 	}
@@ -74,14 +75,14 @@ public class CorreoElectronicoControler {
 		
 		
 		try {
-			correoNew= correoSer.saveCorreo(correoNew);
+			correoNew= correoSer.saveCorreo(correo);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje","El cliente ha sido creado con exito");
-		response.put("cliente", correoNew);
+		response.put("mensaje","El correo ha sido creado con exito");
+		response.put("correo", correoNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -105,7 +106,7 @@ public class CorreoElectronicoControler {
 		
 		
 		if (correoActual == null) {
-			response.put("mensaje", "Error: no se pudo editar, el cliente ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
+			response.put("mensaje", "Error: no se pudo editar, el correo ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		
@@ -121,7 +122,7 @@ public class CorreoElectronicoControler {
 		}
 		
 		response.put("mensaje","El Correo ha sido actualizado con exito");
-		response.put("cliente", correoUpdate);
+		response.put("correo", correoUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}

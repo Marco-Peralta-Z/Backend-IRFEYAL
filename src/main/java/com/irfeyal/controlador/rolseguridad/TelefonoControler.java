@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.rolseguridad.TelefonoInterface;
 import com.irfeyal.modelo.rolseguridad.Telefono;
 import com.irfeyal.servicio.rolseguridad.TelefonoServices;
 
@@ -42,14 +41,14 @@ public class TelefonoControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Telefono telefonoNew =telefonoSer.findById(id);
+			telefonoSer.findById(id);
 			telefonoSer.deleteTelefono(id);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al eliminar el telefono de la base de datos");
+			response.put("mensaje", "Erros al eliminar el teléfono de la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "Telefono eliminado con éxito!");
+		response.put("mensaje", "Teléfono eliminado con éxito!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 		
 	}
@@ -73,14 +72,14 @@ public class TelefonoControler {
 		
 		
 		try {
-			telefonoNew= telefonoSer.saveTelefono(telefonoNew);
+			telefonoNew= telefonoSer.saveTelefono(telefono);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje","El telefono ha sido creado con exito");
-		response.put("Telefono", telefonoNew);
+		response.put("mensaje","El teléfono ha sido creado con exito");
+		response.put("telefono", telefonoNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -104,23 +103,23 @@ public class TelefonoControler {
 		
 		
 		if (telefonoActual == null) {
-			response.put("mensaje", "Error: no se pudo editar, el telefono ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
+			response.put("mensaje", "Error: no se pudo editar, el teléfono ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		
 			
 		try {
-		telefonoActual.setTelefono(telefono.getTelefono());
-		telefonoActual.setNumCelular(telefono.getNumCelular());
-		telefonoActual.setExtension(telefono.getExtension());
-		telefonoUpdate= telefonoSer.saveTelefono(telefonoActual);
+			telefonoActual.setTelefono(telefono.getTelefono());
+			telefonoActual.setNumCelular(telefono.getNumCelular());
+			telefonoActual.setExtension(telefono.getExtension());
+			telefonoUpdate= telefonoSer.saveTelefono(telefonoActual);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al actualizar el telefono en la base de datos");
+			response.put("mensaje", "Erros al actualizar el teléfono en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje","El Telefono ha sido actualizado con exito");
+		response.put("mensaje","El Teléfono ha sido actualizado con exito");
 		response.put("telefono", telefonoUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		

@@ -41,7 +41,7 @@ public class PersonaControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Persona personaNew =personaSer.findById(id);
+			personaSer.findById(id);
 			personaSer.deletePersona(id);	
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar la persona de la base de datos");
@@ -71,14 +71,14 @@ public class PersonaControler {
 		
 		
 		try {
-			personaNew= personaSer.savePersona(personaNew);
+			personaNew= personaSer.savePersona(persona);
 		} catch (DataAccessException e) {                
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje","El cliente ha sido creado con exito");
-		response.put("cliente", personaNew);
+		response.put("mensaje","Persona ha sido creada con exito");
+		response.put("persona", personaNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -102,13 +102,12 @@ public class PersonaControler {
 		
 		 
 		if (personaactual == null) {
-			response.put("mensaje", "Error: no se pudo editar, el cliente ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
+			response.put("mensaje", "Error: no se pudo editar, la persona ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		
 		 
 		try {
-		
 			personaactual.setApellido(persona.getApellido());
 			personaactual.setCedula(persona.getCedula());
 			personaactual.setFechaNacimiento(persona.getFechaNacimiento());

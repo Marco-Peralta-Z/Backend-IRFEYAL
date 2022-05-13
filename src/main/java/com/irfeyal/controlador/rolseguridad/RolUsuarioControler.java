@@ -40,7 +40,7 @@ public class RolUsuarioControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			RolUsuario rolUsuarioNew =rolusuarioSer.findById(id);
+			rolusuarioSer.findById(id);
 			rolusuarioSer.deleteRolUsuario(id);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar el rol usuario de la base de datos");
@@ -108,12 +108,11 @@ public class RolUsuarioControler {
 		
 			
 		try {
-		
-		rolUsuarioActual.setUsuario(rolUsuario.getUsuario());
-		rolUsuarioActual.setEstado(rolUsuario.getEstado());
-		rolUsuarioActual.setid_rol_usuario(rolUsuario.getid_rol_usuario());
-		rolUsuarioActual.setRol(rolUsuario.getRol());
-		rolUsuarioUpdate=rolusuarioSer.saveRolUsuario(rolUsuarioActual);
+			rolUsuarioActual.setUsuario(rolUsuario.getUsuario());
+			rolUsuarioActual.setEstado(rolUsuario.getEstado());
+			rolUsuarioActual.setid_rol_usuario(rolUsuario.getid_rol_usuario());
+			rolUsuarioActual.setRol(rolUsuario.getRol());
+			rolUsuarioUpdate=rolusuarioSer.saveRolUsuario(rolUsuarioActual);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al actualizar el rol Usuario en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

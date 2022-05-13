@@ -1,18 +1,13 @@
 package com.irfeyal.servicio.rolseguridad;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 
 import com.irfeyal.interfaces.rolseguridad.UsuarioLoginInterface;
-import com.irfeyal.modelo.dao.rolseguridad.UsuarioDAO;
 import com.irfeyal.modelo.dao.rolseguridad.UsuarioLoginDAO2;
-import com.irfeyal.modelo.rolseguridad.Telefono;
-import com.irfeyal.modelo.rolseguridad.Usuario;
 import com.irfeyal.modelo.rolseguridad.UsuarioLogin;
 
 @Service
@@ -33,19 +28,5 @@ public class UsuarioLoginServices2 implements UsuarioLoginInterface{
 		return usuariodao.loginUser(usuario, contrasena);
 	}
 
-	
-	
-
-
-	
-
-	
-
-	
-	
-
-	
-
-	
 
 }

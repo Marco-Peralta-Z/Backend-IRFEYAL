@@ -39,11 +39,13 @@ public class EmpresaControler {
 	@GetMapping ("/empresa")
 	
 	public List<Empresa> empresa(){
-	 return empresaService.findAll();
+		return empresaService.findAll();
 	}
-	public List<Empresa> empresadel(Long  id){
-		 return (List<Empresa>) empresaService.findById(id);
-		}
+	
+	@GetMapping ("/empresa/{id}")
+	public Empresa empresadel(@PathVariable Long id){
+		return empresaService.findById(id);
+	}
 		
 	@PostMapping("/empresa")
 	public ResponseEntity<?> create(@Validated @RequestBody Empresa empresa, BindingResult result) {
@@ -64,14 +66,14 @@ public class EmpresaControler {
 		
 		
 		try {
-			empresaNew= empresaService.saveEmpresa(empresaNew);
+			empresaNew= empresaService.saveEmpresa(empresa);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje","El cliente ha sido creado con exito");
-		response.put("cliente", empresaNew);
+		response.put("mensaje","La empresa ha sido creado con exito");
+		response.put("empresa", empresaNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -95,7 +97,7 @@ public class EmpresaControler {
 		
 		
 		if (empresaActual == null) {
-			response.put("mensaje", "Error: no se pudo editar, el cliente ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
+			response.put("mensaje", "Error: no se pudo editar, la empresa ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		
@@ -104,21 +106,22 @@ public class EmpresaControler {
 		
 		empresaActual.setNombre_empresa(empresa.getNombre_empresa());
 		empresaUpdate= empresaService.saveEmpresa(empresaActual);
+		
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al actualizar el cliente en la base de datos");
+			response.put("mensaje", "Erros al actualizar la empresa en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		response.put("mensaje","La empresa ha sido actualizado con exito");
-		response.put("cliente", empresaUpdate);
+		response.put("empresa", empresaUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		
 	}
 		
 	public List<Empresa> empresaupd(){
 		 return empresaService.updateEmpresa();
-		}
+	}
 		
 	
 }

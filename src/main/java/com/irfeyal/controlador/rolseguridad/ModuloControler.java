@@ -46,7 +46,7 @@ public class ModuloControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Modulo moduloNew =moduloSer.findById(id);
+			moduloSer.findById(id);
 			moduloSer.deleteModulo(id);	
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar el Modulo de la base de datos");
@@ -77,14 +77,14 @@ public class ModuloControler {
 		
 		
 		try {
-			moduloNew= moduloSer.saveModulo(moduloNew);
+			moduloNew= moduloSer.saveModulo(modulo);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje","El modulo ha sido creado con exito");
-		response.put("cliente", moduloNew);
+		response.put("mensaje","El módulo ha sido creado con exito");
+		response.put("modulo", moduloNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -108,25 +108,25 @@ public class ModuloControler {
 		
 		
 		if (moduloActual == null) {
-			response.put("mensaje", "Error: no se pudo editar, el modulo ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
+			response.put("mensaje", "Error: no se pudo editar, el módulo ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		
 			
 		try {
-		moduloActual.setIdModulo(modulo.getIdModulo());
-		moduloActual.setModulo(modulo.getModulo());
-		moduloActual.setUrl(modulo.getUrl());
-		//moduloActual.setId_rol_usuario(modulo.getId_rol_usuario());
-		moduloUpdate= moduloSer.saveModulo(moduloActual);
+			moduloActual.setIdModulo(modulo.getIdModulo());
+			moduloActual.setModulo(modulo.getModulo());
+			moduloActual.setUrl(modulo.getUrl());
+			//moduloActual.setId_rol_usuario(modulo.getId_rol_usuario());
+			moduloUpdate= moduloSer.saveModulo(moduloActual);
 			
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al actualizar el modulo en la base de datos");
+			response.put("mensaje", "Erros al actualizar el módulo en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje","El Modulo ha sido actualizado con exito");
+		response.put("mensaje","El módulo ha sido actualizado con exito");
 		response.put("modulo", moduloUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		

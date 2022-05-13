@@ -20,9 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.modelo.rolseguridad.Canton;
 import com.irfeyal.modelo.rolseguridad.Empleado;
-import com.irfeyal.servicio.rolseguridad.CantonService;
 import com.irfeyal.servicio.rolseguridad.EmpleadoService;
 
 @CrossOrigin(origins= {"*"})
@@ -44,7 +42,7 @@ public class EmpleadoControler {
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			Empleado newEmpleado = empleadoSer.findById(id);
+			empleadoSer.findById(id);
 			empleadoSer.deleteEmpleado(id);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar el empleado de la base de datos");
@@ -72,7 +70,7 @@ public class EmpleadoControler {
 		}
 
 		try {
-			newEmpleado = empleadoSer.saveEmpleado(newEmpleado);
+			newEmpleado = empleadoSer.saveEmpleado(empleado);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -110,7 +108,7 @@ public class EmpleadoControler {
 			empleadoActual.setCorreo(empleado.getCorreo());
 			empleadoActual.setDireccion(empleado.getDireccion());
 			empleadoActual.setExtension(empleado.getExtension());
-			empleadoActual.setId_persona(empleado.getId_persona());
+			empleadoActual.setPersona(empleado.getPersona());
 			empleadoActual.setTelefono(empleado.getTelefono());
 			empleadoUpdate = empleadoSer.saveEmpleado(empleadoActual);
 		} catch (DataAccessException e) {

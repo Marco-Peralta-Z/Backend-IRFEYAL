@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.rolseguridad.UsuarioInterface;
 import com.irfeyal.modelo.rolseguridad.Usuario;
 import com.irfeyal.modelo.rolseguridad.UsuarioLogin;
 import com.irfeyal.servicio.rolseguridad.UsuarioLoginServices2;
@@ -35,8 +34,6 @@ import com.irfeyal.servicio.rolseguridad.UsuarioServices;
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping ("/mapUsuario")
-
-
 public class UsuarioControler {
 	
 	@Autowired
@@ -69,14 +66,12 @@ public class UsuarioControler {
 	}
 	
 	
-	
-	
 	@DeleteMapping("/usuario/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Usuario usuarioNew =usuarioSer.findById(id);
+			usuarioSer.findById(id);
 			usuarioSer.deleteUsuario(id);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar el usuario de la base de datos");
@@ -105,10 +100,9 @@ public class UsuarioControler {
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.BAD_REQUEST);
 		}
 		
-		// encriptamos la contraseña
-		usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
-		
 		try {
+			// encriptamos la contraseña
+			usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
 			usuarioNew= usuarioSer.saveUsuario(usuario);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
@@ -146,14 +140,12 @@ public class UsuarioControler {
 		
 			
 		try {
-		
-		usuarioActual.setUsuario(usuario.getUsuario());
-		// codificación de la password
-		usuarioActual.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
-		usuarioActual.setEstUsuario(usuario.getEstUsuario());
-
-		usuarioActual.setEmpleado(usuario.getEmpleado());
-		usuarioUpdate= usuarioSer.saveUsuario(usuarioActual);
+			usuarioActual.setUsuario(usuario.getUsuario());
+			// codificación de la password
+			usuarioActual.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
+			usuarioActual.setEstUsuario(usuario.getEstUsuario());
+			usuarioActual.setEmpleado(usuario.getEmpleado());
+			usuarioUpdate= usuarioSer.saveUsuario(usuarioActual);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al actualizar el usuario en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

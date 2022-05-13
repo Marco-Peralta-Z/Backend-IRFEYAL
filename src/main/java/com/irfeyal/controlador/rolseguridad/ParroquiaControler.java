@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.rolseguridad.Parroquia;
 import com.irfeyal.servicio.rolseguridad.ParroquiaServices;
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping ("/mapParroquia")
@@ -39,7 +40,7 @@ public class ParroquiaControler {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			Parroquia newParroquia =parroquiaSer.findById(id);
+			parroquiaSer.findById(id);
 			parroquiaSer.deleteParroquia(id);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al eliminar la parroquia de la base de datos");
@@ -70,7 +71,7 @@ public class ParroquiaControler {
 		
 		
 		try {
-			parroquiaNew= parroquiaSer.saveParroquia(parroquiaNew);
+			parroquiaNew= parroquiaSer.saveParroquia(parroquia);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -107,9 +108,8 @@ public class ParroquiaControler {
 		
 			
 		try {
-		
-		parroquiaActual.setParroquia(parroquia.getParroquia());
-		parroquiaUpdate= parroquiaSer.saveParroquia(parroquiaActual);
+			parroquiaActual.setParroquia(parroquia.getParroquia());
+			parroquiaUpdate= parroquiaSer.saveParroquia(parroquiaActual);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al actualizar la parroquia en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

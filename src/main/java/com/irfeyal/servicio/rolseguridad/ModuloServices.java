@@ -19,7 +19,7 @@ public class ModuloServices implements ModuloInterface{
 	@Override
 	public List<Modulo> findAll() {
 		// TODO Auto-generated method stub
-		return (List<Modulo>)modulodao;
+		return (List<Modulo>) modulodao.findAll();
 	}
 
 	@Override

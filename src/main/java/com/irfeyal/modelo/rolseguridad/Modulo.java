@@ -1,4 +1,5 @@
 package com.irfeyal.modelo.rolseguridad;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -6,66 +7,59 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="modulo")
-@NamedQuery(name="modulo.findAll", query="SELECT m FROM Modulo m")
+@Table(name = "modulo")
+@NamedQuery(name = "modulo.findAll", query = "SELECT m FROM Modulo m")
 public class Modulo implements Serializable {
-private static final long serialVersionUID = 1L;
-		
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name="id_modulo")
-		private Integer idModulo;
+	private static final long serialVersionUID = 1L;
 
-		@Column(name="modulo")
-		private String modulo;
-		
-		@Column(name="url")
-		private String url;
-		
-		
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_modulo")
+	private Integer idModulo;
 
-		public Modulo() {
-		}
-		
-		public Modulo(Integer idModulo, String modulo, String url) {
-			super();
-			this.idModulo = idModulo;
-			this.modulo = modulo;
-			this.url = url;
-			
-		}
+	@Column(name = "modulo")
+	private String modulo;
 
+	@Column(name = "url")
+	private String url;
 
-		public Integer getIdModulo() {
-			return this.idModulo;
-		}
+	public Modulo() {
+	}
 
-		public void setIdModulo(Integer idModulo) {
-			this.idModulo = idModulo;
-		}
+	public Modulo(Integer idModulo, String modulo, String url) {
+		super();
+		this.idModulo = idModulo;
+		this.modulo = modulo;
+		this.url = url;
 
-		public String getModulo() {
-			return this.modulo;
-		}
+	}
 
-		public void setModulo(String modulo) {
-			this.modulo = modulo;
-		}
+	public Integer getIdModulo() {
+		return this.idModulo;
+	}
 
-		public String getUrl() {
-			return url;
-		}
+	public void setIdModulo(Integer idModulo) {
+		this.idModulo = idModulo;
+	}
 
-		public void setUrl(String url) {
-			this.url = url;
-		}
+	public String getModulo() {
+		return this.modulo;
+	}
 
-		
-		
+	public void setModulo(String modulo) {
+		this.modulo = modulo;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 }

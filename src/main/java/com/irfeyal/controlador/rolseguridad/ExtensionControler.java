@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController; 
-import com.irfeyal.modelo.rolseguridad.Canton;
 import com.irfeyal.modelo.rolseguridad.Extension;
 import com.irfeyal.servicio.rolseguridad.ExtensionServices;
 
@@ -47,14 +46,14 @@ public class ExtensionControler {
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			Extension extensionNew = extensionSer.findById(id);
+			extensionSer.findById(id);
 			extensionSer.deleteExtension(id);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al eliminar el cliente de la base de datos");
+			response.put("mensaje", "Erros al eliminar la extensión de la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "Canton eliminado con éxito!");
+		response.put("mensaje", "La extensión eliminada con éxito!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 
 	}
@@ -78,14 +77,14 @@ public class ExtensionControler {
 		
 		
 		try {
-			extensionNew= extensionSer.saveExtension(extensionNew);
+			extensionNew= extensionSer.saveExtension(extension);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Erros al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje","El cliente ha sido creado con exito");
-		response.put("cliente", extensionNew);
+		response.put("mensaje","La extensión ha sido creada con exito");
+		response.put("extension", extensionNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
@@ -109,7 +108,7 @@ public class ExtensionControler {
 		
 		
 		if (extensionActual == null) {
-			response.put("mensaje", "Error: no se pudo editar, la extension ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
+			response.put("mensaje", "Error: no se pudo editar, la extensión ID: ".concat(id.toString().concat(", no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
 		}
 		
@@ -129,7 +128,7 @@ public class ExtensionControler {
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje","La extension ha sido actualizada con exito");
+		response.put("mensaje","La extensión ha sido actualizada con exito");
 		response.put("extension", extensionUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 		

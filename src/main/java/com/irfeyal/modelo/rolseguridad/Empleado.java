@@ -44,7 +44,7 @@ public class Empleado implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_persona")
-	private Persona id_persona;
+	private Persona persona;
 	
 	public Empleado() {
 		super();
@@ -68,7 +68,7 @@ public class Empleado implements Serializable {
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
-		this.id_persona = id_persona;
+		this.persona = id_persona;
 	}
 
 	public Long getId_empleado() {
@@ -120,12 +120,12 @@ public class Empleado implements Serializable {
 		this.correo = correo;
 	}
 
-	public Persona getId_persona() {
-		return id_persona;
+	public Persona getPersona() {
+		return persona;
 	}
 
-	public void setId_persona(Persona id_persona) {
-		this.id_persona = id_persona;
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 
 	public static long getSerialversionuid() {
