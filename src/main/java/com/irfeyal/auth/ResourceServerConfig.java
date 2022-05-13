@@ -25,6 +25,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/api").permitAll()
+		// modulo rolSeguridad
+		.antMatchers("/mapUsuario/**").hasRole("Administrador")
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());
 		

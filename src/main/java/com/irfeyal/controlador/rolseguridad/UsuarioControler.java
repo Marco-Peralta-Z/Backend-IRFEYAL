@@ -107,6 +107,7 @@ public class UsuarioControler {
 		
 		// encriptamos la contraseña
 		usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
+		
 		try {
 			usuarioNew= usuarioSer.saveUsuario(usuario);
 		} catch (DataAccessException e) {
@@ -147,6 +148,7 @@ public class UsuarioControler {
 		try {
 		
 		usuarioActual.setUsuario(usuario.getUsuario());
+		// codificación de la password
 		usuarioActual.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
 		usuarioActual.setEstUsuario(usuario.getEstUsuario());
 
