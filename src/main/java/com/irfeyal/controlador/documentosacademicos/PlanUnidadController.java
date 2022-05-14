@@ -19,6 +19,7 @@ import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.servicio.documentosacademicos.PlanUnidadService;
 import com.irfeyal.servicio.parametrizacionacademica.CursoServicesImp;
+import com.irfeyal.servicio.parametrizacionacademica.EmpleadoServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.ModalidadServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.ParaleloServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.PeriodoServicesImp;
@@ -29,7 +30,7 @@ public class PlanUnidadController {
 	
 	@Autowired
 	private PlanUnidadService planUnidadService;
-	
+
 	@Autowired
 	private ModalidadServicesImp modalidadService;
 	
@@ -41,6 +42,9 @@ public class PlanUnidadController {
 	
 	@Autowired
 	private ParaleloServicesImp paraleloService;
+	
+	@Autowired
+	private EmpleadoServicesImp empleadoService;
 	
 	@GetMapping
 	private ResponseEntity<List<PlanUnidad>> getAllPlanUnidad (){
@@ -62,6 +66,11 @@ public class PlanUnidadController {
 	@GetMapping ("{String}")
 	private ResponseEntity<List<PlanUnidad>> getAllPlanunidadByEstado (@PathVariable("String") String est){
 		return ResponseEntity.ok(planUnidadService.findAllByEstado(est));
+	}
+	
+	@GetMapping ("empleado/{id_empleado}")
+	private ResponseEntity<List<PlanUnidad>> getAllPlanunidadByEmpleado (@PathVariable("id_empleado") Long id){
+		return ResponseEntity.ok(planUnidadService.findAllByEmpleado(id));
 	}
 	
 	@PutMapping ("update/{id}")
