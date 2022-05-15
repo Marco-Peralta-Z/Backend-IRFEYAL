@@ -38,8 +38,8 @@ public class ModuloLibroControlador {
 	}
 	
 	
-	@RequestMapping(value = "/createmodulolibro", method = RequestMethod.POST)
-    public ResponseEntity<ModuloLibro> create(@Valid @RequestBody ModuloLibro moduloLibro) {
+	@RequestMapping(value = "/crear", method = RequestMethod.POST)
+    public ResponseEntity<ModuloLibro> crearModulo(@Valid @RequestBody ModuloLibro moduloLibro) {
 		
 		//System.out.print("------------>"+moduloLibro.getCodModulo());
         ModuloLibro moduloLibroReturn = modulolibroService.save(moduloLibro);
