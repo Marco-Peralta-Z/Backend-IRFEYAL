@@ -25,8 +25,64 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/api").permitAll()
-		// modulo rolSeguridad
-		.antMatchers("/mapUsuario/**").hasRole("Administrador")
+		//ASISTENCIA
+		.antMatchers("/asistencia/**").hasAnyRole("Administrador","estudiante","docente")
+		//DOCUMENTOS ACADÉMICOS
+		.antMatchers("/planunidades/**").hasAnyRole("Administrador","estudiante","rectora", "docente")
+		.antMatchers("/unidades/**")	.hasAnyRole("Administrador","estudiante","rectora", "docente")
+		//INVENTARIOS
+		.antMatchers("/aprobacion/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/articulo/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/categoriarticulo/**")		.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/detallebajaarticulo/**")		.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/detalleingresoarticulo/**")	.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/entregakit/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/ingresokit/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/inventario/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/kit/**")						.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/modulolibro/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/recepcionarticulo/**")		.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/salidaarticulo/**")			.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		//MATRICULA
+		.antMatchers("/api/**")				.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/api/matricula/**")	.hasAnyRole("Administrador","secretaria")
+		//PAGOS
+		.antMatchers("/api/comprobante/**")			.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/api/detalleComprobante/**")	.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/api/tipoComprobante/**")		.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/api/tipo_pago/**")			.hasAnyRole("Administrador","secretaria")
+		//PARAMETRIZACION
+		.antMatchers("/asignatura/**")	.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/curso/**")		.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/horario/**")		.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/malla/**")		.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/modalidad/**")	.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/paralelo/**")	.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/periodo/**")		.hasAnyRole("Administrador","secretaria")
+		//SECRETARIA
+		.antMatchers("/api/documentos/**")			.hasAnyRole("Administrador","secretaria")
+		.antMatchers("/api/certificadoMatricula/**").hasAnyRole("Administrador","secretaria")
+		.antMatchers("/api/certificadoPromocion/**").hasAnyRole("Administrador","secretaria")
+		.antMatchers("/api/registroBitacora/**")	.hasAnyRole("Administrador","secretaria")
+		//TUTORIAS:
+		.antMatchers("/registro/**").hasAnyRole("Administrador","docente")
+		//ROL SEGURIDAD
+		.antMatchers("/mapCanton/**")			.hasRole("Administrador")
+		.antMatchers("/mapCorreoElectronico/**").hasRole("Administrador")
+		.antMatchers("/mapDireccion/**")		.hasRole("Administrador")
+		.antMatchers("/mapEmpleado/**")			.hasRole("Administrador")
+		.antMatchers("/mapEmpresa/**")			.hasRole("Administrador")
+		.antMatchers("/mapExtension/**")		.hasRole("Administrador")
+		.antMatchers("/mapGenero/**")			.hasRole("Administrador")
+		.antMatchers("/mapModulo/**")			.hasRole("Administrador")
+		.antMatchers("/mapPais/**")				.hasRole("Administrador")
+		.antMatchers("/mapParroquia/**")		.hasRole("Administrador")
+		.antMatchers("/mapPersona/**")			.hasRole("Administrador")
+		.antMatchers("/mapProv/**")				.hasRole("Administrador")
+		.antMatchers("/mapRol/**")				.hasRole("Administrador")
+		.antMatchers("/mapRolUsuario/**")		.hasRole("Administrador")
+		.antMatchers("/mapTelefono/**")			.hasRole("Administrador")
+		.antMatchers("/mapUsuario/**")			.hasRole("Administrador")
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());
 		

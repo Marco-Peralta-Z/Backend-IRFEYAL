@@ -117,6 +117,7 @@ INSERT INTO rol (descripcion) VALUES ('estudiante');
 INSERT INTO rol (descripcion) VALUES ('coordinador de desarrollo');
 INSERT INTO rol (descripcion) VALUES ('coordinador administrativo');
 INSERT INTO rol (descripcion) VALUES ('rectora');
+INSERT INTO rol (descripcion) VALUES ('docente');
 
 -------------------MODULO-------------------
 INSERT INTO modulo (modulo,url) VALUES ('matriculas','http//localhost/modmatricula.php');
@@ -135,6 +136,7 @@ INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,5);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,6);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,7);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,8,1,8);
 
 -- PARAMETRIZACION ACADEMICA
 
