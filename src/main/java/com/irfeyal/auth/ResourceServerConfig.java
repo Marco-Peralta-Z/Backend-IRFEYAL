@@ -6,7 +6,6 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -24,12 +23,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	public void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/api").permitAll()
 		//ASISTENCIA
-		.antMatchers("/asistencia/**").hasAnyRole("Administrador","estudiante","docente")
+		.antMatchers("/asistencia/**").hasAnyRole("Administrador","docente")
 		//DOCUMENTOS ACADÉMICOS
-		.antMatchers("/planunidades/**").hasAnyRole("Administrador","estudiante","rectora", "docente")
-		.antMatchers("/unidades/**")	.hasAnyRole("Administrador","estudiante","rectora", "docente")
+		.antMatchers("/planunidades/**").hasAnyRole("Administrador","rectora", "docente")
+		.antMatchers("/unidades/**")	.hasAnyRole("Administrador","rectora", "docente")
 		//INVENTARIOS
 		.antMatchers("/aprobacion/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
 		.antMatchers("/articulo/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")

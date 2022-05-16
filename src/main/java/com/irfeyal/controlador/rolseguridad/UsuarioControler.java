@@ -22,12 +22,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.rolseguridad.Usuario;
-import com.irfeyal.modelo.rolseguridad.UsuarioLogin;
-import com.irfeyal.servicio.rolseguridad.UsuarioLoginServices2;
 import com.irfeyal.servicio.rolseguridad.UsuarioServices;
 
 
@@ -38,8 +35,6 @@ public class UsuarioControler {
 	
 	@Autowired
 	 private UsuarioServices usuarioSer;
-	@Autowired
-	private UsuarioLoginServices2 usuarioLoginSer;
 	
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
@@ -55,14 +50,6 @@ public class UsuarioControler {
 	@GetMapping(path = "/list", produces = { "application/json" })
 	public List<Usuario> listausuarios() {
 		return usuarioSer.listAllUsuario();
-	}
-
-	@GetMapping(path = "/login", produces = { "application/json" })
-	public UsuarioLogin login(@RequestParam(value = "usuario") String usuario, @RequestParam(value = "contrasenia") String contrasenia) {
-		System.out.println("*********************************************");
-		System.out.print( usuarioLoginSer.LoginUser(usuario, contrasenia));
-		
-		return usuarioLoginSer.LoginUser(usuario, contrasenia);
 	}
 	
 	

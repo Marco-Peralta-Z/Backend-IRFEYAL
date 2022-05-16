@@ -84,7 +84,7 @@ public class UsuarioServices implements UsuarioInterface, UserDetailsService {
 		Usuario usuario = usuariodao.findByCedulaPersona(cedula);
 		
 		if ( usuario == null ) {
-			System.out.println("=======> Error en el login : No existe el usuario: "+ cedula + " en el sistema.");
+			//System.out.println("=======> Error en el login : No existe el usuario: "+ cedula + " en el sistema.");
 			throw new UsernameNotFoundException("Error en el login : No existe el usuario: "+ cedula + " en el sistema.");
 		}
 				
