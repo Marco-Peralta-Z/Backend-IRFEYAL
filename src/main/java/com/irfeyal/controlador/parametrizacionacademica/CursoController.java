@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.parametrizacionacademica.CursoServices;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 
-@CrossOrigin(origins = "", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/curso")
 public class CursoController {

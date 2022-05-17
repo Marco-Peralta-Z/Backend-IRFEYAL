@@ -30,7 +30,7 @@ import com.irfeyal.interfaces.parametrizacionacademica.PeriodoServices;
 import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
-@CrossOrigin(origins = "", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/periodo")
 public class PeriodoController {

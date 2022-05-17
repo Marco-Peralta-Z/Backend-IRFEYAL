@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.parametrizacionacademica.MallaServices;
 import com.irfeyal.modelo.parametrizacionacademica.Malla;
 
-@CrossOrigin(origins = "", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/malla")
 public class MallaController {
