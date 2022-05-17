@@ -2,6 +2,7 @@ package com.irfeyal.modelo.pagos;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.rolseguridad.Empleado;
@@ -27,8 +30,10 @@ public class Comprobante implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(columnDefinition = "serial")
 	private Long id_comprobante;
-
-	private Date fecha;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "fecha")
+	private Calendar fecha;
 	private String imagen;
 	private float valor_total;
 	private boolean estado;
@@ -75,11 +80,13 @@ public class Comprobante implements Serializable {
 		this.id_comprobante = id_comprobante;
 	}
 
-	public Date getFecha() {
+	
+
+	public Calendar getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(Calendar fecha) {
 		this.fecha = fecha;
 	}
 

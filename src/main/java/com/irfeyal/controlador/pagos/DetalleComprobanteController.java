@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +28,7 @@ import com.irfeyal.interfaces.pagos.IDetalleComprobanteService;
 import com.irfeyal.modelo.pagos.DetalleComprobante;
 
 
-@CrossOrigin(origins= {"http://localhost:9070"})
+@CrossOrigin(origins= {"*"})
 @RestController
 @RequestMapping("/api")
 public class DetalleComprobanteController {
@@ -36,7 +37,7 @@ public class DetalleComprobanteController {
 	private IDetalleComprobanteService detalleComprobanteService;
 	
 	//listar
-	@GetMapping("/detalleComprobante")
+	@GetMapping(path="/detalleComprobante", produces = "application/json")
 	public List<DetalleComprobante> index(){
 		return detalleComprobanteService.findAll();
 	}
@@ -81,6 +82,8 @@ public class DetalleComprobanteController {
 		
 		
 		//eliminar
+		@DeleteMapping("/detalleComprobante/{id}")
+		@ResponseStatus(HttpStatus.NO_CONTENT)
 		public void delete(@PathVariable Long id) {
 			detalleComprobanteService.delete(id);
 		}

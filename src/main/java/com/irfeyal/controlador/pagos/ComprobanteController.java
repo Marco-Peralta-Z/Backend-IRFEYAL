@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.pagos.IComprobanteService;
 import com.irfeyal.modelo.pagos.Comprobante;
 
-@CrossOrigin(origins= {"http://localhost:9070"})
+@CrossOrigin(origins= {"*"})
 @RestController
 @RequestMapping("/api")
 public class ComprobanteController {
@@ -36,7 +36,7 @@ public class ComprobanteController {
 	private IComprobanteService comprobanteService;
 	
 	//listar
-	@GetMapping("/comprobante")
+	@GetMapping(path= "/comprobante", produces = "application/json")
 	public List<Comprobante> index(){
 		return comprobanteService.findAll();
 	}

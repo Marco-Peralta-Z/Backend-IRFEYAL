@@ -25,7 +25,7 @@ import com.irfeyal.interfaces.secretaria.IGenerarCertificadoMatriculaService;
 import com.irfeyal.modelo.secretaria.GenerarCertificadoMatricula;
 
 
-@CrossOrigin(origins= {"http://localhost:9070"})
+@CrossOrigin(origins= {"*"})
 @RestController
 @RequestMapping("/api")
 public class GenerarCertificadoMatriculaController {

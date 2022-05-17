@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.secretaria.IGenerarCertificadoPromocionService;
 import com.irfeyal.modelo.secretaria.GenerarCertificadoPromocion;
 
-@CrossOrigin(origins= {"http://localhost:9070"})
+@CrossOrigin(origins= {"*"})
 @RestController
 @RequestMapping("/api")
 public class GenerarCertificadoPromocionController {
