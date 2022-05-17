@@ -20,6 +20,9 @@ import org.springframework.web.filter.CorsFilter;
  * Configuracion de cors
  * 
  * 
+ * Si desea agregar mas paths puedo hacerlo segun su módulo por favor mantener el orden 
+ * 
+ * 
  * Si desea agregar otro rol de hacerlo asi:  "nombre del rol de la bd" = 'estudiante'
  * Revisar el import.sql del back la tabla roles
  *
