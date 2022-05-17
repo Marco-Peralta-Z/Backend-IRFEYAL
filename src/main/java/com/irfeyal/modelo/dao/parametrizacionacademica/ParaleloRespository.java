@@ -34,7 +34,7 @@ public interface ParaleloRespository extends JpaRepository<Paralelo, Long> {
 			+ "	inner join malla_curso mc on mc.id_curso = c.id_curso"
 			+ "	inner join malla ma on ma.id_malla = mc.id_malla"
 			+ "	inner join periodo pe on pe.id_malla = ma.id_malla"
-			+ " where c.id_empleado=1  and c.id_curso=2 and m.id_modalidad=3 and pe.id_periodo=4 group by pa.id_paralelo", nativeQuery = true)
+			+ " where c.id_empleado=?1  and c.id_curso=?2 and m.id_modalidad=?3 and pe.id_periodo=?4 group by pa.id_paralelo", nativeQuery = true)
 	List<Paralelo> ListParaleloempleados(Long empleado, Long id_curso, Long id_modalidad, Long id_periodo);
 
 
