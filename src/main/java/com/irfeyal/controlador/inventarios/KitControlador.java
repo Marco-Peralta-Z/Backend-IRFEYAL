@@ -34,7 +34,12 @@ public class KitControlador {
 	
 	@PostMapping("/kit/")
 	public ResponseEntity<Kit> crearKit(@RequestBody Kit kit){
-		return new ResponseEntity(this.kitService.save(kit),HttpStatus.CREATED);
+		Kit kitReturn = this.kitService.save(kit);
+		if(kitReturn != null) {
+			return new ResponseEntity(kitReturn,HttpStatus.CREATED);
+		}else {
+			return null;
+		}
 	}
 
 	@GetMapping(path = "/list", produces = {"application/json"})

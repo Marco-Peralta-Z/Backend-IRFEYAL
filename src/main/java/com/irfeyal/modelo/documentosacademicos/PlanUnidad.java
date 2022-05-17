@@ -13,10 +13,10 @@ import javax.persistence.Table;
 
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
-import com.irfeyal.modelo.parametrizacionacademica.CursoParalelo;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table (name = "plan_unidad")
@@ -42,10 +42,13 @@ public class PlanUnidad implements Serializable{
 	private Unidad unidad;
 	
 	@ManyToOne
+	@JoinColumn (name = "id_empleado")
+	private Empleado empleado;
+	
+	@ManyToOne
 	@JoinColumn (name = "id_asignatura")
 	private Asignatura asignatura;
 	
-	//----------------
 	@ManyToOne
 	@JoinColumn (name = "id_curso")
 	private Curso curso;
@@ -53,8 +56,6 @@ public class PlanUnidad implements Serializable{
 	@ManyToOne
 	@JoinColumn (name = "id_paralelo")
 	private Paralelo paralelo;
-	
-	//----------------
 	
 	@ManyToOne
 	@JoinColumn (name = "id_modalidad")
@@ -69,8 +70,8 @@ public class PlanUnidad implements Serializable{
 
 	public PlanUnidad(Long id_plan_unidad, String titulo_unidad, String objetivos, String contenidos,
 			String criterios_evaluacion, String destrezas, Date fecha_inicio, Date fecha_fin, String estado,
-			Unidad unidad, Asignatura asignatura, Curso curso, Paralelo paralelo, Modalidad modalidad,
-			Periodo periodo) {
+			Unidad unidad, Empleado empleado, Asignatura asignatura, Curso curso, Paralelo paralelo,
+			Modalidad modalidad, Periodo periodo) {
 		super();
 		this.id_plan_unidad = id_plan_unidad;
 		this.titulo_unidad = titulo_unidad;
@@ -82,15 +83,13 @@ public class PlanUnidad implements Serializable{
 		this.fecha_fin = fecha_fin;
 		this.estado = estado;
 		this.unidad = unidad;
+		this.empleado = empleado;
 		this.asignatura = asignatura;
 		this.curso = curso;
 		this.paralelo = paralelo;
 		this.modalidad = modalidad;
 		this.periodo = periodo;
 	}
-
-
-
 
 
 	public Long getId_plan_unidad() {
@@ -171,6 +170,14 @@ public class PlanUnidad implements Serializable{
 
 	public void setUnidad(Unidad unidad) {
 		this.unidad = unidad;
+	}
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
 	public Asignatura getAsignatura() {

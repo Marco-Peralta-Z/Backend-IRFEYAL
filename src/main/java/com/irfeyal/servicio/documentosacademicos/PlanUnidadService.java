@@ -39,6 +39,18 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		return planunidadesRespuesta;
 	}
 	
+	//listar Planes de unidad por Empleado
+		public List<PlanUnidad> findAllByEmpleado (Long id){
+			List<PlanUnidad> planunidadesRespuesta = new ArrayList<>();
+			List<PlanUnidad> planunidades = planUnidadDAO.findAll();
+			for (int i=0; i<planunidades.size(); i++) {
+				if (planunidades.get(i).getEmpleado().getId_empleado() == id) {
+					planunidadesRespuesta.add(planunidades.get(i));
+				} 
+			}
+			return planunidadesRespuesta;
+		}
+	
 	//listar Asignaturas por Malla
 		public List<Asignatura> findAllByMalla (Long id){
 			List<Asignatura> AsigRespuesta = new ArrayList<>();

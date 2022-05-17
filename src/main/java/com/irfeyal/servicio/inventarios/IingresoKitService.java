@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.irfeyal.interfaces.inventarios.IngresoKitInterface;
+import com.irfeyal.interfaces.inventarios.MetodosModInventarios;
 import com.irfeyal.modelo.dao.inventarios.AprobacionDao;
 import com.irfeyal.modelo.dao.inventarios.IngresoKitDao;
 import com.irfeyal.modelo.dao.inventarios.KitDao;
@@ -31,6 +32,9 @@ import com.irfeyal.servicio.rolseguridad.EmpleadoService;
 @Service // ("IAutoServiceImplement")
 @Transactional
 public class IingresoKitService implements IngresoKitInterface {
+	
+	MetodosModInventarios metodosModInventarios = new MetodosModInventarios();
+	
 	@Autowired
 	private IngresoKitDao ingresoKitRepo;
 
@@ -52,6 +56,10 @@ public class IingresoKitService implements IngresoKitInterface {
 		
 		if(respValidaIngrKit==true) {
 			Aprobacion aprobacion= aprobacionRepo.save(ingresoKit.getId_aprobacion());
+			Date fechaActual = metodosModInventarios.obtenerFechaActual();
+			aprobacion.setFechaAprobacion(fechaActual);
+			aprobacion.setFechaControl(fechaActual);
+			ingresoKit.setFechaIngreso(metodosModInventarios.obtenerFechaActual());
 			ingresoKit.setId_aprobacion(aprobacion);
 			Kit nuevoKit = kitservice.save(ingresoKit.getId_kit());
 			ingresoKit.setId_kit(nuevoKit);

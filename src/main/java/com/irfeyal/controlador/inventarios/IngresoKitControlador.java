@@ -40,33 +40,22 @@ public class IngresoKitControlador {
 	
 	
 	@RequestMapping(value = "/crearingresokit", method = RequestMethod.POST)
-    public ResponseEntity<IngresoKit> create(@Valid @RequestBody IngresoKit ingresoKit) {
-		
-		
-		
+    public ResponseEntity<IngresoKit> crearIngresoKit(@Valid @RequestBody IngresoKit ingresoKit) {
 		Long secretaria = ingresoKit.getId_secretaria().getId_empleado();
 		Long administrador = ingresoKit.getId_aprobacion().getId_empleado_admin().getId_empleado();
 		
 		if(secretaria != null && administrador != null ) {
 			IngresoKit ingresoKitReturn = ingresoKitServicio.save(ingresoKit);
 			System.out.println("Ingreso correcto");
-
 			return new ResponseEntity(ingresoKitReturn, HttpStatus.CREATED);
 		}else {
-			
 			System.out.println("no se pudo ingresar ingreso kit controlador");
-
 			return null;
 		}
-		
-		
-
-	
-		
-		
-		
-		
     }
+	
+	
+	
 	
 	@GetMapping(path = "/list", produces = {"application/json"})
 	public List<IngresoKit> listIngresoKit(){
