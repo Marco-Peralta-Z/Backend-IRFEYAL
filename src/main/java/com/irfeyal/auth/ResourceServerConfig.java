@@ -14,6 +14,18 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+
+/*
+ * Para dar accesos a las del back  a los usuarios segun su rol
+ * Configuracion de cors
+ * 
+ * 
+ * Si desea agregar otro rol de hacerlo asi:  "nombre del rol de la bd" = 'estudiante'
+ * Revisar el import.sql del back la tabla roles
+ *
+ * 
+ * */
+
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
@@ -65,41 +77,44 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		//TUTORIAS:
 		.antMatchers("/registro/**").hasAnyRole("Administrador","docente")
 		//ROL SEGURIDAD
-		.antMatchers("/mapCanton/**")			.hasRole("Administrador")
-		.antMatchers("/mapCorreoElectronico/**").hasRole("Administrador")
-		.antMatchers("/mapDireccion/**")		.hasRole("Administrador")
-		.antMatchers("/mapEmpleado/**")			.hasRole("Administrador")
-		.antMatchers("/mapEmpresa/**")			.hasRole("Administrador")
-		.antMatchers("/mapExtension/**")		.hasRole("Administrador")
-		.antMatchers("/mapGenero/**")			.hasRole("Administrador")
-		.antMatchers("/mapModulo/**")			.hasRole("Administrador")
-		.antMatchers("/mapPais/**")				.hasRole("Administrador")
-		.antMatchers("/mapParroquia/**")		.hasRole("Administrador")
-		.antMatchers("/mapPersona/**")			.hasRole("Administrador")
-		.antMatchers("/mapProv/**")				.hasRole("Administrador")
+		.antMatchers("/mapCanton/**")			.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapCorreoElectronico/**").hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapDireccion/**")		.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapEmpleado/**")			.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapEmpresa/**")			.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapExtension/**")		.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapGenero/**")			.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapModulo/**")			.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapPais/**")				.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapParroquia/**")		.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapPersona/**")			.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapProv/**")				.hasAnyRole("Administrador", "secretaria")
+		.antMatchers("/mapTelefono/**")			.hasAnyRole("Administrador", "secretaria")
 		.antMatchers("/mapRol/**")				.hasRole("Administrador")
 		.antMatchers("/mapRolUsuario/**")		.hasRole("Administrador")
-		.antMatchers("/mapTelefono/**")			.hasRole("Administrador")
 		.antMatchers("/mapUsuario/**")			.hasRole("Administrador")
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());
 		
 	}
 	
+	// Configuracion Cors para informacion cruzada
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();
-		config.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		config.setAllowedOrigins(Arrays.asList("http://localhost:4200")); // permitir el dominio del cliente "angular"
 		config.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
-		config.setAllowCredentials(true);
+		config.setAllowCredentials(true); //permitimos credenciales
 		config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization")); // permitimos las cabeceras
 		
+		// registramos configuracion del cors para todas las rutas del back
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", config);
 		
 		return source;
 	}
 	
+	// filtro de cors y pasamos toda la configuracion anterior
 	@Bean
 	public FilterRegistrationBean<CorsFilter> corsFilter(){
 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter( corsConfigurationSource() ));

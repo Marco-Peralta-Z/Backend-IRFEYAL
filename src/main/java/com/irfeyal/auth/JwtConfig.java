@@ -1,8 +1,26 @@
 package com.irfeyal.auth;
 
+/*
+ * Configuracion firma publica y privada para el token
+ * 
+ * importante: Cambiar las claves al momento de lanzar a aproduccion por seguridad
+ * 
+ * descargar :
+ * 
+ * https://slproweb.com/products/Win32OpenSSL.html  version completa no ligth
+ * 
+ * instalar y entrar a ala carpeta y ejecutar el .exe
+ * 
+ * openssl genrsa -out jwt.pem
+ * 
+ *   llave privada
+ * openssl genrsa -in jwt.pem
+ *   LLave publica
+ * openssl genrsa -in jwt.pem -pubout
+ * */
+
 public class JwtConfig {
-	public static final String LLLAVE_SECRETA = "irfeyal2022app";
-	
+	// Sistema criptografico de llave publica y privada
 	public static final String RSA_PRIVADA = "-----BEGIN RSA PRIVATE KEY-----\r\n"
 			+ "MIIEpAIBAAKCAQEAtZWmBQtoeIXUzTkSCIecUzDHZIFbsXnuF0MR3wBReo3lvCZJ\r\n"
 			+ "0pW+ab8lqZhtmmPSmxmmnzB9ajl36YQwLB9DLNFJ6TgEjp2Urcu+kfF8EKMqcvZG\r\n"

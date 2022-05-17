@@ -84,14 +84,12 @@ public class UsuarioServices implements UsuarioInterface, UserDetailsService {
 		Usuario usuario = usuariodao.findByCedulaPersona(cedula);
 		
 		if ( usuario == null ) {
-			//System.out.println("=======> Error en el login : No existe el usuario: "+ cedula + " en el sistema.");
 			throw new UsernameNotFoundException("Error en el login : No existe el usuario: "+ cedula + " en el sistema.");
 		}
 				
 		List<GrantedAuthority> authorities = usuario.getRoles()
 				.stream()
 				.map(rolUsuario -> new SimpleGrantedAuthority("ROLE_" + rolUsuario.getRol().getDescripcion() ))
-				.peek(rol -> System.out.print(" ==========> Rol: "+rol))
 				.collect( Collectors.toList() );
 		return new User(usuario.getUsuario(), usuario.getContrasenia(), usuario.getEstUsuario(), true, true, true, authorities);
 	}

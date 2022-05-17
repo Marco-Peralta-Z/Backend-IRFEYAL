@@ -11,6 +11,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/*
+ * 
+ * Configuración de seguridad del springboot
+ * 
+ * */
+
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
@@ -22,12 +28,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 	
+	// Pasamos userDatails y el tipo de cifrado a usar
 	@Override
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService( this.usuariosService ).passwordEncoder( passwordEncoder() );
 	}
-
+	
+	// configuracion http 
 	@Override
 	@Bean
 	protected AuthenticationManager authenticationManager() throws Exception {
@@ -39,7 +47,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.anyRequest().authenticated()
+		.anyRequest().authenticated() // todas las rutas necesitan autentificacion
 		.and()
 		.csrf().disable() // quitamos la validacion de formularios
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // quitamos el manejo de session
