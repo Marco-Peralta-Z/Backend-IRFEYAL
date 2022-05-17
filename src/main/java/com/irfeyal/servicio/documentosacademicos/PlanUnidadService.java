@@ -40,11 +40,11 @@ public class PlanUnidadService implements PlanUnidadInterface {
 	}
 	
 	//listar Planes de unidad por Empleado
-		public List<PlanUnidad> findAllByEmpleado (Long id){
+		public List<PlanUnidad> findAllByEmpleado (Long id, String est){
 			List<PlanUnidad> planunidadesRespuesta = new ArrayList<>();
 			List<PlanUnidad> planunidades = planUnidadDAO.findAll();
 			for (int i=0; i<planunidades.size(); i++) {
-				if (planunidades.get(i).getEmpleado().getId_empleado() == id) {
+				if (planunidades.get(i).getEmpleado().getId_empleado() == id && planunidades.get(i).getEstado().equals(est)) {
 					planunidadesRespuesta.add(planunidades.get(i));
 				} 
 			}

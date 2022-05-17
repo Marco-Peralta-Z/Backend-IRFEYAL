@@ -42,9 +42,7 @@ public class PlanUnidadController {
 	
 	@Autowired
 	private ParaleloServicesImp paraleloService;
-	
-	@Autowired
-	private EmpleadoServicesImp empleadoService;
+
 	
 	@GetMapping
 	private ResponseEntity<List<PlanUnidad>> getAllPlanUnidad (){
@@ -68,9 +66,9 @@ public class PlanUnidadController {
 		return ResponseEntity.ok(planUnidadService.findAllByEstado(est));
 	}
 	
-	@GetMapping ("empleado/{id_empleado}")
-	private ResponseEntity<List<PlanUnidad>> getAllPlanunidadByEmpleado (@PathVariable("id_empleado") Long id){
-		return ResponseEntity.ok(planUnidadService.findAllByEmpleado(id));
+	@GetMapping ("{estado}/empleado/{id_empleado}")
+	private ResponseEntity<List<PlanUnidad>> getAllPlanunidadByEmpleado (@PathVariable("id_empleado") Long id, @PathVariable("estado") String est){
+		return ResponseEntity.ok(planUnidadService.findAllByEmpleado(id, est));
 	}
 	
 	@PutMapping ("update/{id}")
