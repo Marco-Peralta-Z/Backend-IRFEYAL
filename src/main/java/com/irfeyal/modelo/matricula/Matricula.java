@@ -24,6 +24,9 @@ public class Matricula implements Serializable {
 
 	@Column(name="fecha_matricula")
 	private Timestamp fechaMatricula;
+	
+	@Column(name="modalidad")
+	private String modalidad_estudio;
 
 	@OneToOne()
 	@JoinColumn(name = "id_periodo")

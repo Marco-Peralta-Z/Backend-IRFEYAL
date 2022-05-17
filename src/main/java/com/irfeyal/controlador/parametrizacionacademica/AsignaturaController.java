@@ -6,9 +6,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
-import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+
 @CrossOrigin(origins = "", maxAge = 3600)
 @RestController
 @RequestMapping("/asignatura")
@@ -40,7 +40,7 @@ public class AsignaturaController {
 	public ResponseEntity<?> getAsignaturas() {
 		return new ResponseEntity<>(asignaturaService.getAllAsignatura(), HttpStatus.OK);
 	}
-
+	
 	@GetMapping(path = "/", produces = "application/json")
 	public ResponseEntity<?> getAllAsignaturas(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
@@ -60,7 +60,7 @@ public class AsignaturaController {
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		if (asignatura.isEmpty()) {
-			respuesta.put("mensaeje",
+			respuesta.put("mensaje",
 					"La Asignatura ID: ".concat(idAsignatura.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -80,6 +80,7 @@ public class AsignaturaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			asignatura.setDescripcion(asignatura.getDescripcion().toUpperCase());
 			asignaturaNueva = asignaturaService.saveAsignatura(asignatura);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear la asignatura en la base de datos");
@@ -92,8 +93,8 @@ public class AsignaturaController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateAsignatura(@PathVariable("id") Long idAsignatura,@Validated @RequestBody Asignatura asignatura,
-			BindingResult result) {
+	public ResponseEntity<?> updateAsignatura(@PathVariable("id") Long idAsignatura,
+			@Validated @RequestBody Asignatura asignatura, BindingResult result) {
 		Optional<Asignatura> asignaturaActual = asignaturaService.getAsignaturaById(idAsignatura);
 		Asignatura asignaturaUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -110,7 +111,11 @@ public class AsignaturaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			asignaturaActual.get().setDescripcion(asignatura.getDescripcion());
+			//Actualización de asignatura 
+			asignaturaActual.get().setDescripcion(asignatura.getDescripcion().toUpperCase());
+			//asignaturaActual.get().setHorarios(asignatura.getHorarios());
+			asignaturaActual.get().setEmpleados(asignatura.getEmpleados());
+			asignaturaActual.get().setMallas(asignatura.getMallas());
 			asignaturaUpdated = asignaturaService.saveAsignatura(asignaturaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

@@ -35,7 +35,7 @@ public class InventarioService implements InventarioInterface {
 	@Override
 	public Optional<Inventario> getById(Long id_Inventario) {
 		// TODO Auto-generated method stub
-		return null;
+		return inventarioDao.findById(id_Inventario);
 	}
 
 	@Override

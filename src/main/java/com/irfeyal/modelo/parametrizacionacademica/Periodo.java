@@ -19,8 +19,11 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "periodo")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Periodo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -69,6 +72,9 @@ public class Periodo implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_malla", nullable = true)
 	private Malla malla;
+
+	public Periodo() {
+	}
 
 	public Long getId_periodo() {
 		return id_periodo;

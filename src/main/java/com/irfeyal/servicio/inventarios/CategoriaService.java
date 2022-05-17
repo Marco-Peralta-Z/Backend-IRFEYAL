@@ -18,11 +18,15 @@ public class CategoriaService implements CategoriaInterface {
 
 	@Autowired
 	CategoriaDao categoriaDao;
-	
+
 	@Override
 	public Categoria save(Categoria categoria) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean validar = validarCategoria(categoria);
+		if( validar = true) {
+			return categoriaDao.save(categoria);
+		}else {
+			return null;
+		}
 	}
 
 	@Override
@@ -34,7 +38,7 @@ public class CategoriaService implements CategoriaInterface {
 	@Override
 	public Optional<Categoria> getById(Long id_categoria) {
 		// TODO Auto-generated method stub
-		return null;
+		return categoriaDao.findById(id_categoria);
 	}
 
 	@Override
@@ -47,6 +51,20 @@ public class CategoriaService implements CategoriaInterface {
 	public boolean delete(Long id_categoria) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public boolean validarCategoria(Categoria categoria) {
+		//System.out.println("------>" + categoria.getCatedescri());
+		//System.out.println("------>" + categoria.getCateestado());
+		//System.out.println("------>" + categoria.getCatenombre());
+		if (categoria.getCatedescri() != null && categoria.getCateestado() != null
+				&& categoria.getCatenombre() != null) {
+			return true;
+		}else {
+			return false;
+		}
+
+		
 	}
 
 }

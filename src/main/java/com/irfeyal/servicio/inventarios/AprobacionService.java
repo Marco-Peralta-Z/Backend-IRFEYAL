@@ -26,8 +26,7 @@ public class AprobacionService implements AprobacionInterface {
 	// @Qualifier("kitRepo")
 	@Autowired
 	private AprobacionDao aprobacionDao;
-	
-	
+		
 	
 	@Override
 	public Aprobacion save(Aprobacion aprobacion, Empleado empleado) {
@@ -52,7 +51,7 @@ public class AprobacionService implements AprobacionInterface {
 	@Override
 	public Optional<Aprobacion> getById(Long aprobacionId) {
 
-		return null;
+		return aprobacionDao.findById(aprobacionId);
 	}
 
 	@Override
@@ -63,8 +62,8 @@ public class AprobacionService implements AprobacionInterface {
 
 	@Override
 	public boolean delete(Long aprobacionId) {
-		// TODO Auto-generated method stub
 		return false;
+		
 	}
 
 	// -----------------------MIS METODOS -------------------------------------

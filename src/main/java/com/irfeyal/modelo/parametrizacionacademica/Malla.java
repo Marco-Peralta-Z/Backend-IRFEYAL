@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "malla")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Malla implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -45,6 +47,11 @@ public class Malla implements Serializable {
 	@Column(name = "fecha_creacion")
 	private Date fecha_creacion;
 
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinTable(name = "malla_asignatura", joinColumns = { @JoinColumn(name = "id_malla") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_asignatura") })
+	private List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
+
 	@PrePersist
 	private void setDateFecha() {
 		this.fecha_creacion = new Date();
@@ -54,7 +61,6 @@ public class Malla implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "malla_curso", joinColumns = { @JoinColumn(name = "id_malla") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_curso") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
 
 	public Long getId_malla() {
@@ -89,6 +95,14 @@ public class Malla implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
+	public List<Asignatura> getListaAsignaturas() {
+		return listaAsignaturas;
+	}
+
+	public void setListaAsignaturas(List<Asignatura> listaAsignaturas) {
+		this.listaAsignaturas = listaAsignaturas;
+	}
+
 	public List<Curso> getListaCursos() {
 		return listaCursos;
 	}
@@ -100,7 +114,8 @@ public class Malla implements Serializable {
 	@Override
 	public String toString() {
 		return "Malla [descripcion=" + descripcion + ", estado=" + estado + ", fecha_creacion=" + fecha_creacion
-				+ ", id_malla=" + id_malla + ", listaCursos=" + listaCursos + "]";
+				+ ", id_malla=" + id_malla + ", listaAsignaturas=" + listaAsignaturas + ", listaCursos=" + listaCursos
+				+ "]";
 	}
 
 }

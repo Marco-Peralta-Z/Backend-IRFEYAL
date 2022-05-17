@@ -34,7 +34,7 @@ public class RecepcionArtiService implements RecepcionArticuloInterface{
 	@Override
 	public Optional<RecepcionArticulo> getById(Long id_RecepcionArticulo) {
 		// TODO Auto-generated method stub
-		return null;
+		return recepcionArticuloDao.findById(id_RecepcionArticulo);
 	}
 
 	@Override

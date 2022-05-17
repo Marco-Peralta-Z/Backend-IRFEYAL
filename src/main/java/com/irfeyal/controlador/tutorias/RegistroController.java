@@ -17,25 +17,37 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.irfeyal.interfaces.tutorias.IRegistroService;
+import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.pagos.Comprobante;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
+import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.tutorias.Registro;
 import com.irfeyal.servicio.tutorias.RegistroServiceImpl;
 
+
 @RestController
-@RequestMapping("/registro")
+@RequestMapping("/Registro")
 public class RegistroController {
 
 	@Autowired
 	private RegistroServiceImpl registroserviceimpl;
 	
+	@Autowired
+	private IRegistroService registroservice;
+	
 	//Lista los registros
-	@GetMapping()
+	@GetMapping("/ListarRegistros")
 	public List<Registro> index(){
 		return registroserviceimpl.findAll();
 	}
 	
 	
 	//Inserta un nuevo registro
-	@PostMapping()
+	@PostMapping("/Nuevoregistro")
 	public ResponseEntity<Map<String, Object>> insertarRegistro(@RequestBody Registro registro) {
 		Map<String, Object> mensaje = new HashMap<>();
 		try {
@@ -77,5 +89,51 @@ public class RegistroController {
 		public void delete( @PathVariable Long id_registro) {
 			registroserviceimpl.delete(id_registro);	
 		}
+		
+		
+		@GetMapping("/Periodo")
+		public List<Periodo> listarPeridod() {
+			return registroserviceimpl.findAllperiodo();
+		}
+		
+		
+		@GetMapping("/Periodos/{idemple}")
+		public List<Periodo> listperiodos(@PathVariable Long idemple) {
+			return registroservice.Listperiodosempelados(idemple);
+		}
+		@GetMapping("/Modalidades/{idemple}/{per}")
+		public List<Modalidad> listmodalidades(@PathVariable Long idemple,@PathVariable Long per) {
+			return registroservice.listmodalidadempelados(idemple, per);
+		}
+		@GetMapping("/Cursos/{idemple}/{idmod}/{per}")
+		public List<Curso> listcurso(@PathVariable Long idemple,@PathVariable Long idmod, @PathVariable Long per ) {
+			return registroservice.ListCursosempelados(idemple, idmod, per);
+		}
+		@GetMapping("/Paralelos/{idemple}/{idcurso}/{idmod}/{per}")
+		public List<Paralelo> listparalelo(@PathVariable Long idemple,@PathVariable Long idcurso, @PathVariable Long idmod, @PathVariable Long per) {
+			return registroservice.ListParaleloempleados(idemple, idcurso, idmod, per);
+		}
+		@GetMapping("/Asignaturas/{idemple}/{idperiodo}/{idcurso}/{idparalelo}/{idmod}")
+		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo, @PathVariable Long idmod) {
+			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo, idmod);
+		}
+		
+		@GetMapping("/Filtrocompleto/{idasig}/{idperiodo}/{idcurso}/{idparalelo}/{idmod}")
+		public List<Matricula> listcompleta(@PathVariable Long idasig , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo, @PathVariable Long idmod) {
+			return registroservice.filtrocompleto(idasig,idperiodo,idcurso, idparalelo, idmod);
+		}
+		
+		@GetMapping("/Buscardeudas/{ced}")
+		public List<Comprobante> listdeudas(@PathVariable String ced) {
+			return registroservice.Buscardeudas(ced);
+		}
+		
+		/*
+		@GetMapping("/MostrarNotas/{idemple}/{idperiodo}/{idcurso}/{idparalelo}/{Asignatura}")
+		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
+			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo);
+		}
+		
+		*/
 		
 }

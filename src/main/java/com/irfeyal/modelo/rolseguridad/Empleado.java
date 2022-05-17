@@ -39,10 +39,6 @@ public class Empleado implements Serializable {
 	private Telefono telefono;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
-
-	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_correo")
 	private CorreoElectronico correo;
 
@@ -53,16 +49,24 @@ public class Empleado implements Serializable {
 	public Empleado() {
 		super();
 	}
+	
+	
+
+	public Empleado(Long id_empleado) {
+		super();
+		this.id_empleado = id_empleado;
+	}
+
+
 
 	public Empleado(Long id_empleado, String cargo, Extension extension, Direccion direccion, Telefono telefono,
-			Usuario usuario, CorreoElectronico correo, Persona id_persona) {
+			CorreoElectronico correo, Persona id_persona) {
 		super();
 		this.id_empleado = id_empleado;
 		this.cargo = cargo;
 		this.extension = extension;
 		this.direccion = direccion;
 		this.telefono = telefono;
-		this.usuario = usuario;
 		this.correo = correo;
 		this.id_persona = id_persona;
 	}
@@ -107,13 +111,6 @@ public class Empleado implements Serializable {
 		this.telefono = telefono;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
 
 	public CorreoElectronico getCorreo() {
 		return correo;

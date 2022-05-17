@@ -1,6 +1,7 @@
 package com.irfeyal.controlador.inventarios;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.Inventario;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.servicio.inventarios.AprobacionService;
 import com.irfeyal.servicio.inventarios.ModulolibroService;
@@ -30,13 +33,13 @@ public class ModuloLibroControlador {
 	
 
 	@GetMapping(path = "/list", produces = {"application/json"})
-	public List<ModuloLibro> listAprobacion(){
+	public List<ModuloLibro> listaModuloLibro(){
 		return modulolibroService.listAllModuloLibro();
 	}
 	
 	
-	@RequestMapping(value = "/createmodulolibro", method = RequestMethod.POST)
-    public ResponseEntity<ModuloLibro> create(@Valid @RequestBody ModuloLibro moduloLibro) {
+	@RequestMapping(value = "/crear", method = RequestMethod.POST)
+    public ResponseEntity<ModuloLibro> crearModulo(@Valid @RequestBody ModuloLibro moduloLibro) {
 		
 		//System.out.print("------------>"+moduloLibro.getCodModulo());
         ModuloLibro moduloLibroReturn = modulolibroService.save(moduloLibro);
@@ -53,4 +56,19 @@ public class ModuloLibroControlador {
     }
 	
 	
+	@GetMapping(produces = {"application/json"})
+	public ResponseEntity<Aprobacion> obtenerModuloLibro(@RequestParam("id") Long id){
+		Optional<ModuloLibro> moduloLibro = this.modulolibroService.getById(id);
+		if(moduloLibro.isPresent()) {
+			return new ResponseEntity(moduloLibro.get(),HttpStatus.OK);
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@GetMapping(produces = {"application/json"},path = "/eliminar")
+	public boolean eliminarModuloLibro(@RequestParam("id") Long id){
+		boolean validaElimModulibr = modulolibroService.delete(id);
+		return validaElimModulibr;
+	}
 }

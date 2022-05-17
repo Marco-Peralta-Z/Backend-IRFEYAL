@@ -2,6 +2,9 @@
 
 -------------------PAIS-------------------
 INSERT INTO pais (pais) VALUES ('Ecuador');
+INSERT INTO pais (pais) VALUES ('colombia');
+INSERT INTO pais (pais) VALUES ('peru');
+INSERT INTO pais (pais) VALUES ('chile');
 
 -------------------PROVINCIA-------------------
 
@@ -51,43 +54,6 @@ INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parro
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('calle mala', 'calle buena',6,1,5,3);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('americas', 'lazo',7,1,5,4);
 
--------------------USUARIO-------------------
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('123',true,'tutor');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('abc',true,'secretaria 1');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1abc',true,'estudiante');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('abc1',true,'tutor 2');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('def',true,'coordinador');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('123a',true,'rector 2');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1234',true,'gerente');
-INSERT INTO public.usuario (contrasenia,est_usuario,usuario) VALUES ('1234a',true,'corAdmi');
-
--------------------ROL-------------------
-INSERT INTO rol (descripcion) VALUES ('Administrador');
-INSERT INTO rol (descripcion) VALUES('gerente');
-INSERT INTO rol (descripcion) VALUES ('secretaria');
-INSERT INTO rol (descripcion) VALUES ('estudiante');
-INSERT INTO rol (descripcion) VALUES ('coordinador de desarrollo');
-INSERT INTO rol (descripcion) VALUES ('coordinador administrativo');
-INSERT INTO rol (descripcion) VALUES ('rectora');
-
--------------------ROL_USUARIO-------------------
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true, 1, 1);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,2,2);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,3,3);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,4,4);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,5,5);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,6,6);
-INSERT INTO rol_usuario (estado, id_rol, id_usuario) VALUES (true,7,7);
-
--------------------MODULO-------------------
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('matriculas','http//localhost/modmatricula.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('asistencia','http//localhost/modasistencia.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('documentos academicos','http//localhost/moddocumentos.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('inventarios','http//localhost/modinventarios.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('pagos','http//localhost/modpagos.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('gestion de tutorias','http//localhost/modtutorias.php',1);
-INSERT INTO modulo (modulo,url,id_rol_usuario) VALUES ('secretaria','http//localhost/modsecretaria.php',1);
-
 ------------------- EMPRESA-------------------
 INSERT INTO empresa (nombre_empresa) VALUES ('irfeyal prueba');
 
@@ -115,14 +81,52 @@ INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalcordad@edu
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalrect@edu.ec',1);
 
 -------------------EMPLEADO-------------------
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario, id_correo, id_persona) VALUES ('tutor', 1, 1, 1, 1, 1, 1);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario, id_correo, id_persona) VALUES ('secretario 1', 1, 2,2,2,2,2);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario, id_correo, id_persona) VALUES ('gerente1', 1,3,3,3,3,3);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario, id_correo, id_persona) VALUES ('secre', 1,4,1,4,4,4);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario, id_correo, id_persona) VALUES ('coordinador admi', 1,5,5,5,5,5);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario, id_correo, id_persona) VALUES ('cordinador', 1,6,6,6,6,6);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario, id_correo, id_persona) VALUES ('rector', 1,7,7,7,7,7);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_usuario, id_correo, id_persona) VALUES ('vicerector', 1,8,8,8,8,8);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_docente', 1, 1, 1, 1, 1);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretario 1', 1, 2,2,2,2);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_gerente', 1,3,3,3,3);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretaria', 1,4,1,4,4);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_coordinador administrativo', 1,5,5,5,5);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_cordinador de desarrollo', 1,6,6,6,6);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_rector', 1,7,7,7,7);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_vicerector', 1,8,8,8,8);
+
+
+-------------------USUARIO-------------------
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123',true,'usuario_1',1);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc',true,'usuario_2',2);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1abc',true,'usuario_3',3);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc1',true,'usuario_4',4);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('def',true,'usuario_5',5);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123a',true,'usuario_6',6);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1234',true,'usuario_7',7);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1234a',true,'usuario_8',8);
+
+-------------------ROL-------------------
+INSERT INTO rol (descripcion) VALUES ('Administrador');
+INSERT INTO rol (descripcion) VALUES('gerente');
+INSERT INTO rol (descripcion) VALUES ('secretaria');
+INSERT INTO rol (descripcion) VALUES ('estudiante');
+INSERT INTO rol (descripcion) VALUES ('coordinador de desarrollo');
+INSERT INTO rol (descripcion) VALUES ('coordinador administrativo');
+INSERT INTO rol (descripcion) VALUES ('rectora');
+
+-------------------MODULO-------------------
+INSERT INTO modulo (modulo,url) VALUES ('matriculas','http//localhost/modmatricula.php');
+INSERT INTO modulo (modulo,url) VALUES ('asistencia','http//localhost/modasistencia.php');
+INSERT INTO modulo (modulo,url) VALUES ('documentos academicos','http//localhost/moddocumentos.php');
+INSERT INTO modulo (modulo,url) VALUES ('inventarios','http//localhost/modinventarios.php');
+INSERT INTO modulo (modulo,url) VALUES ('pagos','http//localhost/modpagos.php');
+INSERT INTO modulo (modulo,url) VALUES ('gestion de tutorias','http//localhost/modtutorias.php');
+INSERT INTO modulo (modulo,url) VALUES ('secretaria','http//localhost/modsecretaria.php');
+
+------------------ROL_USUARIO-------------------
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,1,2,1);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,1,2);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,3);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,4);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,5);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,6);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,7);
 
 -- PARAMETRIZACION ACADEMICA
 
@@ -229,6 +233,12 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(3, 3);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(4, 4);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(5, 5);
 
+INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(6, 1);
+INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(7, 2);
+INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(8, 3);
+INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(9, 4);
+INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(10, 5);
+
 ------------------PARALELO---------------------
 INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Quisquam ', '02/02/2022');
 INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Consectetur', '01/01/2022');
@@ -250,17 +260,17 @@ INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(1, 5);
 
 --MATRICULA---------
 
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,1,1,1,1);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,2,2,2,2);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,3,3,3,3);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,4,4,4,4);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true, 1,5,5,5,5);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,1,1,1,1);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,2,2,2,2);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,3,3,3,3);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,4,4,4,4);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,5,5,5,5);
 
-INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,1,1,1);
-INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,2,2,2);
-INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',3,3,3,3,3,3);
-INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,4,4,4,4);
-INSERT INTO matriculas (fecha_matricula, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,5,5,5,5);
+INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','INTENSIVO',1,1,1,1,1,1);
+INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','NO INTENSIVO',2,2,2,2,2,2);
+INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','INTENSIVO',3,3,3,3,3,3);
+INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','NO INTENSIVO',4,4,4,4,4,4);
+INSERT INTO matriculas (fecha_matricula, modalidad,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','INTENSIVO',5,5,5,5,5,5);
 
 --ASISTENCIA-------------
 
@@ -280,16 +290,16 @@ INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 5, 5)
 
 INSERT INTO unidad (nombre_unidad) VALUES ('Unidad 1'), ('Unidad 2'), ('Unidad 3'), ('Unidad 4'), ('Unidad 5'), ('Unidad 6'), ('Unidad 7'), ('Unidad 8'), ('Unidad 9'), ('Unidad 10');
 
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Matematicas', 'Objetivo1', 'Contenido1', 'Criterio1', 'Destreza1', '01-09-2022', '30-06-2023', 1, 2, 3, 1, 'Pendiente', 1, 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Lengua y Literatura', 'Objetivo2', 'Contenido2', 'Criterio2', 'Destreza2', '01-09-2022', '30-06-2023', 3, 4, 2, 3, 'Aprobado', 3, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Historia y Ciencias Sociales', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 2, 1, 5, 2, 'Aprobado', 4, 3);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Ciencias', 'Objetivo4', 'Contenido4', 'Criterio4', 'Destreza4', '01-09-2022', '30-06-2023', 3, 2, 4, 1, 'Rechazado', 2, 5);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Quimica', 'Objetivo5', 'Contenido5', 'Criterio5', 'Destreza5', '01-09-2022', '30-06-2023', 1, 5, 2, 4, 'Aprobado', 2, 3);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Fisica', 'Objetivo6', 'Contenido6', 'Criterio6', 'Destreza6', '01-09-2022', '30-06-2023', 4, 2, 1, 4, 'Rechazado', 3, 5);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Ingles', 'Objetivo7', 'Contenido7', 'Criterio7', 'Destreza7', '01-09-2022', '30-06-2023', 5, 4, 3, 1, 'Pendiente', 5, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Biologia', 'Objetivo8', 'Contenido8', 'Criterio8', 'Destreza8', '01-09-2022', '30-06-2023', 2, 2, 1, 5, 'Aprobado', 1, 4);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Educación física', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 3, 1, 5, 4, 'Pendiente', 2, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Informática', 'Objetivo10', 'Contenido10', 'Criterio10', 'Destreza10', '01-09-2022', '30-06-2023', 5, 1, 2, 1, 'Rechazado', 4, 3);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Matematicas', 'Objetivo1', 'Contenido1', 'Criterio1', 'Destreza1', '01-09-2022', '30-06-2023', 1, 3, 2, 3, 1, 'Pendiente', 1, 2);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Lengua y Literatura', 'Objetivo2', 'Contenido2', 'Criterio2', 'Destreza2', '01-09-2022', '30-06-2023', 3, 7, 4, 2, 3, 'Aprobado', 3, 1);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Historia y Ciencias Sociales', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 2, 1, 1, 5, 2, 'Aprobado', 4, 3);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Ciencias', 'Objetivo4', 'Contenido4', 'Criterio4', 'Destreza4', '01-09-2022', '30-06-2023', 3, 2, 2, 4, 1, 'Rechazado', 2, 5);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Quimica', 'Objetivo5', 'Contenido5', 'Criterio5', 'Destreza5', '01-09-2022', '30-06-2023', 1, 8, 5, 2, 4, 'Aprobado', 2, 3);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Fisica', 'Objetivo6', 'Contenido6', 'Criterio6', 'Destreza6', '01-09-2022', '30-06-2023', 4, 5, 2, 1, 4, 'Rechazado', 3, 5);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Ingles', 'Objetivo7', 'Contenido7', 'Criterio7', 'Destreza7', '01-09-2022', '30-06-2023', 5, 2, 4, 3, 1, 'Pendiente', 5, 1);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Biologia', 'Objetivo8', 'Contenido8', 'Criterio8', 'Destreza8', '01-09-2022', '30-06-2023', 2, 6, 2, 1, 5, 'Aprobado', 1, 4);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Educación física', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 3, 5, 1, 5, 4, 'Pendiente', 2, 1);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Informática', 'Objetivo10', 'Contenido10', 'Criterio10', 'Destreza10', '01-09-2022', '30-06-2023', 5, 4, 1, 2, 1, 'Rechazado', 4, 3);
 
 --INVENTARIOS----------
 

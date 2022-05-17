@@ -36,7 +36,7 @@ public class DetalleBajaArtiService implements DetalleBajaArticInterface {
 	@Override
 	public Optional<DetallebajaArti> getById(Long id_detallebajaArti) {
 		// TODO Auto-generated method stub
-		return null;
+		return detallBajaArtiDao.findById(id_detallebajaArti);
 	}
 
 	@Override

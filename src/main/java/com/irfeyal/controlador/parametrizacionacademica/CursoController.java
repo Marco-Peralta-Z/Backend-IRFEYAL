@@ -80,6 +80,8 @@ public class CursoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			curso.setDescripcion(curso.getDescripcion().toUpperCase());
+			curso.setTipo_curso(curso.getTipo_curso().toUpperCase());
 			cursoNuevo = cursoService.saveCurso(curso);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear el curso en la base de datos");
@@ -110,9 +112,9 @@ public class CursoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			//Actaualización de curso
 			cursoActual.get().setDescripcion(curso.getDescripcion());
 			cursoActual.get().setTipo_curso(curso.getTipo_curso());
-			// Verificar si se guarda el empleado
 			cursoUpdated = cursoService.saveCurso(cursoActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

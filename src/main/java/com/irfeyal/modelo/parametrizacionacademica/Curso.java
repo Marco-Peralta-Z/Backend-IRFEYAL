@@ -16,12 +16,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "curso")
-@JsonIgnoreProperties({ "hibernateLazyInitializer" })
 public class Curso implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -48,11 +46,13 @@ public class Curso implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
-	// Relación con la tabla empleado,
-	// Preguntar tiene que tener obligatoriamente un empleado
+	// Relación con la tabla empleado
 	@ManyToOne
 	@JoinColumn(name = "id_empleado")
 	private Empleado empleado;
+
+	public Curso() {
+	}
 
 	public Long getId_curso() {
 		return id_curso;

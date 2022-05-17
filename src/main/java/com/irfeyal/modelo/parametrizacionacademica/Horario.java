@@ -28,6 +28,7 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "horario")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Horario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -66,15 +67,19 @@ public class Horario implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "curso_horario", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_curso") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<>();
 
 	// Relación horario_empleado
 	@ManyToMany
 	@JoinTable(name = "horario_empleado", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_empleado") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Empleado> listaEmpleados = new ArrayList<>();
+
+	// Relación horario_asignatura
+	@ManyToMany
+	@JoinTable(name = "asignatura_horario", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_asignatura") })
+	private List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
 
 	public Long getId_horario() {
 		return id_horario;
@@ -132,11 +137,19 @@ public class Horario implements Serializable {
 		this.listaEmpleados = listaEmpleados;
 	}
 
+	public List<Asignatura> getListaAsignaturas() {
+		return listaAsignaturas;
+	}
+
+	public void setListaAsignaturas(List<Asignatura> listaAsignaturas) {
+		this.listaAsignaturas = listaAsignaturas;
+	}
+
 	@Override
 	public String toString() {
 		return "Horario [dia=" + dia + ", fecha_creacion=" + fecha_creacion + ", id_horario=" + id_horario
-				+ ", listaCursos=" + listaCursos + ", listaEmpleados=" + listaEmpleados + ", tiempo_fin=" + tiempo_fin
-				+ ", tiempo_inicio=" + tiempo_inicio + "]";
+				+ ", listaAsignaturas=" + listaAsignaturas + ", listaCursos=" + listaCursos + ", listaEmpleados="
+				+ listaEmpleados + ", tiempo_fin=" + tiempo_fin + ", tiempo_inicio=" + tiempo_inicio + "]";
 	}
 
 }

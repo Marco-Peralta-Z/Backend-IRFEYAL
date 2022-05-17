@@ -3,10 +3,10 @@ package com.irfeyal.interfaces.parametrizacionacademica;
 import java.util.List;
 import java.util.Optional;
 
-import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
 public interface AsignaturaServices {
 

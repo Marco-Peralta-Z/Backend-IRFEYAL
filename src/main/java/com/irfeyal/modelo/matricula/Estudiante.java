@@ -43,8 +43,18 @@ public class Estudiante implements Serializable {
 	@JoinColumn(name = "id_telefono")
 	private Telefono telefono;
 
+
+
 	public Estudiante() {
+		super();
 	}
+	
+
+	public Estudiante(Long id_estudiante) {
+		super();
+		this.id_estudiante = id_estudiante;
+	}
+
 
 	public Long getid_estudiante() {
 		return this.id_estudiante;

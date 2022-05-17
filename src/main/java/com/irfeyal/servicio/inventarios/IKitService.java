@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.irfeyal.interfaces.inventarios.KitInterface;
 import com.irfeyal.modelo.dao.inventarios.KitDao;
+import com.irfeyal.modelo.inventarios.IngresoKit;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 
@@ -27,15 +28,15 @@ public class IKitService implements KitInterface {
 	
 	@Override
 	public Kit save(Kit kit) {
-		if (ValidarKit(kit)) {
-			Kit k = kitRepo.save(kit);
+		if (ValidarKit(kit)==true) {
+			Kit kitGuardado = kitRepo.save(kit);
 			List<ModuloLibro> listaModulos= kit.getModuloLibro();
 			for(int i=0; i<listaModulos.size(); i++) {
 				ModuloLibro moduloLibro = (ModuloLibro) listaModulos.get(i);
-				moduloLibro.setKit(k);
+				moduloLibro.setKit(kitGuardado);
 				modulolibroService.save(moduloLibro);
 			}
-			return k;
+			return kitGuardado;
 		} else {
 			return null;
 		}
@@ -49,8 +50,7 @@ public class IKitService implements KitInterface {
 
 	@Override
 	public Optional<Kit> getById(Long kitId) {
-		// TODO Auto-generated method stub
-		return null;
+		return  kitRepo.findById(kitId) ;
 	}
 
 	@Override
@@ -66,22 +66,28 @@ public class IKitService implements KitInterface {
 	}
 
 	public boolean ValidarKit(Kit kit) {
-		boolean validaModulo = true;
-		int precioKit = kit.getPrecioKit();
-		String periodo = kit.getPeriodo();
-		List<ModuloLibro> listaModulos= kit.getModuloLibro();
-		for(int i=0; i<listaModulos.size(); i++) {
-			ModuloLibro moduloLibro = (ModuloLibro) listaModulos.get(i);
-			boolean modLivalida = modulolibroService.ValidarModuloLibro(moduloLibro);
-			if(modLivalida == false) {
-				validaModulo=false;
+		try {
+			boolean validaModulo = true;
+			int precioKit = kit.getPrecioKit();
+			String periodo = kit.getPeriodo();
+			List<ModuloLibro> listaModulos= kit.getModuloLibro();
+			for(int i=0; i<listaModulos.size(); i++) {
+				ModuloLibro moduloLibro = (ModuloLibro) listaModulos.get(i);
+				boolean modLivalida = modulolibroService.ValidarModuloLibro(moduloLibro);
+				if(modLivalida == false) {
+					validaModulo=false;
+				}
 			}
-		}
-		//System.out.print("-*-*-*-*-*-***-*-*-*-*-*------>"+validaModulo);
-		if (precioKit > 0 && periodo != null && validaModulo == true) {
-			return true;
-		} else {
+			//System.out.print("-*-*-*-*-*-***-*-*-*-*-*------>"+validaModulo);
+			if (precioKit > 0 && periodo != null && validaModulo == true) {
+				return true;
+			} else {
+				return false;
+			}
+		}catch(NullPointerException nex) {
+			System.out.print("Error insert kit> "+nex);
 			return false;
+			
 		}
 	}
 	

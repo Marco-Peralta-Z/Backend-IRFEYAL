@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "paralelo")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Paralelo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -51,6 +52,9 @@ public class Paralelo implements Serializable {
 			@JoinColumn(name = "id_curso") })
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
+
+	public Paralelo() {
+	}
 
 	public Long getId_paralelo() {
 		return id_paralelo;

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -33,7 +34,12 @@ public class KitControlador {
 	
 	@PostMapping("/kit/")
 	public ResponseEntity<Kit> crearKit(@RequestBody Kit kit){
-		return new ResponseEntity(this.kitService.save(kit),HttpStatus.CREATED);
+		Kit kitReturn = this.kitService.save(kit);
+		if(kitReturn != null) {
+			return new ResponseEntity(kitReturn,HttpStatus.CREATED);
+		}else {
+			return null;
+		}
 	}
 
 	@GetMapping(path = "/list", produces = {"application/json"})
@@ -59,8 +65,8 @@ public class KitControlador {
         
     }
 	
-	@GetMapping(path="/id/", produces = {"application/json"})
-	public ResponseEntity<Kit> obtenerKit(@PathVariable("id") Long id){
+	@GetMapping(produces = {"application/json"})
+	public ResponseEntity<Kit> obtenerKit(@RequestParam("id") Long id){
 		Optional<Kit> optionalKit = this.kitService.getById(id);
 		if(optionalKit.isPresent()) {
 			return new ResponseEntity(optionalKit.get(),HttpStatus.OK);

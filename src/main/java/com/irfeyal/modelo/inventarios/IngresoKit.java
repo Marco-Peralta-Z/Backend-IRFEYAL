@@ -36,6 +36,7 @@ public class IngresoKit implements Serializable {
     @Column(name = "id_ingreso_kid")
     private Long id_ingreso_kid;
     
+  
     @Column(name = "fecha_ingreso")
     @Temporal(TemporalType.DATE)
     private Date fechaIngreso;
@@ -100,10 +101,6 @@ public class IngresoKit implements Serializable {
 	public Empleado getId_secretaria() {
 		return id_secretaria;
 	}
-
-
-
-
 
 
 

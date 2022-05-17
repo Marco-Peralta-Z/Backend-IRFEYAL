@@ -23,7 +23,7 @@ import com.irfeyal.modelo.rolseguridad.Canton;
 import com.irfeyal.servicio.rolseguridad.CantonService;
 
 
-@CrossOrigin(origins = {"**"})
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping ("/mapCanton")
 
@@ -33,7 +33,7 @@ public class CantonControler {
 	@Autowired
 	private CantonService cantonSer;
 
-	@GetMapping(path = { "/canton" }, produces = "application/json")
+	@GetMapping(path = { "/canton" })
 	public List<Canton> canton() {
 		return cantonSer.findAll();
 	}
