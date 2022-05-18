@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 /**
@@ -45,6 +46,7 @@ public class IngresoKit implements Serializable {
     @JoinColumn(name = "id_aprobacion", referencedColumnName = "id_aprobacion")
     @ManyToOne(optional = false)
     private Aprobacion id_aprobacion;
+   
     
     @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
     @ManyToOne(optional = false)

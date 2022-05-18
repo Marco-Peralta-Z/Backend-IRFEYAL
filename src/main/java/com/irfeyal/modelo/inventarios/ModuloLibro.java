@@ -67,10 +67,10 @@ public class ModuloLibro implements Serializable {
     
 
     
-    @JsonBackReference
-    @OneToMany(mappedBy = "moduloLibro")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Kit> kit;
+   // @JsonBackReference
+    //@OneToMany(mappedBy = "moduloLibro")
+    //@LazyCollection(LazyCollectionOption.FALSE)
+    //private List<Kit> kit;
     
     
 
@@ -136,7 +136,7 @@ public class ModuloLibro implements Serializable {
 	}
 
 
-
+/*
 	public List<Kit> getKit() {
 		return kit;
 	}
@@ -146,7 +146,7 @@ public class ModuloLibro implements Serializable {
 	public void setKit(List<Kit> kit) {
 		this.kit = kit;
 	}
-
+*/
 
     
     
