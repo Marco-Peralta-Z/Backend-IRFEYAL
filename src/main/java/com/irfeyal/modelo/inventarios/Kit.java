@@ -3,9 +3,12 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -41,11 +44,11 @@ public class Kit implements Serializable {
     @Column(name = "periodo")
     private String periodo;
 
-    @OneToMany(mappedBy = "kit")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<ModuloLibro> moduloLibro;
     
-    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_modulo_libro")
+    private ModuloLibro moduloLibro;
+
     public Kit() {
     }
 
@@ -74,20 +77,20 @@ public class Kit implements Serializable {
 	}
 	
 	
-	public List<ModuloLibro> getModuloLibro() {
-		return moduloLibro;
-	}
-	
-	public void setModuloLibro(List<ModuloLibro> moduloLibro) {
-		this.moduloLibro = moduloLibro;
-	}
-
 	public String getNombrekit() {
 		return nombrekit;
 	}
 
 	public void setNombrekit(String nombrekit) {
 		this.nombrekit = nombrekit;
+	}
+
+	public ModuloLibro getModuloLibro() {
+		return moduloLibro;
+	}
+
+	public void setModuloLibro(ModuloLibro moduloLibro) {
+		this.moduloLibro = moduloLibro;
 	}
 
 

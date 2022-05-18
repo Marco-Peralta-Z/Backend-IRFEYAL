@@ -30,12 +30,6 @@ public class IKitService implements KitInterface {
 	public Kit save(Kit kit) {
 		if (ValidarKit(kit)==true) {
 			Kit kitGuardado = kitRepo.save(kit);
-			List<ModuloLibro> listaModulos= kit.getModuloLibro();
-			for(int i=0; i<listaModulos.size(); i++) {
-				ModuloLibro moduloLibro = (ModuloLibro) listaModulos.get(i);
-				moduloLibro.setKit(kitGuardado);
-				modulolibroService.save(moduloLibro);
-			}
 			return kitGuardado;
 		} else {
 			return null;
@@ -70,14 +64,6 @@ public class IKitService implements KitInterface {
 			boolean validaModulo = true;
 			int precioKit = kit.getPrecioKit();
 			String periodo = kit.getPeriodo();
-			List<ModuloLibro> listaModulos= kit.getModuloLibro();
-			for(int i=0; i<listaModulos.size(); i++) {
-				ModuloLibro moduloLibro = (ModuloLibro) listaModulos.get(i);
-				boolean modLivalida = modulolibroService.ValidarModuloLibro(moduloLibro);
-				if(modLivalida == false) {
-					validaModulo=false;
-				}
-			}
 			//System.out.print("-*-*-*-*-*-***-*-*-*-*-*------>"+validaModulo);
 			if (precioKit > 0 && periodo != null && validaModulo == true) {
 				return true;

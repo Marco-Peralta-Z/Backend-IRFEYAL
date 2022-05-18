@@ -1,4 +1,4 @@
-﻿----------ROLES Y SEGURIDAD------------------
+﻿--------ROLES Y SEGURIDAD------
 
 -------------------PAIS-------------------
 INSERT INTO pais (pais) VALUES ('Ecuador');
@@ -302,13 +302,46 @@ INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluac
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Informática', 'Objetivo10', 'Contenido10', 'Criterio10', 'Destreza10', '01-09-2022', '30-06-2023', 5, 4, 1, 2, 1, 'Rechazado', 4, 3);
 
 --INVENTARIOS----------
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (1, 'obs 1', true, 'detacontrol 2', '2022/02/12', '2022/02/12');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (2, 'obs 2', true, 'detacontrol 3', '2022/02/13', '2022/02/13');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (3, 'obs 3', true, 'detacontrol 4', '2022/02/14', '2022/02/14');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (4, 'obs 4', true, 'detacontrol 5', '2022/02/15', '2022/02/15');
+INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (5, 'obs 5', true, 'detacontrol 6', '2022/02/16', '2022/02/16');
+
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno');--OJO:Necesito id del kit que esta con error en el insert\
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (2, 'CursoDos_kitDos',' modulDos_kitDos', 2, 1, 'NumeroMod2_kitDos');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (3, 'CursoTres_kitTres',' modulTres_kitTres', 3, 1, 'NumeroMod2_kitTres');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (4, 'CursoCuatro_kitCuatro',' modulCuatro_kitCuatro', 4, 1, 'NumeroMod2_kitCuatro');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (5, 'CursoCinco_kitCinco',' modulCinco_kitCinco', 5, 1, 'NumeroMod2_kitCinco');
+
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno');--OJO:Necesito id del kit que esta con error en el insert
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (2, 'CursoDos_kitDos',' modulDos_kitDos', 2, 2, 'NumeroMod2_kitDos');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (3, 'CursoTres_kitTres',' modulTres_kitTres', 3, 3, 'NumeroMod2_kitTres');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (4, 'CursoCuatro_kitCuatro',' modulCuatro_kitCuatro', 4, 4, 'NumeroMod2_kitCuatro');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (5, 'CursoCinco_kitCinco',' modulCinco_kitCinco', 5, 5, 'NumeroMod2_kitCinco');
+
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno');--OJO:Necesito id del kit que esta con error en el insert 
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (2, 'CursoDos_kitDos',' modulUno_kitDos', 2, 2, 'NumeroMod2_kitDos');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (3, 'CursoTres_kitTres',' modulUno_kitTres', 3, 3, 'NumeroMod2_kitTres');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (4, 'CursoCuatro_kitCuatro',' modulUno_kitCuatro', 4, 4, 'NumeroMod2_kitCuatro');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (5, 'CursoCinco_kitCinco',' modulUno_kitCincoo', 5, 5, 'NumeroMod2_kitCinco');
+
+
 
 --SOLO KIT PARA tipo_comprobante----------
-INSERT INTO kit(precio_kit, periodo) values (35, '2022/02/02');
-INSERT INTO kit(precio_kit, periodo) values (15, '2022/02/02');
-INSERT INTO kit(precio_kit, periodo) values (25, '2022/02/02');
-INSERT INTO kit(precio_kit, periodo) values (45, '2022/02/02');
-INSERT INTO kit(precio_kit, periodo) values (55, '2022/02/02');
+INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (35, '2022/02/02',1);
+INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (15, '2022/02/02',2);
+INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (25, '2022/02/02',3);
+INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (45, '2022/02/02',4);
+INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (55, '2022/02/02',5);
+
+
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (2, 2, '2022/02/13', 2);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (3, 3, '2022/02/14', 3);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (4, 4, '2022/02/15', 4);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (5, 5, '2022/02/16', 5);
+
 
 --PAGOS-----------
 
@@ -382,11 +415,6 @@ INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 3'
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 4', 'cositas 4', 'ocupado');
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 5', 'cositas 5', 'desocupado');
 
-INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (1, 'obs 1', true, 'detacontrol 2', '2022/02/12', '2022/02/12');
-INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (2, 'obs 2', true, 'detacontrol 3', '2022/02/13', '2022/02/13');
-INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (3, 'obs 3', true, 'detacontrol 4', '2022/02/14', '2022/02/14');
-INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (4, 'obs 4', true, 'detacontrol 5', '2022/02/15', '2022/02/15');
-INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (5, 'obs 5', true, 'detacontrol 6', '2022/02/16', '2022/02/16');
 
 INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/12', 2, 'usado', 'manual', 1);
 INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/13', 1, 'usado', 'manual', 2);
@@ -412,29 +440,6 @@ INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventar
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0004', 22, 'falla', '2022/02/12', 4);
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0005', 21, 'caduco', '2022/02/12', 5);
 
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno',1);--OJO:Necesito id del kit que esta con error en el insert\
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (2, 'CursoDos_kitDos',' modulDos_kitDos', 2, 1, 'NumeroMod2_kitDos',2);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (3, 'CursoTres_kitTres',' modulTres_kitTres', 3, 1, 'NumeroMod2_kitTres',3);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (4, 'CursoCuatro_kitCuatro',' modulCuatro_kitCuatro', 4, 1, 'NumeroMod2_kitCuatro',4);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (5, 'CursoCinco_kitCinco',' modulCinco_kitCinco', 5, 1, 'NumeroMod2_kitCinco',5);
-
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno',1);--OJO:Necesito id del kit que esta con error en el insert
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (2, 'CursoDos_kitDos',' modulDos_kitDos', 2, 2, 'NumeroMod2_kitDos',2);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (3, 'CursoTres_kitTres',' modulTres_kitTres', 3, 3, 'NumeroMod2_kitTres',3);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (4, 'CursoCuatro_kitCuatro',' modulCuatro_kitCuatro', 4, 4, 'NumeroMod2_kitCuatro',4);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (5, 'CursoCinco_kitCinco',' modulCinco_kitCinco', 5, 5, 'NumeroMod2_kitCinco',5);
-
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (1, 'CursoUno_kitUno',' modulUno_kitUno', 1, 1, 'NumeroMod2_kitUno',1);--OJO:Necesito id del kit que esta con error en el insert 
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (2, 'CursoDos_kitDos',' modulUno_kitDos', 2, 2, 'NumeroMod2_kitDos',2);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (3, 'CursoTres_kitTres',' modulUno_kitTres', 3, 3, 'NumeroMod2_kitTres',3);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (4, 'CursoCuatro_kitCuatro',' modulUno_kitCuatro', 4, 4, 'NumeroMod2_kitCuatro',4);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo, id_kit) values (5, 'CursoCinco_kitCinco',' modulUno_kitCincoo', 5, 5, 'NumeroMod2_kitCinco',5);
-
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (2, 2, '2022/02/13', 2);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (3, 3, '2022/02/14', 3);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (4, 4, '2022/02/15', 4);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (5, 5, '2022/02/16', 5);
 
 INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert y pilas con id_estudiante por id_empleado 
 INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (2, 2, '2022/02/13', 2);

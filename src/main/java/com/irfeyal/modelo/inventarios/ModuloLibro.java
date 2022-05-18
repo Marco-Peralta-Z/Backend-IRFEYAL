@@ -1,5 +1,7 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -59,10 +65,14 @@ public class ModuloLibro implements Serializable {
     @Column(name = "numero_modulo")
     private String numeroModulo;
     
+
+    
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_kit")
-    private Kit kit;
+    @OneToMany(mappedBy = "moduloLibro")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Kit> kit;
+    
+    
 
     public ModuloLibro() {
     }
@@ -125,17 +135,19 @@ public class ModuloLibro implements Serializable {
 		this.numeroModulo = numeroModulo;
 	}
 
-	public Kit getKit() {
+
+
+	public List<Kit> getKit() {
 		return kit;
 	}
 
-	public void setKit(Kit kit) {
+
+
+	public void setKit(List<Kit> kit) {
 		this.kit = kit;
 	}
 
-	
 
-    
     
     
     
