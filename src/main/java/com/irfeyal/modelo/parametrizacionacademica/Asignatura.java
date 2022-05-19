@@ -67,6 +67,26 @@ public class Asignatura implements Serializable {
 
 	public Asignatura() {
 	}
+	
+	
+
+	public Asignatura(Long id_asignatura) {
+		super();
+		this.id_asignatura = id_asignatura;
+	}
+
+
+	public Asignatura(Long id_asignatura,
+			@NotBlank(message = "Debe ingresar una descripcion para la asignatura") String descripcion,
+			Date fecha_creacion, List<Malla> mallas, List<Empleado> empleados) {
+		super();
+		this.id_asignatura = id_asignatura;
+		this.descripcion = descripcion;
+		this.fecha_creacion = fecha_creacion;
+		this.mallas = mallas;
+		this.empleados = empleados;
+	}
+
 
 	public Long getId_asignatura() {
 		return id_asignatura;

@@ -66,7 +66,7 @@ public class RegistroController {
 	
 	
 	// buscar por id
-	@GetMapping("{id_registro}")
+	@GetMapping("ListarporId/{id_registro}")
 	public ResponseEntity<?> show(@PathVariable Long id_registro) {
 		Registro registro= registroserviceimpl.findById(id_registro);
 		Map <String, Object> response =new HashMap<>();
@@ -123,9 +123,11 @@ public class RegistroController {
 			return registroservice.filtrocompleto(idasig,idperiodo,idcurso, idparalelo, idmod);
 		}
 		
-		@GetMapping("/Buscardeudas/{ced}")
-		public List<Comprobante> listdeudas(@PathVariable String ced) {
-			return registroservice.Buscardeudas(ced);
+		@GetMapping("/buscarestudianteporcedula/{ced}")
+		public Comprobante fecha(@PathVariable String ced) {
+
+			return registroservice.buscarceduestudiante(ced);
+
 		}
 		
 		/*

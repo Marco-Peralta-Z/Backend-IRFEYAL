@@ -56,6 +56,26 @@ public class Matricula implements Serializable {
 	public Matricula() {
 	}
 	
+	public Matricula(Long id_matricula, Timestamp fechaMatricula, String modalidad_estudio, Periodo id_periodo,
+			Curso curso, Modalidad modalidad, Usuario usuario, Paralelo id_paralelo, Estudiante estudiante) {
+		super();
+		this.id_matricula = id_matricula;
+		this.fechaMatricula = fechaMatricula;
+		this.modalidad_estudio = modalidad_estudio;
+		this.id_periodo = id_periodo;
+		this.curso = curso;
+		this.modalidad = modalidad;
+		this.usuario = usuario;
+		this.id_paralelo = id_paralelo;
+		this.estudiante = estudiante;
+	}
+
+
+	public Matricula(Long id_matricula) {
+		super();
+		this.id_matricula = id_matricula;
+	}
+
 	public Long getid_matricula() {
 		return this.id_matricula;
 	}

@@ -134,11 +134,13 @@ public class RegistroServiceImpl implements IRegistroService {
 
 
 		@Override
-		public List<Comprobante> Buscardeudas(String cedula) {
+		public Comprobante buscarceduestudiante(String cedula) {
 			
-			return comprobante.Buscardeudas(cedula);
+			return comprobante.buscarcedulaestudiante(cedula);
 		}
 
+
+	
 
 
 
