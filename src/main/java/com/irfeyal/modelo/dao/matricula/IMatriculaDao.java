@@ -6,16 +6,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
+import org.springframework.data.repository.query.Param;
 
 import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 
 public interface IMatriculaDao extends CrudRepository<Matricula, Long>{
 
 	
 	Page<Matricula> findAll(Pageable pageable);
-	
-	
+
 	/*MODULO TUTORIAS*/
 	
 	@Query(value="SELECT m.id_matricula, m.id_curso, m.id_estudiante, m.id_modalidad, m.id_paralelo, m.id_periodo, m.id_usuario, m.modalidad, m.fecha_matricula, per.cedula, per.nombre, per.apellido FROM matriculas m "

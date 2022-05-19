@@ -19,5 +19,7 @@ public interface ModalidadServices {
 	public Modalidad saveModalidad(Modalidad modalidad);
 
 	public Modalidad deleteModalidad(Long idModalidad);
+	
+	public List<Modalidad> findByCurso(Long id_curso);
 
 }

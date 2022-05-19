@@ -146,4 +146,11 @@ public class ModalidadController {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 
+	
+	
+	@GetMapping("/getJormadasPorCurso/{id_curso}")
+    public List<Modalidad> buscarByCurso(@PathVariable Long id_curso){
+ 
+		return modalidadService.findByCurso(id_curso);
+	}
 }

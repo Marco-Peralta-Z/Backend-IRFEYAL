@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.irfeyal.interfaces.matricula.IMatriculaService;
 import com.irfeyal.modelo.dao.matricula.IMatriculaDao;
 import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 
 @Service
 public class MatriculaServiceImpl implements IMatriculaService{
@@ -49,5 +50,7 @@ public class MatriculaServiceImpl implements IMatriculaService{
 		// TODO Auto-generated method stub
 		matriculaDao.deleteById(id);
 	}
+
+	
 
 }

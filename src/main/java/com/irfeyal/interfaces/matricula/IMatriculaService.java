@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 
 public interface IMatriculaService {
 public List<Matricula> findAll();
@@ -17,4 +18,5 @@ public List<Matricula> findAll();
 	public Matricula save(Matricula matricula);
 	
 	public void delete (Long id);
+	
 }

@@ -49,4 +49,10 @@ public class ModalidadServicesImp implements ModalidadServices {
 			return null;
 		}
 	}
+
+	@Override
+	public List<Modalidad> findByCurso(Long id_curso) {
+		
+		return modalidadRepo.findByCurso(id_curso);
+	}
 }

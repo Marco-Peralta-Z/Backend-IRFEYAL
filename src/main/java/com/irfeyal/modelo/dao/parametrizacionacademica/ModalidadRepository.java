@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -37,5 +38,12 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
 			+ "	inner join periodo per on per.id_malla = mal.id_malla  "
 			+ "	where  c.id_empleado=?1 and per.id_periodo=?2 group by mo.id_modalidad ", nativeQuery = true)
 	List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo);
+	
+	
+//	Modulo Matricula 
+	
+	@Query(value = "SELECT m.id_modalidad, m.descripcion,m.hora_inicio, m.hora_fin from modalidad_curso mc join "
+			+ "modalidad m on m.id_modalidad = mc.id_modalidad where mc.id_curso=?1", nativeQuery = true)
+	List<Modalidad> findByCurso(Long id_curso);
 	
 }
