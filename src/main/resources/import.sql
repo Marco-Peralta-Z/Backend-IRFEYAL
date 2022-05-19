@@ -375,11 +375,6 @@ INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, 
 INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, aporte6, aporte7, aporte8, evaluacion2, examenfinal, promediofinal, examen_supletorio, promedio_supletorio, examen_remedial, promedio_remedial, examen_gracia, promedio_gracia, comportamiento, id_matricula, id_asignatura) VALUES (5, 6, 9, 6, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 4, 4);
 INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, aporte6, aporte7, aporte8, evaluacion2, examenfinal, promediofinal, examen_supletorio, promedio_supletorio, examen_remedial, promedio_remedial, examen_gracia, promedio_gracia, comportamiento, id_matricula, id_asignatura) VALUES (6, 9, 5, 8, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 5, 5);
 
-INSERT INTO reporte (nombre_reporte, fecha_reporte, id_registro) VALUES ('NotasFinales_CulturaFisica','2022/02/02', 1); --OJO: Necesito id del registro
-INSERT INTO reporte (nombre_reporte, fecha_reporte, id_registro) VALUES ('NotasFinales_Cultura','2022/02/02', 2);
-INSERT INTO reporte (nombre_reporte, fecha_reporte, id_registro) VALUES ('NotasFinales_Fisica','2022/02/02', 3);
-INSERT INTO reporte (nombre_reporte, fecha_reporte, id_registro) VALUES ('NotasFinales_Lengua','2022/02/02', 4);
-INSERT INTO reporte (nombre_reporte, fecha_reporte, id_registro) VALUES ('NotasFinales_Matematicas','2022/02/02', 5);
 
 --SECRETARIA 
 
