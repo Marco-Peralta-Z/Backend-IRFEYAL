@@ -137,6 +137,7 @@ INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Noctur
 INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Atardecer', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
 INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Amanecer', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
 
+
 ---------------------MALLA-------------------------------
 INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Educacion Basica', true,'07/04/2022');
 INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Primaria', true,'07/04/2022');
@@ -301,6 +302,8 @@ INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluac
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Educación física', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 3, 5, 1, 5, 4, 'Pendiente', 2, 1);
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Informática', 'Objetivo10', 'Contenido10', 'Criterio10', 'Destreza10', '01-09-2022', '30-06-2023', 5, 4, 1, 2, 1, 'Rechazado', 4, 3);
 
+
+--SOLO KIT PARA tipo_comprobante----------
 --INVENTARIOS----------
 INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (1, 'obs 1', true, 'detacontrol 2', '2022/02/12', '2022/02/12');
 INSERT INTO aprobacion (id_empleado_admin, observacion_aproba, estado_aproba, detalle_control, fecha_aprobacion, fecha_control) values (2, 'obs 2', true, 'detacontrol 3', '2022/02/13', '2022/02/13');
@@ -326,21 +329,18 @@ INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, n
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (4, 'CursoCuatro_kitCuatro',' modulUno_kitCuatro', 4, 4, 'NumeroMod2_kitCuatro');
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values (5, 'CursoCinco_kitCinco',' modulUno_kitCincoo', 5, 5, 'NumeroMod2_kitCinco');
 
+INSERT INTO kit(precio_kit, periodo) values (35, '2022/02/02');
+INSERT INTO kit(precio_kit, periodo) values (15, '2022/02/02');
+INSERT INTO kit(precio_kit, periodo) values (25, '2022/02/02');
+INSERT INTO kit(precio_kit, periodo) values (45, '2022/02/02');
+INSERT INTO kit(precio_kit, periodo) values (55, '2022/02/02');
 
 
---SOLO KIT PARA tipo_comprobante----------
-INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (35, '2022/02/02',1);
-INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (15, '2022/02/02',2);
-INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (25, '2022/02/02',3);
-INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (45, '2022/02/02',4);
-INSERT INTO kit(precio_kit, periodo, id_modulo_libro) values (55, '2022/02/02',5);
-
-
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (2, 2, '2022/02/13', 2);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (3, 3, '2022/02/14', 3);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (4, 4, '2022/02/15', 4);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit) values (5, 5, '2022/02/16', 5);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (1, 1, '2022/02/12', 1,1);--OJO:Necesito id del kit que esta con error en el insert
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (2, 2, '2022/02/13', 1,2);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (3, 3, '2022/02/14', 2,1);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (4, 4, '2022/02/15', 2,2);
+INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (5, 5, '2022/02/16', 3,3);
 
 
 --PAGOS-----------
@@ -453,3 +453,9 @@ INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion)
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/14', '003', 'salido',3);
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/15', '004', 'salido',4);
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/16', '005', 'salido',5);
+
+
+
+
+
+
