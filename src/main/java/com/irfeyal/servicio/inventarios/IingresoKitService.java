@@ -61,8 +61,8 @@ public class IingresoKitService implements IngresoKitInterface {
 			aprobacion.setFechaControl(fechaActual);
 			ingresoKit.setFechaIngreso(metodosModInventarios.obtenerFechaActual());
 			ingresoKit.setId_aprobacion(aprobacion);
-			Kit nuevoKit = kitservice.save(ingresoKit.getId_kit());
-			ingresoKit.setId_kit(nuevoKit);
+			//Kit nuevoKit = kitservice.save(ingresoKit.getId_kit());
+			//ingresoKit.setId_kit(nuevoKit);
 			Long idSecre = ingresoKit.getId_secretaria().getId_empleado();
 			Long idAdmin = ingresoKit.getId_aprobacion().getId_empleado_admin().getId_empleado();
 			Empleado secre = empleadoService.findById(idSecre);
@@ -105,7 +105,7 @@ public class IingresoKitService implements IngresoKitInterface {
 	
 	
 	public boolean validarIngresoKit(IngresoKit ingresoKit) {
-		Long idSecre = ingresoKit.getId_secretaria().getId_empleado();
+	/*	Long idSecre = ingresoKit.getId_secretaria().getId_empleado();
 		Long idAdmin = ingresoKit.getId_aprobacion().getId_empleado_admin().getId_empleado();
 		Empleado secre = empleadoService.findById(idSecre);
 		Empleado admin = empleadoService.findById(idAdmin);
@@ -113,7 +113,7 @@ public class IingresoKitService implements IngresoKitInterface {
 		Aprobacion aprobacion = ingresoKit.getId_aprobacion();
 		boolean validarAprobacion = aprobacionService.validarAprobacion(aprobacion, admin);
 		
-		boolean validarKit = kitservice.ValidarKit(ingresoKit.getId_kit());
+		//boolean validarKit = kitservice.ValidarKit(ingresoKit.getId_kit());
 		
 		Date fechaAproIngreKit = ingresoKit.getFechaIngreso();
 		
@@ -122,6 +122,8 @@ public class IingresoKitService implements IngresoKitInterface {
 		}else {
 			return false;
 		}
+		*/
+		return false;
 		
 	}
 

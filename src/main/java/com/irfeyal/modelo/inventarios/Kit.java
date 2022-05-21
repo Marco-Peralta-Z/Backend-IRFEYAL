@@ -1,6 +1,9 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,6 +25,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
 
 @Entity
@@ -46,11 +52,15 @@ public class Kit implements Serializable {
     @Column(name = "periodo")
     private String periodo;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_modulo_libro")
-    private ModuloLibro moduloLibro;
 
+    
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinTable(name = "ingreso_kit", joinColumns = { @JoinColumn(name = "id_kit") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_modulo_libro") })
+	private List<ModuloLibro> listaModulos = new ArrayList<ModuloLibro>();
+    
+    
+    
     public Kit() {
     }
 
@@ -87,16 +97,16 @@ public class Kit implements Serializable {
 		this.nombrekit = nombrekit;
 	}
 
-	public ModuloLibro getModuloLibro() {
-		return moduloLibro;
+	public List<ModuloLibro> getListaModulos() {
+		return listaModulos;
 	}
 
-	public void setModuloLibro(ModuloLibro moduloLibro) {
-		this.moduloLibro = moduloLibro;
+	public void setListaModulos(List<ModuloLibro> listaModulos) {
+		this.listaModulos = listaModulos;
 	}
 
 
-	
+
 
 
 }

@@ -1,6 +1,8 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,14 +51,23 @@ public class IngresoKit implements Serializable {
     private Aprobacion id_aprobacion;
    
     
-    @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
-    @ManyToOne(optional = false)
-    private Kit id_kit;
+
     
     @JoinColumn(name = "id_secretaria", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
     private Empleado id_secretaria;
-
+    
+    
+    /*
+    @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
+    @ManyToOne(optional = false)
+    private Kit kit;
+    
+    
+    @JoinColumn(name = "id_modulo_libro", referencedColumnName = "id_modulo_libro")
+    @ManyToOne(optional = false)
+    private ModuloLibro moduloLibro;
+*/
     public IngresoKit() {
     }
     
@@ -86,17 +98,6 @@ public class IngresoKit implements Serializable {
 		this.id_aprobacion = id_aprobacion;
 	}
 
-	public Kit getId_kit() {
-		return id_kit;
-	}
-
-	public void setId_kit(Kit id_kit) {
-		this.id_kit = id_kit;
-	}
-
-
-
-
 
 
 
@@ -110,6 +111,11 @@ public class IngresoKit implements Serializable {
 		this.id_secretaria = id_secretaria;
 	}
 
+
+
+
+	
+	
 
 
 }

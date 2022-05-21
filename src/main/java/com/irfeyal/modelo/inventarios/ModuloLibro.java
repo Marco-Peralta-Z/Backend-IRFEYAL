@@ -1,5 +1,6 @@
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,7 +21,10 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.irfeyal.modelo.parametrizacionacademica.Malla;
 
 import javax.persistence.FetchType;
 
@@ -65,13 +70,8 @@ public class ModuloLibro implements Serializable {
     @Column(name = "numero_modulo")
     private String numeroModulo;
     
-
-    
-   // @JsonBackReference
-    //@OneToMany(mappedBy = "moduloLibro")
-    //@LazyCollection(LazyCollectionOption.FALSE)
-    //private List<Kit> kit;
-    
+	@ManyToMany(mappedBy = "listaModulos")
+	private List<Kit> kits = new ArrayList<>();
     
 
     public ModuloLibro() {
@@ -136,17 +136,19 @@ public class ModuloLibro implements Serializable {
 	}
 
 
-/*
-	public List<Kit> getKit() {
-		return kit;
+	@JsonIgnore
+	public List<Kit> getKits() {
+		return kits;
 	}
 
 
 
-	public void setKit(List<Kit> kit) {
-		this.kit = kit;
+	public void setKits(List<Kit> kits) {
+		this.kits = kits;
 	}
-*/
+
+
+
 
     
     
