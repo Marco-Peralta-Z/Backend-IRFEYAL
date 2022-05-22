@@ -3,6 +3,8 @@ package com.irfeyal.modelo.rolseguridad;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "rol_usuario")
 public class RolUsuario implements Serializable {
@@ -12,6 +14,7 @@ public class RolUsuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_rol_usuario")
 	private Long id_rol_usuario;
+	
 	@Column(name = "estado")
 	private Boolean estado;
 
@@ -23,7 +26,9 @@ public class RolUsuario implements Serializable {
 	@JoinColumn(name = "id_modulo")
 	private Modulo id_modulo;
 	
-	@ManyToOne
+	
+	@JsonIgnoreProperties( value = {"roles", "hibernateLazyInitializer", "handler"}, allowSetters = true)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	

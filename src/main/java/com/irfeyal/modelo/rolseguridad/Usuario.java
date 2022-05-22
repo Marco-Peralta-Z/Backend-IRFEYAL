@@ -1,7 +1,11 @@
 package com.irfeyal.modelo.rolseguridad;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "usuario")
@@ -26,6 +30,14 @@ public class Usuario implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_empleado")
 	private Empleado empleado;
+	
+	/*
+	 * Bidirectional relation
+	 * */
+	
+	@JsonIgnoreProperties( value = {"usuario", "hibernateLazyInitializer", "handler"}, allowSetters = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<RolUsuario> roles;
 	
 	public Usuario() {
 	}
@@ -74,5 +86,12 @@ public class Usuario implements Serializable {
 		this.empleado = empleado;
 	}
 
+	public List<RolUsuario> getRoles() {
+		return roles;
+	}
 
+	public void setRoles(List<RolUsuario> roles) {
+		this.roles = roles;
+	}
+	
 }
