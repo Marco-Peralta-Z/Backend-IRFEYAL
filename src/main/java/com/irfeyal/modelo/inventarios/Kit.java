@@ -54,7 +54,7 @@ public class Kit implements Serializable {
 
 
     
-	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinTable(name = "ingreso_kit", joinColumns = { @JoinColumn(name = "id_kit") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_modulo_libro") })
 	private List<ModuloLibro> listaModulos = new ArrayList<ModuloLibro>();

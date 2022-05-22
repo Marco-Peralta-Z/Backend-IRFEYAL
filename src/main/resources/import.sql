@@ -336,11 +336,11 @@ INSERT INTO kit(precio_kit, periodo) values (45, '2022/02/02');
 INSERT INTO kit(precio_kit, periodo) values (55, '2022/02/02');
 
 
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (1, 1, '2022/02/12', 1,1);--OJO:Necesito id del kit que esta con error en el insert
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (2, 2, '2022/02/13', 1,2);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (3, 3, '2022/02/14', 2,1);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (4, 4, '2022/02/15', 2,2);
-INSERT INTO ingreso_kit (id_secretaria, id_aprobacion, fecha_ingreso, id_kit,id_modulo_libro) values (5, 5, '2022/02/16', 3,3);
+INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,1);--OJO:Necesito id del kit que esta con error en el insert
+INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,2);
+INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,1);
+INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,2);
+INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (3,3);
 
 
 --PAGOS-----------

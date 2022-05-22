@@ -1,3 +1,5 @@
+/*
+
 package com.irfeyal.modelo.inventarios;
 import java.io.Serializable;
 import java.util.Date;
@@ -22,10 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
-/**
- *
- * @author Felipe Quichimbo check
- */
+
 @Entity
 @Table(name = "ingreso_kit")
 @NamedQueries({
@@ -51,14 +50,12 @@ public class IngresoKit implements Serializable {
     private Aprobacion id_aprobacion;
    
     
-
-    
     @JoinColumn(name = "id_secretaria", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
     private Empleado id_secretaria;
     
     
-    /*
+    
     @JoinColumn(name = "id_kit", referencedColumnName = "id_kit")
     @ManyToOne(optional = false)
     private Kit kit;
@@ -67,7 +64,7 @@ public class IngresoKit implements Serializable {
     @JoinColumn(name = "id_modulo_libro", referencedColumnName = "id_modulo_libro")
     @ManyToOne(optional = false)
     private ModuloLibro moduloLibro;
-*/
+
     public IngresoKit() {
     }
     
@@ -119,3 +116,4 @@ public class IngresoKit implements Serializable {
 
 
 }
+*/

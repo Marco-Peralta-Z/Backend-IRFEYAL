@@ -1,17 +1,21 @@
 package com.irfeyal.controlador.inventarios;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
+import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.servicio.inventarios.IKitService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,38 +36,23 @@ public class KitControlador {
 	//@Qualifier("IAutoServiceImplement")
 	IKitService kitService;
 	
-	@PostMapping("/kit/")
-	public ResponseEntity<Kit> crearKit(@RequestBody Kit kit){
-		Kit kitReturn = this.kitService.save(kit);
-		if(kitReturn != null) {
-			return new ResponseEntity(kitReturn,HttpStatus.CREATED);
-		}else {
-			return null;
-		}
-	}
-
 	@GetMapping(path = "/list", produces = {"application/json"})
 	public List<Kit> listKit(){
 		return kitService.listAllKit();
 		
 	}
 	
-	@RequestMapping(value = "/crearkit", method = RequestMethod.POST)
-    public ResponseEntity<Kit> create(@Valid @RequestBody Kit kit) {
-		
-		//System.out.print("------------>"+moduloLibro.getCodModulo());
-        Kit kitReturn = kitService.save(kit);
-        
-        if(kitReturn != null) {
-        	System.out.print("------------>Entidad creada");
-        }else {
-        	System.out.print("------------>No se pudo gardar");
-        }
-        
-        return new ResponseEntity(kitReturn, HttpStatus.CREATED);
-        
-        
+	@PostMapping(path = "/crearkit", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<Map<String, Object>> crearKit(@Validated @RequestBody Kit kit, BindingResult result) {
+
+		Kit kitNuevo = kitService.save(kit, result);
+
+		return new ResponseEntity(kitNuevo, HttpStatus.CREATED);
     }
+	
+	
+	
+	
 	
 	@GetMapping(produces = {"application/json"})
 	public ResponseEntity<Kit> obtenerKit(@RequestParam("id") Long id){
