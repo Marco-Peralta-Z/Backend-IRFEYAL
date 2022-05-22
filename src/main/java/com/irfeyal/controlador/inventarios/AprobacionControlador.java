@@ -54,28 +54,46 @@ public class AprobacionControlador {
 	
 	
 	
-	@RequestMapping(value = "/crear/", method = RequestMethod.POST)
-	public ResponseEntity<Aprobacion> creaeAprobacion(@Valid @RequestBody Aprobacion aprobacion) {
-
-		Empleado emple = empleadoService.findById(aprobacion.getId_empleado_admin().getId_empleado());
-
-		if (emple != null) {
-			Aprobacion aprobacionReturn = aprobacionService.save(aprobacion,emple);
-
-			if (aprobacionReturn != null) {
-				System.out.print("------------>Entidad creada");
-			} else {
-				System.out.print("------------>No se pudo gardar");
+	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<Map<String, Object>> crearAprobacion(@Validated @RequestBody Aprobacion aprobacion, BindingResult result) {
+		Aprobacion nuevaAprobacion = null;
+		Map<String, Object> respuesta = new HashMap<>();
+		//System.out.println(aprobacion.getSecretaria());
+		if(aprobacion.getSecretaria() != null) {
+			if (result.hasErrors()) {
+				List<String> errors = result.getFieldErrors().stream()
+						.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
+						.collect(Collectors.toList());
+				respuesta.put("errores", errors);
+				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 			}
-
-			return new ResponseEntity(aprobacionReturn, HttpStatus.CREATED);
-		} else {
-			System.out.print("empleado no encontrado");
+			try {
+				//Guardar malla
+				Empleado emp = empleadoService.findById(aprobacion.getSecretaria().getId_empleado());
+				aprobacion.setSecretaria(emp);
+				aprobacion.setDetalleControl(aprobacion.getDetalleControl().toUpperCase());
+				nuevaAprobacion = aprobacionService.save(aprobacion);
+			} catch (DataAccessException e) {
+				respuesta.put("mensaje", "Error al crear entidad");
+				respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			respuesta.put("status", "ok");
+			respuesta.put("aprobacion", nuevaAprobacion);
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
+		}else {
+			respuesta.put("mensaje", "No existe el empleado");
+			respuesta.put("error", null);
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+		
 		}
-
-		return null;
-
+		
+		
 	}
+	
+	
+	
+	
 
 	@GetMapping(produces = {"application/json"})
 	public ResponseEntity<Aprobacion> buscarAprobaId(@RequestParam("id") Long id){

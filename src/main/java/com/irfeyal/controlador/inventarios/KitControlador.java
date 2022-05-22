@@ -1,8 +1,10 @@
 package com.irfeyal.controlador.inventarios;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -12,6 +14,7 @@ import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.servicio.inventarios.IKitService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -42,15 +45,30 @@ public class KitControlador {
 		
 	}
 	
-	@PostMapping(path = "/crearkit", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> crearKit(@Validated @RequestBody Kit kit, BindingResult result) {
-
-		Kit kitNuevo = kitService.save(kit, result);
-
-		return new ResponseEntity(kitNuevo, HttpStatus.CREATED);
-    }
-	
-	
+		Kit nuevoKit = null;
+		Map<String, Object> respuesta = new HashMap<>();
+		if (result.hasErrors()) {
+			List<String> errors = result.getFieldErrors().stream()
+					.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
+					.collect(Collectors.toList());
+			respuesta.put("errores", errors);
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
+		}
+		try {
+			//Guardar malla
+			kit.setNombrekit(kit.getNombrekit().toUpperCase());
+			nuevoKit = kitService.save(kit, result);
+		} catch (DataAccessException e) {
+			respuesta.put("mensaje", "Error al crear entidad");
+			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		respuesta.put("status", "ok");
+		respuesta.put("kit", nuevoKit);
+		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
+	}
 	
 	
 	

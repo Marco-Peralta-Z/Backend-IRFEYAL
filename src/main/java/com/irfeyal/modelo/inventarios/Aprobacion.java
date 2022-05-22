@@ -24,14 +24,6 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
  */
 @Entity
 @Table(name = "aprobacion")
-@NamedQueries({
-    @NamedQuery(name = "Aprobacion.findAll", query = "SELECT a FROM Aprobacion a"),
-    @NamedQuery(name = "Aprobacion.findByid_aprobacion", query = "SELECT a FROM Aprobacion a WHERE a.id_aprobacion = :id_aprobacion"),
-    @NamedQuery(name = "Aprobacion.findByObservacionAproba", query = "SELECT a FROM Aprobacion a WHERE a.observacionAproba = :observacionAproba"),
-    @NamedQuery(name = "Aprobacion.findByEstadoAproba", query = "SELECT a FROM Aprobacion a WHERE a.estadoAproba = :estadoAproba"),
-    @NamedQuery(name = "Aprobacion.findByDetalleControl", query = "SELECT a FROM Aprobacion a WHERE a.detalleControl = :detalleControl"),
-    @NamedQuery(name = "Aprobacion.findByFechaAprobacion", query = "SELECT a FROM Aprobacion a WHERE a.fechaAprobacion = :fechaAprobacion"),
-    @NamedQuery(name = "Aprobacion.findByFechaControl", query = "SELECT a FROM Aprobacion a WHERE a.fechaControl = :fechaControl")})
 public class Aprobacion implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -40,9 +32,13 @@ public class Aprobacion implements Serializable {
 	@Column(name = "id_aprobacion")
 	private Long id_aprobacion;
     
-    @Column(name = "observacion_aproba")
-    private String observacionAproba;
+    @Column(name = "tipo_aproba")
+    private String tipoAprobacion;
     
+    @Column(name = "id_tipo_aprobacion")
+    private Long idTipoAprobacion;
+    
+        
     @Column(name = "estado_aproba")
     private Boolean estadoAproba;
     
@@ -58,9 +54,9 @@ public class Aprobacion implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaControl;
     
-    @JoinColumn(name = "id_empleado_admin", referencedColumnName = "id_empleado")
+    @JoinColumn(name = "id_secretaria", referencedColumnName = "id_empleado")
     @ManyToOne(optional = false)
-    private Empleado id_empleado_admin;
+    private Empleado secretaria;
 
     public Aprobacion() {
     }
@@ -74,13 +70,17 @@ public class Aprobacion implements Serializable {
 		this.id_aprobacion = id_aprobacion;
 	}
 
-	public String getObservacionAproba() {
-		return observacionAproba;
+	
+
+	public String getTipoAprobacion() {
+		return tipoAprobacion;
 	}
 
-	public void setObservacionAproba(String observacionAproba) {
-		this.observacionAproba = observacionAproba;
+
+	public void setTipoAprobacion(String tipoAprobacion) {
+		this.tipoAprobacion = tipoAprobacion;
 	}
+
 
 	public Boolean getEstadoAproba() {
 		return estadoAproba;
@@ -115,14 +115,27 @@ public class Aprobacion implements Serializable {
 	}
 
 
-	public Empleado getId_empleado_admin() {
-		return id_empleado_admin;
+
+
+	public Empleado getSecretaria() {
+		return secretaria;
 	}
 
 
-	public void setId_empleado_admin(Empleado id_empleado_admin) {
-		this.id_empleado_admin = id_empleado_admin;
+	public void setSecretaria(Empleado secretaria) {
+		this.secretaria = secretaria;
 	}
+
+
+	public Long getIdTipoAprobacion() {
+		return idTipoAprobacion;
+	}
+
+
+	public void setIdTipoAprobacion(Long idTipoAprobacion) {
+		this.idTipoAprobacion = idTipoAprobacion;
+	}
+
 
 	
 

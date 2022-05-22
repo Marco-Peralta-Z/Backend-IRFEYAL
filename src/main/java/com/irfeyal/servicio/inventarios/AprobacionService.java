@@ -29,17 +29,11 @@ public class AprobacionService implements AprobacionInterface {
 		
 	
 	@Override
-	public Aprobacion save(Aprobacion aprobacion, Empleado empleado) {
+	public Aprobacion save(Aprobacion aprobacion) {
 
-		boolean validaAproba = validarAprobacion(aprobacion,empleado);
-		aprobacion.setId_empleado_admin(empleado);
+		Aprobacion a = aprobacionDao.save(aprobacion);
 		
-		if(validaAproba == true) {
-			Aprobacion aprobacionReturn = aprobacionDao.save(aprobacion);
-			return aprobacionReturn;
-		}
-
-		return null;
+		return a;
 	}
 
 	@Override
@@ -72,13 +66,12 @@ public class AprobacionService implements AprobacionInterface {
 		return detalleAprobacion;
 	}
 	
-	public boolean validarAprobacion(Aprobacion aprobacion,Empleado empleado) {
-		String observacionAproba = aprobacion.getObservacionAproba();
+	public boolean validarAprobacion(Aprobacion aprobacion) {
+		String observacionAproba = aprobacion.getTipoAprobacion();
 		Boolean estadoAproba = aprobacion.getEstadoAproba();
 		String detalleControl = aprobacion.getDetalleControl();
 		Date fechaAprobacion = aprobacion.getFechaAprobacion();
 		Date fechaControl = aprobacion.getFechaControl();
-		Long idEmpleado = empleado.getId_empleado();
 		
 		if(observacionAproba!=null 
 				&& estadoAproba != null
@@ -86,7 +79,7 @@ public class AprobacionService implements AprobacionInterface {
 				&& fechaAprobacion != null
 				&& estadoAproba != null
 				&& fechaControl != null
-				&& idEmpleado != null) {
+				) {
 			return true;
 		}
 		
