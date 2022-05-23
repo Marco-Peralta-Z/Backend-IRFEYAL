@@ -416,11 +416,11 @@ INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_docu
 --INVENTARIOS
 
 
-INSERT INTO entrega_kit (id_kit, id_estudiante) values (1, 1);--OJO:Necesito id del kit que esta con error en el insert y pilas con id_estudiante por id_empleado 
-INSERT INTO entrega_kit (id_kit, id_estudiante) values (1, 2);
-INSERT INTO entrega_kit (id_kit, id_estudiante) values (2, 3);
-INSERT INTO entrega_kit (id_kit, id_estudiante) values (3, 4);
-INSERT INTO entrega_kit (id_kit, id_estudiante) values (4, 4);
+INSERT INTO entrega_kit (id_estudiante, id_kit) values (1, 1);--OJO:Necesito id del kit que esta con error en el insert y pilas con id_estudiante por id_empleado 
+INSERT INTO entrega_kit (id_estudiante, id_kit)  values (1, 2);
+INSERT INTO entrega_kit (id_estudiante, id_kit)  values (2, 1);
+INSERT INTO entrega_kit (id_estudiante, id_kit)  values (2, 2);
+INSERT INTO entrega_kit (id_estudiante, id_kit)  values (3, 1);
 
 
 
