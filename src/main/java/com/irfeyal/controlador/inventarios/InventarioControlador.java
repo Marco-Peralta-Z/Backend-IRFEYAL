@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.inventarios.Aprobacion;
-import com.irfeyal.modelo.inventarios.EntregaKit;
 import com.irfeyal.modelo.inventarios.Inventario;
 import com.irfeyal.servicio.inventarios.InventarioService;
 

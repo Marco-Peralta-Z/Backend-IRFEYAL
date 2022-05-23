@@ -1,8 +1,13 @@
 package com.irfeyal.modelo.matricula;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
+import com.irfeyal.modelo.inventarios.Kit;
+import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.rolseguridad.CorreoElectronico;
 import com.irfeyal.modelo.rolseguridad.Direccion;
 import com.irfeyal.modelo.rolseguridad.Extension;
@@ -42,7 +47,11 @@ public class Estudiante implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_telefono")
 	private Telefono telefono;
-
+	
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
+	@JoinTable(name = "entrega_kit", joinColumns = { @JoinColumn(name = "id_estudiante") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_kit") })
+	private List<Kit> listadoKits = new ArrayList<Kit>();
 
 
 	public Estudiante() {
@@ -114,6 +123,16 @@ public class Estudiante implements Serializable {
 
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
+	}
+
+
+	public List<Kit> getListadoKits() {
+		return listadoKits;
+	}
+
+
+	public void setListadoKits(List<Kit> listadoKits) {
+		this.listadoKits = listadoKits;
 	}
 	
 	

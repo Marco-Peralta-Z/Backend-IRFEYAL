@@ -25,6 +25,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
 
@@ -59,6 +60,8 @@ public class Kit implements Serializable {
 			@JoinColumn(name = "id_modulo_libro") })
 	private List<ModuloLibro> listaModulos = new ArrayList<ModuloLibro>();
     
+	@ManyToMany(mappedBy = "listadoKits")
+	private List<Estudiante> estudiantes = new ArrayList<>();
     
     
     public Kit() {
@@ -103,6 +106,14 @@ public class Kit implements Serializable {
 
 	public void setListaModulos(List<ModuloLibro> listaModulos) {
 		this.listaModulos = listaModulos;
+	}
+	@JsonIgnore
+	public List<Estudiante> getEstudiantes() {
+		return estudiantes;
+	}
+
+	public void setEstudiantes(List<Estudiante> estudiantes) {
+		this.estudiantes = estudiantes;
 	}
 
 

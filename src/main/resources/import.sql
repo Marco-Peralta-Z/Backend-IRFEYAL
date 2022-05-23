@@ -8,6 +8,7 @@ INSERT INTO pais (pais) VALUES ('chile');
 
 -------------------PROVINCIA-------------------
 
+
 INSERT INTO provincia (provincia) VALUES ('BOLIVAR');
 INSERT INTO provincia (provincia) VALUES ('AZUAY');
 INSERT INTO provincia (provincia) VALUES ('CARCHI');
@@ -445,13 +446,6 @@ INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventar
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0004', 22, 'falla', '2022/02/12', 4);
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0005', 21, 'caduco', '2022/02/12', 5);
 
-
-INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (1, 1, '2022/02/12', 1);--OJO:Necesito id del kit que esta con error en el insert y pilas con id_estudiante por id_empleado 
-INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (2, 2, '2022/02/13', 2);
-INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (3, 3, '2022/02/14', 3);
-INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (4, 4, '2022/02/15', 4);
-INSERT INTO entrega_kit (id_aprobacion, id_kit, fecha_entrega_kit, id_estudiante) values (5, 5, '2022/02/16', 5);
-
 INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/12', '001', 'recibido', 1);
 INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/13', '002', 'recibido', 2);
 INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/14', '003', 'recibido', 3);
@@ -463,8 +457,6 @@ INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion)
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/14', '003', 'salido',3);
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/15', '004', 'salido',4);
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/16', '005', 'salido',5);
-
-
 
 
 
