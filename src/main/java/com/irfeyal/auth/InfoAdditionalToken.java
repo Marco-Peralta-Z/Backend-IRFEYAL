@@ -34,6 +34,7 @@ public class InfoAdditionalToken implements TokenEnhancer{
 		// Hasmap para pasar informacion adicional al token
 		Map<String, Object> info = new HashMap<>();
 		info.put("id", usuario.getId_usuario());
+		info.put("id_empleado", usuario.getEmpleado().getId_empleado());
 		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 		return accessToken;
 	}
