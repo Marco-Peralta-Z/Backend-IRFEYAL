@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import com.irfeyal.interfaces.documentosacademicos.PlanUnidadInterface;
 import com.irfeyal.modelo.dao.documentosacademicos.PlanUnidadDAO;
 import com.irfeyal.modelo.dao.parametrizacionacademica.AsignaturaRepository;
+import com.irfeyal.modelo.dao.parametrizacionacademica.EmpleadoRepository;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Service
 public class PlanUnidadService implements PlanUnidadInterface {
@@ -21,10 +23,25 @@ public class PlanUnidadService implements PlanUnidadInterface {
 	@Autowired
 	private AsignaturaRepository asignaturaRepository;
 	
+	@Autowired
+	private EmpleadoRepository empleadoRepository;
+	
 	//Listar planes de unidad
 	@Override
 	public List<PlanUnidad> findAll() {
 		return planUnidadDAO.findAll();
+	}
+	
+    //Buscar empleado por id
+	public List<Empleado> findEmpleado (Long id){
+		List<Empleado> EmpleadoRespuesta = new ArrayList<>();
+		List<Empleado> empleados = empleadoRepository.findAll();
+		for (int i=0; i<empleados.size(); i++) {
+			if ( empleados.get(i).getId_persona().getid_persona() == id) {
+				EmpleadoRespuesta.add(empleados.get(i));
+			}
+		}
+		return EmpleadoRespuesta;
 	}
 	
 	//listar Planes de unidad por estado

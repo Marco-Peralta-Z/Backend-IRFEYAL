@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.servicio.documentosacademicos.PlanUnidadService;
 import com.irfeyal.servicio.parametrizacionacademica.CursoServicesImp;
-import com.irfeyal.servicio.parametrizacionacademica.EmpleadoServicesImp;
+
 import com.irfeyal.servicio.parametrizacionacademica.ModalidadServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.ParaleloServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.PeriodoServicesImp;
@@ -59,6 +60,11 @@ public class PlanUnidadController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 		
+	}
+	
+	@GetMapping ("empleado/{id_empleado}")
+	private ResponseEntity<List<Empleado>> getEmpleado (@PathVariable("id_empleado") Long id){
+		return ResponseEntity.ok(planUnidadService.findEmpleado(id));
 	}
 	
 	@GetMapping ("{String}")
