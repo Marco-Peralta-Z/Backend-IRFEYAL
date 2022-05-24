@@ -37,7 +37,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		List<Empleado> EmpleadoRespuesta = new ArrayList<>();
 		List<Empleado> empleados = empleadoRepository.findAll();
 		for (int i=0; i<empleados.size(); i++) {
-			if ( empleados.get(i).getId_persona().getid_persona() == id) {
+			if ( empleados.get(i).getPersona().getid_persona() == id) {
 				EmpleadoRespuesta.add(empleados.get(i));
 			}
 		}
