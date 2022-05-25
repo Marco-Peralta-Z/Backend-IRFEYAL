@@ -79,7 +79,7 @@ public class ModuloLibroControlador {
 		}
 	}
 	
-	@DeleteMapping(path = "eliminar/{id}", produces = "application/json")
+	@DeleteMapping(path = "/eliminar{id}", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> eliminarModuloLibro(@PathVariable("id") Long idModulo) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
