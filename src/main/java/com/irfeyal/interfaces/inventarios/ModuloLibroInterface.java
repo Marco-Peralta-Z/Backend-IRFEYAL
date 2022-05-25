@@ -12,7 +12,7 @@ public interface ModuloLibroInterface {
 	
 	public abstract Optional<ModuloLibro> getById(Long moduloLibroId);
 
-	public abstract ModuloLibro update(Long moduloLibroId, double nuevoModuloLibro);
+	public abstract ModuloLibro update(ModuloLibro nuevoModuloLibro);
 
-	public abstract boolean delete(Long moduloLibroId);
+	public abstract ModuloLibro delete(Long moduloLibroId);
 }

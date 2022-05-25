@@ -66,7 +66,7 @@ public class KitControlador {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Guardar malla
+			//Guardar kit
 			kit.setNombrekit(kit.getNombrekit().toUpperCase());
 			nuevoKit = kitService.save(kit, result);
 		} catch (DataAccessException e) {

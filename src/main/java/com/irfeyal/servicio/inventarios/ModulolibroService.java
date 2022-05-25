@@ -12,7 +12,6 @@ import com.irfeyal.interfaces.inventarios.ModuloLibroInterface;
 import com.irfeyal.modelo.dao.inventarios.ModuloLibroDao;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 
-import net.bytebuddy.dynamic.loading.PackageDefinitionStrategy.Definition.Undefined;
 
 
 @Service
@@ -25,11 +24,9 @@ public class ModulolibroService implements ModuloLibroInterface {
 	@Override
 	public ModuloLibro save(ModuloLibro modulolibro) {
 		
-		if(ValidarModuloLibro(modulolibro)) {
-			return moduloLibroRepo.save(modulolibro);
-		}else {
-			return null;
-		}
+		ModuloLibro newModuloLibro = moduloLibroRepo.save(modulolibro);
+		
+		return newModuloLibro;
 		
 	}
 
@@ -45,24 +42,8 @@ public class ModulolibroService implements ModuloLibroInterface {
 		return moduloLibroRepo.findById(moduloLibroId);
 	}
 
-	@Override
-	public ModuloLibro update(Long moduloLibroId, double nuevoModuloLibro) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public boolean delete(Long moduloLibroId) {
-		
-		Optional<ModuloLibro> moduloLibro = moduloLibroRepo.findById(moduloLibroId);
-		
-		if(moduloLibro != null) {
-			moduloLibroRepo.deleteById(moduloLibroId);
-			return true;
-		}else {
-			return false;
-		}
-	}
+
 	
 	  public boolean ValidarModuloLibro(ModuloLibro moduloLibro){
 			//String id_modulo_libro= ""+moduloLibro.;
@@ -84,6 +65,26 @@ public class ModulolibroService implements ModuloLibroInterface {
 		    }
 			
 		}
+
+	@Override
+	public ModuloLibro delete(Long moduloLibroId) {
+		ModuloLibro moduloL = getById(moduloLibroId).get();
+		if(moduloL == null) {
+			return null;
+		}else {
+			moduloLibroRepo.deleteById(moduloLibroId);
+			return moduloL;
+			
+		}
+	}
+
+	@Override
+	public ModuloLibro update(ModuloLibro moduloLibroUpdate) {
+		
+		ModuloLibro moduloLib = moduloLibroRepo.save(moduloLibroUpdate);
+		
+		return moduloLib;
+	}
 
 	
 	
