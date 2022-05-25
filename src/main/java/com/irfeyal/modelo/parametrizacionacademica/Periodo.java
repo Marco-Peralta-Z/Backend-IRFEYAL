@@ -33,13 +33,8 @@ public class Periodo implements Serializable {
 	private Long id_periodo;
 
 	@NotBlank(message = "Debe ingresar las actividades para el Periodo")
-	@Column(name = "actividades")
-	private String actividades;
-
-	@NotNull(message = "Debe ingresar una fecha para las actividades del Periodo")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "fecha_actividad")
-	private Date fecha_actividad;
+	@Column(name = "periodo_academico")
+	private String periodo_academico;
 
 	@NotNull(message = "Debe ingresar una fecha final para el Periodo")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -59,6 +54,15 @@ public class Periodo implements Serializable {
 	@Column(name = "costo_matricula")
 	private Double costo_matricula;
 
+	@Column(name = "ano_inicio")
+	private String ano_inicio;
+
+	@Column(name = "ano_fin")
+	private String ano_fin;
+
+	@Column(name = "vigencia")
+	private boolean vigencia;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_creacion")
 	private Date fecha_creacion;
@@ -73,6 +77,11 @@ public class Periodo implements Serializable {
 	@JoinColumn(name = "id_malla", nullable = true)
 	private Malla malla;
 
+	// Agrega campo modalidad para relacion
+	@ManyToOne
+	@JoinColumn(name = "id_modalidad", nullable = true)
+	private Modalidad modalidad;
+
 	public Periodo() {
 	}
 
@@ -84,20 +93,12 @@ public class Periodo implements Serializable {
 		this.id_periodo = id_periodo;
 	}
 
-	public String getActividades() {
-		return actividades;
+	public String getPeriodo_academico() {
+		return periodo_academico;
 	}
 
-	public void setActividades(String actividades) {
-		this.actividades = actividades;
-	}
-
-	public Date getFecha_actividad() {
-		return fecha_actividad;
-	}
-
-	public void setFecha_actividad(Date fecha_actividad) {
-		this.fecha_actividad = fecha_actividad;
+	public void setPeriodo_academico(String periodo_academico) {
+		this.periodo_academico = periodo_academico;
 	}
 
 	public Date getFecha_inicio() {
@@ -132,6 +133,30 @@ public class Periodo implements Serializable {
 		this.costo_matricula = costo_matricula;
 	}
 
+	public String getAno_inicio() {
+		return ano_inicio;
+	}
+
+	public void setAno_inicio(String ano_inicio) {
+		this.ano_inicio = ano_inicio;
+	}
+
+	public String getAno_fin() {
+		return ano_fin;
+	}
+
+	public void setAno_fin(String ano_fin) {
+		this.ano_fin = ano_fin;
+	}
+
+	public boolean isVigencia() {
+		return vigencia;
+	}
+
+	public void setVigencia(boolean vigencia) {
+		this.vigencia = vigencia;
+	}
+
 	public Date getFecha_creacion() {
 		return fecha_creacion;
 	}
@@ -148,12 +173,21 @@ public class Periodo implements Serializable {
 		this.malla = malla;
 	}
 
+	public Modalidad getModalidad() {
+		return modalidad;
+	}
+
+	public void setModalidad(Modalidad modalidad) {
+		this.modalidad = modalidad;
+	}
+
 	@Override
 	public String toString() {
-		return "Periodo [actividades=" + actividades + ", costo_matricula=" + costo_matricula + ", costo_mensualidad="
-				+ costo_mensualidad + ", fecha_actividad=" + fecha_actividad + ", fecha_creacion=" + fecha_creacion
-				+ ", fecha_fin=" + fecha_fin + ", fecha_inicio=" + fecha_inicio + ", id_periodo=" + id_periodo
-				+ ", malla=" + malla + "]";
+		return "Periodo [ano_fin=" + ano_fin + ", ano_inicio=" + ano_inicio + ", costo_matricula=" + costo_matricula
+				+ ", costo_mensualidad=" + costo_mensualidad + ", fecha_creacion=" + fecha_creacion + ", fecha_fin="
+				+ fecha_fin + ", fecha_inicio=" + fecha_inicio + ", id_periodo=" + id_periodo + ", malla=" + malla
+				+ ", modalidad=" + modalidad + ", periodo_academico=" + periodo_academico + ", vigencia=" + vigencia
+				+ "]";
 	}
 
 }

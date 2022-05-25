@@ -33,10 +33,6 @@ public class Curso implements Serializable {
 	@Column(name = "descripcion")
 	private String descripcion;
 
-	@NotBlank(message = "El tipo de Curso no debe estar vacío")
-	@Column(name = "tipo_curso")
-	private String tipo_curso;
-
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_creacion")
 	private Date fecha_creacion;
@@ -46,9 +42,14 @@ public class Curso implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
+	// Relacion curso paralelo
+	@ManyToOne
+	@JoinColumn(name = "id_paralelo")
+	private Paralelo id_paralelo;
+
 	// Relación con la tabla empleado
 	@ManyToOne
-	@JoinColumn(name = "id_empleado")
+	@JoinColumn(name = "id_empleado", unique = true)
 	private Empleado empleado;
 
 	public Curso() {
@@ -70,20 +71,20 @@ public class Curso implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public String getTipo_curso() {
-		return tipo_curso;
-	}
-
-	public void setTipo_curso(String tipo_curso) {
-		this.tipo_curso = tipo_curso;
-	}
-
 	public Date getFecha_creacion() {
 		return fecha_creacion;
 	}
 
 	public void setFecha_creacion(Date fecha_creacion) {
 		this.fecha_creacion = fecha_creacion;
+	}
+
+	public Paralelo getId_paralelo() {
+		return id_paralelo;
+	}
+
+	public void setId_paralelo(Paralelo id_paralelo) {
+		this.id_paralelo = id_paralelo;
 	}
 
 	public Empleado getEmpleado() {
@@ -97,7 +98,7 @@ public class Curso implements Serializable {
 	@Override
 	public String toString() {
 		return "Curso [descripcion=" + descripcion + ", empleado=" + empleado + ", fecha_creacion=" + fecha_creacion
-				+ ", id_curso=" + id_curso + ", tipo_curso=" + tipo_curso + "]";
+				+ ", id_curso=" + id_curso + ", id_paralelo=" + id_paralelo + " ]";
 	}
 
 }

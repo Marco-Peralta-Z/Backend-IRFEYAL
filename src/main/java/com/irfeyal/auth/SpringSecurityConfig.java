@@ -45,7 +45,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	// lado de spring
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-
 		http.authorizeRequests()
 		.anyRequest().authenticated() // todas las rutas necesitan autentificacion
 		.and()

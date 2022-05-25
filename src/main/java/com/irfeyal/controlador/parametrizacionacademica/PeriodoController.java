@@ -88,7 +88,7 @@ public class PeriodoController {
 			Optional<Malla> malla = mallaService.getMallaById(idMalla);
 			if (!malla.isEmpty()) {
 				//Guardando periodo junto con la malla
-				periodo.setActividades(periodo.getActividades().toUpperCase());
+				periodo.setPeriodo_academico(periodo.getPeriodo_academico().toUpperCase());
 				periodo.setMalla(malla.get());
 				periodoNuevo = periodoService.savePeriodo(periodo);
 			} else {
@@ -125,12 +125,13 @@ public class PeriodoController {
 		}
 		try {
 			//Actualizando periodo
-			periodoActual.get().setActividades(periodo.getActividades().toUpperCase());
-			periodoActual.get().setFecha_actividad(periodo.getFecha_actividad());
+			periodoActual.get().setPeriodo_academico(periodo.getPeriodo_academico().toUpperCase());
 			periodoActual.get().setFecha_inicio(periodo.getFecha_inicio());
 			periodoActual.get().setFecha_fin(periodo.getFecha_fin());
 			periodoActual.get().setCosto_matricula(periodo.getCosto_matricula());
 			periodoActual.get().setCosto_mensualidad(periodo.getCosto_mensualidad());
+			periodoActual.get().setAno_inicio(periodo.getAno_inicio());//
+			periodoActual.get().setAno_fin(periodo.getAno_fin());//
 			periodoActual.get().setMalla(periodo.getMalla());
 			periodoUpdated = periodoService.savePeriodo(periodoActual.get());
 		} catch (DataAccessException e) {

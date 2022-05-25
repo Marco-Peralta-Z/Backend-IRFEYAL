@@ -1,7 +1,6 @@
 package com.irfeyal.modelo.dao.parametrizacionacademica;
 
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
-import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 import java.util.List;
 

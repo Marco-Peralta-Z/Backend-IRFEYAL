@@ -1,25 +1,20 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "modalidad")
@@ -46,12 +41,6 @@ public class Modalidad implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "hora_fin")
 	private Date hora_fin;
-
-	// Relación modalidad_curso
-	@ManyToMany
-	@JoinTable(name = "modalidad_curso", joinColumns = { @JoinColumn(name = "id_modalidad") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_curso") })
-	private List<Curso> listaCursos = new ArrayList<Curso>();
 
 	public Modalidad() {
 	}
@@ -88,18 +77,10 @@ public class Modalidad implements Serializable {
 		this.hora_fin = hora_fin;
 	}
 
-	public List<Curso> getListaCursos() {
-		return listaCursos;
-	}
-
-	public void setListaCursos(List<Curso> listaCursos) {
-		this.listaCursos = listaCursos;
-	}
-
 	@Override
 	public String toString() {
 		return "Modalidad [descripcion=" + descripcion + ", hora_fin=" + hora_fin + ", hora_inicio=" + hora_inicio
-				+ ", id_modalidad=" + id_modalidad + ", listaCursos=" + listaCursos + "]";
+				+ ", id_modalidad=" + id_modalidad + "]";
 	}
 
 }

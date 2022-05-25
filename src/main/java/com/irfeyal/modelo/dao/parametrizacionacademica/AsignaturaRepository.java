@@ -2,12 +2,11 @@ package com.irfeyal.modelo.dao.parametrizacionacademica;
 
 import java.util.List;
 
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
-import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 
 @Repository
 public interface AsignaturaRepository extends JpaRepository<Asignatura, Long> {

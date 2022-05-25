@@ -81,7 +81,6 @@ public class CursoController {
 		}
 		try {
 			curso.setDescripcion(curso.getDescripcion().toUpperCase());
-			curso.setTipo_curso(curso.getTipo_curso().toUpperCase());
 			cursoNuevo = cursoService.saveCurso(curso);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear el curso en la base de datos");
@@ -114,7 +113,6 @@ public class CursoController {
 		try {
 			//Actaualización de curso
 			cursoActual.get().setDescripcion(curso.getDescripcion());
-			cursoActual.get().setTipo_curso(curso.getTipo_curso());
 			cursoUpdated = cursoService.saveCurso(cursoActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

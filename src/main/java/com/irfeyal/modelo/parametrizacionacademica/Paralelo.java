@@ -1,25 +1,20 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "paralelo")
@@ -45,13 +40,6 @@ public class Paralelo implements Serializable {
 	private void setFechaCreacion() {
 		this.fecha_creacion = new Date();
 	}
-
-	// Relacion curso_paralelo
-	@ManyToMany
-	@JoinTable(name = "curso_paralelo", joinColumns = { @JoinColumn(name = "id_paralelo") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_curso") })
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	private List<Curso> listaCursos = new ArrayList<Curso>();
 
 	public Paralelo() {
 	}
@@ -80,18 +68,10 @@ public class Paralelo implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-	public List<Curso> getListaCursos() {
-		return listaCursos;
-	}
-
-	public void setListaCursos(List<Curso> listaCursos) {
-		this.listaCursos = listaCursos;
-	}
-
 	@Override
 	public String toString() {
 		return "Paralelo [descripcion=" + descripcion + ", fecha_creacion=" + fecha_creacion + ", id_paralelo="
-				+ id_paralelo + ", listaCursos=" + listaCursos + "]";
+				+ id_paralelo + "]";
 	}
 
 }

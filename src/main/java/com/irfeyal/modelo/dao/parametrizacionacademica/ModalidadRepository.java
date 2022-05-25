@@ -1,13 +1,11 @@
 package com.irfeyal.modelo.dao.parametrizacionacademica;
 
-import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
-import com.irfeyal.modelo.parametrizacionacademica.Periodo;
-
 import java.util.List;
+
+import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
