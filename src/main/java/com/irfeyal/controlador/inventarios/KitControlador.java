@@ -82,10 +82,13 @@ public class KitControlador {
 	}
 	
 	@GetMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<Kit> obtenerKit(@PathVariable("id") Long id) {
+	public ResponseEntity<?> obtenerKit(@PathVariable("id") Long id) {
+		Map<String, Object> respuesta = new HashMap<>();
 		Optional<Kit> optionalKit = this.kitService.getById(id);
 		if(optionalKit.isPresent()) {
-			return new ResponseEntity(optionalKit.get(),HttpStatus.OK);
+			respuesta.put("status", "ok");
+			respuesta.put("kit", optionalKit.get());
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.OK);
 		}else {
 			return ResponseEntity.notFound().build();
 		}
@@ -156,7 +159,7 @@ public class KitControlador {
 				listaModulos.add(modLib);
 			}
 			
-			kitActual.setNombrekit(kit.getNombrekit());
+			kitActual.setNombrekit(kit.getNombrekit().toUpperCase());
 			kitActual.setPeriodo(kit.getPeriodo());
 			kitActual.setPrecioKit(kit.getPrecioKit());
 			kitActual.setListaModulos(listaModulos);
@@ -172,6 +175,7 @@ public class KitControlador {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
+		respuesta.put("status", "ok");
 		respuesta.put("mensaje", "El Kit ha sido actualizado con éxito");
 		respuesta.put("kit", kitUpdate);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
