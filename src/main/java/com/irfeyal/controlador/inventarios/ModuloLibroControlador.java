@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -70,18 +72,24 @@ public class ModuloLibroControlador {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 	
-	@GetMapping(path="/buscar/{id}", produces = {"application/json"})
-	public ResponseEntity<Aprobacion> obtenerModuloLibro(@RequestParam("id") Long id){
+	
+	@GetMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<?> obtenerModulo(@PathVariable("id") Long id) {
+		Map<String, Object> respuesta = new HashMap<>();
 		Optional<ModuloLibro> moduloLibro = this.modulolibroService.getById(id);
 		if(moduloLibro.isPresent()) {
-			return new ResponseEntity(moduloLibro.get(),HttpStatus.OK);
+			respuesta.put("status", "ok");
+			respuesta.put("modulo", moduloLibro.get());
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.OK);
 		}else {
 			return ResponseEntity.notFound().build();
 		}
 	}
 	
-	@GetMapping(path="/eliminar/{id}", produces = {"application/json"})
-	public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
+	
+	
+	@DeleteMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<Map<String, Object>> deletePeriodo(@PathVariable("id") Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
 			ModuloLibro moduloLibro = modulolibroService.delete(id);
@@ -94,12 +102,15 @@ public class ModuloLibroControlador {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El Periodo ha sido eliminado");
+		respuesta.put("status", "ok");
+		respuesta.put("mensaje", "El modulo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 	
 	
-	@PutMapping(path = "/actualizar/{id}", consumes = "application/json", produces = "application/json")
+	
+	
+	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> actulaizarModuloLibro(@PathVariable("id") Long idModuloLibro, @Validated @RequestBody ModuloLibro moduloLibroModi,
 			BindingResult result) {
 		ModuloLibro moduloLibroActual = modulolibroService.getById(idModuloLibro).get();
@@ -118,7 +129,7 @@ public class ModuloLibroControlador {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualizando periodo
+			//Actualizando kit
 			moduloLibroActual.setCantidad(moduloLibroModi.getCantidad());
 			moduloLibroActual.setCodModulo(moduloLibroModi.getCodModulo());
 			moduloLibroActual.setCurso(moduloLibroModi.getCurso());
@@ -132,13 +143,9 @@ public class ModuloLibroControlador {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
+		respuesta.put("status", "ok");
 		respuesta.put("mensaje", "El modulo ha sido actualizado con éxito");
-		respuesta.put("periodo", moduloLibroUpdate);
+		respuesta.put("modulolibro", moduloLibroUpdate);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
-	
-	
-	
-	
-	
 }
