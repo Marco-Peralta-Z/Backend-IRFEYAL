@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,9 +45,6 @@ public class KitControlador {
 	
 	@Autowired
 	EstudianteServiceImpl estudianteService;
-	
-	
-	
 	
 	@GetMapping(path = "/list", produces = {"application/json"})
 	public List<Kit> listKit(){
@@ -79,10 +77,8 @@ public class KitControlador {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 	
-	
-	
-	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<Kit> obtenerKit(@RequestParam("id") Long id){
+	@GetMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<Kit> obtenerKit(@PathVariable("id") Long id) {
 		Optional<Kit> optionalKit = this.kitService.getById(id);
 		if(optionalKit.isPresent()) {
 			return new ResponseEntity(optionalKit.get(),HttpStatus.OK);
@@ -90,8 +86,6 @@ public class KitControlador {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
-	
 	
 	@PostMapping(path = "/entregakit", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> entregaKitEstudiante(@Validated @RequestBody Estudiante estudiante, BindingResult result) {
@@ -118,10 +112,6 @@ public class KitControlador {
 			
 			kitEntregadoEstudiante = estudianteService.save(estudianteBuscar);
 			
-			
-			
-			
-			
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear entidad");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -131,9 +121,6 @@ public class KitControlador {
 		respuesta.put("kit", kitEntregadoEstudiante);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
-	
-	
-	
 	
 	
 	

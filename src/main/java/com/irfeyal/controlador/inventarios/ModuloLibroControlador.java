@@ -70,8 +70,9 @@ public class ModuloLibroControlador {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 	
-	@GetMapping(path="/buscar/{id}", produces = {"application/json"})
-	public ResponseEntity<Aprobacion> obtenerModuloLibro(@RequestParam("id") Long id){
+	
+	@GetMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<?> obtenerModulo(@PathVariable("id") Long id) {
 		Optional<ModuloLibro> moduloLibro = this.modulolibroService.getById(id);
 		if(moduloLibro.isPresent()) {
 			return new ResponseEntity(moduloLibro.get(),HttpStatus.OK);
@@ -80,8 +81,10 @@ public class ModuloLibroControlador {
 		}
 	}
 	
-	@GetMapping(path="/eliminar/{id}", produces = {"application/json"})
-	public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
+	
+	
+	@DeleteMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<Map<String, Object>> deletePeriodo(@PathVariable("id") Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
 			ModuloLibro moduloLibro = modulolibroService.delete(id);
@@ -94,12 +97,14 @@ public class ModuloLibroControlador {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El Periodo ha sido eliminado");
+		respuesta.put("mensaje", "El modulo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 	
 	
-	@PutMapping(path = "/actualizar/{id}", consumes = "application/json", produces = "application/json")
+	
+	
+	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> actulaizarModuloLibro(@PathVariable("id") Long idModuloLibro, @Validated @RequestBody ModuloLibro moduloLibroModi,
 			BindingResult result) {
 		ModuloLibro moduloLibroActual = modulolibroService.getById(idModuloLibro).get();
@@ -136,9 +141,4 @@ public class ModuloLibroControlador {
 		respuesta.put("periodo", moduloLibroUpdate);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
-	
-	
-	
-	
-	
 }
