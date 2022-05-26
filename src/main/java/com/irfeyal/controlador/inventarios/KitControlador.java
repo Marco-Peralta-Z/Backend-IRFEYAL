@@ -14,6 +14,7 @@ import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.servicio.inventarios.IKitService;
+import com.irfeyal.servicio.inventarios.ModulolibroService;
 import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,9 @@ public class KitControlador {
 	
 	@Autowired
 	EstudianteServiceImpl estudianteService;
+	
+	@Autowired
+	ModulolibroService modulolibroService;
 	
 	@GetMapping(path = "/list", produces = {"application/json"})
 	public List<Kit> listKit(){
@@ -125,7 +129,53 @@ public class KitControlador {
 	
 	
 	
-	
+	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<?> actualizarKit(@PathVariable("id") Long idKit, @Validated @RequestBody Kit kit,
+			BindingResult result) {
+		Kit kitActual = kitService.getById(idKit).get();
+		Kit kitUpdate = null;
+		Map<String, Object> respuesta = new HashMap<>();
+		if (result.hasErrors()) {
+			List<String> errors = result.getFieldErrors().stream()
+					.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
+					.collect(Collectors.toList());
+			respuesta.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
+		}
+		if (kitActual == null) {
+			respuesta.put("mensaje", "Error: no se pudo editar el Kit: "
+					.concat(idKit.toString().concat(" no existe en la base de datos")));
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
+		}
+		try {
+			//Actualizando kit
+			List<ModuloLibro> listaModulos = new ArrayList<>();
+			for (int i = 0; i < kit.getListaModulos().size(); i++) {
+				ModuloLibro modLib = new ModuloLibro();
+				modLib = modulolibroService.getById(kit.getListaModulos().get(i).getId_modulo_libro()).get();
+				listaModulos.add(modLib);
+			}
+			
+			kitActual.setNombrekit(kit.getNombrekit());
+			kitActual.setPeriodo(kit.getPeriodo());
+			kitActual.setPrecioKit(kit.getPrecioKit());
+			kitActual.setListaModulos(listaModulos);
+			
+			
+			kitUpdate = kitService.update(kitActual);
+			
+			
+			
+			
+		} catch (DataAccessException e) {
+			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
+			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
+		}
+		respuesta.put("mensaje", "El Kit ha sido actualizado con éxito");
+		respuesta.put("kit", kitUpdate);
+		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
+	}
 	
 	
 	

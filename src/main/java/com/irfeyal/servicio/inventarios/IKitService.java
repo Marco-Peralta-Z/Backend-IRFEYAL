@@ -55,9 +55,11 @@ public class IKitService implements KitInterface {
 	}
 
 	@Override
-	public Kit update(Long kitId, double nuevokit) {
-		// TODO Auto-generated method stub
-		return null;
+	public Kit update(Kit updateKit) {
+		
+		Kit k = kitRepo.save(updateKit);
+		
+		return k;
 	}
 
 	@Override

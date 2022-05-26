@@ -123,7 +123,7 @@ public class ModuloLibroControlador {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualizando periodo
+			//Actualizando kit
 			moduloLibroActual.setCantidad(moduloLibroModi.getCantidad());
 			moduloLibroActual.setCodModulo(moduloLibroModi.getCodModulo());
 			moduloLibroActual.setCurso(moduloLibroModi.getCurso());
@@ -138,7 +138,7 @@ public class ModuloLibroControlador {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		respuesta.put("mensaje", "El modulo ha sido actualizado con éxito");
-		respuesta.put("periodo", moduloLibroUpdate);
+		respuesta.put("modulolibro", moduloLibroUpdate);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 }
