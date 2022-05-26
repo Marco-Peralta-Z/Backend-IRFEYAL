@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -69,7 +70,7 @@ public class ModuloLibroControlador {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 	
-	@GetMapping(produces = {"application/json"})
+	@GetMapping(path="/buscar/{id}", produces = {"application/json"})
 	public ResponseEntity<Aprobacion> obtenerModuloLibro(@RequestParam("id") Long id){
 		Optional<ModuloLibro> moduloLibro = this.modulolibroService.getById(id);
 		if(moduloLibro.isPresent()) {
@@ -79,13 +80,13 @@ public class ModuloLibroControlador {
 		}
 	}
 	
-	@DeleteMapping(path = "/eliminar{id}", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> eliminarModuloLibro(@PathVariable("id") Long idModulo) {
+	@GetMapping(path="/{id}", produces = {"application/json"})
+	public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			ModuloLibro moduloLibro = modulolibroService.delete(idModulo);
+			ModuloLibro moduloLibro = modulolibroService.delete(id);
 			if (moduloLibro == null) {
-				respuesta.put("mensaje", "El modulo con id: " + idModulo + " no existe en la base de datos");
+				respuesta.put("mensaje", "El modulo con id: " + id + " no existe en la base de datos");
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
 			}
 		} catch (DataAccessException e) {
@@ -96,6 +97,9 @@ public class ModuloLibroControlador {
 		respuesta.put("mensaje", "El Periodo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
+	
+	
+	
 	
 	@PutMapping(path = "/actualizar/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> actulaizarModuloLibro(@PathVariable("id") Long idModuloLibro, @Validated @RequestBody ModuloLibro moduloLibroModi,
