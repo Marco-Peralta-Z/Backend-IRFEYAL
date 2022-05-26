@@ -80,7 +80,7 @@ public class ModuloLibroControlador {
 		}
 	}
 	
-	@GetMapping(path="/{id}", produces = {"application/json"})
+	@GetMapping(path="/eliminar/{id}", produces = {"application/json"})
 	public ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
@@ -97,8 +97,6 @@ public class ModuloLibroControlador {
 		respuesta.put("mensaje", "El Periodo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
-	
-	
 	
 	
 	@PutMapping(path = "/actualizar/{id}", consumes = "application/json", produces = "application/json")

@@ -51,7 +51,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		.antMatchers("/detalleingresoarticulo/**")	.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
 		.antMatchers("/inventario/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
 		.antMatchers("/kit/**")						.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
-		.antMatchers("/modulolibro/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
+		.antMatchers("/modulolibro/**")		        .hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
 		.antMatchers("/recepcionarticulo/**")		.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
 		.antMatchers("/salidaarticulo/**")			.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
 		//MATRICULA
