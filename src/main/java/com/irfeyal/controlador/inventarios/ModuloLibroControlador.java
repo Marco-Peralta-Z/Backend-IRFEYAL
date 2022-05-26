@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
@@ -73,9 +75,12 @@ public class ModuloLibroControlador {
 	
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public ResponseEntity<?> obtenerModulo(@PathVariable("id") Long id) {
+		Map<String, Object> respuesta = new HashMap<>();
 		Optional<ModuloLibro> moduloLibro = this.modulolibroService.getById(id);
 		if(moduloLibro.isPresent()) {
-			return new ResponseEntity(moduloLibro.get(),HttpStatus.OK);
+			respuesta.put("status", "ok");
+			respuesta.put("modulo", moduloLibro.get());
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.OK);
 		}else {
 			return ResponseEntity.notFound().build();
 		}
@@ -97,6 +102,7 @@ public class ModuloLibroControlador {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		respuesta.put("status", "ok");
 		respuesta.put("mensaje", "El modulo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
@@ -137,6 +143,7 @@ public class ModuloLibroControlador {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
+		respuesta.put("status", "ok");
 		respuesta.put("mensaje", "El modulo ha sido actualizado con éxito");
 		respuesta.put("modulolibro", moduloLibroUpdate);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
