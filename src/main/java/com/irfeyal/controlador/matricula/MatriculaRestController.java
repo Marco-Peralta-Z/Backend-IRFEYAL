@@ -23,10 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.matricula.IMatriculaService;
-import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.matricula.Matricula;
-import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.servicio.matricula.MatriculaServiceImpl;
 
 @CrossOrigin(origins= {"*"})

@@ -10,6 +10,7 @@ import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.rolseguridad.Usuario;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name="matriculas")
@@ -23,7 +24,8 @@ public class Matricula implements Serializable {
 	private Long id_matricula;
 
 	@Column(name="fecha_matricula")
-	private Timestamp fechaMatricula;
+	@Temporal(TemporalType.DATE)
+	private Date fechaMatricula;
 	
 	@Column(name="modalidad")
 	private String modalidad_estudio;
@@ -75,23 +77,31 @@ public class Matricula implements Serializable {
 		super();
 		this.id_matricula = id_matricula;
 	}
-
-	public Long getid_matricula() {
-		return this.id_matricula;
+	
+	public Long getId_matricula() {
+		return id_matricula;
 	}
 
-	public void setid_matricula(Long id_matricula) {
+	public void setId_matricula(Long id_matricula) {
 		this.id_matricula = id_matricula;
 	}
 
-	public Timestamp getFechaMatricula() {
-		return this.fechaMatricula;
+	public Date getFechaMatricula() {
+		return fechaMatricula;
 	}
 
-	public void setFechaMatricula(Timestamp fechaMatricula) {
+	public void setFechaMatricula(Date fechaMatricula) {
 		this.fechaMatricula = fechaMatricula;
 	}
-	
+
+	public String getModalidad_estudio() {
+		return modalidad_estudio;
+	}
+
+	public void setModalidad_estudio(String modalidad_estudio) {
+		this.modalidad_estudio = modalidad_estudio;
+	}
+
 	public Periodo getId_periodo() {
 		return id_periodo;
 	}
