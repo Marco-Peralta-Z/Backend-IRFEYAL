@@ -144,10 +144,6 @@ INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,8,1,
 -------------------MODALIDAD-----------------------------
 INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Intensivo', '2022-01-01 07:00:00', '2022-01-01 12:00:00');
 INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('No Intensivo', '2022-01-01 13:00:00', '2022-01-01 18:00:00');
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Matutina', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Vespertina', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Nocturna', '2022-01-01 18:00:00', '2022-01-01 22:00:00');
-
 
 ---------------------MALLA-------------------------------
 INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Educacion Basica', true,'07/04/2022');
@@ -181,23 +177,16 @@ INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualida
 INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_creacion, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla, id_modalidad) VALUES('EDUCACION GENERAL UNIFICADO', 30.0, 50.0, '07/04/2022', '11/11/2022', '09/01/2022','2022','2023', false, 5, 5);
 
 ------------------PARALELO---------------------
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Quisquam ', '02/02/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Consectetur', '01/01/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Dolorem  ', '07/03/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Eleifend ', '08/03/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Vulputate ', '12/02/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Sollicitudin ', '22/01/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Nimperdiet', '17/03/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Praesent', '15/02/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Commodo', '11/01/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('Ultricies', '03/01/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('A', '02/02/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('B', '01/01/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('C', '07/03/2022');
 
 -------------------------------CURSO---------------------------
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado, id_paralelo) VALUES('Octavo', '07/04/2022', 'nuevo', 1, 1);
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado, id_paralelo) VALUES('Noveno', '08/04/2022', 'nuevo', 2, 2);
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado, id_paralelo) VALUES('Decimo', '09/04/2022', 'nuevo', 3, 3);
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado, id_paralelo) VALUES('Primero Bachillerato', '10/04/2022', 'nuevo', 4, 4);
-INSERT INTO public.curso (descripcion, fecha_creacion, tipo_curso, id_empleado, id_paralelo) VALUES('Segundo Bachillerato', '11/04/2022', 'nuevo', 5, 5);
+INSERT INTO public.curso (descripcion, fecha_creacion, id_empleado, id_paralelo) VALUES('Octavo', '07/04/2022',  1, 1);
+INSERT INTO public.curso (descripcion, fecha_creacion, id_empleado, id_paralelo) VALUES('Noveno', '08/04/2022',  2, 2);
+INSERT INTO public.curso (descripcion, fecha_creacion,  id_empleado, id_paralelo) VALUES('Decimo', '09/04/2022',  3, 3);
+INSERT INTO public.curso (descripcion, fecha_creacion,  id_empleado, id_paralelo) VALUES('Primero Bachillerato',  '10/04/2022', 4, 1);
+INSERT INTO public.curso (descripcion, fecha_creacion,  id_empleado, id_paralelo) VALUES('Segundo Bachillerato', '11/04/2022',  5, 3);
 
 -------------------------HORARIO-----------------------
 INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00');
