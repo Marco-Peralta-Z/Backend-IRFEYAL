@@ -119,8 +119,7 @@ public class EstudianteRestController {
 		}
 		
 		try {
-			estudianteActual.setEstadoEstudiante(estudiante.getEstadoEstudiante());
-			estudianteActual.setId_extension(estudiante.getId_extension());
+
 			estudianteActual.setId_persona(estudiante.getId_persona());
 			estudianteActual.setCorreo(estudiante.getCorreo());
 			estudianteActual.setDireccion(estudiante.getDireccion());

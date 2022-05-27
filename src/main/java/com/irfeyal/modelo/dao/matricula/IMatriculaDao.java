@@ -18,7 +18,9 @@ public interface IMatriculaDao extends CrudRepository<Matricula, Long>{
 
 	/*MODULO TUTORIAS*/
 	
-	@Query(value="SELECT m.id_matricula, m.id_curso, m.id_estudiante, m.id_modalidad, m.id_paralelo, m.id_periodo, m.id_usuario, m.modalidad, m.fecha_matricula, per.cedula, per.nombre, per.apellido FROM matriculas m "
+	@Query(value="SELECT re.id_registro ,m.id_matricula, m.id_curso, m.id_estudiante, m.id_modalidad, m.id_paralelo, m.id_periodo, m.id_usuario, m.modalidad, m.fecha_matricula, per.cedula, per.nombre, per.apellido, re.aporte1, re.aporte2, re.aporte3, re.aporte4, re.aporte5, re.aporte6, re.aporte7, re.aporte8, re.comportamiento, re.evaluacion1, re.evaluacion2, re.examen_gracia, re.examen_remedial, re.examen_supletorio, re.examenfinal, re.id_asignatura, re.id_matricula, re.promedio_gracia, re.promedio_remedial, re.promedio_supletorio, re.promediofinal"
+			+ " FROM matriculas m "
+			+ " inner join registro re on re.id_matricula = m.id_matricula "
 			+ " INNER JOIN periodo pe on pe.id_periodo = m.id_periodo "
 			+ " inner JOIN modalidad mo on mo.id_modalidad = m.id_modalidad "
 			+ " INNER JOIN curso cur on cur.id_curso = m.id_curso "

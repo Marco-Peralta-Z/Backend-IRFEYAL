@@ -22,6 +22,7 @@ public class Persona implements Serializable {
 	private String cedula;
 
 	@Column(name = "fecha_nacimiento")
+	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 
 	private String nombre;

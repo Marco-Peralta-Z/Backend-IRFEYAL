@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.irfeyal.interfaces.tutorias.IRegistroService;
 import com.irfeyal.modelo.matricula.Matricula;
@@ -48,10 +50,24 @@ public class RegistroController {
 	
 	//Inserta un nuevo registro
 	@PostMapping("/Nuevoregistro")
-	public ResponseEntity<Map<String, Object>> insertarRegistro(@RequestBody Registro registro) {
+	public ResponseEntity<Map<String, Object>> insertarRegistro(@RequestBody Registro registro, BindingResult result) {
+		
+		Registro registronew = null;
+		
 		Map<String, Object> mensaje = new HashMap<>();
+		
+		if (result.hasErrors()) {
+
+			List<String> errors = result.getFieldErrors().stream()
+					.map(err -> "El campo '" + err.getField() + "' " + err.getDefaultMessage())
+					.collect(Collectors.toList());
+
+			mensaje.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(mensaje, HttpStatus.BAD_REQUEST);
+		}
+		
 		try {
-			this.registroserviceimpl.save(registro);
+			registronew=registroserviceimpl.save(registro);
 		} catch (DataAccessException e) {
 			mensaje.put("mensaje", "Error al realizar el ingreso de registro");
 			mensaje.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -59,6 +75,7 @@ public class RegistroController {
 			
 		}
 		mensaje.put("mensaje",	"El registro fue creado con exito");
+		mensaje.put("cliente", registronew);
 		return new ResponseEntity<Map<String, Object>>(mensaje, HttpStatus.CREATED);	
 	}
 	

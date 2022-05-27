@@ -17,7 +17,7 @@ public interface KitInterface {
 	
 	public abstract Optional<Kit> getById(Long kitId);
 
-	public abstract Kit update(Long kitId, double nuevokit);
+	public abstract Kit update(Kit kit);
 
 	public abstract boolean delete(Long kitId);
 
