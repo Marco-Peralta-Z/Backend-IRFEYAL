@@ -1,13 +1,19 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -41,6 +47,11 @@ public class Modalidad implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "hora_fin")
 	private Date hora_fin;
+
+	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinTable(name = "modalidad_curso", joinColumns = { @JoinColumn(name = "id_modalidad") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_curso") })
+	private List<Curso> listaCursos = new ArrayList<>();
 
 	public Modalidad() {
 	}
