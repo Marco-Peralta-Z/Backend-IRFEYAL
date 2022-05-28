@@ -44,6 +44,15 @@ INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALU
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pesantez','1056789020','1990-11-17 19:00:00','Alberto',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Reino','1056780100','1997-09-19 19:00:00','Rodrigo',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Sanchez','0100670892','1993-09-30 19:00:00','Naina',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Quito','0108625475','1995-10-31 19:00:00','Ana',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez','0105983216','1990-03-20 19:00:00','Belen',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Murillo','0102587436','1950-08-10 19:00:00','Juana',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Gonzales','0106893251','19987-07-03 19:00:00','Karina',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pauta','0132548740','1992-06-05 19:00:00','Robert',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Salamea','0105986312','1998-05-18 19:00:00','Paulina',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ordoñes','0125896314','1993-11-14 19:00:00','Martha',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velez','0302154789','1994-04-02 19:00:00','Andrea',1);
+
 
 -------------------DIRECCION-------------------
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('nueva calle', 'calle vieja', 1, 1, 1, 1);
@@ -60,6 +69,10 @@ INSERT INTO empresa (nombre_empresa) VALUES ('irfeyal prueba');
 
 -------------------EXTENSION-------------------
 INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_1', 1,1);
+INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_Guayaquil', 1,2);
+INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_Cañar', 1,3);
+INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_Quito', 1,4);
+
 
 -------------------TELEFONO-------------------
 INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0987562111', '0723658988',1);
