@@ -1813,7 +1813,7 @@ public class EnvioEmail {
 	            PdfPCell celda1 = new PdfPCell(new Phrase("Curso: "+ datosMatricula.getCurso().getDescripcion()));
 	            PdfPCell celda2 = new PdfPCell(new Phrase("Modalida de Estudio: "+datosMatricula.getModalidad_estudio()));
 	            PdfPCell celda3 = new PdfPCell(new Phrase("Jornada: "+ datosMatricula.getModalidad().getDescripcion()));
-	            PdfPCell celda4 = new PdfPCell(new Phrase("Periodo: "+ datosMatricula.getId_periodo().getActividades()));
+	            PdfPCell celda4 = new PdfPCell(new Phrase("Periodo: "+ datosMatricula.getId_periodo().getPeriodo_academico()));
 
 
 	            tabla.addCell(celda0);
