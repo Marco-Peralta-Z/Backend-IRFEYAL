@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.servicio.matricula.EnvioEmail;
 import com.irfeyal.servicio.matricula.MatriculaServiceImpl;
 
 @CrossOrigin(origins= {"*"})
@@ -33,6 +34,9 @@ public class MatriculaRestController {
 	
 	@Autowired
 	private MatriculaServiceImpl matriculaService;
+	
+	@Autowired EnvioEmail sendEmail;
+	
 	
 	@GetMapping("/matricula")
 	public List<Matricula> index(){
@@ -62,6 +66,7 @@ public class MatriculaRestController {
 		
 		try {
 			matriculaNew= matriculaService.save(matricula);
+			sendEmail.sendEmailHtml(matricula);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -104,7 +109,6 @@ public class MatriculaRestController {
 			matriculaActual.setModalidad(matricula.getModalidad());
 			matriculaActual.setUsuario(matricula.getUsuario());
 			matriculaUpdate= matriculaService.save(matriculaActual);
-			
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -116,6 +120,8 @@ public class MatriculaRestController {
 		response.put("estudiante", matriculaUpdate);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
+	
+		//	Metodo para enviar correo de notificacion de matricula aceptada al estudiante
 	
 //	Metodos indirectos a tablas no pertenecientes al modulo matricula
 	
