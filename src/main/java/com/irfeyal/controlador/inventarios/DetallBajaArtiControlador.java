@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.DetallebajaArti;
-import com.irfeyal.servicio.inventarios.AprobacionService;
+import com.irfeyal.servicio.inventarios.AprobacionKitService;
 import com.irfeyal.servicio.inventarios.DetalleBajaArtiService;
 
 @RestController

@@ -14,18 +14,18 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.irfeyal.interfaces.inventarios.AprobacionInterface;
-import com.irfeyal.modelo.dao.inventarios.AprobacionDao;
+import com.irfeyal.interfaces.inventarios.AprobacionKitInterface;
+import com.irfeyal.modelo.dao.inventarios.AprobacionKitDao;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Service // ("IAutoServiceImplement")
 @Transactional
-public class AprobacionService implements AprobacionInterface {
+public class AprobacionKitService implements AprobacionKitInterface {
 
 	// @Qualifier("kitRepo")
 	@Autowired
-	private AprobacionDao aprobacionDao;
+	private AprobacionKitDao aprobacionDao;
 		
 	
 	@Override

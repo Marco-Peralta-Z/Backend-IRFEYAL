@@ -29,16 +29,16 @@ import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.Empleado;
-import com.irfeyal.servicio.inventarios.AprobacionService;
+import com.irfeyal.servicio.inventarios.AprobacionKitService;
 import com.irfeyal.servicio.rolseguridad.EmpleadoService;
 
 @RestController
 @RequestMapping("/aprobacionkit")
 @CrossOrigin(origins = "*")
-public class AprobacionControlador {
+public class AprobacionKitControlador {
 
 	@Autowired
-	AprobacionService aprobacionService;
+	AprobacionKitService aprobacionService;
 
 	@Autowired
 	EmpleadoService empleadoService;
@@ -48,10 +48,6 @@ public class AprobacionControlador {
 		return aprobacionService.listAllAprobacion();
 	}
 
-
-	
-	
-	
 	
 	
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
@@ -91,10 +87,6 @@ public class AprobacionControlador {
 		
 	}
 	
-	
-	
-	
-
 	@GetMapping(produces = {"application/json"})
 	public ResponseEntity<AprobacionKit> buscarAprobaId(@RequestParam("id") Long id){
 		Optional<AprobacionKit> aprobacion = this.aprobacionService.getById(id);

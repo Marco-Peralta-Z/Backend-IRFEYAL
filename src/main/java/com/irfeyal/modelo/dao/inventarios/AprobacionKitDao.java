@@ -11,6 +11,6 @@ import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Repository
-public interface AprobacionDao extends CrudRepository<AprobacionKit, Long> {
+public interface AprobacionKitDao extends CrudRepository<AprobacionKit, Long> {
 
 }

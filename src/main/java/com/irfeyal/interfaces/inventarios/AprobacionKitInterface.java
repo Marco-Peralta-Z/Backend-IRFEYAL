@@ -5,7 +5,7 @@ import java.util.Optional;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 
 
-public interface AprobacionInterface  {
+public interface AprobacionKitInterface  {
 	
 	public abstract AprobacionKit save(AprobacionKit id_aprobacion);
 
