@@ -14,12 +14,11 @@ public interface PeriodoRepository extends JpaRepository<Periodo, Long> {
 	
 	/*MODULO ASISTENCIA*/
 	
-	@Query(value="SELECT *  "
-			+ "FROM periodo p "
-			+ "join  malla m on p.id_malla = m.id_malla  "
-			+ "join malla_curso mc on mc.id_malla = m.id_malla "
-			+ "join curso cur on cur.id_curso = mc.id_curso "
-			+ "where cur.id_empleado=?1",nativeQuery=true)
+	@Query(value="SELECT *  FROM periodo p join  malla m on p.id_malla = m.id_malla  "
+			+ "join malla_asignatura ma on ma.id_malla = m.id_malla "
+			+ "join asignatura asig on asig.id_asignatura = ma.id_asignatura "
+			+ "join asignatura_empleado asigemple on asigemple.id_asignatura = asig.id_asignatura "
+			+ "	where asigemple.id_empleado=?1",nativeQuery=true)
 	List<Periodo> listarperiodoasistencia(Long empelado);
 	
 	

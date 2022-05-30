@@ -273,21 +273,21 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	}
 
 	@Override
-	public List<Curso> listarcurso(Long emplead, Long idmodalidad) {
+	public List<Curso> listarcurso(Long emplead, Long periodo, Long idmodalidad) {
 		// TODO Auto-generated method stub
-		return curso.listarcursoasistencia(emplead, idmodalidad);
+		return curso.listarcursoasistencia(emplead,periodo, idmodalidad);
 	}
 
 	@Override
-	public List<Paralelo> listarparalelo(Long emple, Long idcurso) {
+	public List<Paralelo> listarparalelo(Long emple,Long periodo,Long modalidad, Long idcurso) {
 		// TODO Auto-generated method stub
-		return paralelo.listarparaleloasistencia(emple, idcurso);
+		return paralelo.listarparaleloasistencia(emple,periodo,modalidad, idcurso);
 	}
 
 	@Override
-	public List<Asignatura> listarasignatura(Long empelado, Long idperiodo, Long idcurso, Long idparalelo) {
+	public List<Asignatura> listarasignatura(Long empelado, Long idperiodo, Long modalidad, Long idcurso, Long idparalelo) {
 		// TODO Auto-generated method stub
-		return asignatura.listarasignaturaasistencia(empelado, idperiodo, idcurso, idparalelo);
+		return asignatura.listarasignaturaasistencia(empelado, idperiodo,modalidad, idcurso, idparalelo);
 		
 	}
 

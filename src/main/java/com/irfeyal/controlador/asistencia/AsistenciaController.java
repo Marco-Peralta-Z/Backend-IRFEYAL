@@ -106,17 +106,17 @@ public class AsistenciaController {
 	public List<Modalidad> listarmodalidades(@PathVariable Long idempl,@PathVariable Long idmod) {
 		return asistenciaservice.listarmodalidad(idempl, idmod);
 	}
-	@GetMapping("/cursos/{idempl}/{idmod}")
-	public List<Curso> listarcurso(@PathVariable Long idempl,@PathVariable Long idmod) {
-		return asistenciaservice.listarcurso(idempl, idmod);
+	@GetMapping("/cursos/{idempl}/{periodo}/{idmod}")
+	public List<Curso> listarcurso(@PathVariable Long idempl,@PathVariable Long periodo,@PathVariable Long idmod) {
+		return asistenciaservice.listarcurso(idempl,periodo,idmod);
 	}
-	@GetMapping("/paralelos/{idempl}/{idcurso}")
-	public List<Paralelo> listarparalelo(@PathVariable Long idempl,@PathVariable Long idcurso) {
-		return asistenciaservice.listarparalelo(idempl, idcurso);
+	@GetMapping("/paralelos/{idempl}/{periodo}/{modalidad}/{idcurso}")
+	public List<Paralelo> listarparalelo(@PathVariable Long idempl,@PathVariable Long periodo,@PathVariable Long modalidad,@PathVariable Long idcurso) {
+		return asistenciaservice.listarparalelo(idempl,periodo,modalidad,idcurso);
 	}
-	@GetMapping("/asignaturas/{empelado}/{idperiodo}/{idcurso}/{idparalelo}")
-	public List<Asignatura> listarasignatura(@PathVariable Long empelado , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
-		return asistenciaservice.listarasignatura(empelado, idperiodo, idcurso, idparalelo);
+	@GetMapping("/asignaturas/{empelado}/{idperiodo}/{modalidad}/{idcurso}/{idparalelo}")
+	public List<Asignatura> listarasignatura(@PathVariable Long empelado , @PathVariable Long idperiodo,@PathVariable Long modalidad, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
+		return asistenciaservice.listarasignatura(empelado, idperiodo,modalidad, idcurso, idparalelo);
 	}
 
 
