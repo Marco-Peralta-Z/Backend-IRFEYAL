@@ -44,7 +44,7 @@ public class ModuloLibro implements Serializable {
     
     @Basic(optional = false)
     @Column(name = "cod_modulo")
-    private int codModulo;
+    private String codModulo;
     
     @Column(name = "nombre_modulo")
     private String nombreModulo;
@@ -78,13 +78,19 @@ public class ModuloLibro implements Serializable {
 		this.id_modulo_libro = id_modulo_libro;
 	}
 
-	public int getCodModulo() {
+	
+
+	public String getCodModulo() {
 		return codModulo;
 	}
 
-	public void setCodModulo(int codModulo) {
+
+
+	public void setCodModulo(String codModulo) {
 		this.codModulo = codModulo;
 	}
+
+
 
 	public String getNombreModulo() {
 		return nombreModulo;
