@@ -432,14 +432,6 @@ INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_docu
 --INVENTARIOS
 
 
-INSERT INTO entrega_kit (id_estudiante, id_kit) values (1, 1);--OJO:Necesito id del kit que esta con error en el insert y pilas con id_estudiante por id_empleado 
-INSERT INTO entrega_kit (id_estudiante, id_kit)  values (1, 2);
-INSERT INTO entrega_kit (id_estudiante, id_kit)  values (2, 1);
-INSERT INTO entrega_kit (id_estudiante, id_kit)  values (2, 2);
-INSERT INTO entrega_kit (id_estudiante, id_kit)  values (3, 1);
-
-
-
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 1', 'cositas 1', 'ocupado');
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 2', 'cositas 2', 'ocupado');
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 3', 'cositas 3', 'desocupado');
