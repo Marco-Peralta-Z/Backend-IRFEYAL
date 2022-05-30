@@ -39,7 +39,9 @@ import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.modelo.rolseguridad.Persona;
+import com.irfeyal.modelo.rolseguridad.Usuario;
 import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
 
 @RestController
@@ -217,12 +219,12 @@ public ResponseEntity<?> createclase(@Validated @RequestBody Clase clase, Bindin
 
 	}
 
-	@GetMapping("/mostrarfechasdefaltas/{ides}/{iddo}")
-	public List<Clase> fechas(@PathVariable Long ides, @PathVariable Integer iddo) {
+	//@GetMapping("/mostrarfechasdefaltas/{ides}/{iddo}")
+//	public List<Clase> fechas(@PathVariable Long ides, @PathVariable Integer iddo) {
 
-		return claseservice.mostrarfechas(ides, iddo);
-
-	}
+	//	return claseservice.mostrarfechas(ides, iddo);
+///
+	//}
 
 	@GetMapping("/buscarestudianteporcedula/{ced}")
 	public Estudiante fecha(@PathVariable String ced) {
@@ -241,11 +243,11 @@ public ResponseEntity<?> createclase(@Validated @RequestBody Clase clase, Bindin
 	}
 	
 	
-	@GetMapping("/buscaractualizar/{id_mod}/{id_periodo}/{id_paralelo}/{id_asignatura}/{id_curso}/{fecha}")
-	public List<Asistencia> buscaractualizar(@PathVariable Long id_mod,@PathVariable Long id_periodo,@PathVariable Long id_paralelo,@PathVariable Long id_asignatura,@PathVariable Long id_curso,@PathVariable String fecha ) throws ParseException{
+	@GetMapping("/buscaractualizar/{id_mod}/{id_periodo}/{id_paralelo}/{id_asignatura}/{id_curso}/{fecha}/{docente}")
+	public List<Asistencia> buscaractualizar(@PathVariable Long id_mod,@PathVariable Long id_periodo,@PathVariable Long id_paralelo,@PathVariable Long id_asignatura,@PathVariable Long id_curso,@PathVariable String fecha,@PathVariable Long docente ) throws ParseException{
 SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
 	Date auxfecha= formato.parse(fecha);
-		return asistenciaservice.burcarasistencia(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, auxfecha);
+		return asistenciaservice.burcarasistencia(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, auxfecha,docente);
 	}
 	
 	
@@ -295,6 +297,49 @@ SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
+	
 
+	@PutMapping("/claseactualizar/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Clase update(@RequestBody Clase clase, @PathVariable Long id) {
+		Clase currentCliente = this.claseservice.findById(id);
+		currentCliente.setFecClase(clase.getFecClase());
+		currentCliente.setId_modalidad(clase.getId_modalidad());
+		currentCliente.setIdCurso(clase.getIdCurso());
+		currentCliente.setIdAsignatura(clase.getIdAsignatura());
+		currentCliente.setId_periodo(clase.getIdPeriodo());
+		currentCliente.setIdParalelo(clase.getIdParalelo());
+		this.claseservice.save(currentCliente);
+		return currentCliente;
+	}
+
+@GetMapping("/mostrarfechasdefaltas/{ides}/{iddo}/{idasig}/{idcur}/{idpar}/{idmod}/{idperi}")
+	public List<Clase> fechas(@PathVariable Long ides, @PathVariable Integer iddo,@PathVariable Integer idasig,@PathVariable Integer idcur,@PathVariable Integer idpar,@PathVariable Integer idmod,@PathVariable Integer idperi ) {
+
+		
+		return claseservice.mostrarfechas(ides, iddo, idasig, idcur, idpar, idmod, idperi);
+
+	}
+
+
+@GetMapping("/validarclase/{id_mod}/{id_periodo}/{id_paralelo}/{id_asignatura}/{id_curso}/{fecha}/{docente}")
+public List<Asistencia> validarclase(@PathVariable Long id_mod,@PathVariable Long id_periodo,@PathVariable Long id_paralelo,@PathVariable Long id_asignatura,@PathVariable Long id_curso,@PathVariable String fecha,@PathVariable Long docente ) throws ParseException{
+	SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
+	Date auxfecha= formato.parse(fecha);
+		return asistenciaservice.burcarasistencia(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, auxfecha,docente);
+}
+
+
+
+
+
+@GetMapping("/validarclass/{id_doc}/{id_periodo}/{id_mod}/{id_curso}/{id_paralelo}/{id_asignatura}/{fechac}")
+public Long validarclass(@PathVariable Integer id_doc,@PathVariable Integer id_periodo,@PathVariable Integer id_mod,@PathVariable Integer id_curso,@PathVariable Integer id_paralelo,@PathVariable Integer id_asignatura,@PathVariable String fechac ) throws ParseException{
+	System.out.print("fecha para comprobar consulta"+ fechac);
+SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
+Date auxfecha= formato.parse(fechac);
+System.out.print("fecha para comprobar consulta "+auxfecha);
+	return claseservice.validarclass(id_doc, id_periodo, id_mod, id_curso, id_paralelo, id_asignatura, auxfecha);
+}
 
 }

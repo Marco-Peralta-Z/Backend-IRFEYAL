@@ -233,7 +233,7 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 			+ "left JOIN malla_curso l on m.id_curso= l.id_curso "
 			+ "left join malla_asignatura a on l.id_malla= a.id_malla  "
 			+ "left join asignatura s on a.id_asignatura= s.id_asignatura "
-			+ "where m.id_modalidad=?1 and m.id_periodo=?2 and m.id_paralelo=?3 and s.id_asignatura=?4 and m.id_curso=?5 ",nativeQuery=true)
+			+ "where m.id_modalidad=?1 and m.id_periodo=?2 and m.id_paralelo=?3 and s.id_asignatura=?4 and m.id_curso=?5",nativeQuery=true)
 	List<Estudiante> buscarcursotodofil(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso);
 	
 	

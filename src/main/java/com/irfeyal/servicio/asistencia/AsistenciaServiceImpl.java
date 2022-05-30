@@ -83,125 +83,9 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	@Override
 	public List<Estudiante> buscarcursomodalidad(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura ,Long id_curs) {
 		
-				
-			if ( id_periodo==0 && id_paralelo==0 && id_asignatura==0 && id_curs==0) {
-				return estudiantedao.buscarcursomodalidad(id_mod);
-			}else {
-				if ( id_mod==0 && id_paralelo==0 && id_asignatura==0 && id_curs==0) {
-					return estudiantedao.buscarcursoperiodo(id_periodo);	
-				}else {
-					if ( id_mod==0 && id_periodo==0 && id_asignatura==0 && id_curs==0) {
-						return estudiantedao.buscarcursoparalelo(id_paralelo);	
-					}else {
-						if ( id_mod==0 && id_periodo==0 && id_paralelo==0 && id_curs==0) {
-							return estudiantedao.buscarcursoasignatura(id_asignatura);	
-						}else {
-							if ( id_mod==0 && id_periodo==0 && id_paralelo==0 && id_asignatura==0) {
-								return estudiantedao.buscarcursocurso(id_curs);	
-						    }else {
-							
-							
-							if (id_asignatura==0 && id_paralelo==0 && id_curs==0) {
-								return estudiantedao.buscarcursomodperi(id_mod, id_periodo);
-							}else {
-								if (id_mod==0 && id_periodo==0 && id_curs==0) {
-									return estudiantedao.buscarcursoparasig(id_paralelo, id_asignatura);
-								}else {
-									if (id_mod==0 && id_asignatura==0 && id_curs==0) {
-										return estudiantedao.buscarcursoperipar(id_periodo, id_paralelo);
-									}else {
-										if (id_mod==0 && id_paralelo==0 && id_curs==0) {
-											return estudiantedao.buscarcursoperiasig(id_periodo, id_asignatura);
-										}else {
-											if (id_periodo==0 && id_paralelo==0 && id_curs==0) {
-												return estudiantedao.buscarcursomodasig(id_mod, id_asignatura);
-											}else {
-												if (id_periodo==0 && id_asignatura==0 && id_curs==0) {
-													return estudiantedao.buscarcursomodpar(id_mod, id_paralelo);
-												}else {
-													if (id_periodo==0 && id_paralelo==0 && id_asignatura==0) {
-														return estudiantedao.buscarcursomodcur(id_mod, id_curs);
-													}else {
-														if (id_mod==0 && id_paralelo==0 && id_asignatura==0) {
-															return estudiantedao.buscarcursopericur(id_periodo, id_curs);
-														}else {
-															if (id_mod==0 && id_periodo==0 && id_asignatura==0) {
-																return estudiantedao.buscarcursoparcur(id_paralelo, id_curs);
-															}else {
-																if (id_mod==0 && id_periodo==0 && id_paralelo==0) {
-																	return estudiantedao.buscarcursoasigcur(id_asignatura, id_curs);
-																}else {
-																
-																	
-																	if (id_asignatura==0 && id_curs==0) {
-																		return estudiantedao.buscarcursomodperpar(id_mod, id_periodo,id_paralelo);
-																	}else {
-																		if (id_paralelo==0 && id_curs==0) {
-																			return estudiantedao.buscarcursomodperasig(id_mod, id_periodo,id_asignatura);
-																		}else {
-																			if (id_paralelo==0 && id_asignatura==0) {
-																				return estudiantedao.buscarcursomodpercur(id_mod, id_periodo,id_curs);
-																			}else {
-																				if (id_periodo==0 && id_curs==0) {
-																					return estudiantedao.buscarcursomodparasig(id_mod, id_paralelo,id_asignatura);
-																				}else {
-																					if (id_periodo==0 && id_asignatura==0) {
-																						return estudiantedao.buscarcursomodparcur(id_mod, id_paralelo,id_curs);
-																					}else {
-																						if (id_periodo==0 && id_paralelo==0) {
-																							return estudiantedao.buscarcursomodasigcur(id_mod, id_asignatura,id_curs);
-																						}else {
-																							if (id_mod==0 && id_curs==0) {
-																								return estudiantedao.buscarcursoperparasig(id_periodo, id_paralelo,id_asignatura);
-																							}else {
-																								if (id_mod==0 && id_asignatura==0) {
-																									return estudiantedao.buscarcursoperparcur(id_periodo, id_paralelo,id_curs);
-																								}else {
-																									if (id_mod==0 && id_paralelo==0) {
-																										return estudiantedao.buscarcursoperasigcur(id_periodo, id_asignatura,id_curs);
-																									}else {
-																										if (id_mod==0 && id_periodo==0) {
-																											return estudiantedao.buscarcursoparasigcur(id_paralelo, id_asignatura,id_curs);
-																										}else {
-																			
-																											
-													if (id_asignatura==0 ) {
-														return estudiantedao.buscarcursomodperparcur(id_mod, id_periodo,id_paralelo,id_curs);
-													}else {
-														if (id_paralelo==0 ) {
-															return estudiantedao.buscarcursomodperasigcur(id_mod, id_periodo,id_asignatura,id_curs);
-														}else {
-															if (id_periodo==0 ) {
-																return estudiantedao.buscarcursomodparasigcur(id_mod, id_paralelo,id_asignatura,id_curs);
-															}else {
-																if (id_mod==0 ) {
-																	return estudiantedao.buscarcursoperparasigcur( id_periodo,id_paralelo,id_asignatura,id_curs);
-																}else {
-																	if (id_curs==0 ) {
-																		return estudiantedao.buscarcursomodperparasig( id_mod,id_periodo,id_paralelo,id_asignatura);
-																	}else {
-																	 return estudiantedao.buscarcursotodofil(id_mod, id_periodo, id_paralelo, id_asignatura, id_curs);
-																}
-															  }
-														    }
-													      }
-												        }
-											          }
-										            }
-									              }
-								                }
-							                  }
-						                    }
-					                      }
-				                        }
-			                          }
-		                            }
-	                              }
-                                }
-                              }
-			                }
-					      }			
-						}}}}}}}}}}
+		
+				return estudiantedao.buscarcursotodofil(id_mod, id_periodo, id_paralelo, id_asignatura, id_curs);
+												
     }
 
 	@Override
@@ -249,9 +133,9 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	@Override
 
 	public List<Asistencia> burcarasistencia(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,
-			Long id_curso, Date fecha) {
+			Long id_curso, Date fecha, Long docente) {
 		// TODO Auto-generated method stub
-		return asistenciadao.buscarasistencia(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, fecha);
+		return asistenciadao.actualizarfiltros(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, fecha,docente);
 	}
 
 	@Override
@@ -292,9 +176,9 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	}
 
 	public List<Asistencia> actualizarfiltros(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,
-			Long id_curso, Date fecha) {
+			Long id_curso, Date fecha,Long docente) {
 		// TODO Auto-generated method stub
-		return asistenciadao.actualizarfiltros(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, fecha);
+		return asistenciadao.actualizarfiltros(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, fecha,docente);
 	}
 
 	
