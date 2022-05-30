@@ -1,5 +1,6 @@
 package com.irfeyal.controlador.inventarios;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,9 +28,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Kit;
+import com.irfeyal.modelo.inventarios.ModuloLibro;
+import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.servicio.inventarios.AprobacionKitService;
+import com.irfeyal.servicio.inventarios.IKitService;
+import com.irfeyal.servicio.inventarios.ModulolibroService;
+import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
 import com.irfeyal.servicio.rolseguridad.EmpleadoService;
 
 @RestController
@@ -42,7 +48,17 @@ public class AprobacionKitControlador {
 
 	@Autowired
 	EmpleadoService empleadoService;
-
+	
+	@Autowired//(required = false)
+	//@Qualifier("IAutoServiceImplement")
+	IKitService kitService;
+	
+	@Autowired
+	EstudianteServiceImpl estudianteService;
+	
+	@Autowired	
+	ModulolibroService modulolibroService;
+	
 	@GetMapping(path = "/list", produces = { "application/json" })
 	public List<AprobacionKit> listAprobacion() {
 		return aprobacionService.listAllAprobacion();
@@ -102,6 +118,73 @@ public class AprobacionKitControlador {
 		boolean aprobacion = this.aprobacionService.delete(id);
 		return aprobacion;
 	}
+	
+	@PostMapping(path = "/entregakit", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<Map<String, Object>> entregaKitEstudiante(@Validated @RequestBody AprobacionKit aprobacionKit, BindingResult result) {
+		Estudiante kitEntregadoEstudiante = null;
+		AprobacionKit aprobaEntregaKit = null;
+		Map<String, Object> respuesta = new HashMap<>();
+		if (result.hasErrors()) {
+			List<String> errors = result.getFieldErrors().stream()
+					.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
+					.collect(Collectors.toList());
+			respuesta.put("errores", errors);
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
+		}
+		try {
+			
+			Estudiante estudianteBuscar = estudianteService.findById(aprobacionKit.getEstudiante().getid_estudiante());
+
+			Kit kitBuscar = kitService.getById(aprobacionKit.getKit().getId_kit()).get();
+			
+			Empleado empleadoBuscar = empleadoService.findById(aprobacionKit.getAdministrador().getId_empleado());
+			
+			List<Kit> listaKitGuardar = estudianteBuscar.getListadoKits();
+			
+			listaKitGuardar.add(kitBuscar);
+			estudianteBuscar.setListadoKits(listaKitGuardar);
+
+			kitEntregadoEstudiante = estudianteService.save(estudianteBuscar);
+			
+			aprobacionKit.setKit(kitBuscar);
+			aprobacionKit.setEstudiante(kitEntregadoEstudiante);
+			aprobacionKit.setAdministrador(empleadoBuscar);
+			
+			
+			//actualizar S T O K MODULOS
+			List<ModuloLibro> listaModulosEditar = aprobacionKit.getKit().getListaModulos();
+			List<ModuloLibro> listaModulosBaseDatos = modulolibroService.listAllModuloLibro();
+			
+			for (int i = 0; i < listaModulosBaseDatos.size(); i++) {
+				for (int j = 0; j < listaModulosEditar.size(); j++) {
+					if(listaModulosBaseDatos.get(i).getCodModulo().equals(listaModulosEditar.get(j).getCodModulo())) {
+						int stockBD = listaModulosBaseDatos.get(i).getCantidad();
+						int restarStockModulo = stockBD-1;
+						ModuloLibro ml = modulolibroService.getById(listaModulosBaseDatos.get(i).getId_modulo_libro()).get();
+						ml.setCantidad(restarStockModulo);
+						modulolibroService.save(ml);
+					}
+				}
+			}
+			
+						
+			
+			aprobaEntregaKit = aprobacionService.save(aprobacionKit);
+			
+		} catch (DataAccessException e) {
+			respuesta.put("mensaje", "Error al crear entidad");
+			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		respuesta.put("status", "ok");
+		respuesta.put("aprobaEntregaKit", aprobaEntregaKit);
+		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
+	}
+	
+	
+	
+	
+	
 
 }
 
