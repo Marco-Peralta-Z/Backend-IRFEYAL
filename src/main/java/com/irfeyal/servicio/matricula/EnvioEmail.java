@@ -2,14 +2,11 @@ package com.irfeyal.servicio.matricula;
 
 import java.io.InputStream;
 
-import javax.activation.DataSource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.mail.util.ByteArrayDataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.InputStreamSource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -21,7 +18,6 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import java.awt.Font;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -35,8 +31,8 @@ public class EnvioEmail {
 	private JavaMailSender mailSender;
 	private String subject="Notificacion de Matricula IRFEYAL";
 	private String content;
-	
-	
+	private static final Font chapterFont = FontFactory.getFont(FontFactory.HELVETICA, 26, Font.BOLD);
+	private static final BaseColor color= new BaseColor(19, 63, 120 );
 	 public void sendEmail(String to, String nombre) {
 
 		 
@@ -913,7 +909,7 @@ public class EnvioEmail {
 	 
 	 
 	 
-	 public void sendEmailHtml(Matricula matricula) {
+	 public String sendEmailHtml(Matricula matricula) {
 		 String to= matricula.getEstudiante().getCorreo().getCorreo();
 		 String nombre= matricula.getEstudiante().getId_persona().getNombre().toUpperCase();
 	        
@@ -1781,7 +1777,7 @@ public class EnvioEmail {
 	        		+ "</html>";
 	        
 			MimeMessage mailMessage = this.mailSender.createMimeMessage();
-			
+			String enviado="";
 			try {
 				MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage,true,"utf-8");
 				final ByteArrayOutputStream stream = createInMemoryDocument(matricula);
@@ -1794,21 +1790,23 @@ public class EnvioEmail {
 
 				messageHelper.addAttachment("MatriculaReporte.pdf", attachment);
 				mailSender.send(mailMessage); 
-				 
+				
+				 enviado="Correo Enviado";
 			} catch (MessagingException | IOException e) {
 				e.printStackTrace();
 			}
+			return enviado;
 	    }
 
 	 
 	 private ByteArrayOutputStream createInMemoryDocument(Matricula datosMatricula) {
 		   try(ByteArrayOutputStream bos= new ByteArrayOutputStream()){
 			   Document document = new Document(PageSize.A4);
-//			   Font fuenteTitulo= new Font(null,2,20);
+//			  
 			   
-			   Paragraph titulo= new Paragraph("IRFEYAL");
+			   Paragraph titulo= new Paragraph("IRFEYAL", chapterFont);
 			   PdfPTable tabla = new PdfPTable(1);
-
+			   
 	            PdfPCell celda0 = new PdfPCell(new Phrase("Datos de Matricula"));
 	            PdfPCell celda1 = new PdfPCell(new Phrase("Curso: "+ datosMatricula.getCurso().getDescripcion()));
 	            PdfPCell celda2 = new PdfPCell(new Phrase("Modalida de Estudio: "+datosMatricula.getModalidad_estudio()));

@@ -66,7 +66,7 @@ public class MatriculaRestController {
 		
 		try {
 			matriculaNew= matriculaService.save(matricula);
-			sendEmail.sendEmailHtml(matricula);
+			
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -121,8 +121,16 @@ public class MatriculaRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-		//	Metodo para enviar correo de notificacion de matricula aceptada al estudiante
 	
+	
+		//	Metodo para enviar correo de notificacion de matricula aceptada al estudiante
+	@PostMapping("/sendMail")
+	public ResponseEntity<?> sendEmail(@Validated @RequestBody Matricula matricula) {
+		Map<String, Object> response = new HashMap<>();
+		String respuesta = sendEmail.sendEmailHtml(matricula);
+		response.put("mensaje", respuesta);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+	}
 //	Metodos indirectos a tablas no pertenecientes al modulo matricula
 	
 //	@GetMapping("getJormadasPorCurso/{id_curso}")
