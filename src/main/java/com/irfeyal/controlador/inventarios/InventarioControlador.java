@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Inventario;
 import com.irfeyal.servicio.inventarios.InventarioService;
 
@@ -32,7 +32,7 @@ public class InventarioControlador {
 	
 	
 	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<Aprobacion> ObteneInventario(@RequestParam("id") Long id){
+	public ResponseEntity<AprobacionKit> ObteneInventario(@RequestParam("id") Long id){
 		Optional<Inventario> inventario = this.inventarioService.getById(id);
 		if(inventario.isPresent()) {
 			return new ResponseEntity(inventario.get(),HttpStatus.OK);

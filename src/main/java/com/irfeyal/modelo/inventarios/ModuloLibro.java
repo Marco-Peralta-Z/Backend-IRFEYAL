@@ -34,15 +34,6 @@ import javax.persistence.FetchType;
  */
 @Entity
 @Table(name = "modulo_libro")
-@NamedQueries({
-    @NamedQuery(name = "ModuloLibro.findAll", query = "SELECT m FROM ModuloLibro m"),
-    @NamedQuery(name = "ModuloLibro.findByid_modulo_libro", query = "SELECT m FROM ModuloLibro m WHERE m.id_modulo_libro = :id_modulo_libro"),
-    @NamedQuery(name = "ModuloLibro.findByCodModulo", query = "SELECT m FROM ModuloLibro m WHERE m.codModulo = :codModulo"),
-    @NamedQuery(name = "ModuloLibro.findByNombreModulo", query = "SELECT m FROM ModuloLibro m WHERE m.nombreModulo = :nombreModulo"),
-    @NamedQuery(name = "ModuloLibro.findByCurso", query = "SELECT m FROM ModuloLibro m WHERE m.curso = :curso"),
-    @NamedQuery(name = "ModuloLibro.findByCantidad", query = "SELECT m FROM ModuloLibro m WHERE m.cantidad = :cantidad"),
-    @NamedQuery(name = "ModuloLibro.findByNumero", query = "SELECT m FROM ModuloLibro m WHERE m.numero = :numero"),
-    @NamedQuery(name = "ModuloLibro.findByNumeroModulo", query = "SELECT m FROM ModuloLibro m WHERE m.numeroModulo = :numeroModulo")})
 public class ModuloLibro implements Serializable {
 
     private static final long serialVersionUID = 1L;

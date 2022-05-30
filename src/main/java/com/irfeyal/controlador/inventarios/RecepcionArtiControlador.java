@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Inventario;
 import com.irfeyal.modelo.inventarios.RecepcionArticulo;
 import com.irfeyal.servicio.inventarios.AprobacionService;
@@ -35,7 +35,7 @@ public class RecepcionArtiControlador {
 
 	
 	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<Aprobacion> obtenerRecepcioArti(@RequestParam("id") Long id){
+	public ResponseEntity<AprobacionKit> obtenerRecepcioArti(@RequestParam("id") Long id){
 		Optional<RecepcionArticulo> recepcionArti = this.recepcionArtiService.getById(id);
 		if(recepcionArti.isPresent()) {
 			return new ResponseEntity(recepcionArti.get(),HttpStatus.OK);

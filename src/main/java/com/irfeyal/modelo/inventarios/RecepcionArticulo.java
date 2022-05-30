@@ -20,12 +20,6 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "recepcion_articulo")
-@NamedQueries({
-    @NamedQuery(name = "RecepcionArticulo.findAll", query = "SELECT r FROM RecepcionArticulo r"),
-    @NamedQuery(name = "RecepcionArticulo.findByid_recepcion_art", query = "SELECT r FROM RecepcionArticulo r WHERE r.id_recepcion_art = :id_recepcion_art"),
-    @NamedQuery(name = "RecepcionArticulo.findByFecha", query = "SELECT r FROM RecepcionArticulo r WHERE r.fecha = :fecha"),
-    @NamedQuery(name = "RecepcionArticulo.findByCodigo", query = "SELECT r FROM RecepcionArticulo r WHERE r.codigo = :codigo"),
-    @NamedQuery(name = "RecepcionArticulo.findByDetallerecep", query = "SELECT r FROM RecepcionArticulo r WHERE r.detallerecep = :detallerecep")})
 public class RecepcionArticulo implements Serializable {
 
     private static final long serialVersionUID = 1L;

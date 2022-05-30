@@ -38,7 +38,7 @@ public class Salidaarticulo implements Serializable {
     
     @JoinColumn(name = "id_aprobacion", referencedColumnName = "id_aprobacion")
     @ManyToOne(optional = false)
-    private Aprobacion id_aprobacion;
+    private AprobacionKit id_aprobacion;
 
     public Salidaarticulo() {
     }
@@ -75,11 +75,11 @@ public class Salidaarticulo implements Serializable {
 		this.detallesalida = detallesalida;
 	}
 
-	public Aprobacion getId_aprobacion() {
+	public AprobacionKit getId_aprobacion() {
 		return id_aprobacion;
 	}
 
-	public void setId_aprobacion(Aprobacion id_aprobacion) {
+	public void setId_aprobacion(AprobacionKit id_aprobacion) {
 		this.id_aprobacion = id_aprobacion;
 	}
 

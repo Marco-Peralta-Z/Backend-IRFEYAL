@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.irfeyal.interfaces.inventarios.AprobacionInterface;
 import com.irfeyal.modelo.dao.inventarios.AprobacionDao;
-import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Service // ("IAutoServiceImplement")
@@ -29,27 +29,27 @@ public class AprobacionService implements AprobacionInterface {
 		
 	
 	@Override
-	public Aprobacion save(Aprobacion aprobacion) {
+	public AprobacionKit save(AprobacionKit aprobacion) {
 
-		Aprobacion a = aprobacionDao.save(aprobacion);
+		AprobacionKit a = aprobacionDao.save(aprobacion);
 		
 		return a;
 	}
 
 	@Override
-	public List<Aprobacion> listAllAprobacion() {
+	public List<AprobacionKit> listAllAprobacion() {
 		// TODO Auto-generated method stub
-		return (List<Aprobacion>) aprobacionDao.findAll();
+		return (List<AprobacionKit>) aprobacionDao.findAll();
 	}
 
 	@Override
-	public Optional<Aprobacion> getById(Long aprobacionId) {
+	public Optional<AprobacionKit> getById(Long aprobacionId) {
 
 		return aprobacionDao.findById(aprobacionId);
 	}
 
 	@Override
-	public Aprobacion update(Long aprobacionId, double nuevaAprobacion) {
+	public AprobacionKit update(Long aprobacionId, double nuevaAprobacion) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -60,25 +60,19 @@ public class AprobacionService implements AprobacionInterface {
 		
 	}
 
-	// -----------------------MIS METODOS -------------------------------------
-	public Object getDetalleAprobacion(Integer id) {
-		Object detalleAprobacion = aprobacionDao.detalleApro(id);
-		return detalleAprobacion;
-	}
+
 	
-	public boolean validarAprobacion(Aprobacion aprobacion) {
+	public boolean validarAprobacion(AprobacionKit aprobacion) {
 		String observacionAproba = aprobacion.getTipoAprobacion();
 		Boolean estadoAproba = aprobacion.getEstadoAproba();
 		String detalleControl = aprobacion.getDetalleControl();
 		Date fechaAprobacion = aprobacion.getFechaAprobacion();
-		Date fechaControl = aprobacion.getFechaControl();
 		
 		if(observacionAproba!=null 
 				&& estadoAproba != null
 				&& detalleControl != null
 				&& fechaAprobacion != null
 				&& estadoAproba != null
-				&& fechaControl != null
 				) {
 			return true;
 		}

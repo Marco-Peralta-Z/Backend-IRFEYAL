@@ -18,15 +18,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "articulo")
-@NamedQueries({
-    @NamedQuery(name = "Articulo.findAll", query = "SELECT a FROM Articulo a"),
-    @NamedQuery(name = "Articulo.findByid_articulo", query = "SELECT a FROM Articulo a WHERE a.id_articulo = :id_articulo"),
-    @NamedQuery(name = "Articulo.findByArtinombre", query = "SELECT a FROM Articulo a WHERE a.artinombre = :artinombre"),
-    @NamedQuery(name = "Articulo.findByArticodigo", query = "SELECT a FROM Articulo a WHERE a.articodigo = :articodigo"),
-    @NamedQuery(name = "Articulo.findByArtiprecio", query = "SELECT a FROM Articulo a WHERE a.artiprecio = :artiprecio"),
-    @NamedQuery(name = "Articulo.findByArtidescrip", query = "SELECT a FROM Articulo a WHERE a.artidescrip = :artidescrip"),
-    @NamedQuery(name = "Articulo.findByArtiestado", query = "SELECT a FROM Articulo a WHERE a.artiestado = :artiestado"),
-    @NamedQuery(name = "Articulo.findByArtimarca", query = "SELECT a FROM Articulo a WHERE a.artimarca = :artimarca")})
 public class Articulo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
