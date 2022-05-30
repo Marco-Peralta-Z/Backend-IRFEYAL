@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.RecepcionArticulo;
 import com.irfeyal.modelo.inventarios.Salidaarticulo;
-import com.irfeyal.servicio.inventarios.AprobacionService;
+import com.irfeyal.servicio.inventarios.AprobacionKitService;
 import com.irfeyal.servicio.inventarios.SalidaArticuloService;
 
 @RestController
@@ -34,7 +34,7 @@ public class SalidaAriculoControlador {
 	
 
 	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<Aprobacion> obtenerSalidaArti(@RequestParam("id") Long id){
+	public ResponseEntity<AprobacionKit> obtenerSalidaArti(@RequestParam("id") Long id){
 		Optional<Salidaarticulo> salidaArticulo = this.salidaArticuloService.getById(id);
 		if(salidaArticulo.isPresent()) {
 			return new ResponseEntity(salidaArticulo.get(),HttpStatus.OK);

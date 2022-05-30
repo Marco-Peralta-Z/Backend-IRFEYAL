@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -27,15 +28,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
+import com.irfeyal.modelo.rolseguridad.Extension;
 
 
 @Entity
 @Table(name = "kit")
-@NamedQueries({
-    @NamedQuery(name = "Kit.findAll", query = "SELECT k FROM Kit k"),
-    @NamedQuery(name = "Kit.findByid_kit", query = "SELECT k FROM Kit k WHERE k.id_kit = :id_kit"),
-    @NamedQuery(name = "Kit.findByPrecioKit", query = "SELECT k FROM Kit k WHERE k.precioKit = :precioKit"),
-    @NamedQuery(name = "Kit.findByPeriodo", query = "SELECT k FROM Kit k WHERE k.periodo = :periodo")})
 public class Kit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -49,12 +47,8 @@ public class Kit implements Serializable {
     
     @Column(name = "precio_kit")
     private Integer precioKit;
-    
-    @Column(name = "periodo")
-    private String periodo;
 
-
-    
+   
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinTable(name = "ingreso_kit", joinColumns = { @JoinColumn(name = "id_kit") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_modulo_libro") })
@@ -63,7 +57,12 @@ public class Kit implements Serializable {
 	@ManyToMany(mappedBy = "listadoKits")
 	private List<Estudiante> estudiantes = new ArrayList<>();
     
-    
+    @OneToOne()
+	@JoinColumn(name = "id_periodo")
+	private Periodo periodo;
+	
+	
+	
     public Kit() {
     }
 
@@ -82,16 +81,15 @@ public class Kit implements Serializable {
 	public void setPrecioKit(Integer precioKit) {
 		this.precioKit = precioKit;
 	}
-
-	public String getPeriodo() {
+	
+	public Periodo getPeriodo() {
 		return periodo;
 	}
 
-	public void setPeriodo(String periodo) {
+	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
-	
-	
+
 	public String getNombrekit() {
 		return nombrekit;
 	}
@@ -115,6 +113,7 @@ public class Kit implements Serializable {
 	public void setEstudiantes(List<Estudiante> estudiantes) {
 		this.estudiantes = estudiantes;
 	}
+
 
 
 

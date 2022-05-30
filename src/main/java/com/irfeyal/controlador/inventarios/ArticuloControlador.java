@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Articulo;
 import com.irfeyal.modelo.inventarios.Categoria;
 import com.irfeyal.modelo.rolseguridad.Empleado;
@@ -64,7 +64,7 @@ public class ArticuloControlador {
 	
 	
 	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<Aprobacion> obtenerArticulo(@RequestParam("id") Long id){
+	public ResponseEntity<AprobacionKit> obtenerArticulo(@RequestParam("id") Long id){
 		Optional<Articulo> articulo = this.articuloService.getById(id);
 		if(articulo.isPresent()) {
 			return new ResponseEntity(articulo.get(),HttpStatus.OK);

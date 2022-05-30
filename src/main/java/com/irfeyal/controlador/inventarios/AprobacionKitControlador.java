@@ -25,41 +25,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.Empleado;
-import com.irfeyal.servicio.inventarios.AprobacionService;
+import com.irfeyal.servicio.inventarios.AprobacionKitService;
 import com.irfeyal.servicio.rolseguridad.EmpleadoService;
 
 @RestController
-@RequestMapping("/aprobacion")
+@RequestMapping("/aprobacionkit")
 @CrossOrigin(origins = "*")
-public class AprobacionControlador {
+public class AprobacionKitControlador {
 
 	@Autowired
-	AprobacionService aprobacionService;
+	AprobacionKitService aprobacionService;
 
 	@Autowired
 	EmpleadoService empleadoService;
 
 	@GetMapping(path = "/list", produces = { "application/json" })
-	public List<Aprobacion> listAprobacion() {
+	public List<AprobacionKit> listAprobacion() {
 		return aprobacionService.listAllAprobacion();
 	}
 
-
-	
-	
-	
 	
 	
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> crearAprobacion(@Validated @RequestBody Aprobacion aprobacion, BindingResult result) {
-		Aprobacion nuevaAprobacion = null;
+	public ResponseEntity<Map<String, Object>> crearAprobacion(@Validated @RequestBody AprobacionKit aprobacion, BindingResult result) {
+		AprobacionKit nuevaAprobacion = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		//System.out.println(aprobacion.getSecretaria());
-		if(aprobacion.getSecretaria() != null) {
+		if(aprobacion.getAdministrador() != null) {
 			if (result.hasErrors()) {
 				List<String> errors = result.getFieldErrors().stream()
 						.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
@@ -69,8 +65,8 @@ public class AprobacionControlador {
 			}
 			try {
 				//Guardar malla
-				Empleado emp = empleadoService.findById(aprobacion.getSecretaria().getId_empleado());
-				aprobacion.setSecretaria(emp);
+				Empleado emp = empleadoService.findById(aprobacion.getAdministrador().getId_empleado());
+				aprobacion.setAdministrador(emp);
 				aprobacion.setDetalleControl(aprobacion.getDetalleControl().toUpperCase());
 				nuevaAprobacion = aprobacionService.save(aprobacion);
 			} catch (DataAccessException e) {
@@ -91,13 +87,9 @@ public class AprobacionControlador {
 		
 	}
 	
-	
-	
-	
-
 	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<Aprobacion> buscarAprobaId(@RequestParam("id") Long id){
-		Optional<Aprobacion> aprobacion = this.aprobacionService.getById(id);
+	public ResponseEntity<AprobacionKit> buscarAprobaId(@RequestParam("id") Long id){
+		Optional<AprobacionKit> aprobacion = this.aprobacionService.getById(id);
 		if(aprobacion.isPresent()) {
 			return new ResponseEntity(aprobacion.get(),HttpStatus.OK);
 		}else {

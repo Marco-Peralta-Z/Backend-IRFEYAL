@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.modelo.inventarios.Aprobacion;
+import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Categoria;
-import com.irfeyal.servicio.inventarios.AprobacionService;
+import com.irfeyal.servicio.inventarios.AprobacionKitService;
 import com.irfeyal.servicio.inventarios.CategoriaService;
 
 @RestController
@@ -36,7 +36,7 @@ public class CategoriaControlador {
 	
 	
 	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<Aprobacion> obtenerCategria(@RequestParam("id") Long id){
+	public ResponseEntity<AprobacionKit> obtenerCategria(@RequestParam("id") Long id){
 		Optional<Categoria> categoria = this.categoriaService.getById(id);
 		if(categoria.isPresent()) {
 			return new ResponseEntity(categoria.get(),HttpStatus.OK);

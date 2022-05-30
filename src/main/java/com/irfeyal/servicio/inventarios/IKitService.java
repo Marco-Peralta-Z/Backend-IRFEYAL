@@ -22,6 +22,7 @@ import com.irfeyal.modelo.dao.inventarios.KitDao;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.parametrizacionacademica.Malla;
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 @Service // ("IAutoServiceImplement")
 @Transactional
@@ -73,7 +74,7 @@ public class IKitService implements KitInterface {
 		try {
 			String nombre = kit.getNombrekit();
 			int precioKit = kit.getPrecioKit();
-			String periodo = kit.getPeriodo();
+			Periodo periodo = kit.getPeriodo();
 			//System.out.print("-*-*-*-*-*-***-*-*-*-*-*------>"+validaModulo);
 			List<ModuloLibro> listaModulos = new ArrayList<>();
 			for (int i = 0; i < kit.getListaModulos().size(); i++) {

@@ -21,15 +21,6 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "inventario")
-@NamedQueries({
-    @NamedQuery(name = "Inventario.findAll", query = "SELECT i FROM Inventario i"),
-    @NamedQuery(name = "Inventario.findByid_inventario", query = "SELECT i FROM Inventario i WHERE i.id_inventario = :id_inventario"),
-    @NamedQuery(name = "Inventario.findByCodigo", query = "SELECT i FROM Inventario i WHERE i.codigo = :codigo"),
-    @NamedQuery(name = "Inventario.findByCantidad", query = "SELECT i FROM Inventario i WHERE i.cantidad = :cantidad"),
-    @NamedQuery(name = "Inventario.findByFechaingreso", query = "SELECT i FROM Inventario i WHERE i.fechaingreso = :fechaingreso"),
-    @NamedQuery(name = "Inventario.findByFechaegreso", query = "SELECT i FROM Inventario i WHERE i.fechaegreso = :fechaegreso"),
-    @NamedQuery(name = "Inventario.findByDisponibilidad", query = "SELECT i FROM Inventario i WHERE i.disponibilidad = :disponibilidad"),
-    @NamedQuery(name = "Inventario.findByIngresadoPor", query = "SELECT i FROM Inventario i WHERE i.ingresadoPor = :ingresadoPor")})
 public class Inventario implements Serializable {
 
     private static final long serialVersionUID = 1L;

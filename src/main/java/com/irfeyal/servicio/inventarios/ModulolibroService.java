@@ -47,13 +47,13 @@ public class ModulolibroService implements ModuloLibroInterface {
 	
 	  public boolean ValidarModuloLibro(ModuloLibro moduloLibro){
 			//String id_modulo_libro= ""+moduloLibro.;
-		    int codModulo= moduloLibro.getCodModulo();
+		    String codModulo= moduloLibro.getCodModulo();
 		    String nombreModulo=moduloLibro.getNombreModulo();
 		    String curso=moduloLibro.getCurso();
 		    int cantidad=moduloLibro.getCantidad();
 		    int numero=moduloLibro.getNumero();
 		    String numeroModulo=moduloLibro.getNumeroModulo();
-		    if(codModulo>0 
+		    if(codModulo.length() > 0
 		       && nombreModulo != null
 		       && curso != null
 		       && cantidad>0

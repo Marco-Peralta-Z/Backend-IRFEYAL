@@ -10,12 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 /**
@@ -23,8 +25,8 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
  * @author Felipe Quichimbo check
  */
 @Entity
-@Table(name = "aprobacion")
-public class Aprobacion implements Serializable {
+@Table(name = "aprobacionkit")
+public class AprobacionKit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -34,31 +36,32 @@ public class Aprobacion implements Serializable {
     
     @Column(name = "tipo_aproba")
     private String tipoAprobacion;
-    
-    @Column(name = "id_tipo_aprobacion")
-    private Long idTipoAprobacion;
-    
-        
+
     @Column(name = "estado_aproba")
     private Boolean estadoAproba;
     
     @Column(name = "detalle_control")
     private String detalleControl;
     
-    
     @Column(name = "fecha_aprobacion")
     @Temporal(TemporalType.DATE)
     private Date fechaAprobacion;
-    
-    @Column(name = "fecha_control")
-    @Temporal(TemporalType.DATE)
-    private Date fechaControl;
-    
-    @JoinColumn(name = "id_secretaria", referencedColumnName = "id_empleado")
-    @ManyToOne(optional = false)
-    private Empleado secretaria;
 
-    public Aprobacion() {
+    @JoinColumn(name = "id_administrador", referencedColumnName = "id_empleado")
+    @ManyToOne(optional = false)
+    private Empleado administrador;
+
+    
+    @OneToOne()
+	@JoinColumn(name = "id_estudiante")
+	private Estudiante estudiante;
+    
+	@ManyToOne()
+	@JoinColumn(name="id_kit")
+	private Kit kit;
+    
+    
+    public AprobacionKit() {
     }
     
 
@@ -106,34 +109,35 @@ public class Aprobacion implements Serializable {
 		this.fechaAprobacion = fechaAprobacion;
 	}
 
-	public Date getFechaControl() {
-		return fechaControl;
-	}
-
-	public void setFechaControl(Date fechaControl) {
-		this.fechaControl = fechaControl;
-	}
 
 
-
-
-	public Empleado getSecretaria() {
-		return secretaria;
+	public Empleado getAdministrador() {
+		return administrador;
 	}
 
 
-	public void setSecretaria(Empleado secretaria) {
-		this.secretaria = secretaria;
+	public void setAdministrador(Empleado administrador) {
+		this.administrador = administrador;
 	}
 
 
-	public Long getIdTipoAprobacion() {
-		return idTipoAprobacion;
+	public Estudiante getEstudiante() {
+		return estudiante;
 	}
 
 
-	public void setIdTipoAprobacion(Long idTipoAprobacion) {
-		this.idTipoAprobacion = idTipoAprobacion;
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
+	}
+
+
+	public Kit getKit() {
+		return kit;
+	}
+
+
+	public void setKit(Kit kit) {
+		this.kit = kit;
 	}
 
 
