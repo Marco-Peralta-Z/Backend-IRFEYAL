@@ -104,10 +104,13 @@ public class AprobacionKitControlador {
 	}
 	
 	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<AprobacionKit> buscarAprobaId(@RequestParam("id") Long id){
+	public ResponseEntity<?> buscarAprobaId(@RequestParam("id") Long id){
+		Map<String, Object> respuesta = new HashMap<>();
 		Optional<AprobacionKit> aprobacion = this.aprobacionService.getById(id);
 		if(aprobacion.isPresent()) {
-			return new ResponseEntity(aprobacion.get(),HttpStatus.OK);
+			respuesta.put("status", "ok");
+			respuesta.put("aprobacion", aprobacion.get());
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.OK);
 		}else {
 			return ResponseEntity.notFound().build();
 		}
