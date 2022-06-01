@@ -7,12 +7,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
 
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.matricula.Estudiante;
-import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.servicio.inventarios.IKitService;
 import com.irfeyal.servicio.inventarios.ModulolibroService;
 import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
@@ -30,8 +28,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
