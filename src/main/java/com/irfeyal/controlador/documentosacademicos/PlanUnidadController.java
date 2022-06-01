@@ -2,6 +2,7 @@ package com.irfeyal.controlador.documentosacademicos;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.Empleado;
+import com.irfeyal.modelo.rolseguridad.Usuario;
 import com.irfeyal.servicio.documentosacademicos.PlanUnidadService;
 import com.irfeyal.servicio.parametrizacionacademica.CursoServicesImp;
 
@@ -62,9 +64,9 @@ public class PlanUnidadController {
 		
 	}
 	
-	@GetMapping ("empleado/{id_empleado}")
-	private ResponseEntity<List<Empleado>> getEmpleado (@PathVariable("id_empleado") Long id){
-		return ResponseEntity.ok(planUnidadService.findEmpleado(id));
+	@GetMapping ("usuario/{id_usuario}")
+	private ResponseEntity<Optional<Usuario>> getUsuari (@PathVariable("id_usuario") Long id){
+		return ResponseEntity.ok(planUnidadService.findUsuario(id));
 	}
 	
 	@GetMapping ("{String}")
@@ -113,11 +115,6 @@ public class PlanUnidadController {
 	@GetMapping(path = "cursos")
 	public ResponseEntity<?> getAllCursos() {
 		return new ResponseEntity<>(cursosService.getAllCurso(), HttpStatus.OK);
-	}
-	
-	@GetMapping(path = "paralelos")
-	public ResponseEntity<?> getAllParalelos() {
-		return new ResponseEntity<>(paraleloService.getAllParalelo(), HttpStatus.OK);
 	}
 	
 }

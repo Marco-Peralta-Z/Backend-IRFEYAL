@@ -10,9 +10,11 @@ import com.irfeyal.interfaces.documentosacademicos.PlanUnidadInterface;
 import com.irfeyal.modelo.dao.documentosacademicos.PlanUnidadDAO;
 import com.irfeyal.modelo.dao.parametrizacionacademica.AsignaturaRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.EmpleadoRepository;
+import com.irfeyal.modelo.dao.rolseguridad.UsuarioDAO;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.Empleado;
+import com.irfeyal.modelo.rolseguridad.Usuario;
 
 @Service
 public class PlanUnidadService implements PlanUnidadInterface {
@@ -21,10 +23,11 @@ public class PlanUnidadService implements PlanUnidadInterface {
 	private PlanUnidadDAO planUnidadDAO;
 	
 	@Autowired
-	private AsignaturaRepository asignaturaRepository;
+	private UsuarioDAO usuarioDAO;
 	
 	@Autowired
-	private EmpleadoRepository empleadoRepository;
+	private AsignaturaRepository asignaturaRepository;
+	
 	
 	//Listar planes de unidad
 	@Override
@@ -32,16 +35,9 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		return planUnidadDAO.findAll();
 	}
 	
-    //Buscar empleado por id
-	public List<Empleado> findEmpleado (Long id){
-		List<Empleado> EmpleadoRespuesta = new ArrayList<>();
-		List<Empleado> empleados = empleadoRepository.findAll();
-		for (int i=0; i<empleados.size(); i++) {
-			if ( empleados.get(i).getPersona().getid_persona() == id) {
-				EmpleadoRespuesta.add(empleados.get(i));
-			}
-		}
-		return EmpleadoRespuesta;
+    //Buscar usuario por id
+	public Optional<Usuario> findUsuario (Long id){
+		return usuarioDAO.findById(id);
 	}
 	
 	//listar Planes de unidad por estado

@@ -36,6 +36,7 @@ public class PlanUnidad implements Serializable{
 	private Date fecha_inicio;
 	private Date fecha_fin;
 	private String estado;
+	private String observaciones;
 	
 	@ManyToOne
 	@JoinColumn (name = "id_unidad")
@@ -54,10 +55,6 @@ public class PlanUnidad implements Serializable{
 	private Curso curso;
 	
 	@ManyToOne
-	@JoinColumn (name = "id_paralelo")
-	private Paralelo paralelo;
-	
-	@ManyToOne
 	@JoinColumn (name = "id_modalidad")
 	private Modalidad modalidad;
 	
@@ -68,9 +65,10 @@ public class PlanUnidad implements Serializable{
 	public PlanUnidad() {
 	}
 
+
 	public PlanUnidad(Long id_plan_unidad, String titulo_unidad, String objetivos, String contenidos,
 			String criterios_evaluacion, String destrezas, Date fecha_inicio, Date fecha_fin, String estado,
-			Unidad unidad, Empleado empleado, Asignatura asignatura, Curso curso, Paralelo paralelo,
+			String observaciones, Unidad unidad, Empleado empleado, Asignatura asignatura, Curso curso,
 			Modalidad modalidad, Periodo periodo) {
 		super();
 		this.id_plan_unidad = id_plan_unidad;
@@ -82,11 +80,11 @@ public class PlanUnidad implements Serializable{
 		this.fecha_inicio = fecha_inicio;
 		this.fecha_fin = fecha_fin;
 		this.estado = estado;
+		this.observaciones = observaciones;
 		this.unidad = unidad;
 		this.empleado = empleado;
 		this.asignatura = asignatura;
 		this.curso = curso;
-		this.paralelo = paralelo;
 		this.modalidad = modalidad;
 		this.periodo = periodo;
 	}
@@ -96,129 +94,167 @@ public class PlanUnidad implements Serializable{
 		return id_plan_unidad;
 	}
 
+
 	public void setId_plan_unidad(Long id_plan_unidad) {
 		this.id_plan_unidad = id_plan_unidad;
 	}
+
 
 	public String getTitulo_unidad() {
 		return titulo_unidad;
 	}
 
+
 	public void setTitulo_unidad(String titulo_unidad) {
 		this.titulo_unidad = titulo_unidad;
 	}
+
 
 	public String getObjetivos() {
 		return objetivos;
 	}
 
+
 	public void setObjetivos(String objetivos) {
 		this.objetivos = objetivos;
 	}
+
 
 	public String getContenidos() {
 		return contenidos;
 	}
 
+
 	public void setContenidos(String contenidos) {
 		this.contenidos = contenidos;
 	}
+
 
 	public String getCriterios_evaluacion() {
 		return criterios_evaluacion;
 	}
 
+
 	public void setCriterios_evaluacion(String criterios_evaluacion) {
 		this.criterios_evaluacion = criterios_evaluacion;
 	}
+
 
 	public String getDestrezas() {
 		return destrezas;
 	}
 
+
 	public void setDestrezas(String destrezas) {
 		this.destrezas = destrezas;
 	}
+
 
 	public Date getFecha_inicio() {
 		return fecha_inicio;
 	}
 
+
 	public void setFecha_inicio(Date fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
+
 
 	public Date getFecha_fin() {
 		return fecha_fin;
 	}
 
+
 	public void setFecha_fin(Date fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
+
 
 	public String getEstado() {
 		return estado;
 	}
 
+
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
 
 	public Unidad getUnidad() {
 		return unidad;
 	}
 
+
 	public void setUnidad(Unidad unidad) {
 		this.unidad = unidad;
 	}
+
 
 	public Empleado getEmpleado() {
 		return empleado;
 	}
 
+
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
+
 
 	public Asignatura getAsignatura() {
 		return asignatura;
 	}
 
+
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
 	}
+
 
 	public Curso getCurso() {
 		return curso;
 	}
 
+
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 
-	public Paralelo getParalelo() {
-		return paralelo;
-	}
-
-	public void setParalelo(Paralelo paralelo) {
-		this.paralelo = paralelo;
-	}
 
 	public Modalidad getModalidad() {
 		return modalidad;
 	}
 
+
 	public void setModalidad(Modalidad modalidad) {
 		this.modalidad = modalidad;
 	}
+
 
 	public Periodo getPeriodo() {
 		return periodo;
 	}
 
+
 	public void setPeriodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
+	
 	
 
 }
