@@ -89,7 +89,7 @@ public class ModuloLibroControlador {
 	
 	
 	@DeleteMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> deletePeriodo(@PathVariable("id") Long id) {
+	public ResponseEntity<Map<String, Object>> deleteModulo(@PathVariable("id") Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
 			ModuloLibro moduloLibro = modulolibroService.delete(id);
