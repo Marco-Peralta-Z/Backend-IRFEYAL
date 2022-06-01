@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -117,13 +118,6 @@ public class AprobacionKitControlador {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
-	@GetMapping(produces = {"application/json"},value = "/eliminar/")
-	public boolean eliminarAprobaId(@RequestParam("id") Long id){
-		boolean aprobacion = this.aprobacionService.delete(id);
-		return aprobacion;
-	}
-	
 	
 	
 	@PostMapping(path = "/entregakit", consumes = "application/json", produces = "application/json")
@@ -280,7 +274,24 @@ public class AprobacionKitControlador {
 	
 	
 	
-	
+	@DeleteMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<Map<String, Object>> deleteAprobacionKit(@PathVariable("id") Long id) {
+		Map<String, Object> respuesta = new HashMap<>();
+		try {
+			AprobacionKit moduloLibro = aprobacionService.delete(id);
+			if (moduloLibro == null) {
+				respuesta.put("mensaje", "El modulo con id: " + id + " no existe en la base de datos");
+				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
+			}
+		} catch (DataAccessException e) {
+			respuesta.put("mensaje", "Error al eliminar el modulo de la base de datos");
+			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		respuesta.put("status", "ok");
+		respuesta.put("mensaje", "La aprobacion ha sido eliminada");
+		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
+	}
 	
 	
 

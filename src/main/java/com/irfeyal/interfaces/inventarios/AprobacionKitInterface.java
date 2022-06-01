@@ -15,5 +15,5 @@ public interface AprobacionKitInterface  {
 
 	public abstract AprobacionKit update(Long id_aprobacion, double nuevaAprobacion);
 
-	public abstract boolean delete(Long id_aprobacion);
+	public abstract AprobacionKit delete(Long id_aprobacion);
 }

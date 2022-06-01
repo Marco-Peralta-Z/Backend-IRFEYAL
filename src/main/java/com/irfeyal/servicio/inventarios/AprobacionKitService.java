@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.irfeyal.interfaces.inventarios.AprobacionKitInterface;
 import com.irfeyal.modelo.dao.inventarios.AprobacionKitDao;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
+import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Service // ("IAutoServiceImplement")
@@ -54,11 +55,6 @@ public class AprobacionKitService implements AprobacionKitInterface {
 		return null;
 	}
 
-	@Override
-	public boolean delete(Long aprobacionId) {
-		return false;
-		
-	}
 
 
 	
@@ -79,6 +75,18 @@ public class AprobacionKitService implements AprobacionKitInterface {
 		
 		
 		return false;
+	}
+
+	@Override
+	public AprobacionKit delete(Long id_aprobacion) {
+		AprobacionKit aprobacion = getById(id_aprobacion).get();
+		if(aprobacion == null) {
+			return null;
+		}else {
+			aprobacionDao.deleteById(id_aprobacion);
+			return aprobacion;
+			
+		}
 	}
 
 }
