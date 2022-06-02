@@ -36,9 +36,9 @@ public class Salidaarticulo implements Serializable {
     @Column(name = "detallesalida")
     private String detallesalida;
     
-    @JoinColumn(name = "id_aprobacion", referencedColumnName = "id_aprobacion")
+    @JoinColumn(name = "id_control_articulo", referencedColumnName = "id_control_articulo")
     @ManyToOne(optional = false)
-    private AprobacionKit id_aprobacion;
+    private ControlArticulo controlArticulo;
 
     public Salidaarticulo() {
     }
@@ -75,12 +75,14 @@ public class Salidaarticulo implements Serializable {
 		this.detallesalida = detallesalida;
 	}
 
-	public AprobacionKit getId_aprobacion() {
-		return id_aprobacion;
+	public ControlArticulo getControlArticulo() {
+		return controlArticulo;
 	}
 
-	public void setId_aprobacion(AprobacionKit id_aprobacion) {
-		this.id_aprobacion = id_aprobacion;
+	public void setControlArticulo(ControlArticulo controlArticulo) {
+		this.controlArticulo = controlArticulo;
 	}
+
+
 
 }

@@ -8,7 +8,6 @@ INSERT INTO pais (pais) VALUES ('chile');
 
 -------------------PROVINCIA-------------------
 
-
 INSERT INTO provincia (provincia) VALUES ('BOLIVAR');
 INSERT INTO provincia (provincia) VALUES ('AZUAY');
 INSERT INTO provincia (provincia) VALUES ('CARCHI');
@@ -456,17 +455,29 @@ INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 4'
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 5', 'cositas 5', 'desocupado');
 
 
-INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/12', 2, 'usado', 'manual', 1);
-INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/13', 1, 'usado', 'manual', 2);
-INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/14', 3, 'usado', 'manual', 3);
-INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/15', 1, 'usado', 'manual', 4);
-INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/16', 2, 'usado', 'manual', 5);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/12', 5, 'Ingreso Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/13', 5, 'Ingreso Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/14', 5, 'Ingreso Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/15', 5, 'Ingreso Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/16', 5, 'Ingreso Articulo');
 
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo 1', '001', 10, 'casa', 'en uso', 'nike', 1, 1);
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo 2', '002', 100, 'pc', 'en uso', 'asus', 2, 2);
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo 3', '003', 20, 'radio', 'en uso', 'pioner', 3, 3);
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo 4', '004', 30, 'auto', 'en uso', 'toyota', 4, 4);
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo 5', '005', 50, 'oso', 'en uso', 'love', 5, 5);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/12', 5, 'Salida Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/13', 5, 'Salida Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/14', 5, 'Salida Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/15', 5, 'Salida Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/16', 5, 'Salida Articulo');
+
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/12', 5, 'Recepcio Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/13', 5, 'Recepcio Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/14', 5, 'Recepcio Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/15', 5, 'Recepcio Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/16', 5, 'Recepcio Articulo');
+
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 1', '001', 10, 'casa', 'en uso', 'nike', 1, 1);
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 2', '002', 100, 'pc', 'en uso', 'asus', 2, 2);
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 3', '003', 20, 'radio', 'en uso', 'pioner', 3, 3);
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 4', '004', 30, 'auto', 'en uso', 'toyota', 4, 4);
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 5', '005', 50, 'oso', 'en uso', 'love', 5, 5);
 
 INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0001', 5, '2022/02/12', '2022/02/15', 2, 'Marco 1', 1);
 INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0002', 6, '2022/02/12', '2022/02/16', 2, 'Marco 2', 2);
@@ -480,14 +491,16 @@ INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventar
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0004', 22, 'falla', '2022/02/12', 4);
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0005', 21, 'caduco', '2022/02/12', 5);
 
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/12', '001', 'recibido', 1);
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/13', '002', 'recibido', 2);
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/14', '003', 'recibido', 3);
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/15', '004', 'recibido', 4);
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_det_ingre_art) values ('2022/02/16', '005', 'recibido', 5);
+INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/12', '001', 'recibido', 11);
+INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/13', '002', 'recibido', 12);
+INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/14', '003', 'recibido', 13);
+INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/15', '004', 'recibido', 14);
+INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/16', '005', 'recibido', 15);
 
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/12', '001', 'salido',1);--OJO:debarticulo_id???
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/13', '002', 'salido',2);
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/14', '003', 'salido',3);
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/15', '004', 'salido',4);
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_aprobacion) values ('2022/02/16', '005', 'salido',5);
+INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/12', '001', 'salido',6);--OJO:debarticulo_id???
+INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/13', '002', 'salido',7);
+INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/14', '003', 'salido',8);
+INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/15', '004', 'salido',9);
+INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/16', '005', 'salido',10);
+
+

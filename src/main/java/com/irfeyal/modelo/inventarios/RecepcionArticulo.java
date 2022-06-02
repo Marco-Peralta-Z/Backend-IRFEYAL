@@ -35,9 +35,9 @@ public class RecepcionArticulo implements Serializable {
     private String codigo;
     @Column(name = "detallerecep")
     private String detallerecep;
-    @JoinColumn(name = "id_det_ingre_art", referencedColumnName = "id_det_ingre_art")
+    @JoinColumn(name = "id_control_articulo", referencedColumnName = "id_control_articulo")
     @ManyToOne(optional = false)
-    private ControlArticulo id_det_ingre_art;
+    private ControlArticulo controlArticulo;
 
     public RecepcionArticulo() {
     }
@@ -74,13 +74,14 @@ public class RecepcionArticulo implements Serializable {
 		this.detallerecep = detallerecep;
 	}
 
-	public ControlArticulo getId_det_ingre_art() {
-		return id_det_ingre_art;
+	public ControlArticulo getControlArticulo() {
+		return controlArticulo;
 	}
 
-	public void setId_det_ingre_art(ControlArticulo id_det_ingre_art) {
-		this.id_det_ingre_art = id_det_ingre_art;
+	public void setControlArticulo(ControlArticulo controlArticulo) {
+		this.controlArticulo = controlArticulo;
 	}
+
 
     
     

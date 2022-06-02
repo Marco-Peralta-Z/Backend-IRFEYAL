@@ -18,14 +18,14 @@ import javax.persistence.TemporalType;
  * @author Felipe Quichimbo check
  */
 @Entity
-@Table(name = "control_articulos")
+@Table(name = "control_articulo")
 public class ControlArticulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_det_ingre_art")
-    private Long id_det_ingre_art;
+    @Column(name = "id_control_articulo")
+    private Long id_control_articulo;
     
     @Column(name = "fechaingreso")
     @Temporal(TemporalType.DATE)
@@ -37,26 +37,26 @@ public class ControlArticulo implements Serializable {
     @Column(name = "observacion")
     private String observacion;
     
-    @Column(name = "tipo_ingreso")
-    private String tipoIngreso;
-    
-    @Basic(optional = false)
-    @Column(name = "id_aprobacion")
-    private int id_aprobacion;
-    
+
 
     public ControlArticulo() {
     }
 
 
-	public Long getId_det_ingre_art() {
-		return id_det_ingre_art;
+    
+
+	public Long getId_control_articulo() {
+		return id_control_articulo;
 	}
 
 
-	public void setId_det_ingre_art(Long id_det_ingre_art) {
-		this.id_det_ingre_art = id_det_ingre_art;
+
+
+	public void setId_control_articulo(Long id_control_articulo) {
+		this.id_control_articulo = id_control_articulo;
 	}
+
+
 
 
 	public Date getFechaingreso() {
@@ -89,23 +89,7 @@ public class ControlArticulo implements Serializable {
 	}
 
 
-	public String getTipoIngreso() {
-		return tipoIngreso;
-	}
 
 
-	public void setTipoIngreso(String tipoIngreso) {
-		this.tipoIngreso = tipoIngreso;
-	}
-
-
-	public int getId_aprobacion() {
-		return id_aprobacion;
-	}
-
-
-	public void setId_aprobacion(int id_aprobacion) {
-		this.id_aprobacion = id_aprobacion;
-	}
 
 }
