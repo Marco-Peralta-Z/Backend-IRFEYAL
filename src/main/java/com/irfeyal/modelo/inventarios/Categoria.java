@@ -31,9 +31,7 @@ public class Categoria implements Serializable {
     @Column(name = "catedescri")
     private String catedescri;
     
-    @Column(name = "cateestado")
-    private String cateestado;
-    
+
     public Categoria() {
     }
 
@@ -61,12 +59,6 @@ public class Categoria implements Serializable {
 		this.catedescri = catedescri;
 	}
 
-	public String getCateestado() {
-		return cateestado;
-	}
 
-	public void setCateestado(String cateestado) {
-		this.cateestado = cateestado;
-	}
 
 }

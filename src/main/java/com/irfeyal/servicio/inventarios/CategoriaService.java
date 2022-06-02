@@ -57,7 +57,7 @@ public class CategoriaService implements CategoriaInterface {
 		//System.out.println("------>" + categoria.getCatedescri());
 		//System.out.println("------>" + categoria.getCateestado());
 		//System.out.println("------>" + categoria.getCatenombre());
-		if (categoria.getCatedescri() != null && categoria.getCateestado() != null
+		if (categoria.getCatedescri() != null
 				&& categoria.getCatenombre() != null) {
 			return true;
 		}else {

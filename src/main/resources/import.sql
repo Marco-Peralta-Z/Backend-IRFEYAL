@@ -436,11 +436,14 @@ INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_docu
 --INVENTARIOS
 
 
-INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 1', 'cositas 1', 'ocupado');
-INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 2', 'cositas 2', 'ocupado');
-INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 3', 'cositas 3', 'desocupado');
-INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 4', 'cositas 4', 'ocupado');
-INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 5', 'cositas 5', 'desocupado');
+INSERT INTO categoria (catenombre, catedescri) values ('Ordenador', 'Equipos de informática y telecomunicaciones');
+INSERT INTO categoria (catenombre, catedescri) values ('Proyector', 'Equipos de informática y telecomunicaciones');
+INSERT INTO categoria (catenombre, catedescri) values ('Impresora', 'Equipos de informática y telecomunicaciones');
+INSERT INTO categoria (catenombre, catedescri) values ('Copiadora', 'Equipos de informática y telecomunicaciones');
+INSERT INTO categoria (catenombre, catedescri) values ('Máquina de escribir', 'Equipos de informática y telecomunicaciones');
+INSERT INTO categoria (catenombre, catedescri) values ('Calculadoras ', 'Equipos de informática');
+INSERT INTO categoria (catenombre, catedescri) values ('Teléfonos', 'Equipos de informática y telecomunicaciones');
+INSERT INTO categoria (catenombre, catedescri) values ('Sonido ', 'Equipos de informática y telecomunicaciones');
 
 
 INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Ingreso Articulo',6);
