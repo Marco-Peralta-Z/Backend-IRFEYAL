@@ -38,13 +38,13 @@ INSERT INTO genero (genero) VALUES ('MASCULINO');
 -------------------PERSONA-------------------
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Guayllas', '0102184322', '1998-04-17 19:00:00', 'magaly', 1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Lopez','0102879991','1997-02-18 19:00:00','juan',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ramirez','0107039975','1995-01-01 19:00:00','Ramiro',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ramirez','0107039971','1995-01-01 19:00:00','Ramiro',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez','0107049975','1990-04-23 19:00:00','Paulina',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Morocho','0103079940','1992-10-17 19:00:00','Elena',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pesantez','1056789020','1990-11-17 19:00:00','Alberto',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Reino','1056780100','1997-09-19 19:00:00','Rodrigo',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Sanchez','0100670892','1993-09-30 19:00:00','Naina',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Quito','0108625475','1995-10-31 19:00:00','Ana',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Quito','0108625478','1995-10-31 19:00:00','Ana',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez','0105983216','1990-03-20 19:00:00','Belen',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Murillo','0102587436','1950-08-10 19:00:00','Juana',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Gonzales','0106893251','19987-07-03 19:00:00','Karina',1);
@@ -103,17 +103,29 @@ INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, 
 INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_cordinador de desarrollo', 1,6,6,6,6);
 INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_rector', 1,7,7,7,7);
 INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_vicerector', 1,8,8,8,8);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_docente', 1, 1, 1, 1, 9);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretario 1', 1, 2,2,2,10);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_gerente', 1,3,3,3,11);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretaria', 1,4,1,4,12);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_coordinador administrativo', 1,5,5,5,13);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_cordinador de desarrollo', 1,6,6,6,14);
 
 
 -------------------USUARIO-------------------
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$nau04Ps5X18uv9e/X0x1xOzXm9iV7yiGOdP57gtLalbP9YAA8g6k2',true,'usuario_1',1);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$39Thszk62DPiSgdigkVNquHGuNQPPlyZpxK7GUOQIpd/DLinvL8Mq',true,'usuario_2',2);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$/e8KsXdeGrGWjlrWj7unCORNcjJWrzWkq00qKFiQY5vYA5RrSxj5O',true,'usuario_3',3);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7Zqo8bxy42s8GyZ8frzQUebr6eMGo4tFUrAHeETvw7PUjd5MzT4IC',true,'usuario_4',4);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$KgudhTCVpOXApMV7x/qDyOBHVXO8NqUHLviBgJ4z8FBF/09BNuBYK',true,'usuario_5',5);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$oor3IUso1XvSYlSUVMp/IuOJjnQcZblV1KaGLq9j9/TCoQyz2QiCW',true,'usuario_6',6);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$MlbvclpzIV74LgAoTkWTNua.KZEMKPVssf6zAHcmoQP1fRZ.qIww2',true,'usuario_7',7);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7257qhHd6F0p4hm7p8zTk.VLvMwHGVl0StBmtgRdFqdUP.3OjwLyK',true,'usuario_8',8);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$nau04Ps5X18uv9e/X0x1xOzXm9iV7yiGOdP57gtLalbP9YAA8g6k2',true,'0102184322',1);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$39Thszk62DPiSgdigkVNquHGuNQPPlyZpxK7GUOQIpd/DLinvL8Mq',true,'0102879991',2);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$/e8KsXdeGrGWjlrWj7unCORNcjJWrzWkq00qKFiQY5vYA5RrSxj5O',true,'0107039971',3);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7Zqo8bxy42s8GyZ8frzQUebr6eMGo4tFUrAHeETvw7PUjd5MzT4IC',true,'0107049975',4);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$KgudhTCVpOXApMV7x/qDyOBHVXO8NqUHLviBgJ4z8FBF/09BNuBYK',true,'0103079940',5);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$oor3IUso1XvSYlSUVMp/IuOJjnQcZblV1KaGLq9j9/TCoQyz2QiCW',true,'1056789020',6);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$MlbvclpzIV74LgAoTkWTNua.KZEMKPVssf6zAHcmoQP1fRZ.qIww2',true,'1056780100',7);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7257qhHd6F0p4hm7p8zTk.VLvMwHGVl0StBmtgRdFqdUP.3OjwLyK',true,'0100670892',8);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$nau04Ps5X18uv9e/X0x1xOzXm9iV7yiGOdP57gtLalbP9YAA8g6k2',true,'0108625478',9);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$39Thszk62DPiSgdigkVNquHGuNQPPlyZpxK7GUOQIpd/DLinvL8Mq',true,'0105983216',10);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$/e8KsXdeGrGWjlrWj7unCORNcjJWrzWkq00qKFiQY5vYA5RrSxj5O',true,'0102587436',11);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7Zqo8bxy42s8GyZ8frzQUebr6eMGo4tFUrAHeETvw7PUjd5MzT4IC',true,'0106893251',12);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$KgudhTCVpOXApMV7x/qDyOBHVXO8NqUHLviBgJ4z8FBF/09BNuBYK',true,'0132548740',13);
+INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$oor3IUso1XvSYlSUVMp/IuOJjnQcZblV1KaGLq9j9/TCoQyz2QiCW',true,'0105986312',14);
 -- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123',true,'usuario_1',1);
 -- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc',true,'usuario_2',2);
 -- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1abc',true,'usuario_3',3);
@@ -125,9 +137,8 @@ INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$1
 
 -------------------ROL-------------------
 INSERT INTO rol (descripcion) VALUES ('Administrador');
-INSERT INTO rol (descripcion) VALUES('gerente');
+INSERT INTO rol (descripcion) VALUES('coordinador academico');
 INSERT INTO rol (descripcion) VALUES ('secretaria');
-INSERT INTO rol (descripcion) VALUES ('estudiante');
 INSERT INTO rol (descripcion) VALUES ('coordinador de desarrollo');
 INSERT INTO rol (descripcion) VALUES ('coordinador administrativo');
 INSERT INTO rol (descripcion) VALUES ('rectora');
@@ -150,7 +161,13 @@ INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,5);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,6);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,7);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,8,1,8);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,8);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,1,9);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,10);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,11);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,12);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,13);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,14);
 
 -- PARAMETRIZACION ACADEMICA
 
