@@ -15,5 +15,5 @@ public interface CategoriaInterface {
 
 	public abstract Categoria update(Long id_categoria, double nuevaCategoria);
 
-	public abstract boolean delete(Long id_categoria);
+	public abstract Categoria delete(Long id_categoria);
 }

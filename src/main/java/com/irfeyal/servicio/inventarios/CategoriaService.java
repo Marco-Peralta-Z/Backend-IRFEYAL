@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.irfeyal.interfaces.inventarios.CategoriaInterface;
 import com.irfeyal.modelo.dao.inventarios.CategoriaDao;
 import com.irfeyal.modelo.inventarios.Categoria;
+import com.irfeyal.modelo.inventarios.ModuloLibro;
 
 @Service // ("IAutoServiceImplement")
 @Transactional
@@ -47,16 +48,9 @@ public class CategoriaService implements CategoriaInterface {
 		return null;
 	}
 
-	@Override
-	public boolean delete(Long id_categoria) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 	public boolean validarCategoria(Categoria categoria) {
-		//System.out.println("------>" + categoria.getCatedescri());
-		//System.out.println("------>" + categoria.getCateestado());
-		//System.out.println("------>" + categoria.getCatenombre());
 		if (categoria.getCatedescri() != null
 				&& categoria.getCatenombre() != null) {
 			return true;
@@ -65,6 +59,19 @@ public class CategoriaService implements CategoriaInterface {
 		}
 
 		
+	}
+
+
+	@Override
+	public Categoria delete(Long idCategoria) {
+		Categoria moduloL = getById(idCategoria).get();
+		if(moduloL == null) {
+			return null;
+		}else {
+			categoriaDao.deleteById(idCategoria);
+			return moduloL;
+			
+		}
 	}
 
 }
