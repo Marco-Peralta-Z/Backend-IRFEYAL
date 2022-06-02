@@ -3,6 +3,8 @@ package com.irfeyal.modelo.matricula;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
@@ -27,9 +29,6 @@ public class Matricula implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechaMatricula;
 	
-	@Column(name="modalidad")
-	private String modalidad_estudio;
-
 	@OneToOne()
 	@JoinColumn(name = "id_periodo")
 	private Periodo id_periodo;
@@ -58,12 +57,11 @@ public class Matricula implements Serializable {
 	public Matricula() {
 	}
 	
-	public Matricula(Long id_matricula, Timestamp fechaMatricula, String modalidad_estudio, Periodo id_periodo,
+	public Matricula(Long id_matricula, Timestamp fechaMatricula, Periodo id_periodo,
 			Curso curso, Modalidad modalidad, Usuario usuario, Paralelo id_paralelo, Estudiante estudiante) {
 		super();
 		this.id_matricula = id_matricula;
 		this.fechaMatricula = fechaMatricula;
-		this.modalidad_estudio = modalidad_estudio;
 		this.id_periodo = id_periodo;
 		this.curso = curso;
 		this.modalidad = modalidad;
@@ -92,14 +90,6 @@ public class Matricula implements Serializable {
 
 	public void setFechaMatricula(Date fechaMatricula) {
 		this.fechaMatricula = fechaMatricula;
-	}
-
-	public String getModalidad_estudio() {
-		return modalidad_estudio;
-	}
-
-	public void setModalidad_estudio(String modalidad_estudio) {
-		this.modalidad_estudio = modalidad_estudio;
 	}
 
 	public Periodo getId_periodo() {
