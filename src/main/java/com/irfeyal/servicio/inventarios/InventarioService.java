@@ -23,7 +23,7 @@ public class InventarioService implements InventarioInterface {
 	@Override
 	public Inventario save(Inventario inventario) {
 		// TODO Auto-generated method stub
-		return null;
+		return inventarioDao.save(inventario);
 	}
 
 	@Override

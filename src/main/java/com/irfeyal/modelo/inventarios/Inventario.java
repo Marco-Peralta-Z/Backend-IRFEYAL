@@ -39,9 +39,6 @@ public class Inventario implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaingreso;
     
-    @Column(name = "fechaegreso")
-    @Temporal(TemporalType.DATE)
-    private Date fechaegreso;
     
     @Column(name = "disponibilidad")
     private Integer disponibilidad;
@@ -51,7 +48,7 @@ public class Inventario implements Serializable {
     
     @JoinColumn(name = "id_articulo", referencedColumnName = "id_articulo")
     @ManyToOne(optional = false)
-    private Articulo id_Articulo;
+    private Articulo articulo;
 
     public Inventario() {
     }
@@ -88,13 +85,6 @@ public class Inventario implements Serializable {
 		this.fechaingreso = fechaingreso;
 	}
 
-	public Date getFechaegreso() {
-		return fechaegreso;
-	}
-
-	public void setFechaegreso(Date fechaegreso) {
-		this.fechaegreso = fechaegreso;
-	}
 
 	public Integer getDisponibilidad() {
 		return disponibilidad;
@@ -112,15 +102,15 @@ public class Inventario implements Serializable {
 		this.ingresadoPor = ingresadoPor;
 	}
 
-	public Articulo getId_Articulo() {
-		return id_Articulo;
+	public Articulo getArticulo() {
+		return articulo;
 	}
 
-	public void setId_Articulo(Articulo id_Articulo) {
-		this.id_Articulo = id_Articulo;
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
 	}
 
-    
+
     
     
 }

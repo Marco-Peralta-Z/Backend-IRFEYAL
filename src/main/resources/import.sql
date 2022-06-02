@@ -469,11 +469,11 @@ INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestad
 INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 4', '004', 30, 'auto', 'en uso', 'toyota', 4, 4);
 INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 5', '005', 50, 'oso', 'en uso', 'love', 5, 5);
 
-INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0001', 5, '2022/02/12', '2022/02/15', 2, 'Marco 1', 1);
-INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0002', 6, '2022/02/12', '2022/02/16', 2, 'Marco 2', 2);
-INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0003', 25, '2022/02/12', '2022/02/17', 2, 'Marco 3', 3);
-INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0004', 15, '2022/02/12', '2022/02/18', 2, 'Marco 4', 4);
-INSERT INTO inventario (codigo, cantidad, fechaingreso, fechaegreso, disponibilidad, ingresado_por, id_articulo) values ('0005', 10, '2022/02/12', '2022/02/19', 2, 'Marco 5', 5);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0001', 5, '2022/02/12', 2, 'Marco 1', 1);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0002', 6, '2022/02/12', 2, 'Marco 2', 2);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0003', 25, '2022/02/12', 2, 'Marco 3', 3);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0004', 15, '2022/02/12', 2, 'Marco 4', 4);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0005', 10, '2022/02/12', 2, 'Marco 5', 5);
 
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0001', 25, 'viejo', '2022/02/12', 1);
 INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0002', 24, 'roto', '2022/02/12', 2);
