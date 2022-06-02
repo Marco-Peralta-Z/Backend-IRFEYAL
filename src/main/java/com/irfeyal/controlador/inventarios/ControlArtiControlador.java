@@ -39,9 +39,7 @@ public class ControlArtiControlador {
 		} else {
 			System.out.print("empleado no encontrado");
 		}
-
 		return null;
-
 	}
 	
 	

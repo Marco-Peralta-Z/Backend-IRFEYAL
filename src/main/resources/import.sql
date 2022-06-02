@@ -373,18 +373,6 @@ INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle
 INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', true, 'Se aprueba pago completo', '2022/02/16',3,2);
 
 
-
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_kit) values (6, 'nodefinido', true, 'detacontrol 2', '2022/02/12',1);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_kit) values (6, 'nodefinido', true, 'detacontrol 3', '2022/02/13',2);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_kit) values (6, 'nodefinido', true, 'detacontrol 4', '2022/02/14',1);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_kit) values (6, 'nodefinido', true, 'detacontrol 5', '2022/02/15',2);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_kit) values (6, 'nodefinido', true, 'detacontrol 6', '2022/02/16',1);
-
-
-
-
-
-
 --PAGOS-----------
 
 INSERT INTO tipo_pago (descripcion) VALUES ('Efectivo');
