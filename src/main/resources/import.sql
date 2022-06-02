@@ -437,13 +437,12 @@ INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_docu
 
 
 INSERT INTO categoria (catenombre, catedescri) values ('Ordenador', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Proyector', 'Equipos de informática y telecomunicaciones');
+INSERT INTO categoria (catenombre, catedescri) values ('Audio y video', 'Equipos de informática y telecomunicaciones');
 INSERT INTO categoria (catenombre, catedescri) values ('Impresora', 'Equipos de informática y telecomunicaciones');
 INSERT INTO categoria (catenombre, catedescri) values ('Copiadora', 'Equipos de informática y telecomunicaciones');
 INSERT INTO categoria (catenombre, catedescri) values ('Máquina de escribir', 'Equipos de informática y telecomunicaciones');
 INSERT INTO categoria (catenombre, catedescri) values ('Calculadoras ', 'Equipos de informática');
 INSERT INTO categoria (catenombre, catedescri) values ('Teléfonos', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Sonido ', 'Equipos de informática y telecomunicaciones');
 
 
 INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Ingreso Articulo',6);
