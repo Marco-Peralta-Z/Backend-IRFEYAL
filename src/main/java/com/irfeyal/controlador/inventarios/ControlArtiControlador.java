@@ -18,22 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Categoria;
-import com.irfeyal.modelo.inventarios.DetalIngreArti;
+import com.irfeyal.modelo.inventarios.ControlArticulo;
 import com.irfeyal.servicio.inventarios.AprobacionKitService;
 import com.irfeyal.servicio.inventarios.DetalleBajaArtiService;
-import com.irfeyal.servicio.inventarios.DetalleIngreArtiService;
+import com.irfeyal.servicio.inventarios.ControlArticuloService;
 
 @RestController
 @RequestMapping("/detalleingresoarticulo")
 @CrossOrigin(origins = "*")
-public class DetalleIngreArtiControlador {
+public class ControlArtiControlador {
 	
 	@Autowired
-	DetalleIngreArtiService detalleIngreArtiService;
+	ControlArticuloService detalleIngreArtiService;
 	
 	@RequestMapping(value = "/crear/", method = RequestMethod.POST)
-	public ResponseEntity<DetalIngreArti> crearDetalIngreArti(@Valid @RequestBody DetalIngreArti detalIngreArti) {
-		DetalIngreArti detaingreArti = detalleIngreArtiService.save(detalIngreArti);
+	public ResponseEntity<ControlArticulo> crearDetalIngreArti(@Valid @RequestBody ControlArticulo detalIngreArti) {
+		ControlArticulo detaingreArti = detalleIngreArtiService.save(detalIngreArti);
 		if (detaingreArti != null) {
 			return new ResponseEntity(detaingreArti, HttpStatus.CREATED);
 		} else {
@@ -48,14 +48,14 @@ public class DetalleIngreArtiControlador {
 	
 	
 	@GetMapping(path = "/list", produces = {"application/json"})
-	public List<DetalIngreArti> listaDetalleIngreArticu(){
+	public List<ControlArticulo> listaDetalleIngreArticu(){
 		return detalleIngreArtiService.listAllDetalIngreArti();
 	}
 
 	
 	@GetMapping(produces = {"application/json"})
 	public ResponseEntity<AprobacionKit> obtenerDetalleIngreArti(@RequestParam("id") Long id){
-		Optional<DetalIngreArti> ingresoArticulo = this.detalleIngreArtiService.getById(id);
+		Optional<ControlArticulo> ingresoArticulo = this.detalleIngreArtiService.getById(id);
 		if(ingresoArticulo.isPresent()) {
 			return new ResponseEntity(ingresoArticulo.get(),HttpStatus.OK);
 		}else {

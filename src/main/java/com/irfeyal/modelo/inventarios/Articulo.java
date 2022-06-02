@@ -51,7 +51,7 @@ public class Articulo implements Serializable {
     
     @JoinColumn(name = "id_det_ingre_art", referencedColumnName = "id_det_ingre_art")
     @ManyToOne(optional = false)
-    private DetalIngreArti id_det_ingre_art;
+    private ControlArticulo id_det_ingre_art;
     
     public Articulo() {
     }
@@ -120,11 +120,11 @@ public class Articulo implements Serializable {
 		this.cateId = cateId;
 	}
 
-	public DetalIngreArti getId_det_ingre_art() {
+	public ControlArticulo getId_det_ingre_art() {
 		return id_det_ingre_art;
 	}
 
-	public void setId_det_ingre_art(DetalIngreArti id_det_ingre_art) {
+	public void setId_det_ingre_art(ControlArticulo id_det_ingre_art) {
 		this.id_det_ingre_art = id_det_ingre_art;
 	}
 

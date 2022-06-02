@@ -18,8 +18,8 @@ import javax.persistence.TemporalType;
  * @author Felipe Quichimbo check
  */
 @Entity
-@Table(name = "detal_ingre_arti")
-public class DetalIngreArti implements Serializable {
+@Table(name = "control_articulos")
+public class ControlArticulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,7 +45,7 @@ public class DetalIngreArti implements Serializable {
     private int id_aprobacion;
     
 
-    public DetalIngreArti() {
+    public ControlArticulo() {
     }
 
 

@@ -456,11 +456,11 @@ INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 4'
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 5', 'cositas 5', 'desocupado');
 
 
-INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/12', 2, 'usado', 'manual', 1);
-INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/13', 1, 'usado', 'manual', 2);
-INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/14', 3, 'usado', 'manual', 3);
-INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/15', 1, 'usado', 'manual', 4);
-INSERT INTO detal_ingre_arti (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/16', 2, 'usado', 'manual', 5);
+INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/12', 2, 'usado', 'manual', 1);
+INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/13', 1, 'usado', 'manual', 2);
+INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/14', 3, 'usado', 'manual', 3);
+INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/15', 1, 'usado', 'manual', 4);
+INSERT INTO control_articulos (fechaingreso, cantidad, observacion, tipo_ingreso, id_aprobacion) values ('2022/02/16', 2, 'usado', 'manual', 5);
 
 INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo 1', '001', 10, 'casa', 'en uso', 'nike', 1, 1);
 INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_det_ingre_art ) values ('articulo 2', '002', 100, 'pc', 'en uso', 'asus', 2, 2);
