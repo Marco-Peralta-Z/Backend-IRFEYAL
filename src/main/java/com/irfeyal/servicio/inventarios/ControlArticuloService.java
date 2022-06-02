@@ -24,7 +24,7 @@ public class ControlArticuloService implements ControlArticuloInterface{
 	@Override
 	public ControlArticulo save(ControlArticulo detalIngreArti) {
 		// TODO Auto-generated method stub
-		return null;
+		return detallIngreArtiDao.save(detalIngreArti);
 	}
 
 	@Override

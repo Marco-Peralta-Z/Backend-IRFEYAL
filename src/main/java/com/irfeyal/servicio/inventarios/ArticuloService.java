@@ -22,7 +22,7 @@ public class ArticuloService implements ArticuloInterface {
 	@Override
 	public Articulo save(Articulo articulo) {
 		// TODO Auto-generated method stub
-		return null;
+		return articuloDao.save(articulo);
 	}
 
 	@Override

@@ -21,9 +21,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.inventarios.AprobacionKit;
+import com.irfeyal.modelo.inventarios.Articulo;
+import com.irfeyal.modelo.inventarios.Categoria;
+import com.irfeyal.modelo.inventarios.ControlArticulo;
 import com.irfeyal.modelo.inventarios.Inventario;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
+import com.irfeyal.modelo.rolseguridad.Empleado;
+import com.irfeyal.servicio.inventarios.ArticuloService;
+import com.irfeyal.servicio.inventarios.CategoriaService;
+import com.irfeyal.servicio.inventarios.ControlArticuloService;
 import com.irfeyal.servicio.inventarios.InventarioService;
+import com.irfeyal.servicio.rolseguridad.EmpleadoService;
 
 @RestController
 @RequestMapping("/inventario")
@@ -32,6 +40,18 @@ public class InventarioControlador {
 
 	@Autowired
 	InventarioService inventarioService;
+	
+	@Autowired
+	ArticuloService articuloService;
+	
+	@Autowired
+	ControlArticuloService controlArticuloService;
+	
+	@Autowired
+	CategoriaService categoriaService;
+	
+	@Autowired
+	EmpleadoService empleadoService;
 	
 	@GetMapping(path = "/list", produces = {"application/json"})
 	public List<Inventario> listInventario(){
@@ -62,6 +82,17 @@ public class InventarioControlador {
 		}
 		try {
 			//Guardar 
+			
+			Empleado empleado = empleadoService.findById(inventario.getArticulo().getControlArticulo().getAdministrador().getId_empleado());
+			
+			ControlArticulo newControlArticulo = controlArticuloService.save(inventario.getArticulo().getControlArticulo());
+			newControlArticulo.setAdministrador(empleado);
+			inventario.getArticulo().setControlArticulo(newControlArticulo);
+			Categoria categoria = categoriaService.getById(inventario.getArticulo().getCateId().getId_categoria()).get();
+			Articulo newArticulo = articuloService.save(inventario.getArticulo());
+			newArticulo.setCateId(categoria);
+			System.out.println("aaa--->"+newArticulo.getId_articulo());
+			inventario.setArticulo(newArticulo);
 			inventarioIngresado = inventarioService.save(inventario);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear entidad");
