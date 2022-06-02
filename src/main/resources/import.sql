@@ -455,23 +455,23 @@ INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 4'
 INSERT INTO categoria (catenombre, catedescri, cateestado) values ('categoria 5', 'cositas 5', 'desocupado');
 
 
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/12', 5, 'Ingreso Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/13', 5, 'Ingreso Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/14', 5, 'Ingreso Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/15', 5, 'Ingreso Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/16', 5, 'Ingreso Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Ingreso Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/13', 5, 'Ingreso Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/14', 5, 'Ingreso Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/15', 5, 'Ingreso Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/16', 5, 'Ingreso Articulo',6);
 
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/12', 5, 'Salida Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/13', 5, 'Salida Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/14', 5, 'Salida Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/15', 5, 'Salida Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/16', 5, 'Salida Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Salida Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/13', 5, 'Salida Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/14', 5, 'Salida Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/15', 5, 'Salida Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/16', 5, 'Salida Articulo',6);
 
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/12', 5, 'Recepcio Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/13', 5, 'Recepcio Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/14', 5, 'Recepcio Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/15', 5, 'Recepcio Articulo');
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion) values ('2022/02/16', 5, 'Recepcio Articulo');
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Recepcio Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/13', 5, 'Recepcio Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/14', 5, 'Recepcio Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/15', 5, 'Recepcio Articulo',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/16', 5, 'Recepcio Articulo',6);
 
 INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 1', '001', 10, 'casa', 'en uso', 'nike', 1, 1);
 INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 2', '002', 100, 'pc', 'en uso', 'asus', 2, 2);

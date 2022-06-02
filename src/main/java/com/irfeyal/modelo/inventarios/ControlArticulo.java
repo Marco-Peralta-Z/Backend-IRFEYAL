@@ -7,11 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 /**
  *
@@ -37,6 +41,9 @@ public class ControlArticulo implements Serializable {
     @Column(name = "observacion")
     private String observacion;
     
+    @JoinColumn(name = "id_administrador", referencedColumnName = "id_empleado")
+    @ManyToOne(optional = false)
+    private Empleado administrador;
 
 
     public ControlArticulo() {
@@ -86,6 +93,20 @@ public class ControlArticulo implements Serializable {
 
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
+	}
+
+
+
+
+	public Empleado getAdministrador() {
+		return administrador;
+	}
+
+
+
+
+	public void setAdministrador(Empleado administrador) {
+		this.administrador = administrador;
 	}
 
 
