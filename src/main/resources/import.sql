@@ -52,48 +52,25 @@ INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALU
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ordoñes','0125896314','1993-11-14 19:00:00','Martha',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velez','0302154789','1994-04-02 19:00:00','Andrea',1);
 
--------------------PERSONA-ESTUDIANTE-------------------
+-------------------PERSONA ESTUDIANTE-------------------
 
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Cuenca','0112478956','1998-10-01 19:00:00','Martha',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Tamariz','0325698132','1997-08-02 19:00:00','Andrea',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Matute','0625396325','1997-10-03 19:00:00','Julio',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pinal','0789654123','1994-04-04 19:00:00','Veronica',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Rodrigez','0163142589','1998-06-05 19:00:00','Marcela',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Zambrano','0302891547','1995-06-06 19:00:00','Juana',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Holsein','0163158942','1999-10-07 19:00:00','Carmen',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pacheco','0547830219','1993-07-08 19:00:00','Mauricio',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Piedra','0196325814','1998-12-09 19:00:00','Paul',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Suarez','0315478902','1991-12-10 19:00:00','Paula',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Cortez','0311258964','1993-10-11 19:00:00','Tatiana',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Benavides','0478930215','1994-05-12 19:00:00','Paola',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Moreno','0896314125','1997-01-13 19:00:00','Ana',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Chocho','0021547893','1994-04-14 19:00:00','Bertha',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Cajamarca','0158963142','1996-15-14 19:00:00','Raul,2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Crespo','0547302189','1995-07-16 19:00:00','Diego',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Idrovo','0163258914','1992-10-17 19:00:00','Brayan',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Cabrera','0153024789','1998-09-18 19:00:00','Carlos',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Peñafiel','0125849631','1996-08-19 19:00:00','Maria',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Peñaloza','0309631215','1996-04-20 19:00:00','Joe',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Lucero','0125896314','1999-09-21 19:00:00','Sebastian',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Palacios','0547302189','1993-01-22 19:00:00','Evelin',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Leon','0128963145','1998-10-23 19:00:00','Alexis',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Aguilar','0154730289','1994-05-24 19:00:00','Jhonathan',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Guaman','0912586314','1996-11-25 19:00:00','Cristian',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velasquez','0390215478','1994-04-26 19:00:00','Luis',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Escandos','0131425896','1993-05-27 19:00:00','Ivan',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Tacuri','0215478309','1999-06-28 19:00:00','Javier',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Romero','0896314125','1996-01-29 19:00:00','Vinicio',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Bermeo','0302547891','1997-02-30 19:00:00','Patricio',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Baculima','0125631489','1990-01-14 19:00:00','Maritza',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Carpio','0215430789','1994-09-02 19:00:00','Andrea',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Lasso','0311258964','1993-10-03 19:00:00','Jhon',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Armijos','0215430789','1999-03-04 19:00:00','Camila',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Niola','0141258963','1993-08-05 19:00:00','Laidy',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Albarracion','0869457789','1993-07-06 19:00:00','Karina',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Bernal','0402098635','1994-11-07 19:00:00','Margot',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Illescas','0102158459','1991-07-08 19:00:00','Jessica',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Criollo','0102183211','1993-12-09 19:00:00','Sandra',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Mora','0315025814','1994-02-10 19:00:00','Adriana',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Acevedo Manríquez', '0102549612', '1998-04-14 19:00:00', 'María Mireya', 1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Alejo Guerrero','0102877771','1997-02-01 19:00:00','Víctor Hugo',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ramirez Ibarra','0107031234','1995-01-15 19:00:00','Pascual Gerardo',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez Santos','0107049456','1990-04-20 19:00:00','Paulina Rocio',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Alarcon Perez','0703079940','1992-10-14 19:00:00','Maria Elena',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pesantez Camacho','0756789020','1990-11-05 19:00:00','Alberto Jose',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Reina Navarro','0756780100','1997-09-19 19:00:00','Rodrigo Jesus',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Sanchez Barbosa','0700670892','1993-09-10 19:00:00','Naina Rocio',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Aleman Martinez','0108225475','1995-10-31 19:00:00','Ana Lucrecia',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez Vargas','0705983216','1998-04-20 19:00:00','Belen Ofelia',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Murillo Amaya','0702587436','1995-07-10 19:00:00','Andrea Lucia',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Gonzales Melgar','0708893251','1998-06-03 19:00:00','Karina Rosalia',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pauta Arbea','0722548740','1992-06-05 19:00:00','Robert Javier',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Salamea Burgos','0785986312','1994-05-18 19:00:00','Martha Paula',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ordoñes Valladares','0715896314','1993-09-14 19:00:00','Socorro',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velez Garcia','0184154789','1994-04-02 19:00:00','Angela',1);
+
 
 
 
@@ -107,6 +84,25 @@ INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parro
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('av torres', '3 noviembre',5,1,5,3);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('calle mala', 'calle buena',6,1,5,3);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('americas', 'lazo',7,1,5,4);
+
+
+-------------------DIRECCION ESTUDIANTE-------------------
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Honorato', 'calle vieja', 1, 1, 1, 1);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Calle Larga', 'Honorato',1,1,1,1);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Cordero', 'Gran Colombia',2,1,2,2);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Vergel', 'Matriz',3,1,3,3);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Cisneros', 'Arizaga',4,1,4,4);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Av torres', '3 noviembre',5,1,5,3);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Francisco', 'Medio Ejido',6,1,5,3);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Chola Cuencana', 'Huaynacapac',7,1,5,4);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Americas', 'Baños', 1, 1, 1, 1);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('San Joaquin', 'El Tejar',1,1,1,1);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Chacon', 'Cardenas',2,1,2,2);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Machuca', 'Vargas',3,1,3,3);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Aguirre', 'Cordoba',4,1,4,4);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Guayas', 'Solano',5,1,5,3);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('El Batan', 'Medio Ejido',6,1,5,3);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Totoracocha', 'Huaynacapac',7,1,5,4);
 
 ------------------- EMPRESA-------------------
 INSERT INTO empresa (nombre_empresa) VALUES ('irfeyal prueba');
@@ -128,6 +124,26 @@ INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0983434581',
 INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0934561294','0734560098',1);
 INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0988876491','0723456770',1);
 
+
+-------------------TELEFONO ESTUDIANTE-------------------
+INSERT INTO telefono (num_celular, telefono) VALUES ('0912345111','0712358988');
+INSERT INTO telefono (num_celular, telefono) VALUES ('099977799','0723612388');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0987221203','0723503311');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0933354591','0723503123');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0994444590','0712300652');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0975344581','0735123230');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0935931294','0734512398');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0966676491','0712356770');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0912345112','0712358981');
+INSERT INTO telefono (num_celular, telefono) VALUES ('099977794','0723612383');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0987221206','0723503315');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0933354597','0723503128');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0994444599','0712300610');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0975344511','0735123212');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0935931213','0734512314');
+INSERT INTO telefono (num_celular, telefono) VALUES ('0966676415','0712356716');
+
+
 -------------------CORREO_ELECTRONICO-------------------
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalmatriz@edu.ec',1);
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyaladmi@edu.ec',1);
@@ -137,6 +153,25 @@ INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalest@edu.ec
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalcord@edu.ec',1);
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalcordad@edu.ec',1);
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalrect@edu.ec',1);
+
+
+-------------------CORREO_ELECTRONICO_ESTUDIANTE-------------------
+INSERT INTO correo_electronico (correo) VALUES ('est1@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est2@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est3@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est4@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est5@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est6@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est7@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est8@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est9@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est10@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est11@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est12@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est13@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est14@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est15@edu.ec');
+INSERT INTO correo_electronico (correo) VALUES ('est16@edu.ec');
 
 -------------------EMPLEADO-------------------
 INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_docente', 1, 1, 1, 1, 1);
@@ -335,18 +370,40 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(10, 5);
 
 --MATRICULA---------
 
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,1,1,1,1);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,2,2,2,2);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,3,3,3,3);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,4,4,4,4);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,5,5,5,5);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,17,9,9,9);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,18,10,10,10);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,19,11,11,11);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,20,12,12,12);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,21,13,13,13);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,22,14,14,14);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,23,15,15,15);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,24,16,16,16);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,25,17,17,17);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,26,18,18,18);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,27,19,19,19);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,28,20,20,20);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,29,21,21,21);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,30,22,22,22);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,31,23,23,23);
+INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,32,24,24,24);
 
-INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','INTENSIVO',1,1,1,1,1,1);
-INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','NO INTENSIVO',2,2,2,2,2,2);
-INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','INTENSIVO',3,3,1,3,3,3);
-INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','NO INTENSIVO',4,4,1,4,2,4);
-INSERT INTO matriculas (fecha_matricula,modalidad, id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05','INTENSIVO',5,5,2,5,1,5);
 
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,3,1,1);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-11-03',2,2,2,3,2,2);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-10-04',3,3,1,3,3,3);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-19-07',4,4,1,3,2,4);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,5);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,3,1,6);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,3,2,7);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',3,3,1,3,3,8);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,1,3,2,9);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,10);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,3,1,11);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,3,2,12);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',3,1,2,3,3,13);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,1,3,2,14);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,15);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,16);
 
 --ASISTENCIA-------------
 
