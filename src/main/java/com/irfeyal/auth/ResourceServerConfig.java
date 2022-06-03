@@ -41,8 +41,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		//ASISTENCIA
 		.antMatchers("/asistencia/**").hasAnyRole("Administrador","docente")
 		//DOCUMENTOS ACADÉMICOS
-		.antMatchers("/planunidades/**").hasAnyRole("Administrador","rectora", "docente")
-		.antMatchers("/unidades/**")	.hasAnyRole("Administrador","rectora", "docente")
+		.antMatchers("/planunidades/**").hasAnyRole("Administrador","coordinador academico", "docente")
+		.antMatchers("/unidades/**")	.hasAnyRole("Administrador","coordinador academico", "docente")
 		//INVENTARIOS
 		.antMatchers("/aprobacion/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
 		.antMatchers("/articulo/**")				.hasAnyRole("Administrador","coordinador administrativo","coordinador de desarrollo")
