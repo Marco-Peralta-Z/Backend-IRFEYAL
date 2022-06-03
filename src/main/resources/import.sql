@@ -52,6 +52,51 @@ INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALU
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ordoñes','0125896314','1993-11-14 19:00:00','Martha',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velez','0302154789','1994-04-02 19:00:00','Andrea',1);
 
+-------------------PERSONA-ESTUDIANTE-------------------
+
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Cuenca','0112478956','1998-10-01 19:00:00','Martha',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Tamariz','0325698132','1997-08-02 19:00:00','Andrea',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Matute','0625396325','1997-10-03 19:00:00','Julio',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pinal','0789654123','1994-04-04 19:00:00','Veronica',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Rodrigez','0163142589','1998-06-05 19:00:00','Marcela',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Zambrano','0302891547','1995-06-06 19:00:00','Juana',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Holsein','0163158942','1999-10-07 19:00:00','Carmen',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pacheco','0547830219','1993-07-08 19:00:00','Mauricio',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Piedra','0196325814','1998-12-09 19:00:00','Paul',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Suarez','0315478902','1991-12-10 19:00:00','Paula',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Cortez','0311258964','1993-10-11 19:00:00','Tatiana',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Benavides','0478930215','1994-05-12 19:00:00','Paola',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Moreno','0896314125','1997-01-13 19:00:00','Ana',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Chocho','0021547893','1994-04-14 19:00:00','Bertha',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Cajamarca','0158963142','1996-15-14 19:00:00','Raul,2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Crespo','0547302189','1995-07-16 19:00:00','Diego',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Idrovo','0163258914','1992-10-17 19:00:00','Brayan',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Cabrera','0153024789','1998-09-18 19:00:00','Carlos',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Peñafiel','0125849631','1996-08-19 19:00:00','Maria',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Peñaloza','0309631215','1996-04-20 19:00:00','Joe',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Lucero','0125896314','1999-09-21 19:00:00','Sebastian',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Palacios','0547302189','1993-01-22 19:00:00','Evelin',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Leon','0128963145','1998-10-23 19:00:00','Alexis',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Aguilar','0154730289','1994-05-24 19:00:00','Jhonathan',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Guaman','0912586314','1996-11-25 19:00:00','Cristian',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velasquez','0390215478','1994-04-26 19:00:00','Luis',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Escandos','0131425896','1993-05-27 19:00:00','Ivan',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Tacuri','0215478309','1999-06-28 19:00:00','Javier',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Romero','0896314125','1996-01-29 19:00:00','Vinicio',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Bermeo','0302547891','1997-02-30 19:00:00','Patricio',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Baculima','0125631489','1990-01-14 19:00:00','Maritza',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Carpio','0215430789','1994-09-02 19:00:00','Andrea',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Lasso','0311258964','1993-10-03 19:00:00','Jhon',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Armijos','0215430789','1999-03-04 19:00:00','Camila',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Niola','0141258963','1993-08-05 19:00:00','Laidy',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Albarracion','0869457789','1993-07-06 19:00:00','Karina',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Bernal','0402098635','1994-11-07 19:00:00','Margot',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Illescas','0102158459','1991-07-08 19:00:00','Jessica',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Criollo','0102183211','1993-12-09 19:00:00','Sandra',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Mora','0315025814','1994-02-10 19:00:00','Adriana',1);
+
+
+
 
 -------------------DIRECCION-------------------
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('nueva calle', 'calle vieja', 1, 1, 1, 1);
