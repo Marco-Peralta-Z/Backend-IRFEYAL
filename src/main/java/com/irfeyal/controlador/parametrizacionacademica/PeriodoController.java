@@ -161,4 +161,10 @@ public class PeriodoController {
 		respuesta.put("mensaje", "El Periodo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
+	
+//	Modulo Matricula
+	@GetMapping(path ="/getPeriodoPorMalla/{id_malla}" )
+	public List<Periodo> getPeriodoPorMalla(@PathVariable Long id_malla){
+		return periodoService.findByMalla(id_malla);
+	}
 }

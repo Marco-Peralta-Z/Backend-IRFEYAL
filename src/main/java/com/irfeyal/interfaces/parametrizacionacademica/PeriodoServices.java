@@ -3,6 +3,7 @@ package com.irfeyal.interfaces.parametrizacionacademica;
 import java.util.List;
 import java.util.Optional;
 
+
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 import org.springframework.data.domain.Page;
@@ -19,5 +20,7 @@ public interface PeriodoServices {
 	public Periodo savePeriodo(Periodo periodo);
 
 	public Periodo deletePeriodo(Long idPeriodo);
+	
+	public List<Periodo> findByMalla(Long id_malla);
 
 }
