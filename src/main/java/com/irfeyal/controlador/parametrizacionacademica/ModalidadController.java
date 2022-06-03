@@ -148,7 +148,7 @@ public class ModalidadController {
 
 	
 	
-	@GetMapping("/getJormadasPorCurso/{id_curso}")
+	@GetMapping("/getModalidadPorCurso/{id_curso}")
     public List<Modalidad> buscarByCurso(@PathVariable Long id_curso){
  
 		return modalidadService.findByCurso(id_curso);
