@@ -476,11 +476,8 @@ INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,9);
 INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,10);
 
 
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago completo', '2022/02/12',1,1);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago completo', '2022/02/13',1,2);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago 30 %', '2022/02/14',2,1);
 INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago 50%', '2022/02/15',3,1);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago completo', '2022/02/16',3,2);
+INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago completo', '2022/02/16',4,1);
 
 
 --PAGOS-----------
@@ -489,11 +486,11 @@ INSERT INTO tipo_pago (descripcion) VALUES ('Efectivo');
 INSERT INTO tipo_pago (descripcion) VALUES ('Deposito');
 INSERT INTO tipo_pago (descripcion) VALUES ('Cheque');
 
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Matricula', 1, 1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Matricula', 2, 2);
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 3, 3);
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 4, 4);
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Mensual', 5, 5);
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Matricula', 1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Matricula', 2);
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 3, 1);
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 4, 1);
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Mensual', 5);
 
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (1, '2022/03/15', 'img/foto.jpg', 10 , TRUE, 1, 1, 1);--OJO:Necesito primero el tipo de comprobante, esa tabla necesita PERIODO y pilas con id_rol_usuario por id_empleado 
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (2, '2022/03/15', 'img/foto.jpg', 20 , TRUE, 1, 2, 2);
