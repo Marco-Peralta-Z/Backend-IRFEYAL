@@ -59,4 +59,10 @@ public class EstudianteServiceImpl implements IEstudianteService {
 		// TODO Auto-generated method stub
 		return estudianteDao.findByCedula(cedula);
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Estudiante> findAllByCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return estudianteDao.findAllByCedula(cedula);
+	}
 }

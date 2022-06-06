@@ -255,5 +255,10 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 			+ "WHERE e.id_estudiante=?1",nativeQuery=true)
 	List<Estudiante> findestudianteid(Long idestu);
 	//-----------------------------Fin Modulo Asistencia-----------------------
+	
+	
+	// -------------------- modulo inventario buscar por cedula list -----------------
+	@Query(value = "select e from Estudiante e where e.id_persona.cedula like %?1%")
+	public List<Estudiante> findAllByCedula(String cedula);
 
 }
