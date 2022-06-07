@@ -63,12 +63,6 @@ public class Horario implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
-	// Relación Curso-Horario
-	@ManyToMany
-	@JoinTable(name = "curso_horario", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_curso") })
-	private List<Curso> listaCursos = new ArrayList<>();
-
 	// Relación horario_empleado
 	@ManyToMany
 	@JoinTable(name = "horario_empleado", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
@@ -121,14 +115,6 @@ public class Horario implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-	public List<Curso> getListaCursos() {
-		return listaCursos;
-	}
-
-	public void setListaCursos(List<Curso> listaCursos) {
-		this.listaCursos = listaCursos;
-	}
-
 	public List<Empleado> getListaEmpleados() {
 		return listaEmpleados;
 	}
@@ -148,8 +134,8 @@ public class Horario implements Serializable {
 	@Override
 	public String toString() {
 		return "Horario [dia=" + dia + ", fecha_creacion=" + fecha_creacion + ", id_horario=" + id_horario
-				+ ", listaAsignaturas=" + listaAsignaturas + ", listaCursos=" + listaCursos + ", listaEmpleados="
-				+ listaEmpleados + ", tiempo_fin=" + tiempo_fin + ", tiempo_inicio=" + tiempo_inicio + "]";
+				+ ", listaAsignaturas=" + listaAsignaturas + ", listaEmpleados=" + listaEmpleados + ", tiempo_fin="
+				+ tiempo_fin + ", tiempo_inicio=" + tiempo_inicio + "]";
 	}
 
 }

@@ -19,7 +19,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
@@ -48,45 +47,11 @@ public class Asignatura implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
-	// Relación malla_asignatura
-	@ManyToMany(mappedBy = "listaAsignaturas")
-	private List<Malla> mallas = new ArrayList<>();
-
-	// Relación asignatura_horario
-	// @ManyToMany
-	// @JoinTable(name = "asignatura_horario", joinColumns = {
-	// @JoinColumn(name = "id_asignatura") }, inverseJoinColumns = {
-	// @JoinColumn(name = "id_horario") })
-	// private List<Horario> horarios = new ArrayList<>();
-
-	// Relación asignatura_empleado
+	// Relacion asignatura_empleado
 	@ManyToMany
 	@JoinTable(name = "asignatura_empleado", joinColumns = {
 			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_empleado") })
 	private List<Empleado> empleados = new ArrayList<>();
-
-	public Asignatura() {
-	}
-	
-	
-
-	public Asignatura(Long id_asignatura) {
-		super();
-		this.id_asignatura = id_asignatura;
-	}
-
-
-	public Asignatura(Long id_asignatura,
-			@NotBlank(message = "Debe ingresar una descripcion para la asignatura") String descripcion,
-			Date fecha_creacion, List<Malla> mallas, List<Empleado> empleados) {
-		super();
-		this.id_asignatura = id_asignatura;
-		this.descripcion = descripcion;
-		this.fecha_creacion = fecha_creacion;
-		this.mallas = mallas;
-		this.empleados = empleados;
-	}
-
 
 	public Long getId_asignatura() {
 		return id_asignatura;
@@ -112,15 +77,6 @@ public class Asignatura implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-	@JsonIgnore
-	public List<Malla> getMallas() {
-		return mallas;
-	}
-
-	public void setMallas(List<Malla> mallas) {
-		this.mallas = mallas;
-	}
-
 	public List<Empleado> getEmpleados() {
 		return empleados;
 	}
@@ -132,7 +88,7 @@ public class Asignatura implements Serializable {
 	@Override
 	public String toString() {
 		return "Asignatura [descripcion=" + descripcion + ", empleados=" + empleados + ", fecha_creacion="
-				+ fecha_creacion + ", id_asignatura=" + id_asignatura + ", mallas=" + mallas + "]";
+				+ fecha_creacion + ", id_asignatura=" + id_asignatura + "]";
 	}
 
 }

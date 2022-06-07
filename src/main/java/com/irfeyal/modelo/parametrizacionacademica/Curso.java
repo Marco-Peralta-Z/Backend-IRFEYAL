@@ -8,15 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
-
-import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "curso")
@@ -41,16 +37,6 @@ public class Curso implements Serializable {
 	private void setDateFecha() {
 		this.fecha_creacion = new Date();
 	}
-
-	// Relacion curso paralelo
-	@ManyToOne
-	@JoinColumn(name = "id_paralelo")
-	private Paralelo id_paralelo;
-
-	// Relación con la tabla empleado
-	@ManyToOne
-	@JoinColumn(name = "id_empleado", unique = true)
-	private Empleado empleado;
 
 	public Curso() {
 	}
@@ -79,26 +65,10 @@ public class Curso implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-	public Paralelo getId_paralelo() {
-		return id_paralelo;
-	}
-
-	public void setId_paralelo(Paralelo id_paralelo) {
-		this.id_paralelo = id_paralelo;
-	}
-
-	public Empleado getEmpleado() {
-		return empleado;
-	}
-
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
-	}
-
 	@Override
 	public String toString() {
-		return "Curso [descripcion=" + descripcion + ", empleado=" + empleado + ", fecha_creacion=" + fecha_creacion
-				+ ", id_curso=" + id_curso + ", id_paralelo=" + id_paralelo + " ]";
+		return "Curso [descripcion=" + descripcion + ", fecha_creacion=" + fecha_creacion + ", id_curso=" + id_curso
+				+ " ]";
 	}
 
 }

@@ -114,8 +114,6 @@ public class ModalidadController {
 		try {
 			//Actualización modalidad
 			modalidadActual.get().setDescripcion(modalidad.getDescripcion().toUpperCase());
-			modalidadActual.get().setHora_inicio(modalidad.getHora_inicio());
-			modalidadActual.get().setHora_fin(modalidad.getHora_fin());
 			modalidadUpdated = modalidadService.saveModalidad(modalidadActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
@@ -148,7 +146,7 @@ public class ModalidadController {
 
 	
 	
-	@GetMapping("/getModalidadPorCurso/{id_curso}")
+	@GetMapping("/getJormadasPorCurso/{id_curso}")
     public List<Modalidad> buscarByCurso(@PathVariable Long id_curso){
  
 		return modalidadService.findByCurso(id_curso);

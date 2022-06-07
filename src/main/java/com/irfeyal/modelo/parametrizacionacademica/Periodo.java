@@ -10,16 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "periodo")
@@ -54,33 +51,19 @@ public class Periodo implements Serializable {
 	@Column(name = "costo_matricula")
 	private Double costo_matricula;
 
+	@Column(name = "vigencia")
+	private boolean vigencia;
+
 	@Column(name = "ano_inicio")
 	private String ano_inicio;
 
 	@Column(name = "ano_fin")
 	private String ano_fin;
 
-	@Column(name = "vigencia")
-	private boolean vigencia;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fecha_creacion")
-	private Date fecha_creacion;
-
-	@PrePersist
-	private void setDateFecha() {
-		this.fecha_creacion = new Date();
-	}
-
 	// Relación Periodo-Malla
 	@ManyToOne
 	@JoinColumn(name = "id_malla", nullable = true)
 	private Malla malla;
-
-	// Agrega campo modalidad para relacion
-	@ManyToOne
-	@JoinColumn(name = "id_modalidad", nullable = true)
-	private Modalidad modalidad;
 
 	public Periodo() {
 	}
@@ -157,14 +140,6 @@ public class Periodo implements Serializable {
 		this.vigencia = vigencia;
 	}
 
-	public Date getFecha_creacion() {
-		return fecha_creacion;
-	}
-
-	public void setFecha_creacion(Date fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
-	}
-
 	public Malla getMalla() {
 		return malla;
 	}
@@ -173,21 +148,12 @@ public class Periodo implements Serializable {
 		this.malla = malla;
 	}
 
-	public Modalidad getModalidad() {
-		return modalidad;
-	}
-
-	public void setModalidad(Modalidad modalidad) {
-		this.modalidad = modalidad;
-	}
-
 	@Override
 	public String toString() {
 		return "Periodo [ano_fin=" + ano_fin + ", ano_inicio=" + ano_inicio + ", costo_matricula=" + costo_matricula
-				+ ", costo_mensualidad=" + costo_mensualidad + ", fecha_creacion=" + fecha_creacion + ", fecha_fin="
-				+ fecha_fin + ", fecha_inicio=" + fecha_inicio + ", id_periodo=" + id_periodo + ", malla=" + malla
-				+ ", modalidad=" + modalidad + ", periodo_academico=" + periodo_academico + ", vigencia=" + vigencia
-				+ "]";
+				+ ", costo_mensualidad=" + costo_mensualidad + ", fecha_fin=" + fecha_fin + ", fecha_inicio="
+				+ fecha_inicio + ", id_periodo=" + id_periodo + ", malla=" + malla + ", periodo_academico="
+				+ periodo_academico + ", vigencia=" + vigencia + "]";
 	}
 
 }

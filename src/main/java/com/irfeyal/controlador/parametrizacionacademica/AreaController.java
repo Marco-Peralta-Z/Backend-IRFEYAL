@@ -25,121 +25,122 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.parametrizacionacademica.MallaServices;
-import com.irfeyal.modelo.parametrizacionacademica.Malla;
+import com.irfeyal.interfaces.parametrizacionacademica.AreaServices;
+import com.irfeyal.modelo.parametrizacionacademica.Area;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/malla")
-public class MallaController {
+@RequestMapping("/area")
+public class AreaController {
 
 	@Autowired
-	private MallaServices mallaService;
+	private AreaServices areaService;
 
 	@GetMapping(path = "", produces = "application/json")
-	public ResponseEntity<?> getMallas() {
-		return new ResponseEntity<>(mallaService.getAllMalla(), HttpStatus.OK);
+	public ResponseEntity<?> getAreas(AreaServices areaServices2) {
+		return new ResponseEntity<>(areaService.getAllArea(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/", produces = "application/json")
-	public ResponseEntity<?> getAllMallas(@RequestParam(name = "page", defaultValue = "0") int page,
+	public ResponseEntity<?> getAllAreas(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
 		Pageable pageable = PageRequest.of(page, size);
-		return new ResponseEntity<>(mallaService.getAllMalla(pageable), HttpStatus.OK);
+		return new ResponseEntity<>(areaService.getAllArea(pageable), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<?> getMallaById(@PathVariable("id") Long idMalla) {
-		Optional<Malla> malla = null;
+	public ResponseEntity<?> getAreaById(@PathVariable("id") Long idArea) {
+		System.err.println("----------->" + idArea);
+		Optional<Area> area = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			malla = mallaService.getMallaById(idMalla);
+			area = areaService.getAreaById(idArea);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar la consulta en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if (malla.isEmpty()) {
+		if (area.isEmpty()) {
 			respuesta.put("mensaje",
-					"La Malla ID: ".concat(idMalla.toString().concat(": no existe en la base de datos")));
+					"El Área ID: ".concat(idArea.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<>(malla, HttpStatus.OK);
+		return new ResponseEntity<>(area, HttpStatus.OK);
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createMalla(@Validated @RequestBody Malla malla, BindingResult result) {
-		Malla mallaNuevo = null;
+	public ResponseEntity<Map<String, Object>> createArea(@Validated @RequestBody Area area, BindingResult result) {
+		Area areaNueva = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
-					.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
+					.map(error -> "Error en el atributo-> " + error.getField() + ": " + error.getDefaultMessage())
 					.collect(Collectors.toList());
 			respuesta.put("errores", errors);
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Guardar malla
-			malla.setDescripcion(malla.getDescripcion().toUpperCase());
-			mallaNuevo = mallaService.saveMalla(malla);
+			area.setDescripcion(area.getDescripcion().toUpperCase());
+			areaNueva = areaService.saveArea(area);
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al crear la malla en la base de datos");
+			respuesta.put("mensaje", "Error al crear la asignatura en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "La Malla ha sido creado con Ã©xito!");
-		respuesta.put("malla", mallaNuevo);
+		respuesta.put("mensaje", "La asignatura ha sido creada con éxito!");
+		respuesta.put("asignatura", areaNueva);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateMalla(@PathVariable("id") Long idMalla,@Validated @RequestBody Malla malla,
+	public ResponseEntity<?> updateArea(@PathVariable("id") Long idArea, @Validated @RequestBody Area area,
 			BindingResult result) {
-		Optional<Malla> mallaActual = mallaService.getMallaById(idMalla);
-		Malla mallaUpdated = null;
+		Optional<Area> areaActual = areaService.getAreaById(idArea);
+		Area areaUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
-					.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
+					.map(error -> "Error en el atributo-> " + error.getField() + ": " + error.getDefaultMessage())
 					.collect(Collectors.toList());
-			respuesta.put("errors", errors);
+			respuesta.put("errores", errors);
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		if (mallaActual.isEmpty()) {
-			respuesta.put("mensaje", "Error: no se pudo editar la Malla ID: "
-					.concat(idMalla.toString().concat(", no existe en la base de datos")));
+		if (areaActual.isEmpty()) {
+			respuesta.put("mensaje", "Error: no se pudo editar la asignatura: "
+					.concat(idArea.toString().concat(" no existe en la base de datos")));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//ActualizaciÃ³n malla
-			mallaActual.get().setEstado(malla.getEstado());
-			mallaActual.get().setDescripcion(malla.getDescripcion().toUpperCase());
-			mallaUpdated = mallaService.saveMalla(mallaActual.get());
+			// Actualización Área
+			areaActual.get().setDescripcion(area.getDescripcion().toUpperCase());
+			// Lista de asignaturas ?
+
+			areaUpdated = areaService.saveArea(areaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		respuesta.put("mensaje", "La Malla ha sido actualizado con Ã©xito");
-		respuesta.put("malla", mallaUpdated);
+		respuesta.put("mensaje", "El área ha sido actualizada con exito");
+		respuesta.put("area", areaUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> deleteMalla(@PathVariable("id") Long idMalla) {
+	public ResponseEntity<Map<String, Object>> deleteArea(@PathVariable("id") Long idArea) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			Malla mallaRecu = mallaService.deleteMalla(idMalla);
-			if (mallaRecu == null) {
-				respuesta.put("mensaje", "La Malla ID: " + idMalla + " no existe en la base de datos");
+			Area areaRecu = areaService.deleteArea(idArea);
+			if (areaRecu == null) {
+				respuesta.put("mensaje", "El área no existe en la base de datos");
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
 			}
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al eliminar la Malla de la base de datos");
+			respuesta.put("mensaje", "Error al eliminar área de la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "La Malla ID: " + idMalla + ", ha sido eliminado");
+		respuesta.put("mensaje", "El área ha sido eliminada");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 
