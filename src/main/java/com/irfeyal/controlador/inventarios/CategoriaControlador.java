@@ -56,7 +56,7 @@ public class CategoriaControlador {
 	}
 	
 	
-	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
+	@PutMapping(path = "/crear", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> crearCategoria(@Validated @RequestBody Categoria categoria, BindingResult result) {
 		
 		Categoria categoriaNew = null;
@@ -93,6 +93,7 @@ public class CategoriaControlador {
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al eliminar el modulo de la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			respuesta.put("status", "error relacion");
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		respuesta.put("status", "ok");
