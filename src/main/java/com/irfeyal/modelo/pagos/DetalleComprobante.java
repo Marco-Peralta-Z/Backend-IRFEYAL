@@ -2,6 +2,7 @@ package com.irfeyal.modelo.pagos;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class DetalleComprobante implements Serializable{
 	private float valor;
 	private String detalle;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_comprobante")
 	private Comprobante id_comprobante;
 

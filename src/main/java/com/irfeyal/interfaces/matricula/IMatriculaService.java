@@ -19,4 +19,6 @@ public List<Matricula> findAll();
 	
 	public void delete (Long id);
 	
+	public List<Matricula> findByCedulaEstudiante(String cedula);
+	
 }
