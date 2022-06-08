@@ -19,5 +19,7 @@ public interface ParaleloServices {
 	public Paralelo saveParalelo(Paralelo paralelo);
 
 	public Paralelo deleteParalelo(Long idParalelo);
+	
+	public List<Paralelo> findParaleloByCurso(Long id_curso);
 
 }

@@ -3,8 +3,6 @@ package com.irfeyal.modelo.matricula;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;

@@ -1,7 +1,6 @@
 package com.irfeyal.modelo.dao.parametrizacionacademica;
 
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;

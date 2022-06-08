@@ -32,4 +32,9 @@ public interface PeriodoRepository extends JpaRepository<Periodo, Long> {
 	List<Periodo> Listperiodosempelados(Long empleado);
 	
 
+//	Modulo Matricula
+	@Query(value="select * from periodo p where p.id_malla=?1 and p.vigencia= true", nativeQuery=true)
+	List<Periodo> findByMalla(Long id_malla);
+
+
 }

@@ -50,4 +50,10 @@ public class ParaleloServicesImp implements ParaleloServices {
 		}
 	}
 
+	@Override
+	public List<Paralelo> findParaleloByCurso(Long id_curso) {
+		
+		return paraleloRepo.findParaleloByCurso(id_curso);
+	}
+
 }

@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.irfeyal.modelo.inventarios.Kit;
-import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.rolseguridad.CorreoElectronico;
 import com.irfeyal.modelo.rolseguridad.Direccion;
 import com.irfeyal.modelo.rolseguridad.Extension;

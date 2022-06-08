@@ -144,4 +144,10 @@ public class ParaleloController {
 		respuesta.put("mensaje", "El Paralelo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
+	
+	@GetMapping("/getParalelosPorCurso/{id_curso}")
+    public List<Paralelo> getParalelosPorCurso(@PathVariable Long id_curso){
+ 
+		return paraleloService.findParaleloByCurso(id_curso);
+	}
 }
