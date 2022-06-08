@@ -55,8 +55,7 @@ public class CategoriaControlador {
 		}
 	}
 	
-	
-	@PutMapping(path = "/crear", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> crearCategoria(@Validated @RequestBody Categoria categoria, BindingResult result) {
 		
 		Categoria categoriaNew = null;
