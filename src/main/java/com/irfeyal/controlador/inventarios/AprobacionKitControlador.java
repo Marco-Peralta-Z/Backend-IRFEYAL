@@ -2,6 +2,7 @@ package com.irfeyal.controlador.inventarios;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -28,9 +29,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
+import com.irfeyal.modelo.inventarios.TempPagoKit;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.Empleado;
@@ -293,7 +296,26 @@ public class AprobacionKitControlador {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 	
-	
+	@GetMapping(path = "/estudipagados", produces = { "application/json" })
+	public  ResponseEntity<Map<String, Object>> lisEstudiantePago() {
+		
+		List<TempPagoKit> listaEstidiantes = new ArrayList<>();
+		
+		List<TempPagoKit> listaPagos = aprobacionService.listaPagosEstud();
+		for (Iterator iterator = listaPagos.iterator(); iterator.hasNext();) {
+			TempPagoKit temp = (TempPagoKit) iterator.next();
+			Estudiante es = new Estudiante();
+			es = estudianteService.findById(temp.getId_estudiante());
+			temp.setEstudiante(es);
+			listaEstidiantes.add(temp);
+		}
+		
+		Map<String, Object> respuesta = new HashMap<>();
+		respuesta.put("status", "ok");
+		respuesta.put("listaEstudiante", listaEstidiantes);
+		
+		return  new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
+	}
 
 }
 

@@ -51,8 +51,8 @@ public class CategoriaService implements CategoriaInterface {
 
 
 	public boolean validarCategoria(Categoria categoria) {
-		if (categoria.getCatedescri() != null
-				&& categoria.getCatenombre() != null) {
+		if (categoria.getCateCodigo() != null
+				&& categoria.getCateNombre() != null) {
 			return true;
 		}else {
 			return false;

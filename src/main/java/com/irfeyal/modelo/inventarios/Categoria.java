@@ -25,11 +25,11 @@ public class Categoria implements Serializable {
     @Column(name = "id_categoria")
     private Long id_categoria;
     
-    @Column(name = "catenombre")
-    private String catenombre;
+    @Column(name = "cate_nombre")
+    private String cateNombre;
     
-    @Column(name = "catedescri")
-    private String catedescri;
+    @Column(name = "cate_codigo")
+    private String cateCodigo;
     
 
     public Categoria() {
@@ -43,21 +43,24 @@ public class Categoria implements Serializable {
 		this.id_categoria = id_categoria;
 	}
 
-	public String getCatenombre() {
-		return catenombre;
+	public String getCateNombre() {
+		return cateNombre;
 	}
 
-	public void setCatenombre(String catenombre) {
-		this.catenombre = catenombre;
+	public void setCateNombre(String cateNombre) {
+		this.cateNombre = cateNombre;
 	}
 
-	public String getCatedescri() {
-		return catedescri;
+	public String getCateCodigo() {
+		return cateCodigo;
 	}
 
-	public void setCatedescri(String catedescri) {
-		this.catedescri = catedescri;
+	public void setCateCodigo(String cateCodigo) {
+		this.cateCodigo = cateCodigo;
 	}
+
+	
+
 
 
 

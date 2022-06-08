@@ -1,6 +1,9 @@
 package com.irfeyal.servicio.inventarios;
 
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,13 +14,20 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.transaction.Transactional;
 
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+import com.google.gson.internal.JsonReaderInternalAccess;
 import com.irfeyal.interfaces.inventarios.AprobacionKitInterface;
 import com.irfeyal.modelo.dao.inventarios.AprobacionKitDao;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
+import com.irfeyal.modelo.inventarios.TempPagoKit;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Service // ("IAutoServiceImplement")
@@ -87,6 +97,26 @@ public class AprobacionKitService implements AprobacionKitInterface {
 			return aprobacion;
 			
 		}
+	}
+	
+	
+	public List<TempPagoKit> listaPagosEstud() {
+		Gson gson = new Gson();
+		List<Object> obj = aprobacionDao.estudiantesPagado();
+		List<TempPagoKit> listaEstudPagos = new ArrayList<>();
+		for (Iterator iterator = obj.iterator(); iterator.hasNext();) {
+			Object object = (Object) iterator.next();
+			String a = gson.toJson(object);
+			JsonParser parseJSON = new JsonParser();
+			JsonArray stringlistatiposPago = (JsonArray) parseJSON.parse(a);
+			TempPagoKit tempPagoKit = new TempPagoKit();
+			tempPagoKit.setId_estudiante(Long.parseLong(""+stringlistatiposPago.get(0)));
+			tempPagoKit.setValor_total(Float.parseFloat(""+stringlistatiposPago.get(1)));
+			listaEstudPagos.add(tempPagoKit);
+		}
+		
+		return listaEstudPagos;
+		
 	}
 
 }

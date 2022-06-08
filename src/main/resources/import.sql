@@ -550,15 +550,84 @@ INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_docu
 
 
 --INVENTARIOS
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('02', 'BICICLETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01', 'AUDIO Y VIDEO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03',  'COCINA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05', 'HOGAR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04', 'COMPUTACION');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07', 'HERRAMIENTA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('06', 'LAVADO Y SECADO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08', 'MOTOCICLETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('09', 'REFRIGERACION');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10', 'TELEFONO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11', 'TV');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('12', 'VEHICULOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01001', 'CONTROLADORA DJ');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01002', 'PARLANTE');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01003', 'MICROFONO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('02001', 'BICICLETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03001', 'COCINA A GAS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03002', 'COCINA A INDUCCION');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03003', 'UTENCILIO DE COCINA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04001', 'PC PORTATIL');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04002', 'PC ESCRITORIO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04003', 'ACCESORIOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04004', 'IMPRESORAS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05001', 'CALEFON');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05002', 'ASPIRADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05003', 'AIRE ACONDICIONADO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05004', 'CILINDRO DE GAS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('06001', 'LAVADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('06002', 'SECADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('06003', 'LAVADORA Y SECADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07001', 'MECANICA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07002', 'ELECTRICA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08001', 'MOTOCICLETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08002', 'CUADRON');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08003', 'MOTOCICLETA ELECTRICA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08004', 'MOTONETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08005', 'ACCESORIOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('09001', 'REFRIGERADOR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('09002', 'CONGELADOR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10001', 'FIJO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10002', 'CELULAR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10003', 'TABLET');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11001', 'TV NO SMART');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('9901', 'PUBLICIDAD');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01004', 'VIDEO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('99', 'VARIOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('9999', 'VARIOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11002', 'TV SMART');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11003', 'SOPORTES');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03005', 'CAMPANA EXTRACTOR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07003', 'JARDINERIA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07004', 'MOTOR - COMPRENSOR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01005', 'MINICOMPONENTE');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05005', 'COLCHON');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05006', 'PLANCHA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03006', 'OLLA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03007', 'LICUADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03008', 'BATIDORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03009', 'HORNO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03010', 'FREIDORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03011', 'TOSTADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05007', 'HIDROLAVADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05008', 'MUEBLES');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05009', 'MAQUINA DE COSER');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('12001', 'LLANTAS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05010', 'ACCESODIOS AGUA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03004', 'ENCIMERA');
 
 
-INSERT INTO categoria (catenombre, catedescri) values ('Ordenador', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Audio y video', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Impresora', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Copiadora', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Máquina de escribir', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Calculadoras ', 'Equipos de informática');
-INSERT INTO categoria (catenombre, catedescri) values ('Teléfonos', 'Equipos de informática y telecomunicaciones');
+
+
+
+
+
+
+
+
+
 
 
 INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Ingreso Articulo',6);

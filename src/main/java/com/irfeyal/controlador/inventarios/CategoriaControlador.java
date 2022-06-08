@@ -120,8 +120,8 @@ public class CategoriaControlador {
 		}
 		try {
 			//Actualizando kit
-			categoriaActual.setCatedescri(categoria.getCatedescri());
-			categoriaActual.setCatenombre(categoria.getCatenombre());
+			categoriaActual.setCateCodigo(categoria.getCateCodigo());
+			categoriaActual.setCateNombre(categoria.getCateNombre());
 			
 			categoriaUpdate = categoriaService.save(categoriaActual);
 			
