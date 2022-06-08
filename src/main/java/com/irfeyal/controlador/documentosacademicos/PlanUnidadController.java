@@ -42,9 +42,6 @@ public class PlanUnidadController {
 	
 	@Autowired
 	private CursoServicesImp cursosService;
-	
-	@Autowired
-	private ParaleloServicesImp paraleloService;
 
 	
 	@GetMapping
@@ -65,7 +62,7 @@ public class PlanUnidadController {
 	}
 	
 	@GetMapping ("usuario/{id_usuario}")
-	private ResponseEntity<Optional<Usuario>> getUsuari (@PathVariable("id_usuario") Long id){
+	private ResponseEntity<Optional<Usuario>> getUsuario (@PathVariable("id_usuario") Long id){
 		return ResponseEntity.ok(planUnidadService.findUsuario(id));
 	}
 	
@@ -115,6 +112,13 @@ public class PlanUnidadController {
 	@GetMapping(path = "cursos")
 	public ResponseEntity<?> getAllCursos() {
 		return new ResponseEntity<>(cursosService.getAllCurso(), HttpStatus.OK);
+	}
+	
+	@GetMapping ("{id_unidad}/{id_asignatura}/{id_modalidad}/{id_curso}")
+	private ResponseEntity<Boolean> verificarPlanUnidad (@PathVariable("id_unidad") Long id_unidad,
+			@PathVariable("id_asignatura") Long id_asig, @PathVariable("id_curso") Long id_curso,
+			@PathVariable("id_modalidad") Long id_modalidad){
+		return ResponseEntity.ok(planUnidadService.findPUByUnidadAsigCurso(id_unidad, id_asig, id_curso,id_modalidad));
 	}
 	
 }

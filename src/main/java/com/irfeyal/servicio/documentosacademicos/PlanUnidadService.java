@@ -52,7 +52,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		return planunidadesRespuesta;
 	}
 	
-	//listar Planes de unidad por Empleado
+	//listar Planes de unidad por Empleado y estado
 		public List<PlanUnidad> findAllByEmpleado (Long id, String est){
 			List<PlanUnidad> planunidadesRespuesta = new ArrayList<>();
 			List<PlanUnidad> planunidades = planUnidadDAO.findAll();
@@ -63,6 +63,28 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			}
 			return planunidadesRespuesta;
 		}
+		
+		/*Buscar Plan de unidad por Unidad, asignatura, curso y modalidad 
+		(Controlar la ceracion del Plan de Unidad con el mismo No de unidad)*/
+		public boolean findPUByUnidadAsigCurso (Long id_u, Long id_a, Long id_c, Long id_m){
+			List<PlanUnidad> planunidadesRespuesta = new ArrayList<>();
+			List<PlanUnidad> planunidades = planUnidadDAO.findAll();
+			boolean existe = false;
+			for (int i=0; i<planunidades.size(); i++) {
+				if ((planunidades.get(i).getUnidad().getIdUnidad() == id_u) &&
+					(planunidades.get(i).getAsignatura().getId_asignatura() == id_a) &&
+					(planunidades.get(i).getCurso().getId_curso() == id_c) &&
+					(planunidades.get(i).getModalidad().getId_modalidad() == id_m)) {
+					planunidadesRespuesta.add(planunidades.get(i));
+				} 
+			}
+			if (planunidadesRespuesta.size() == 0) {
+			    existe = false;
+			} else {
+				existe = true;
+			}
+			return existe; 
+		}	
 	
 	//listar Asignaturas por Malla
 		public List<Asignatura> findAllByMalla (Long id){
