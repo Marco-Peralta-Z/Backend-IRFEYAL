@@ -51,6 +51,12 @@ public class MatriculaServiceImpl implements IMatriculaService{
 		matriculaDao.deleteById(id);
 	}
 
+	@Override
+	public List<Matricula> findByCedulaEstudiante(String cedula) {
+		// TODO Auto-generated method stub
+		return matriculaDao.findByCedulaEstudiante(cedula);
+	}
+
 	
 
 }

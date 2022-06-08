@@ -152,4 +152,11 @@ public class MatriculaRestController {
 //		return matriculaService.findByCurso(id_curso);
 //	}
 	
+	
+	/*Pagos*/
+	@GetMapping("/matricula/{cedula}")
+	public List<Matricula> buscarPorCedulaEstudiante(@PathVariable String cedula){
+		return matriculaService.findByCedulaEstudiante(cedula); 
+	}
+	
 }
