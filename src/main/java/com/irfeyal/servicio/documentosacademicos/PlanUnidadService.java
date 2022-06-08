@@ -86,18 +86,18 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			return existe; 
 		}	
 	
-	//listar Asignaturas por Malla
-		public List<Asignatura> findAllByMalla (Long id){
-			List<Asignatura> AsigRespuesta = new ArrayList<>();
-			List<Asignatura> asignaturas = asignaturaRepository.findAll();
-			for (int i=0; i<asignaturas.size(); i++) {
-				long id_malla = asignaturas.get(i).getMallas().get(0).getId_malla();
-				if ( id_malla == id) {
-					AsigRespuesta.add(asignaturas.get(i));
-				}
-			}
-			return AsigRespuesta;
-		}
+//	//listar Asignaturas por Malla
+//		public List<Asignatura> findAllByMalla (Long id){
+//			List<Asignatura> AsigRespuesta = new ArrayList<>();
+//			List<Asignatura> asignaturas = asignaturaRepository.findAll();
+//			for (int i=0; i<asignaturas.size(); i++) {
+//				long id_malla = asignaturas.get(i).getMallas().get(0).getId_malla();
+//				if ( id_malla == id) {
+//					AsigRespuesta.add(asignaturas.get(i));
+//				}
+//			}
+//			return AsigRespuesta;
+//		}
 		
 	//Update Plan de Unidad
 	public  PlanUnidad  updatePlanUnidad ( Long  id , PlanUnidad  planUnidad ) {

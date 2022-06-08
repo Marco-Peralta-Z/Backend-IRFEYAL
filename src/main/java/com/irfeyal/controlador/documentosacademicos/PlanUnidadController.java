@@ -99,16 +99,16 @@ public class PlanUnidadController {
 		return new ResponseEntity<>(periodoService.getAllPeriodo(), HttpStatus.OK);
 	}
 	
-	@GetMapping ("asignaturas/{id}")
-	private ResponseEntity<List<Asignatura>> getAllAsignaturasByMalla (@PathVariable("id") Long id){
-		try {
-			return ResponseEntity.ok(planUnidadService.findAllByMalla(id));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-		}
-		
-	}
-	
+//	@GetMapping ("asignaturas/{id}")
+//	private ResponseEntity<List<Asignatura>> getAllAsignaturasByMalla (@PathVariable("id") Long id){
+//		try {
+//			return ResponseEntity.ok(planUnidadService.findAllByMalla(id));
+//		} catch (Exception e) {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//		}
+//		
+//	}
+//	
 	@GetMapping(path = "cursos")
 	public ResponseEntity<?> getAllCursos() {
 		return new ResponseEntity<>(cursosService.getAllCurso(), HttpStatus.OK);
