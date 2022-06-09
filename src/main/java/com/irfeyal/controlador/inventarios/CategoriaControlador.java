@@ -46,10 +46,13 @@ public class CategoriaControlador {
 	}
 	
 	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<AprobacionKit> obtenerCategria(@RequestParam("id") Long id){
+	public ResponseEntity<?> obtenerCategria(@RequestParam("id") Long id){
 		Optional<Categoria> categoria = this.categoriaService.getById(id);
+		Map<String, Object> respuesta = new HashMap<>();
 		if(categoria.isPresent()) {
-			return new ResponseEntity(categoria.get(),HttpStatus.OK);
+			respuesta.put("status", "ok");
+			respuesta.put("categoria", categoria.get());
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 		}else {
 			return ResponseEntity.notFound().build();
 		}
