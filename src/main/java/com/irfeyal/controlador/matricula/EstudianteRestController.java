@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.matricula.Estudiante;
+import com.irfeyal.modelo.rolseguridad.Persona;
 import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
 
 @CrossOrigin(origins= {"http://localhost:4200"})
@@ -43,6 +44,13 @@ public class EstudianteRestController {
 	public Page<Estudiante> index(@PathVariable Integer page){
 		Pageable pageable = PageRequest.of(page,3);
 		return estudianteService.findAll(pageable);
+	}
+	
+	
+
+	@GetMapping("/estudiantePersonas")
+	public List<Persona> estudiantePersonas(){
+		return estudianteService.findAllPersonas();
 	}
 	
 	

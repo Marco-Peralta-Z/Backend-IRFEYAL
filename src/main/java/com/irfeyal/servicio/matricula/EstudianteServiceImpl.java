@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.irfeyal.interfaces.matricula.IEstudianteService;
 import com.irfeyal.modelo.dao.matricula.IEstudianteDao;
 import com.irfeyal.modelo.matricula.Estudiante;
+import com.irfeyal.modelo.rolseguridad.Persona;
 
 @Service
 public class EstudianteServiceImpl implements IEstudianteService {
@@ -64,5 +65,11 @@ public class EstudianteServiceImpl implements IEstudianteService {
 	public List<Estudiante> findAllByCedula(String cedula) {
 		// TODO Auto-generated method stub
 		return estudianteDao.findAllByCedula(cedula);
+	}
+
+	@Override
+	public List<Persona> findAllPersonas() {
+		// TODO Auto-generated method stub
+		return estudianteDao.findAllPersonas();
 	}
 }

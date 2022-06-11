@@ -46,6 +46,11 @@ public class MatriculaRestController {
 	public List<Matricula> index(){
 		return matriculaService.findAll();
 	}
+	
+	@GetMapping("/historialMatricula/{id}")
+	public List<Matricula> findHistorialEstudianteMatricula(@PathVariable Long id){
+		return matriculaService.findHistorialEstudianteMatricula(id);
+	}
 	@GetMapping("/matricula/page/{page}")
 	public Page<Matricula> index(@PathVariable Integer page){
 		Pageable pageable= PageRequest.of(page, 3);
