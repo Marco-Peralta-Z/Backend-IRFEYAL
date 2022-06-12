@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.servicio.matricula.EnvioEmail;
 import com.irfeyal.servicio.matricula.MatriculaServiceImpl;
+import com.irfeyal.servicio.tutorias.RegistroServiceImpl;
 
 @CrossOrigin(origins= {"*"})
 @RestController
@@ -35,12 +36,20 @@ public class MatriculaRestController {
 	@Autowired
 	private MatriculaServiceImpl matriculaService;
 	
+	@Autowired
+	private RegistroServiceImpl registroservice;
+	
 	@Autowired EnvioEmail sendEmail;
 	
 	
 	@GetMapping("/matricula")
 	public List<Matricula> index(){
 		return matriculaService.findAll();
+	}
+	
+	@GetMapping("/historialMatricula/{id}")
+	public List<Matricula> findHistorialEstudianteMatricula(@PathVariable Long id){
+		return matriculaService.findHistorialEstudianteMatricula(id);
 	}
 	@GetMapping("/matricula/page/{page}")
 	public Page<Matricula> index(@PathVariable Integer page){
@@ -76,6 +85,13 @@ public class MatriculaRestController {
 		
 		response.put("mensaje",	"Matricula creada con exito");
 		response.put("estudiante", matriculaNew);
+		
+		//Crear un registro de Notas
+		Long Matri = matriculaNew.getId_matricula();
+		registroservice.cargardatos(Matri);
+		
+		
+		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	

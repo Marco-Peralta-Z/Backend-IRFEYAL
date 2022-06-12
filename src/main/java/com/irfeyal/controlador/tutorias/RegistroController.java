@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -147,12 +148,10 @@ public class RegistroController {
 
 		}
 		
-		/*
-		@GetMapping("/MostrarNotas/{idemple}/{idperiodo}/{idcurso}/{idparalelo}/{Asignatura}")
-		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
-			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo);
+		@PutMapping(value="/Update/{id_registro}")
+		public ResponseEntity<Object>updateRegistro(@RequestBody Registro registro, @PathVariable Long id_registro){
+			this.registroserviceimpl.update(registro, id_registro);
+			return ResponseEntity.ok(Boolean.TRUE);	
 		}
-		
-		*/
 		
 }

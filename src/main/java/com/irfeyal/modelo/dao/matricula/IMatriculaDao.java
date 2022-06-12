@@ -37,4 +37,8 @@ public interface IMatriculaDao extends CrudRepository<Matricula, Long>{
 	@Query(value="select m from Matricula m where m.estudiante.id_persona.cedula like %?1%")
 	public List<Matricula> findByCedulaEstudiante(String cedula);
 	
+	
+	@Query(value="select m.id_matricula, m.fecha_matricula,m.id_curso, m,id_estudiante,m.id_paralelo, m.id_periodo,m.id_modalidad, m.id_usuario from matriculas m where m.id_estudiante =?1", nativeQuery = true)
+	public List<Matricula> findHistorialEstudianteMatricula(Long id);
+	
 }

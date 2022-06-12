@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.irfeyal.modelo.matricula.Estudiante;
+import com.irfeyal.modelo.rolseguridad.Persona;
 
 public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 	
@@ -19,6 +20,9 @@ public interface IEstudianteDao  extends CrudRepository<Estudiante, Long> {
 	@Query(value = "select e from Estudiante e join "
 			+ "Persona p on p.id_persona = e.id_persona where p.cedula like :cedula", nativeQuery = false)
 	Estudiante findByCedula(@Param("cedula") String cedula );
+	
+	@Query(value="select p from Persona p join Estudiante e on p.id_persona= e.id_persona" , nativeQuery = false)
+	List<Persona> findAllPersonas();
 	
 	//-----------------------Modulo Asistencia--------------------
 	

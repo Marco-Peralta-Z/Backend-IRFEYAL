@@ -31,6 +31,10 @@ public interface IRegistroService {
 	public List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_curso, Long id_paralelo, Long id_modalidad);
 	public List<Matricula> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo, Long id_asignatura);
 	public Comprobante buscarceduestudiante(String cedula);
+	
+	public  void update(Registro registro, Long id_registro);
+	
+	public Registro cargardatos (Long matricula);
 
 
 }

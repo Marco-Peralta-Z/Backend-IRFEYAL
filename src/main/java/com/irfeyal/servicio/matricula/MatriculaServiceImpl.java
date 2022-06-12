@@ -57,6 +57,12 @@ public class MatriculaServiceImpl implements IMatriculaService{
 		return matriculaDao.findByCedulaEstudiante(cedula);
 	}
 
+	@Override
+	public List<Matricula> findHistorialEstudianteMatricula(Long id) {
+		// TODO Auto-generated method stub
+		return matriculaDao.findHistorialEstudianteMatricula(id);
+	}
+
 	
 
 }
