@@ -25,52 +25,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.irfeyal.interfaces.parametrizacionacademica.AreaServices;
-import com.irfeyal.modelo.parametrizacionacademica.Area;
+import com.irfeyal.interfaces.parametrizacionacademica.TutorServices;
+import com.irfeyal.modelo.parametrizacionacademica.Tutor;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/area")
-public class AreaController {
+@RequestMapping("/tutor")
+public class TutorController {
 
 	@Autowired
-	private AreaServices areaService;
+	private TutorServices tutorService;
 
 	@GetMapping(path = "", produces = "application/json")
-	public ResponseEntity<?> getAreas() {
-		return new ResponseEntity<>(areaService.getAllArea(), HttpStatus.OK);
+	public ResponseEntity<?> getTutores() {
+		return new ResponseEntity<>(tutorService.getAllTutor(), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/", produces = "application/json")
-	public ResponseEntity<?> getAllAreas(@RequestParam(name = "page", defaultValue = "0") int page,
+	public ResponseEntity<?> getAllTutores(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
 		Pageable pageable = PageRequest.of(page, size);
-		return new ResponseEntity<>(areaService.getAllArea(pageable), HttpStatus.OK);
+		return new ResponseEntity<>(tutorService.getAllTutor(pageable), HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<?> getAreaById(@PathVariable("id") Long idArea) {
-		System.err.println("----------->" + idArea);
-		Optional<Area> area = null;
+	public ResponseEntity<?> getTutorById(@PathVariable("id") Long idTutor) {
+		Optional<Tutor> tutor = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			area = areaService.getAreaById(idArea);
+			tutor = tutorService.getTutorById(idTutor);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar la consulta en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		if (area.isEmpty()) {
+		if (tutor.isEmpty()) {
 			respuesta.put("mensaje",
-					"El �rea ID: ".concat(idArea.toString().concat(": no existe en la base de datos")));
+					"El tutor ID: ".concat(idTutor.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<>(area, HttpStatus.OK);
+		return new ResponseEntity<>(tutor, HttpStatus.OK);
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createArea(@Validated @RequestBody Area area, BindingResult result) {
-		Area areaNueva = null;
+	public ResponseEntity<Map<String, Object>> createTutor(@Validated @RequestBody Tutor tutor, BindingResult result) {
+		Tutor tutorNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
@@ -80,23 +79,23 @@ public class AreaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			area.setDescripcion(area.getDescripcion().toUpperCase());
-			areaNueva = areaService.saveArea(area);
+			//Guardando tutor
+			tutorNuevo = tutorService.saveTutor(tutor);
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al crear la asignatura en la base de datos");
+			respuesta.put("mensaje", "Error al crear tutor en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "La asignatura ha sido creada con �xito!");
-		respuesta.put("asignatura", areaNueva);
+		respuesta.put("mensaje", "El tutor ha sido creada con exito!");
+		respuesta.put("tutor", tutorNuevo);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateArea(@PathVariable("id") Long idArea, @Validated @RequestBody Area area,
+	public ResponseEntity<?> updateTutor(@PathVariable("id") Long idTutor, @Validated @RequestBody Tutor tutor,
 			BindingResult result) {
-		Optional<Area> areaActual = areaService.getAreaById(idArea);
-		Area areaUpdated = null;
+		Optional<Tutor> tutorActual = tutorService.getTutorById(idTutor);
+		Tutor tutorUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
@@ -105,42 +104,39 @@ public class AreaController {
 			respuesta.put("errores", errors);
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		if (areaActual.isEmpty()) {
-			respuesta.put("mensaje", "Error: no se pudo editar la asignatura: "
-					.concat(idArea.toString().concat(" no existe en la base de datos")));
+		if (tutorActual.isEmpty()) {
+			respuesta.put("mensaje", "Error: no se pudo editar el tutor: "
+					.concat(idTutor.toString().concat(" no existe en la base de datos")));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Actualizaci�n �rea
-			areaActual.get().setDescripcion(area.getDescripcion().toUpperCase());
-			// Lista de asignaturas ?
-
-			areaUpdated = areaService.saveArea(areaActual.get());
+			// Actualización Tutor
+			tutorUpdated = tutorService.saveTutor(tutor);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		respuesta.put("mensaje", "El �rea ha sido actualizada con exito");
-		respuesta.put("area", areaUpdated);
+		respuesta.put("mensaje", "El tutor ha sido actualizado con exito");
+		respuesta.put("area", tutorUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@DeleteMapping(path = "/{id}", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> deleteArea(@PathVariable("id") Long idArea) {
+	public ResponseEntity<Map<String, Object>> deleteTutor(@PathVariable("id") Long idTutor) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			Area areaRecu = areaService.deleteArea(idArea);
-			if (areaRecu == null) {
-				respuesta.put("mensaje", "El �rea no existe en la base de datos");
+			Tutor tutorRecu = tutorService.deleteTutor(idTutor);
+			if (tutorRecu== null) {
+				respuesta.put("mensaje", "El tutor no existe en la base de datos");
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
 			}
 		} catch (DataAccessException e) {
-			respuesta.put("mensaje", "Error al eliminar �rea de la base de datos");
+			respuesta.put("mensaje", "Error al eliminar tutor de la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El �rea ha sido eliminada");
+		respuesta.put("mensaje", "El tutor ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 
