@@ -1,12 +1,16 @@
 package com.irfeyal.controlador.documentosacademicos;
 
+import java.io.ByteArrayOutputStream;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
+import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.modelo.rolseguridad.Usuario;
@@ -26,6 +31,7 @@ import com.irfeyal.servicio.parametrizacionacademica.CursoServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.ModalidadServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.ParaleloServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.PeriodoServicesImp;
+import com.itextpdf.text.Document;
 
 @RestController
 @RequestMapping ("/planunidades/")
@@ -119,6 +125,11 @@ public class PlanUnidadController {
 			@PathVariable("id_asignatura") Long id_asig, @PathVariable("id_curso") Long id_curso,
 			@PathVariable("id_modalidad") Long id_modalidad){
 		return ResponseEntity.ok(planUnidadService.findPUByUnidadAsigCurso(id_unidad, id_asig, id_curso,id_modalidad));
+	}
+	
+	@PostMapping("pdfPlanUnidad")
+	public ResponseEntity<?> createPDF(@Validated @RequestBody PlanUnidad planunidad) {
+		return new ResponseEntity<>(planUnidadService.createPDFplanunidad(planunidad), HttpStatus.OK);
 	}
 	
 }
