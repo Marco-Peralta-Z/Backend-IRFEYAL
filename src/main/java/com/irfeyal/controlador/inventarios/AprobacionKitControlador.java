@@ -33,6 +33,7 @@ import com.google.gson.Gson;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
+import com.irfeyal.modelo.inventarios.TempPagoKit;
 //import com.irfeyal.modelo.inventarios.TempPagoKit;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
@@ -53,30 +54,29 @@ public class AprobacionKitControlador {
 
 	@Autowired
 	EmpleadoService empleadoService;
-	
-	@Autowired//(required = false)
-	//@Qualifier("IAutoServiceImplement")
+
+	@Autowired // (required = false)
+	// @Qualifier("IAutoServiceImplement")
 	IKitService kitService;
-	
+
 	@Autowired
 	EstudianteServiceImpl estudianteService;
-	
-	@Autowired	
+
+	@Autowired
 	ModulolibroService modulolibroService;
-	
+
 	@GetMapping(path = "/list", produces = { "application/json" })
 	public List<AprobacionKit> listAprobacion() {
 		return aprobacionService.listAllAprobacion();
 	}
 
-	
-	
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> crearAprobacion(@Validated @RequestBody AprobacionKit aprobacion, BindingResult result) {
+	public ResponseEntity<Map<String, Object>> crearAprobacion(@Validated @RequestBody AprobacionKit aprobacion,
+			BindingResult result) {
 		AprobacionKit nuevaAprobacion = null;
 		Map<String, Object> respuesta = new HashMap<>();
-		//System.out.println(aprobacion.getSecretaria());
-		if(aprobacion.getAdministrador() != null) {
+		// System.out.println(aprobacion.getSecretaria());
+		if (aprobacion.getAdministrador() != null) {
 			if (result.hasErrors()) {
 				List<String> errors = result.getFieldErrors().stream()
 						.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
@@ -85,7 +85,7 @@ public class AprobacionKitControlador {
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 			}
 			try {
-				//Guardar malla
+				// Guardar malla
 				Empleado emp = empleadoService.findById(aprobacion.getAdministrador().getId_empleado());
 				aprobacion.setAdministrador(emp);
 				aprobacion.setDetalleControl(aprobacion.getDetalleControl().toUpperCase());
@@ -98,33 +98,31 @@ public class AprobacionKitControlador {
 			respuesta.put("status", "ok");
 			respuesta.put("aprobacion", nuevaAprobacion);
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
-		}else {
+		} else {
 			respuesta.put("mensaje", "No existe el empleado");
 			respuesta.put("error", null);
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
-		
+
 		}
-		
-		
+
 	}
-	
-	
-	@GetMapping(produces = {"application/json"})
-	public ResponseEntity<?> buscarAprobaId(@RequestParam("id") Long id){
+
+	@GetMapping(produces = { "application/json" })
+	public ResponseEntity<?> buscarAprobaId(@RequestParam("id") Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
 		Optional<AprobacionKit> aprobacion = this.aprobacionService.getById(id);
-		if(aprobacion.isPresent()) {
+		if (aprobacion.isPresent()) {
 			respuesta.put("status", "ok");
 			respuesta.put("aprobacion", aprobacion.get());
-			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.OK);
-		}else {
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
+		} else {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
-	
+
 	@PostMapping(path = "/entregakit", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> entregaKitEstudiante(@Validated @RequestBody AprobacionKit aprobacionKit, BindingResult result) {
+	public ResponseEntity<Map<String, Object>> entregaKitEstudiante(@Validated @RequestBody AprobacionKit aprobacionKit,
+			BindingResult result) {
 		Estudiante kitEntregadoEstudiante = null;
 		AprobacionKit aprobaEntregaKit = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -136,45 +134,43 @@ public class AprobacionKitControlador {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			
+
 			Estudiante estudianteBuscar = estudianteService.findById(aprobacionKit.getEstudiante().getid_estudiante());
 
 			Kit kitBuscar = kitService.getById(aprobacionKit.getKit().getId_kit()).get();
-			
+
 			Empleado empleadoBuscar = empleadoService.findById(aprobacionKit.getAdministrador().getId_empleado());
-			
+
 			List<Kit> listaKitGuardar = estudianteBuscar.getListadoKits();
-			
+
 			listaKitGuardar.add(kitBuscar);
 			estudianteBuscar.setListadoKits(listaKitGuardar);
 
 			kitEntregadoEstudiante = estudianteService.save(estudianteBuscar);
-			
+
 			aprobacionKit.setKit(kitBuscar);
 			aprobacionKit.setEstudiante(kitEntregadoEstudiante);
 			aprobacionKit.setAdministrador(empleadoBuscar);
-			
-			
-			//actualizar S T O K MODULOS
+
+			// actualizar S T O K MODULOS
 			List<ModuloLibro> listaModulosEditar = aprobacionKit.getKit().getListaModulos();
 			List<ModuloLibro> listaModulosBaseDatos = modulolibroService.listAllModuloLibro();
-			
+
 			for (int i = 0; i < listaModulosBaseDatos.size(); i++) {
 				for (int j = 0; j < listaModulosEditar.size(); j++) {
-					if(listaModulosBaseDatos.get(i).getCodModulo().equals(listaModulosEditar.get(j).getCodModulo())) {
+					if (listaModulosBaseDatos.get(i).getCodModulo().equals(listaModulosEditar.get(j).getCodModulo())) {
 						int stockBD = listaModulosBaseDatos.get(i).getCantidad();
-						int restarStockModulo = stockBD-1;
-						ModuloLibro ml = modulolibroService.getById(listaModulosBaseDatos.get(i).getId_modulo_libro()).get();
+						int restarStockModulo = stockBD - 1;
+						ModuloLibro ml = modulolibroService.getById(listaModulosBaseDatos.get(i).getId_modulo_libro())
+								.get();
 						ml.setCantidad(restarStockModulo);
 						modulolibroService.save(ml);
 					}
 				}
 			}
-			
-						
-			
+
 			aprobaEntregaKit = aprobacionService.save(aprobacionKit);
-			
+
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear entidad");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -184,19 +180,17 @@ public class AprobacionKitControlador {
 		respuesta.put("aprobaEntregaKit", aprobaEntregaKit);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
-	
-	
+
 	@PutMapping(consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> actualizarEntregaKit(@Validated @RequestBody AprobacionKit aprobacionKitUpdate,
 			BindingResult result) {
-		
+
 		AprobacionKit aprobaBuscar = aprobacionService.getById(aprobacionKitUpdate.getId_aprobacion()).get();
-		
+
 		Estudiante kitEntregadoEstudiante = null;
 		AprobacionKit aprobaEntregaKit = null;
 		Map<String, Object> respuesta = new HashMap<>();
-		
-		
+
 		if (result.hasErrors()) {
 			List<String> errors = result.getFieldErrors().stream()
 					.map(error -> "Error en el atributo: " + error.getField() + ": " + error.getDefaultMessage())
@@ -205,64 +199,66 @@ public class AprobacionKitControlador {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			
-			Estudiante estudianteBuscar = estudianteService.findById(aprobacionKitUpdate.getEstudiante().getid_estudiante());
+
+			Estudiante estudianteBuscar = estudianteService
+					.findById(aprobacionKitUpdate.getEstudiante().getid_estudiante());
 
 			Kit kitBuscar = kitService.getById(aprobacionKitUpdate.getKit().getId_kit()).get();
-			
+
 			Empleado empleadoBuscar = empleadoService.findById(aprobacionKitUpdate.getAdministrador().getId_empleado());
-			
+
 			List<Kit> listaKitGuardar = estudianteBuscar.getListadoKits();
-			
+
 			listaKitGuardar.add(kitBuscar);
 			estudianteBuscar.setListadoKits(listaKitGuardar);
 
 			kitEntregadoEstudiante = estudianteService.save(estudianteBuscar);
-			
+
 			aprobaBuscar.setKit(kitBuscar);
 			aprobaBuscar.setEstudiante(kitEntregadoEstudiante);
 			aprobaBuscar.setAdministrador(empleadoBuscar);
-			
-			//regresar S T O K MODULOS
+
+			// regresar S T O K MODULOS
 			List<ModuloLibro> listaModulosEditar = aprobaBuscar.getKit().getListaModulos();
 			List<ModuloLibro> listaModulosBaseDatos = modulolibroService.listAllModuloLibro();
-			
+
 			for (int i = 0; i < listaModulosBaseDatos.size(); i++) {
 				for (int j = 0; j < listaModulosEditar.size(); j++) {
-					if(listaModulosBaseDatos.get(i).getCodModulo().equals(listaModulosEditar.get(j).getCodModulo())) {
+					if (listaModulosBaseDatos.get(i).getCodModulo().equals(listaModulosEditar.get(j).getCodModulo())) {
 						int stockBD = listaModulosBaseDatos.get(i).getCantidad();
-						int restarStockModulo = stockBD+1;
-						ModuloLibro ml = modulolibroService.getById(listaModulosBaseDatos.get(i).getId_modulo_libro()).get();
+						int restarStockModulo = stockBD + 1;
+						ModuloLibro ml = modulolibroService.getById(listaModulosBaseDatos.get(i).getId_modulo_libro())
+								.get();
 						ml.setCantidad(restarStockModulo);
 						modulolibroService.save(ml);
 					}
 				}
 			}
-			
-			//restart S T O K MODULOS
+
+			// restart S T O K MODULOS
 			List<ModuloLibro> listaModulosEditarRestar = aprobacionKitUpdate.getKit().getListaModulos();
 			List<ModuloLibro> listaModulosBaseDatosRestar = modulolibroService.listAllModuloLibro();
-			
+
 			for (int i = 0; i < listaModulosBaseDatos.size(); i++) {
 				for (int j = 0; j < listaModulosEditar.size(); j++) {
-					if(listaModulosBaseDatos.get(i).getCodModulo().equals(listaModulosEditar.get(j).getCodModulo())) {
+					if (listaModulosBaseDatos.get(i).getCodModulo().equals(listaModulosEditar.get(j).getCodModulo())) {
 						int stockBD = listaModulosBaseDatos.get(i).getCantidad();
-						int restarStockModulo = stockBD-1;
-						ModuloLibro ml = modulolibroService.getById(listaModulosBaseDatos.get(i).getId_modulo_libro()).get();
+						int restarStockModulo = stockBD - 1;
+						ModuloLibro ml = modulolibroService.getById(listaModulosBaseDatos.get(i).getId_modulo_libro())
+								.get();
 						ml.setCantidad(restarStockModulo);
 						modulolibroService.save(ml);
 					}
 				}
 			}
-			
+
 			aprobaBuscar.setEstadoAproba(aprobacionKitUpdate.getEstadoAproba());
 			aprobaBuscar.setDetalleControl(aprobacionKitUpdate.getDetalleControl());
 			aprobaBuscar.setFechaAprobacion(aprobacionKitUpdate.getFechaAprobacion());
 			aprobaBuscar.setTipoAprobacion(aprobacionKitUpdate.getTipoAprobacion());
-			
-			
+
 			aprobaEntregaKit = aprobacionService.save(aprobaBuscar);
-			
+
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear entidad");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -271,12 +267,9 @@ public class AprobacionKitControlador {
 		respuesta.put("status", "ok");
 		respuesta.put("aprobacionUpdate", aprobaEntregaKit);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
-		
-		
+
 	}
-	
-	
-	
+
 	@DeleteMapping(path = "/{id}", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> deleteAprobacionKit(@PathVariable("id") Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
@@ -295,25 +288,51 @@ public class AprobacionKitControlador {
 		respuesta.put("mensaje", "La aprobacion ha sido eliminada");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
-	
-	/*
-	 * @GetMapping(path = "/estudipagados", produces = { "application/json" })
-	 * public ResponseEntity<Map<String, Object>> lisEstudiantePago() {
-	 * 
-	 * List<TempPagoKit> listaEstidiantes = new ArrayList<>();
-	 * 
-	 * List<TempPagoKit> listaPagos = aprobacionService.listaPagosEstud(); for
-	 * (Iterator iterator = listaPagos.iterator(); iterator.hasNext();) {
-	 * TempPagoKit temp = (TempPagoKit) iterator.next(); Estudiante es = new
-	 * Estudiante(); es = estudianteService.findById(temp.getId_estudiante());
-	 * temp.setEstudiante(es); listaEstidiantes.add(temp); }
-	 * 
-	 * Map<String, Object> respuesta = new HashMap<>(); respuesta.put("status",
-	 * "ok"); respuesta.put("listaEstudiante", listaEstidiantes);
-	 * 
-	 * return new ResponseEntity<Map<String, Object>>(respuesta,
-	 * HttpStatus.CREATED); }
-	 */
+
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	@GetMapping(path = "/estudipagados", produces = { "application/json" })
+	public ResponseEntity<Map<String, Object>> lisEstudiantePago() {
+		List<TempPagoKit> listaEstidiantes = new ArrayList<>();
+		List<TempPagoKit> listaPagos = aprobacionService.listaPagosEstud();
+		for (Iterator iterator = listaPagos.iterator(); iterator.hasNext();) {
+			TempPagoKit temp = (TempPagoKit) iterator.next();
+			Estudiante es = new Estudiante();
+			es = estudianteService.findById(temp.getId_estudiante());
+			temp.setEstudiante(es);
+			listaEstidiantes.add(temp);
+		}
+		Map<String, Object> respuesta = new HashMap<>();
+		respuesta.put("status", "ok");
+		respuesta.put("listaEstudiante", listaEstidiantes);
+		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
+	}	
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
+	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
 
 }
 
