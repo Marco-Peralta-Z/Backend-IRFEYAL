@@ -2,7 +2,6 @@ package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,15 +26,15 @@ public class Tutor implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_tutor;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "id_paralelo")
 	private Paralelo id_paralelo;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "id_empleado")
 	private Empleado id_empleado;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "id_curso")
 	private Curso id_curso;
 

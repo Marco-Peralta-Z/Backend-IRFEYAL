@@ -112,9 +112,12 @@ public class MallaController {
 		}
 		try {
 			//Actualización malla
-			mallaActual.get().setEstado(malla.getEstado());
-			mallaActual.get().setDescripcion(malla.getDescripcion().toUpperCase());
-			mallaUpdated = mallaService.saveMalla(mallaActual.get());
+            mallaActual.get().setEstado(malla.getEstado());
+            mallaActual.get().setDescripcion(malla.getDescripcion().toUpperCase());
+            mallaActual.get().setListarea(malla.getListarea());
+            mallaActual.get().setListaAsignaturas(malla.getListaAsignaturas());
+            mallaActual.get().setListaCursos(malla.getListaCursos());
+            mallaUpdated = mallaService.saveMalla(mallaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

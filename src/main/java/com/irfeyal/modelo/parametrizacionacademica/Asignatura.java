@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,18 +49,9 @@ public class Asignatura implements Serializable {
 	// Relacion asignatura_empleado
 	@ManyToMany
 	@JoinTable(name = "asignatura_empleado", joinColumns = {
-			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_empleado") })
+			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = {
+					@JoinColumn(name = "id_empleado") })
 	private List<Empleado> empleados = new ArrayList<>();
-	
-	
-	public Asignatura() {
-	}
-	
-
-	public Asignatura(Long id_asignatura) {
-		super();
-		this.id_asignatura = id_asignatura;
-	}
 
 	public Long getId_asignatura() {
 		return id_asignatura;

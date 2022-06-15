@@ -133,6 +133,7 @@ public class PeriodoController {
 			periodoActual.get().setAno_inicio(periodo.getAno_inicio());//
 			periodoActual.get().setAno_fin(periodo.getAno_fin());//
 			periodoActual.get().setMalla(periodo.getMalla());
+			periodoActual.get().setVigencia(periodo.isVigencia());
 			periodoUpdated = periodoService.savePeriodo(periodoActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

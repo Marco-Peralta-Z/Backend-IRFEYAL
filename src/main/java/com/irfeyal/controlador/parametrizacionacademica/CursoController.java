@@ -112,7 +112,7 @@ public class CursoController {
 		}
 		try {
 			//Actaualización de curso
-			cursoActual.get().setDescripcion(curso.getDescripcion());
+			cursoActual.get().setDescripcion(curso.getDescripcion().toUpperCase());
 			cursoUpdated = cursoService.saveCurso(cursoActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

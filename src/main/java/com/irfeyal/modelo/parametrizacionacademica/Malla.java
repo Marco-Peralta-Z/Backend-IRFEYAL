@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Entity
 @Table(name = "malla")
@@ -60,26 +58,33 @@ public class Malla implements Serializable {
 			@JoinColumn(name = "id_curso") })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
 
-	// Relación Malla con Paralelo
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_paralelo")
-	private Paralelo paralelo;
-
 	// Relación Malla con Área
+	@ManyToMany
+	@JoinTable(name = "malla_asignatura", joinColumns = { @JoinColumn(name = "id_malla") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_asignatura") })
+	private List<Asignatura> listaAsignaturas = new ArrayList<>();
+
+	// Relación Malla con Modalidad
+	@ManyToOne()
+	@JoinColumn(name = "id_modalidad")
+	private Modalidad id_modalidad;
+
 	@ManyToMany
 	@JoinTable(name = "malla_area", joinColumns = { @JoinColumn(name = "id_malla") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_area") })
-	private List<Area> listaAreas = new ArrayList<>();
+	private List<Area> listarea = new ArrayList<>();
 
-	// Relación Malla con Modalidad
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_Modalidad")
-	private Modalidad id_modalidad;
+	public Malla() {
+		super();
+	}
 
-	// Relación Malla con Empleado
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_empleado")
-	private Empleado empleado;
+	public List<Area> getListarea() {
+		return listarea;
+	}
+
+	public void setListarea(List<Area> listarea) {
+		this.listarea = listarea;
+	}
 
 	public Long getId_malla() {
 		return id_malla;
@@ -121,28 +126,12 @@ public class Malla implements Serializable {
 		this.listaCursos = listaCursos;
 	}
 
-	public Paralelo getParalelo() {
-		return paralelo;
+	public List<Asignatura> getListaAsignaturas() {
+		return listaAsignaturas;
 	}
 
-	public void setParalelo(Paralelo paralelo) {
-		this.paralelo = paralelo;
-	}
-
-	public List<Area> getListaAreas() {
-		return listaAreas;
-	}
-
-	public void setListaAreas(List<Area> listaAreas) {
-		this.listaAreas = listaAreas;
-	}
-
-	public Empleado getEmpleado() {
-		return empleado;
-	}
-
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
+	public void setListaAsignaturas(List<Asignatura> listaAsignaturas) {
+		this.listaAsignaturas = listaAsignaturas;
 	}
 
 	public Modalidad getId_modalidad() {
@@ -155,9 +144,9 @@ public class Malla implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Malla [descripcion=" + descripcion + ", empleado=" + empleado + ", estado=" + estado
-				+ ", fecha_creacion=" + fecha_creacion + ", id_malla=" + id_malla + ", listaAreas=" + listaAreas
-				+ ", listaCursos=" + listaCursos + ", id_modalidad=" + id_modalidad + ", paralelo=" + paralelo + "]";
+		return "Malla [descripcion=" + descripcion + ", estado=" + estado + ", fecha_creacion=" + fecha_creacion
+				+ ", id_malla=" + id_malla + ", listaAsignaturas=" + listaAsignaturas + ", listaCursos=" + listaCursos
+				+ ", id_modalidad=" + id_modalidad + ",listarea =" + listarea + "]";
 	}
 
 }
