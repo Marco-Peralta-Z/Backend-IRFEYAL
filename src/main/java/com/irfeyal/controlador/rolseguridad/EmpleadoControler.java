@@ -122,5 +122,10 @@ public class EmpleadoControler {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 
 	}
+	
+	@GetMapping("/empleado/{cedula}")
+	public List<Empleado> listaEmpleado(@PathVariable String cedula) {
+		return empleadoSer.findAllByCedula(cedula);
+	}
 
 }

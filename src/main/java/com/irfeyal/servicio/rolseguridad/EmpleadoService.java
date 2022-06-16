@@ -50,6 +50,12 @@ public class EmpleadoService implements EmpleadoInterface{
 		// TODO Auto-generated method stub
 		empleadoDao.deleteById(id);
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Empleado> findAllByCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return empleadoDao.findAllEmpleadosByCedula(cedula);
+	}
 
 	
 	

@@ -234,14 +234,14 @@ INSERT INTO modulo (modulo,url) VALUES ('secretaria','http//localhost/modsecreta
 
 ------------------ROL_USUARIO-------------------
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,1,2,1);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,1,2);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,3,2);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,3);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,4);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,5);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,6);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,7);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,8);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,1,9);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,3,9);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,10);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,11);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,12);
@@ -251,20 +251,25 @@ INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,
 -- PARAMETRIZACION ACADEMICA
 
 -------------------MODALIDAD-----------------------------
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('Intensivo', '2022-01-01 07:00:00', '2022-01-01 12:00:00');
-INSERT INTO public.modalidad (descripcion, hora_fin, hora_inicio) VALUES('No Intensivo', '2022-01-01 13:00:00', '2022-01-01 18:00:00');
+INSERT INTO public.modalidad (descripcion) VALUES('Intensivo');
+INSERT INTO public.modalidad (descripcion) VALUES('No Intensivo');
+
+------------------PARALELO---------------------
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('A', '02/02/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('B', '01/01/2022');
+INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('C', '07/03/2022');
 
 ---------------------MALLA-------------------------------
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Educacion Basica', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Primaria', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Secundaria', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Preparatoria', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Bachillerato', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Basica', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Jardin', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Inicial', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('Unificado', true,'07/04/2022');
-INSERT INTO public.malla (descripcion, estado, fecha_creacion) VALUES('General', true,'07/04/2022');
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Educacion Basica', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Primaria', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Secundaria', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Preparatoria', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Bachillerato', true,'07/04/2022', 2, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Basica', true,'07/04/2022', 2, 2, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Jardin', true,'07/04/2022', 2, 2, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Inicial', true,'07/04/2022', 2, 2, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Unificado', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('General', true,'07/04/2022', 2, 2, 1);
 
 ------------------------ASIGNATURA--------------------------
 INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Matematicas', '07/04/2022');
@@ -279,23 +284,18 @@ INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Lenguaje', '
 INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Electronica', '07/04/2022');
 
 -------------------------------PERIODO---------------------------
-INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_creacion, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla, id_modalidad) VALUES('EDUCACION GENERAL', 30.0, 50.0, '07/04/2022', '11/11/2022', '09/01/2022','2022','2023', true, 1, 1);
-INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_creacion, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla, id_modalidad) VALUES('EDUCACION GENERAL', 30.0, 50.0, '07/04/2022', '11/11/2022', '09/01/2022','2022','2023', true, 2, 2);
-INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_creacion, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla, id_modalidad) VALUES('EDUCACION GENERAL UNIFICADO', 30.0, 50.0, '07/04/2022', '11/11/2022', '09/01/2022','2022','2023', false, 3, 1);
-INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_creacion, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla, id_modalidad) VALUES('EDUCACION GENERAL UNIFICADO', 30.0, 50.0, '07/04/2022', '11/11/2022', '09/01/2022','2022','2023', true, 4, 2);
-INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_creacion, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla, id_modalidad) VALUES('EDUCACION GENERAL UNIFICADO', 30.0, 50.0, '07/04/2022', '11/11/2022', '09/01/2022','2022','2023', false, 5, 1);
-
-------------------PARALELO---------------------
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('A', '02/02/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('B', '01/01/2022');
-INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('C', '07/03/2022');
+INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES('EDUCACION GENERAL', 30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', true, 1);
+INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES('EDUCACION GENERAL', 30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', true, 2);
+INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES('EDUCACION GENERAL UNIFICADO', 30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', false, 3);
+INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES('EDUCACION GENERAL UNIFICADO', 30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', true, 4);
+INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES('EDUCACION GENERAL UNIFICADO', 30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', false, 5);
 
 -------------------------------CURSO---------------------------
-INSERT INTO public.curso (descripcion, fecha_creacion, id_empleado, id_paralelo) VALUES('Octavo', '07/04/2022',  1, 1);
-INSERT INTO public.curso (descripcion, fecha_creacion, id_empleado, id_paralelo) VALUES('Noveno', '08/04/2022',  2, 2);
-INSERT INTO public.curso (descripcion, fecha_creacion,  id_empleado, id_paralelo) VALUES('Decimo', '09/04/2022',  3, 3);
-INSERT INTO public.curso (descripcion, fecha_creacion,  id_empleado, id_paralelo) VALUES('Primero Bachillerato',  '10/04/2022', 4, 1);
-INSERT INTO public.curso (descripcion, fecha_creacion,  id_empleado, id_paralelo) VALUES('Segundo Bachillerato', '11/04/2022',  5, 3);
+INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Octavo', '07/04/2022');
+INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Noveno', '08/04/2022');
+INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Decimo', '09/04/2022');
+INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Primero Bachillerato',  '10/04/2022');
+INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Segundo Bachillerato', '11/04/2022');
 
 -------------------------HORARIO-----------------------
 INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00');
@@ -322,10 +322,28 @@ INSERT INTO public.asignatura_horario (id_asignatura, id_horario) VALUES(5, 5);
 
 ---------------------ASIGNATURA EMPLEADO----------------
 INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(1, 1);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(2, 2);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(3, 3);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(4, 4);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(5, 5);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(2, 1);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(3, 1);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(4, 1);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(5, 1);
+
+---------------------AREA----------------
+INSERT INTO public.area (descripcion)VALUES('MATEMATICAS');
+INSERT INTO public.area (descripcion)VALUES('LENGUAJE');
+INSERT INTO public.area (descripcion)VALUES('CIENCIAS NATURALES');
+INSERT INTO public.area (descripcion)VALUES('ESTUDIOS SOCIALES');
+INSERT INTO public.area (descripcion)VALUES('LENGUA EXTRANJERA');
+
+---------------------AREA ASIGNATURA----------------
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(1, 1);
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(3, 2);
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(8, 2);
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(9, 2);
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(4, 3);
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(5, 3);
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(6, 3);
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(7, 4);
+INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(2, 5);
 
 --------------------CURSO HORARIO----------------------
 INSERT INTO public.curso_horario (id_curso, id_horario) VALUES(1, 1);
@@ -361,12 +379,7 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(8, 3);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(9, 4);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(10, 5);
 
---------------------------CURSO PARALELO--------------------------
---INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(1, 1);
---INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(2, 2);
---INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(3, 3);
---INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(4, 1);
---INSERT INTO public.curso_paralelo (id_curso, id_paralelo) VALUES(5, 2);
+-- Fin parametrización academica
 
 --MATRICULA---------
 
@@ -391,7 +404,7 @@ INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo,
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,3,1,1);
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-11-03',2,2,2,3,2,2);
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-10-04',3,3,1,3,3,3);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-19-07',4,4,1,3,2,4);
+INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-11-07',4,4,1,3,2,4);
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,5);
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,3,1,6);
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,3,2,7);
@@ -404,6 +417,7 @@ INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_u
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,1,3,2,14);
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,15);
 INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,16);
+
 
 --ASISTENCIA-------------
 
@@ -423,17 +437,20 @@ INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 5, 5)
 
 INSERT INTO unidad (nombre_unidad) VALUES ('Unidad 1'), ('Unidad 2'), ('Unidad 3'), ('Unidad 4'), ('Unidad 5'), ('Unidad 6'), ('Unidad 7'), ('Unidad 8'), ('Unidad 9'), ('Unidad 10');
 
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Matematicas', 'Objetivo1', 'Contenido1', 'Criterio1', 'Destreza1', '01-09-2022', '30-06-2023', 1, 3, 2, 1, 1, 'Pendiente', 1, 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Lengua y Literatura', 'Objetivo2', 'Contenido2', 'Criterio2', 'Destreza2', '01-09-2022', '30-06-2023', 3, 7, 4, 2, 3, 'Aprobado', 3, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Historia y Ciencias Sociales', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 2, 1, 1, 1, 2, 'Aprobado', 4, 3);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Ciencias', 'Objetivo4', 'Contenido4', 'Criterio4', 'Destreza4', '01-09-2022', '30-06-2023', 3, 2, 2, 2, 1, 'Rechazado', 2, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Quimica', 'Objetivo5', 'Contenido5', 'Criterio5', 'Destreza5', '01-09-2022', '30-06-2023', 1, 8, 5, 1, 4, 'Aprobado', 2, 3);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Fisica', 'Objetivo6', 'Contenido6', 'Criterio6', 'Destreza6', '01-09-2022', '30-06-2023', 4, 5, 2, 1, 4, 'Rechazado', 3, 3);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Ingles', 'Objetivo7', 'Contenido7', 'Criterio7', 'Destreza7', '01-09-2022', '30-06-2023', 5, 2, 4, 2, 1, 'Pendiente', 5, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Biologia', 'Objetivo8', 'Contenido8', 'Criterio8', 'Destreza8', '01-09-2022', '30-06-2023', 2, 6, 2, 1, 5, 'Aprobado', 1, 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Educación física', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 3, 5, 1, 2, 4, 'Pendiente', 2, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Informática', 'Objetivo10', 'Contenido10', 'Criterio10', 'Destreza10', '01-09-2022', '30-06-2023', 5, 4, 1, 1, 1, 'Rechazado', 4, 3);
-
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Algebra', 'Objetivo1', 'Contenido1', 'Criterio1', 'Destreza1', '01-09-2022', '30-06-2023', 'Sin observaciones', 1, 8, 1, 1, 1, 'Pendiente', 1);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('El sistema inmunológico', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 7, 4, 1, 2, 'Pendiente', 2);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Celulas', 'Objetivo2', 'Contenido2', 'Criterio2', 'Destreza2', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 7, 4, 2, 1, 'Aprobado', 3);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Reproducción y división celular', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 2, 7, 4, 1, 2, 'Aprobado', 4);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Genética clásica', 'Objetivo4', 'Contenido4', 'Criterio4', 'Destreza4', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 7, 4, 2, 1, 'Aprobado', 2);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Fundamentos de biología', 'Objetivo5', 'Contenido5', 'Criterio5', 'Destreza5', '01-09-2022', '30-06-2023', 'Corregir los objetivos de la unidad', 1, 7, 4, 1, 2, 'Rechazado', 2);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Genética molecular', 'Objetivo6', 'Contenido6', 'Criterio6', 'Destreza6', '01-09-2022', '30-06-2023', 'Corregir la fecha de inicio de la unidad', 4, 7, 4, 1, 2, 'Rechazado', 3);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Biotecnología', 'Objetivo7', 'Contenido7', 'Criterio7', 'Destreza7', '01-09-2022', '30-06-2023', 'Corregir los contenidos de la unidad', 5, 7, 4, 2, 1, 'Rechazado', 5);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Sumas y restas', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 1, 8, 1, 2, 2, 'Aprobado', 4);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Multiplicacion y divicion', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 2, 8, 1, 1, 2, 'Aprobado', 4);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Reglas de tres', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 8, 1, 1, 2, 'Aprobado', 4);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Areas y perimetros', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Corregir la fecha de inicio del plan de unidad', 4, 8, 1, 2, 2, 'Rechazado', 3);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Raices cuadrada', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Corregir la fecha de finalizacion del plan de unidad', 3, 8, 1, 1, 2, 'Rechazado', 5);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso) values ('Fracciones', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Corregir las fecha de inicio y finalizacion de plan de unidad', 3, 8, 1, 1, 2, 'Rechazado', 2);
 
 --SOLO KIT PARA tipo_comprobante----------
 --INVENTARIOS---------- 
@@ -468,11 +485,8 @@ INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,9);
 INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,10);
 
 
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', true, 'Se aprueba pago completo', '2022/02/12',1,1);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', true, 'Se aprueba pago completo', '2022/02/13',1,2);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', true, 'Se aprueba pago 30 %', '2022/02/14',2,1);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', true, 'Se aprueba pago 50%', '2022/02/15',3,1);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', true, 'Se aprueba pago completo', '2022/02/16',3,2);
+INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago 50%', '2022/02/15',3,1);
+INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago completo', '2022/02/16',4,1);
 
 
 --PAGOS-----------
@@ -481,11 +495,11 @@ INSERT INTO tipo_pago (descripcion) VALUES ('Efectivo');
 INSERT INTO tipo_pago (descripcion) VALUES ('Deposito');
 INSERT INTO tipo_pago (descripcion) VALUES ('Cheque');
 
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Matricula', 1, 1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Matricula', 2, 2);
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 3, 3);
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 4, 4);
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Mensual', 5, 5);
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Matricula', 1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Matricula', 2);
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 3, 1);
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 4, 1);
+INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Mensual', 5);
 
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (1, '2022/03/15', 'img/foto.jpg', 10 , TRUE, 1, 1, 1);--OJO:Necesito primero el tipo de comprobante, esa tabla necesita PERIODO y pilas con id_rol_usuario por id_empleado 
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (2, '2022/03/15', 'img/foto.jpg', 20 , TRUE, 1, 2, 2);
@@ -536,15 +550,84 @@ INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_docu
 
 
 --INVENTARIOS
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('02', 'BICICLETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01', 'AUDIO Y VIDEO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03',  'COCINA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05', 'HOGAR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04', 'COMPUTACION');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07', 'HERRAMIENTA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('06', 'LAVADO Y SECADO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08', 'MOTOCICLETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('09', 'REFRIGERACION');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10', 'TELEFONO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11', 'TV');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('12', 'VEHICULOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01001', 'CONTROLADORA DJ');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01002', 'PARLANTE');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01003', 'MICROFONO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('02001', 'BICICLETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03001', 'COCINA A GAS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03002', 'COCINA A INDUCCION');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03003', 'UTENCILIO DE COCINA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04001', 'PC PORTATIL');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04002', 'PC ESCRITORIO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04003', 'ACCESORIOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04004', 'IMPRESORAS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05001', 'CALEFON');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05002', 'ASPIRADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05003', 'AIRE ACONDICIONADO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05004', 'CILINDRO DE GAS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('06001', 'LAVADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('06002', 'SECADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('06003', 'LAVADORA Y SECADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07001', 'MECANICA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07002', 'ELECTRICA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08001', 'MOTOCICLETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08002', 'CUADRON');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08003', 'MOTOCICLETA ELECTRICA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08004', 'MOTONETA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('08005', 'ACCESORIOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('09001', 'REFRIGERADOR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('09002', 'CONGELADOR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10001', 'FIJO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10002', 'CELULAR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10003', 'TABLET');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11001', 'TV NO SMART');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('9901', 'PUBLICIDAD');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01004', 'VIDEO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('99', 'VARIOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('9999', 'VARIOS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11002', 'TV SMART');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11003', 'SOPORTES');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03005', 'CAMPANA EXTRACTOR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07003', 'JARDINERIA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('07004', 'MOTOR - COMPRENSOR');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01005', 'MINICOMPONENTE');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05005', 'COLCHON');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05006', 'PLANCHA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03006', 'OLLA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03007', 'LICUADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03008', 'BATIDORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03009', 'HORNO');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03010', 'FREIDORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03011', 'TOSTADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05007', 'HIDROLAVADORA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05008', 'MUEBLES');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05009', 'MAQUINA DE COSER');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('12001', 'LLANTAS');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05010', 'ACCESODIOS AGUA');
+INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03004', 'ENCIMERA');
 
 
-INSERT INTO categoria (catenombre, catedescri) values ('Ordenador', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Audio y video', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Impresora', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Copiadora', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Máquina de escribir', 'Equipos de informática y telecomunicaciones');
-INSERT INTO categoria (catenombre, catedescri) values ('Calculadoras ', 'Equipos de informática');
-INSERT INTO categoria (catenombre, catedescri) values ('Teléfonos', 'Equipos de informática y telecomunicaciones');
+
+
+
+
+
+
+
+
+
 
 
 INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Ingreso Articulo',6);
@@ -594,5 +677,4 @@ INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_art
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/14', '003', 'salido',8);
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/15', '004', 'salido',9);
 INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/16', '005', 'salido',10);
-
 
