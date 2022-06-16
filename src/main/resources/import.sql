@@ -618,63 +618,28 @@ INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('12001', 'LLANTA
 INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('05010', 'ACCESODIOS AGUA');
 INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('03004', 'ENCIMERA');
 
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 1, 'Ingreso Articulo computadora Dell AMD',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/13', 1, 'Ingreso Articulo Proyector Sony',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/14', 1, 'Ingreso Articulo Monitor 26 plg',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/15', 1, 'Ingreso Articulo Impresora EPSON L3110 WIFI',6);
+INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/16', 1, 'Ingreso Articulo Proyector LG',6);
 
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('Computadora Dell AMD', '001compu', 60, 'Computadora Dell AMD Radeon', 'Nuevo', 'Dell', 5, 1);
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('Proyector Sony', '002Proy', 70, 'Proyector Sony 10.000 lumenes de brillo y su relacion de contraste dinamico', 'Nuevo', 'Sony', 5, 2);
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('Monitor LG 26 plg', '003Moni', 80, 'LG es un monitor compatible con TAA ', 'Nuevo', 'LG', 5, 3);
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('Impresora EPSON L3110 WIFI', '004Impre', 90, 'Sistema de tanque de tinta de altisima capacidad, facil de rellenar.', 'Nuevo', 'EPSON', 23, 4);
+INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('Proyector LG', '005Proy', 100, '5.000 lumenes de brillo y su relacion de contraste dinamico', 'Nuevo', 'LG', 5, 5);
 
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0001', 1, '2022/02/12', 2, 'Nombre usuario', 1);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0002', 1, '2022/02/12', 2, 'Nombre usuario', 2);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0003', 1, '2022/02/12', 2, 'Nombre usuario', 3);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0004', 1, '2022/02/12', 2, 'Nombre usuario', 4);
+INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0005', 1, '2022/02/12', 2, 'Nombre usuario', 5);
 
+INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0002', 24, 'roto', '2022/02/12', 3);
 
+INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/12', '001', 'recibido', 1);
+INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/13', '002', 'recibido', 2);
 
-
-
-
-
-
-
-
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Ingreso Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/13', 5, 'Ingreso Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/14', 5, 'Ingreso Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/15', 5, 'Ingreso Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/16', 5, 'Ingreso Articulo',6);
-
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Salida Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/13', 5, 'Salida Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/14', 5, 'Salida Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/15', 5, 'Salida Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/16', 5, 'Salida Articulo',6);
-
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/12', 5, 'Recepcio Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/13', 5, 'Recepcio Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/14', 5, 'Recepcio Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/15', 5, 'Recepcio Articulo',6);
-INSERT INTO control_articulo (fechaingreso, cantidad, observacion, id_administrador) values ('2022/02/16', 5, 'Recepcio Articulo',6);
-
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 1', '001', 10, 'casa', 'en uso', 'nike', 1, 1);
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 2', '002', 100, 'pc', 'en uso', 'asus', 2, 2);
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 3', '003', 20, 'radio', 'en uso', 'pioner', 3, 3);
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 4', '004', 30, 'auto', 'en uso', 'toyota', 4, 4);
-INSERT INTO articulo (artinombre, articodigo, artiprecio, artidescrip, artiestado, artimarca, id_categoria, id_control_articulo ) values ('articulo 5', '005', 50, 'oso', 'en uso', 'love', 5, 5);
-
-INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0001', 5, '2022/02/12', 2, 'Marco 1', 1);
-INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0002', 6, '2022/02/12', 2, 'Marco 2', 2);
-INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0003', 25, '2022/02/12', 2, 'Marco 3', 3);
-INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0004', 15, '2022/02/12', 2, 'Marco 4', 4);
-INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0005', 10, '2022/02/12', 2, 'Marco 5', 5);
-
-INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0001', 25, 'viejo', '2022/02/12', 1);
-INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0002', 24, 'roto', '2022/02/12', 2);
-INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0003', 23, 'viejo', '2022/02/12', 3);
-INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0004', 22, 'falla', '2022/02/12', 4);
-INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0005', 21, 'caduco', '2022/02/12', 5);
-
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/12', '001', 'recibido', 11);
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/13', '002', 'recibido', 12);
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/14', '003', 'recibido', 13);
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/15', '004', 'recibido', 14);
-INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/16', '005', 'recibido', 15);
-
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/12', '001', 'salido',6);--OJO:debarticulo_id???
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/13', '002', 'salido',7);
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/14', '003', 'salido',8);
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/15', '004', 'salido',9);
-INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/16', '005', 'salido',10);
-
+INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/12', '001', 'salido',1);--OJO:debarticulo_id???
+INSERT INTO salida_articulo (fecha_salida, codigo, detallesalida, id_control_articulo) values ('2022/02/13', '002', 'salido',2);
