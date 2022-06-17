@@ -33,7 +33,6 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
 			+ "	where asigemple.id_empleado=?1 and p.id_periodo=?2", nativeQuery = true)
 	List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo);
 	
-	
 //	Modulo Matricula 
 	
 	@Query(value = "SELECT m.id_modalidad, m.descripcion,m.hora_inicio, m.hora_fin from modalidad_curso mc join "
