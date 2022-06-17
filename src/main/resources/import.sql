@@ -260,18 +260,16 @@ INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('B', '01/01/202
 INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('C', '07/03/2022');
 
 ---------------------MALLA-------------------------------
-
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Educacion Basica', true,'07/04/2022', 1);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Primaria', true,'07/04/2022', 1);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Secundaria', true,'07/04/2022', 1);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Preparatoria', true,'07/04/2022', 1);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Bachillerato', true,'07/04/2022', 2);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Basica', true,'07/04/2022', 2);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Jardin', true,'07/04/2022', 2);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Inicial', true,'07/04/2022', 2);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Unificado', true,'07/04/2022', 1);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('General', true,'07/04/2022', 2);
-
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Educacion Basica', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Primaria', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Secundaria', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Preparatoria', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Bachillerato', true,'07/04/2022', 2, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Basica', true,'07/04/2022', 2, 2, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Jardin', true,'07/04/2022', 2, 2, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Inicial', true,'07/04/2022', 2, 2, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('Unificado', true,'07/04/2022', 1, 1, 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad, id_paralelo, id_empleado) VALUES('General', true,'07/04/2022', 2, 2, 1);
 
 ------------------------ASIGNATURA--------------------------
 INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Matematicas', '07/04/2022');
@@ -380,15 +378,6 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(7, 2);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(8, 3);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(9, 4);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(10, 5);
-
-----------TUTORES-------------------
-
-INSERT INTO tutor (id_curso, id_empleado,id_paralelo) VALUES(1, 1,1);
-INSERT INTO tutor (id_curso, id_empleado,id_paralelo) VALUES(1, 3,2);
-INSERT INTO tutor (id_curso, id_empleado,id_paralelo) VALUES(1, 4,3);
-
-
-
 
 -- Fin parametrización academica
 
