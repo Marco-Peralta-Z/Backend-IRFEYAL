@@ -19,5 +19,7 @@ public interface PeriodoServices {
 	public Periodo savePeriodo(Periodo periodo);
 
 	public Periodo deletePeriodo(Long idPeriodo);
+	
+	public List<Periodo> findByMalla(Long id_malla);
 
 }

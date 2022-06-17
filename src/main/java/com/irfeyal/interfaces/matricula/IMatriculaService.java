@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 public interface IMatriculaService {
 public List<Matricula> findAll();
@@ -22,5 +23,7 @@ public List<Matricula> findAll();
 	public List<Matricula> findByCedulaEstudiante(String cedula);
 	
 	public List<Matricula> findHistorialEstudianteMatricula(Long id);
+	
+
 	
 }

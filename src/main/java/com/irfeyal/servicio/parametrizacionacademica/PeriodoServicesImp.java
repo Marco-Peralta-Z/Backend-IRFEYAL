@@ -49,4 +49,10 @@ public class PeriodoServicesImp implements PeriodoServices {
 			return null;
 		}
 	}
+
+	@Override
+	public List<Periodo> findByMalla(Long id_malla) {
+		// TODO Auto-generated method stub
+		return periodoRepo.findByMalla(id_malla);
+	}
 }

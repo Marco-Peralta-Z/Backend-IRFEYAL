@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.servicio.matricula.EnvioEmail;
 import com.irfeyal.servicio.matricula.MatriculaServiceImpl;
 import com.irfeyal.servicio.tutorias.RegistroServiceImpl;
@@ -56,6 +57,7 @@ public class MatriculaRestController {
 		Pageable pageable= PageRequest.of(page, 3);
 		return matriculaService.findAll(pageable);
 	}
+	
 	
 	@PostMapping("/matricula")
 	public ResponseEntity<?> create(@Validated @RequestBody Matricula matricula, BindingResult result){
