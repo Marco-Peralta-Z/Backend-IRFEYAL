@@ -18,7 +18,7 @@ import com.irfeyal.servicio.inventarios.AprobacionKitService;
 import com.irfeyal.servicio.inventarios.DetalleBajaArtiService;
 
 @RestController
-@RequestMapping("/detallebajaarticulo")
+@RequestMapping("/bajaarticulo")
 @CrossOrigin(origins = "*")
 public class DetallBajaArtiControlador {
 

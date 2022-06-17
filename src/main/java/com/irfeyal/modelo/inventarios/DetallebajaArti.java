@@ -28,13 +28,7 @@ public class DetallebajaArti implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_det_baja_art")
     private Long id_det_baja_art;
-    
-    @Column(name = "codigo")
-    private String codigo;
-    
-    @Column(name = "cantidad")
-    private Long cantidad;
-    
+  
     @Column(name = "motivo")
     private String motivo;
     
@@ -57,21 +51,6 @@ public class DetallebajaArti implements Serializable {
 		this.id_det_baja_art = id_det_baja_art;
 	}
 
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public Long getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(Long cantidad) {
-		this.cantidad = cantidad;
-	}
 
 	public String getMotivo() {
 		return motivo;

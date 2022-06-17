@@ -636,7 +636,7 @@ INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresad
 INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0004', 1, '2022/02/12', 2, 'Nombre usuario', 4);
 INSERT INTO inventario (codigo, cantidad, fechaingreso, disponibilidad, ingresado_por, id_articulo) values ('0005', 1, '2022/02/12', 2, 'Nombre usuario', 5);
 
-INSERT INTO detalle_baja_arti (codigo, cantidad, motivo, fecha_baja, id_inventario) values ('0002', 24, 'roto', '2022/02/12', 3);
+INSERT INTO detalle_baja_arti (motivo, fecha_baja, id_inventario) values ('roto', '2022/02/12', 3);
 
 INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/12', '001', 'recibido', 1);
 INSERT INTO recepcion_articulo (fecha, codigo, detallerecep, id_control_articulo) values ('2022/02/13', '002', 'recibido', 2);
