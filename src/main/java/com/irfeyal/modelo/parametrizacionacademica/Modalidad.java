@@ -27,6 +27,12 @@ public class Modalidad implements Serializable {
 	@NotBlank(message = "Debe ingresar una descripción para la Modalidad")
 	@Column(name = "descripcion")
 	private String descripcion;
+	
+
+	public Modalidad(Long id_modalidad, String descripcion) {
+		this.id_modalidad = id_modalidad;
+		this.descripcion = descripcion;
+	}
 
 	public Long getId_modalidad() {
 		return id_modalidad;

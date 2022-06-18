@@ -41,7 +41,10 @@ public class Paralelo implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
-	public Paralelo() {
+	public Paralelo(Long id_paralelo, String descripcion, Date fecha_creacion) {
+		this.id_paralelo = id_paralelo;
+		this.descripcion = descripcion;
+		this.fecha_creacion = fecha_creacion;
 	}
 
 	public Long getId_paralelo() {

@@ -35,8 +35,14 @@ public class Area {
     @JoinTable(name = "area_asignatura", joinColumns = { @JoinColumn(name = "id_area") }, inverseJoinColumns = {
             @JoinColumn(name = "id_asignatura") })
     private List<Asignatura> listaAsignaturas = new ArrayList<>();
+    
+    public Area(Long id_area, String descripcion, List<Asignatura> listaAsignaturas) {
+		this.id_area = id_area;
+		this.descripcion = descripcion;
+		this.listaAsignaturas = listaAsignaturas;
+	}
 
-    public Long getId_area() {
+	public Long getId_area() {
         return id_area;
     }
 

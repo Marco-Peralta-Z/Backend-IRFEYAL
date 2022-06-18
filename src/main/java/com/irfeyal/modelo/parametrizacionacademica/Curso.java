@@ -38,7 +38,10 @@ public class Curso implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
-	public Curso() {
+	public Curso(Long id_curso, String descripcion,	Date fecha_creacion) {
+		this.id_curso = id_curso;
+		this.descripcion = descripcion;
+		this.fecha_creacion = fecha_creacion;
 	}
 
 	public Long getId_curso() {

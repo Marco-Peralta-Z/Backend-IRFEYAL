@@ -46,11 +46,17 @@ public class Asignatura implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
+	public Asignatura(Long id_asignatura, String descripcion, Date fecha_creacion, List<Empleado> empleados) {
+		this.id_asignatura = id_asignatura;
+		this.descripcion = descripcion;
+		this.fecha_creacion = fecha_creacion;
+		this.empleados = empleados;
+	}
+
 	// Relacion asignatura_empleado
 	@ManyToMany
 	@JoinTable(name = "asignatura_empleado", joinColumns = {
-			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = {
-					@JoinColumn(name = "id_empleado") })
+			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_empleado") })
 	private List<Empleado> empleados = new ArrayList<>();
 
 	public Long getId_asignatura() {
