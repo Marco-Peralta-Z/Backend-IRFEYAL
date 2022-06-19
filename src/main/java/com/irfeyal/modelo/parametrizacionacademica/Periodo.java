@@ -79,6 +79,23 @@ public class Periodo implements Serializable {
 		this.ano_fin = ano_fin;
 		this.malla = malla;
 	}
+	
+	
+	
+	// agregado por el modulo de asistencia  necesario para  sus tablas
+	public Periodo(Long id_periodo) {
+		super();
+		this.id_periodo = id_periodo;
+	}
+
+
+	public Periodo() {
+		super();
+	}
+	// fin agregado
+
+
+
 
 	public Long getId_periodo() {
 		return id_periodo;

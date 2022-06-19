@@ -33,6 +33,22 @@ public class Modalidad implements Serializable {
 		this.id_modalidad = id_modalidad;
 		this.descripcion = descripcion;
 	}
+	
+	// agregado por el modulo de asistencia  necesario para  sus tablas
+
+	public Modalidad(Long id_modalidad) {
+		super();
+		this.id_modalidad = id_modalidad;
+	}
+
+	
+
+
+	public Modalidad() {
+		super();
+	}
+
+	// fin agregado
 
 	public Long getId_modalidad() {
 		return id_modalidad;
