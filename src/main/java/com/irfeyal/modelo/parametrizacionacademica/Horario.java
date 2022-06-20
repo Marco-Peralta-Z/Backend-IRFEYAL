@@ -75,6 +75,10 @@ public class Horario implements Serializable {
 			@JoinColumn(name = "id_asignatura") })
 	private List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
 
+	public Horario() {
+		super();
+	}
+
 	public Horario(Long id_horario, Date tiempo_inicio, Date tiempo_fin, int dia, Date fecha_creacion,
 			List<Empleado> listaEmpleados, List<Asignatura> listaAsignaturas) {
 		this.id_horario = id_horario;

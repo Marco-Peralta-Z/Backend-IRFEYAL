@@ -272,16 +272,16 @@ INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VAL
 INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('General', true,'07/04/2022', 2);
 
 ------------------------ASIGNATURA--------------------------
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Matematicas', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Ingles', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Literatura', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Biologia', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Quimica', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Fisica', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Estudios Sociales', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Psicologia', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Lenguaje', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Electronica', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('MATEMÁTICAS', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('INGLES', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('LITERATURA', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('BIOLOGÍA', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('QUÍMICA', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('FÍSICA', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('ESTUDIOS SOCIALES', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('PSICOLOGÍA', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('LENGUAJE', '07/04/2022');
+INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('ELECTRÓNICA', '07/04/2022');
 
 -------------------------------PERIODO---------------------------
 INSERT INTO public.periodo (periodo_academico, costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES('EDUCACION GENERAL', 30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', true, 1);

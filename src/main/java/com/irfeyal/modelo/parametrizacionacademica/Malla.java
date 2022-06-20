@@ -74,6 +74,10 @@ public class Malla implements Serializable {
 			@JoinColumn(name = "id_area") })
 	private List<Area> listarea = new ArrayList<>();
 
+	public Malla() {
+		super();
+	}
+
 	public Malla(Long id_malla, Boolean estado, String descripcion, Date fecha_creacion, List<Curso> listaCursos,
 			List<Asignatura> listaAsignaturas, Modalidad id_modalidad, List<Area> listarea) {
 		this.id_malla = id_malla;

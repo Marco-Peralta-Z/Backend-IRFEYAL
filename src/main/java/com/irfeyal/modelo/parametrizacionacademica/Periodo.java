@@ -65,6 +65,10 @@ public class Periodo implements Serializable {
 	@JoinColumn(name = "id_malla", nullable = true)
 	private Malla malla;
 
+	public Periodo() {
+		super();
+	}
+
 	public Periodo(Long id_periodo, String periodo_academico, Date fecha_inicio, Date fecha_fin,
 			Double costo_mensualidad, Double costo_matricula, boolean vigencia, String ano_inicio, String ano_fin,
 			Malla malla) {

@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.interfaces.parametrizacionacademica.AreaServices;
 import com.irfeyal.modelo.parametrizacionacademica.Area;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -94,7 +95,7 @@ public class AreaController {
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> updateArea(@PathVariable("id") Long idArea, @Validated @RequestBody Area area,
-			BindingResult result) {
+			Asignatura asignatura, BindingResult result) {
 		Optional<Area> areaActual = areaService.getAreaById(idArea);
 		Area areaUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -111,10 +112,10 @@ public class AreaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Actualizaci�n �rea
+			// Actualizacion area
 			areaActual.get().setDescripcion(area.getDescripcion().toUpperCase());
-			// Lista de asignaturas ?
-
+			// Actualiza lista de asignaturas 
+			areaActual.get().setListaAsignaturas(area.getListaAsignaturas());
 			areaUpdated = areaService.saveArea(areaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

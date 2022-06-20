@@ -38,6 +38,10 @@ public class Tutor implements Serializable {
 	@JoinColumn(name = "id_curso")
 	private Curso id_curso;
 
+	public Tutor() {
+		super();
+	}
+
 	public Tutor(Long id_tutor, Paralelo id_paralelo, Empleado id_empleado, Curso id_curso) {
 		this.id_tutor = id_tutor;
 		this.id_paralelo = id_paralelo;
