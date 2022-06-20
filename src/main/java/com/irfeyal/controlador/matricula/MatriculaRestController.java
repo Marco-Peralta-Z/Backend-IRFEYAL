@@ -88,9 +88,9 @@ public class MatriculaRestController {
 		response.put("mensaje",	"Matricula creada con exito");
 		response.put("estudiante", matriculaNew);
 		
-		//Crear un registro de Notas
-		Long Matri = matriculaNew.getId_matricula();
-		registroservice.cargardatos(Matri);
+//		//Crear un registro de Notas
+//		Long Matri = matriculaNew.getId_matricula();
+//		registroservice.cargardatos(Matri);
 		
 		
 		
@@ -142,10 +142,10 @@ public class MatriculaRestController {
 	
 	
 		//	Metodo para enviar correo de notificacion de matricula aceptada al estudiante
-	@PostMapping("/sendMail")
-	public ResponseEntity<?> sendEmail(@Validated @RequestBody Matricula matricula) {
+	@PutMapping("/sendMail/{list}")
+	public ResponseEntity<?> sendEmail(@Validated @RequestBody Matricula matricula, @PathVariable String list) {
 		Map<String, Object> response = new HashMap<>();
-		String respuesta = sendEmail.sendEmailHtml(matricula);
+		String respuesta = sendEmail.sendEmailHtml(matricula, list);
 		response.put("mensaje", respuesta);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
