@@ -124,10 +124,7 @@ public class KitControlador {
 		respuesta.put("kit", kitEntregadoEstudiante);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
-	
-	
-	
-	
+
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> actualizarKit(@PathVariable("id") Long idKit, @Validated @RequestBody Kit kit,
 			BindingResult result) {

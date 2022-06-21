@@ -36,7 +36,7 @@ public class ControlArticulo implements Serializable {
     private Date fechaingreso;
     
     @Column(name = "cantidad")
-    private Long cantidad;
+    private int cantidad;
     
     @Column(name = "observacion")
     private String observacion;
@@ -74,16 +74,22 @@ public class ControlArticulo implements Serializable {
 	public void setFechaingreso(Date fechaingreso) {
 		this.fechaingreso = fechaingreso;
 	}
+	
+	
 
 
-	public Long getCantidad() {
+	public int getCantidad() {
 		return cantidad;
 	}
 
 
-	public void setCantidad(Long cantidad) {
+
+
+	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
+
+
 
 
 	public String getObservacion() {

@@ -24,7 +24,7 @@ import com.irfeyal.servicio.inventarios.DetalleBajaArtiService;
 import com.irfeyal.servicio.inventarios.ControlArticuloService;
 
 @RestController
-@RequestMapping("/detalleingresoarticulo")
+@RequestMapping("/controlarticulo")
 @CrossOrigin(origins = "*")
 public class ControlArtiControlador {
 	

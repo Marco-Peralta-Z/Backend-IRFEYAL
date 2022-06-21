@@ -55,6 +55,10 @@ public class PlanUnidad implements Serializable{
 	private Curso curso;
 	
 	@ManyToOne
+	@JoinColumn (name = "id_paralelo")
+	private Paralelo paralelo;
+	
+	@ManyToOne
 	@JoinColumn (name = "id_modalidad")
 	private Modalidad modalidad;
 	
@@ -69,7 +73,7 @@ public class PlanUnidad implements Serializable{
 	public PlanUnidad(Long id_plan_unidad, String titulo_unidad, String objetivos, String contenidos,
 			String criterios_evaluacion, String destrezas, Date fecha_inicio, Date fecha_fin, String estado,
 			String observaciones, Unidad unidad, Empleado empleado, Asignatura asignatura, Curso curso,
-			Modalidad modalidad, Periodo periodo) {
+			Paralelo paralelo, Modalidad modalidad, Periodo periodo) {
 		super();
 		this.id_plan_unidad = id_plan_unidad;
 		this.titulo_unidad = titulo_unidad;
@@ -85,6 +89,7 @@ public class PlanUnidad implements Serializable{
 		this.empleado = empleado;
 		this.asignatura = asignatura;
 		this.curso = curso;
+		this.paralelo = paralelo;
 		this.modalidad = modalidad;
 		this.periodo = periodo;
 	}
@@ -227,6 +232,16 @@ public class PlanUnidad implements Serializable{
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
+	}
+
+
+	public Paralelo getParalelo() {
+		return paralelo;
+	}
+
+
+	public void setParalelo(Paralelo paralelo) {
+		this.paralelo = paralelo;
 	}
 
 
