@@ -1,4 +1,5 @@
 package com.irfeyal.modelo.inventarios;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -8,9 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 /**
  *
@@ -20,28 +24,32 @@ import javax.persistence.TemporalType;
 @Table(name = "salida_articulo")
 public class Salidaarticulo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_salida_art")
-    private Long id_salida_art;
-    
-    @Column(name = "fecha_salida")
-    @Temporal(TemporalType.DATE)
-    private Date fechaSalida;
-    
-    @Column(name = "codigo")
-    private String codigo;
-    
-    @Column(name = "detallesalida")
-    private String detallesalida;
-    
-    @JoinColumn(name = "id_control_articulo", referencedColumnName = "id_control_articulo")
-    @ManyToOne(optional = false)
-    private ControlArticulo controlArticulo;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_salida_art")
+	private Long id_salida_art;
 
-    public Salidaarticulo() {
-    }
+	@Column(name = "fecha_salida")
+	@Temporal(TemporalType.DATE)
+	private Date fechaSalida;
+
+	@Column(name = "codigo")
+	private String codigo;
+
+	@Column(name = "detallesalida")
+	private String detallesalida;
+
+	@JoinColumn(name = "id_inventario", referencedColumnName = "id_inventario", unique = true)
+	@ManyToOne(optional = false)
+	private Inventario inventario;
+	
+	@JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado", unique = false)
+	@OneToOne(optional = true)
+	private Empleado empleado;
+
+	public Salidaarticulo() {
+	}
 
 	public Long getId_salida_art() {
 		return id_salida_art;
@@ -75,14 +83,22 @@ public class Salidaarticulo implements Serializable {
 		this.detallesalida = detallesalida;
 	}
 
-	public ControlArticulo getControlArticulo() {
-		return controlArticulo;
+	public Inventario getInventario() {
+		return inventario;
 	}
 
-	public void setControlArticulo(ControlArticulo controlArticulo) {
-		this.controlArticulo = controlArticulo;
+	public void setInventario(Inventario inventario) {
+		this.inventario = inventario;
 	}
 
+	public Empleado getEmpleado() {
+		return empleado;
+	}
 
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+	
+	
 
 }
