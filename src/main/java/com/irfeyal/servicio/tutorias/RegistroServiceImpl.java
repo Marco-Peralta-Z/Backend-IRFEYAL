@@ -207,7 +207,12 @@ public class RegistroServiceImpl implements IRegistroService {
 			this.registrodao.save(editar);
 		}
 
-
+		//Para secretaria, certificado de promocion
+		@Override
+		public List<Registro> findByCedulaEstudiante(String cedula) {
+					
+			return registrodao.findByCedulaEstudiante(cedula);
+		}
 		
 
 

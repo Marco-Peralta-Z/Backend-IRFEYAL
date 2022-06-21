@@ -156,4 +156,10 @@ public class RegistroController {
 			return ResponseEntity.ok(Boolean.TRUE);	
 		}
 		
+		//Para secretaria, certificado de promocion
+		@GetMapping("/buscarcedulaEstudiante/{cedula}")
+		public List<Registro> buscarPorCedulaEstudiante(@PathVariable String cedula){
+			return registroserviceimpl.findByCedulaEstudiante(cedula); 
+		}
+		
 }
