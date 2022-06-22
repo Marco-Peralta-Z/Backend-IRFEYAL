@@ -69,7 +69,7 @@ public class Periodo implements Serializable {
 		super();
 	}
 	
-	//MODULO TUTORIAS
+	//CONSTRUCTOR TUTORIAS Y ASISTENCIA
 	public Periodo(Long id_periodo) {
 		super();
 		this.id_periodo = id_periodo;
@@ -91,22 +91,6 @@ public class Periodo implements Serializable {
 		this.malla = malla;
 	}
 	
-	
-	
-	// agregado por el modulo de asistencia  necesario para  sus tablas
-	public Periodo(Long id_periodo) {
-		super();
-		this.id_periodo = id_periodo;
-	}
-
-
-	public Periodo() {
-		super();
-	}
-	// fin agregado
-
-
-
 
 	public Long getId_periodo() {
 		return id_periodo;

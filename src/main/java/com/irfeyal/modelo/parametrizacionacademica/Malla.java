@@ -91,11 +91,6 @@ public class Malla implements Serializable {
 	}
 	
 
-	public Malla() {
-		super();
-	}
-
-
 	public List<Area> getListarea() {
 		return listarea;
 	}

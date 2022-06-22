@@ -50,7 +50,7 @@ public class Asignatura implements Serializable {
 		super();
 	}
 	
-	//MODULOTUTORIAS
+	//CONSTRUCTOR TUTORIAS Y ASISTENCIAS
 	public Asignatura(Long id_asignatura) {
 		super();
 		this.id_asignatura = id_asignatura;
@@ -63,19 +63,6 @@ public class Asignatura implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 		this.empleados = empleados;
 	}
-	
-	
-// agregado por el modulo de asistencia  necesario para  sus tablas
-	public Asignatura(Long id_asignatura) {
-		super();
-		this.id_asignatura = id_asignatura;
-	}
-
-	public Asignatura() {
-		super();
-	}
-
-
 
 	// Relacion asignatura_empleado
 	@ManyToMany
