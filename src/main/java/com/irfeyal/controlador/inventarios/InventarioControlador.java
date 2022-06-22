@@ -82,6 +82,13 @@ public class InventarioControlador {
 		return listaTemp;
 	}
 
+	@GetMapping(path = "/listarticulos", produces = { "application/json" })
+	public List<Inventario> listaTodosArticulos() {
+		List<Inventario> listaInventario = inventarioService.listAllInventario();
+		return listaInventario;
+	}
+	
+	
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> ingresarNuevoArticulo(@Validated @RequestBody Inventario inventario,
 			BindingResult result) {
