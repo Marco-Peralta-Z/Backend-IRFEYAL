@@ -89,6 +89,12 @@ public class Malla implements Serializable {
 		this.id_modalidad = id_modalidad;
 		this.listarea = listarea;
 	}
+	
+
+	public Malla() {
+		super();
+	}
+
 
 	public List<Area> getListarea() {
 		return listarea;

@@ -54,6 +54,18 @@ public class Curso implements Serializable {
 		this.descripcion = descripcion;
 		this.fecha_creacion = fecha_creacion;
 	}
+	
+	// agregado por el modulo de asistencia  necesario para  sus tablas
+	public Curso() {
+		super();
+	}
+	
+
+	public Curso(Long id_curso) {
+		super();
+		this.id_curso = id_curso;
+	}
+	// agregado fin
 
 	public Long getId_curso() {
 		return id_curso;
