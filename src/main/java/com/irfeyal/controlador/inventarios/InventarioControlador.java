@@ -101,7 +101,7 @@ public class InventarioControlador {
 					.findById(inventario.getArticulo().getControlArticulo().getAdministrador().getId_empleado());
 			ControlArticulo newControlArticulo = controlArticuloService
 					.save(inventario.getArticulo().getControlArticulo());
-			newControlArticulo.setCantidad(inventario.getCantidad());
+			newControlArticulo.setCantidad(1);
 			newControlArticulo.setAdministrador(empleado);
 			inventario.getArticulo().setControlArticulo(newControlArticulo);
 			Categoria categoria = categoriaService.getById(inventario.getArticulo().getCateId().getId_categoria())
@@ -115,7 +115,11 @@ public class InventarioControlador {
 			inventario.setCodigo("01" + newArticulo.getId_articulo());
 			inventario.setIngresadoPor(empleado.getPersona().getNombre() + empleado.getPersona().getApellido()
 					+ ": Ci: " + empleado.getPersona().getCedula());
+			
+			inventario.setCantidad(1);
+			inventario.setDisponibilidad(1);
 			inventarioIngresado = inventarioService.save(inventario);
+			
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear entidad");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

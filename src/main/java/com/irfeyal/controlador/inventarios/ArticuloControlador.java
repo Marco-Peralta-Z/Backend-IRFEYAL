@@ -27,10 +27,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.Articulo;
 import com.irfeyal.modelo.inventarios.Categoria;
+import com.irfeyal.modelo.inventarios.ControlArticulo;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.servicio.inventarios.ArticuloService;
 import com.irfeyal.servicio.inventarios.CategoriaService;
+import com.irfeyal.servicio.inventarios.ControlArticuloService;
 
 @RestController
 @RequestMapping("/articulo")
@@ -43,6 +45,8 @@ public class ArticuloControlador {
 	@Autowired
 	private CategoriaService categoriaService;
 	
+	@Autowired
+	private ControlArticuloService controlArticuloService;
 	
 	@GetMapping(path = "/list", produces = {"application/json"})
 	public List<Articulo> listArticulo(){
@@ -69,9 +73,10 @@ public class ArticuloControlador {
 		return aprobacion;
 	}
 	
-	
+	//@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
+	//public ResponseEntity<?> actualizarCategoria(@PathVariable("id") Long idCategoria, @Validated @RequestBody Categoria categoria,
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> actulaizarModuloLibro(@PathVariable("id") Long idArticulo, @Validated @RequestBody Articulo articuloModificado,
+	public ResponseEntity<?> actulaizarArticulo(@PathVariable("id") Long idArticulo, @Validated @RequestBody Articulo articuloModificado,
 			BindingResult result) {
 		Articulo articuloActual = articuloService.getById(idArticulo).get();
 		Articulo articuloUpdate = null;
@@ -84,7 +89,7 @@ public class ArticuloControlador {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		if (articuloActual == null) {
-			respuesta.put("mensaje", "Error: no se pudo editar el modulo: "
+			respuesta.put("mensaje", "Error: no se pudo editar el articulo: "
 					.concat(idArticulo.toString().concat(" no existe en la base de datos")));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
@@ -96,7 +101,9 @@ public class ArticuloControlador {
 			articuloActual.setArtimarca(articuloModificado.getArtimarca());
 			Categoria cate = categoriaService.getById(articuloModificado.getCateId().getId_categoria()).get();
 			articuloActual.setCateId(cate);
-			articuloUpdate = articuloService.save(articuloUpdate);
+			ControlArticulo contrArt = controlArticuloService.getById(articuloModificado.getControlArticulo().getId_control_articulo()).get();
+			articuloActual.setControlArticulo(articuloActual.getControlArticulo());
+			articuloUpdate = articuloService.save(articuloActual);
 			
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");

@@ -163,7 +163,7 @@ public class AprobacionKitControlador {
 						int restarStockModulo = stockBD - 1;
 						ModuloLibro ml = modulolibroService.getById(listaModulosBaseDatos.get(i).getId_modulo_libro())
 								.get();
-						ml.setCantidad(restarStockModulo);
+						ml.setCantidad(ml.getCantidad()-1);
 						modulolibroService.save(ml);
 					}
 				}
