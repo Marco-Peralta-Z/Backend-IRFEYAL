@@ -35,6 +35,13 @@ public interface IMatriculaDao extends CrudRepository<Matricula, Long>{
 			+ " where pe.id_periodo=?1 and mo.id_modalidad=?2 and cur.id_curso=?3 and pa.id_paralelo=?4 and a.id_asignatura=?5 ",nativeQuery=true)
 	List<Matricula> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo, Long id_asignatura);
 	
+	
+	@Query(value=" select max(id_matricula) from matriculas ",nativeQuery=true)
+	List<Long> id_matriculas();
+	
+	
+	/*FIN MODULO TUTORIAS*/
+	
 	@Query(value="select m from Matricula m where m.estudiante.id_persona.cedula like %?1%")
 	public List<Matricula> findByCedulaEstudiante(String cedula);
 	

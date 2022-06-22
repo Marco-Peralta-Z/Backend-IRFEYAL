@@ -43,4 +43,16 @@ public interface AsignaturaRepository extends JpaRepository<Asignatura, Long> {
 	List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_curso, Long id_paralelo, Long id_modalidad);
 	
 	
+	
+	@Query(value="select a.id_asignatura, a.descripcion, a.fecha_creacion from malla m\r\n"
+			+ "inner join periodo p on p.id_malla = m.id_malla\r\n"
+			+ "inner join malla_asignatura ma on ma.id_malla = p.id_malla \r\n"
+			+ "inner join asignatura a on a.id_asignatura = ma.id_asignatura \r\n"
+			+ "where p.id_periodo = ?1 ",nativeQuery=true)
+	List<Asignatura> ids_asignatura(Long id_periodo);
+	
+	
+	/*FIN MODULO TUTORIAS */
+	
+	
 }

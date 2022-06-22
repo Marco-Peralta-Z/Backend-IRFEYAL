@@ -65,18 +65,14 @@ private static final long serialVersionUID = 1L;
 	@Column
 	private int comportamiento;
 	
-//	@OneToOne()
-//	@JoinColumn(name="id_rol_usuario")
-//	private RolUsuario id_rol_usuario;
 	
 	 @OneToOne()
 		@JoinColumn(name="id_matricula")
 		private Matricula id_matricula;
 	 
 	 @OneToOne()
-		@JoinColumn(name="id_asignatura")
+		@JoinColumn(name="fkid_asignatura")
 		private Asignatura id_asignatura;
-	
 	
 	public Registro() {
 	}

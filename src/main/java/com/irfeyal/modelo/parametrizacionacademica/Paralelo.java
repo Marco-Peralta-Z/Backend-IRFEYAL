@@ -44,6 +44,13 @@ public class Paralelo implements Serializable {
 	public Paralelo() {
 		super();
 	}
+	
+	//MODULO TUTORIAS
+	public Paralelo(Long id_paralelo) {
+		super();
+		this.id_paralelo = id_paralelo;
+	}
+	//-------
 
 	public Paralelo(Long id_paralelo, String descripcion, Date fecha_creacion) {
 		this.id_paralelo = id_paralelo;

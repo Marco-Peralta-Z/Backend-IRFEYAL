@@ -23,10 +23,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.irfeyal.modelo.dao.tutorias.IRegistroDao;
 import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
+import com.irfeyal.modelo.tutorias.Registro;
 import com.irfeyal.servicio.matricula.EnvioEmail;
 import com.irfeyal.servicio.matricula.MatriculaServiceImpl;
+import com.irfeyal.servicio.parametrizacionacademica.AsignaturaServicesImp;
 import com.irfeyal.servicio.tutorias.RegistroServiceImpl;
 
 @CrossOrigin(origins= {"*"})
@@ -38,7 +42,10 @@ public class MatriculaRestController {
 	private MatriculaServiceImpl matriculaService;
 	
 	@Autowired
-	private RegistroServiceImpl registroservice;
+	private IRegistroDao registrodao;
+	
+	@Autowired
+	private AsignaturaServicesImp serviceasignatura;
 	
 	@Autowired EnvioEmail sendEmail;
 	
@@ -77,6 +84,49 @@ public class MatriculaRestController {
 		
 		try {
 			matriculaNew= matriculaService.save(matricula);
+			
+			/*MODULO TUTORIAS*/
+			
+			Long b = matriculaNew.getId_matricula();
+			System.out.println(" ultima Matricula "+ b);
+	
+			Periodo periodo = matriculaNew.getId_periodo();
+			System.out.println("ultimo id de periodo"+ periodo.getId_periodo());
+			List<Asignatura> a = serviceasignatura.listarIdsAsignaturas(periodo.getId_periodo());
+
+			System.out.println("Tamaño"+ a.size());	
+			for (int i = 0; i < a.size(); i++) {
+				Registro automatico= new Registro();
+					automatico.setAporte1(0);
+					automatico.setAporte2(0);
+					automatico.setAporte3(0);
+					automatico.setAporte4(0);
+					automatico.setEvaluacion1(0);
+					automatico.setAporte5(0);
+					automatico.setAporte6(0);
+					automatico.setAporte7(0);
+					automatico.setAporte8(0);
+					automatico.setEvaluacion2(0);
+					automatico.setExamenfinal(0);
+					automatico.setPromediofinal(0);
+					automatico.setExamen_supletorio(0);
+					automatico.setPromedio_supletorio(0);
+					automatico.setExamen_remedial(0);
+					automatico.setPromedio_remedial(0);
+					automatico.setExamen_gracia(0);
+					automatico.setPromedio_gracia(0);
+					automatico.setComportamiento(0);
+					automatico.setId_asignatura(a.get(i));
+					automatico.setId_matricula(matriculaNew);
+				
+					this.registrodao.save(automatico);
+					System.out.println("Registro creado con 0"  );
+			}
+			
+			
+			/*--------------------------------------------------*/
+			
+			
 			
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
