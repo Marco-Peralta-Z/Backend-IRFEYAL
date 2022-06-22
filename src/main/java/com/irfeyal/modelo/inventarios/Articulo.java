@@ -40,7 +40,11 @@ public class Articulo implements Serializable {
     private String artidescrip;
     
     @Column(name = "artiestado")
-    private String artiestado;
+    private Boolean artiestado;
+    
+    @Column(name = "artidisponible")
+    private Boolean artiDisponibilidad;
+    
     
     @Column(name = "artimarca")
     private String artimarca;
@@ -55,6 +59,13 @@ public class Articulo implements Serializable {
     
     public Articulo() {
     }
+    
+    
+    
+
+
+
+
 
 	public Long getId_articulo() {
 		return id_articulo;
@@ -96,11 +107,12 @@ public class Articulo implements Serializable {
 		this.artidescrip = artidescrip;
 	}
 
-	public String getArtiestado() {
+
+	public Boolean getArtiestado() {
 		return artiestado;
 	}
 
-	public void setArtiestado(String artiestado) {
+	public void setArtiestado(Boolean artiestado) {
 		this.artiestado = artiestado;
 	}
 
@@ -126,6 +138,18 @@ public class Articulo implements Serializable {
 
 	public void setControlArticulo(ControlArticulo controlArticulo) {
 		this.controlArticulo = controlArticulo;
+	}
+
+
+
+	public Boolean getArtiDisponibilidad() {
+		return artiDisponibilidad;
+	}
+
+
+
+	public void setArtiDisponibilidad(Boolean artiDisponibilidad) {
+		this.artiDisponibilidad = artiDisponibilidad;
 	}
 
 

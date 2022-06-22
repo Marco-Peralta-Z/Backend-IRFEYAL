@@ -46,6 +46,17 @@ public class Asignatura implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
+	public Asignatura() {
+		super();
+	}
+	
+	//MODULOTUTORIAS
+	public Asignatura(Long id_asignatura) {
+		super();
+		this.id_asignatura = id_asignatura;
+	}
+	//------
+
 	public Asignatura(Long id_asignatura, String descripcion, Date fecha_creacion, List<Empleado> empleados) {
 		this.id_asignatura = id_asignatura;
 		this.descripcion = descripcion;

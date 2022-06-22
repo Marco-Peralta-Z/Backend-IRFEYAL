@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.irfeyal.interfaces.documentosacademicos.PlanUnidadInterface;
 import com.irfeyal.modelo.dao.documentosacademicos.PlanUnidadDAO;
-import com.irfeyal.modelo.dao.parametrizacionacademica.AsignaturaRepository;
+import com.irfeyal.modelo.dao.parametrizacionacademica.MallaRepository;
 import com.irfeyal.modelo.dao.rolseguridad.UsuarioDAO;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
@@ -33,7 +33,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 	private UsuarioDAO usuarioDAO;
 	
 	@Autowired
-	private AsignaturaRepository asignaturaRepository;
+	private MallaRepository mallaRepository;
 	
 	
 	//Listar planes de unidad
@@ -106,6 +106,16 @@ public class PlanUnidadService implements PlanUnidadInterface {
 //			return AsigRespuesta;
 //		}
 		
+		//listar Asignaturas por Malla
+		public List<Asignatura> findAsigByMalla (Long id){
+			List<Asignatura> AsigRespuesta = new ArrayList<>();
+			List<Asignatura> asignaturas = mallaRepository.findById(id).get().getListaAsignaturas();
+			for (int i=0; i<asignaturas.size(); i++) {
+					AsigRespuesta.add(asignaturas.get(i));
+			}
+			return AsigRespuesta;
+		}
+		
 	//Update Plan de Unidad
 	public  PlanUnidad  updatePlanUnidad ( Long  id , PlanUnidad  planUnidad ) {
 		planUnidad.setId_plan_unidad(id);
@@ -153,16 +163,60 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			titulo.add(logo);
 			titulo.setAlignment(1);
 			document.add(titulo);
+			
+			//Encabezado
+			Paragraph PAsignatura= new Paragraph();
+			Chunk TitAsignatura= new Chunk("ASIGNATURA: ",bold);
+			Chunk Asignatura= new Chunk(datosPlanUnidad.getAsignatura().getDescripcion());
+			PAsignatura.add(TitAsignatura);
+			PAsignatura.add(Asignatura);
+			document.add(PAsignatura);
+			
+			Paragraph PDocente= new Paragraph();
+			Chunk TitDocente= new Chunk("DOCENTE: ",bold);
+			Chunk Docente= new Chunk((datosPlanUnidad.getEmpleado().getPersona().getNombre()+" "+datosPlanUnidad.getEmpleado().getPersona().getApellido()).toUpperCase());
+			PDocente.add(TitDocente);
+			PDocente.add(Docente);
+			document.add(PDocente);
+			
+			Paragraph PPeriodo= new Paragraph();
+			Chunk TitPeriodo= new Chunk("PERIODO: ",bold);
+			Chunk Periodo= new Chunk(formatter.format(datosPlanUnidad.getPeriodo().getFecha_inicio())+" a "+ formatter.format(datosPlanUnidad.getPeriodo().getFecha_fin()).toUpperCase());
+			PPeriodo.add(TitPeriodo);
+			PPeriodo.add(Periodo);
+			document.add(PPeriodo);
+			
+			Paragraph PMalla= new Paragraph();
+			Chunk TitMalla= new Chunk("MALLA: ",bold);
+			Chunk Malla= new Chunk(datosPlanUnidad.getPeriodo().getMalla().getDescripcion());
+			PMalla.add(TitMalla);
+			PMalla.add(Malla);
+			document.add(PMalla);
+			
+			Paragraph PModalidad= new Paragraph();
+			Chunk TitModalidad= new Chunk("MODALIDAD: ",bold);
+			Chunk Modalidad= new Chunk(datosPlanUnidad.getModalidad().getDescripcion());
+			PModalidad.add(TitModalidad);
+			PModalidad.add(Modalidad);
+			document.add(PModalidad);
+			
+			Paragraph PCurso= new Paragraph();
+			Chunk TitCurso= new Chunk("CURSO: ",bold);
+			Chunk Curso= new Chunk(datosPlanUnidad.getCurso().getDescripcion()+" - "+ datosPlanUnidad.getParalelo().getDescripcion());
+			PCurso.add(TitCurso);
+			PCurso.add(Curso);
+			document.add(PCurso);
+			
+			Paragraph PFechasIniFin= new Paragraph();
+			Chunk TitFechasIniFin= new Chunk("INICIO/FIN DE LA UNIDAD: ",bold);
+			Chunk FechasIniFin= new Chunk(formatter.format(datosPlanUnidad.getFecha_inicio())+" - "+ formatter.format(datosPlanUnidad.getFecha_fin()).toUpperCase());
+			PFechasIniFin.add(TitFechasIniFin);
+			PFechasIniFin.add(FechasIniFin);
+			document.add(PFechasIniFin);
 
-			document.add(new Paragraph("ASIGNATURA: "+ datosPlanUnidad.getAsignatura().getDescripcion()));
-			document.add(new Paragraph("DOCENTE: "+ (datosPlanUnidad.getEmpleado().getPersona().getNombre()+" "+datosPlanUnidad.getEmpleado().getPersona().getApellido()).toUpperCase()));
-			document.add(new Paragraph("PERIODO: "+ formatter.format(datosPlanUnidad.getPeriodo().getFecha_inicio())+" a "+ formatter.format(datosPlanUnidad.getPeriodo().getFecha_fin()).toUpperCase()));
-			document.add(new Paragraph("MALLA: "+ datosPlanUnidad.getPeriodo().getMalla().getDescripcion()));
-			document.add(new Paragraph("MODALIDAD: "+ datosPlanUnidad.getModalidad().getDescripcion()));
-			document.add(new Paragraph("CURSO: "+ datosPlanUnidad.getCurso().getDescripcion()+" - "));
-			document.add(new Paragraph("INICIO/FIN DE LA UNIDAD: "+ formatter.format(datosPlanUnidad.getFecha_inicio())+" - "+ formatter.format(datosPlanUnidad.getFecha_fin()).toUpperCase()));
 			document.add(Chunk.NEWLINE);
 			
+			//Contenido
 			Paragraph titulo2= new Paragraph("UNIDAD No "+datosPlanUnidad.getUnidad().getIdUnidad(), chapterFont);
 			Paragraph tituloUnidad= new Paragraph(datosPlanUnidad.getTitulo_unidad(), subtFont);
 			titulo2.setAlignment(1);
@@ -171,44 +225,35 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			document.add(tituloUnidad);
 			document.add(Chunk.NEWLINE);
 			
-			Paragraph parrafoObjetivos= new Paragraph();
-			Chunk textObjetivos= new Chunk("Objetivos especificos de la unidad.",bold);
-			Chunk Objetivos= new Chunk(datosPlanUnidad.getObjetivos());
-			parrafoObjetivos.add(textObjetivos);
-			parrafoObjetivos.add(Objetivos);
-			parrafoObjetivos.setAlignment(Element.ALIGN_JUSTIFIED);
-			document.add(parrafoObjetivos);
+			Paragraph TitObjetivos= new Paragraph("Objetivos especificos de la unidad.",bold);
+			Paragraph Objetivos= new Paragraph(datosPlanUnidad.getObjetivos());
+			Objetivos.setAlignment(Element.ALIGN_JUSTIFIED);
+			document.add(TitObjetivos);
+			document.add(Objetivos);
 			document.add(Chunk.NEWLINE);
 			
-			Paragraph parrafoContenidos= new Paragraph();
-			Chunk textContenidos= new Chunk("Contenidos de la unidad.",bold);
-			Chunk Contenidos= new Chunk(datosPlanUnidad.getContenidos());
-			parrafoContenidos.add(textContenidos);
-			parrafoContenidos.add(Contenidos);
-			parrafoContenidos.setAlignment(Element.ALIGN_JUSTIFIED);
-			document.add(parrafoContenidos);
+			Paragraph TitContenidos= new Paragraph("Contenidos de la unidad.",bold);
+			Paragraph Contenidos= new Paragraph(datosPlanUnidad.getContenidos());
+			Contenidos.setAlignment(Element.ALIGN_JUSTIFIED);
+			document.add(TitContenidos);
+			document.add(Contenidos);
 			document.add(Chunk.NEWLINE);
 			
-			Paragraph parrafoCriterios= new Paragraph();
-			Chunk textCriterios= new Chunk("Criterios de evaluacion.",bold);
-			Chunk Criterios= new Chunk(datosPlanUnidad.getCriterios_evaluacion());
-			parrafoCriterios.add(textCriterios);
-			parrafoCriterios.add(Criterios);
-			parrafoCriterios.setAlignment(Element.ALIGN_JUSTIFIED);
-			document.add(parrafoCriterios);
+			Paragraph TitCriterios= new Paragraph("Criterios de evaluacion.",bold);
+			Paragraph Criterios= new Paragraph(datosPlanUnidad.getCriterios_evaluacion());
+			Criterios.setAlignment(Element.ALIGN_JUSTIFIED);
+			document.add(TitCriterios);
+			document.add(Criterios);
 			document.add(Chunk.NEWLINE);
 			
-			Paragraph parrafoDestrezas= new Paragraph();
-			Chunk textDestrezas= new Chunk("Destrezas con criterio de desempeño.",bold);
-			Chunk Destrezas= new Chunk(datosPlanUnidad.getDestrezas());
-			parrafoDestrezas.add(textDestrezas);
-			parrafoDestrezas.add(Destrezas);
-			parrafoDestrezas.setAlignment(Element.ALIGN_JUSTIFIED);
-			document.add(parrafoDestrezas);
+			Paragraph TitDestrezas= new Paragraph("Destrezas con criterio de desempeño.",bold);
+			Paragraph Destrezas= new Paragraph(datosPlanUnidad.getDestrezas());
+			Destrezas.setAlignment(Element.ALIGN_JUSTIFIED);
+			document.add(TitDestrezas);
+			document.add(Destrezas);
 			document.add(Chunk.NEWLINE);
 			
 			document.close();
-			System.out.println("------------------------------------CREADO PDF");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

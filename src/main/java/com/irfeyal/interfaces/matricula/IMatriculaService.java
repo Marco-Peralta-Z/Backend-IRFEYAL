@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
@@ -24,6 +25,8 @@ public List<Matricula> findAll();
 	
 	public List<Matricula> findHistorialEstudianteMatricula(Long id);
 	
-
-	
+	/*
+	// MODULO TUTORIAS
+    public List<Asignatura> listarIdsAsignaturas(Long id_periodo);
+	*/
 }

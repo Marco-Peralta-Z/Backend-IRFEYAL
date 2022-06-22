@@ -38,7 +38,18 @@ public class Curso implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
-	public Curso(Long id_curso, String descripcion,	Date fecha_creacion) {
+	public Curso() {
+		super();
+	}
+	
+	//MODULO TUTORIAS
+	public Curso(Long id_curso) {
+		super();
+		this.id_curso = id_curso;
+	}
+	//------
+
+	public Curso(Long id_curso, String descripcion, Date fecha_creacion) {
 		this.id_curso = id_curso;
 		this.descripcion = descripcion;
 		this.fecha_creacion = fecha_creacion;

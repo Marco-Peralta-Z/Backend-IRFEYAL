@@ -15,5 +15,5 @@ public interface SalidaArticuloInterface {
 
 	public abstract Salidaarticulo update(Long id_Salidaarticulo, double nuevoSalidaarticulo);
 
-	public abstract boolean delete(Long id_Salidaarticulo);
+	public abstract Salidaarticulo delete(Long id_Salidaarticulo);
 }

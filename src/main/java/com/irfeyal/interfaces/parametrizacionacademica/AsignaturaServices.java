@@ -20,4 +20,7 @@ public interface AsignaturaServices {
 
     public Asignatura deleteAsignatura(Long idAsignatura);
 
+ // MODULO TUTORIAS//
+    public List<Asignatura> listarIdsAsignaturas(Long id_periodo);
+
 }

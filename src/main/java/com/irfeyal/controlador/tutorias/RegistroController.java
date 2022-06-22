@@ -97,7 +97,7 @@ public class RegistroController {
 		return new ResponseEntity<Map<String,Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		if(registro==null) {
-			response.put("mensaje", "El id del registro ".concat(id_registro.toString().concat(id_registro.toString().concat(" no existe"))));
+			response.put("mensaje", "El id del registro ".concat(id_registro.toString().concat(" no existe")));
 			return new ResponseEntity<Map<String,Object>>(response, HttpStatus.NOT_FOUND);
 			
 		}
@@ -154,6 +154,12 @@ public class RegistroController {
 		public ResponseEntity<Object>updateRegistro(@RequestBody Registro registro, @PathVariable Long id_registro){
 			this.registroserviceimpl.update(registro, id_registro);
 			return ResponseEntity.ok(Boolean.TRUE);	
+		}
+		
+		//Para secretaria, certificado de promocion
+		@GetMapping("/buscarcedulaEstudiante/{cedula}")
+		public List<Registro> buscarPorCedulaEstudiante(@PathVariable String cedula){
+			return registroserviceimpl.findByCedulaEstudiante(cedula); 
 		}
 		
 }

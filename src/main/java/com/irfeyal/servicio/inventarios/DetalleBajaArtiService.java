@@ -24,7 +24,7 @@ public class DetalleBajaArtiService implements DetalleBajaArticInterface {
 	@Override
 	public DetallebajaArti save(DetallebajaArti detallebajaArti) {
 		// TODO Auto-generated method stub
-		return null;
+		return detallBajaArtiDao.save(detallebajaArti);
 	}
 
 	@Override

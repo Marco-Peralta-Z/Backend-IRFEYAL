@@ -35,6 +35,9 @@ public interface IRegistroService {
 	public  void update(Registro registro, Long id_registro);
 	
 	public Registro cargardatos (Long matricula);
+	
+	//Para secretaria, certificado de promocion
+	public List<Registro> findByCedulaEstudiante(String cedula);
 
 
 }

@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.irfeyal.interfaces.inventarios.SalidaArticuloInterface;
 import com.irfeyal.modelo.dao.inventarios.SalidaArticuloDao;
+import com.irfeyal.modelo.inventarios.Articulo;
+import com.irfeyal.modelo.inventarios.Inventario;
+import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.inventarios.Salidaarticulo;
+import com.irfeyal.modelo.rolseguridad.Empleado;
 
 @Service // ("IAutoServiceImplement")
 @Transactional
@@ -19,10 +23,13 @@ public class SalidaArticuloService implements SalidaArticuloInterface {
 	@Autowired
 	SalidaArticuloDao salidaArticuloDao;
 	
+	@Autowired
+	InventarioService inventarioService;
+	
 	@Override
 	public Salidaarticulo save(Salidaarticulo salidaarticulo) {
 		// TODO Auto-generated method stub
-		return null;
+		return salidaArticuloDao.save(salidaarticulo);
 	}
 
 	@Override
@@ -44,9 +51,20 @@ public class SalidaArticuloService implements SalidaArticuloInterface {
 	}
 
 	@Override
-	public boolean delete(Long id_Salidaarticulo) {
-		// TODO Auto-generated method stub
-		return false;
+	public Salidaarticulo delete(Long id_Salidaarticulo) {
+		Salidaarticulo salArti = getById(id_Salidaarticulo).get();
+		if(salArti == null) {
+			return null;
+		}else {
+			Empleado emp = salArti.getEmpleado();
+			Inventario inv = salArti.getInventario();
+			inv.setDisponibilidad(inv.getDisponibilidad()+1);
+			inv.getArticulo().setArtiDisponibilidad(true);
+			inventarioService.save(inv);
+			salidaArticuloDao.deleteById(id_Salidaarticulo);
+			return salArti;
+			
+		}
 	}
 
 }
