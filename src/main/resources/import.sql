@@ -379,6 +379,12 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(8, 3);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(9, 4);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(10, 5);
 
+-------------TUTOR---------------
+INSERT INTO tutor (id_curso, id_empleado,id_paralelo) VALUES(1, 1,1);
+INSERT INTO tutor (id_curso, id_empleado,id_paralelo) VALUES(1, 3,2);
+INSERT INTO tutor (id_curso, id_empleado,id_paralelo) VALUES(1, 4,3);
+
+
 -- Fin parametrización academica
 
 --MATRICULA---------
