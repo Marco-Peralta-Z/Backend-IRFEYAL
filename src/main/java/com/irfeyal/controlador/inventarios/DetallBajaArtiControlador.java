@@ -89,6 +89,7 @@ public class DetallBajaArtiControlador {
 				for (int i = 0; i < listaSalidas.size(); i++) {
 					if(inv.getId_inventario() == listaSalidas.get(i).getInventario().getId_inventario()) {
 						salidaArticulo = true;
+						i = (listaSalidas.size()+1);
 					}
 				}
 				
