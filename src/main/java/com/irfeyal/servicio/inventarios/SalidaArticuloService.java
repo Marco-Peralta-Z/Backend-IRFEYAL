@@ -59,6 +59,7 @@ public class SalidaArticuloService implements SalidaArticuloInterface {
 			Empleado emp = salArti.getEmpleado();
 			Inventario inv = salArti.getInventario();
 			inv.setDisponibilidad(inv.getDisponibilidad()+1);
+			inv.getArticulo().setArtiDisponibilidad(true);
 			inventarioService.save(inv);
 			salidaArticuloDao.deleteById(id_Salidaarticulo);
 			return salArti;

@@ -78,11 +78,13 @@ public class SalidaAriculoControlador {
 			//Guardar modulo
 			
 			Inventario inv = inventarioService.getById(salidaArticulo.getInventario().getId_inventario()).get();
-			if(inv.getDisponibilidad() > 0 && inv.getCantidad() > 0 && inv.getArticulo().getArtiestado() == true) {
+			if(inv.getDisponibilidad() > 0 && inv.getCantidad() > 0 && inv.getArticulo().getArtiestado() == true && inv.getArticulo().getArtiDisponibilidad() == true) {
 				Empleado emp = empleadoService.findById(salidaArticulo.getEmpleado().getId_empleado());
 				inv.setDisponibilidad((inv.getDisponibilidad()-1));
+				inv.getArticulo().setArtiDisponibilidad(false);
 				salidaArticulo.setEmpleado(emp);
-				salidaArticulo.setInventario(inv);
+				Inventario invUpdate = inventarioService.save(inv);
+				salidaArticulo.setInventario(invUpdate);
 				nuevaSalidaArticulo = salidaArticuloService.save(salidaArticulo);
 			}else {
 				respuesta.put("status", "error");

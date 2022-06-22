@@ -117,6 +117,7 @@ public class InventarioControlador {
 			Articulo newArticulo = articuloService.save(inventario.getArticulo());
 			newArticulo.setCateId(categoria);
 			newArticulo.setArtiestado(true);
+			newArticulo.setArtiDisponibilidad(true);
 			inventario.setDisponibilidad(inventario.getCantidad());
 			inventario.setArticulo(newArticulo);
 			inventario.setCodigo("01" + newArticulo.getId_articulo());
