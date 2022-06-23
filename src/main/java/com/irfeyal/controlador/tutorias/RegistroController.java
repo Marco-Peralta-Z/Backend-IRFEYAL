@@ -97,7 +97,7 @@ public class RegistroController {
 		return new ResponseEntity<Map<String,Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		if(registro==null) {
-			response.put("mensaje", "El id del registro ".concat(id_registro.toString().concat(id_registro.toString().concat(" no existe"))));
+			response.put("mensaje", "El id del registro ".concat(id_registro.toString().concat(" no existe")));
 			return new ResponseEntity<Map<String,Object>>(response, HttpStatus.NOT_FOUND);
 			
 		}

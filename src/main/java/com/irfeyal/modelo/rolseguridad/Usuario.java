@@ -41,6 +41,13 @@ public class Usuario implements Serializable {
 	
 	public Usuario() {
 	}
+	
+	//MODULOTUTORIAS
+	public Usuario(Long id_usuario) {
+		super();
+		this.id_usuario = id_usuario;
+	}
+	//-----
 
 	public Long getId_usuario() {
 		return id_usuario;

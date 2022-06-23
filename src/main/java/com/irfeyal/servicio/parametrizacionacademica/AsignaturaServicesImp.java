@@ -49,5 +49,14 @@ public class AsignaturaServicesImp implements AsignaturaServices {
 			return null;
 		}
 	}
+	
+	
+	/*MODULO TUTORIAS*/
+		@Override
+		public List<Asignatura> listarIdsAsignaturas(Long id_periodo) {
+			return asignaturaRepo.ids_asignatura(id_periodo);
+		}
+		
+	/*------------*/	
 
 }

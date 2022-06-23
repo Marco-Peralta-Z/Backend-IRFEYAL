@@ -13,7 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,7 +63,7 @@ public class SalidaAriculoControlador {
 	}
 	
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> crearModulo(@Validated @RequestBody Salidaarticulo salidaArticulo, BindingResult result) {
+	public ResponseEntity<Map<String, Object>> crearSalidaArticulo(@Validated @RequestBody Salidaarticulo salidaArticulo, BindingResult result) {
 		
 		Salidaarticulo nuevaSalidaArticulo = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -76,11 +78,13 @@ public class SalidaAriculoControlador {
 			//Guardar modulo
 			
 			Inventario inv = inventarioService.getById(salidaArticulo.getInventario().getId_inventario()).get();
-			if(inv.getDisponibilidad() > 0 && inv.getCantidad() > 0 && inv.getArticulo().getArtiestado() == true) {
+			if(inv.getDisponibilidad() > 0 && inv.getCantidad() > 0 && inv.getArticulo().getArtiestado() == true && inv.getArticulo().getArtiDisponibilidad() == true) {
 				Empleado emp = empleadoService.findById(salidaArticulo.getEmpleado().getId_empleado());
 				inv.setDisponibilidad((inv.getDisponibilidad()-1));
+				inv.getArticulo().setArtiDisponibilidad(false);
 				salidaArticulo.setEmpleado(emp);
-				salidaArticulo.setInventario(inv);
+				Inventario invUpdate = inventarioService.save(inv);
+				salidaArticulo.setInventario(invUpdate);
 				nuevaSalidaArticulo = salidaArticuloService.save(salidaArticulo);
 			}else {
 				respuesta.put("status", "error");
@@ -95,6 +99,25 @@ public class SalidaAriculoControlador {
 		respuesta.put("status", "ok");
 		respuesta.put("salidaArticulo", nuevaSalidaArticulo);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
+	}
+	
+	@DeleteMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<Map<String, Object>> ingresarArticuloPrestado(@PathVariable("id") Long id) {
+		Map<String, Object> respuesta = new HashMap<>();
+		try {
+			Salidaarticulo salidaArticulo = salidaArticuloService.delete(id);
+			if (salidaArticulo == null) {
+				respuesta.put("mensaje", "El articulo con id: " + id + " no existe en la base de datos");
+				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
+			}
+		} catch (DataAccessException e) {
+			respuesta.put("mensaje", "Error al ingresar el articulo de la base de datos");
+			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		respuesta.put("status", "ok");
+		respuesta.put("mensaje", "El articulo ha sido ingresado");
+		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 	
 	

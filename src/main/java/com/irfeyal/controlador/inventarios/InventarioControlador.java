@@ -82,6 +82,13 @@ public class InventarioControlador {
 		return listaTemp;
 	}
 
+	@GetMapping(path = "/listarticulos", produces = { "application/json" })
+	public List<Inventario> listaTodosArticulos() {
+		List<Inventario> listaInventario = inventarioService.listAllInventario();
+		return listaInventario;
+	}
+	
+	
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> ingresarNuevoArticulo(@Validated @RequestBody Inventario inventario,
 			BindingResult result) {
@@ -101,7 +108,7 @@ public class InventarioControlador {
 					.findById(inventario.getArticulo().getControlArticulo().getAdministrador().getId_empleado());
 			ControlArticulo newControlArticulo = controlArticuloService
 					.save(inventario.getArticulo().getControlArticulo());
-			newControlArticulo.setCantidad(inventario.getCantidad());
+			newControlArticulo.setCantidad(1);
 			newControlArticulo.setAdministrador(empleado);
 			inventario.getArticulo().setControlArticulo(newControlArticulo);
 			Categoria categoria = categoriaService.getById(inventario.getArticulo().getCateId().getId_categoria())
@@ -110,12 +117,17 @@ public class InventarioControlador {
 			Articulo newArticulo = articuloService.save(inventario.getArticulo());
 			newArticulo.setCateId(categoria);
 			newArticulo.setArtiestado(true);
+			newArticulo.setArtiDisponibilidad(true);
 			inventario.setDisponibilidad(inventario.getCantidad());
 			inventario.setArticulo(newArticulo);
 			inventario.setCodigo("01" + newArticulo.getId_articulo());
 			inventario.setIngresadoPor(empleado.getPersona().getNombre() + empleado.getPersona().getApellido()
 					+ ": Ci: " + empleado.getPersona().getCedula());
+			
+			inventario.setCantidad(1);
+			inventario.setDisponibilidad(1);
 			inventarioIngresado = inventarioService.save(inventario);
+			
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear entidad");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

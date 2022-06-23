@@ -41,12 +41,20 @@ public class Curso implements Serializable {
 	public Curso() {
 		super();
 	}
+	
+	//CONSTRUCTOR TUTORIAS Y ASISTENCIA
+	public Curso(Long id_curso) {
+		super();
+		this.id_curso = id_curso;
+	}
+	//------
 
 	public Curso(Long id_curso, String descripcion, Date fecha_creacion) {
 		this.id_curso = id_curso;
 		this.descripcion = descripcion;
 		this.fecha_creacion = fecha_creacion;
 	}
+	
 
 	public Long getId_curso() {
 		return id_curso;
