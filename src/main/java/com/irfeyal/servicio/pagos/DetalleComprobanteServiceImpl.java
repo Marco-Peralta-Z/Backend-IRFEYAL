@@ -50,4 +50,10 @@ public class DetalleComprobanteServiceImpl implements IDetalleComprobanteService
 		
 	}
 
+	@Override
+	public List<DetalleComprobante> findByCedulaEstudiante(String cedula) {
+		// TODO Auto-generated method stub
+		return detalleComprobanteDao.findByCedulaEstudiante(cedula);
+	}
+
 }

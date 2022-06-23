@@ -19,4 +19,6 @@ public List<DetalleComprobante> findAll();
 	
 	public void delete (Long id);
 	
+	public List<DetalleComprobante> findByCedulaEstudiante(String cedula);
+	
 }

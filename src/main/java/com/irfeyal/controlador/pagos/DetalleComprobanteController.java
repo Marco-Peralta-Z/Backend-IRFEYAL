@@ -87,4 +87,9 @@ public class DetalleComprobanteController {
 		public void delete(@PathVariable Long id) {
 			detalleComprobanteService.delete(id);
 		}
+		
+		@GetMapping("/detalleComprobante/{cedula}")
+		public List<DetalleComprobante> buscarPorCedulaEstudiante(@PathVariable String cedula){
+			return detalleComprobanteService.findByCedulaEstudiante(cedula); 
+		}
 }
