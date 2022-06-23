@@ -126,12 +126,7 @@ public class RegistroServiceImpl implements IRegistroService {
 		}
 
 
-		@Override
-		public List<Matricula> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo,
-				Long id_asignatura) {
-			
-			return matricula.filtrocompleto(id_periodo, id_modalidad, id_curso, id_paralelo, id_asignatura);
-		}
+	
 
 
 		@Override
@@ -212,6 +207,14 @@ public class RegistroServiceImpl implements IRegistroService {
 		public List<Registro> findByCedulaEstudiante(String cedula) {
 					
 			return registrodao.findByCedulaEstudiante(cedula);
+		}
+
+
+		@Override
+		public List<Registro> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo,
+				Long id_asignatura) {
+			
+			return registrodao.filtrocompleto(id_periodo, id_modalidad, id_curso, id_paralelo, id_asignatura);
 		}
 		
 

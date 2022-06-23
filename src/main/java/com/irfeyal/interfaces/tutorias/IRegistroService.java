@@ -29,7 +29,7 @@ public interface IRegistroService {
 	public List<Curso> ListCursosempelados(Long empleado, Long id_modalidad, Long id_periodo);
 	public List<Paralelo> ListParaleloempleados(Long empleado, Long id_curso, Long id_modalidad, Long id_periodo);
 	public List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_curso, Long id_paralelo, Long id_modalidad);
-	public List<Matricula> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo, Long id_asignatura);
+	public List<Registro> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo, Long id_asignatura);
 	public Comprobante buscarceduestudiante(String cedula);
 	
 	public  void update(Registro registro, Long id_registro);
