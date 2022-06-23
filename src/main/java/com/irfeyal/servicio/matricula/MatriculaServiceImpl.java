@@ -68,6 +68,12 @@ public class MatriculaServiceImpl implements IMatriculaService{
 		// TODO Auto-generated method stub
 		return matriculaDao.findHistorialEstudianteMatricula(id);
 	}
+
+	@Override
+	public List<Matricula> listarMatriculasActivas() {
+		// TODO Auto-generated method stub
+		return matriculaDao.matriculasActivas();
+	}
 	
 	/*
 	// MODULO TUTORIAS 

@@ -17,6 +17,9 @@ public interface IMatriculaDao extends CrudRepository<Matricula, Long>{
 	
 	Page<Matricula> findAll(Pageable pageable);
 
+	@Query(value="select m.id_matricula, m.fecha_matricula,m.id_curso, m,id_estudiante,m.id_paralelo, m.id_periodo,m.id_modalidad, m.id_usuario from matriculas m join periodo p on m.id_periodo = p.id_periodo where p.vigencia = true", nativeQuery = true)
+	List<Matricula> matriculasActivas();
+	
 	/*MODULO TUTORIAS*/
 	
 	@Query(value=" select max(id_matricula) from matriculas ",nativeQuery=true)

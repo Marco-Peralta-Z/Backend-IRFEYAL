@@ -55,6 +55,11 @@ public class MatriculaRestController {
 		return matriculaService.findAll();
 	}
 	
+	@GetMapping("/matriculasActivas")
+	public List<Matricula> getActivas(){
+		return matriculaService.listarMatriculasActivas();
+	}
+	
 	@GetMapping("/historialMatricula/{id}")
 	public List<Matricula> findHistorialEstudianteMatricula(@PathVariable Long id){
 		return matriculaService.findHistorialEstudianteMatricula(id);

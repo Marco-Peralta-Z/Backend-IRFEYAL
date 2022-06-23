@@ -24,6 +24,7 @@ public List<Matricula> findAll();
 	public List<Matricula> findByCedulaEstudiante(String cedula);
 	
 	public List<Matricula> findHistorialEstudianteMatricula(Long id);
+	public List<Matricula> listarMatriculasActivas();
 	
 	/*
 	// MODULO TUTORIAS
