@@ -13,6 +13,7 @@ import com.irfeyal.modelo.dao.parametrizacionacademica.MallaRepository;
 import com.irfeyal.modelo.dao.rolseguridad.UsuarioDAO;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.rolseguridad.Usuario;
 
 import com.itextpdf.text.*;
@@ -92,6 +93,16 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			}
 			return existe; 
 		}	
+		
+		//listar Cursos por Malla
+		public List<Curso> findCursosByMalla (Long id){
+			List<Curso> CursoRespuesta = new ArrayList<>();
+			List<Curso> cursos = mallaRepository.findById(id).get().getListaCursos();
+			for (int i=0; i<cursos.size(); i++) {
+				CursoRespuesta.add(cursos.get(i));
+			}
+			return CursoRespuesta;
+		}
 	
 //	//listar Asignaturas por Malla
 //		public List<Asignatura> findAllByMalla (Long id){

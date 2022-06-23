@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.modelo.rolseguridad.Usuario;
@@ -127,6 +128,11 @@ public class PlanUnidadController {
 	@GetMapping(path = "cursos")
 	public ResponseEntity<?> getAllCursos() {
 		return new ResponseEntity<>(cursosService.getAllCurso(), HttpStatus.OK);
+	}
+	
+	@GetMapping ("cursos/malla/{id_malla}")
+	private ResponseEntity<List<Curso>> getCursosByMalla (@PathVariable("id_malla") Long id){
+		return ResponseEntity.ok(planUnidadService.findCursosByMalla(id));
 	}
 	
 	@GetMapping(path = "paralelos")
