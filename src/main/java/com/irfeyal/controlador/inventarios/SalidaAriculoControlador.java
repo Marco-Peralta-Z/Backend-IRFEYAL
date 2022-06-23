@@ -85,6 +85,7 @@ public class SalidaAriculoControlador {
 				salidaArticulo.setEmpleado(emp);
 				Inventario invUpdate = inventarioService.save(inv);
 				salidaArticulo.setInventario(invUpdate);
+				salidaArticulo.setCodigo("codSali00"+invUpdate.getId_inventario());
 				nuevaSalidaArticulo = salidaArticuloService.save(salidaArticulo);
 			}else {
 				respuesta.put("status", "error");
