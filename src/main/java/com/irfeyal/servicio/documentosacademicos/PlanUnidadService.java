@@ -74,15 +74,17 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		
 		/*Buscar Plan de unidad por Unidad, asignatura, curso y modalidad 
 		(Controlar la ceracion del Plan de Unidad con el mismo No de unidad)*/
-		public boolean findPUByUnidadAsigCurso (Long id_u, Long id_a, Long id_c, Long id_m){
+		public boolean findPUByUnidadAsigCurso (Long id_unidad, Long id_asig, Long id_curso, Long id_paralelo, Long id_periodo, Long id_modalidad){
 			List<PlanUnidad> planunidadesRespuesta = new ArrayList<>();
 			List<PlanUnidad> planunidades = planUnidadDAO.findAll();
 			boolean existe = false;
 			for (int i=0; i<planunidades.size(); i++) {
-				if ((planunidades.get(i).getUnidad().getIdUnidad() == id_u) &&
-					(planunidades.get(i).getAsignatura().getId_asignatura() == id_a) &&
-					(planunidades.get(i).getCurso().getId_curso() == id_c) &&
-					(planunidades.get(i).getModalidad().getId_modalidad() == id_m)) {
+				if ((planunidades.get(i).getUnidad().getIdUnidad() == id_unidad) &&
+					(planunidades.get(i).getAsignatura().getId_asignatura() == id_asig) &&
+					(planunidades.get(i).getCurso().getId_curso() == id_curso) &&
+					(planunidades.get(i).getParalelo().getId_paralelo() == id_paralelo) &&
+					(planunidades.get(i).getPeriodo().getId_periodo() == id_periodo) &&
+					(planunidades.get(i).getModalidad().getId_modalidad() == id_modalidad)) {
 					planunidadesRespuesta.add(planunidades.get(i));
 				} 
 			}

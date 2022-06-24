@@ -140,11 +140,12 @@ public class PlanUnidadController {
 		return new ResponseEntity<>(paraleloService.getAllParalelo(), HttpStatus.OK);
 	}
 	
-	@GetMapping ("{id_unidad}/{id_asignatura}/{id_modalidad}/{id_curso}")
+	@GetMapping ("{id_unidad}/{id_asignatura}/{id_curso}/{id_paralelo}/{id_periodo}/{id_modalidad}")
 	private ResponseEntity<Boolean> verificarPlanUnidad (@PathVariable("id_unidad") Long id_unidad,
 			@PathVariable("id_asignatura") Long id_asig, @PathVariable("id_curso") Long id_curso,
+			@PathVariable("id_paralelo") Long id_paralelo, @PathVariable("id_periodo") Long id_periodo,
 			@PathVariable("id_modalidad") Long id_modalidad){
-		return ResponseEntity.ok(planUnidadService.findPUByUnidadAsigCurso(id_unidad, id_asig, id_curso,id_modalidad));
+		return ResponseEntity.ok(planUnidadService.findPUByUnidadAsigCurso(id_unidad, id_asig, id_curso,id_paralelo, id_periodo, id_modalidad));
 	}
 	
 	@PostMapping("pdfPlanUnidad")
