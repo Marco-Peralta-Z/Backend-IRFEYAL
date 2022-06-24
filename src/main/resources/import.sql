@@ -216,12 +216,11 @@ INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$1
 
 -------------------ROL-------------------
 INSERT INTO rol (descripcion) VALUES ('Administrador');
-INSERT INTO rol (descripcion) VALUES('coordinador academico');
-INSERT INTO rol (descripcion) VALUES ('secretaria');
-INSERT INTO rol (descripcion) VALUES ('coordinador de desarrollo');
-INSERT INTO rol (descripcion) VALUES ('coordinador administrativo');
-INSERT INTO rol (descripcion) VALUES ('rectora');
-INSERT INTO rol (descripcion) VALUES ('docente');
+INSERT INTO rol (descripcion) VALUES ('Secretaria');
+INSERT INTO rol (descripcion) VALUES ('Docente');
+INSERT INTO rol (descripcion) VALUES ('Coordinador administrativo');
+INSERT INTO rol (descripcion) VALUES('Coordinador academico');
+INSERT INTO rol (descripcion) VALUES ('Coordinador de desarrollo institucional');
 
 -------------------MODULO-------------------
 INSERT INTO modulo (modulo,url) VALUES ('matriculas','http//localhost/modmatricula.php');
@@ -239,14 +238,14 @@ INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,4);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,5);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,6);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,7);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,8);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,7);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,8);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,3,9);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,10);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,11);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,12);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,13);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,7,1,14);
+INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,14);
 
 -- PARAMETRIZACION ACADEMICA
 
