@@ -80,7 +80,7 @@ public class ModalidadController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Guardando modalidad
+			// Guardar modalidad
 			modalidad.setDescripcion(modalidad.getDescripcion().toUpperCase());
 			modalidadNuevo = modalidadService.saveModalidad(modalidad);
 		} catch (DataAccessException e) {
@@ -94,8 +94,8 @@ public class ModalidadController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateModalidad(@PathVariable("id") Long idModalidad,@Validated @RequestBody Modalidad modalidad,
-			BindingResult result) {
+	public ResponseEntity<?> updateModalidad(@PathVariable("id") Long idModalidad,
+			@Validated @RequestBody Modalidad modalidad, BindingResult result) {
 		Optional<Modalidad> modalidadActual = modalidadService.getModalidadById(idModalidad);
 		Modalidad modalidadUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -112,7 +112,7 @@ public class ModalidadController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualización modalidad
+			// Actualizar modalidad
 			modalidadActual.get().setDescripcion(modalidad.getDescripcion().toUpperCase());
 			modalidadUpdated = modalidadService.saveModalidad(modalidadActual.get());
 		} catch (DataAccessException e) {
@@ -120,7 +120,6 @@ public class ModalidadController {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-
 		respuesta.put("mensaje", "La Modalidad ha sido actualizado con éxito");
 		respuesta.put("modalidad", modalidadUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
@@ -130,6 +129,7 @@ public class ModalidadController {
 	public ResponseEntity<Map<String, Object>> deleteModalidad(@PathVariable("id") Long idModalidad) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
+			// Borrar modalidad
 			Modalidad modalidad = modalidadService.deleteModalidad(idModalidad);
 			if (modalidad == null) {
 				respuesta.put("mensaje", "La Modalidad ID: " + idModalidad + " no existe en la base de datos");
@@ -144,11 +144,9 @@ public class ModalidadController {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 
-	
-	
+	//Especificar modulo por favor
 	@GetMapping("/getJormadasPorCurso/{id_curso}")
-    public List<Modalidad> buscarByCurso(@PathVariable Long id_curso){
- 
+	public List<Modalidad> buscarByCurso(@PathVariable Long id_curso) {
 		return modalidadService.findByCurso(id_curso);
 	}
 }

@@ -1,7 +1,9 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -60,21 +64,20 @@ public class Periodo implements Serializable {
 	@Column(name = "ano_fin")
 	private String ano_fin;
 
+	// Relación Periodo - Horario
+	@ManyToMany
+	@JoinTable(name = "periodo_horario", joinColumns = { @JoinColumn(name = "id_periodo") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_horario") })
+	private List<Horario> listaHorario = new ArrayList<>();
+
 	// Relación Periodo-Malla
 	@ManyToOne
-	@JoinColumn(name = "id_malla", nullable = true)
+	@JoinColumn(name = "id_malla")
 	private Malla malla;
 
 	public Periodo() {
 		super();
 	}
-	
-	//CONSTRUCTOR TUTORIAS Y ASISTENCIA
-	public Periodo(Long id_periodo) {
-		super();
-		this.id_periodo = id_periodo;
-	}
-	//--------
 
 	public Periodo(Long id_periodo, String periodo_academico, Date fecha_inicio, Date fecha_fin,
 			Double costo_mensualidad, Double costo_matricula, boolean vigencia, String ano_inicio, String ano_fin,
@@ -90,7 +93,13 @@ public class Periodo implements Serializable {
 		this.ano_fin = ano_fin;
 		this.malla = malla;
 	}
-	
+
+	// CONSTRUCTOR TUTORIAS Y ASISTENCIA
+	public Periodo(Long id_periodo) {
+		super();
+		this.id_periodo = id_periodo;
+	}
+	// --------
 
 	public Long getId_periodo() {
 		return id_periodo;
@@ -140,6 +149,14 @@ public class Periodo implements Serializable {
 		this.costo_matricula = costo_matricula;
 	}
 
+	public boolean isVigencia() {
+		return vigencia;
+	}
+
+	public void setVigencia(boolean vigencia) {
+		this.vigencia = vigencia;
+	}
+
 	public String getAno_inicio() {
 		return ano_inicio;
 	}
@@ -156,12 +173,12 @@ public class Periodo implements Serializable {
 		this.ano_fin = ano_fin;
 	}
 
-	public boolean isVigencia() {
-		return vigencia;
+	public List<Horario> getListaHorario() {
+		return listaHorario;
 	}
 
-	public void setVigencia(boolean vigencia) {
-		this.vigencia = vigencia;
+	public void setListaHorario(List<Horario> listaHorario) {
+		this.listaHorario = listaHorario;
 	}
 
 	public Malla getMalla() {
@@ -174,10 +191,10 @@ public class Periodo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Periodo [ano_fin=" + ano_fin + ", ano_inicio=" + ano_inicio + ", costo_matricula=" + costo_matricula
-				+ ", costo_mensualidad=" + costo_mensualidad + ", fecha_fin=" + fecha_fin + ", fecha_inicio="
-				+ fecha_inicio + ", id_periodo=" + id_periodo + ", malla=" + malla + ", periodo_academico="
-				+ periodo_academico + ", vigencia=" + vigencia + "]";
+		return "Periodo [id_periodo=" + id_periodo + ", periodo_academico=" + periodo_academico + ", fecha_inicio="
+				+ fecha_inicio + ", fecha_fin=" + fecha_fin + ", costo_mensualidad=" + costo_mensualidad
+				+ ", costo_matricula=" + costo_matricula + ", vigencia=" + vigencia + ", ano_inicio=" + ano_inicio
+				+ ", ano_fin=" + ano_fin + ", listaHorario=" + listaHorario + ", malla=" + malla + "]";
 	}
 
 }

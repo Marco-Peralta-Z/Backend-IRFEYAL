@@ -40,23 +40,24 @@ public class Paralelo implements Serializable {
 	private void setFechaCreacion() {
 		this.fecha_creacion = new Date();
 	}
-	// los 3 constructores son necesarios 
+
+	public Paralelo() {
+		super();
+	}
+
 	public Paralelo(Long id_paralelo, String descripcion, Date fecha_creacion) {
+		super();
 		this.id_paralelo = id_paralelo;
 		this.descripcion = descripcion;
 		this.fecha_creacion = fecha_creacion;
 	}
-	
-	// agregado por el modulo de asistencia  necesario para  sus tablas  
+
+	// agregado por el modulo de asistencia necesario para sus tablas
 	public Paralelo(Long id_paralelo) {
 		super();
 		this.id_paralelo = id_paralelo;
 	}
-	
-	public Paralelo() {
-		super();
-	}
-	// fin del agregado 
+	// fin del agregado
 
 	public Long getId_paralelo() {
 		return id_paralelo;

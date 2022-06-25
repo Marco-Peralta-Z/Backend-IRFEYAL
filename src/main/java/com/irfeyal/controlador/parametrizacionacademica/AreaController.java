@@ -51,7 +51,6 @@ public class AreaController {
 
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public ResponseEntity<?> getAreaById(@PathVariable("id") Long idArea) {
-		System.err.println("----------->" + idArea);
 		Optional<Area> area = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
@@ -63,7 +62,7 @@ public class AreaController {
 		}
 		if (area.isEmpty()) {
 			respuesta.put("mensaje",
-					"El �rea ID: ".concat(idArea.toString().concat(": no existe en la base de datos")));
+					"El area ID: ".concat(idArea.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(area, HttpStatus.OK);
@@ -81,6 +80,7 @@ public class AreaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			// Guardar area
 			area.setDescripcion(area.getDescripcion().toUpperCase());
 			areaNueva = areaService.saveArea(area);
 		} catch (DataAccessException e) {
@@ -122,7 +122,7 @@ public class AreaController {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		respuesta.put("mensaje", "El �rea ha sido actualizada con exito");
+		respuesta.put("mensaje", "El área ha sido actualizada con exito");
 		respuesta.put("area", areaUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
@@ -131,6 +131,7 @@ public class AreaController {
 	public ResponseEntity<Map<String, Object>> deleteArea(@PathVariable("id") Long idArea) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
+			// Borrar área
 			Area areaRecu = areaService.deleteArea(idArea);
 			if (areaRecu == null) {
 				respuesta.put("mensaje", "El �rea no existe en la base de datos");

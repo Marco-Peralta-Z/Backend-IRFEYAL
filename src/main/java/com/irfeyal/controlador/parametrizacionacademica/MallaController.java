@@ -79,7 +79,7 @@ public class MallaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Guardar malla
+			// Guardar malla
 			malla.setDescripcion(malla.getDescripcion().toUpperCase());
 			mallaNuevo = mallaService.saveMalla(malla);
 		} catch (DataAccessException e) {
@@ -93,7 +93,7 @@ public class MallaController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateMalla(@PathVariable("id") Long idMalla,@Validated @RequestBody Malla malla,
+	public ResponseEntity<?> updateMalla(@PathVariable("id") Long idMalla, @Validated @RequestBody Malla malla,
 			BindingResult result) {
 		Optional<Malla> mallaActual = mallaService.getMallaById(idMalla);
 		Malla mallaUpdated = null;
@@ -111,13 +111,14 @@ public class MallaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualización malla
-            mallaActual.get().setEstado(malla.getEstado());
-            mallaActual.get().setDescripcion(malla.getDescripcion().toUpperCase());
-            mallaActual.get().setListarea(malla.getListarea());
-            mallaActual.get().setListaAsignaturas(malla.getListaAsignaturas());
-            mallaActual.get().setListaCursos(malla.getListaCursos());
-            mallaUpdated = mallaService.saveMalla(mallaActual.get());
+			// Actualizar malla
+			mallaActual.get().setEstado(malla.getEstado());
+			mallaActual.get().setDescripcion(malla.getDescripcion().toUpperCase());
+			mallaActual.get().setListarea(malla.getListarea());
+			mallaActual.get().setListaAsignaturas(malla.getListaAsignaturas());
+			mallaActual.get().setListaCursos(malla.getListaCursos());
+			mallaActual.get().setId_modalidad(malla.getId_modalidad());
+			mallaUpdated = mallaService.saveMalla(mallaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -132,6 +133,7 @@ public class MallaController {
 	public ResponseEntity<Map<String, Object>> deleteMalla(@PathVariable("id") Long idMalla) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
+			// Borrar malla
 			Malla mallaRecu = mallaService.deleteMalla(idMalla);
 			if (mallaRecu == null) {
 				respuesta.put("mensaje", "La Malla ID: " + idMalla + " no existe en la base de datos");

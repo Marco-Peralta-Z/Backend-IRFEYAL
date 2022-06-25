@@ -46,7 +46,6 @@ public class CursoController {
 			@RequestParam(name = "size", defaultValue = "5") int size) {
 		Pageable pageable = PageRequest.of(page, size);
 		return new ResponseEntity<>(cursoService.getAllCurso(pageable), HttpStatus.OK);
-
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
@@ -80,6 +79,7 @@ public class CursoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			// Guardar curso
 			curso.setDescripcion(curso.getDescripcion().toUpperCase());
 			cursoNuevo = cursoService.saveCurso(curso);
 		} catch (DataAccessException e) {
@@ -93,7 +93,7 @@ public class CursoController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateCurso(@PathVariable("id") Long idCurso,@Validated @RequestBody Curso curso,
+	public ResponseEntity<?> updateCurso(@PathVariable("id") Long idCurso, @Validated @RequestBody Curso curso,
 			BindingResult result) {
 		Optional<Curso> cursoActual = cursoService.getCursoById(idCurso);
 		Curso cursoUpdated = null;
@@ -111,7 +111,7 @@ public class CursoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actaualización de curso
+			// Actaualización de curso
 			cursoActual.get().setDescripcion(curso.getDescripcion().toUpperCase());
 			cursoUpdated = cursoService.saveCurso(cursoActual.get());
 		} catch (DataAccessException e) {
@@ -129,6 +129,7 @@ public class CursoController {
 	public ResponseEntity<Map<String, Object>> deleteCurso(@PathVariable("id") Long idCurso) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
+			// Borrar curso
 			Curso cursoRecu = cursoService.deleteCurso(idCurso);
 			if (cursoRecu == null) {
 				respuesta.put("mensaje", "El curso ID: " + idCurso + " no existe en la base de datos");

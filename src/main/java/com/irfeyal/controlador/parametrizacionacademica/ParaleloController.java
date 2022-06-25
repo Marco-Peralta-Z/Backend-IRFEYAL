@@ -81,7 +81,7 @@ public class ParaleloController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Guardando paralelo
+			// Guardar paralelo
 			paralelo.setDescripcion(paralelo.getDescripcion().toUpperCase());
 			paraleloNuevo = paraleloService.saveParalelo(paralelo);
 		} catch (DataAccessException e) {
@@ -95,8 +95,8 @@ public class ParaleloController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateParalelo(@PathVariable("id") Long idParalelo,@Validated @RequestBody Paralelo paralelo,
-			BindingResult result) {
+	public ResponseEntity<?> updateParalelo(@PathVariable("id") Long idParalelo,
+			@Validated @RequestBody Paralelo paralelo, BindingResult result) {
 		Optional<Paralelo> paraleloActual = paraleloService.getParaleloById(idParalelo);
 		Paralelo paraleloUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -113,7 +113,7 @@ public class ParaleloController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualizando paralelo
+			// Actualizar paralelo
 			paraleloActual.get().setDescripcion(paralelo.getDescripcion().toUpperCase());
 			paraleloUpdated = paraleloService.saveParalelo(paraleloActual.get());
 		} catch (DataAccessException e) {
@@ -131,6 +131,7 @@ public class ParaleloController {
 	public ResponseEntity<Map<String, Object>> deleteParalelo(@PathVariable("id") Long idParalelo) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
+			// Borrar paralelo
 			Paralelo paraleloRecu = paraleloService.deleteParalelo(idParalelo);
 			if (paraleloRecu == null) {
 				respuesta.put("mensaje", "El Paralelo ID: " + idParalelo + " no existe en la base de datos");
@@ -144,10 +145,10 @@ public class ParaleloController {
 		respuesta.put("mensaje", "El Paralelo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
-	
+
+	// Especificar módulo por favor.
 	@GetMapping("/getParalelosPorCurso/{id_curso}")
-    public List<Paralelo> getParalelosPorCurso(@PathVariable Long id_curso){
- 
+	public List<Paralelo> getParalelosPorCurso(@PathVariable Long id_curso) {
 		return paraleloService.findParaleloByCurso(id_curso);
 	}
 }

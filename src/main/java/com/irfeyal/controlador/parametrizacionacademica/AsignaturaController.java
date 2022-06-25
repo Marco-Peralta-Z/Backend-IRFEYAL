@@ -80,6 +80,7 @@ public class AsignaturaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
+			// Guardar asignatura
 			asignatura.setDescripcion(asignatura.getDescripcion().toUpperCase());
 			asignaturaNueva = asignaturaService.saveAsignatura(asignatura);
 		} catch (DataAccessException e) {
@@ -111,7 +112,7 @@ public class AsignaturaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualización de asignatura 
+			//Actualizar asignatura 
 			asignaturaActual.get().setDescripcion(asignatura.getDescripcion().toUpperCase());
 			asignaturaActual.get().setEmpleados(asignatura.getEmpleados());
 			asignaturaUpdated = asignaturaService.saveAsignatura(asignaturaActual.get());
@@ -129,6 +130,7 @@ public class AsignaturaController {
 	public ResponseEntity<Map<String, Object>> deleteAsignatura(@PathVariable("id") Long idAsignatura) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
+			// Borrar asignatura
 			Asignatura asignaturaRecu = asignaturaService.deleteAsignatura(idAsignatura);
 			if (asignaturaRecu == null) {
 				respuesta.put("mensaje", "La asignatura no existe en la base de datos");

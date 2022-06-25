@@ -87,9 +87,7 @@ public class PeriodoController {
 		try {
 			Optional<Malla> malla = mallaService.getMallaById(idMalla);
 			if (!malla.isEmpty()) {
-				//Guardando periodo junto con la malla
-				periodo.setPeriodo_academico(periodo.getPeriodo_academico().toUpperCase());
-				periodo.setMalla(malla.get());
+				// Guardar periodo
 				periodoNuevo = periodoService.savePeriodo(periodo);
 			} else {
 				respuesta.put("mensaje", "Malla inexistente");
@@ -124,8 +122,7 @@ public class PeriodoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualizando periodo
-			periodoActual.get().setPeriodo_academico(periodo.getPeriodo_academico().toUpperCase());
+			// Actualizar periodo
 			periodoActual.get().setFecha_inicio(periodo.getFecha_inicio());
 			periodoActual.get().setFecha_fin(periodo.getFecha_fin());
 			periodoActual.get().setCosto_matricula(periodo.getCosto_matricula());
@@ -134,6 +131,7 @@ public class PeriodoController {
 			periodoActual.get().setAno_fin(periodo.getAno_fin());//
 			periodoActual.get().setMalla(periodo.getMalla());
 			periodoActual.get().setVigencia(periodo.isVigencia());
+			periodoActual.get().setListaHorario(periodo.getListaHorario());
 			periodoUpdated = periodoService.savePeriodo(periodoActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
@@ -149,6 +147,7 @@ public class PeriodoController {
 	public ResponseEntity<Map<String, Object>> deletePeriodo(@PathVariable("id") Long idPeriodo) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
+			// Borrar periodo
 			Periodo periodoRecu = periodoService.deletePeriodo(idPeriodo);
 			if (periodoRecu == null) {
 				respuesta.put("mensaje", "El Periodo ID: " + idPeriodo + " no existe en la base de datos");
@@ -162,11 +161,10 @@ public class PeriodoController {
 		respuesta.put("mensaje", "El Periodo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
-	
-	
-	//Modulo Matricula
-	@GetMapping(path ="/getPeriodoPorMalla/{id_malla}" )
-	public List<Periodo> getPeriodoPorMalla(@PathVariable Long id_malla){
+
+	// Modulo Matricula
+	@GetMapping(path = "/getPeriodoPorMalla/{id_malla}")
+	public List<Periodo> getPeriodoPorMalla(@PathVariable Long id_malla) {
 		return periodoService.findByMalla(id_malla);
 	}
 }

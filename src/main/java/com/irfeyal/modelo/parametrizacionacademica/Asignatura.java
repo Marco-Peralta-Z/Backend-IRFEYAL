@@ -41,6 +41,12 @@ public class Asignatura implements Serializable {
 	@Column(name = "fecha_creacion")
 	private Date fecha_creacion;
 
+	// Relacion asignatura - empleado
+	@ManyToMany
+	@JoinTable(name = "asignatura_empleado", joinColumns = {
+			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_empleado") })
+	private List<Empleado> empleados = new ArrayList<>();
+
 	@PrePersist
 	private void setDateFecha() {
 		this.fecha_creacion = new Date();
@@ -49,13 +55,6 @@ public class Asignatura implements Serializable {
 	public Asignatura() {
 		super();
 	}
-	
-	//CONSTRUCTOR TUTORIAS Y ASISTENCIAS
-	public Asignatura(Long id_asignatura) {
-		super();
-		this.id_asignatura = id_asignatura;
-	}
-	//------
 
 	public Asignatura(Long id_asignatura, String descripcion, Date fecha_creacion, List<Empleado> empleados) {
 		this.id_asignatura = id_asignatura;
@@ -64,11 +63,12 @@ public class Asignatura implements Serializable {
 		this.empleados = empleados;
 	}
 
-	// Relacion asignatura_empleado
-	@ManyToMany
-	@JoinTable(name = "asignatura_empleado", joinColumns = {
-			@JoinColumn(name = "id_asignatura") }, inverseJoinColumns = { @JoinColumn(name = "id_empleado") })
-	private List<Empleado> empleados = new ArrayList<>();
+	// CONSTRUCTOR TUTORIAS Y ASISTENCIAS
+	public Asignatura(Long id_asignatura) {
+		super();
+		this.id_asignatura = id_asignatura;
+	}
+	// ------
 
 	public Long getId_asignatura() {
 		return id_asignatura;

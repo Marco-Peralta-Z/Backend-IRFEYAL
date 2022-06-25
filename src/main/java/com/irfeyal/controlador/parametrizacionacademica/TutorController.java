@@ -79,7 +79,7 @@ public class TutorController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Guardando tutor
+			//Guardar tutor
 			tutorNuevo = tutorService.saveTutor(tutor);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear tutor en la base de datos");
@@ -110,7 +110,7 @@ public class TutorController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Actualización Tutor
+			// Actualizar Tutor
 			tutorUpdated = tutorService.saveTutor(tutor);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
@@ -126,6 +126,7 @@ public class TutorController {
 	public ResponseEntity<Map<String, Object>> deleteTutor(@PathVariable("id") Long idTutor) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
+			// Borrar tutor
 			Tutor tutorRecu = tutorService.deleteTutor(idTutor);
 			if (tutorRecu== null) {
 				respuesta.put("mensaje", "El tutor no existe en la base de datos");

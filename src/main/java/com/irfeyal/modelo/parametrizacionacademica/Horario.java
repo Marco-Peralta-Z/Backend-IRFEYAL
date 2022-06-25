@@ -1,9 +1,7 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -58,36 +55,31 @@ public class Horario implements Serializable {
 	@Column(name = "fecha_creacion")
 	private Date fecha_creacion;
 
+	// Relacion horario_empleado
+	@ManyToOne
+	@JoinColumn(name = "id_empleado")
+	private Empleado id_empleado;
+
+	// Relacion horario_asignatura
+	@ManyToOne
+	@JoinColumn(name = "id_asignatura")
+	private Asignatura id_asignatura;
+
 	@PrePersist
 	private void setDateFecha() {
 		this.fecha_creacion = new Date();
 	}
 
-	// Relación horario_empleado
-	@ManyToMany
-	@JoinTable(name = "horario_empleado", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_empleado") })
-	private List<Empleado> listaEmpleados = new ArrayList<>();
-
-	// Relación horario_asignatura
-	@ManyToMany
-	@JoinTable(name = "asignatura_horario", joinColumns = { @JoinColumn(name = "id_horario") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_asignatura") })
-	private List<Asignatura> listaAsignaturas = new ArrayList<Asignatura>();
-
 	public Horario() {
 		super();
 	}
 
-	public Horario(Long id_horario, Date tiempo_inicio, Date tiempo_fin, int dia, Date fecha_creacion,
-			List<Empleado> listaEmpleados, List<Asignatura> listaAsignaturas) {
+	public Horario(Long id_horario, Date tiempo_inicio, Date tiempo_fin, int dia, Date fecha_creacion) {
 		this.id_horario = id_horario;
 		this.tiempo_inicio = tiempo_inicio;
 		this.tiempo_fin = tiempo_fin;
 		this.dia = dia;
 		this.fecha_creacion = fecha_creacion;
-		this.listaEmpleados = listaEmpleados;
-		this.listaAsignaturas = listaAsignaturas;
 	}
 
 	public Long getId_horario() {
@@ -130,27 +122,27 @@ public class Horario implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-	public List<Empleado> getListaEmpleados() {
-		return listaEmpleados;
+	public Empleado getId_empleado() {
+		return id_empleado;
 	}
 
-	public void setListaEmpleados(List<Empleado> listaEmpleados) {
-		this.listaEmpleados = listaEmpleados;
+	public void setId_empleado(Empleado id_empleado) {
+		this.id_empleado = id_empleado;
 	}
 
-	public List<Asignatura> getListaAsignaturas() {
-		return listaAsignaturas;
+	public Asignatura getId_asignatura() {
+		return id_asignatura;
 	}
 
-	public void setListaAsignaturas(List<Asignatura> listaAsignaturas) {
-		this.listaAsignaturas = listaAsignaturas;
+	public void setId_asignatura(Asignatura id_asignatura) {
+		this.id_asignatura = id_asignatura;
 	}
 
 	@Override
 	public String toString() {
-		return "Horario [dia=" + dia + ", fecha_creacion=" + fecha_creacion + ", id_horario=" + id_horario
-				+ ", listaAsignaturas=" + listaAsignaturas + ", listaEmpleados=" + listaEmpleados + ", tiempo_fin="
-				+ tiempo_fin + ", tiempo_inicio=" + tiempo_inicio + "]";
+		return "Horario [id_horario=" + id_horario + ", tiempo_inicio=" + tiempo_inicio + ", tiempo_fin=" + tiempo_fin
+				+ ", dia=" + dia + ", fecha_creacion=" + fecha_creacion + ", id_empleado=" + id_empleado
+				+ ", id_asignatura=" + id_asignatura + "]";
 	}
 
 }

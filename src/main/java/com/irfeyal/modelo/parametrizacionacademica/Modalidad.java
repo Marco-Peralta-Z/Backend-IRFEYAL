@@ -31,20 +31,18 @@ public class Modalidad implements Serializable {
 	public Modalidad() {
 		super();
 	}
-	
-	//CONSTRUCTOR TUTORIAS Y ASISTENCIA
-	public Modalidad(Long id_modalidad) {
-		super();
-		this.id_modalidad = id_modalidad;
-	}
-	//----
 
 	public Modalidad(Long id_modalidad, String descripcion) {
 		this.id_modalidad = id_modalidad;
 		this.descripcion = descripcion;
 	}
-	
 
+	// CONSTRUCTOR TUTORIAS Y ASISTENCIA
+	public Modalidad(Long id_modalidad) {
+		super();
+		this.id_modalidad = id_modalidad;
+	}
+	// ----
 
 	public Long getId_modalidad() {
 		return id_modalidad;
