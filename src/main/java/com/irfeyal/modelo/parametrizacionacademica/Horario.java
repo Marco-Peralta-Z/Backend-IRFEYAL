@@ -2,7 +2,6 @@ package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +16,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
@@ -36,24 +32,18 @@ public class Horario implements Serializable {
 	private Long id_horario;
 
 	@NotNull(message = "Debe ingresar el tiempo de inicio")
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "tiempo_inicio")
-	private Date tiempo_inicio;
+	private String tiempo_inicio;
 
 	@NotNull(message = "Debe ingresar el tiempo de fin")
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name = "tiempo_fin")
-	private Date tiempo_fin;
+	private String tiempo_fin;
 
 	@NotNull(message = "Debe ingresar un dia para el Horario")
 	@Min(value = 1, message = "El día no debe ser menor que 1")
 	@Max(value = 7, message = "El día no debe ser mayor a 7")
 	@Column(name = "dia")
 	private int dia;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fecha_creacion")
-	private Date fecha_creacion;
 
 	// Relacion horario_empleado
 	@ManyToOne
@@ -65,21 +55,18 @@ public class Horario implements Serializable {
 	@JoinColumn(name = "id_asignatura")
 	private Asignatura id_asignatura;
 
+	// Relacion horario_curso
+	@ManyToOne
+	@JoinColumn(name = "id_tutor")
+	private Tutor id_tutor;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "fecha_creacion")
+	private Date fecha_creacion;
+
 	@PrePersist
 	private void setDateFecha() {
 		this.fecha_creacion = new Date();
-	}
-
-	public Horario() {
-		super();
-	}
-
-	public Horario(Long id_horario, Date tiempo_inicio, Date tiempo_fin, int dia, Date fecha_creacion) {
-		this.id_horario = id_horario;
-		this.tiempo_inicio = tiempo_inicio;
-		this.tiempo_fin = tiempo_fin;
-		this.dia = dia;
-		this.fecha_creacion = fecha_creacion;
 	}
 
 	public Long getId_horario() {
@@ -90,19 +77,19 @@ public class Horario implements Serializable {
 		this.id_horario = id_horario;
 	}
 
-	public Date getTiempo_inicio() {
+	public String getTiempo_inicio() {
 		return tiempo_inicio;
 	}
 
-	public void setTiempo_inicio(Date tiempo_inicio) {
+	public void setTiempo_inicio(String tiempo_inicio) {
 		this.tiempo_inicio = tiempo_inicio;
 	}
 
-	public Date getTiempo_fin() {
+	public String getTiempo_fin() {
 		return tiempo_fin;
 	}
 
-	public void setTiempo_fin(Date tiempo_fin) {
+	public void setTiempo_fin(String tiempo_fin) {
 		this.tiempo_fin = tiempo_fin;
 	}
 
@@ -138,11 +125,19 @@ public class Horario implements Serializable {
 		this.id_asignatura = id_asignatura;
 	}
 
+	public Tutor getId_tutor() {
+		return id_tutor;
+	}
+
+	public void setId_tutor(Tutor id_tutor) {
+		this.id_tutor = id_tutor;
+	}
+
 	@Override
 	public String toString() {
-		return "Horario [id_horario=" + id_horario + ", tiempo_inicio=" + tiempo_inicio + ", tiempo_fin=" + tiempo_fin
-				+ ", dia=" + dia + ", fecha_creacion=" + fecha_creacion + ", id_empleado=" + id_empleado
-				+ ", id_asignatura=" + id_asignatura + "]";
+		return "Horario [dia=" + dia + ", fecha_creacion=" + fecha_creacion + ", id_horario=" + id_horario
+				+ ", id_asignatura=" + id_asignatura + ", id_empleado=" + id_empleado + ", tiempo_fin=" + tiempo_fin
+				+ ", tiempo_inicio=" + tiempo_inicio + ",id_tutor=" + id_tutor + "]";
 	}
 
 }

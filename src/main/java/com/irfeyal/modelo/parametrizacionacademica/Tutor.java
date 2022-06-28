@@ -1,7 +1,6 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 
@@ -37,17 +35,6 @@ public class Tutor implements Serializable {
 	@ManyToOne()
 	@JoinColumn(name = "id_curso")
 	private Curso id_curso;
-
-	public Tutor() {
-		super();
-	}
-
-	public Tutor(Long id_tutor, Paralelo id_paralelo, Empleado id_empleado, Curso id_curso) {
-		this.id_tutor = id_tutor;
-		this.id_paralelo = id_paralelo;
-		this.id_empleado = id_empleado;
-		this.id_curso = id_curso;
-	}
 
 	public Long getId_tutor() {
 		return id_tutor;

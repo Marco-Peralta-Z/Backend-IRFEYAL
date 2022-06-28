@@ -1,7 +1,6 @@
 package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -24,28 +22,40 @@ public class Modalidad implements Serializable {
 	@Column(columnDefinition = "serial")
 	private Long id_modalidad;
 
-	@NotBlank(message = "Debe ingresar una descripción para la Modalidad")
+	@NotBlank(message = "Debe ingresar una descripcion para la Modalidad")
 	@Column(name = "descripcion")
 	private String descripcion;
+
+	@Column(name = "hora_inicio")
+	private String hora_inicio;
+
+	@Column(name = "hora_fin")
+	private String hora_fin;
 
 	public Modalidad() {
 		super();
 	}
 
-	public Modalidad(Long id_modalidad, String descripcion) {
-		this.id_modalidad = id_modalidad;
-		this.descripcion = descripcion;
-	}
-
-	// CONSTRUCTOR TUTORIAS Y ASISTENCIA
-	public Modalidad(Long id_modalidad) {
-		super();
-		this.id_modalidad = id_modalidad;
-	}
-	// ----
-
 	public Long getId_modalidad() {
 		return id_modalidad;
+	}
+
+	
+
+	public String getHora_inicio() {
+		return hora_inicio;
+	}
+
+	public void setHora_inicio(String hora_inicio) {
+		this.hora_inicio = hora_inicio;
+	}
+
+	public String getHora_fin() {
+		return hora_fin;
+	}
+
+	public void setHora_fin(String hora_fin) {
+		this.hora_fin = hora_fin;
 	}
 
 	public void setId_modalidad(Long id_modalidad) {
@@ -62,7 +72,8 @@ public class Modalidad implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Modalidad [descripcion=" + descripcion + ", id_modalidad=" + id_modalidad + "]";
+		return "Modalidad [descripcion=" + descripcion + ", id_modalidad=" + id_modalidad + ",hora_fin=" + hora_fin
+				+ ",hora_inicio=" + hora_inicio + "]";
 	}
 
 }

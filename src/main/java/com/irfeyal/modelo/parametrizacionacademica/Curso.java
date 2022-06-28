@@ -2,7 +2,6 @@ package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,11 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 @Table(name = "curso")
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Curso implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -42,21 +38,7 @@ public class Curso implements Serializable {
 	}
 
 	public Curso() {
-		super();
 	}
-
-	public Curso(Long id_curso, String descripcion, Date fecha_creacion) {
-		this.id_curso = id_curso;
-		this.descripcion = descripcion;
-		this.fecha_creacion = fecha_creacion;
-	}
-
-	// CONSTRUCTOR TUTORIAS Y ASISTENCIA
-	public Curso(Long id_curso) {
-		super();
-		this.id_curso = id_curso;
-	}
-	// ------
 
 	public Long getId_curso() {
 		return id_curso;

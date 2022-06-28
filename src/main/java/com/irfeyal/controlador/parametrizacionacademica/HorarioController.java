@@ -5,10 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import com.irfeyal.interfaces.parametrizacionacademica.HorarioServices;
 import com.irfeyal.modelo.parametrizacionacademica.Horario;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -80,20 +78,19 @@ public class HorarioController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Guardar horario
 			horarioNuevo = horarioService.saveHorario(horario);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear el Horario en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		respuesta.put("mensaje", "El Horario ha sido creado con éxito!");
+		// respuesta.put("mensaje", "El Horario ha sido creado con éxito!");
 		respuesta.put("horario", horarioNuevo);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<?> updateHorario(@PathVariable("id") Long idHorario,@Validated @RequestBody Horario horario,
+	public ResponseEntity<?> updateHorario(@PathVariable("id") Long idHorario, @Validated @RequestBody Horario horario,
 			BindingResult result) {
 		Optional<Horario> horarioActual = horarioService.getHorarioById(idHorario);
 		Horario horarioUpdated = null;
@@ -111,7 +108,7 @@ public class HorarioController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualizar horario
+			// Actualización horario
 			horarioActual.get().setTiempo_inicio(horario.getTiempo_inicio());
 			horarioActual.get().setTiempo_fin(horario.getTiempo_fin());
 			horarioActual.get().setDia(horario.getDia());
@@ -121,6 +118,7 @@ public class HorarioController {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
+
 		respuesta.put("mensaje", "El Horario ha sido actualizado con éxito");
 		respuesta.put("Horario", horarioUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
@@ -130,7 +128,6 @@ public class HorarioController {
 	public ResponseEntity<Map<String, Object>> deleteHorario(@PathVariable("id") Long idHorario) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			// Borrar horario
 			Horario horarioRecu = horarioService.deleteHorario(idHorario);
 			if (horarioRecu == null) {
 				respuesta.put("mensaje", "El Horario ID: " + idHorario + " no existe en la base de datos");

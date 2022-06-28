@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
@@ -40,7 +38,7 @@ public class AsignaturaController {
 	public ResponseEntity<?> getAsignaturas() {
 		return new ResponseEntity<>(asignaturaService.getAllAsignatura(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping(path = "/", produces = "application/json")
 	public ResponseEntity<?> getAllAsignaturas(@RequestParam(name = "page", defaultValue = "0") int page,
 			@RequestParam(name = "size", defaultValue = "5") int size) {
@@ -80,7 +78,6 @@ public class AsignaturaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Guardar asignatura
 			asignatura.setDescripcion(asignatura.getDescripcion().toUpperCase());
 			asignaturaNueva = asignaturaService.saveAsignatura(asignatura);
 		} catch (DataAccessException e) {
@@ -112,7 +109,7 @@ public class AsignaturaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Actualizar asignatura 
+			// Actualización de asignatura
 			asignaturaActual.get().setDescripcion(asignatura.getDescripcion().toUpperCase());
 			asignaturaActual.get().setEmpleados(asignatura.getEmpleados());
 			asignaturaUpdated = asignaturaService.saveAsignatura(asignaturaActual.get());
@@ -130,7 +127,6 @@ public class AsignaturaController {
 	public ResponseEntity<Map<String, Object>> deleteAsignatura(@PathVariable("id") Long idAsignatura) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			// Borrar asignatura
 			Asignatura asignaturaRecu = asignaturaService.deleteAsignatura(idAsignatura);
 			if (asignaturaRecu == null) {
 				respuesta.put("mensaje", "La asignatura no existe en la base de datos");

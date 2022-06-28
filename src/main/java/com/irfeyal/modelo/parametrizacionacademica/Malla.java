@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +19,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -77,19 +75,6 @@ public class Malla implements Serializable {
 	public Malla() {
 		super();
 	}
-
-	public Malla(Long id_malla, Boolean estado, String descripcion, Date fecha_creacion, List<Curso> listaCursos,
-			List<Asignatura> listaAsignaturas, Modalidad id_modalidad, List<Area> listarea) {
-		this.id_malla = id_malla;
-		this.estado = estado;
-		this.descripcion = descripcion;
-		this.fecha_creacion = fecha_creacion;
-		this.listaCursos = listaCursos;
-		this.listaAsignaturas = listaAsignaturas;
-		this.id_modalidad = id_modalidad;
-		this.listarea = listarea;
-	}
-	
 
 	public List<Area> getListarea() {
 		return listarea;

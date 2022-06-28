@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -27,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.interfaces.parametrizacionacademica.AreaServices;
 import com.irfeyal.modelo.parametrizacionacademica.Area;
-import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -51,6 +49,7 @@ public class AreaController {
 
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public ResponseEntity<?> getAreaById(@PathVariable("id") Long idArea) {
+		System.err.println("----------->" + idArea);
 		Optional<Area> area = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
@@ -62,7 +61,7 @@ public class AreaController {
 		}
 		if (area.isEmpty()) {
 			respuesta.put("mensaje",
-					"El area ID: ".concat(idArea.toString().concat(": no existe en la base de datos")));
+					"El �rea ID: ".concat(idArea.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(area, HttpStatus.OK);
@@ -80,7 +79,6 @@ public class AreaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Guardar area
 			area.setDescripcion(area.getDescripcion().toUpperCase());
 			areaNueva = areaService.saveArea(area);
 		} catch (DataAccessException e) {
@@ -95,7 +93,7 @@ public class AreaController {
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> updateArea(@PathVariable("id") Long idArea, @Validated @RequestBody Area area,
-			Asignatura asignatura, BindingResult result) {
+			BindingResult result) {
 		Optional<Area> areaActual = areaService.getAreaById(idArea);
 		Area areaUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -112,17 +110,18 @@ public class AreaController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Actualizacion area
+			// Actualizaci�n �rea
 			areaActual.get().setDescripcion(area.getDescripcion().toUpperCase());
-			// Actualiza lista de asignaturas 
 			areaActual.get().setListaAsignaturas(area.getListaAsignaturas());
+			// Lista de asignaturas ?
+
 			areaUpdated = areaService.saveArea(areaActual.get());
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
-		respuesta.put("mensaje", "El área ha sido actualizada con exito");
+		respuesta.put("mensaje", "El �rea ha sido actualizada con exito");
 		respuesta.put("area", areaUpdated);
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
@@ -131,7 +130,6 @@ public class AreaController {
 	public ResponseEntity<Map<String, Object>> deleteArea(@PathVariable("id") Long idArea) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			// Borrar área
 			Area areaRecu = areaService.deleteArea(idArea);
 			if (areaRecu == null) {
 				respuesta.put("mensaje", "El �rea no existe en la base de datos");

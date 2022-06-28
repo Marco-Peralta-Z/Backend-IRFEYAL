@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.irfeyal.interfaces.parametrizacionacademica.TutorServices;
 import com.irfeyal.modelo.parametrizacionacademica.Tutor;
 
@@ -61,7 +59,7 @@ public class TutorController {
 		}
 		if (tutor.isEmpty()) {
 			respuesta.put("mensaje",
-					"El tutor ID: ".concat(idTutor.toString().concat(": no existe en la base de datos")));
+					"El Tutor ID: ".concat(idTutor.toString().concat(": no existe en la base de datos")));
 			return new ResponseEntity<>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(tutor, HttpStatus.OK);
@@ -79,7 +77,7 @@ public class TutorController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Guardar tutor
+			// Guardando tutor
 			tutorNuevo = tutorService.saveTutor(tutor);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear tutor en la base de datos");
@@ -110,7 +108,7 @@ public class TutorController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Actualizar Tutor
+			// Actualización Tutor
 			tutorUpdated = tutorService.saveTutor(tutor);
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
@@ -126,9 +124,8 @@ public class TutorController {
 	public ResponseEntity<Map<String, Object>> deleteTutor(@PathVariable("id") Long idTutor) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			// Borrar tutor
 			Tutor tutorRecu = tutorService.deleteTutor(idTutor);
-			if (tutorRecu== null) {
+			if (tutorRecu == null) {
 				respuesta.put("mensaje", "El tutor no existe en la base de datos");
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
 			}

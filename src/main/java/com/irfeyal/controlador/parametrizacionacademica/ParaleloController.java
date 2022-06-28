@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.irfeyal.interfaces.parametrizacionacademica.ParaleloServices;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 
@@ -81,7 +79,7 @@ public class ParaleloController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Guardar paralelo
+			// Guardando paralelo
 			paralelo.setDescripcion(paralelo.getDescripcion().toUpperCase());
 			paraleloNuevo = paraleloService.saveParalelo(paralelo);
 		} catch (DataAccessException e) {
@@ -96,7 +94,8 @@ public class ParaleloController {
 
 	@PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> updateParalelo(@PathVariable("id") Long idParalelo,
-			@Validated @RequestBody Paralelo paralelo, BindingResult result) {
+			@Validated @RequestBody Paralelo paralelo,
+			BindingResult result) {
 		Optional<Paralelo> paraleloActual = paraleloService.getParaleloById(idParalelo);
 		Paralelo paraleloUpdated = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -113,7 +112,7 @@ public class ParaleloController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Actualizar paralelo
+			// Actualizando paralelo
 			paraleloActual.get().setDescripcion(paralelo.getDescripcion().toUpperCase());
 			paraleloUpdated = paraleloService.saveParalelo(paraleloActual.get());
 		} catch (DataAccessException e) {
@@ -131,7 +130,6 @@ public class ParaleloController {
 	public ResponseEntity<Map<String, Object>> deleteParalelo(@PathVariable("id") Long idParalelo) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			// Borrar paralelo
 			Paralelo paraleloRecu = paraleloService.deleteParalelo(idParalelo);
 			if (paraleloRecu == null) {
 				respuesta.put("mensaje", "El Paralelo ID: " + idParalelo + " no existe en la base de datos");
@@ -146,9 +144,9 @@ public class ParaleloController {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
 
-	// Especificar módulo por favor.
 	@GetMapping("/getParalelosPorCurso/{id_curso}")
 	public List<Paralelo> getParalelosPorCurso(@PathVariable Long id_curso) {
+
 		return paraleloService.findParaleloByCurso(id_curso);
 	}
 }

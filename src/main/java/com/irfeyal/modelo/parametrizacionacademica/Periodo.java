@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,11 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -32,10 +28,6 @@ public class Periodo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "serial")
 	private Long id_periodo;
-
-	@NotBlank(message = "Debe ingresar las actividades para el Periodo")
-	@Column(name = "periodo_academico")
-	private String periodo_academico;
 
 	@NotNull(message = "Debe ingresar una fecha final para el Periodo")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -64,7 +56,6 @@ public class Periodo implements Serializable {
 	@Column(name = "ano_fin")
 	private String ano_fin;
 
-	// Relación Periodo - Horario
 	@ManyToMany
 	@JoinTable(name = "periodo_horario", joinColumns = { @JoinColumn(name = "id_periodo") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_horario") })
@@ -72,34 +63,11 @@ public class Periodo implements Serializable {
 
 	// Relación Periodo-Malla
 	@ManyToOne
-	@JoinColumn(name = "id_malla")
+	@JoinColumn(name = "malla")
 	private Malla malla;
 
 	public Periodo() {
-		super();
 	}
-
-	public Periodo(Long id_periodo, String periodo_academico, Date fecha_inicio, Date fecha_fin,
-			Double costo_mensualidad, Double costo_matricula, boolean vigencia, String ano_inicio, String ano_fin,
-			Malla malla) {
-		this.id_periodo = id_periodo;
-		this.periodo_academico = periodo_academico;
-		this.fecha_inicio = fecha_inicio;
-		this.fecha_fin = fecha_fin;
-		this.costo_mensualidad = costo_mensualidad;
-		this.costo_matricula = costo_matricula;
-		this.vigencia = vigencia;
-		this.ano_inicio = ano_inicio;
-		this.ano_fin = ano_fin;
-		this.malla = malla;
-	}
-
-	// CONSTRUCTOR TUTORIAS Y ASISTENCIA
-	public Periodo(Long id_periodo) {
-		super();
-		this.id_periodo = id_periodo;
-	}
-	// --------
 
 	public Long getId_periodo() {
 		return id_periodo;
@@ -107,14 +75,6 @@ public class Periodo implements Serializable {
 
 	public void setId_periodo(Long id_periodo) {
 		this.id_periodo = id_periodo;
-	}
-
-	public String getPeriodo_academico() {
-		return periodo_academico;
-	}
-
-	public void setPeriodo_academico(String periodo_academico) {
-		this.periodo_academico = periodo_academico;
 	}
 
 	public Date getFecha_inicio() {
@@ -149,14 +109,6 @@ public class Periodo implements Serializable {
 		this.costo_matricula = costo_matricula;
 	}
 
-	public boolean isVigencia() {
-		return vigencia;
-	}
-
-	public void setVigencia(boolean vigencia) {
-		this.vigencia = vigencia;
-	}
-
 	public String getAno_inicio() {
 		return ano_inicio;
 	}
@@ -173,12 +125,12 @@ public class Periodo implements Serializable {
 		this.ano_fin = ano_fin;
 	}
 
-	public List<Horario> getListaHorario() {
-		return listaHorario;
+	public boolean isVigencia() {
+		return vigencia;
 	}
 
-	public void setListaHorario(List<Horario> listaHorario) {
-		this.listaHorario = listaHorario;
+	public void setVigencia(boolean vigencia) {
+		this.vigencia = vigencia;
 	}
 
 	public Malla getMalla() {
@@ -189,12 +141,20 @@ public class Periodo implements Serializable {
 		this.malla = malla;
 	}
 
+	public List<Horario> getListaHorario() {
+		return listaHorario;
+	}
+
+	public void setListaHorario(List<Horario> listaHorario) {
+		this.listaHorario = listaHorario;
+	}
+
 	@Override
 	public String toString() {
-		return "Periodo [id_periodo=" + id_periodo + ", periodo_academico=" + periodo_academico + ", fecha_inicio="
-				+ fecha_inicio + ", fecha_fin=" + fecha_fin + ", costo_mensualidad=" + costo_mensualidad
-				+ ", costo_matricula=" + costo_matricula + ", vigencia=" + vigencia + ", ano_inicio=" + ano_inicio
-				+ ", ano_fin=" + ano_fin + ", listaHorario=" + listaHorario + ", malla=" + malla + "]";
+		return "Periodo [ano_fin=" + ano_fin + ", ano_inicio=" + ano_inicio + ", costo_matricula=" + costo_matricula
+				+ ", costo_mensualidad=" + costo_mensualidad + ", fecha_fin=" + fecha_fin + ", fecha_inicio="
+				+ fecha_inicio + ", id_periodo=" + id_periodo + ", malla=" + malla + ", vigencia=" + vigencia
+				+ ",listaHorario=" + listaHorario + "]";
 	}
 
 }

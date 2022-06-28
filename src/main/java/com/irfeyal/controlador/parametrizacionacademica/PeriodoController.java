@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
@@ -73,7 +72,7 @@ public class PeriodoController {
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createPeriodo(@RequestParam("malla") Long idMalla,
+	public ResponseEntity<Map<String, Object>> createPeriodo(
 			@Validated @RequestBody Periodo periodo, BindingResult result) {
 		Periodo periodoNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
@@ -85,14 +84,8 @@ public class PeriodoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			Optional<Malla> malla = mallaService.getMallaById(idMalla);
-			if (!malla.isEmpty()) {
-				// Guardar periodo
-				periodoNuevo = periodoService.savePeriodo(periodo);
-			} else {
-				respuesta.put("mensaje", "Malla inexistente");
-				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
-			}
+			periodoNuevo = periodoService.savePeriodo(periodo);
+
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear el Periodo en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -122,7 +115,8 @@ public class PeriodoController {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			// Actualizar periodo
+			// Actualizando periodo
+			// periodoActual.get().setPeriodo_academico(periodo.getPeriodo_academico().toUpperCase());
 			periodoActual.get().setFecha_inicio(periodo.getFecha_inicio());
 			periodoActual.get().setFecha_fin(periodo.getFecha_fin());
 			periodoActual.get().setCosto_matricula(periodo.getCosto_matricula());
@@ -147,7 +141,6 @@ public class PeriodoController {
 	public ResponseEntity<Map<String, Object>> deletePeriodo(@PathVariable("id") Long idPeriodo) {
 		Map<String, Object> respuesta = new HashMap<>();
 		try {
-			// Borrar periodo
 			Periodo periodoRecu = periodoService.deletePeriodo(idPeriodo);
 			if (periodoRecu == null) {
 				respuesta.put("mensaje", "El Periodo ID: " + idPeriodo + " no existe en la base de datos");
@@ -160,11 +153,5 @@ public class PeriodoController {
 		}
 		respuesta.put("mensaje", "El Periodo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
-	}
-
-	// Modulo Matricula
-	@GetMapping(path = "/getPeriodoPorMalla/{id_malla}")
-	public List<Periodo> getPeriodoPorMalla(@PathVariable Long id_malla) {
-		return periodoService.findByMalla(id_malla);
 	}
 }

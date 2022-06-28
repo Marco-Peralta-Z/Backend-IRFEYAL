@@ -2,7 +2,6 @@ package com.irfeyal.modelo.parametrizacionacademica;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -42,22 +39,7 @@ public class Paralelo implements Serializable {
 	}
 
 	public Paralelo() {
-		super();
 	}
-
-	public Paralelo(Long id_paralelo, String descripcion, Date fecha_creacion) {
-		super();
-		this.id_paralelo = id_paralelo;
-		this.descripcion = descripcion;
-		this.fecha_creacion = fecha_creacion;
-	}
-
-	// agregado por el modulo de asistencia necesario para sus tablas
-	public Paralelo(Long id_paralelo) {
-		super();
-		this.id_paralelo = id_paralelo;
-	}
-	// fin del agregado
 
 	public Long getId_paralelo() {
 		return id_paralelo;
