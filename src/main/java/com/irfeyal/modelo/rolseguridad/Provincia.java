@@ -3,9 +3,7 @@ package com.irfeyal.modelo.rolseguridad;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.List;
 
 @Entity
 @Table(name = "provincia")
@@ -20,10 +18,9 @@ public class Provincia implements Serializable {
 
 	private String provincia;
 
-	//bi-directional many-to-one association to Direccion
-	@JsonIgnore
-	@OneToMany(mappedBy="provincia")
-	private List<Direccion> direccions;
+	@ManyToOne
+	@JoinColumn(name="id_pais")
+	private Pais pais;
 
 	public Provincia() {
 	}
@@ -44,26 +41,6 @@ public class Provincia implements Serializable {
 		this.provincia = provincia;
 	}
 
-	public List<Direccion> getDireccions() {
-		return this.direccions;
-	}
-
-	public void setDireccions(List<Direccion> direccions) {
-		this.direccions = direccions;
-	}
-
-	public Direccion addDireccion(Direccion direccion) {
-		getDireccions().add(direccion);
-		direccion.setProvincia(this);
-
-		return direccion;
-	}
-
-	public Direccion removeDireccion(Direccion direccion) {
-		getDireccions().remove(direccion);
-		direccion.setProvincia(null);
-
-		return direccion;
-	}
+	
 
 }

@@ -3,10 +3,6 @@ package com.irfeyal.modelo.rolseguridad;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.List;
-
 @Entity
 @Table(name = "canton")
 public class Canton implements Serializable {
@@ -22,10 +18,9 @@ public class Canton implements Serializable {
 
 	private String canton;
 
-	//bi-directional many-to-one association to Direccion
-	@JsonIgnore
-	@OneToMany(mappedBy="canton")
-	private List<Direccion> direccions;
+	@ManyToOne
+	@JoinColumn(name="idProvincia")
+	private Provincia provincia;
 
 	public Canton() {
 	}
@@ -46,26 +41,13 @@ public class Canton implements Serializable {
 		this.canton = canton;
 	}
 
-	public List<Direccion> getDireccions() {
-		return this.direccions;
+	public Provincia getProvincia() {
+		return provincia;
 	}
 
-	public void setDireccions(List<Direccion> direccions) {
-		this.direccions = direccions;
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
 	}
 
-	public Direccion addDireccion(Direccion direccion) {
-		getDireccions().add(direccion);
-		direccion.setCanton(this);
-
-		return direccion;
-	}
-
-	public Direccion removeDireccion(Direccion direccion) {
-		getDireccions().remove(direccion);
-		direccion.setCanton(null);
-
-		return direccion;
-	}
 
 }
