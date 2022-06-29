@@ -26,6 +26,7 @@ import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.pagos.Comprobante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
@@ -121,13 +122,20 @@ public class RegistroController {
 		public List<Periodo> listperiodos(@PathVariable Long idemple) {
 			return registroservice.Listperiodosempelados(idemple);
 		}
-		@GetMapping("/Modalidades/{idemple}/{per}")
-		public List<Modalidad> listmodalidades(@PathVariable Long idemple,@PathVariable Long per) {
-			return registroservice.listmodalidadempelados(idemple, per);
+		
+		@GetMapping("/Malla/{idemple}/{per}")
+		public List<Malla>ListMalla(@PathVariable Long idemple, @PathVariable Long per){
+			return registroservice.ListMalla(idemple, per);
 		}
-		@GetMapping("/Cursos/{idemple}/{idmod}/{per}")
-		public List<Curso> listcurso(@PathVariable Long idemple,@PathVariable Long idmod, @PathVariable Long per ) {
-			return registroservice.ListCursosempelados(idemple, idmod, per);
+		
+		
+		@GetMapping("/Modalidades/{idemple}/{per}/{malla}")
+		public List<Modalidad> listmodalidades(@PathVariable Long idemple,@PathVariable Long per, @PathVariable Long malla) {
+			return registroservice.listmodalidadempelados(idemple, per, malla);
+		}
+		@GetMapping("/Cursos/{idemple}/{per}/{malla}/{idmod}")
+		public List<Curso> listcurso(@PathVariable Long idemple, @PathVariable Long per,@PathVariable Long malla,@PathVariable Long idmod ) {
+			return registroservice.ListCursosempelados(idemple, per, malla, idmod);
 		}
 		@GetMapping("/Paralelos/{idemple}/{idcurso}/{idmod}/{per}")
 		public List<Paralelo> listparalelo(@PathVariable Long idemple,@PathVariable Long idcurso, @PathVariable Long idmod, @PathVariable Long per) {

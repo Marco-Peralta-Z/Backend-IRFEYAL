@@ -7,6 +7,7 @@ import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.pagos.Comprobante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
@@ -25,8 +26,9 @@ public interface IRegistroService {
 	
 	
 	public List<Periodo> Listperiodosempelados(Long empleado);
-	public List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo);
-	public List<Curso> ListCursosempelados(Long empleado, Long id_modalidad, Long id_periodo);
+	public List<Malla> ListMalla(Long empleado, Long id_periodo);
+	public List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo, Long id_malla);
+	public List<Curso> ListCursosempelados(Long empleado, Long id_periodo,Long id_malla, Long id_modalidad);
 	public List<Paralelo> ListParaleloempleados(Long empleado, Long id_curso, Long id_modalidad, Long id_periodo);
 	public List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_curso, Long id_paralelo, Long id_modalidad);
 	public List<Registro> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo, Long id_asignatura);

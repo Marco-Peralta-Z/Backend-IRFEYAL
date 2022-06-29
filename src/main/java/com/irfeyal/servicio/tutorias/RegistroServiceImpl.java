@@ -14,6 +14,7 @@ import com.irfeyal.modelo.dao.matricula.IMatriculaDao;
 import com.irfeyal.modelo.dao.pagos.IComprobanteDao;
 import com.irfeyal.modelo.dao.parametrizacionacademica.AsignaturaRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.CursoRepository;
+import com.irfeyal.modelo.dao.parametrizacionacademica.MallaRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.ModalidadRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.ParaleloRespository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.PeriodoRepository;
@@ -22,6 +23,7 @@ import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.pagos.Comprobante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
@@ -48,6 +50,9 @@ public class RegistroServiceImpl implements IRegistroService {
 	
 	@Autowired
 	private AsignaturaRepository asignatura;
+	
+	@Autowired
+	private MallaRepository malla;
 	
 	@Autowired
 	private IMatriculaDao matricula;
@@ -92,16 +97,13 @@ public class RegistroServiceImpl implements IRegistroService {
 			return periodo.Listperiodosempelados(empleado);
 		}
 
-		@Override
-		public List<Curso> ListCursosempelados(Long empleado, Long id_modalidad, Long id_periodo) {
-			return curso.ListCursosempelados(empleado, id_modalidad, id_periodo);
-		}
+		
 
 
 
 		@Override
-		public List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo) {
-			return modalidad.listmodalidadempelados(empleado, id_periodo);
+		public List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo, Long id_malla) {
+			return modalidad.listmodalidadempelados(empleado, id_periodo, id_malla);
 		}
 
 
@@ -216,13 +218,24 @@ public class RegistroServiceImpl implements IRegistroService {
 			
 			return registrodao.filtrocompleto(id_periodo, id_modalidad, id_curso, id_paralelo, id_asignatura);
 		}
-		
 
 
-		
+		@Override
+		public List<Malla> ListMalla(Long empleado, Long id_periodo) {
+			
+			return malla.ListMalla(empleado, id_periodo);
+		}
+
+
+		@Override
+		public List<Curso> ListCursosempelados(Long empleado, Long id_periodo, Long id_malla, Long id_modalidad) {
+			
+			return curso.ListCursosempelados(empleado, id_periodo, id_malla, id_modalidad);
+		}
 
 
 	
+		
 
 
 
