@@ -19,49 +19,60 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Area {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "serial")
-    private Long id_area;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition = "serial")
+	private Long id_area;
 
-    @NotBlank(message = "Debe ingresar una descripcion para el area")
-    @Column(name = "descripcion", length = 999)
-    private String descripcion;
+	@NotBlank(message = "Debe ingresar una descripcion para el area")
+	@Column(name = "descripcion", length = 999)
+	private String descripcion;
 
-    // Relacion Area - Asignatura
-    @ManyToMany
-    @JoinTable(name = "area_asignatura", joinColumns = { @JoinColumn(name = "id_area") }, inverseJoinColumns = {
-            @JoinColumn(name = "id_asignatura") })
-    private List<Asignatura> listaAsignaturas = new ArrayList<>();
+	// Relacion Area - Asignatura
+	@ManyToMany
+	@JoinTable(name = "area_asignatura", joinColumns = { @JoinColumn(name = "id_area") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_asignatura") })
+	private List<Asignatura> listaAsignaturas = new ArrayList<>();
 
-    public Long getId_area() {
-        return id_area;
-    }
+	public Area() {
+		super();
+	}
 
-    public void setId_area(Long id_area) {
-        this.id_area = id_area;
-    }
+	public Area(Long id_area, String descripcion, List<Asignatura> listaAsignaturas) {
+		super();
+		this.id_area = id_area;
+		this.descripcion = descripcion;
+		this.listaAsignaturas = listaAsignaturas;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public Long getId_area() {
+		return id_area;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public void setId_area(Long id_area) {
+		this.id_area = id_area;
+	}
 
-    public List<Asignatura> getListaAsignaturas() {
-        return listaAsignaturas;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public void setListaAsignaturas(List<Asignatura> listaAsignaturas) {
-        this.listaAsignaturas = listaAsignaturas;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    @Override
-    public String toString() {
-        return "Area [descripcion=" + descripcion + ", id_area=" + id_area + ", listaAsignaturas=" + listaAsignaturas
-                + "]";
-    }
+	public List<Asignatura> getListaAsignaturas() {
+		return listaAsignaturas;
+	}
+
+	public void setListaAsignaturas(List<Asignatura> listaAsignaturas) {
+		this.listaAsignaturas = listaAsignaturas;
+	}
+
+	@Override
+	public String toString() {
+		return "Area [descripcion=" + descripcion + ", id_area=" + id_area + ", listaAsignaturas=" + listaAsignaturas
+				+ "]";
+	}
 
 }

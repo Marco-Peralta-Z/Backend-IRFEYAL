@@ -69,6 +69,23 @@ public class Horario implements Serializable {
 		this.fecha_creacion = new Date();
 	}
 
+	public Horario() {
+		super();
+	}
+
+	public Horario(Long id_horario, String tiempo_inicio, String tiempo_fin, int dia, Empleado id_empleado,
+			Asignatura id_asignatura, Tutor id_tutor, Date fecha_creacion) {
+		super();
+		this.id_horario = id_horario;
+		this.tiempo_inicio = tiempo_inicio;
+		this.tiempo_fin = tiempo_fin;
+		this.dia = dia;
+		this.id_empleado = id_empleado;
+		this.id_asignatura = id_asignatura;
+		this.id_tutor = id_tutor;
+		this.fecha_creacion = fecha_creacion;
+	}
+
 	public Long getId_horario() {
 		return id_horario;
 	}

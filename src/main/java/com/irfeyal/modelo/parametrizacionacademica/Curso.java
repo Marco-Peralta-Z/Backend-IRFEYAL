@@ -40,6 +40,13 @@ public class Curso implements Serializable {
 	public Curso() {
 	}
 
+	public Curso(Long id_curso, String descripcion, Date fecha_creacion) {
+		super();
+		this.id_curso = id_curso;
+		this.descripcion = descripcion;
+		this.fecha_creacion = fecha_creacion;
+	}
+
 	public Long getId_curso() {
 		return id_curso;
 	}

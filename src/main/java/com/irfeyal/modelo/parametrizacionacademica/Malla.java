@@ -37,7 +37,7 @@ public class Malla implements Serializable {
 	@Column(name = "estado")
 	private Boolean estado;
 
-	@NotBlank(message = "Debe ingresar una descripción para la Malla")
+	@NotBlank(message = "Debe ingresar una descripciÃ³n para la Malla")
 	@Column(name = "descripcion", length = 999)
 	private String descripcion;
 
@@ -56,13 +56,13 @@ public class Malla implements Serializable {
 			@JoinColumn(name = "id_curso") })
 	private List<Curso> listaCursos = new ArrayList<Curso>();
 
-	// Relación Malla con Área
+	// RelaciÃ³n Malla con Ã�rea
 	@ManyToMany
 	@JoinTable(name = "malla_asignatura", joinColumns = { @JoinColumn(name = "id_malla") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_asignatura") })
 	private List<Asignatura> listaAsignaturas = new ArrayList<>();
 
-	// Relación Malla con Modalidad
+	// RelaciÃ³n Malla con Modalidad
 	@ManyToOne()
 	@JoinColumn(name = "id_modalidad")
 	private Modalidad id_modalidad;
@@ -74,6 +74,19 @@ public class Malla implements Serializable {
 
 	public Malla() {
 		super();
+	}
+
+	public Malla(Long id_malla, Boolean estado, String descripcion, Date fecha_creacion, List<Curso> listaCursos,
+			List<Asignatura> listaAsignaturas, Modalidad id_modalidad, List<Area> listarea) {
+		super();
+		this.id_malla = id_malla;
+		this.estado = estado;
+		this.descripcion = descripcion;
+		this.fecha_creacion = fecha_creacion;
+		this.listaCursos = listaCursos;
+		this.listaAsignaturas = listaAsignaturas;
+		this.id_modalidad = id_modalidad;
+		this.listarea = listarea;
 	}
 
 	public List<Area> getListarea() {

@@ -36,11 +36,17 @@ public class Modalidad implements Serializable {
 		super();
 	}
 
+	public Modalidad(Long id_modalidad, String descripcion, String hora_inicio, String hora_fin) {
+		super();
+		this.id_modalidad = id_modalidad;
+		this.descripcion = descripcion;
+		this.hora_inicio = hora_inicio;
+		this.hora_fin = hora_fin;
+	}
+
 	public Long getId_modalidad() {
 		return id_modalidad;
 	}
-
-	
 
 	public String getHora_inicio() {
 		return hora_inicio;
