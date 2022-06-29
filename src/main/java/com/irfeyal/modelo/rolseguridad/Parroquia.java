@@ -18,42 +18,29 @@ public class Parroquia implements Serializable {
 	private String parroquia;
 
 	@ManyToOne()
-	@JoinColumn(name="idCanton")
-	private Canton canton;
+	@JoinColumn(name="id_canton")
+	private Canton id_canton;
 	public Parroquia() {
 	}
-
-	public Long getid_parroquia() {
-		return this.id_parroquia;
-	}
-
-	public void setid_parroquia(Long id_parroquia) {
-		this.id_parroquia = id_parroquia;
-	}
-
-	public String getParroquia() {
-		return this.parroquia;
-	}
-
-	public void setParroquia(String parroquia) {
-		this.parroquia = parroquia;
-	}
-
 	public Long getId_parroquia() {
 		return id_parroquia;
 	}
-
 	public void setId_parroquia(Long id_parroquia) {
 		this.id_parroquia = id_parroquia;
 	}
-
-	public Canton getCanton() {
-		return canton;
+	public String getParroquia() {
+		return parroquia;
+	}
+	public void setParroquia(String parroquia) {
+		this.parroquia = parroquia;
+	}
+	public Canton getId_canton() {
+		return id_canton;
+	}
+	public void setId_canton(Canton id_canton) {
+		this.id_canton = id_canton;
 	}
 
-	public void setCanton(Canton canton) {
-		this.canton = canton;
-	}
-
+	
 	
 }
