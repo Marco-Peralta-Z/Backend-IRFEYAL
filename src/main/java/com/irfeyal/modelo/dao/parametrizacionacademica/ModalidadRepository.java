@@ -19,7 +19,8 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
 				+ "	join asignatura asig on asig.id_asignatura = ma.id_asignatura "
 				+ "	join asignatura_empleado asigemple on asigemple.id_asignatura = asig.id_asignatura "
 				+ "	join modalidad mo on m.id_modalidad=mo.id_modalidad "
-				+ "	where asigemple.id_empleado=?1 and p.id_periodo=?2",nativeQuery=true)
+				+ "	where asigemple.id_empleado=?1 and p.id_periodo=?2"
+				+ " group by mo.id_modalidad",nativeQuery=true)
 	List<Modalidad> listarmodalidadasistencia(Long empelado , Long idperiodo);
 	
 	

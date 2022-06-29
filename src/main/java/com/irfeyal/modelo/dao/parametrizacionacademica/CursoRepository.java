@@ -21,7 +21,8 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
 			+ "	join modalidad mo on m.id_modalidad=mo.id_modalidad "
 			+ "	join malla_curso mc on m.id_malla=mc.id_malla "
 			+ "	join curso c on mc.id_curso=c.id_curso "
-			+ "		where asigemple.id_empleado=?1 and p.id_periodo=?2 and mo.id_modalidad=?3",nativeQuery=true)
+			+ " where asigemple.id_empleado=?1 and p.id_periodo=?2 and mo.id_modalidad=?3"
+			+ " group by c.id_curso",nativeQuery=true)
 	List<Curso> listarcursoasistencia(Long empelado ,Long periodo, Long idmoda);
 	
 	/*MODULO TUTORIAS*/

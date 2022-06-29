@@ -23,7 +23,8 @@ public interface AsignaturaRepository extends JpaRepository<Asignatura, Long> {
 			+ "join curso c on mc.id_curso=c.id_curso "
 			+ "join tutor t on c.id_curso=t.id_curso "
 			+ "join paralelo pa on t.id_paralelo=pa.id_paralelo "
-			+ "where asigemple.id_empleado=?1 and p.id_periodo=?2 and mo.id_modalidad=?3 and c.id_curso=?4 and pa.id_paralelo=?5",nativeQuery=true)
+			+ "where asigemple.id_empleado=?1 and p.id_periodo=?2 and mo.id_modalidad=?3 and c.id_curso=?4 and pa.id_paralelo=?5"
+			+ " group by asig.id_asignatura",nativeQuery=true)
 	List<Asignatura> listarasignaturaasistencia(Long empelado , Long idperiodo,Long idmod, Long idcurso,Long idparalelo);
 	
 	

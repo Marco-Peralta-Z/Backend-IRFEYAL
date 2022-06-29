@@ -104,9 +104,9 @@ public class AsistenciaController {
 	public List<Periodo> listarPeridods(@PathVariable Long idempl) {
 		return asistenciaservice.listarpaeriodo(idempl);
 	}
-	@GetMapping("/modalidades/{idempl}/{idmod}")
-	public List<Modalidad> listarmodalidades(@PathVariable Long idempl,@PathVariable Long idmod) {
-		return asistenciaservice.listarmodalidad(idempl, idmod);
+	@GetMapping("/modalidades/{idempl}/{periodo}")
+	public List<Modalidad> listarmodalidades(@PathVariable Long idempl,@PathVariable Long periodo) {
+		return asistenciaservice.listarmodalidad(idempl, periodo);
 	}
 	@GetMapping("/cursos/{idempl}/{periodo}/{idmod}")
 	public List<Curso> listarcurso(@PathVariable Long idempl,@PathVariable Long periodo,@PathVariable Long idmod) {
