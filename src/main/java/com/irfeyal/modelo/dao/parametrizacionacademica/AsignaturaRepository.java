@@ -29,18 +29,18 @@ public interface AsignaturaRepository extends JpaRepository<Asignatura, Long> {
 	
 	/*MODULO TUTORIAS*/
 	
-	@Query(value = "SELECT asig.id_asignatura, asig.descripcion,asig.fecha_creacion  "
-			+ "	FROM periodo p join  malla m on p.id_malla = m.id_malla  "
-			+ "	join malla_asignatura ma on ma.id_malla = m.id_malla "
-			+ "	join asignatura asig on asig.id_asignatura = ma.id_asignatura "
-			+ "	join asignatura_empleado asigemple on asigemple.id_asignatura = asig.id_asignatura "
-			+ "	join modalidad mo on m.id_modalidad=mo.id_modalidad "
-			+ "	join malla_curso mc on m.id_malla=mc.id_malla "
-			+ "	join curso c on mc.id_curso=c.id_curso "
-			+ "	join tutor t on c.id_curso=t.id_curso "
-			+ "	join paralelo pa on t.id_paralelo=pa.id_paralelo "
-			+ "	where asigemple.id_empleado=?1 and p.id_periodo=?2 and mo.id_modalidad=?3 and c.id_curso=?4 and pa.id_paralelo=?5", nativeQuery = true)
-	List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_curso, Long id_paralelo, Long id_modalidad);
+	@Query(value = "select a.id_asignatura, a.descripcion, a.fecha_creacion from asignatura a "
+			+ " inner join malla_asignatura ma on ma.id_asignatura = a.id_asignatura "
+			+ " inner join malla_curso mc on mc.id_malla = ma.id_malla "
+			+ " inner join malla m on m.id_malla = mc.id_malla "
+			+ " inner join periodo p on p.id_malla = m.id_malla "
+			+ " inner join modalidad m2 on m2.id_modalidad = m.id_modalidad "
+			+ " inner join asignatura_empleado ae on ae.id_asignatura = a.id_asignatura "
+			+ " inner join tutor t on t.id_curso = mc.id_curso "
+			+ " inner join paralelo p2 on p2.id_paralelo = t.id_paralelo "
+			+ " where ae.id_empleado=?1 and p.id_periodo =?2 and m.id_malla =?3 and m2.id_modalidad =?4 and mc.id_curso=?5 and p2.id_paralelo=?6 "
+			+ " group by a.id_asignatura; ", nativeQuery = true)
+	List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_malla, Long id_modalidad, Long id_curso, Long id_paralelo);
 	
 	
 	

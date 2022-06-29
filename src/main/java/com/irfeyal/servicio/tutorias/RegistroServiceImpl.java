@@ -114,22 +114,6 @@ public class RegistroServiceImpl implements IRegistroService {
 		}
 
 
-		@Override
-		public List<Paralelo> ListParaleloempleados(Long empleado, Long id_curso, Long id_periodo, Long id_modalidad) {
-			return paralelo.ListParaleloempleados(empleado, id_curso, id_modalidad, id_periodo);
-		}
-
-
-		@Override
-		public List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_curso, Long id_paralelo,
-				Long id_modalidad) {
-			
-			return asignatura.ListAsignaturaempleados(empleado, id_periodo, id_curso, id_paralelo, id_modalidad);
-		}
-
-
-	
-
 
 		@Override
 		public Comprobante buscarceduestudiante(String cedula) {
@@ -231,6 +215,22 @@ public class RegistroServiceImpl implements IRegistroService {
 		public List<Curso> ListCursosempelados(Long empleado, Long id_periodo, Long id_malla, Long id_modalidad) {
 			
 			return curso.ListCursosempelados(empleado, id_periodo, id_malla, id_modalidad);
+		}
+
+
+		@Override
+		public List<Paralelo> ListParaleloempleados(Long empleado, Long id_periodo, Long id_malla, Long id_modalidad,
+				Long id_curso) {
+			
+			return paralelo.ListParaleloempleados(empleado, id_periodo, id_malla, id_modalidad, id_curso);
+		}
+
+
+		@Override
+		public List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_malla,
+				Long id_modalidad, Long id_curso, Long id_paralelo) {
+			
+			return asignatura.ListAsignaturaempleados(empleado, id_periodo, id_malla, id_modalidad, id_curso, id_paralelo);
 		}
 
 

@@ -137,13 +137,13 @@ public class RegistroController {
 		public List<Curso> listcurso(@PathVariable Long idemple, @PathVariable Long per,@PathVariable Long malla,@PathVariable Long idmod ) {
 			return registroservice.ListCursosempelados(idemple, per, malla, idmod);
 		}
-		@GetMapping("/Paralelos/{idemple}/{idcurso}/{idmod}/{per}")
-		public List<Paralelo> listparalelo(@PathVariable Long idemple,@PathVariable Long idcurso, @PathVariable Long idmod, @PathVariable Long per) {
-			return registroservice.ListParaleloempleados(idemple, idcurso, idmod, per);
+		@GetMapping("/Paralelos/{idemple}/{per}/{malla}/{idmod}/{idcurso}")
+		public List<Paralelo> listparalelo(@PathVariable Long idemple, @PathVariable Long per, @PathVariable Long malla, @PathVariable Long idmod, @PathVariable Long idcurso) {
+			return registroservice.ListParaleloempleados(idemple, per, malla, idmod, idcurso);
 		}
-		@GetMapping("/Asignaturas/{idemple}/{idperiodo}/{idcurso}/{idparalelo}/{idmod}")
-		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo, @PathVariable Long idmod) {
-			return registroservice.ListAsignaturaempleados(idemple, idperiodo, idcurso, idparalelo, idmod);
+		@GetMapping("/Asignaturas/{idemple}/{per}/{malla}/{idmod}/{idcurso}/{idparalelo}")
+		public List<Asignatura> listasignatura(@PathVariable Long idemple , @PathVariable Long per,@PathVariable Long malla, @PathVariable Long idmod, @PathVariable Long idcurso,@PathVariable Long idparalelo) {
+			return registroservice.ListAsignaturaempleados(idemple, per, malla, idmod, idcurso, idparalelo);
 		}
 		
 		@GetMapping("/Filtrocompleto/{idasig}/{idperiodo}/{idcurso}/{idparalelo}/{idmod}")

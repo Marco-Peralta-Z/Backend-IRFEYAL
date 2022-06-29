@@ -25,7 +25,7 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
 	
 	/*MODULO TUTORIAS*/
 	
-	@Query(value = "select m.id_modalidad , m.descripcion  from modalidad m "
+	@Query(value = "select m.id_modalidad , m.descripcion, m.hora_fin, m.hora_inicio from modalidad m "
 			+ "inner join malla m2 on m2.id_malla = m.id_modalidad "
 			+ "inner join malla_asignatura ma on ma.id_malla = m2.id_malla "
 			+ "inner join asignatura a on a.id_asignatura = ma.id_asignatura "

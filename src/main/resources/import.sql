@@ -1955,6 +1955,13 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(3, 2);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(4, 1);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(5, 1);
 
+
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(1, 8);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(2, 8);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(3, 8);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(4, 8);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(5, 8);
+
 -- Fin mÃ³dulo parametrizaciÃ³n academica
 
 --MATRICULA---------
