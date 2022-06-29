@@ -55,7 +55,7 @@ public class Horario implements Serializable {
 	@JoinColumn(name = "id_asignatura")
 	private Asignatura id_asignatura;
 
-	// Relacion horario_curso
+	// Relacion horario_tutor
 	@ManyToOne
 	@JoinColumn(name = "id_tutor")
 	private Tutor id_tutor;

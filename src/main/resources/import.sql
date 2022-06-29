@@ -1,11 +1,11 @@
-﻿--------ROLES Y SEGURIDAD------
+ï»¿--------ROLES Y SEGURIDAD------
 
 -------------------PAIS-------------------
 INSERT INTO pais (pais) VALUES ('Ecuador');
 
 INSERT INTO provincia (provincia, id_pais) VALUES ('Azuay',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Bolivar',1);
-INSERT INTO provincia (provincia, id_pais) VALUES ('Cañar',1);
+INSERT INTO provincia (provincia, id_pais) VALUES ('CaÃ±ar',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Carchi',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Cotopaxi',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Chimborazo',1);
@@ -22,10 +22,10 @@ INSERT INTO provincia (provincia, id_pais) VALUES ('Pastaza',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Pichincha',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Tungurahua',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Zamora Chinchipe',1);
-INSERT INTO provincia (provincia, id_pais) VALUES ('Galápagos',1);
-INSERT INTO provincia (provincia, id_pais) VALUES ('Sucumbíos',1);
+INSERT INTO provincia (provincia, id_pais) VALUES ('GalÃ¡pagos',1);
+INSERT INTO provincia (provincia, id_pais) VALUES ('SucumbÃ­os',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Orellana',1);
-INSERT INTO provincia (provincia, id_pais) VALUES ('Santo Domingo de Los Tsáchilas',1);
+INSERT INTO provincia (provincia, id_pais) VALUES ('Santo Domingo de Los TsÃ¡chilas',1);
 INSERT INTO provincia (provincia, id_pais) VALUES ('Santa Elena',1);
 
   ------------------CANTON-------------------
@@ -181,20 +181,20 @@ INSERT INTO canton (canton, id_provincia) VALUES ('TOSAGUA',13);
 INSERT INTO canton (canton, id_provincia) VALUES ('24 DE MAYO',13);
 INSERT INTO canton (canton, id_provincia) VALUES ('PEDERNALES',13);
 INSERT INTO canton (canton, id_provincia) VALUES ('OLMEDO',13);
-INSERT INTO canton (canton, id_provincia) VALUES ('PUERTO LÓPEZ',13);
+INSERT INTO canton (canton, id_provincia) VALUES ('PUERTO LÃ“PEZ',13);
 INSERT INTO canton (canton, id_provincia) VALUES ('JAMA',13);
-INSERT INTO canton (canton, id_provincia) VALUES ('JARAMIJÓ',13);
+INSERT INTO canton (canton, id_provincia) VALUES ('JARAMIJÃ“',13);
 INSERT INTO canton (canton, id_provincia) VALUES ('SAN VICENTE',13);
 INSERT INTO canton (canton, id_provincia) VALUES ('MORONA',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('GUALAQUIZA',14);
-INSERT INTO canton (canton, id_provincia) VALUES ('LIMÓN INDANZA',14);
+INSERT INTO canton (canton, id_provincia) VALUES ('LIMÃ“N INDANZA',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('PALORA',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('SANTIAGO',14);
-INSERT INTO canton (canton, id_provincia) VALUES ('SUCÚA',14);
+INSERT INTO canton (canton, id_provincia) VALUES ('SUCÃšA',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('HUAMBOYA',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('SAN JUAN BOSCO',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('TAISHA',14);
-INSERT INTO canton (canton, id_provincia) VALUES ('LOGROÑO',14);
+INSERT INTO canton (canton, id_provincia) VALUES ('LOGROÃ‘O',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('PABLO SEXTO',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('TIWINTZA',14);
 INSERT INTO canton (canton, id_provincia) VALUES ('TENA',15);
@@ -210,18 +210,18 @@ INSERT INTO canton (canton, id_provincia) VALUES ('QUITO',17);
 INSERT INTO canton (canton, id_provincia) VALUES ('CAYAMBE',17);
 INSERT INTO canton (canton, id_provincia) VALUES ('MEJIA',17);
 INSERT INTO canton (canton, id_provincia) VALUES ('PEDRO MONCAYO',17);
-INSERT INTO canton (canton, id_provincia) VALUES ('RUMIÑAHUI',17);
+INSERT INTO canton (canton, id_provincia) VALUES ('RUMIÃ‘AHUI',17);
 INSERT INTO canton (canton, id_provincia) VALUES ('SAN MIGUEL DE LOS BANCOS',17);
 INSERT INTO canton (canton, id_provincia) VALUES ('PEDRO VICENTE MALDONADO',17);
 INSERT INTO canton (canton, id_provincia) VALUES ('PUERTO QUITO',17);
 INSERT INTO canton (canton, id_provincia) VALUES ('AMBATO',18);
-INSERT INTO canton (canton, id_provincia) VALUES ('BAÑOS DE AGUA SANTA',18);
+INSERT INTO canton (canton, id_provincia) VALUES ('BAÃ‘OS DE AGUA SANTA',18);
 INSERT INTO canton (canton, id_provincia) VALUES ('CEVALLOS',18);
 INSERT INTO canton (canton, id_provincia) VALUES ('MOCHA',18);
 INSERT INTO canton (canton, id_provincia) VALUES ('PATATE',18);
 INSERT INTO canton (canton, id_provincia) VALUES ('QUERO',18);
 INSERT INTO canton (canton, id_provincia) VALUES ('SAN PEDRO DE PELILEO',18);
-INSERT INTO canton (canton, id_provincia) VALUES ('SANTIAGO DE PÍLLARO',18);
+INSERT INTO canton (canton, id_provincia) VALUES ('SANTIAGO DE PÃ�LLARO',18);
 INSERT INTO canton (canton, id_provincia) VALUES ('TISALEO',18);
 INSERT INTO canton (canton, id_provincia) VALUES ('ZAMORA',19);
 INSERT INTO canton (canton, id_provincia) VALUES ('CHINCHIPE',19);
@@ -229,17 +229,17 @@ INSERT INTO canton (canton, id_provincia) VALUES ('NANGARITZA',19);
 INSERT INTO canton (canton, id_provincia) VALUES ('YACUAMBI',19);
 INSERT INTO canton (canton, id_provincia) VALUES ('YANTZAZA',19);
 INSERT INTO canton (canton, id_provincia) VALUES ('EL PANGUI',19);
-INSERT INTO canton (canton, id_provincia) VALUES ('CENTINELA DEL CÓNDOR',19);
+INSERT INTO canton (canton, id_provincia) VALUES ('CENTINELA DEL CÃ“NDOR',19);
 INSERT INTO canton (canton, id_provincia) VALUES ('PALANDA',19);
 INSERT INTO canton (canton, id_provincia) VALUES ('PAQUISHA',19);
-INSERT INTO canton (canton, id_provincia) VALUES ('SAN CRISTÓBAL',20);
+INSERT INTO canton (canton, id_provincia) VALUES ('SAN CRISTÃ“BAL',20);
 INSERT INTO canton (canton, id_provincia) VALUES ('ISABELA',20);
 INSERT INTO canton (canton, id_provincia) VALUES ('SANTA CRUZ',20);
 INSERT INTO canton (canton, id_provincia) VALUES ('LAGO AGRIO',21);
 INSERT INTO canton (canton, id_provincia) VALUES ('GONZALO PIZARRO',21);
 INSERT INTO canton (canton, id_provincia) VALUES ('PUTUMAYO',21);
 INSERT INTO canton (canton, id_provincia) VALUES ('SHUSHUFINDI',21);
-INSERT INTO canton (canton, id_provincia) VALUES ('SUCUMBÍOS',21);
+INSERT INTO canton (canton, id_provincia) VALUES ('SUCUMBÃ�OS',21);
 INSERT INTO canton (canton, id_provincia) VALUES ('CASCALES',21);
 INSERT INTO canton (canton, id_provincia) VALUES ('CUYABENO',21);
 INSERT INTO canton (canton, id_provincia) VALUES ('ORELLANA',22);
@@ -253,13 +253,13 @@ INSERT INTO canton (canton, id_provincia) VALUES ('SALINAS',24);
 -------------------PARROQUIA-------------------
 
 INSERT INTO parroquia (parroquia) VALUES  ('BELLAVISTA');
-INSERT INTO parroquia (parroquia) VALUES  ('CAÑARIBAMBA');
-INSERT INTO parroquia (parroquia) VALUES  ('EL BATÁN');
+INSERT INTO parroquia (parroquia) VALUES  ('CAÃ‘ARIBAMBA');
+INSERT INTO parroquia (parroquia) VALUES  ('EL BATÃ�N');
 INSERT INTO parroquia (parroquia) VALUES  ('EL SAGRARIO');
 INSERT INTO parroquia (parroquia) VALUES  ('VECINO');
-INSERT INTO parroquia (parroquia) VALUES  ('GIL RAMÍREZ DÁVALOS');
-INSERT INTO parroquia (parroquia) VALUES  ('HUAYNACÁPAC');
-INSERT INTO parroquia (parroquia) VALUES  ('MACHÁNGARA');
+INSERT INTO parroquia (parroquia) VALUES  ('GIL RAMÃ�REZ DÃ�VALOS');
+INSERT INTO parroquia (parroquia) VALUES  ('HUAYNACÃ�PAC');
+INSERT INTO parroquia (parroquia) VALUES  ('MACHÃ�NGARA');
 INSERT INTO parroquia (parroquia) VALUES  ('MONAY');
 
 
@@ -282,13 +282,13 @@ INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALU
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Gonzales','0106893251','19987-07-03 19:00:00','Karina',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pauta','0132548740','1992-06-05 19:00:00','Robert',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Salamea','0105986312','1998-05-18 19:00:00','Paulina',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ordoñes','0125896314','1993-11-14 19:00:00','Martha',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('OrdoÃ±es','0125896314','1993-11-14 19:00:00','Martha',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velez','0302154789','1994-04-02 19:00:00','Andrea',1);
 
 -------------------PERSONA ESTUDIANTE-------------------
 
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Acevedo Manríquez', '0102549612', '1998-04-14 19:00:00', 'María Mireya', 1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Alejo Guerrero','0102877771','1997-02-01 19:00:00','Víctor Hugo',2);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Acevedo ManrÃ­quez', '0102549612', '1998-04-14 19:00:00', 'MarÃ­a Mireya', 1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Alejo Guerrero','0102877771','1997-02-01 19:00:00','VÃ­ctor Hugo',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ramirez Ibarra','0107031234','1995-01-15 19:00:00','Pascual Gerardo',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez Santos','0107049456','1990-04-20 19:00:00','Paulina Rocio',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Alarcon Perez','0703079940','1992-10-14 19:00:00','Maria Elena',1);
@@ -301,7 +301,7 @@ INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALU
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Gonzales Melgar','0708893251','1998-06-03 19:00:00','Karina Rosalia',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pauta Arbea','0722548740','1992-06-05 19:00:00','Robert Javier',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Salamea Burgos','0785986312','1994-05-18 19:00:00','Martha Paula',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ordoñes Valladares','0715896314','1993-09-14 19:00:00','Socorro',1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('OrdoÃ±es Valladares','0715896314','1993-09-14 19:00:00','Socorro',1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velez Garcia','0184154789','1994-04-02 19:00:00','Angela',1);
 
 
@@ -328,7 +328,7 @@ INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parro
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Av torres', '3 noviembre',5,1,5,3);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Francisco', 'Medio Ejido',6,1,5,3);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Chola Cuencana', 'Huaynacapac',7,1,5,4);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Americas', 'Baños', 1, 1, 1, 1);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Americas', 'BaÃ±os', 1, 1, 1, 1);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('San Joaquin', 'El Tejar',1,1,1,1);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Chacon', 'Cardenas',2,1,2,2);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Machuca', 'Vargas',3,1,3,3);
@@ -343,7 +343,7 @@ INSERT INTO empresa (nombre_empresa) VALUES ('irfeyal prueba');
 -------------------EXTENSION-------------------
 INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_1', 1,1);
 INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_Guayaquil', 1,2);
-INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_Cañar', 1,3);
+INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_CaÃ±ar', 1,3);
 INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_Quito', 1,4);
 
 
@@ -480,7 +480,7 @@ INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,13);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,14);
 
---Inicio módulo parametrización academica
+--Inicio mÃ³dulo parametrizaciÃ³n academica
 
 -------------------MODALIDAD-----------------------------
 INSERT INTO public.modalidad(descripcion)VALUES('Intensivo');
@@ -520,14 +520,18 @@ INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Decimo', '09/04/2
 INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Primero Bachillerato',  '10/04/2022');
 INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Segundo Bachillerato', '11/04/2022');
 
+---------------------TUTOR----------------
+INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,1,1);
+INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,2,2);
+
 -------------------------HORARIO-----------------------
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00',1,1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado) VALUES(2, '07/04/2022', '08/09/2022 08:00:00', '07/12/2022 09:00:00',2,1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado) VALUES(3, '07/04/2022', '08/09/2022 09:00:00', '07/12/2022 10:00:00',3,1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado) VALUES(4, '07/04/2022', '08/09/2022 10:00:00', '07/12/2022 11:00:00',4,1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado) VALUES(5, '07/04/2022', '08/09/2022 11:00:00', '07/12/2022 12:00:00',5,1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado) VALUES(6, '07/04/2022', '08/09/2022 12:00:00', '07/12/2022 13:00:00',6,1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado) VALUES(7, '07/04/2022', '08/09/2022 13:00:00', '07/12/2022 14:00:00',1,1);
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00',1,1, 1);
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(2, '07/04/2022', '08/09/2022 08:00:00', '07/12/2022 09:00:00',2,1, 2);
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(3, '07/04/2022', '08/09/2022 09:00:00', '07/12/2022 10:00:00',3,1, 1);
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(4, '07/04/2022', '08/09/2022 10:00:00', '07/12/2022 11:00:00',4,1, 2);
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(5, '07/04/2022', '08/09/2022 11:00:00', '07/12/2022 12:00:00',5,1, 1);
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(6, '07/04/2022', '08/09/2022 12:00:00', '07/12/2022 13:00:00',6,1, 2);
+INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(7, '07/04/2022', '08/09/2022 13:00:00', '07/12/2022 14:00:00',1,1, 1);
 
 ------------------------HORARIO PERIODO-------------------	
 INSERT INTO public.periodo_horario(id_periodo,id_horario)VALUES(1,1);
@@ -565,7 +569,7 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(3, 2);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(4, 1);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(5, 1);
 
--- Fin módulo parametrización academica
+-- Fin mÃ³dulo parametrizaciÃ³n academica
 
 --MATRICULA---------
 
@@ -624,13 +628,13 @@ INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 5, 5)
 INSERT INTO unidad (nombre_unidad) VALUES ('Unidad 1'), ('Unidad 2'), ('Unidad 3'), ('Unidad 4'), ('Unidad 5'), ('Unidad 6'), ('Unidad 7'), ('Unidad 8'), ('Unidad 9'), ('Unidad 10');
 
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Algebra', 'Objetivo1', 'Contenido1', 'Criterio1', 'Destreza1', '01-09-2022', '30-06-2023', 'Sin observaciones', 1, 8, 1, 1, 1, 'Pendiente', 1, 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('El sistema inmunológico', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 7, 4, 1, 4, 'Pendiente', 2, 3);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('El sistema inmunolÃ³gico', 'Objetivo9', 'Contenido9', 'Criterio9', 'Destreza9', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 7, 4, 1, 4, 'Pendiente', 2, 3);
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Celulas', 'Objetivo2', 'Contenido2', 'Criterio2', 'Destreza2', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 7, 4, 2, 4, 'Aprobado', 3, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Reproducción y división celular', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 2, 7, 4, 1, 4, 'Aprobado', 4, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Genética clásica', 'Objetivo4', 'Contenido4', 'Criterio4', 'Destreza4', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 7, 4, 2, 4, 'Aprobado', 2, 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Fundamentos de biología', 'Objetivo5', 'Contenido5', 'Criterio5', 'Destreza5', '01-09-2022', '30-06-2023', 'Corregir los objetivos de la unidad', 1, 7, 4, 1, 4, 'Rechazado', 2, 1);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Genética molecular', 'Objetivo6', 'Contenido6', 'Criterio6', 'Destreza6', '01-09-2022', '30-06-2023', 'Corregir la fecha de inicio de la unidad', 4, 7, 4, 1, 4, 'Rechazado', 3, 2);
-INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Biotecnología', 'Objetivo7', 'Contenido7', 'Criterio7', 'Destreza7', '01-09-2022', '30-06-2023', 'Corregir los contenidos de la unidad', 5, 7, 4, 2, 4, 'Rechazado', 5, 2);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('ReproducciÃ³n y divisiÃ³n celular', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 2, 7, 4, 1, 4, 'Aprobado', 4, 1);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('GenÃ©tica clÃ¡sica', 'Objetivo4', 'Contenido4', 'Criterio4', 'Destreza4', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 7, 4, 2, 4, 'Aprobado', 2, 2);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Fundamentos de biologÃ­a', 'Objetivo5', 'Contenido5', 'Criterio5', 'Destreza5', '01-09-2022', '30-06-2023', 'Corregir los objetivos de la unidad', 1, 7, 4, 1, 4, 'Rechazado', 2, 1);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('GenÃ©tica molecular', 'Objetivo6', 'Contenido6', 'Criterio6', 'Destreza6', '01-09-2022', '30-06-2023', 'Corregir la fecha de inicio de la unidad', 4, 7, 4, 1, 4, 'Rechazado', 3, 2);
+INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('BiotecnologÃ­a', 'Objetivo7', 'Contenido7', 'Criterio7', 'Destreza7', '01-09-2022', '30-06-2023', 'Corregir los contenidos de la unidad', 5, 7, 4, 2, 4, 'Rechazado', 5, 2);
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Sumas y restas', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 1, 8, 1, 2, 1, 'Aprobado', 1, 1);
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Multiplicacion y divicion', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 2, 8, 1, 1, 1, 'Aprobado', 4, 2);
 INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluacion, destrezas, fecha_inicio, fecha_fin, observaciones, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, estado, id_curso, id_paralelo) values ('Reglas de tres', 'Objetivo3', 'Contenido3', 'Criterio3', 'Destreza3', '01-09-2022', '30-06-2023', 'Sin observaciones', 3, 8, 1, 1, 1, 'Aprobado', 3, 3);
@@ -640,15 +644,15 @@ INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluac
 
 --SOLO KIT PARA tipo_comprobante----------
 --INVENTARIOS---------- 
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModI2', 'Inglés 2do EGB','2do', 30, 2,'2do Tomo');--OJO:Necesito id del kit que esta con error en el insert\
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModI2', 'InglÃ©s 2do EGB','2do', 30, 2,'2do Tomo');--OJO:Necesito id del kit que esta con error en el insert\
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModLL2', 'Lengua y Literatura 2do EGB','2do', 30,2, '2do Tomo');
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModM2', 'Matemática 2do EGB', '2do', 30,2, '2do Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModM2', 'MatemÃ¡tica 2do EGB', '2do', 30,2, '2do Tomo');
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModES2', 'Estudios Sociales 2do EGB', '2do', 30, 2, '2do Tomo');
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModCN2', 'Ciencias Naturales 2do EGB', '2do', 30,2, '2do Tomo');
 
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModI3', 'Inglés 3ero EGB','3ero', 30, 3, '3ero Tomo');--OJO:Necesito id del kit que esta con error en el insert\
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModI3', 'InglÃ©s 3ero EGB','3ero', 30, 3, '3ero Tomo');--OJO:Necesito id del kit que esta con error en el insert\
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModLL3', 'Lengua y Literatura 3ero EGB','3ero', 30, 3, '3ero Tomo');
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModM3', 'Matemática 3ero EGB', '3ero', 30, 3, '3ero Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModM3', 'MatemÃ¡tica 3ero EGB', '3ero', 30, 3, '3ero Tomo');
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModES3', 'Estudios Sociales 3ero EGB', '3ero', 30, 3, '3ero Tomo');
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModCN3', 'Ciencias Naturales 3ero EGB', '3ero', 30, 3, '3ero Tomo');
 
@@ -710,17 +714,17 @@ INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, 
 
 --SECRETARIA 
 
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi Lloré', '2022/03/16', 1, 1, 1);--OJO:Necesito Id de la matricula del mod. de MATRICULA y pilas id_rol_usuario por id_empleado
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi Lloré', '2022/03/16', 2, 2, 2);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi Lloré', '2022/03/16', 3, 3, 3);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi Lloré', '2022/03/16', 4, 4, 4);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi Lloré', '2022/03/16', 5, 5, 5);
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 1, 1, 1);--OJO:Necesito Id de la matricula del mod. de MATRICULA y pilas id_rol_usuario por id_empleado
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 2, 2, 2);
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 3, 3, 3);
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 4, 4, 4);
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 5, 5, 5);
 
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (70, 'Setenta', 'Aprovado', '2022/03/16', 'Alicia Gualavisi Lloré', 1,1,1);--OJO:Necesito id del registro del mod. de TUTORIAS y pilas con id_rol_usuario por id_empleado
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (70.3, 'Setenta punto tres', 'Aprovado', '2022/03/16', 'Alicia Gualavisi Lloré', 2,2,2);
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (40, 'Quarenta', 'Reprovado', '2022/03/16', 'Alicia Gualavisi Lloré', 3,3,3);
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (50, 'Cincuenta', 'Reprovado', '2022/03/16', 'Alicia Gualavisi Lloré', 4,4,4);
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (60.3, 'Sesenta punto tres', 'Aprovado', '2022/03/16', 'Alicia Gualavisi Lloré', 5,5,5);
+INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (70, 'Setenta', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 1,1,1);--OJO:Necesito id del registro del mod. de TUTORIAS y pilas con id_rol_usuario por id_empleado
+INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (70.3, 'Setenta punto tres', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 2,2,2);
+INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (40, 'Quarenta', 'Reprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 3,3,3);
+INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (50, 'Cincuenta', 'Reprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 4,4,4);
+INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (60.3, 'Sesenta punto tres', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 5,5,5);
 
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 1', 'descripcion 1', 'C/documentos');
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 2', 'descripcion 2', 'C/documentos');
@@ -728,11 +732,11 @@ INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certific
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 4', 'descripcion 4', 'C/documentos');
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 5', 'descripcion 5', 'C/documentos');
 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Juan García', 'Pablo López', '2022/03/16', null, 'Pendiente', 1, 1); --OJO:tipo de patter de timestamp y pilas con id_rol_usuario por id_empleado 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jose García', 'Pablo López', '2022/03/17', null, 'Pendiente', 2, 2); 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Carlos García', 'Pedro López', '2022/03/17', null, 'Pendiente', 3, 3); 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jonas García', 'Pedro López', '2022/03/16', null, 'Pendiente', 4, 4); 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Luis García', 'Pablo López', '2022/03/16', null, 'Pendiente', 5, 5); 
+INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Juan GarcÃ­a', 'Pablo LÃ³pez', '2022/03/16', null, 'Pendiente', 1, 1); --OJO:tipo de patter de timestamp y pilas con id_rol_usuario por id_empleado 
+INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jose GarcÃ­a', 'Pablo LÃ³pez', '2022/03/17', null, 'Pendiente', 2, 2); 
+INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Carlos GarcÃ­a', 'Pedro LÃ³pez', '2022/03/17', null, 'Pendiente', 3, 3); 
+INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jonas GarcÃ­a', 'Pedro LÃ³pez', '2022/03/16', null, 'Pendiente', 4, 4); 
+INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Luis GarcÃ­a', 'Pablo LÃ³pez', '2022/03/16', null, 'Pendiente', 5, 5); 
 
 --INVENTARIOS
 INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01001', 'AUDIO Y VIDEO');
