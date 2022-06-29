@@ -146,9 +146,9 @@ public class RegistroController {
 			return registroservice.ListAsignaturaempleados(idemple, per, malla, idmod, idcurso, idparalelo);
 		}
 		
-		@GetMapping("/Filtrocompleto/{idasig}/{idperiodo}/{idcurso}/{idparalelo}/{idmod}")
-		public List<Registro> listcompleta(@PathVariable Long idasig , @PathVariable Long idperiodo, @PathVariable Long idcurso,@PathVariable Long idparalelo, @PathVariable Long idmod) {
-			return registroservice.filtrocompleto(idasig,idperiodo,idcurso, idparalelo, idmod);
+		@GetMapping("/Filtrocompleto/{idperiodo}/{malla}/{idmod}/{idcurso}/{idparalelo}/{idasig}")
+		public List<Registro> listcompleta(@PathVariable Long idperiodo,@PathVariable Long malla, @PathVariable Long idmod,@PathVariable Long idcurso,@PathVariable Long idparalelo,@PathVariable Long idasig ) {
+			return registroservice.filtrocompleto(idperiodo, malla, idmod, idcurso, idparalelo, idasig);
 		}
 		
 		@GetMapping("/buscarestudianteporcedula/{ced}")

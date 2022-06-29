@@ -197,14 +197,6 @@ public class RegistroServiceImpl implements IRegistroService {
 
 
 		@Override
-		public List<Registro> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo,
-				Long id_asignatura) {
-			
-			return registrodao.filtrocompleto(id_periodo, id_modalidad, id_curso, id_paralelo, id_asignatura);
-		}
-
-
-		@Override
 		public List<Malla> ListMalla(Long empleado, Long id_periodo) {
 			
 			return malla.ListMalla(empleado, id_periodo);
@@ -231,6 +223,14 @@ public class RegistroServiceImpl implements IRegistroService {
 				Long id_modalidad, Long id_curso, Long id_paralelo) {
 			
 			return asignatura.ListAsignaturaempleados(empleado, id_periodo, id_malla, id_modalidad, id_curso, id_paralelo);
+		}
+
+
+		@Override
+		public List<Registro> filtrocompleto(Long id_periodo, Long id_malla, Long id_modalidad, Long id_curso,
+				Long id_paralelo, Long id_asignatura) {
+			
+			return registrodao.filtrocompleto(id_periodo, id_malla, id_modalidad, id_curso, id_paralelo, id_asignatura);
 		}
 
 

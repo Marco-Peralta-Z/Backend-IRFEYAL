@@ -45,10 +45,10 @@ public interface AsignaturaRepository extends JpaRepository<Asignatura, Long> {
 	
 	
 	
-	@Query(value="select a.id_asignatura, a.descripcion, a.fecha_creacion from malla m\r\n"
-			+ "inner join periodo p on p.id_malla = m.id_malla\r\n"
-			+ "inner join malla_asignatura ma on ma.id_malla = p.id_malla \r\n"
-			+ "inner join asignatura a on a.id_asignatura = ma.id_asignatura \r\n"
+	@Query(value="select a.id_asignatura, a.descripcion, a.fecha_creacion from malla m "
+			+ "inner join periodo p on p.id_malla = m.id_malla "
+			+ "inner join malla_asignatura ma on ma.id_malla = p.id_malla "
+			+ "inner join asignatura a on a.id_asignatura = ma.id_asignatura "
 			+ "where p.id_periodo = ?1 ",nativeQuery=true)
 	List<Asignatura> ids_asignatura(Long id_periodo);
 	

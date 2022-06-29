@@ -75,6 +75,15 @@ public class Malla implements Serializable {
 	public Malla() {
 		super();
 	}
+	
+	
+
+	public Malla(Long id_malla) {
+		super();
+		this.id_malla = id_malla;
+	}
+
+
 
 	public Malla(Long id_malla, Boolean estado, String descripcion, Date fecha_creacion, List<Curso> listaCursos,
 			List<Asignatura> listaAsignaturas, Modalidad id_modalidad, List<Area> listarea) {

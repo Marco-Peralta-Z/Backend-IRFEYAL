@@ -54,6 +54,8 @@ public class Asignatura implements Serializable {
 	public Asignatura() {
 		super();
 	}
+	
+	
 
 	public Asignatura(Long id_asignatura, String descripcion, Date fecha_creacion, List<Empleado> empleados) {
 		this.id_asignatura = id_asignatura;

@@ -29,8 +29,8 @@ public interface IRegistroDao extends JpaRepository<Registro, Long> {
 				+ " inner join malla m2 on m2.id_malla = mc.id_malla "
 				+ " inner join malla_asignatura mas on mas.id_malla = m2.id_malla "
 				+ " inner join asignatura a on a.id_asignatura = mas.id_asignatura "
-				+ " where pe.id_periodo =?1 and mo.id_modalidad=?2 and c.id_curso =?3 and pa.id_paralelo =?4 and a.id_asignatura =?5 ",nativeQuery=true)
-		List<Registro> filtrocompleto(Long id_periodo, Long id_modalidad, Long id_curso, Long id_paralelo, Long id_asignatura);
+				+ " where pe.id_periodo =?1 and m2.id_malla=?2 and mo.id_modalidad=?3 and c.id_curso =?4 and pa.id_paralelo =?5 and a.id_asignatura =?6 ",nativeQuery=true)
+		List<Registro> filtrocompleto(Long id_periodo,Long id_malla , Long id_modalidad, Long id_curso, Long id_paralelo, Long id_asignatura);
 	
 
 }

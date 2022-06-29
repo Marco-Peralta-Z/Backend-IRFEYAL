@@ -27,12 +27,13 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
 	/*MODULO TUTORIAS*/
 	
 	@Query(value = "select m.id_modalidad , m.descripcion, m.hora_fin, m.hora_inicio from modalidad m "
-			+ "inner join malla m2 on m2.id_malla = m.id_modalidad "
-			+ "inner join malla_asignatura ma on ma.id_malla = m2.id_malla "
-			+ "inner join asignatura a on a.id_asignatura = ma.id_asignatura "
-			+ "inner join asignatura_empleado ae on ae.id_asignatura = a.id_asignatura "
-			+ "inner join periodo p on p.id_malla = m2.id_malla "
-			+ "where ae.id_empleado =?1 and p.id_periodo =?2 and m2.id_malla =?3", nativeQuery = true)
+			+ " inner join malla m2 on m2.id_malla = m.id_modalidad "
+			+ " inner join malla_asignatura ma on ma.id_malla = m2.id_malla "
+			+ " inner join asignatura a on a.id_asignatura = ma.id_asignatura "
+			+ " inner join asignatura_empleado ae on ae.id_asignatura = a.id_asignatura "
+			+ " inner join periodo p on p.id_malla = m2.id_malla "
+			+ " where ae.id_empleado =?1 and p.id_periodo =?2 and m2.id_malla =?3 "
+			+ " group by m.id_modalidad", nativeQuery = true)
 	List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo, Long id_malla);
 	
 //	Modulo Matricula 
