@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.irfeyal.interfaces.rolseguridad.ParroquiaInterface;
 import com.irfeyal.modelo.dao.rolseguridad.ParroquiaDAO;
+import com.irfeyal.modelo.rolseguridad.Canton;
 import com.irfeyal.modelo.rolseguridad.Parroquia;
 
 @Service
@@ -50,5 +51,11 @@ public class ParroquiaServices implements ParroquiaInterface {
 		parroquiadao.deleteById(id);
 	
 	}
+	
+	public List<Parroquia> findAllbyCanton(Long id) {
+		// TODO Auto-generated method stub
+		return parroquiadao.findByCanton(id);
+	}
+	
 
 	}

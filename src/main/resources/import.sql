@@ -1956,11 +1956,11 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(4, 1);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(5, 1);
 
 
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(1, 8);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(2, 8);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(3, 8);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(4, 8);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(5, 8);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(1, 9);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(2, 9);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(3, 9);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(4, 9);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(5, 9);
 
 -- Fin mÃ³dulo parametrizaciÃ³n academica
 
@@ -2098,12 +2098,11 @@ INSERT INTO detalle_comprobante (valor, detalle, id_comprobante) VALUES (50, 'De
 
 ----GESTION DE TUTORIAS
 
-INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, aporte6, aporte7, aporte8, evaluacion2, examenfinal, promediofinal, examen_supletorio, promedio_supletorio, examen_remedial, promedio_remedial, examen_gracia, promedio_gracia, comportamiento, id_matricula, fkid_asignatura) VALUES (2, 6, 8, 4, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 1, 5);--OJO:Necesito id de la metricula del mod. de MATRICULA
-INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, aporte6, aporte7, aporte8, evaluacion2, examenfinal, promediofinal, examen_supletorio, promedio_supletorio, examen_remedial, promedio_remedial, examen_gracia, promedio_gracia, comportamiento, id_matricula, fkid_asignatura) VALUES (3, 7, 8, 4, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 2, 3);
-INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, aporte6, aporte7, aporte8, evaluacion2, examenfinal, promediofinal, examen_supletorio, promedio_supletorio, examen_remedial, promedio_remedial, examen_gracia, promedio_gracia, comportamiento, id_matricula, fkid_asignatura) VALUES (4, 8, 9, 6, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 3, 1);
-INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, aporte6, aporte7, aporte8, evaluacion2, examenfinal, promediofinal, examen_supletorio, promedio_supletorio, examen_remedial, promedio_remedial, examen_gracia, promedio_gracia, comportamiento, id_matricula, fkid_asignatura) VALUES (5, 6, 9, 6, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 4, 4);
-INSERT INTO registro (aporte1, aporte2, aporte3, aporte4, evaluacion1, aporte5, aporte6, aporte7, aporte8, evaluacion2, examenfinal, promediofinal, examen_supletorio, promedio_supletorio, examen_remedial, promedio_remedial, examen_gracia, promedio_gracia, comportamiento, id_matricula, fkid_asignatura) VALUES (6, 9, 5, 8, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 5, 2);
-
+INSERT INTO registro (aporte1, aporte2, examen_Iquimestre, promedio_Iquimestre, aporte3, aporte4, examen_IIquimestre, promedio_IIquimestre, examen_supletorio, examen_remedial, examen_gracia, nota_final, id_matricula, fkid_asignatura) VALUES (10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 1, 5);--OJO:Necesito id de la metricula del mod. de MATRICULA
+INSERT INTO registro (aporte1, aporte2, examen_Iquimestre, promedio_Iquimestre, aporte3, aporte4, examen_IIquimestre, promedio_IIquimestre, examen_supletorio, examen_remedial, examen_gracia, nota_final, id_matricula, fkid_asignatura) VALUES (10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 2, 3);
+INSERT INTO registro (aporte1, aporte2, examen_Iquimestre, promedio_Iquimestre, aporte3, aporte4, examen_IIquimestre, promedio_IIquimestre, examen_supletorio, examen_remedial, examen_gracia, nota_final, id_matricula, fkid_asignatura) VALUES (10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 3, 1);
+INSERT INTO registro (aporte1, aporte2, examen_Iquimestre, promedio_Iquimestre, aporte3, aporte4, examen_IIquimestre, promedio_IIquimestre, examen_supletorio, examen_remedial, examen_gracia, nota_final, id_matricula, fkid_asignatura) VALUES (10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 4, 4);
+INSERT INTO registro (aporte1, aporte2, examen_Iquimestre, promedio_Iquimestre, aporte3, aporte4, examen_IIquimestre, promedio_IIquimestre, examen_supletorio, examen_remedial, examen_gracia, nota_final, id_matricula, fkid_asignatura) VALUES (10, 1, 10, 1, 10, 1, 10, 1, 10, 0, 1, 9, 5, 2);
 
 --SECRETARIA 
 

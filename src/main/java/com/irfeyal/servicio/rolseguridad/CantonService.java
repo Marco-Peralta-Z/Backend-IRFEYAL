@@ -51,8 +51,13 @@ public class CantonService implements CantonInterface {
 		// TODO Auto-generated method stub
 		cantdao.deleteById(id);
 	}
-
-
+	
+	
+	public List<Canton> findAllbyProvincia(Long id) {
+		// TODO Auto-generated method stub
+		return cantdao.findByProvincia(id);
+	}
+	
 
 
 

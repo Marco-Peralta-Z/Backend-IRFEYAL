@@ -37,6 +37,12 @@ public class CantonControler {
 	public List<Canton> canton() {
 		return cantonSer.findAll();
 	}
+	
+	
+	@GetMapping(path = { "/canton/{id}" })
+	public List<Canton> cantonporprovincia(@PathVariable Long id) {
+		return cantonSer.findAllbyProvincia(id);
+	}
 
 	@DeleteMapping("/canton/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.irfeyal.modelo.rolseguridad.Canton;
 import com.irfeyal.modelo.rolseguridad.Parroquia;
 import com.irfeyal.servicio.rolseguridad.ParroquiaServices;
 
@@ -34,6 +35,10 @@ public class ParroquiaControler {
 		return parroquiaSer.findAll();
 	}
 	
+	@GetMapping(path = { "/parroquia/{id}" })
+	public List<Parroquia> parroquiaporcanton(@PathVariable Long id) {
+		return parroquiaSer.findAllbyCanton(id);
+	}
 	
 	@DeleteMapping("/parroquia/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
