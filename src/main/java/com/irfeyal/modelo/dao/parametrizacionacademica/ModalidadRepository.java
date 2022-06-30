@@ -14,12 +14,12 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
 	
 	/*MODULO ASISTENCIA*/
 
-		@Query(value="SELECT mo.id_modalidad, mo.descripcion  FROM periodo p join  malla m on p.id_malla = m.id_malla "
+		@Query(value="SELECT mo.id_modalidad , mo.descripcion , mo.hora_inicio , mo.hora_fin  FROM periodo p join  malla m on p.id_malla = m.id_malla "
 				+ "	join malla_asignatura ma on ma.id_malla = m.id_malla "
 				+ "	join asignatura asig on asig.id_asignatura = ma.id_asignatura "
 				+ "	join asignatura_empleado asigemple on asigemple.id_asignatura = asig.id_asignatura "
 				+ "	join modalidad mo on m.id_modalidad=mo.id_modalidad "
-				+ "	where asigemple.id_empleado=?1 and p.id_periodo=?2"
+				+ "	where asigemple.id_empleado=?1 and p.id_periodo=?2 "
 				+ " group by mo.id_modalidad",nativeQuery=true)
 	List<Modalidad> listarmodalidadasistencia(Long empelado , Long idperiodo);
 	
