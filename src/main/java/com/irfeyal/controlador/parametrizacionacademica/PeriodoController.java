@@ -72,8 +72,8 @@ public class PeriodoController {
 	}
 
 	@PostMapping(path = "", consumes = "application/json", produces = "application/json")
-	public ResponseEntity<Map<String, Object>> createPeriodo(
-			@Validated @RequestBody Periodo periodo, BindingResult result) {
+	public ResponseEntity<Map<String, Object>> createPeriodo(@Validated @RequestBody Periodo periodo,
+			BindingResult result) {
 		Periodo periodoNuevo = null;
 		Map<String, Object> respuesta = new HashMap<>();
 		if (result.hasErrors()) {
@@ -153,5 +153,11 @@ public class PeriodoController {
 		}
 		respuesta.put("mensaje", "El Periodo ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
+	}
+
+	// Modulo Matricula
+	@GetMapping(path = "/getPeriodoPorMalla/{id_malla}")
+	public List<Periodo> getPeriodoPorMalla(@PathVariable Long id_malla) {
+		return periodoService.findByMalla(id_malla);
 	}
 }
