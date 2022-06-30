@@ -128,8 +128,10 @@ public class UsuarioControler {
 			
 		try {
 			usuarioActual.setUsuario(usuario.getUsuario());
-			// codificación de la password
-			usuarioActual.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
+			if(usuario.getContrasenia().length()>0) {
+				// codificación de la password
+				usuarioActual.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
+			}
 			usuarioActual.setEstUsuario(usuario.getEstUsuario());
 			usuarioActual.setEmpleado(usuario.getEmpleado());
 			usuarioUpdate= usuarioSer.saveUsuario(usuarioActual);
