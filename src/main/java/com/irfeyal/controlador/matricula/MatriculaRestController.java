@@ -31,7 +31,6 @@ import com.irfeyal.modelo.tutorias.Registro;
 import com.irfeyal.servicio.matricula.EnvioEmail;
 import com.irfeyal.servicio.matricula.MatriculaServiceImpl;
 import com.irfeyal.servicio.parametrizacionacademica.AsignaturaServicesImp;
-import com.irfeyal.servicio.tutorias.RegistroServiceImpl;
 
 @CrossOrigin(origins = { "*" })
 @RestController

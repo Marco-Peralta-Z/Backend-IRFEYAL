@@ -4,11 +4,8 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 import com.irfeyal.modelo.matricula.Matricula;
-import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
-import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
-import com.irfeyal.modelo.parametrizacionacademica.Periodo;
+
 
 public interface IMatriculaService {
 public List<Matricula> findAll();

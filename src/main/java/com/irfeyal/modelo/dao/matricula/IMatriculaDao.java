@@ -6,11 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-
 import com.irfeyal.modelo.matricula.Matricula;
-import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
-import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 public interface IMatriculaDao extends CrudRepository<Matricula, Long>{
 

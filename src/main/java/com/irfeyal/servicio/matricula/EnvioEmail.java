@@ -1,7 +1,6 @@
 package com.irfeyal.servicio.matricula;
 
 import java.io.InputStream;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 
 import javax.mail.MessagingException;
@@ -488,17 +487,24 @@ public class EnvioEmail {
 			PdfPCell textModalidad = new PdfPCell(new Phrase("Modalida de Estudio: ", textoTabla));
 			textModalidad.setBackgroundColor(color);
 			PdfPCell celda2 = new PdfPCell(new Phrase(datosMatricula.getModalidad().getDescripcion()));
+			PdfPCell textParalelo = new PdfPCell(new Phrase("Paralelo: ", textoTabla));
+			textParalelo.setBackgroundColor(color);
+			PdfPCell celda3 = new PdfPCell(new Phrase(datosMatricula.getId_paralelo().getDescripcion()));
 			PdfPCell textPeriodo = new PdfPCell(new Phrase("Periodo: ", textoTabla));
 			textPeriodo.setBackgroundColor(color);
-			PdfPCell celda3 = new PdfPCell(new Phrase(datosMatricula.getId_periodo().getAno_inicio() +"-"+ datosMatricula.getId_periodo().getAno_fin()));
+			PdfPCell celda4 = new PdfPCell(new Phrase(datosMatricula.getId_periodo().getAno_inicio() +"-"+ datosMatricula.getId_periodo().getAno_fin()));
 
 			tabla.addCell(celda0);
+			tabla.addCell(textMalla);
+			tabla.addCell(celdaMalla);
 			tabla.addCell(textCurso);
 			tabla.addCell(celda1);
 			tabla.addCell(textModalidad);
 			tabla.addCell(celda2);
-			tabla.addCell(textPeriodo);
+			tabla.addCell(textParalelo);
 			tabla.addCell(celda3);
+			tabla.addCell(textPeriodo);
+			tabla.addCell(celda4);
 			tabla.setWidthPercentage(60);
 
 			PdfWriter.getInstance(document, bos);
