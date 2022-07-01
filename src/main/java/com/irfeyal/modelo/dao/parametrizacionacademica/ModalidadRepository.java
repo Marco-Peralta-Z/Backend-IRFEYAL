@@ -33,7 +33,8 @@ public interface ModalidadRepository extends JpaRepository<Modalidad, Long> {
 			+ " inner join asignatura_empleado ae on ae.id_asignatura = a.id_asignatura "
 			+ " inner join periodo p on p.id_malla = m2.id_malla "
 			+ " where ae.id_empleado =?1 and p.id_periodo =?2 and m2.id_malla =?3 "
-			+ " group by m.id_modalidad", nativeQuery = true)
+			+ " group by m.id_modalidad "
+			+ " order by m.id_modalidad", nativeQuery = true)
 	List<Modalidad> listmodalidadempelados(Long empleado, Long id_periodo, Long id_malla);
 	
 //	Modulo Matricula 

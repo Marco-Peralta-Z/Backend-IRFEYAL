@@ -166,8 +166,8 @@ public class RegistroServiceImpl implements IRegistroService {
 			editar.setExamen_remedial(registro.getExamen_remedial());
 			editar.setExamen_gracia(registro.getExamen_gracia());
 			editar.setNota_final(registro.getNota_final());
-			editar.setId_asignatura(registro.getId_asignatura());
-			editar.setId_matricula(registro.getId_matricula());
+			//editar.setId_asignatura(registro.getId_asignatura());
+			//editar.setId_matricula(registro.getId_matricula());
 			this.registrodao.save(editar);
 		}
 
@@ -212,9 +212,27 @@ public class RegistroServiceImpl implements IRegistroService {
 		@Override
 		public List<Registro> filtrocompleto(Long id_periodo, Long id_malla, Long id_modalidad, Long id_curso,
 				Long id_paralelo, Long id_asignatura) {
-			
+			// TODO Auto-generated method stub
 			return registrodao.filtrocompleto(id_periodo, id_malla, id_modalidad, id_curso, id_paralelo, id_asignatura);
 		}
+
+
+	
+
+
+		
+
+
+	
+
+
+		
+
+
+		
+
+
+	
 
 
 	

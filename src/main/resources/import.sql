@@ -1907,8 +1907,8 @@ INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Primero Bachiller
 INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Segundo Bachillerato', '11/04/2022');
 
 ---------------------TUTOR----------------
-INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,1,1);
-INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,2,2);
+INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,3,1);
+INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,3,2);
 
 -------------------------HORARIO-----------------------
 INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00',1,1, 1);
@@ -1955,12 +1955,13 @@ INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(3, 2);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(4, 1);
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(5, 1);
 
+------------ASIGNATURA EMPLEADO--------------
 
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(1, 9);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(2, 9);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(3, 9);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(4, 9);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(5, 9);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(1, 3);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(2, 3);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(3, 3);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(4, 3);
+INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(5, 3);
 
 -- Fin mÃ³dulo parametrizaciÃ³n academica
 
@@ -2124,7 +2125,7 @@ INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certific
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 4', 'descripcion 4', 'C/documentos');
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 5', 'descripcion 5', 'C/documentos');
 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Juan GarcÃ­a', 'Pablo LÃ³pez', '2022/03/16', null, 'Pendiente', 1, 1); --OJO:tipo de patter de timestamp y pilas con id_rol_usuario por id_empleado 
+INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Juan GarcÃ­a', 'Pablo LÃ³pez', '2022/03/16', null, 'Pendiente', 1, 1); --OJO:tipo de patter de timestamp y pilas con id_rol_usuario por  
 INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jose GarcÃ­a', 'Pablo LÃ³pez', '2022/03/17', null, 'Pendiente', 2, 2); 
 INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Carlos GarcÃ­a', 'Pedro LÃ³pez', '2022/03/17', null, 'Pendiente', 3, 3); 
 INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jonas GarcÃ­a', 'Pedro LÃ³pez', '2022/03/16', null, 'Pendiente', 4, 4); 
