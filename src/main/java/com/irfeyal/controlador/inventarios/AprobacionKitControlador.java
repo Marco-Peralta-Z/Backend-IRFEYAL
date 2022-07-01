@@ -89,6 +89,7 @@ public class AprobacionKitControlador {
 				estudiantePagoKit.setValorPagado(lista.get(i).getIdComprobante().getValor_total());
 				estudiantePagoKit.setEstudiante(lista.get(i).getIdComprobante().getIdMatricula().getEstudiante());
 				estudiantePagoKit.setPeriodo(lista.get(i).getIdComprobante().getIdMatricula().getId_periodo());
+				estudiantePagoKit.setKit(lista.get(i).getIdComprobante().getTipoComprobante().getKit());
 				listaConteoPagos.add(estudiantePagoKit);
 			}
 		}
