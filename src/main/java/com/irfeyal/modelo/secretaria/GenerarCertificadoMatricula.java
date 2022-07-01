@@ -41,9 +41,6 @@ public class GenerarCertificadoMatricula implements Serializable{
 	@JoinColumn(name = "id_matricula")
 	private Matricula matricula;
 	
-	@OneToOne
-	@JoinColumn(name = "id_direccion")
-	private Direccion direccion;
 
 	public GenerarCertificadoMatricula() {
 		
@@ -91,12 +88,5 @@ public class GenerarCertificadoMatricula implements Serializable{
 		this.matricula = matricula;
 	}
 
-	public Direccion getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
 	
 }

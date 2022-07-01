@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.interfaces.secretaria.IGenerarCertificadoPromocionService;
+import com.irfeyal.modelo.secretaria.GenerarCertificadoMatricula;
 import com.irfeyal.modelo.secretaria.GenerarCertificadoPromocion;
 
 @CrossOrigin(origins= {"*"})
@@ -76,4 +77,8 @@ public class GenerarCertificadoPromocionController {
 		generarCertificadoPromocionServ.delete(id);
 	}
 	
+	@GetMapping("/certificadoPromocion/{cedula}")
+	public List<GenerarCertificadoPromocion> buscarPorCedulaEstudiante(@PathVariable String cedula){
+		return generarCertificadoPromocionServ.findByCedulaEstudiante(cedula); 
+	}
 }

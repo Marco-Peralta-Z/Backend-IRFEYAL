@@ -2075,25 +2075,18 @@ INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle
 
 INSERT INTO tipo_pago (descripcion) VALUES ('Efectivo');
 INSERT INTO tipo_pago (descripcion) VALUES ('Deposito');
-INSERT INTO tipo_pago (descripcion) VALUES ('Cheque');
 
 INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Matricula', 1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Matricula', 2);
 INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 3, 1);
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 4, 1);
 INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Mensual', 5);
 
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (1, '2022/03/15', 'img/foto.jpg', 10 , TRUE, 1, 1, 1);--OJO:Necesito primero el tipo de comprobante, esa tabla necesita PERIODO y pilas con id_rol_usuario por id_empleado 
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (2, '2022/03/15', 'img/foto.jpg', 20 , TRUE, 1, 2, 2);
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (3, '2022/03/15', 'img/foto.jpg', 30 , TRUE, 2, 3, 3);
-INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (4, '2022/03/15', 'img/foto.jpg', 40 , TRUE, 2, 4, 4);
-INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (5, '2022/03/15', 'img/foto.jpg', 50 , TRUE, 3, 5, 5);
 
 INSERT INTO detalle_comprobante (valor, detalle, id_comprobante) VALUES (10, 'Detalle 1', 1);--OJO:Necesito primero id_comprobante 
 INSERT INTO detalle_comprobante (valor, detalle, id_comprobante) VALUES (20, 'Detalle 2', 2);
 INSERT INTO detalle_comprobante (valor, detalle, id_comprobante) VALUES (30, 'Detalle 3', 3);
-INSERT INTO detalle_comprobante (valor, detalle, id_comprobante) VALUES (40, 'Detalle 4', 4);
-INSERT INTO detalle_comprobante (valor, detalle, id_comprobante) VALUES (50, 'Detalle 5', 5);
 
 ----GESTION DE TUTORIAS
 
@@ -2105,11 +2098,11 @@ INSERT INTO registro (aporte1, aporte2, examen_Iquimestre, promedio_Iquimestre, 
 
 --SECRETARIA 
 
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 1, 1, 1);--OJO:Necesito Id de la matricula del mod. de MATRICULA y pilas id_rol_usuario por id_empleado
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 2, 2, 2);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 3, 3, 3);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 4, 4, 4);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula, id_direccion) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 5, 5, 5);
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 1, 1);--OJO:Necesito Id de la matricula del mod. de MATRICULA y pilas id_rol_usuario por id_empleado
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 2, 2);
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 3, 3);
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 4, 4);
+INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 5, 5);
 
 INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (70, 'Setenta', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 1,1,1);--OJO:Necesito id del registro del mod. de TUTORIAS y pilas con id_rol_usuario por id_empleado
 INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (70.3, 'Setenta punto tres', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 2,2,2);
@@ -2117,11 +2110,11 @@ INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_genera
 INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (50, 'Cincuenta', 'Reprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 4,4,4);
 INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (60.3, 'Sesenta punto tres', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 5,5,5);
 
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 1', 'descripcion 1', 'C/documentos');
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 2', 'descripcion 2', 'C/documentos');
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 3', 'descripcion 3', 'C/documentos');
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 4', 'descripcion 4', 'C/documentos');
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula 5', 'descripcion 5', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula', 'Para todos los cursos', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Promocion', 'Para todos los cursos', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago Matricula', 'Para todos los cursos', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago Mensualidad', 'Para todos los cursos', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago kit', 'Para todos los cursos', 'C/documentos');
 
 INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Juan GarcÃ­a', 'Pablo LÃ³pez', '2022/03/16', null, 'Pendiente', 1, 1); --OJO:tipo de patter de timestamp y pilas con id_rol_usuario por  
 INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jose GarcÃ­a', 'Pablo LÃ³pez', '2022/03/17', null, 'Pendiente', 2, 2); 
