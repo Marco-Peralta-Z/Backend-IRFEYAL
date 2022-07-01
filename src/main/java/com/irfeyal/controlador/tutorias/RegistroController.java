@@ -148,7 +148,7 @@ public class RegistroController {
 		}
 		
 		
-		@GetMapping("/Filtrocompleto/{per}/{malla}/{idmod}/{idcurso}/{idparalelo}/{idasignatura}")
+		@GetMapping("/Filtrocompleto/{per}/{malla}/{idmod}/{idcurso}/{idparalelo}/{idasig}")
 		public List<Registro> listcompleta(@PathVariable Long per , @PathVariable Long malla ,@PathVariable Long idmod ,@PathVariable Long idcurso ,@PathVariable Long idparalelo ,@PathVariable Long idasig ) {
 			return registroservice.filtrocompleto(per, malla, idmod, idcurso, idparalelo, idasig);
 		}
