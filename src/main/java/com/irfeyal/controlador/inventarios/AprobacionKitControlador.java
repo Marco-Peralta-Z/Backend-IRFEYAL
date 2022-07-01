@@ -30,12 +30,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.irfeyal.interfaces.pagos.IDetalleComprobanteService;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
+import com.irfeyal.modelo.inventarios.EstudiantePagoKit;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.inventarios.TempPagoKit;
 //import com.irfeyal.modelo.inventarios.TempPagoKit;
 import com.irfeyal.modelo.matricula.Estudiante;
+import com.irfeyal.modelo.pagos.DetalleComprobante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.servicio.inventarios.AprobacionKitService;
@@ -64,11 +67,36 @@ public class AprobacionKitControlador {
 
 	@Autowired
 	ModulolibroService modulolibroService;
+	
+	@Autowired
+	IDetalleComprobanteService detalleComprobanteService;
 
 	@GetMapping(path = "/list", produces = { "application/json" })
 	public List<AprobacionKit> listAprobacion() {
 		return aprobacionService.listAllAprobacion();
 	}
+	
+	@GetMapping(path="/estudiantespagokit", produces = "application/json")
+	public List<EstudiantePagoKit> listaEstudiantesPagoKit(){
+		List<DetalleComprobante> lista = detalleComprobanteService.findAll();
+		List<EstudiantePagoKit> listaConteoPagos = new ArrayList<>();
+		
+		for (int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getIdComprobante().getTipoComprobante().getConcepto_pago().equals("Kit")) {
+				EstudiantePagoKit estudiantePagoKit =  new EstudiantePagoKit();
+				estudiantePagoKit.setIdComprobante(lista.get(i).getIdComprobante().getId());
+				estudiantePagoKit.setConceptoPago(lista.get(i).getIdComprobante().getTipoComprobante().getConcepto_pago());
+				estudiantePagoKit.setValorPagado(lista.get(i).getIdComprobante().getValor_total());
+				estudiantePagoKit.setEstudiante(lista.get(i).getIdComprobante().getIdMatricula().getEstudiante());
+				estudiantePagoKit.setPeriodo(lista.get(i).getIdComprobante().getIdMatricula().getId_periodo());
+				estudiantePagoKit.setKit(lista.get(i).getIdComprobante().getTipoComprobante().getKit());
+				listaConteoPagos.add(estudiantePagoKit);
+			}
+		}
+		return listaConteoPagos;	
+	}
+	
+	
 
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> crearAprobacion(@Validated @RequestBody AprobacionKit aprobacion,

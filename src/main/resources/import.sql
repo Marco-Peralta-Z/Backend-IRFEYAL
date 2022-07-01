@@ -1724,13 +1724,11 @@ INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parro
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Totoracocha', 'Huaynacapac',7,1,5,4);
 
 ------------------- EMPRESA-------------------
-INSERT INTO empresa (nombre_empresa) VALUES ('irfeyal prueba');
+INSERT INTO empresa (nombre_empresa) VALUES ('Unidad Educativa Jose Maria Velaz');
 
 -------------------EXTENSION-------------------
-INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_1', 1,1);
-INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_Guayaquil', 1,2);
-INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_CaÃ±ar', 1,3);
-INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('irfeyal_Quito', 1,4);
+INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('105_irfeyal', 1,1);
+
 
 
 -------------------TELEFONO-------------------
@@ -1840,7 +1838,7 @@ INSERT INTO rol (descripcion) VALUES ('Docente');
 INSERT INTO rol (descripcion) VALUES ('Coordinador administrativo');
 INSERT INTO rol (descripcion) VALUES('Coordinador academico');
 INSERT INTO rol (descripcion) VALUES ('Coordinador de desarrollo institucional');
-
+INSERT INTO rol (descripcion) VALUES ('Tutor');
 -------------------MODULO-------------------
 INSERT INTO modulo (modulo,url) VALUES ('matriculas','http//localhost/modmatricula.php');
 INSERT INTO modulo (modulo,url) VALUES ('asistencia','http//localhost/modasistencia.php');
