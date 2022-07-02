@@ -50,5 +50,11 @@ public class GenerarCertificadoMatriculaServiceImpl implements IGenerarCertifica
 		generarCertificadoMatriculaDao.deleteById(id);
 		
 	}
+	
+	@Override
+	public List<GenerarCertificadoMatricula> findByCedulaEstudiante(String cedula) {
+		// TODO Auto-generated method stub
+		return generarCertificadoMatriculaDao.findByCedulaEstudiante(cedula);
+	}
 
 }

@@ -20,7 +20,8 @@ public interface MallaRepository extends JpaRepository<Malla, Long> {
 			+ " inner join asignatura a on a.id_asignatura = ma.id_asignatura "
 			+ " inner join asignatura_empleado ae on ae.id_asignatura = a.id_asignatura "
 			+ " where ae.id_empleado =?1 and p.id_periodo =?2"
-			+ " group by m.id_malla ", nativeQuery = true)
+			+ " group by m.id_malla "
+			+ " order by m.id_malla", nativeQuery = true)
 	List<Malla> ListMalla(Long empleado, Long id_periodo);
 	
 }

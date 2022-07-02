@@ -18,4 +18,6 @@ public interface IGenerarCertificadoPromocionService {
 	public GenerarCertificadoPromocion save(GenerarCertificadoPromocion generarCertificadoPromocion);
 	
 	public void delete(Long id);
+
+	public List<GenerarCertificadoPromocion> findByCedulaEstudiante(String cedula);
 }

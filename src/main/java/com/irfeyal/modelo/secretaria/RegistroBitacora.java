@@ -47,7 +47,7 @@ public class RegistroBitacora implements Serializable{
 	private Empleado id_empleado;
 
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne()
 	@JoinColumn(name = "id_documento")
 	private Documento documento;
 	

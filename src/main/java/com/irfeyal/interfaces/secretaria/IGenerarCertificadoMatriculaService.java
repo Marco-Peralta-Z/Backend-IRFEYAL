@@ -18,4 +18,6 @@ public interface IGenerarCertificadoMatriculaService {
 	public GenerarCertificadoMatricula save(GenerarCertificadoMatricula generarCertificadoMatricula);
 	
 	public void delete(Long id);
+	
+	public List<GenerarCertificadoMatricula> findByCedulaEstudiante(String cedula);
 }

@@ -7,11 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table (name = "documento")
-
+@NamedQuery(name="Documento.findAll", query="SELECT d FROM Documento d")
 public class Documento implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -34,7 +35,19 @@ public class Documento implements Serializable{
 	public Documento() {
 		
 	}
+	
+	public Documento(Long id_documento) {
+		super();
+		this.id_documento = id_documento;
+	}
 
+	public Documento(Long id_documento, String tipo_documento, String descripcion, String ubicacion) {
+		super();
+		this.id_documento = id_documento;
+		this.tipo_documento = tipo_documento;
+		this.descripcion = descripcion;
+		this.ubicacion = ubicacion;
+	}
 
 	public Long getId_documento() {
 		return id_documento;

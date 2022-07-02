@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -43,6 +44,7 @@ import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.modelo.rolseguridad.Persona;
 import com.irfeyal.modelo.rolseguridad.Usuario;
 import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
+import com.sun.istack.NotNull;
 
 @RestController
 @RequestMapping("/asistencia")
@@ -340,6 +342,16 @@ SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 Date auxfecha= formato.parse(fechac);
 System.out.print("fecha para comprobar consulta "+auxfecha);
 	return claseservice.validarclass(id_doc, id_periodo, id_mod, id_curso, id_paralelo, id_asignatura, auxfecha);
+}
+
+
+//Export PDF
+
+
+
+@GetMapping("/exportInvoice/{id_estudiante}/{iddocente}")
+public @NotNull ResponseEntity<ByteArrayResource> exportinvoice(@PathVariable Long id_estudiante,@PathVariable Long iddocente){
+  return this.asistenciaservice.exportInvoice(id_estudiante,iddocente);
 }
 
 }

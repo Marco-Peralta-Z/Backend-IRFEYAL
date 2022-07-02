@@ -2,6 +2,7 @@ package com.irfeyal.modelo.dao.asistencia;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,4 +26,8 @@ public interface IAsistenciaDao extends JpaRepository<Asistencia, Long>{
 	List<Asistencia>actualizarfiltros(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso,Date fecha, Long iddocente);
 	
 
+	@Query(value="SELECT * "
+			+ "FROM Asistencia asis "			
+			+ "WHERE asis.id_estudiante = ?1",nativeQuery=true)
+	List<Asistencia> obtenerIdEstudiante(Long id_estudiante);
 }

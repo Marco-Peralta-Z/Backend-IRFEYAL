@@ -3,6 +3,10 @@ package com.irfeyal.interfaces.asistencia;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.ResponseEntity;
 
 import com.irfeyal.modelo.asistencia.Asistencia;
 import com.irfeyal.modelo.matricula.Estudiante;
@@ -40,4 +44,5 @@ public interface IAsistenciaService {
 	public List<Asignatura> listarasignatura(Long empelado, Long idperiodo, Long modalidad, Long idcurso, Long idparalelo);
 	public List<Modalidad> modalidaddocente(Integer id_docente);
 	public List<Asistencia>actualizarfiltros(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso,Date fecha,Long docente);
+	public @NotNull ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante,Long iddocente);
 }

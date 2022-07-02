@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -146,10 +147,14 @@ public class RegistroController {
 			return registroservice.ListAsignaturaempleados(idemple, per, malla, idmod, idcurso, idparalelo);
 		}
 		
-		@GetMapping("/Filtrocompleto/{idperiodo}/{malla}/{idmod}/{idcurso}/{idparalelo}/{idasig}")
-		public List<Registro> listcompleta(@PathVariable Long idperiodo,@PathVariable Long malla, @PathVariable Long idmod,@PathVariable Long idcurso,@PathVariable Long idparalelo,@PathVariable Long idasig ) {
-			return registroservice.filtrocompleto(idperiodo, malla, idmod, idcurso, idparalelo, idasig);
+		
+		@GetMapping("/Filtrocompleto/{per}/{malla}/{idmod}/{idcurso}/{idparalelo}/{idasig}")
+		public List<Registro> listcompleta(@PathVariable Long per , @PathVariable Long malla ,@PathVariable Long idmod ,@PathVariable Long idcurso ,@PathVariable Long idparalelo ,@PathVariable Long idasig ) {
+			return registroservice.filtrocompleto(per, malla, idmod, idcurso, idparalelo, idasig);
 		}
+		
+		
+		
 		
 		@GetMapping("/buscarestudianteporcedula/{ced}")
 		public Comprobante fecha(@PathVariable String ced) {
@@ -163,6 +168,64 @@ public class RegistroController {
 			this.registroserviceimpl.update(registro, id_registro);
 			return ResponseEntity.ok(Boolean.TRUE);	
 		}
+		
+		/*nuevo update*/
+		@PutMapping("/UpdateRegistro/{id}")
+		public ResponseEntity<?> update(@Validated @RequestBody Registro registro, BindingResult result,
+				@PathVariable Long id) {
+			Registro registroactual = registroserviceimpl.findById(id);
+			Registro registroupdate = null;
+			Map<String, Object> response = new HashMap<>();
+			if (result.hasErrors()) {
+				List<String> errors = result.getFieldErrors().stream()
+						.map(err -> "El campo '" + err.getField() + " '" + err.getDefaultMessage())
+						.collect(Collectors.toList());
+
+				response.put("errors", errors);
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+
+			}
+
+			if (registroactual == null) {
+				response.put("mensaje", "Error: no se pudo editar, el Regsitro ID: "
+						.concat(id.toString().concat(", no existe en la base de datos!")));
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+			}
+
+			try {
+
+				
+					
+					
+						registroactual.setAporte1(registro.getAporte1());
+						registroactual.setAporte2(registro.getAporte2());
+						registroactual.setExamen_Iquimestre(registro.getExamen_Iquimestre());
+						registroactual.setPromedio_Iquimestre(registro.getPromedio_Iquimestre());
+						registroactual.setAporte3(registro.getAporte3());
+						registroactual.setAporte4(registro.getAporte4());
+						registroactual.setExamen_IIquimestre(registro.getExamen_IIquimestre());
+						registroactual.setPromedio_IIquimestre(registro.getPromedio_IIquimestre());
+						registroactual.setNota_final(registro.getNota_final());
+						registroactual.setExamen_supletorio(registro.getExamen_supletorio());
+						registroactual.setExamen_remedial(registro.getExamen_remedial());
+						registroactual.setExamen_gracia(registro.getExamen_gracia());
+						
+					
+						registroupdate = registroservice.save(registroactual);
+			
+				
+			} catch (DataAccessException e) {
+				response.put("mensaje", "Error al realizar el insert en la base de datos");
+				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+
+			}
+
+			response.put("mensaje", "Matricula actualizada con exito");
+			response.put("estudiante", registroupdate);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		}
+		
 		
 		//Para secretaria, certificado de promocion
 		@GetMapping("/buscarcedulaEstudiante/{cedula}")

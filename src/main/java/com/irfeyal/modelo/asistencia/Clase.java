@@ -185,6 +185,10 @@ public class Clase implements Serializable {
 	        }
 	        return true;
 	    }
+	    
+	    public String getDescripcion() {
+	    	return this.idAsignatura!=null ? this.idAsignatura.getDescripcion(): "----";
+	    }
 	
 
 }

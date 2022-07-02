@@ -2,6 +2,7 @@ package com.irfeyal.modelo.dao.asistencia;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,7 +19,7 @@ public interface IClaseDao extends JpaRepository<Clase, Long>{
 	List<Clase> mostrarfechasid(Long idestudiante, Integer iddocente, Integer idasignatura, Integer idcurso,
 			Integer idparalelo, Integer idmodalidad, Integer idperiodo);
 
-	
+
 	@Query(value="SELECT * FROM clase ORDER BY id_clase DESC LIMIT 1"  ,nativeQuery=true)
 	 Clase findclaseingreseda();
 	
@@ -32,6 +33,9 @@ public interface IClaseDao extends JpaRepository<Clase, Long>{
 	Long validarclass(Integer iddocente,Integer idperiodo,Integer idmodalidad,Integer idcurso,
 			Integer idparalelo,Integer idasignatura,Date fecha);
 	
-	
+	@Query(value="SELECT * FROM clase c JOIN asistencia a ON a.id_clase=c.id_clase "
+			+ "			JOIN estudiantes e  on e.id_estudiante = a.id_estudiante "
+			+ "			WHERE e.id_estudiante=?1 and c.id_docente=?2 and a.estado_asis=true",nativeQuery=true)
+	  Iterable<Clase> mostrarfechasidpdf(Long idestudiante,Long iddocente);
 	
 }

@@ -35,8 +35,9 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
 			+ "join asignatura asig on asig.id_asignatura = ma.id_asignatura "
 			+ "join asignatura_empleado ae  on ae.id_asignatura = asig.id_asignatura "
 			+ "join modalidad mo on m.id_modalidad=mo.id_modalidad "
-			+ "where ae.id_empleado =?1 and p.id_periodo =?2 and m.id_malla =?3 and mo.id_modalidad =?4"
-			+ "group by c.id_curso ", nativeQuery = true)
+			+ "where ae.id_empleado =?1 and p.id_periodo =?2 and m.id_malla =?3 and mo.id_modalidad =?4 "
+			+ "group by c.id_curso "
+			+ "order by c.id_curso", nativeQuery = true)
 	List<Curso> ListCursosempelados(Long empleado, Long id_periodo, Long id_malla, Long id_modalidad);
 	
 	

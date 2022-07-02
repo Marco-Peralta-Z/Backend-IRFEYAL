@@ -81,5 +81,9 @@ public class GenerarCertificadoMatriculaController {
 		generarCertificadoMatriculaService.delete(id);
 	}
 	
+	@GetMapping("/certificadoMatricula/{cedula}")
+	public List<GenerarCertificadoMatricula> buscarPorCedulaEstudiante(@PathVariable String cedula){
+		return generarCertificadoMatriculaService.findByCedulaEstudiante(cedula); 
+	}
 	
 }

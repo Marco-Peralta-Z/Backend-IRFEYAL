@@ -32,7 +32,8 @@ public interface PeriodoRepository extends JpaRepository<Periodo, Long> {
 			+ "	join asignatura asig on asig.id_asignatura = ma.id_asignatura "
 			+ "	join asignatura_empleado asigemple on asigemple.id_asignatura = asig.id_asignatura "
 			+ "	where asigemple.id_empleado=?1 "
-			+ " group by p.id_periodo ", nativeQuery = true)
+			+ " group by p.id_periodo"
+			+ " order by p.id_periodo ", nativeQuery = true)
 	List<Periodo> Listperiodosempelados(Long empleado);
 	
 

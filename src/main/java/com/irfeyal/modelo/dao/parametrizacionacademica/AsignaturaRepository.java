@@ -40,7 +40,8 @@ public interface AsignaturaRepository extends JpaRepository<Asignatura, Long> {
 			+ " inner join tutor t on t.id_curso = mc.id_curso "
 			+ " inner join paralelo p2 on p2.id_paralelo = t.id_paralelo "
 			+ " where ae.id_empleado=?1 and p.id_periodo =?2 and m.id_malla =?3 and m2.id_modalidad =?4 and mc.id_curso=?5 and p2.id_paralelo=?6 "
-			+ " group by a.id_asignatura; ", nativeQuery = true)
+			+ " group by a.id_asignatura "
+			+ " order by a.id_asignatura ", nativeQuery = true)
 	List<Asignatura> ListAsignaturaempleados(Long empleado, Long id_periodo, Long id_malla, Long id_modalidad, Long id_curso, Long id_paralelo);
 	
 	
