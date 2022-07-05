@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.rolseguridad.Extension;
 
@@ -61,10 +62,41 @@ public class Kit implements Serializable {
 	@JoinColumn(name = "id_periodo")
 	private Periodo periodo;
 	
+    @OneToOne()
+	@JoinColumn(name = "id_curso")
+	private Curso curso;
 	
 	
     public Kit() {
     }
+    
+	public Kit(Long id_kit, String nombrekit, Integer precioKit, List<ModuloLibro> listaModulos,
+			List<Estudiante> estudiantes, Periodo periodo, Curso curso) {
+		super();
+		this.id_kit = id_kit;
+		this.nombrekit = nombrekit;
+		this.precioKit = precioKit;
+		this.listaModulos = listaModulos;
+		this.estudiantes = estudiantes;
+		this.periodo = periodo;
+		this.curso = curso;
+	}
+
+
+
+
+
+
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
 
 	public Long getId_kit() {
 		return id_kit;
