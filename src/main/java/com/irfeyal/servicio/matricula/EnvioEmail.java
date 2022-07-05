@@ -30,12 +30,13 @@ public class EnvioEmail {
 	private String subject = "Notificacion de Matricula IRFEYAL";
 	private String content;
 	private String[] listEntregados;
-
+	
 	private static final BaseColor color = new BaseColor(19, 63, 120);
 	private static final Font chapterFont = FontFactory.getFont(FontFactory.HELVETICA, 26, Font.BOLD, color);
 	private static final Font bold = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD);
 	private static final Font textoTabla = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
 	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+	private SimpleDateFormat formatAfecha = new SimpleDateFormat("MMMM/yyyy");
 	private String[] requeridos= {"Ficha de Inscripcion","Copia de Cédula", "Copia certificado de votación","Certificado de matricula"};
 
 	public String sendEmailHtml(Matricula matricula, String requisitos) {
@@ -492,7 +493,7 @@ public class EnvioEmail {
 			PdfPCell celda3 = new PdfPCell(new Phrase(datosMatricula.getId_paralelo().getDescripcion()));
 			PdfPCell textPeriodo = new PdfPCell(new Phrase("Periodo: ", textoTabla));
 			textPeriodo.setBackgroundColor(color);
-			PdfPCell celda4 = new PdfPCell(new Phrase(datosMatricula.getId_periodo().getAno_inicio() +"-"+ datosMatricula.getId_periodo().getAno_fin()));
+			PdfPCell celda4 = new PdfPCell(new Phrase(formatAfecha.format(datosMatricula.getId_periodo().getFecha_inicio()) +"-"+ formatAfecha.format(datosMatricula.getId_periodo().getFecha_fin()) ));
 
 			tabla.addCell(celda0);
 			tabla.addCell(textMalla);
@@ -512,13 +513,38 @@ public class EnvioEmail {
 			titulo.setAlignment(1);
 //			   document.add(logo);
 			document.add(titulo);
-
-			document.add(new Paragraph("CÉDULA: " + datosMatricula.getEstudiante().getId_persona().getCedula()));
-			document.add(
-					new Paragraph("APELLIDOS/NOMBRES: " + (datosMatricula.getEstudiante().getId_persona().getApellido()
-							+ " " + datosMatricula.getEstudiante().getId_persona().getNombre()).toUpperCase()));
-			document.add(new Paragraph(
-					"FECHA Y HORA DE MATRICULA: " + formatter.format(datosMatricula.getFechaMatricula())));
+			
+			
+			Paragraph cedula= new Paragraph();
+			Chunk cedPart1 = new Chunk("Cédula: ", bold);
+			Chunk cedPart2 = new Chunk(datosMatricula.getEstudiante().getId_persona().getCedula());
+			
+			cedula.add(cedPart1);
+			cedula.add(cedPart2);
+						
+			Paragraph names= new Paragraph();
+			Chunk namPart1 = new Chunk("Apellidos/Nombres: ", bold);
+			Chunk namPart2 = new Chunk((datosMatricula.getEstudiante().getId_persona().getApellido()
+					+ " " + datosMatricula.getEstudiante().getId_persona().getNombre()).toUpperCase());
+			names.add(namPart1);
+			names.add(namPart2);
+			
+			Paragraph matricula= new Paragraph();
+			Chunk matPart1 = new Chunk("Fecha y Hora de Matricula: ", bold);
+			Chunk matPart2 = new Chunk(formatter.format(datosMatricula.getFechaMatricula()));
+			matricula.add(matPart1);
+			matricula.add(matPart2);
+			
+			document.add(cedula);
+			document.add(names);
+			document.add(matricula);
+			
+//			document.add(new Paragraph("CÉDULA: " + datosMatricula.getEstudiante().getId_persona().getCedula()));
+//			document.add(
+//					new Paragraph("APELLIDOS/NOMBRES: " + (datosMatricula.getEstudiante().getId_persona().getApellido()
+//							+ " " + datosMatricula.getEstudiante().getId_persona().getNombre()).toUpperCase()));
+//			document.add(new Paragraph(
+//					"FECHA Y HORA DE MATRICULA: " + formatter.format(datosMatricula.getFechaMatricula())));
 			document.add(Chunk.NEWLINE);
 			document.add(Chunk.NEWLINE);
 

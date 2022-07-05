@@ -7,5 +7,8 @@ import com.irfeyal.modelo.parametrizacionacademica.Tutor;
 
 @Repository
 public interface TutorRepository extends JpaRepository<Tutor, Long> {
+	
+	
+	
 
 }

@@ -47,7 +47,7 @@ public interface ParaleloRespository extends JpaRepository<Paralelo, Long> {
 	List<Paralelo> ListParaleloempleados(Long empleado, Long id_periodo, Long id_malla, Long id_modalidad, Long id_curso);
 
 //	Modulo Matricula
-	@Query(value="select * from paralelo p join curso c on p.id_paralelo=c.id_paralelo where c.id_curso=?1", nativeQuery=true)
+	@Query(value="select p.id_paralelo, p.descripcion, p.fecha_creacion from tutor t join paralelo p on t.id_paralelo = p.id_paralelo where t.id_curso =?1", nativeQuery=true)
 	List<Paralelo> findParaleloByCurso(Long id_curso);
 	
 }
