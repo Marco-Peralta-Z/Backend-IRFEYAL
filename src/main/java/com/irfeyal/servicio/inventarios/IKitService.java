@@ -54,6 +54,11 @@ public class IKitService implements KitInterface {
 	public Optional<Kit> getById(Long kitId) {
 		return  kitRepo.findById(kitId) ;
 	}
+	
+	public Integer getKitParaPagos(Long id_estudiante){
+		Integer kitParaPago = kitRepo.kitEstudianteParaPagos(id_estudiante);
+		return kitParaPago;
+	}
 
 	@Override
 	public Kit update(Kit updateKit) {

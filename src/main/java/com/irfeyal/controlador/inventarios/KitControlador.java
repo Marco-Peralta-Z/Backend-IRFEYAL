@@ -90,6 +90,7 @@ public class KitControlador {
 		}
 	}
 	
+	
 	@PostMapping(path = "/entregakit", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> entregaKitEstudiante(@Validated @RequestBody Estudiante estudiante, BindingResult result) {
 		Estudiante kitEntregadoEstudiante = null;

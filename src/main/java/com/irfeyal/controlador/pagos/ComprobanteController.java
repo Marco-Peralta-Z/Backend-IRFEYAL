@@ -3,6 +3,7 @@ package com.irfeyal.controlador.pagos;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.interfaces.pagos.IComprobanteService;
+import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.pagos.Comprobante;
+import com.irfeyal.servicio.inventarios.IKitService;
 
 @CrossOrigin(origins= {"*"})
 @RestController
@@ -34,6 +37,10 @@ public class ComprobanteController {
 
 	@Autowired
 	private IComprobanteService comprobanteService;
+	
+	@Autowired//(required = false)
+	//@Qualifier("IAutoServiceImplement")
+	IKitService kitService;
 	
 	//listar
 	@GetMapping(path= "/comprobante", produces = "application/json")
@@ -83,6 +90,21 @@ public class ComprobanteController {
 	@DeleteMapping("/comprobante/{id}")
 	public void delete(@PathVariable Long id) {
 		comprobanteService.delete(id);
+	}
+	
+	
+	
+	@GetMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<?> obtenerKit(@PathVariable("id") Long id) {
+		Map<String, Object> respuesta = new HashMap<>();
+		Integer optionalKit = this.kitService.getKitParaPagos(id);
+		if(optionalKit != null) {
+			respuesta.put("status", "ok");
+			respuesta.put("precioKit", optionalKit);
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.OK);
+		}else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	
