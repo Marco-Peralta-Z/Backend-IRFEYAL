@@ -2080,9 +2080,9 @@ INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Matricula', 1)
 INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 3, 1);
 INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Mensual', 5);
 
-INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (1, '2022/03/15', 'img/foto.jpg', 10 , TRUE, 1, 1, 1);--OJO:Necesito primero el tipo de comprobante, esa tabla necesita PERIODO y pilas con id_rol_usuario por id_empleado 
-INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (2, '2022/03/15', 'img/foto.jpg', 20 , TRUE, 1, 2, 2);
-INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (3, '2022/03/15', 'img/foto.jpg', 30 , TRUE, 2, 3, 3);
+INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, saldo, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (1, '2022/03/15', 'img/foto.jpg', 10, 0 , TRUE, 1, 1, 1);--OJO:Necesito primero el tipo de comprobante, esa tabla necesita PERIODO y pilas con id_rol_usuario por id_empleado 
+INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, saldo, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (2, '2022/03/15', 'img/foto.jpg', 20, 0 , TRUE, 1, 2, 2);
+INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, saldo, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (3, '2022/03/15', 'img/foto.jpg', 30, 0 , TRUE, 2, 3, 3);
 
 INSERT INTO detalle_comprobante (valor, detalle, id_comprobante) VALUES (10, 'Detalle 1', 1);--OJO:Necesito primero id_comprobante 
 INSERT INTO detalle_comprobante (valor, detalle, id_comprobante) VALUES (20, 'Detalle 2', 2);

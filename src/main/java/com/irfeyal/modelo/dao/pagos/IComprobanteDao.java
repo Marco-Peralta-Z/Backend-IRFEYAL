@@ -23,4 +23,7 @@ public interface IComprobanteDao extends CrudRepository<Comprobante, Long>{
 			+ "	inner join persona pe on pe.id_persona = e.id_persona"
 			+ " WHERE pe.cedula =?1",nativeQuery=true)
 	Comprobante buscarcedulaestudiante(String cedula);
+	
+	@Query(value = " select c from Comprobante c where c.estado = ?1 and c.id_matricula.id_matricula = ?2 and c.id_tipo_comprobante.id_tipo_comprobante = ?3 ")
+	public Comprobante buscarPorEstadoAndMatriculaAndTipocomprobante(boolean estado, Long idMatricula, Long idTipoComptrobante); 
 }

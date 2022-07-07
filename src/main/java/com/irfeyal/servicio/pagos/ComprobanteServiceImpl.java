@@ -37,6 +37,7 @@ public class ComprobanteServiceImpl implements IComprobanteService{
 		return comprobanteDato.findById(id).orElse(null);
 	}
 
+
 	@Override
 	public Comprobante save(Comprobante comprobante) {
 		
@@ -47,6 +48,12 @@ public class ComprobanteServiceImpl implements IComprobanteService{
 	public void delete(Long id) {
 		comprobanteDato.deleteById(id);
 		
+	}
+
+	@Override
+	public Comprobante buscarPorEstadoAndMatriculaAndTipocomprobante(boolean estado, Long idMatricula,
+			Long idTipoComptrobante) {
+		return comprobanteDato.buscarPorEstadoAndMatriculaAndTipocomprobante(estado, idMatricula, idTipoComptrobante);
 	}
 
 	

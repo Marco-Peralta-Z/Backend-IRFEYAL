@@ -36,6 +36,7 @@ public class Comprobante implements Serializable {
 	private Calendar fecha;
 	private String imagen;
 	private float valor_total;
+	private float saldo;
 	private boolean estado;
 
 	@ManyToOne
@@ -104,6 +105,14 @@ public class Comprobante implements Serializable {
 
 	public void setValor_total(float valor_total) {
 		this.valor_total = valor_total;
+	}
+	
+	public float getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
 	}
 
 	public boolean isEstado() {

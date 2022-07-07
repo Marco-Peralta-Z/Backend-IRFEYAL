@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -94,7 +95,7 @@ public class ComprobanteController {
 	
 	
 	
-	@GetMapping(path = "/{id}", produces = "application/json")
+	@GetMapping(path = "/comprobante/{id}", produces = "application/json")
 	public ResponseEntity<?> obtenerKit(@PathVariable("id") Long id) {
 		Map<String, Object> respuesta = new HashMap<>();
 		Integer optionalKit = this.kitService.getKitParaPagos(id);
@@ -105,6 +106,50 @@ public class ComprobanteController {
 		}else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+	
+	@GetMapping(path = "/comprobante/{idMa}/{idTipoCom}", produces = "application/json")
+	public ResponseEntity<?> obtenerComprobateSaldo(@PathVariable("idMa") Long idMa, @PathVariable("idTipoCom") Long idTipoCom) {
+		Map<String, Object> respuesta = new HashMap<>();
+		Comprobante comprobante = null;
+		try {
+			comprobante = comprobanteService.buscarPorEstadoAndMatriculaAndTipocomprobante(false, idMa, idTipoCom);
+			respuesta.put("status", "ok");
+			respuesta.put("comprobante", comprobante);
+		} catch (Exception e) {
+			respuesta.put("status", "error");
+			respuesta.put("comprobante", null);
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		if(comprobante == null) {
+			respuesta.put("status", "error");
+			respuesta.put("comprobante", null);
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.OK);
+	}
+	
+	@PutMapping(path = "/comprobante/{id}", produces = "application/json")
+	public ResponseEntity<?> actualizarEstadoComprobante(@PathVariable("id") Long id) {
+		Map<String, Object> respuesta = new HashMap<>();
+		Comprobante comprobanteActual = comprobanteService.findById(id);
+		if(comprobanteActual == null) {
+			respuesta.put("status", "error");
+			respuesta.put("comprobante", null);
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.NOT_FOUND);
+		}
+		Comprobante comprobanteNew = null;
+		try {
+			comprobanteActual.setEstado(true);
+			comprobanteNew = comprobanteService.save(comprobanteActual);
+			respuesta.put("status", "ok");
+			respuesta.put("comprobante", comprobanteNew);
+		} catch (Exception e) {
+			respuesta.put("status", "error");
+			respuesta.put("comprobante", null);
+			return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<Map<String, Object>>(respuesta,HttpStatus.OK);
 	}
 	
 	

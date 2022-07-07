@@ -15,6 +15,8 @@ public List<Comprobante> findAll();
 	
 	public Comprobante findById(Long id);
 	
+	public Comprobante buscarPorEstadoAndMatriculaAndTipocomprobante(boolean estado, Long idMatricula, Long idTipoComptrobante);
+	
 	public Comprobante save(Comprobante comprobante);
 	
 	public void delete (Long id);
