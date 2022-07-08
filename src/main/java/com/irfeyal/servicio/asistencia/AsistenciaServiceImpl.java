@@ -206,16 +206,17 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 
 	@NotNull
 	public ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante ,Long iddocente){
+		Integer numfalta=0;
 		List<Asistencia> asispedf= this.asistenciadao.obtenerIdEstudiante(id_estudiante);
 		
 	    Estudiante estudiantedaoa=this.estudiantedao.findestudianteidpdf(id_estudiante);
 			
 			try {
 			
-				final File file = ResourceUtils.getFile("src/main/resources/PDF/estudiantesreport.jasper");
+				final File file = ResourceUtils.getFile("src/main/resources/PDF/reportesasistencias.jasper");
 				final File imgLogo = ResourceUtils.getFile("src/main/resources/logo.png");
 				final JasperReport report = (JasperReport) JRLoader.loadObject(file);
-
+                 numfalta= asispedf.size();
 				final Map<String, Object> parameters = new HashMap<>();
 				parameters.put("id_estudiante", id_estudiante);
 				parameters.put("persoNom", estudiantedaoa.getId_persona().getNombre());
@@ -223,7 +224,7 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 				parameters.put("cedula", estudiantedaoa.getId_persona().getCedula());
 		        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.clasedao.mostrarfechasidpdf(id_estudiante,iddocente)));
 				parameters.put("imgLogo", new FileInputStream(imgLogo));
-				
+				parameters.put("numfalta", numfalta);
 				
 				
 				JasperPrint jPrint = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
