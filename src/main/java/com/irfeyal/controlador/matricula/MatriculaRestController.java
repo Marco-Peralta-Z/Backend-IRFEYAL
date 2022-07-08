@@ -108,13 +108,14 @@ public class MatriculaRestController {
 				automatico.setAporte4(0);
 				automatico.setExamen_IIquimestre(0);
 				automatico.setPromedio_IIquimestre(0);
+				automatico.setConducta(0);
+				automatico.setNota_final(0);
 				automatico.setExamen_supletorio(0);
 				automatico.setExamen_remedial(0);
 				automatico.setExamen_gracia(0);
-				automatico.setNota_final(0);
+				automatico.setEstado("Reprobado");
 				automatico.setId_asignatura(a.get(i));
 				automatico.setId_matricula(matriculaNew);
-
 				this.registrodao.save(automatico);
 				System.out.println("Registro creado con 0");
 			}

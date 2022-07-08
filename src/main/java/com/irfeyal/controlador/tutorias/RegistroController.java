@@ -148,14 +148,12 @@ public class RegistroController {
 		}
 		
 		
-		@GetMapping("/Filtrocompleto/{per}/{malla}/{idmod}/{idcurso}/{idparalelo}/{idasig}")
-		public List<Registro> listcompleta(@PathVariable Long per , @PathVariable Long malla ,@PathVariable Long idmod ,@PathVariable Long idcurso ,@PathVariable Long idparalelo ,@PathVariable Long idasig ) {
-			return registroservice.filtrocompleto(per, malla, idmod, idcurso, idparalelo, idasig);
-		}
+		@GetMapping("/Filtrocompleto/{id_empleado}/{per}/{malla}/{idmod}/{idcurso}/{idparalelo}/{idasig}")
+		public List<Registro> listcompleta(@PathVariable Long id_empleado, @PathVariable Long per , @PathVariable Long malla ,@PathVariable Long idmod ,@PathVariable Long idcurso ,@PathVariable Long idparalelo ,@PathVariable Long idasig ) {
+			return registroservice.filtrocompleto(id_empleado, per, malla, idmod, idcurso, idparalelo, idasig);
+		}	
 		
-		
-		
-		
+			
 		@GetMapping("/buscarestudianteporcedula/{ced}")
 		public Comprobante fecha(@PathVariable String ced) {
 
@@ -205,10 +203,12 @@ public class RegistroController {
 						registroactual.setAporte4(registro.getAporte4());
 						registroactual.setExamen_IIquimestre(registro.getExamen_IIquimestre());
 						registroactual.setPromedio_IIquimestre(registro.getPromedio_IIquimestre());
+						registroactual.setConducta(registro.getConducta());
 						registroactual.setNota_final(registro.getNota_final());
 						registroactual.setExamen_supletorio(registro.getExamen_supletorio());
 						registroactual.setExamen_remedial(registro.getExamen_remedial());
 						registroactual.setExamen_gracia(registro.getExamen_gracia());
+						registroactual.setEstado(registro.getEstado());
 						
 					
 						registroupdate = registroservice.save(registroactual);

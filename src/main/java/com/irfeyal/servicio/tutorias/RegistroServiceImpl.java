@@ -139,11 +139,12 @@ public class RegistroServiceImpl implements IRegistroService {
 			registro.setAporte4(0);
 			registro.setExamen_IIquimestre(0);
 			registro.setPromedio_IIquimestre(0);
+			registro.setConducta(0);
+			registro.setNota_final(0);
 			registro.setExamen_supletorio(0);
 			registro.setExamen_remedial(0);
 			registro.setExamen_gracia(0);
-			registro.setNota_final(0);
-
+			registro.setEstado("Reprobado");
 			
 			return registrodao.save(registro);
 		}
@@ -158,6 +159,8 @@ public class RegistroServiceImpl implements IRegistroService {
 			editar.setAporte2(registro.getAporte2());
 			editar.setExamen_Iquimestre(registro.getExamen_Iquimestre());
 			editar.setPromedio_Iquimestre(registro.getPromedio_Iquimestre());
+			editar.setConducta(registro.getConducta());
+			editar.setNota_final(registro.getNota_final());
 			editar.setAporte3(registro.getAporte3());
 			editar.setAporte4(registro.getAporte4());
 			editar.setExamen_IIquimestre(registro.getExamen_IIquimestre());
@@ -165,9 +168,7 @@ public class RegistroServiceImpl implements IRegistroService {
 			editar.setExamen_supletorio(registro.getExamen_supletorio());
 			editar.setExamen_remedial(registro.getExamen_remedial());
 			editar.setExamen_gracia(registro.getExamen_gracia());
-			editar.setNota_final(registro.getNota_final());
-			//editar.setId_asignatura(registro.getId_asignatura());
-			//editar.setId_matricula(registro.getId_matricula());
+			editar.setEstado(registro.getEstado());
 			this.registrodao.save(editar);
 		}
 
@@ -210,35 +211,11 @@ public class RegistroServiceImpl implements IRegistroService {
 
 
 		@Override
-		public List<Registro> filtrocompleto(Long id_periodo, Long id_malla, Long id_modalidad, Long id_curso,
-				Long id_paralelo, Long id_asignatura) {
+		public List<Registro> filtrocompleto(Long id_empleado, Long id_periodo, Long id_malla, Long id_modalidad,
+				Long id_curso, Long id_paralelo, Long id_asignatura) {
 			// TODO Auto-generated method stub
-			return registrodao.filtrocompleto(id_periodo, id_malla, id_modalidad, id_curso, id_paralelo, id_asignatura);
+			return registrodao.filtrocompleto(id_empleado,id_periodo, id_malla, id_modalidad, id_curso, id_paralelo, id_asignatura);
 		}
-
-
-	
-
-
-		
-
-
-	
-
-
-		
-
-
-		
-
-
-	
-
-
-	
-		
-
-
 
 		
 }
