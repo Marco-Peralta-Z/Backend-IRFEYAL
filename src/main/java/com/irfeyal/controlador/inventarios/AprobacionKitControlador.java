@@ -78,22 +78,8 @@ public class AprobacionKitControlador {
 	
 	@GetMapping(path="/estudiantespagokit", produces = "application/json")
 	public List<EstudiantePagoKit> listaEstudiantesPagoKit(){
-		List<DetalleComprobante> lista = detalleComprobanteService.findAll();
-		List<EstudiantePagoKit> listaConteoPagos = new ArrayList<>();
-		
-		for (int i = 0; i < lista.size(); i++) {
-			if(lista.get(i).getIdComprobante().getTipoComprobante().getConcepto_pago().equals("Kit")) {
-				EstudiantePagoKit estudiantePagoKit =  new EstudiantePagoKit();
-				estudiantePagoKit.setIdComprobante(lista.get(i).getIdComprobante().getId());
-				estudiantePagoKit.setConceptoPago(lista.get(i).getIdComprobante().getTipoComprobante().getConcepto_pago());
-				estudiantePagoKit.setValorPagado(lista.get(i).getIdComprobante().getValor_total());
-				estudiantePagoKit.setEstudiante(lista.get(i).getIdComprobante().getIdMatricula().getEstudiante());
-				estudiantePagoKit.setPeriodo(lista.get(i).getIdComprobante().getIdMatricula().getId_periodo());
-				estudiantePagoKit.setKit(lista.get(i).getIdComprobante().getTipoComprobante().getKit());
-				listaConteoPagos.add(estudiantePagoKit);
-			}
-		}
-		return listaConteoPagos;	
+		List<EstudiantePagoKit> tempList = aprobacionService.listaPagosEstud();
+		return tempList;	
 	}
 	
 	
@@ -316,51 +302,6 @@ public class AprobacionKitControlador {
 		respuesta.put("mensaje", "La aprobacion ha sido eliminada");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}
-
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	@GetMapping(path = "/estudipagados", produces = { "application/json" })
-	public ResponseEntity<Map<String, Object>> lisEstudiantePago() {
-		List<TempPagoKit> listaEstidiantes = new ArrayList<>();
-		List<TempPagoKit> listaPagos = aprobacionService.listaPagosEstud();
-		for (Iterator iterator = listaPagos.iterator(); iterator.hasNext();) {
-			TempPagoKit temp = (TempPagoKit) iterator.next();
-			Estudiante es = new Estudiante();
-			es = estudianteService.findById(temp.getId_estudiante());
-			temp.setEstudiante(es);
-			listaEstidiantes.add(temp);
-		}
-		Map<String, Object> respuesta = new HashMap<>();
-		respuesta.put("status", "ok");
-		respuesta.put("listaEstudiante", listaEstidiantes);
-		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
-	}	
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
-	/* NO BORRAR DESCARGAR LAS DEPENDENCIAS BOORRA TU CODIGO NO EL DE LOS DEMAS*/
 
 }
 

@@ -26,9 +26,12 @@ import com.google.gson.internal.JsonReaderInternalAccess;
 import com.irfeyal.interfaces.inventarios.AprobacionKitInterface;
 import com.irfeyal.modelo.dao.inventarios.AprobacionKitDao;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
+import com.irfeyal.modelo.inventarios.EstudiantePagoKit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.inventarios.TempPagoKit;
+import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.rolseguridad.Empleado;
+import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
 
 @Service // ("IAutoServiceImplement")
 @Transactional
@@ -37,6 +40,9 @@ public class AprobacionKitService implements AprobacionKitInterface {
 	// @Qualifier("kitRepo")
 	@Autowired
 	private AprobacionKitDao aprobacionDao;
+	
+	@Autowired
+	private EstudianteServiceImpl estudianteServiceImpl;
 		
 	
 	@Override
@@ -100,21 +106,32 @@ public class AprobacionKitService implements AprobacionKitInterface {
 	}
 	
 	
-	public List<TempPagoKit> listaPagosEstud() {
+	public List<EstudiantePagoKit> listaPagosEstud() {
 		Gson gson = new Gson();
 		List<Object> obj = aprobacionDao.estudiantesPagado();
-		List<TempPagoKit> listaEstudPagos = new ArrayList<>();
+		List<EstudiantePagoKit> listaEstudPagos = new ArrayList<>();
+		
 		for (Iterator iterator = obj.iterator(); iterator.hasNext();) {
 			Object object = (Object) iterator.next();
 			String a = gson.toJson(object);
 			JsonParser parseJSON = new JsonParser();
 			JsonArray stringlistatiposPago = (JsonArray) parseJSON.parse(a);
-			TempPagoKit tempPagoKit = new TempPagoKit();
-			tempPagoKit.setId_estudiante(Long.parseLong(""+stringlistatiposPago.get(0)));
-			tempPagoKit.setValor_total(Float.parseFloat(""+stringlistatiposPago.get(1)));
+			EstudiantePagoKit tempPagoKit = new EstudiantePagoKit();
+			tempPagoKit.setIdEstudiante(Integer.parseInt(""+stringlistatiposPago.get(0)));
+			tempPagoKit.setConceptoPago("Kit");
+			tempPagoKit.setIdKit(Integer.parseInt(""+stringlistatiposPago.get(2)));
+			tempPagoKit.setValorPagado(Float.parseFloat(""+stringlistatiposPago.get(3)));
+			List<Estudiante> listEstudiante = estudianteServiceImpl.findAll();
+			for (int i = 0; i < listEstudiante.size(); i++) {
+				if((""+listEstudiante.get(i).getid_estudiante()).equals(""+tempPagoKit.getIdEstudiante())) {
+					tempPagoKit.setEstudiante(listEstudiante.get(i));
+					i=listEstudiante.size();
+				}
+			}
+			
+			
 			listaEstudPagos.add(tempPagoKit);
 		}
-		
 		return listaEstudPagos;
 		
 	}

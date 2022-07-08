@@ -2065,8 +2065,8 @@ INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,9);
 INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,10);
 
 
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago 50%', '2022/02/15',3,1);
-INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago completo', '2022/02/16',4,1);
+--INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago 50%', '2022/02/15',3,1);
+--INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago completo', '2022/02/16',4,1);
 
 
 --PAGOS-----------
