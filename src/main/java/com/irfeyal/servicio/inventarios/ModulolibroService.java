@@ -49,15 +49,11 @@ public class ModulolibroService implements ModuloLibroInterface {
 			//String id_modulo_libro= ""+moduloLibro.;
 		    String codModulo= moduloLibro.getCodModulo();
 		    String nombreModulo=moduloLibro.getNombreModulo();
-		    String curso=moduloLibro.getCurso();
 		    int cantidad=moduloLibro.getCantidad();
-		    int numero=moduloLibro.getNumero();
 		    String numeroModulo=moduloLibro.getNumeroModulo();
 		    if(codModulo.length() > 0
 		       && nombreModulo != null
-		       && curso != null
 		       && cantidad>0
-		       && numero > 0
 		       && numeroModulo != null) {
 		    	return true;
 		    }else {

@@ -49,14 +49,8 @@ public class ModuloLibro implements Serializable {
     @Column(name = "nombre_modulo")
     private String nombreModulo;
     
-    @Column(name = "curso")
-    private String curso;
-    
     @Column(name = "cantidad")
     private Integer cantidad;
-    
-    @Column(name = "numero")
-    private Integer numero;
     
     @Column(name = "numero_modulo")
     private String numeroModulo;
@@ -100,28 +94,12 @@ public class ModuloLibro implements Serializable {
 		this.nombreModulo = nombreModulo;
 	}
 
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
 	public Integer getCantidad() {
 		return cantidad;
 	}
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
-	}
-
-	public Integer getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Integer numero) {
-		this.numero = numero;
 	}
 
 	public String getNumeroModulo() {

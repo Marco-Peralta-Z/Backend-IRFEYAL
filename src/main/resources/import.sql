@@ -2036,17 +2036,17 @@ INSERT INTO plan_unidad (titulo_unidad, objetivos, contenidos, criterios_evaluac
 
 --SOLO KIT PARA tipo_comprobante----------
 --INVENTARIOS---------- 
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModI2', 'InglÃ©s 2do EGB','2do', 30, 2,'2do Tomo');--OJO:Necesito id del kit que esta con error en el insert\
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModLL2', 'Lengua y Literatura 2do EGB','2do', 30,2, '2do Tomo');
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModM2', 'MatemÃ¡tica 2do EGB', '2do', 30,2, '2do Tomo');
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModES2', 'Estudios Sociales 2do EGB', '2do', 30, 2, '2do Tomo');
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModCN2', 'Ciencias Naturales 2do EGB', '2do', 30,2, '2do Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo) values ('codModI2', 'Ingles 2do EGB', 30, '2do Tomo');--OJO:Necesito id del kit que esta con error en el insert\
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo) values ('codModLL2', 'Lengua y Literatura 2do EGB', 30, '2do Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo) values ('codModM2', 'Matematica 2do EGB',  30, '2do Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo) values ('codModES2', 'Estudios Sociales 2do EGB',  30,  '2do Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo) values ('codModCN2', 'Ciencias Naturales 2do EGB',  30, '2do Tomo');
 
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModI3', 'InglÃ©s 3ero EGB','3ero', 30, 3, '3ero Tomo');--OJO:Necesito id del kit que esta con error en el insert\
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModLL3', 'Lengua y Literatura 3ero EGB','3ero', 30, 3, '3ero Tomo');
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModM3', 'MatemÃ¡tica 3ero EGB', '3ero', 30, 3, '3ero Tomo');
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModES3', 'Estudios Sociales 3ero EGB', '3ero', 30, 3, '3ero Tomo');
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , curso, cantidad, numero, numero_modulo) values ('codModCN3', 'Ciencias Naturales 3ero EGB', '3ero', 30, 3, '3ero Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo) values ('codModI3', 'Ingles 3ero EGB', 30, '3ero Tomo');--OJO:Necesito id del kit que esta con error en el insert\
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo) values ('codModLL3', 'Lengua y Literatura 3ero EGB', 30, '3ero Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo) values ('codModM3', 'Matematica 3ero EGB',  30,'3ero Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo) values ('codModES3', 'Estudios Sociales 3ero EGB',  30, '3ero Tomo');
+INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo) values ('codModCN3', 'Ciencias Naturales 3ero EGB',  30, '3ero Tomo');
 
 INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Segundo',12, 1, 1);
 INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Tercero',12, 1, 2);

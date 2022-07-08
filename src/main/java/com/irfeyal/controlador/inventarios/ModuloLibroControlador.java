@@ -132,9 +132,7 @@ public class ModuloLibroControlador {
 			//Actualizando kit
 			moduloLibroActual.setCantidad(moduloLibroModi.getCantidad());
 			moduloLibroActual.setCodModulo(moduloLibroModi.getCodModulo());
-			moduloLibroActual.setCurso(moduloLibroModi.getCurso());
 			moduloLibroActual.setNombreModulo(moduloLibroModi.getNombreModulo());
-			moduloLibroActual.setNumero(moduloLibroModi.getNumero());
 			moduloLibroActual.setNumeroModulo(moduloLibroModi.getNumeroModulo());
 			moduloLibroUpdate = modulolibroService.update(moduloLibroActual);
 			
