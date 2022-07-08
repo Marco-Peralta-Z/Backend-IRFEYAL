@@ -73,8 +73,22 @@ public class KitControlador {
 		}
 		try {
 			//Guardar kit
-			kit.setNombrekit(kit.getNombrekit().toUpperCase());
-			nuevoKit = kitService.save(kit, result);
+			List<Kit> listaKits = kitService.listAllKit();
+			String validarNuevokit = "";
+			for (int i = 0; i < listaKits.size(); i++) {
+				if(listaKits.get(i).getCurso().getId_curso() == kit.getCurso().getId_curso()) {
+					validarNuevokit="error";
+					i=listaKits.size();
+				}
+			}
+			if(validarNuevokit.equals("error")) {
+				respuesta.put("mensaje", "Error al crear entidad");
+				respuesta.put("error", "El Kit ya existe para este curso");
+				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+			}else {
+				kit.setNombrekit(kit.getNombrekit().toUpperCase());
+				nuevoKit = kitService.save(kit, result);
+			}
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al crear entidad");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

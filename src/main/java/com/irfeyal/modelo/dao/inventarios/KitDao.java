@@ -18,8 +18,4 @@ public interface KitDao extends CrudRepository<Kit, Long> {
 			+ "inner join kit ki on ki.id_curso = ma.id_curso\n"
 			+ "where  ma.id_estudiante = :id_estudiante")
 	public Integer kitEstudianteParaPagos(Long id_estudiante);
-	
-	
-	
-	
 }
