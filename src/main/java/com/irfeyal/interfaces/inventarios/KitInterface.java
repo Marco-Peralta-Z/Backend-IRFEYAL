@@ -19,6 +19,6 @@ public interface KitInterface {
 
 	public abstract Kit update(Kit kit);
 
-	public abstract boolean delete(Long kitId);
+	public abstract Kit delete(Long kitId);
 
 }

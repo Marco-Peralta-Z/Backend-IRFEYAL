@@ -12,6 +12,7 @@ import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.servicio.inventarios.IKitService;
 import com.irfeyal.servicio.inventarios.ModulolibroService;
 import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
@@ -23,6 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -197,6 +199,23 @@ public class KitControlador {
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.CREATED);
 	}
 	
-	
+	@DeleteMapping(path = "/{id}", produces = "application/json")
+	public ResponseEntity<Map<String, Object>> deleteKit(@PathVariable("id") Long idKit) {
+		Map<String, Object> respuesta = new HashMap<>();
+		try {
+			Kit kitRecu = kitService.delete(idKit);
+			if (kitRecu == null) {
+				respuesta.put("mensaje", "El Kit ID: " + idKit + " no existe en la base de datos");
+				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.NOT_FOUND);
+			}
+		} catch (DataAccessException e) {
+			respuesta.put("mensaje", "Error al eliminar el Kit de la base de datos");
+			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		respuesta.put("mensaje", "El Kit ha sido eliminado");
+		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
+	}
+
 
 }

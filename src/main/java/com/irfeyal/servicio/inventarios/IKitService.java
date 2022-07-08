@@ -69,9 +69,14 @@ public class IKitService implements KitInterface {
 	}
 
 	@Override
-	public boolean delete(Long kitId) {
-		// TODO Auto-generated method stub
-		return false;
+	public Kit delete(Long kitId) {
+		Kit kitEliminar = getById(kitId).get();
+		if(kitEliminar == null) {
+			return null;
+		}else {
+			kitRepo.deleteById(kitId);
+			return kitEliminar;
+		}
 	}
 
 	public boolean ValidarKit(Kit kit) {

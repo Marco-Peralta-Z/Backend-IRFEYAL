@@ -70,7 +70,6 @@ public class ModulolibroService implements ModuloLibroInterface {
 		}else {
 			moduloLibroRepo.deleteById(moduloLibroId);
 			return moduloL;
-			
 		}
 	}
 

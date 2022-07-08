@@ -2048,11 +2048,9 @@ INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo) va
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo) values ('codModES3', 'Estudios Sociales 3ero EGB',  30, '3ero Tomo');
 INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo) values ('codModCN3', 'Ciencias Naturales 3ero EGB',  30, '3ero Tomo');
 
-INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Segundo',12, 1, 1);
-INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Tercero',12, 1, 2);
-INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Cuarto',12, 1, 3);
-INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Quinto',12, 1,4);
-INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Sexto',12, 1,5);
+INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Kit de Octavo',12, 1, 1);
+INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Kit de Noveno',12, 1, 2);
+INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Kite de decimo',12, 1, 3);
 
 INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,1);--OJO:Necesito id del kit que esta con error en el insert
 INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,2);
