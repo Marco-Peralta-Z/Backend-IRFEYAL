@@ -7,10 +7,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
+import com.irfeyal.interfaces.parametrizacionacademica.CursoServices;
 import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.matricula.Estudiante;
+import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.servicio.inventarios.IKitService;
 import com.irfeyal.servicio.inventarios.ModulolibroService;
 import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
@@ -46,12 +47,19 @@ public class KitControlador {
 	@Autowired
 	ModulolibroService modulolibroService;
 	
+	@Autowired
+	CursoServices cursoServices;
+	
 	@GetMapping(path = "/list", produces = {"application/json"})
 	public List<Kit> listKit(){
 		return kitService.listAllKit();
-		
 	}
 	
+	@GetMapping(path = "cursosKit", produces = "application/json")
+	public ResponseEntity<?> getCursos() {
+		return new ResponseEntity<>(cursoServices.getAllCurso(), HttpStatus.OK);
+	}
+
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> crearKit(@Validated @RequestBody Kit kit, BindingResult result) {
 		Kit nuevoKit = null;
