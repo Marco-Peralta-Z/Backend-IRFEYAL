@@ -1,13 +1,26 @@
 package com.irfeyal.servicio.tutorias;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Collection;
+
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
 import com.irfeyal.interfaces.tutorias.IRegistroService;
 import com.irfeyal.modelo.dao.matricula.IMatriculaDao;
@@ -28,6 +41,14 @@ import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 import com.irfeyal.modelo.tutorias.Registro;
+
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 
 @Service
@@ -59,6 +80,8 @@ public class RegistroServiceImpl implements IRegistroService {
 	
 	@Autowired
 	private IComprobanteDao comprobante;
+	
+	private Long id_registro;
 	
 	public Registro save(Registro registro) {
 		return registrodao.save(registro);
@@ -216,6 +239,52 @@ public class RegistroServiceImpl implements IRegistroService {
 			// TODO Auto-generated method stub
 			return registrodao.filtrocompleto(id_empleado,id_periodo, id_malla, id_modalidad, id_curso, id_paralelo, id_asignatura);
 		}
+
+/*
+		@Override
+		public List<Registro> filtroreporte(Long id_periodo, Long id_malla, Long id_modalidad, Long id_curso,
+				Long id_paralelo, Long id_asignatura) {
+			return registrodao.filtroreporte(id_periodo, id_malla, id_modalidad, id_curso, id_paralelo, id_asignatura);
+		}
+		*/
+		
+		@NotNull
+		public ResponseEntity<ByteArrayResource> exportInvoice(Long id_periodo, Long id_malla, Long id_modalidad, Long id_curso,Long id_paralelo, Long id_asignatura ){
+			
+				try {
+					final File file = ResourceUtils.getFile("src/main/resources/PDF/reporteTutorias.jasper");
+					final File logo = ResourceUtils.getFile("src/main/resources/logo.png");
+					final JasperReport report = (JasperReport) JRLoader.loadObject(file);
+					 
+					final Map<String, Object> parameters = new HashMap<>();
+					parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.registrodao.filtroreporte(id_periodo, id_malla, id_modalidad, id_curso, id_paralelo, id_asignatura)));
+					parameters.put("logoIrfeyal", new FileInputStream(logo));
+					parameters.put("desCurso", registrodao.getById(id_curso).getCurso());
+					parameters.put("desParalelo", registrodao.getById(id_paralelo).getParalelo());
+					parameters.put("desAsignatura", registrodao.getById(id_asignatura).getAsignatura());
+					JasperPrint jPrint = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
+					byte [] reporte = JasperExportManager.exportReportToPdf(jPrint);
+		                        
+		            String sdf = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());            
+					StringBuilder stringBuilder = new StringBuilder().append("InvoicePDF:");
+		                        org.springframework.http.ContentDisposition contentDisposition = org.springframework.http.ContentDisposition.builder("attachment")
+		                                .filename(stringBuilder.append(id_registro)
+		                                        .append("generateDate:")
+		                                        .append(sdf)
+		                                        .append(".pdf")
+		                                        .toString())
+		                                        .build();
+					org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+		                        headers.setContentDisposition(contentDisposition);
+		                        return ResponseEntity.ok().contentLength((long) reporte.length)
+		                                .contentType(MediaType.APPLICATION_PDF)
+		                                .headers(headers).body(new ByteArrayResource(reporte));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
+		        return null;	
+		}
+
 
 		
 }

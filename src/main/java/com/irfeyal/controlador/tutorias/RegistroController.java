@@ -3,6 +3,7 @@ package com.irfeyal.controlador.tutorias;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import javax.validation.constraints.NotNull;
 
 import com.irfeyal.interfaces.tutorias.IRegistroService;
 import com.irfeyal.modelo.matricula.Matricula;
@@ -232,5 +235,11 @@ public class RegistroController {
 		public List<Registro> buscarPorCedulaEstudiante(@PathVariable String cedula){
 			return registroserviceimpl.findByCedulaEstudiante(cedula); 
 		}
+		
+		//Reporte PDF
+				@GetMapping("/exportInvoice/{id_periodo}/{id_malla}/{id_modalidad}/{id_curso}/{id_paralelo}/{id_asignatura}")
+				public @NotNull ResponseEntity<ByteArrayResource> exportinsvoice(@PathVariable Long id_periodo, @PathVariable Long id_malla ,@PathVariable Long id_modalidad, @PathVariable Long id_curso,@PathVariable Long id_paralelo, @PathVariable Long id_asignatura){
+				  return this.registroserviceimpl.exportInvoice(id_periodo, id_malla, id_modalidad, id_curso, id_paralelo, id_asignatura);
+				}
 		
 }

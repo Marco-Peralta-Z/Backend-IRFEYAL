@@ -258,6 +258,32 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	
+	/*----REPORTE TUTORIAS*/
+	public String getNombre() {
+		return this.id_matricula!=null ?  this.id_matricula.getEstudiante().getId_persona().getNombre():"----";
+	}
+	
+	public String getApellido() {
+		return this.id_matricula!=null ?  this.id_matricula.getEstudiante().getId_persona().getApellido():"----";
+	}
+	
+	public String getCedula() {
+		return this.id_matricula!=null ?  this.id_matricula.getEstudiante().getId_persona().getCedula():"----";
+	}
+
+	public String getCurso() {
+		return this.id_matricula!=null ? this.id_matricula.getCurso().getDescripcion():"------";
+	}
+	
+	public String getParalelo() {
+		return this.id_matricula!=null ? this.id_matricula.getId_paralelo().getDescripcion():"-----";
+	}
+	
+	public String getAsignatura() {
+		return this.id_asignatura!=null ? this.id_asignatura.getDescripcion():"------";
+	}
+	
+	
 	
 
 }
