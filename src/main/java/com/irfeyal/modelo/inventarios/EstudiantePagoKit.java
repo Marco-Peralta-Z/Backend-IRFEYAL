@@ -15,21 +15,27 @@ public class EstudiantePagoKit {
 	
 	private Estudiante estudiante;
 
+	private Kit kit;
 	
 	public EstudiantePagoKit() {
 		super();
 	}
 
 
+
+
 	public EstudiantePagoKit(Integer idEstudiante, String conceptoPago, Integer idKit, float valorPagado,
-			Estudiante estudiante) {
+			Estudiante estudiante, Kit kit) {
 		super();
 		this.idEstudiante = idEstudiante;
 		this.conceptoPago = conceptoPago;
 		this.idKit = idKit;
 		this.valorPagado = valorPagado;
 		this.estudiante = estudiante;
+		this.kit = kit;
 	}
+
+
 
 
 	public Integer getIdEstudiante() {
@@ -79,6 +85,20 @@ public class EstudiantePagoKit {
 
 	public void setEstudiante(Estudiante estudiante) {
 		this.estudiante = estudiante;
+	}
+
+
+
+
+	public Kit getKit() {
+		return kit;
+	}
+
+
+
+
+	public void setKit(Kit kit) {
+		this.kit = kit;
 	}
 
 	

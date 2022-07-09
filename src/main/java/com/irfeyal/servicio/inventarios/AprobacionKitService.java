@@ -27,6 +27,7 @@ import com.irfeyal.interfaces.inventarios.AprobacionKitInterface;
 import com.irfeyal.modelo.dao.inventarios.AprobacionKitDao;
 import com.irfeyal.modelo.inventarios.AprobacionKit;
 import com.irfeyal.modelo.inventarios.EstudiantePagoKit;
+import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.inventarios.ModuloLibro;
 import com.irfeyal.modelo.inventarios.TempPagoKit;
 import com.irfeyal.modelo.matricula.Estudiante;
@@ -43,7 +44,9 @@ public class AprobacionKitService implements AprobacionKitInterface {
 	
 	@Autowired
 	private EstudianteServiceImpl estudianteServiceImpl;
-		
+
+	@Autowired
+	private IKitService kitService;
 	
 	@Override
 	public AprobacionKit save(AprobacionKit aprobacion) {
@@ -128,8 +131,12 @@ public class AprobacionKitService implements AprobacionKitInterface {
 					i=listEstudiante.size();
 				}
 			}
-			
-			
+			List<Kit> listaKit = kitService.listAllKit();
+			for (int i = 0; i < listaKit.size(); i++) {
+				if((""+listaKit.get(i).getId_kit()).equals(tempPagoKit.getIdKit()+"")) {
+					tempPagoKit.setKit(listaKit.get(i));
+				}
+			}
 			listaEstudPagos.add(tempPagoKit);
 		}
 		return listaEstudPagos;
