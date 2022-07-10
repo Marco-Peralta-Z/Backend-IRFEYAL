@@ -292,5 +292,11 @@ public class RegistroServiceImpl implements IRegistroService {
 		}
 
 
+		@Override
+		public List<Registro> getAllRegistrosByCursoModalidadPeridod(Long idCurso, Long idModalidad, Long idPeridod) {
+			return registrodao.getAllRegistrosByCursoModalidadPeridod(idCurso, idModalidad, idPeridod);
+		}
+
+
 		
 }

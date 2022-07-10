@@ -187,6 +187,29 @@ public class RegistroController {
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
 		}
 		
+		@GetMapping("getRegistrosFilter/{idCurso}/{idMod}/{idPer}")
+		public ResponseEntity<?> getRegisrosByCursoModalidadPeriodo(@PathVariable("idCurso") Long idCurso, @PathVariable("idMod") Long idMod ,@PathVariable("idPer") Long idPer) {
+			List<Registro> registros= null;
+			Map <String, Object> response =new HashMap<>();
+			try {
+				registros= registroserviceimpl.getAllRegistrosByCursoModalidadPeridod(idCurso, idMod, idPer);
+				
+			} catch (Exception e) {
+				response.put("status", "error");
+				response.put("registro", null);
+				return new ResponseEntity<Map<String,Object>>(response, HttpStatus.NOT_FOUND);
+			}
+			if(registros==null) {
+				response.put("status", "error");
+				response.put("registro", null);
+				return new ResponseEntity<Map<String,Object>>(response, HttpStatus.NOT_FOUND);
+				
+			}
+			response.put("status", "ok");
+			response.put("registro", registros);
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
+		}
+		
 		@PutMapping(value="/Update/{id_registro}")
 		public ResponseEntity<Object>updateRegistro(@RequestBody Registro registro, @PathVariable Long id_registro){
 			this.registroserviceimpl.update(registro, id_registro);
