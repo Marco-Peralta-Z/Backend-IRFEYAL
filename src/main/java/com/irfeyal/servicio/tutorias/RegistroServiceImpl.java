@@ -286,5 +286,11 @@ public class RegistroServiceImpl implements IRegistroService {
 		}
 
 
+		@Override
+		public List<Registro> getAllRegistrosByMatriculaId(Long id) {
+			return registrodao.getAllRegistrosByMatriculaId(id);
+		}
+
+
 		
 }

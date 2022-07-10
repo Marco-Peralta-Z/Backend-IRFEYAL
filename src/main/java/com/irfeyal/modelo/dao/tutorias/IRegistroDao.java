@@ -53,5 +53,8 @@ public interface IRegistroDao extends JpaRepository<Registro, Long> {
 					+ "	 where pe.id_periodo =?1 and m2.id_malla =?2 and m3.id_modalidad =?3 and c.id_curso =?4 and p2.id_paralelo =?5 and re.fkid_asignatura =?6"
 					+ "  group by p.cedula,p.nombre,p.apellido,re.id_registro, re.aporte1, re.aporte2, re.aporte3, re.aporte4 ,re.fkid_asignatura, re.id_matricula",nativeQuery=true)
 			List<Registro> filtroreporte(Long id_periodo,Long id_malla , Long id_modalidad, Long id_curso, Long id_paralelo, Long id_asignatura);
+			
+			@Query(value = "select r from Registro r where r.id_matricula.id_matricula = ?1 and r.estado = 'APROBADO'")
+			public List<Registro> getAllRegistrosByMatriculaId(Long id);
 
 }

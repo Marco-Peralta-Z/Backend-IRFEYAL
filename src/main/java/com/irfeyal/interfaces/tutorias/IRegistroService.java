@@ -41,6 +41,7 @@ public interface IRegistroService {
 	
 	//Para secretaria, certificado de promocion
 	public List<Registro> findByCedulaEstudiante(String cedula);
+	public List<Registro> getAllRegistrosByMatriculaId(Long id);
 
 
 }
