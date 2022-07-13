@@ -488,14 +488,6 @@
 		<band height="412" splitType="Stretch"/>
 	</detail>
 	<pageFooter>
-		<band height="77" splitType="Stretch"/>
+		<band height="17" splitType="Stretch"/>
 	</pageFooter>
-	<lastPageFooter>
-		<band height="65">
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="60" width="800" height="3" backcolor="#336B87" uuid="74053c25-8c9c-49ad-b1bb-05f03f13c962"/>
-				<text><![CDATA[]]></text>
-			</staticText>
-		</band>
-	</lastPageFooter>
 </jasperReport>
