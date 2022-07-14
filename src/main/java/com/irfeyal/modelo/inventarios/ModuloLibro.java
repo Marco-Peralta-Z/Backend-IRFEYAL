@@ -52,6 +52,9 @@ public class ModuloLibro implements Serializable {
     @Column(name = "cantidad")
     private Integer cantidad;
     
+    @Column(name = "stock_minimo")
+    private Integer stockMinimo;
+    
     @Column(name = "numero_modulo")
     private String numeroModulo;
     
@@ -120,6 +123,18 @@ public class ModuloLibro implements Serializable {
 
 	public void setKits(List<Kit> kits) {
 		this.kits = kits;
+	}
+
+
+
+	public Integer getStockMinimo() {
+		return stockMinimo;
+	}
+
+
+
+	public void setStockMinimo(Integer stockMinimo) {
+		this.stockMinimo = stockMinimo;
 	}
 
 

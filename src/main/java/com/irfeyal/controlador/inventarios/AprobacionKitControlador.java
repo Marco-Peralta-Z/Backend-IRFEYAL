@@ -99,11 +99,19 @@ public class AprobacionKitControlador {
 				return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 			}
 			try {
-				// Guardar malla
+				// Guardar 
 				Empleado emp = empleadoService.findById(aprobacion.getAdministrador().getId_empleado());
 				aprobacion.setAdministrador(emp);
 				aprobacion.setDetalleControl(aprobacion.getDetalleControl().toUpperCase());
 				nuevaAprobacion = aprobacionService.save(aprobacion);
+				if(nuevaAprobacion == null) {
+					respuesta.put("mensaje", "Error al crear entidad");
+					respuesta.put("error", "Sin stock revisar los modulos");
+					return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
+				}
+				
+				
+				
 			} catch (DataAccessException e) {
 				respuesta.put("mensaje", "Error al crear entidad");
 				respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
