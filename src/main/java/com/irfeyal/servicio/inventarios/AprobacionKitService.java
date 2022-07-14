@@ -39,7 +39,6 @@ import com.irfeyal.servicio.rolseguridad.ModuloServices;
 @Transactional
 public class AprobacionKitService implements AprobacionKitInterface {
 
-	// @Qualifier("kitRepo")
 	@Autowired
 	private AprobacionKitDao aprobacionDao;
 
@@ -90,13 +89,13 @@ public class AprobacionKitService implements AprobacionKitInterface {
 					a = a + listaKits.size();
 				}
 			}
+			
 			AprobacionKit a = aprobacionDao.save(aprobacion);
 
 			return a;
 		}else {
 			return null;
 		}
-
 		
 	}
 
@@ -167,37 +166,42 @@ public class AprobacionKitService implements AprobacionKitInterface {
 	}
 
 	public List<EstudiantePagoKit> listaPagosEstud() {
+
 		Gson gson = new Gson();
 		List<Object> obj = aprobacionDao.estudiantesPagado();
 		List<EstudiantePagoKit> listaEstudPagos = new ArrayList<>();
-
+		
 		for (Iterator iterator = obj.iterator(); iterator.hasNext();) {
 			Object object = (Object) iterator.next();
 			String a = gson.toJson(object);
 			JsonParser parseJSON = new JsonParser();
 			JsonArray stringlistatiposPago = (JsonArray) parseJSON.parse(a);
-			EstudiantePagoKit tempPagoKit = new EstudiantePagoKit();
-			tempPagoKit.setIdEstudiante(Integer.parseInt("" + stringlistatiposPago.get(0)));
-			tempPagoKit.setConceptoPago("Kit");
-			tempPagoKit.setIdKit(Integer.parseInt("" + stringlistatiposPago.get(2)));
-			tempPagoKit.setValorPagado(Float.parseFloat("" + stringlistatiposPago.get(3)));
-			List<Estudiante> listEstudiante = estudianteServiceImpl.findAll();
-			for (int i = 0; i < listEstudiante.size(); i++) {
-				if (("" + listEstudiante.get(i).getid_estudiante()).equals("" + tempPagoKit.getIdEstudiante())) {
-					tempPagoKit.setEstudiante(listEstudiante.get(i));
-					i = listEstudiante.size();
+			
+			if(stringlistatiposPago.get(4).isJsonNull() == true || stringlistatiposPago.get(4).getAsBoolean() == false ) {
+				EstudiantePagoKit tempPagoKit = new EstudiantePagoKit();
+				tempPagoKit.setIdEstudiante(Integer.parseInt("" + stringlistatiposPago.get(0)));
+				tempPagoKit.setConceptoPago("Kit");
+				tempPagoKit.setIdKit(Integer.parseInt("" + stringlistatiposPago.get(2)));
+				tempPagoKit.setValorPagado(Float.parseFloat("" + stringlistatiposPago.get(3)));
+				tempPagoKit.setEstadoAprobacion(false);
+				List<Estudiante> listEstudiante = estudianteServiceImpl.findAll();
+				for (int i = 0; i < listEstudiante.size(); i++) {
+					if (("" + listEstudiante.get(i).getid_estudiante()).equals("" + tempPagoKit.getIdEstudiante())) {
+						tempPagoKit.setEstudiante(listEstudiante.get(i));
+						i = listEstudiante.size(); 
+					}
 				}
-			}
-			List<Kit> listaKit = kitService.listAllKit();
-			for (int i = 0; i < listaKit.size(); i++) {
-				if (("" + listaKit.get(i).getId_kit()).equals(tempPagoKit.getIdKit() + "")) {
-					tempPagoKit.setKit(listaKit.get(i));
+				List<Kit> listaKit = kitService.listAllKit();
+				for (int i = 0; i < listaKit.size(); i++) {
+					if (("" + listaKit.get(i).getId_kit()).equals(tempPagoKit.getIdKit() + "")) {
+						tempPagoKit.setKit(listaKit.get(i));
+					}
 				}
+				listaEstudPagos.add(tempPagoKit);
 			}
-			listaEstudPagos.add(tempPagoKit);
+			
 		}
 		return listaEstudPagos;
-
 	}
 
 }

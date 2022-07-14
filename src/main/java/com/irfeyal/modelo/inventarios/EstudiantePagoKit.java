@@ -17,6 +17,8 @@ public class EstudiantePagoKit {
 
 	private Kit kit;
 	
+	private boolean estadoAprobacion;
+	
 	public EstudiantePagoKit() {
 		super();
 	}
@@ -24,8 +26,10 @@ public class EstudiantePagoKit {
 
 
 
+
+
 	public EstudiantePagoKit(Integer idEstudiante, String conceptoPago, Integer idKit, float valorPagado,
-			Estudiante estudiante, Kit kit) {
+			Estudiante estudiante, Kit kit, boolean estadoAprobacion) {
 		super();
 		this.idEstudiante = idEstudiante;
 		this.conceptoPago = conceptoPago;
@@ -33,11 +37,18 @@ public class EstudiantePagoKit {
 		this.valorPagado = valorPagado;
 		this.estudiante = estudiante;
 		this.kit = kit;
+		this.estadoAprobacion = estadoAprobacion;
 	}
 
 
+	public boolean isEstadoAprobacion() {
+		return estadoAprobacion;
+	}
 
-
+	public void setEstadoAprobacion(boolean estadoAprobacion) {
+		this.estadoAprobacion = estadoAprobacion;
+	}
+	
 	public Integer getIdEstudiante() {
 		return idEstudiante;
 	}
