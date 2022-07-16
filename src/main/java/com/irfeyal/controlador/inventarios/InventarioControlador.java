@@ -85,7 +85,13 @@ public class InventarioControlador {
 	@GetMapping(path = "/listarticulos", produces = { "application/json" })
 	public List<Inventario> listaTodosArticulos() {
 		List<Inventario> listaInventario = inventarioService.listAllInventario();
-		return listaInventario;
+		List<Inventario> temP = new ArrayList<>();
+		for (int j = 0; j < listaInventario.size(); j++) {
+			if (listaInventario.get(j).getArticulo().getArtiestado() == true) {
+				temP.add(listaInventario.get(j));
+			}
+		}
+		return temP;
 	}
 	
 	

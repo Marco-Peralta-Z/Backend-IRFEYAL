@@ -74,7 +74,7 @@ public class KitControlador {
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.BAD_REQUEST);
 		}
 		try {
-			//Guardar kit
+			//Guardar kit  ss
 			List<Kit> listaKits = kitService.listAllKit();
 			String validarNuevokit = "";
 			for (int i = 0; i < listaKits.size(); i++) {
@@ -137,7 +137,6 @@ public class KitControlador {
 			}
 			
 			estudianteBuscar.setListadoKits(listaKitGuardar);
-			
 			kitEntregadoEstudiante = estudianteService.save(estudianteBuscar);
 			
 		} catch (DataAccessException e) {
@@ -181,13 +180,7 @@ public class KitControlador {
 			kitActual.setPeriodo(kit.getPeriodo());
 			kitActual.setPrecioKit(kit.getPrecioKit());
 			kitActual.setListaModulos(listaModulos);
-			
-			
 			kitUpdate = kitService.update(kitActual);
-			
-			
-			
-			
 		} catch (DataAccessException e) {
 			respuesta.put("mensaje", "Error al realizar el update en la base de datos");
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -213,6 +206,9 @@ public class KitControlador {
 			respuesta.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
+		
+		respuesta.put("status", "ok");
 		respuesta.put("mensaje", "El Kit ha sido eliminado");
 		return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
 	}

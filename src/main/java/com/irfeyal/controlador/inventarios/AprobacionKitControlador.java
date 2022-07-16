@@ -82,6 +82,27 @@ public class AprobacionKitControlador {
 		return tempList;	
 	}
 	
+	@GetMapping(path="/estudpago",produces = { "application/json" })
+	public ResponseEntity<?> getEstudPago(@RequestParam("id") Long id) {
+		Map<String, Object> respuesta = new HashMap<>();
+		EstudiantePagoKit estudPago = null;
+		List<EstudiantePagoKit> tempList = aprobacionService.listaPagosEstud();
+		for (int i = 0; i < tempList.size(); i++) {
+			if(tempList.get(i).getEstudiante().getid_estudiante() == id) {
+				estudPago = tempList.get(i);
+				i=i+tempList.size();
+			}
+		}
+		
+		if(estudPago != null) {
+			respuesta.put("status", "ok");
+			respuesta.put("aprobacion", estudPago);
+			return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.OK);
+		}else {
+			return ResponseEntity.notFound().build();
+		}	
+	}
+	
 	
 
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")

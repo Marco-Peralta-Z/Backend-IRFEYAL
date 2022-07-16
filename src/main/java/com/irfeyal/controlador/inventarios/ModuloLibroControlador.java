@@ -47,6 +47,7 @@ public class ModuloLibroControlador {
 		return modulolibroService.listAllModuloLibro();
 	}
 	
+	
 	@PostMapping(path = "/crear", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Map<String, Object>> crearModulo(@Validated @RequestBody ModuloLibro moduloLibro, BindingResult result) {
 		

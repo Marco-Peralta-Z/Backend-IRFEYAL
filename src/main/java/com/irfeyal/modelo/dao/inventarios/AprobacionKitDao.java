@@ -2,20 +2,11 @@ package com.irfeyal.modelo.dao.inventarios;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.irfeyal.modelo.inventarios.AprobacionKit;
-import com.irfeyal.modelo.inventarios.EstudiantePagoKit;
-import com.irfeyal.modelo.inventarios.TempPagoKit;
-import com.irfeyal.modelo.matricula.Estudiante;
-import com.irfeyal.modelo.matricula.Matricula;
-
-
 
 @Repository
 public interface AprobacionKitDao extends CrudRepository<AprobacionKit, Long> {

@@ -23,11 +23,9 @@ public class ModulolibroService implements ModuloLibroInterface {
 
 	@Override
 	public ModuloLibro save(ModuloLibro modulolibro) {
-		
+		modulolibro.setStockMinimo(1);
 		ModuloLibro newModuloLibro = moduloLibroRepo.save(modulolibro);
-		
 		return newModuloLibro;
-		
 	}
 
 	@Override
