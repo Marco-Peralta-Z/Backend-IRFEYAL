@@ -207,7 +207,7 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	@NotNull
 	public ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante ,Long iddocente){
 		Integer numfalta=0;
-		List<Asistencia> asispedf= this.asistenciadao.obtenerIdEstudiante(id_estudiante);
+		List<Asistencia> asispedf= this.asistenciadao.obtenerIdEstudiante(id_estudiante,iddocente);
 		
 	    Estudiante estudiantedaoa=this.estudiantedao.findestudianteidpdf(id_estudiante);
 			

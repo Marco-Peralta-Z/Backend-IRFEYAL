@@ -27,7 +27,8 @@ public interface IAsistenciaDao extends JpaRepository<Asistencia, Long>{
 	
 
 	@Query(value="SELECT * "
-			+ "FROM Asistencia asis "			
-			+ "WHERE asis.id_estudiante = ?1 and asis.estado_asis=true",nativeQuery=true)
-	List<Asistencia> obtenerIdEstudiante(Long id_estudiante);
+			+ "FROM Asistencia asis "
+			+ "join clase c on c.id_clase = asis.id_clase "			
+			+ "WHERE asis.id_estudiante = ?1  and c.id_docente=?2 and asis.estado_asis=true",nativeQuery=true)
+	List<Asistencia> obtenerIdEstudiante(Long id_estudiante,Long id_docente);
 }
