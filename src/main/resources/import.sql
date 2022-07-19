@@ -90,7 +90,7 @@ INSERT INTO canton (canton, id_provincia) VALUES ('EL GUABO',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('HUAQUILLAS',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('MARCABELI',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('PASAJE',7);
-INSERT INTO canton (canton, id_provincia) VALUES ('PINAS',7);
+INSERT INTO canton (canton, id_provincia) VALUES ('PIÑAS',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('PORTOVELO',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('SANTA ROSA',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('ZARUMA',7);
@@ -1834,7 +1834,7 @@ INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$1
 -------------------ROL-------------------
 INSERT INTO rol (descripcion) VALUES ('Administrador');
 INSERT INTO rol (descripcion) VALUES ('Secretaria');
-INSERT INTO rol (descripcion) VALUES ('Docente');
+INSERT INTO rol (descripcion) VALUES ('Tutor');
 INSERT INTO rol (descripcion) VALUES ('Coordinador administrativo');
 INSERT INTO rol (descripcion) VALUES ('Coordinador academico');
 INSERT INTO rol (descripcion) VALUES ('Coordinador de desarrollo institucional');
