@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.parametrizacionacademica.AsignaturaServices;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
+import com.irfeyal.modelo.rolseguridad.RolUsuario;
+import com.irfeyal.servicio.rolseguridad.RolUsuarioServices;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -32,7 +34,15 @@ import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 public class AsignaturaController {
 
 	@Autowired
+	private RolUsuarioServices rolUsuarioServices;
+
+	@Autowired
 	private AsignaturaServices asignaturaService;
+	
+	@GetMapping("/rolUsuario")
+	public List<RolUsuario> index(){
+		return rolUsuarioServices.findAll();
+	}
 
 	@GetMapping(path = "", produces = "application/json")
 	public ResponseEntity<?> getAsignaturas() {

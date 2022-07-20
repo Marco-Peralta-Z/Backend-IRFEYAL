@@ -1864,9 +1864,10 @@ INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,13);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,14);
 
---Inicio mÃ³dulo parametrizaciÃ³n academica
+--Inicio modulo parametrizacion academica
 
 -------------------MODALIDAD-----------------------------
+
 INSERT INTO public.modalidad(descripcion)VALUES('Intensivo');
 INSERT INTO public.modalidad(descripcion) VALUES('No Intensivo');
 
@@ -1878,6 +1879,8 @@ INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('C', '07/03/202
 ---------------------MALLA-------------------------------
 INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Educacion Basica Superior', true,'07/04/2022', 1);
 INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Bachillerato General Unificado', true,'07/04/2022', 1);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Educacion Basica Superior', true,'07/20/2022', 2);
+INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Bachillerato General Unificado', true,'07/20/2022', 2);
 
 ------------------------ASIGNATURA--------------------------
 INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Matematicas', '07/04/2022');
@@ -1903,6 +1906,7 @@ INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Noveno', '08/04/2
 INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Decimo', '09/04/2022');
 INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Primero Bachillerato',  '10/04/2022');
 INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Segundo Bachillerato', '11/04/2022');
+INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Tercero Bachillerato', '11/04/2022');
 
 ---------------------TUTOR----------------
 INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,3,1);
@@ -1928,6 +1932,7 @@ INSERT INTO public.area (descripcion)VALUES('LENGUAJE');
 INSERT INTO public.area (descripcion)VALUES('CIENCIAS NATURALES');
 INSERT INTO public.area (descripcion)VALUES('ESTUDIOS SOCIALES');
 INSERT INTO public.area (descripcion)VALUES('LENGUA EXTRANJERA');
+INSERT INTO public.area (descripcion)VALUES('OPTATIVA');
 
 ---------------------AREA ASIGNATURA----------------
 INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(1, 1);
@@ -1941,10 +1946,20 @@ INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(2, 5);
 
 ------------------------MALLA CURSO-----------------------
 INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(1, 1);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(1, 2);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(1, 2);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(1, 1);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(1, 2);
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(2, 1);
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(3, 1);
+
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(1, 3);
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(2, 3);
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(3, 3);
+
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(4, 2);
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(5, 2);
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(6, 2);
+
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(4, 4);
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(5, 4);
+INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(6, 4);
 
 ---------------MALLA ASIGNATURA---------------
 INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(1, 1);
