@@ -250,7 +250,7 @@ public class RegistroController {
 			registroactual.setExamen_remedial(registro.getExamen_remedial());
 			registroactual.setExamen_gracia(registro.getExamen_gracia());
 			registroactual.setEstado(registro.getEstado());
-
+			registroactual.setPromedio_final(registro.getPromedio_final());
 			registroupdate = registroservice.save(registroactual);
 
 		} catch (DataAccessException e) {

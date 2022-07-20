@@ -54,6 +54,8 @@ public class Registro implements Serializable {
 	private float nota_final;
 	@Column
 	private String estado;
+	@Column
+	private float promedio_final;
 
 	@OneToOne()
 	@JoinColumn(name = "id_matricula")
@@ -68,7 +70,7 @@ public class Registro implements Serializable {
 
 	public Registro(Long id_registro, float aporte1, float aporte2, float examen_Iquimestre, float promedio_Iquimestre,
 			float aporte3, float aporte4, float examen_IIquimestre, float promedio_IIquimestre, float conducta,
-			float nota_final, float examen_supletorio, float examen_remedial, float examen_gracia, String estado) {
+			float nota_final, float examen_supletorio, float examen_remedial, float examen_gracia, String estado, float promedio_final) {
 		super();
 		this.id_registro = id_registro;
 		this.aporte1 = aporte1;
@@ -85,6 +87,7 @@ public class Registro implements Serializable {
 		this.examen_remedial = examen_remedial;
 		this.examen_gracia = examen_gracia;
 		this.estado = estado;
+		this.promedio_final = promedio_final;
 	}
 
 	public Long getId_registro() {
@@ -205,6 +208,14 @@ public class Registro implements Serializable {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public float getPromedio_final() {
+		return promedio_final;
+	}
+
+	public void setPromedio_final(float promedio_final) {
+		this.promedio_final = promedio_final;
 	}
 
 	public Matricula getId_matricula() {

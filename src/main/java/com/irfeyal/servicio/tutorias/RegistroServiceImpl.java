@@ -144,6 +144,7 @@ public class RegistroServiceImpl implements IRegistroService {
 		registro.setExamen_remedial(0);
 		registro.setExamen_gracia(0);
 		registro.setEstado("Reprobado");
+		registro.setPromedio_final(0);
 
 		return registrodao.save(registro);
 	}
@@ -167,6 +168,7 @@ public class RegistroServiceImpl implements IRegistroService {
 		editar.setExamen_remedial(registro.getExamen_remedial());
 		editar.setExamen_gracia(registro.getExamen_gracia());
 		editar.setEstado(registro.getEstado());
+		editar.setPromedio_final(registro.getPromedio_final());
 		this.registrodao.save(editar);
 	}
 

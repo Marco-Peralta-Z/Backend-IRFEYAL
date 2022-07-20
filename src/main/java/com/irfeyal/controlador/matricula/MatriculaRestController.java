@@ -114,6 +114,7 @@ public class MatriculaRestController {
 				automatico.setExamen_remedial(0);
 				automatico.setExamen_gracia(0);
 				automatico.setEstado("Reprobado");
+				automatico.setPromedio_final(0);
 				automatico.setId_asignatura(a.get(i));
 				automatico.setId_matricula(matriculaNew);
 				this.registrodao.save(automatico);
