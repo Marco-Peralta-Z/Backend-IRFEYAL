@@ -90,7 +90,7 @@ INSERT INTO canton (canton, id_provincia) VALUES ('EL GUABO',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('HUAQUILLAS',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('MARCABELI',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('PASAJE',7);
-INSERT INTO canton (canton, id_provincia) VALUES ('PIÑAS',7);
+INSERT INTO canton (canton, id_provincia) VALUES ('PINAS',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('PORTOVELO',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('SANTA ROSA',7);
 INSERT INTO canton (canton, id_provincia) VALUES ('ZARUMA',7);
