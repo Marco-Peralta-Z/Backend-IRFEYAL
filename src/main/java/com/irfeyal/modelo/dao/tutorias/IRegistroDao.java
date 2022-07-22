@@ -36,7 +36,7 @@ public interface IRegistroDao extends JpaRepository<Registro, Long> {
 	@Query(value = "select r from Registro r where r.id_matricula.id_matricula = ?1 and r.estado = 'APROBADO'")
 	public List<Registro> getAllRegistrosByMatriculaId(Long id);
 
-	@Query(value = "select r from Registro r where r.estado = 'APROBADO' and r.id_matricula.curso.id_curso = ?1 and r.id_matricula.modalidad.id_modalidad =?2 and r.id_matricula.id_periodo.id_periodo =?3")
-	public List<Registro> getAllRegistrosByCursoModalidadPeridod(Long idCurso, Long idModalidad, Long idPeridod);
+	@Query(value = "select r from Registro r where r.id_matricula.curso.id_curso = ?1 and r.id_matricula.modalidad.id_modalidad =?2 and r.id_matricula.id_periodo.id_periodo =?3 and r.id_matricula.id_paralelo.id_paralelo =?4")
+	public List<Registro> getAllRegistrosByCursoModalidadPeridod(Long idCurso, Long idModalidad, Long idPeridod, Long idParalelo);
 
 }

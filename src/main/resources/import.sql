@@ -2098,18 +2098,6 @@ INSERT INTO concepto_pago (descripcion) VALUES ('Kit');
 
 --SECRETARIA 
 
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 1, 1);--OJO:Necesito Id de la matricula del mod. de MATRICULA y pilas id_rol_usuario por id_empleado
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 2, 2);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 3, 3);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 4, 4);
-INSERT INTO generar_certificado_matricula (rectora, fecha, id_empleado, id_matricula) VALUES ('Alicia Gualavisi LlorÃ©', '2022/03/16', 5, 5);
-
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (70, 'Setenta', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 1,1,1);--OJO:Necesito id del registro del mod. de TUTORIAS y pilas con id_rol_usuario por id_empleado
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (70.3, 'Setenta punto tres', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 2,2,2);
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (40, 'Quarenta', 'Reprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 3,3,3);
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (50, 'Cincuenta', 'Reprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 4,4,4);
-INSERT INTO generar_certificado_promocion (promedio_general_num, promedio_general_let, descripcion, fecha, rectora, id_empleado, id_registro, id_curso) VALUES (60.3, 'Sesenta punto tres', 'Aprovado', '2022/03/16', 'Alicia Gualavisi LlorÃ©', 5,5,5);
-
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula', 'Para todos los cursos', 'C/documentos');
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Promocion', 'Para todos los cursos', 'C/documentos');
 INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago Matricula', 'Para todos los cursos', 'C/documentos');

@@ -50,6 +50,6 @@ public interface IRegistroService {
 
 	public List<Registro> getAllRegistrosByMatriculaId(Long id);
 
-	public List<Registro> getAllRegistrosByCursoModalidadPeridod(Long idCurso, Long idModalidad, Long idPeridod);
+	public List<Registro> getAllRegistrosByCursoModalidadPeridod(Long idCurso, Long idModalidad, Long idPeriodo, Long idParalelo);
 
 }

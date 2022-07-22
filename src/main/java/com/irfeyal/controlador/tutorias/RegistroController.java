@@ -181,13 +181,13 @@ public class RegistroController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
 
-	@GetMapping("getRegistrosFilter/{idCurso}/{idMod}/{idPer}")
+	@GetMapping("getRegistrosFilter/{idCurso}/{idMod}/{idPer}/{idPar}")
 	public ResponseEntity<?> getRegisrosByCursoModalidadPeriodo(@PathVariable("idCurso") Long idCurso,
-			@PathVariable("idMod") Long idMod, @PathVariable("idPer") Long idPer) {
+			@PathVariable("idMod") Long idMod, @PathVariable("idPer") Long idPer, @PathVariable("idPar") Long idPar) {
 		List<Registro> registros = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
-			registros = registroserviceimpl.getAllRegistrosByCursoModalidadPeridod(idCurso, idMod, idPer);
+			registros = registroserviceimpl.getAllRegistrosByCursoModalidadPeridod(idCurso, idMod, idPer, idPar);
 
 		} catch (Exception e) {
 			response.put("status", "error");
