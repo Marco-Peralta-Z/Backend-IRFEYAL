@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,7 +48,7 @@ public class Comprobante implements Serializable {
 	@JoinColumn(name = "id_empleado")
 	private Empleado id_empleado;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_tipo_comprobante")
 	private TipoComprobante id_tipo_comprobante;
 

@@ -108,12 +108,12 @@ public class ComprobanteController {
 		}
 	}
 	
-	@GetMapping(path = "/comprobante/{idMa}/{idTipoCom}", produces = "application/json")
-	public ResponseEntity<?> obtenerComprobateSaldo(@PathVariable("idMa") Long idMa, @PathVariable("idTipoCom") Long idTipoCom) {
+	@GetMapping(path = "/comprobante/{idMa}/{idConcepto}", produces = "application/json")
+	public ResponseEntity<?> obtenerComprobateSaldo(@PathVariable("idMa") Long idMa, @PathVariable("idConcepto") Long idConcepto) {
 		Map<String, Object> respuesta = new HashMap<>();
 		Comprobante comprobante = null;
 		try {
-			comprobante = comprobanteService.buscarPorEstadoAndMatriculaAndTipocomprobante(false, idMa, idTipoCom);
+			comprobante = comprobanteService.buscarPorEstadoAndMatriculaAndTipocomprobante(false, idMa, idConcepto);
 			respuesta.put("status", "ok");
 			respuesta.put("comprobante", comprobante);
 		} catch (Exception e) {

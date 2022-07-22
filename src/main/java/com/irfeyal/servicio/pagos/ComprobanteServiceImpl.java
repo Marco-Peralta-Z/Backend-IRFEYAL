@@ -52,8 +52,8 @@ public class ComprobanteServiceImpl implements IComprobanteService{
 
 	@Override
 	public Comprobante buscarPorEstadoAndMatriculaAndTipocomprobante(boolean estado, Long idMatricula,
-			Long idTipoComptrobante) {
-		return comprobanteDato.buscarPorEstadoAndMatriculaAndTipocomprobante(estado, idMatricula, idTipoComptrobante);
+			Long idConceptoPago) {
+		return comprobanteDato.buscarPorEstadoAndMatriculaAndTipocomprobante(estado, idMatricula, idConceptoPago);
 	}
 
 	
