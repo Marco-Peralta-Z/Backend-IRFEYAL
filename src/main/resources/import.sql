@@ -2089,9 +2089,13 @@ INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,10);
 INSERT INTO tipo_pago (descripcion) VALUES ('Efectivo');
 INSERT INTO tipo_pago (descripcion) VALUES ('Deposito');
 
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Matricula', 1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo, id_kit) VALUES ('Kit', 3, 1);
-INSERT INTO tipo_comprobante (concepto_pago, id_periodo) VALUES ('Mensual', 5);
+INSERT INTO concepto_pago (descripcion) VALUES ('Matricula');
+INSERT INTO concepto_pago (descripcion) VALUES ('Mensual');
+INSERT INTO concepto_pago (descripcion) VALUES ('Kit');
+
+INSERT INTO tipo_comprobante (id_conceptoPago, id_periodo) VALUES ( 1, 1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
+INSERT INTO tipo_comprobante (id_conceptoPago, id_periodo, id_kit) VALUES (3, 3, 1);
+INSERT INTO tipo_comprobante (id_conceptoPago, id_periodo) VALUES (2, 5);
 
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, saldo, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (1, '2022/03/15', 'img/foto.jpg', 10, 0 , TRUE, 1, 1, 1);--OJO:Necesito primero el tipo de comprobante, esa tabla necesita PERIODO y pilas con id_rol_usuario por id_empleado 
 INSERT INTO comprobante (id_matricula, fecha, imagen, valor_total, saldo, estado, id_tipo_pago, id_tipo_comprobante, id_empleado) values (2, '2022/03/15', 'img/foto.jpg', 20, 0 , TRUE, 1, 2, 2);

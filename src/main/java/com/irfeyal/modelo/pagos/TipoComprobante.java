@@ -27,8 +27,9 @@ public class TipoComprobante implements Serializable {
 	@Column(name = "id_tipo_comprobante")
 	private Long id_tipo_comprobante;
 
-	@Column
-	private String concepto_pago;
+	@OneToOne()
+	@JoinColumn(name = "id_conceptoPago")
+	private ConceptoPago id_conceptoPago;
 
 	@OneToOne()
 	@JoinColumn(name = "id_periodo")
@@ -50,24 +51,26 @@ public class TipoComprobante implements Serializable {
 	//	this.id_kit = id_kit;
 //	}
 
-	public Long getIdTipoComprobante() {
-		return id_tipo_comprobante;
-	}
-
-	public void setIdTipoComprobante(Long id_tipo_comprobante) {
-		this.id_tipo_comprobante = id_tipo_comprobante;
-	}
-
-	public String getConcepto_pago() {
-		return concepto_pago;
-	}
-
-	public void setConcepto_pago(String concepto_pago) {
-		this.concepto_pago = concepto_pago;
-	}
+	
 
 	public Kit getId_kit() {
 		return id_kit;
+	}
+
+	public Long getId_tipo_comprobante() {
+		return id_tipo_comprobante;
+	}
+
+	public void setId_tipo_comprobante(Long id_tipo_comprobante) {
+		this.id_tipo_comprobante = id_tipo_comprobante;
+	}
+
+	public ConceptoPago getId_conceptoPago() {
+		return id_conceptoPago;
+	}
+
+	public void setId_conceptoPago(ConceptoPago id_conceptoPago) {
+		this.id_conceptoPago = id_conceptoPago;
 	}
 
 	public void setId_kit(Kit id_kit) {
