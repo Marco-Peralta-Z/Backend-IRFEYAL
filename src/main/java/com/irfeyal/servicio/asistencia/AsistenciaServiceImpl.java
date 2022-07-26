@@ -27,6 +27,7 @@ import com.irfeyal.modelo.dao.parametrizacionacademica.CursoRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.ModalidadRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.ParaleloRespository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.PeriodoRepository;
+import com.irfeyal.modelo.dao.rolseguridad.EmpleadoDAO;
 import com.irfeyal.modelo.dao.rolseguridad.PersonaDAO;
 import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
@@ -50,7 +51,8 @@ import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
 @Service
 public class AsistenciaServiceImpl implements IAsistenciaService{
-	
+	@Autowired
+	private EmpleadoDAO empleado;
 	@Autowired
 	private IAsistenciaDao asistenciadao;
 	@Autowired
@@ -70,6 +72,7 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	@Autowired
 	private AsignaturaRepository asignatura;
 	
+	private Long id_asistencia;
 	@Autowired
 	private CursoRepository curso;
 	
@@ -205,9 +208,9 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	}
 
 	@NotNull
-	public ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante ,Long iddocente){
+	public ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante ,Long iddocente, Long idasignatura){
 		Integer numfalta=0;
-		List<Asistencia> asispedf= this.asistenciadao.obtenerIdEstudiante(id_estudiante,iddocente);
+		List<Asistencia> asispedf= this.asistenciadao.obtenerIdEstudiante(id_estudiante,iddocente,idasignatura);
 		
 	    Estudiante estudiantedaoa=this.estudiantedao.findestudianteidpdf(id_estudiante);
 			
@@ -219,10 +222,17 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
                  numfalta= asispedf.size();
 				final Map<String, Object> parameters = new HashMap<>();
 				parameters.put("id_estudiante", id_estudiante);
+				parameters.put("tutor",empleado.findById(iddocente).get().getPersona().getNombre()+"  "+empleado.findById(iddocente).get().getPersona().getApellido());
+
 				parameters.put("persoNom", estudiantedaoa.getId_persona().getNombre());
 				parameters.put("persoApe", estudiantedaoa.getId_persona().getApellido());
 				parameters.put("cedula", estudiantedaoa.getId_persona().getCedula());
-		        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.clasedao.mostrarfechasidpdf(id_estudiante,iddocente)));
+				if(iddocente==1) {
+					 parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.clasedao.mostrarfechasidpdfadmin(id_estudiante,idasignatura)));
+				}else {
+			        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.clasedao.mostrarfechasidpdf(id_estudiante,iddocente,idasignatura)));
+
+				}
 				parameters.put("imgLogo", new FileInputStream(imgLogo));
 				parameters.put("numfalta", numfalta);
 				
@@ -252,6 +262,62 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 		
 	        return null;
 		
+	}
+
+	@Override
+	public @NotNull ResponseEntity<ByteArrayResource> exportInvoicepdfcursos(Long id_mod, Long id_periodo,
+			Long id_paralelo, Long id_asignatura, Long id_curso, Long docente) {
+		
+	
+			
+			try {
+			
+				final File file = ResourceUtils.getFile("src/main/resources/PDF/reportecursosasistencias.jasper");
+				final File imgLogo = ResourceUtils.getFile("src/main/resources/logo.png");
+				final JasperReport report = (JasperReport) JRLoader.loadObject(file);
+                 
+				final Map<String, Object> parameters = new HashMap<>();
+				String periodocripcion=periodo.getById(id_periodo).getMalla().getDescripcion()+" "+periodo.getById(id_periodo).getAno_inicio()+"-"+periodo.getById(id_periodo).getAno_fin();
+				parameters.put("desCurso", curso.getById(id_curso).getDescripcion());
+				parameters.put("desParalelo", paralelo.getById(id_paralelo).getDescripcion());
+				parameters.put("desPeriodo",periodocripcion);
+				parameters.put("persoNom",empleado.findById(docente).get().getPersona().getNombre()+"  "+empleado.findById(docente).get().getPersona().getApellido());
+				parameters.put("desModalidad", modalidad.getById(id_mod).getDescripcion());
+				if(docente==1) {
+			        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>)	this.asistenciadao.sistenciapdftutor(id_mod, id_periodo, id_paralelo,  id_curso)));
+
+				}else {
+			        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>)	this.asistenciadao.sistenciapdf(id_mod, id_periodo, id_paralelo,  id_curso, docente)));
+
+				}
+				parameters.put("imgLogo", new FileInputStream(imgLogo));
+				
+				
+				
+				JasperPrint jPrint = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
+				byte [] reporte = JasperExportManager.exportReportToPdf(jPrint);
+	                        
+	                        String sdf = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());
+	                        
+				StringBuilder stringBuilder = new StringBuilder().append("InvoicePDF:");
+	                        org.springframework.http.ContentDisposition contentDisposition = org.springframework.http.ContentDisposition.builder("attachment")
+	                                .filename(stringBuilder.append(id_asistencia)
+	                                        .append("generateDate:")
+	                                        .append(sdf)
+	                                        .append(".pdf")
+	                                        .toString())
+	                                        .build();
+				org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+	                        headers.setContentDisposition(contentDisposition);
+	                        return ResponseEntity.ok().contentLength((long) reporte.length)
+	                                .contentType(MediaType.APPLICATION_PDF)
+	                                .headers(headers).body(new ByteArrayResource(reporte));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	        return null;
 	}
 
 

@@ -44,5 +44,6 @@ public interface IAsistenciaService {
 	public List<Asignatura> listarasignatura(Long empelado, Long idperiodo, Long modalidad, Long idcurso, Long idparalelo);
 	public List<Modalidad> modalidaddocente(Integer id_docente);
 	public List<Asistencia>actualizarfiltros(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso,Date fecha,Long docente);
-	public @NotNull ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante,Long iddocente);
+	public @NotNull ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante,Long iddocente,Long idasignatura);
+	public @NotNull ResponseEntity<ByteArrayResource> exportInvoicepdfcursos(Long id_mod, Long id_periodo, Long id_paralelo, Long id_asignatura,Long id_curso,Long docente);
 }

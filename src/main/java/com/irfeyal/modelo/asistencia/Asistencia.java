@@ -1,6 +1,8 @@
 package com.irfeyal.modelo.asistencia;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.Date;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -111,5 +114,27 @@ public class Asistencia implements Serializable {
 		}
 		return true;
 	}
+	
+    public String getDescripcion() {
+    	return this.idClase!=null ? this.idClase.getDescripcion(): "----";
+    }
+    public String getNombre() {
+		return this.idAsistencia != null ? this.idEstudiante.getId_persona().getNombre() : "----";
+	}
 
+	public String getApellido() {
+		return this.idAsistencia != null ? this.idEstudiante.getId_persona().getApellido() : "----";
+	}
+
+	public String getCedula() {
+		return this.idAsistencia != null ? this.idEstudiante.getId_persona().getCedula() : "----";
+	}
+	public Date  getfecClase() {
+
+		return  this.idClase.getFecClase();
+	}
+
+	 public String getDescripciones() {
+	    	return this.idAsistencia!=null ? this.idClase.getIdAsignatura().getDescripcion(): "----";
+	    }
 }
