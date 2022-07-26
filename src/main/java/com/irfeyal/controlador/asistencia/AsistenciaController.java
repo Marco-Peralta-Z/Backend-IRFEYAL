@@ -349,9 +349,26 @@ System.out.print("fecha para comprobar consulta "+auxfecha);
 
 
 
-@GetMapping("/exportInvoice/{id_estudiante}/{iddocente}")
-public @NotNull ResponseEntity<ByteArrayResource> exportinvoice(@PathVariable Long id_estudiante,@PathVariable Long iddocente){
-  return this.asistenciaservice.exportInvoice(id_estudiante,iddocente);
+@GetMapping("/exportInvoice/{id_estudiante}/{iddocente}/{idasignatura}")
+public @NotNull ResponseEntity<ByteArrayResource> exportinvoice(@PathVariable Long id_estudiante,@PathVariable Long iddocente,@PathVariable Long idasignatura){
+  return this.asistenciaservice.exportInvoice(id_estudiante,iddocente,idasignatura);
 }
 
+
+
+@GetMapping("/exportInvoicecurso/{id_mod}/{id_periodo}/{id_paralelo}/{id_asignatura}/{id_curso}/{docente}")
+public  @NotNull ResponseEntity<ByteArrayResource> exportinvoicepdfcurso(@PathVariable Long id_mod,@PathVariable Long id_periodo,@PathVariable Long id_paralelo,@PathVariable Long id_asignatura,@PathVariable Long id_curso,@PathVariable Long docente ){
+
+return this.asistenciaservice.exportInvoicepdfcursos(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, docente);
 }
+}
+
+
+
+
+
+
+
+
+
+
