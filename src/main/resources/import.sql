@@ -1654,7 +1654,7 @@ INSERT INTO genero (genero) VALUES ('FEMENINO');
 INSERT INTO genero (genero) VALUES ('MASCULINO');
 
 -------------------PERSONA-------------------
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Guayllas', '0102184322', '1998-04-17 19:00:00', 'magaly', 1);
+INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Irfeyal', '0102184322', '1998-04-17 19:00:00', 'Extension-105', 1);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Lopez','0102879991','1997-02-18 19:00:00','juan',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ramirez','0107039971','1995-01-01 19:00:00','Ramiro',2);
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez','0107049975','1990-04-23 19:00:00','Paulina',1);
@@ -1695,7 +1695,7 @@ INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALU
 
 
 -------------------DIRECCION-------------------
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('nueva calle', 'calle vieja', 1, 1, 1, 1);
+INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Av Tres de Noviembre', 'Unidad Nacional', 1, 1, 1, 1);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Sangurima', 'honorato',1,1,1,1);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('larga', 'benigno malo',2,1,2,2);
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('velez', 'matriz',3,1,3,3);
@@ -1791,7 +1791,7 @@ INSERT INTO correo_electronico (correo) VALUES ('est15@edu.ec');
 INSERT INTO correo_electronico (correo) VALUES ('est16@edu.ec');
 
 -------------------EMPLEADO-------------------
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_docente', 1, 1, 1, 1, 1);
+INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('Administrador', 1, 1, 1, 1, 1);
 INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretario 1', 1, 2,2,2,2);
 INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_gerente', 1,3,3,3,3);
 INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretaria', 1,4,1,4,4);
@@ -1839,6 +1839,7 @@ INSERT INTO rol (descripcion) VALUES ('Coordinador administrativo');
 INSERT INTO rol (descripcion) VALUES ('Coordinador academico');
 INSERT INTO rol (descripcion) VALUES ('Coordinador de desarrollo institucional');
 INSERT INTO rol (descripcion) VALUES ('Rector');
+INSERT INTO rol (descripcion) VALUES ('Coordinador Pedagogico');
 -------------------MODULO-------------------
 INSERT INTO modulo (modulo,url) VALUES ('matriculas','http//localhost/modmatricula.php');
 INSERT INTO modulo (modulo,url) VALUES ('asistencia','http//localhost/modasistencia.php');
