@@ -191,26 +191,7 @@ public class MatriculaRestController {
 		response.put("mensaje", respuesta);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
-//	Metodos indirectos a tablas no pertenecientes al modulo matricula
 
-//	@GetMapping("getJormadasPorCurso/{id_curso}")
-//	public List<Modalidad> buscarByCurso(@PathVariable Long id_curso){
-////		Modalidad modalidadExiste= null;
-////		Map<String, Object> response = new HashMap<>();
-////		
-////		try {
-////			modalidadExiste=matriculaService.findByCurso(id_curso);
-////		} catch (DataAccessException e) {
-////			response.put("mensaje", "Error no se pudo realizar la consulta");
-////			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-////			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
-////		}
-////		if (modalidadExiste==null) {
-////			response.put("mensaje", "Jornadas no existentes para curso con id: ".concat(id_curso.toString().concat(", no existe en la base de datos!")));
-////			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
-////		}
-//		return matriculaService.findByCurso(id_curso);
-//	}
 
 	/* Pagos */
 	@GetMapping("/matricula/{cedula}")

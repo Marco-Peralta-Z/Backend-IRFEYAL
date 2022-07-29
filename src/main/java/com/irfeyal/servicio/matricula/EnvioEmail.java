@@ -550,7 +550,7 @@ public class EnvioEmail {
 			document.add(Chunk.NEWLINE);
 
 			Paragraph texto = new Paragraph();
-			Chunk textPart1 = new Chunk("IRFEYAL", bold);
+			Chunk textPart1 = new Chunk("EXTENSIÓN 105", bold);
 			Chunk textPart2 = new Chunk(
 					" le da la bienvenida a una nueva meta en su vida; acontinuación se detalla la información de su matricula.");
 			texto.add(textPart1);
