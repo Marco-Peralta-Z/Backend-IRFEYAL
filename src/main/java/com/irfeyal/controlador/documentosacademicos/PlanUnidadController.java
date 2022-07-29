@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.matricula.Matricula;
+import com.irfeyal.modelo.parametrizacionacademica.Area;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Malla;
@@ -113,6 +114,11 @@ public class PlanUnidadController {
 	@GetMapping ("asignaturas/malla/{id_malla}")
 	private ResponseEntity<List<Asignatura>> getAsigByMalla (@PathVariable("id_malla") Long id){
 		return ResponseEntity.ok(planUnidadService.findAsigByMalla(id));
+	}
+	
+	@GetMapping ("area/asignatura/{id_asignatura}")
+	private ResponseEntity<Optional<Area>> getAreaByAsig (@PathVariable("id_asignatura") Long id){
+		return ResponseEntity.ok(planUnidadService.findAreaByAsig(id));
 	}
 	
 //	@GetMapping ("asignaturas/{id}")

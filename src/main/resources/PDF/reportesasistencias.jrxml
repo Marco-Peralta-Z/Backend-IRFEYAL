@@ -129,7 +129,7 @@
 	<title>
 		<band height="116" splitType="Stretch">
 			<image>
-				<reportElement x="140" y="0" width="270" height="50" uuid="c7ef8358-dcce-4411-a735-56d3733d9993">
+				<reportElement x="192" y="0" width="170" height="50" uuid="c7ef8358-dcce-4411-a735-56d3733d9993">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -172,23 +172,23 @@
 				<text><![CDATA[Informacion del Estudiante:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="20" width="55" height="18" uuid="4df79261-6a9e-43d6-b87e-93cc6ef96578"/>
+				<reportElement x="0" y="20" width="50" height="18" uuid="4df79261-6a9e-43d6-b87e-93cc6ef96578"/>
 				<textElement markup="styled">
-					<font fontName="Calibri" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombres:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="45" width="58" height="16" uuid="8719ef3e-6052-41bb-b92d-1507c472407b"/>
+				<reportElement x="1" y="45" width="49" height="16" uuid="8719ef3e-6052-41bb-b92d-1507c472407b"/>
 				<textElement markup="styled">
-					<font fontName="Calibri" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Apellidos:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="70" width="56" height="15" uuid="a36db49f-e058-449b-acd3-623dcdf72cb6"/>
+				<reportElement x="1" y="70" width="49" height="15" uuid="a36db49f-e058-449b-acd3-623dcdf72cb6"/>
 				<textElement markup="html">
-					<font fontName="Calibri" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nº Cedula:]]></text>
 			</staticText>
@@ -221,25 +221,25 @@
 				<textFieldExpression><![CDATA[$P{cedula}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="293" y="123" width="100" height="13" uuid="f2490aa6-3685-48d2-ab5c-d0f9fb5e29f6"/>
+				<reportElement x="464" y="123" width="100" height="13" uuid="f2490aa6-3685-48d2-ab5c-d0f9fb5e29f6"/>
 				<textFieldExpression><![CDATA[$P{numfalta}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="190" y="122" width="98" height="15" uuid="1d09f190-257f-4a50-a470-1195ec81ffb6"/>
+				<reportElement x="368" y="122" width="90" height="15" uuid="1d09f190-257f-4a50-a470-1195ec81ffb6"/>
 				<textElement markup="html">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Numero de faltas:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="95" width="56" height="17" uuid="92cbb57b-6fc2-423c-8f20-1184af0dcc88"/>
+				<reportElement x="1" y="95" width="49" height="17" uuid="92cbb57b-6fc2-423c-8f20-1184af0dcc88"/>
 				<textElement markup="html">
-					<font fontName="Calibri" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tutor:]]></text>
 			</staticText>
 			<textField pattern="yyyy/MM/dd">
-				<reportElement x="448" y="22" width="100" height="20" uuid="17662fc5-0523-409f-a56c-b5bb8cd6d5bb"/>
+				<reportElement x="450" y="22" width="100" height="20" uuid="17662fc5-0523-409f-a56c-b5bb8cd6d5bb"/>
 				<textElement>
 					<font fontName="Calibri Light" size="12"/>
 				</textElement>
@@ -253,9 +253,9 @@
 				<textFieldExpression><![CDATA[$P{tutor}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="386" y="23" width="50" height="15" uuid="d34dcefc-f3ca-46cc-9758-c7b488144982"/>
+				<reportElement x="402" y="25" width="38" height="15" uuid="d34dcefc-f3ca-46cc-9758-c7b488144982"/>
 				<textElement>
-					<font fontName="Calibri" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>

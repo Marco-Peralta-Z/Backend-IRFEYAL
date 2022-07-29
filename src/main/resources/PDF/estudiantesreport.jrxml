@@ -207,7 +207,7 @@
 				<textFieldExpression><![CDATA[$P{persoApe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="70" y="70" width="127" height="22" uuid="5cc8d67f-433c-4eef-9e8e-8571f5702ea2"/>
+				<reportElement x="70" y="70" width="127" height="15" uuid="5cc8d67f-433c-4eef-9e8e-8571f5702ea2"/>
 				<textFieldExpression><![CDATA[$P{cedula}]]></textFieldExpression>
 			</textField>
 		</band>
