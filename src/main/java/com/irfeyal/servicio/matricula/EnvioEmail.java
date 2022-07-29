@@ -37,14 +37,15 @@ public class EnvioEmail {
 	private static final Font textoTabla = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
 	private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 	private SimpleDateFormat formatAfecha = new SimpleDateFormat("MMMM/yyyy");
-	private String[] requeridos= {"Ficha de Inscripcion","Copia de Cédula", "Copia certificado de votación","Certificado de matricula"};
+	private String[] requeridos;
 
-	public String sendEmailHtml(Matricula matricula, String requisitos) {
+	public String sendEmailHtml(Matricula matricula,String listRequeridos ,String requisitos) {
 		String to = matricula.getEstudiante().getCorreo().getCorreo();
 		String nombre = matricula.getEstudiante().getId_persona().getNombre().toUpperCase();
 		String[] saludo= nombre.split(" ");
 		nombre= saludo[0];
 		listEntregados = requisitos.split("-");
+		requeridos = listRequeridos.split("-");
 
 		content = "<!doctype html>\r\n" + "<html ⚡4email data-css-strict>\r\n" + "\r\n" + "<head>\r\n"
 				+ "    <meta charset=\"utf-8\">\r\n" + "    <style amp4email-boilerplate>\r\n" + "        body {\r\n"
@@ -277,7 +278,7 @@ public class EnvioEmail {
 				+ "                                                                <td class=\"es-m-txt-c\" align=\"left\">\r\n"
 				+ "                                                                    <h1\r\n"
 				+ "                                                                        style=\"color: #ffffff;line-height: 100%;font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif\">\r\n"
-				+ "                                                                        IRFEYAL</h1>\r\n"
+				+ "                                                                        EXTENSIÓN 105</h1>\r\n"
 				+ "                                                                </td>\r\n"
 				+ "                                                            </tr>\r\n"
 				+ "                                                        </table>\r\n"
@@ -470,7 +471,7 @@ public class EnvioEmail {
 			logo.scalePercent(17f);
 			logo.setAlignment(Element.ALIGN_LEFT);
 
-			Paragraph titulo = new Paragraph("IRFEYAL", chapterFont);
+			Paragraph titulo = new Paragraph("EXTENSIÓN 105", chapterFont);
 
 			titulo.add(logo);
 			PdfPTable tabla = new PdfPTable(2);

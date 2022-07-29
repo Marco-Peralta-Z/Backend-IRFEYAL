@@ -184,10 +184,10 @@ public class MatriculaRestController {
 	}
 
 	// Metodo para enviar correo de notificacion de matricula aceptada al estudiante
-	@PutMapping("/sendMail/{list}")
-	public ResponseEntity<?> sendEmail(@Validated @RequestBody Matricula matricula, @PathVariable String list) {
+	@PutMapping("/sendMail/{requeridos}/{list}")
+	public ResponseEntity<?> sendEmail(@Validated @RequestBody Matricula matricula,@PathVariable String requeridos, @PathVariable String list) {
 		Map<String, Object> response = new HashMap<>();
-		String respuesta = sendEmail.sendEmailHtml(matricula, list);
+		String respuesta = sendEmail.sendEmailHtml(matricula, requeridos , list);
 		response.put("mensaje", respuesta);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
