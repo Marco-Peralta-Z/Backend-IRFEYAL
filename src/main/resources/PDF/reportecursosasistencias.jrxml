@@ -161,65 +161,65 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="160" splitType="Stretch">
+		<band height="149" splitType="Stretch">
 			<textField>
-				<reportElement style="Style2" x="80" y="70" width="100" height="20" uuid="bac43739-1c19-400e-8536-29bda8609463"/>
+				<reportElement style="Style2" x="62" y="70" width="100" height="20" uuid="bac43739-1c19-400e-8536-29bda8609463"/>
 				<textElement textAlignment="Left">
 					<font fontName="Calibri Light" size="11" isBold="false" isItalic="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{desCurso}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Style1" x="0" y="70" width="65" height="20" uuid="1204bc6a-50b8-49c9-bcfd-d8e56e6d1da3"/>
+				<reportElement style="Style1" x="0" y="70" width="51" height="20" uuid="1204bc6a-50b8-49c9-bcfd-d8e56e6d1da3"/>
 				<textElement textAlignment="Left" markup="html">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="SansSerif" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Curso:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Style1" x="0" y="100" width="65" height="20" uuid="eb83f848-da13-433b-9982-376359a5c3e6"/>
+				<reportElement style="Style1" x="0" y="100" width="51" height="20" uuid="eb83f848-da13-433b-9982-376359a5c3e6"/>
 				<textElement textAlignment="Left" markup="html">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="SansSerif" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Paralelo:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Style2" x="80" y="100" width="100" height="20" uuid="ddbad16a-c6b5-4d44-9eb1-6b47bd35c6cf"/>
+				<reportElement style="Style2" x="60" y="100" width="100" height="20" uuid="ddbad16a-c6b5-4d44-9eb1-6b47bd35c6cf"/>
 				<textElement textAlignment="Left">
 					<font fontName="Calibri Light" size="11" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{desParalelo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Style1" x="0" y="10" width="65" height="20" uuid="2d369ca0-2ef4-45b5-ac21-28d5290f0b0d"/>
+				<reportElement style="Style1" x="0" y="10" width="51" height="20" uuid="2d369ca0-2ef4-45b5-ac21-28d5290f0b0d"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="SansSerif" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Periodo:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Style2" x="80" y="10" width="260" height="20" uuid="d8815734-2d88-4038-ae2f-3da62ed8d261"/>
+				<reportElement style="Style2" x="62" y="10" width="260" height="20" uuid="d8815734-2d88-4038-ae2f-3da62ed8d261"/>
 				<textElement textAlignment="Left">
 					<font fontName="Calibri Light" size="11" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{desPeriodo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Style1" x="381" y="11" width="52" height="19" uuid="410efc48-acd5-4dcb-90d4-b8e81eacc846"/>
+				<reportElement style="Style1" x="395" y="12" width="42" height="19" uuid="410efc48-acd5-4dcb-90d4-b8e81eacc846"/>
 				<textElement textAlignment="Left" markup="html">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="SansSerif" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Style1" x="0" y="40" width="65" height="20" uuid="76ab156a-b1f3-4cea-9add-d65a5f10c833"/>
+				<reportElement style="Style1" x="0" y="40" width="59" height="20" uuid="76ab156a-b1f3-4cea-9add-d65a5f10c833"/>
 				<textElement textAlignment="Left" markup="html">
-					<font fontName="Calibri" size="11" isBold="true" isItalic="false"/>
+					<font fontName="SansSerif" size="11" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Modalidad:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Style2" x="80" y="40" width="100" height="20" uuid="a129fdc7-361d-4d90-8568-e282524d31c1"/>
+				<reportElement style="Style2" x="62" y="40" width="100" height="20" uuid="a129fdc7-361d-4d90-8568-e282524d31c1"/>
 				<textElement textAlignment="Left">
 					<font fontName="Calibri Light" size="11" isBold="false"/>
 				</textElement>
@@ -227,18 +227,20 @@
 			</textField>
 			<textField pattern="yyyy/MM/dd">
 				<reportElement x="443" y="11" width="100" height="20" uuid="e71bdadf-4506-4b3a-a847-e43a5eeb4fe0"/>
-				<textElement>
+				<textElement textAlignment="Center">
 					<font fontName="Calibri Light" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Style1" x="0" y="136" width="51" height="16" uuid="5ab39179-8ace-4c7a-985c-3ffd1549f98b"/>
-				<textElement markup="html"/>
+				<reportElement style="Style1" x="0" y="133" width="51" height="16" uuid="5ab39179-8ace-4c7a-985c-3ffd1549f98b"/>
+				<textElement markup="html">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Tutor:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Style2" x="80" y="136" width="260" height="16" uuid="d79d280a-c271-4785-9e02-682cb8e91d1b"/>
+				<reportElement style="Style2" x="59" y="132" width="260" height="16" uuid="d79d280a-c271-4785-9e02-682cb8e91d1b"/>
 				<textElement>
 					<font fontName="Calibri Light" size="11" isBold="false"/>
 				</textElement>
@@ -247,7 +249,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="23" splitType="Stretch"/>
+		<band height="11" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="279" splitType="Stretch">
