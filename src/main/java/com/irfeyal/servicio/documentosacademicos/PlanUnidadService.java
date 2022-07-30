@@ -11,11 +11,14 @@ import com.irfeyal.interfaces.documentosacademicos.PlanUnidadInterface;
 import com.irfeyal.modelo.dao.documentosacademicos.PlanUnidadDAO;
 import com.irfeyal.modelo.dao.parametrizacionacademica.AreaRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.MallaRepository;
+import com.irfeyal.modelo.dao.rolseguridad.RolUsuarioDAO;
 import com.irfeyal.modelo.dao.rolseguridad.UsuarioDAO;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Area;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.rolseguridad.Persona;
+import com.irfeyal.modelo.rolseguridad.RolUsuario;
 import com.irfeyal.modelo.rolseguridad.Usuario;
 
 import com.itextpdf.text.*;
@@ -45,6 +48,9 @@ public class PlanUnidadService implements PlanUnidadInterface {
 	
 	@Autowired
 	private AreaRepository areaRepository;
+	
+	@Autowired
+	private RolUsuarioDAO rolUsuarioDAO;
 	
 	
 	//Listar planes de unidad
@@ -83,7 +89,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		}
 		
 		/*Buscar Plan de unidad por Unidad, asignatura, curso y modalidad 
-		(Controlar la ceracion del Plan de Unidad con el mismo No de unidad)*/
+		(Controlar la creacion del Plan de Unidad con el mismo No de unidad)*/
 		public boolean findPUByUnidadAsigCurso (Long id_unidad, Long id_asig, Long id_curso, Long id_paralelo, Long id_periodo, Long id_modalidad){
 			List<PlanUnidad> planunidadesRespuesta = new ArrayList<>();
 			List<PlanUnidad> planunidades = planUnidadDAO.findAll();
@@ -186,6 +192,18 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		planUnidadDAO.deleteById(id);
 	}
 	
+	//listar Nombres de Usuarios por Ror (Coordinador Pedagogico)
+		public List<Persona> findUsuariosByRolCoorPedagogico (){
+			List<Persona> personaRespuesta = new ArrayList<>();
+			List<RolUsuario> rolUsuarios = (List<RolUsuario>) rolUsuarioDAO.findAll();
+			for (int i=0; i<rolUsuarios.size(); i++) {
+				if (rolUsuarios.get(i).getRol().getDescripcion().equals("Coordinador Pedagogico")) {
+					personaRespuesta.add(rolUsuarios.get(i).getUsuario().getEmpleado().getPersona());
+				} 
+			}
+			return personaRespuesta;
+		}
+	
 	private static final BaseColor sombreado= new BaseColor(149, 179, 215);
 	private static final Font fonttitulo2 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 11);
 	private static final Font fonttitulo1 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 11, Font.BOLD);
@@ -198,7 +216,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 
 	
 	//Reporte del plan de unidad
-	public FileOutputStream createPDFplanunidad(PlanUnidad datosPlanUnidad) {
+	public FileOutputStream createPDFplanunidad(PlanUnidad datosPlanUnidad, String CoorPedagogico) {
 		try {
 			Document document = new Document(PageSize.A4.rotate());
 			FileOutputStream ficheroPDF = new FileOutputStream("..\\..\\..\\Downloads\\PlanUnidadNo"+datosPlanUnidad.getUnidad().getIdUnidad()+"-"+
@@ -518,7 +536,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			
 			Paragraph textCoorP= new Paragraph();
 			Chunk labelCoorP= new Chunk("COOR. PEDAGÓGICO: ",fontCabeceraTabla);
-			Chunk NomCoorP = new Chunk("Nombre Coor. Pedagogico", fontDetalleTabla);
+			Chunk NomCoorP = new Chunk(CoorPedagogico, fontDetalleTabla);
 			textCoorP.add(labelCoorP);
 			textCoorP.add(NomCoorP);
 			PdfPCell celdatextCoorP = new PdfPCell(new Phrase(textCoorP));

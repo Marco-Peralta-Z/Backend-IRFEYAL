@@ -27,6 +27,7 @@ import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
 import com.irfeyal.modelo.parametrizacionacademica.Malla;
 import com.irfeyal.modelo.rolseguridad.Empleado;
+import com.irfeyal.modelo.rolseguridad.Persona;
 import com.irfeyal.modelo.rolseguridad.Usuario;
 import com.irfeyal.servicio.documentosacademicos.PlanUnidadService;
 import com.irfeyal.servicio.parametrizacionacademica.CursoServicesImp;
@@ -154,9 +155,14 @@ public class PlanUnidadController {
 		return ResponseEntity.ok(planUnidadService.findPUByUnidadAsigCurso(id_unidad, id_asig, id_curso,id_paralelo, id_periodo, id_modalidad));
 	}
 	
-	@PostMapping("pdfPlanUnidad")
-	public ResponseEntity<?> createPDF(@Validated @RequestBody PlanUnidad planunidad) {
-		return new ResponseEntity<>(planUnidadService.createPDFplanunidad(planunidad), HttpStatus.OK);
+	@GetMapping ("coorpedagogico")
+	private ResponseEntity<List<Persona>> getNomUsuariosByRolCoorPedagogico (){
+		return ResponseEntity.ok(planUnidadService.findUsuariosByRolCoorPedagogico());
+	}
+	
+	@PostMapping("pdfPlanUnidad/{coorpedagogico}")
+	public ResponseEntity<?> createPDF(@Validated @RequestBody PlanUnidad planunidad, @PathVariable("coorpedagogico") String coorPedagogico) {
+		return new ResponseEntity<>(planUnidadService.createPDFplanunidad(planunidad, coorPedagogico), HttpStatus.OK);
 	}
 	
 }
