@@ -20,4 +20,6 @@ public interface IGenerarCertificadoPromocionService {
 	public void delete(Long id);
 
 	public List<GenerarCertificadoPromocion> findByCedulaEstudiante(String cedula);
+	
+	public List<String> cargarnotasgeneral(Long periodo, Long modalidad, Long curso, Long paralelo);
 }
