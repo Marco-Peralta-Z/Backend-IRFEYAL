@@ -216,11 +216,11 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 	}
 
 	@NotNull
-	public ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante ,Long iddocente, Long idasignatura, Long usuario){
+	public ResponseEntity<ByteArrayResource> exportInvoice(Long id_estudiante ,Long iddocente, Long idasignatura, Long usuario,Date fechainicio,Date fechafin){
 		Integer numfalta=0;
 		Integer numfaltaAdmin=0;
-		List<Asistencia> asispedf= this.asistenciadao.obtenerIdEstudiante(id_estudiante,iddocente,idasignatura);
-		List<Asistencia> asispedfAdmin= this.asistenciadao.obtenerIdEstudianteAdmin(id_estudiante,idasignatura);
+		List<Asistencia> asispedf= this.asistenciadao.obtenerIdEstudiante(id_estudiante,iddocente,idasignatura,fechainicio,fechafin);
+		List<Asistencia> asispedfAdmin= this.asistenciadao.obtenerIdEstudianteAdmin(id_estudiante,idasignatura ,fechainicio,fechafin);
 	    Estudiante estudiantedaoa=this.estudiantedao.findestudianteidpdf(id_estudiante);
 			
 			try {
@@ -248,11 +248,11 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 					
 					validadmin=true;
 					parameters.put("numfalta", numfaltaAdmin);
-					 parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.clasedao.mostrarfechasidpdfadmin(id_estudiante,idasignatura)));
+					 parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.clasedao.mostrarfechasidpdfadmin(id_estudiante,idasignatura,fechainicio,fechafin)));
 				}else{
 					if(i==cargo.size()-1 && validadmin==false) {
 						parameters.put("numfalta", numfalta);
-				        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.clasedao.mostrarfechasidpdf(id_estudiante,iddocente,idasignatura)));
+				        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>) this.clasedao.mostrarfechasidpdf(id_estudiante,iddocente,idasignatura,fechainicio,fechafin)));
 
 					}
 
@@ -291,7 +291,7 @@ public class AsistenciaServiceImpl implements IAsistenciaService{
 
 	@Override
 	public @NotNull ResponseEntity<ByteArrayResource> exportInvoicepdfcursos(Long id_mod, Long id_periodo,
-			Long id_paralelo, Long id_asignatura, Long id_curso, Long docente, Long usuario) {
+			Long id_paralelo, Long id_asignatura, Long id_curso, Long docente, Long usuario,Date fechainicio,Date fechafin) {
 		
 	
 			
@@ -315,11 +315,11 @@ List<String>cargos= usuarios.validacionadmin(usuario);
 					 
 						if(cargos.get(i).equalsIgnoreCase("Administrador")) {
 							validadmincurso=true;
-			        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>)	this.asistenciadao.sistenciapdftutor(id_mod, id_periodo, id_paralelo,  id_curso)));
+			        parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>)	this.asistenciadao.sistenciapdftutor(id_mod, id_periodo, id_paralelo,  id_curso,fechainicio,fechafin)));
 
 				}else {
 					if(i==cargos.size()-1 && validadmincurso==false) {
-						 parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>)	this.asistenciadao.sistenciapdf(id_mod, id_periodo, id_paralelo,  id_curso, docente)));
+						 parameters.put("ds", new JRBeanCollectionDataSource((Collection<?>)	this.asistenciadao.sistenciapdf(id_mod, id_periodo, id_paralelo,  id_curso, docente,fechainicio,fechafin)));
 					}
 					
 			       

@@ -349,17 +349,17 @@ System.out.print("fecha para comprobar consulta "+auxfecha);
 
 
 
-@GetMapping("/exportInvoice/{id_estudiante}/{iddocente}/{idasignatura}/{usuario}")
-public @NotNull ResponseEntity<ByteArrayResource> exportinvoice(@PathVariable Long id_estudiante,@PathVariable Long iddocente,@PathVariable Long idasignatura,@PathVariable Long usuario){
-  return this.asistenciaservice.exportInvoice(id_estudiante,iddocente,idasignatura,usuario);
+@GetMapping("/exportInvoice/{id_estudiante}/{iddocente}/{idasignatura}/{usuario}/{fechainicio}/{fechafin}")
+public @NotNull ResponseEntity<ByteArrayResource> exportinvoice(@PathVariable Long id_estudiante,@PathVariable Long iddocente,@PathVariable Long idasignatura,@PathVariable Long usuario,@PathVariable Date fechainicio,@PathVariable Date fechafin){
+  return this.asistenciaservice.exportInvoice(id_estudiante,iddocente,idasignatura,usuario,fechainicio,fechafin);
 }
 
 
 
-@GetMapping("/exportInvoicecurso/{id_mod}/{id_periodo}/{id_paralelo}/{id_asignatura}/{id_curso}/{docente}/{usuario}")
-public  @NotNull ResponseEntity<ByteArrayResource> exportinvoicepdfcurso(@PathVariable Long id_mod,@PathVariable Long id_periodo,@PathVariable Long id_paralelo,@PathVariable Long id_asignatura,@PathVariable Long id_curso,@PathVariable Long docente,@PathVariable Long usuario){
+@GetMapping("/exportInvoicecurso/{id_mod}/{id_periodo}/{id_paralelo}/{id_asignatura}/{id_curso}/{docente}/{usuario}/{fechainicio}/{fechafin}")
+public  @NotNull ResponseEntity<ByteArrayResource> exportinvoicepdfcurso(@PathVariable Long id_mod,@PathVariable Long id_periodo,@PathVariable Long id_paralelo,@PathVariable Long id_asignatura,@PathVariable Long id_curso,@PathVariable Long docente,@PathVariable Long usuario,@PathVariable Date fechainicio ,@PathVariable Date fechafin) {
 
-return this.asistenciaservice.exportInvoicepdfcursos(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, docente, usuario);
+return this.asistenciaservice.exportInvoicepdfcursos(id_mod, id_periodo, id_paralelo, id_asignatura, id_curso, docente, usuario,fechainicio,fechafin);
 }
 }
 

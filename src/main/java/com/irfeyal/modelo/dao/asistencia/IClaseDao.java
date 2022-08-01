@@ -35,11 +35,11 @@ public interface IClaseDao extends JpaRepository<Clase, Long>{
 	
 	@Query(value="SELECT * FROM clase c JOIN asistencia a ON a.id_clase=c.id_clase "
 			+ "			JOIN estudiantes e  on e.id_estudiante = a.id_estudiante "
-			+ "			WHERE e.id_estudiante=?1 and c.id_docente=?2 and c.id_asignatura=?3 and a.estado_asis=true",nativeQuery=true)
-	  Iterable<Clase> mostrarfechasidpdf(Long idestudiante,Long iddocente, Long idasignatura);
+			+ "			WHERE e.id_estudiante=?1 and c.id_docente=?2 and c.id_asignatura=?3 and a.estado_asis=true and c.fec_clase>=?4 and c.fec_clase<=?5",nativeQuery=true)
+	  Iterable<Clase> mostrarfechasidpdf(Long idestudiante,Long iddocente, Long idasignatura, Date fechainicio,Date fechafin);
 	
 	@Query(value="SELECT * FROM clase c JOIN asistencia a ON a.id_clase=c.id_clase "
 			+ "			JOIN estudiantes e  on e.id_estudiante = a.id_estudiante "
-			+ "			WHERE e.id_estudiante=?1  and c.id_asignatura=?2 and a.estado_asis=true",nativeQuery=true)
-	  Iterable<Clase> mostrarfechasidpdfadmin(Long idestudiante, Long idasignatura);
+			+ "			WHERE e.id_estudiante=?1  and c.id_asignatura=?2 and a.estado_asis=true and c.fec_clase>=?3 and c.fec_clase<=?4",nativeQuery=true)
+	  Iterable<Clase> mostrarfechasidpdfadmin(Long idestudiante, Long idasignatura, Date fechainicio,Date fechafin);
 }
