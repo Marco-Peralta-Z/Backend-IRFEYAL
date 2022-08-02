@@ -81,4 +81,8 @@ public class GenerarCertificadoPromocionController {
 	public List<GenerarCertificadoPromocion> buscarPorCedulaEstudiante(@PathVariable String cedula){
 		return generarCertificadoPromocionServ.findByCedulaEstudiante(cedula); 
 	}
+	@GetMapping(produces = "application/json", path="/certificadoPromocion/{periodo}/{modalidad}/{curso}/{paralelo}")
+	public List<String> cargarnotas(@PathVariable Long periodo,@PathVariable Long modalidad,@PathVariable Long curso,@PathVariable Long paralelo){
+		return generarCertificadoPromocionServ.cargarnotasgeneral(periodo,  modalidad,  curso,  paralelo); 
+	}
 }

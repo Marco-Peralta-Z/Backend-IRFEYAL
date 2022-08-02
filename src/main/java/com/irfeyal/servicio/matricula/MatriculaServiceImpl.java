@@ -10,20 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.irfeyal.interfaces.matricula.IMatriculaService;
 import com.irfeyal.modelo.dao.matricula.IMatriculaDao;
-import com.irfeyal.modelo.dao.parametrizacionacademica.AsignaturaRepository;
 import com.irfeyal.modelo.matricula.Matricula;
-import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
-import com.irfeyal.modelo.parametrizacionacademica.Modalidad;
-import com.irfeyal.modelo.parametrizacionacademica.Periodo;
 
 @Service
 public class MatriculaServiceImpl implements IMatriculaService{
 	
 	@Autowired
 	private IMatriculaDao matriculaDao;
-	
-	@Autowired
-	private AsignaturaRepository asignaturaRepo;
 	
 	@Override
 	@Transactional(readOnly = true)

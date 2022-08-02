@@ -58,6 +58,12 @@ public class GenerarCertificadoPromocionServiceImpl implements IGenerarCertifica
 		// TODO Auto-generated method stub
 		return generarCertificadoPromocionDao.findByCedulaEstudiante(cedula);
 	}
+
+	@Override
+	public List<String> cargarnotasgeneral(Long periodo, Long modalidad, Long curso, Long paralelo) {
+		// TODO Auto-generated method stub
+		return generarCertificadoPromocionDao.cargarnotasgeneral(periodo, modalidad, curso, paralelo);
+	}
 	
 	
 

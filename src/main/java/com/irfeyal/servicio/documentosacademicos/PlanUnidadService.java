@@ -11,11 +11,14 @@ import com.irfeyal.interfaces.documentosacademicos.PlanUnidadInterface;
 import com.irfeyal.modelo.dao.documentosacademicos.PlanUnidadDAO;
 import com.irfeyal.modelo.dao.parametrizacionacademica.AreaRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.MallaRepository;
+import com.irfeyal.modelo.dao.rolseguridad.RolUsuarioDAO;
 import com.irfeyal.modelo.dao.rolseguridad.UsuarioDAO;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Area;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.rolseguridad.Persona;
+import com.irfeyal.modelo.rolseguridad.RolUsuario;
 import com.irfeyal.modelo.rolseguridad.Usuario;
 
 import com.itextpdf.text.*;
@@ -45,6 +48,9 @@ public class PlanUnidadService implements PlanUnidadInterface {
 	
 	@Autowired
 	private AreaRepository areaRepository;
+	
+	@Autowired
+	private RolUsuarioDAO rolUsuarioDAO;
 	
 	
 	//Listar planes de unidad
@@ -83,7 +89,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		}
 		
 		/*Buscar Plan de unidad por Unidad, asignatura, curso y modalidad 
-		(Controlar la ceracion del Plan de Unidad con el mismo No de unidad)*/
+		(Controlar la creacion del Plan de Unidad con el mismo No de unidad)*/
 		public boolean findPUByUnidadAsigCurso (Long id_unidad, Long id_asig, Long id_curso, Long id_paralelo, Long id_periodo, Long id_modalidad){
 			List<PlanUnidad> planunidadesRespuesta = new ArrayList<>();
 			List<PlanUnidad> planunidades = planUnidadDAO.findAll();
@@ -186,6 +192,18 @@ public class PlanUnidadService implements PlanUnidadInterface {
 		planUnidadDAO.deleteById(id);
 	}
 	
+	//listar Nombres de Usuarios por Ror (Coordinador Pedagogico)
+		public List<Persona> findUsuariosByRolCoorPedagogico (){
+			List<Persona> personaRespuesta = new ArrayList<>();
+			List<RolUsuario> rolUsuarios = (List<RolUsuario>) rolUsuarioDAO.findAll();
+			for (int i=0; i<rolUsuarios.size(); i++) {
+				if (rolUsuarios.get(i).getRol().getDescripcion().equals("Coordinador Pedagogico")) {
+					personaRespuesta.add(rolUsuarios.get(i).getUsuario().getEmpleado().getPersona());
+				} 
+			}
+			return personaRespuesta;
+		}
+	
 	private static final BaseColor sombreado= new BaseColor(149, 179, 215);
 	private static final Font fonttitulo2 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 11);
 	private static final Font fonttitulo1 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 11, Font.BOLD);
@@ -198,7 +216,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 
 	
 	//Reporte del plan de unidad
-	public FileOutputStream createPDFplanunidad(PlanUnidad datosPlanUnidad) {
+	public FileOutputStream createPDFplanunidad(PlanUnidad datosPlanUnidad, String CoorPedagogico) {
 		try {
 			Document document = new Document(PageSize.A4.rotate());
 			FileOutputStream ficheroPDF = new FileOutputStream("..\\..\\..\\Downloads\\PlanUnidadNo"+datosPlanUnidad.getUnidad().getIdUnidad()+"-"+
@@ -273,7 +291,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			PdfPCell celdaLabelAreaAsig = new PdfPCell(new Phrase("AREA / ASIGNATURA:", fontCabeceraTabla));
 			celdaLabelAreaAsig.setHorizontalAlignment(Element.ALIGN_LEFT);
 			celdaLabelAreaAsig.setBackgroundColor(sombreado);
-			PdfPCell celdaAreaAsignatura = new PdfPCell(new Phrase(datosPlanUnidad.getAsignatura().getDescripcion(), fontDetalleTabla));
+			PdfPCell celdaAreaAsignatura = new PdfPCell(new Phrase(findAreaByAsig(datosPlanUnidad.getAsignatura().getId_asignatura()).get().getDescripcion()+" / "+datosPlanUnidad.getAsignatura().getDescripcion(), fontDetalleTabla));
 			celdaAreaAsignatura.setHorizontalAlignment(Element.ALIGN_LEFT);
 			PdfPCell celdaLabelCurso = new PdfPCell(new Phrase("CURSO:", fontCabeceraTabla));
 			celdaLabelCurso.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -322,11 +340,13 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			celdaLabelObjetivos.setBackgroundColor(sombreado);
 			PdfPCell celdaObjetivos = new PdfPCell(new Phrase(datosPlanUnidad.getObjetivos(), fontDetalleTabla));
 			celdaObjetivos.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaObjetivos.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			PdfPCell celdaLabelCriterios = new PdfPCell(new Phrase("CRITERIOS DE EVALUACIÓN:", fontCabeceraTabla));
 			celdaLabelCriterios.setHorizontalAlignment(Element.ALIGN_LEFT);
 			celdaLabelCriterios.setBackgroundColor(sombreado);
 			PdfPCell celdaCriterios = new PdfPCell(new Phrase(datosPlanUnidad.getCriterios_evaluacion(),fontDetalleTabla));
 			celdaCriterios.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaCriterios.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			
 			document.add(labelDatosInformativos);
 			tablaDatoInfo1.addCell(celdaLabelDocente);
@@ -409,6 +429,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			
 			PdfPCell celdaDestrezas = new PdfPCell(new Phrase(datosPlanUnidad.getDestrezas(), fontDetalleTabla));
 			celdaDestrezas.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaDestrezas.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			Paragraph textActividades= new Paragraph();
 			Chunk labelExperiencia= new Chunk("EXPERIENCIA.",fontCabeceraTabla);
 			Chunk textExperiencia= new Chunk(datosPlanUnidad.getAct_experiencia(), fontDetalleTabla);
@@ -418,6 +439,8 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			Chunk textConcept= new Chunk(datosPlanUnidad.getAct_conceptualizacion(), fontDetalleTabla);
 			Chunk labelAplicacion= new Chunk("APLICACIÓN.",fontCabeceraTabla);
 			Chunk textAplicacion= new Chunk(datosPlanUnidad.getAct_aplicacion(), fontDetalleTabla);
+			textActividades.setAlignment(Element.ALIGN_JUSTIFIED);
+			
 			textActividades.add(labelExperiencia);
 			textActividades.add(SaltoLinea);
 			textActividades.add(textExperiencia);
@@ -442,10 +465,13 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			celdaActividades.setHorizontalAlignment(Element.ALIGN_LEFT);
 			PdfPCell celdaRecursos = new PdfPCell(new Phrase(datosPlanUnidad.getRecursos(), fontDetalleTabla));
 			celdaRecursos.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaRecursos.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			PdfPCell celdaIndicadores = new PdfPCell(new Phrase(datosPlanUnidad.getIndicadores(), fontDetalleTabla));
 			celdaIndicadores.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaIndicadores.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			PdfPCell celdaTecnicas = new PdfPCell(new Phrase(datosPlanUnidad.getTecnicas(), fontDetalleTabla));
 			celdaTecnicas.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaTecnicas.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			
 			tablaPlanificacion2.addCell(celdaDestrezas);
 			tablaPlanificacion2.addCell(celdaActividades);
@@ -466,17 +492,22 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			textAdaptaciones.add(NomAdaptaciones);
 			PdfPCell celdaAdaptaciones = new PdfPCell(new Phrase(textAdaptaciones));
 			celdaAdaptaciones.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaAdaptaciones.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			celdaAdaptaciones.setColspan(4);
 			PdfPCell celdaLabelAdaptacionesEducativa = new PdfPCell(new Phrase("ADAPTACIÓN DE LA NECESIDAD EDUCATIVA",fontCabeceraTabla));
 			celdaLabelAdaptacionesEducativa.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaLabelAdaptacionesEducativa.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			celdaLabelAdaptacionesEducativa.setBackgroundColor(sombreado);
 			PdfPCell celdaLabelEspecificacion = new PdfPCell(new Phrase("ESPECIFICACIÓN DE LA NECESIDAD A SER APLICADA",fontCabeceraTabla));
 			celdaLabelEspecificacion.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaLabelEspecificacion.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			celdaLabelEspecificacion.setBackgroundColor(sombreado);
 			PdfPCell celdaAdaptacionesEducativa = new PdfPCell(new Phrase(datosPlanUnidad.getAdap_necesidad_educativa(), fontDetalleTabla));
 			celdaAdaptacionesEducativa.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaAdaptacionesEducativa.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			PdfPCell celdaEspecificacion = new PdfPCell(new Phrase(datosPlanUnidad.getEspecificacion_nesesidad(), fontDetalleTabla));
 			celdaEspecificacion.setHorizontalAlignment(Element.ALIGN_LEFT);
+			celdaEspecificacion.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 			
 			tablaPlanificacion3.addCell(celdaAdaptaciones);
 			tablaPlanificacion3.addCell(celdaLabelAdaptacionesEducativa);
@@ -518,7 +549,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			
 			Paragraph textCoorP= new Paragraph();
 			Chunk labelCoorP= new Chunk("COOR. PEDAGÓGICO: ",fontCabeceraTabla);
-			Chunk NomCoorP = new Chunk("Nombre Coor. Pedagogico", fontDetalleTabla);
+			Chunk NomCoorP = new Chunk(CoorPedagogico, fontDetalleTabla);
 			textCoorP.add(labelCoorP);
 			textCoorP.add(NomCoorP);
 			PdfPCell celdatextCoorP = new PdfPCell(new Phrase(textCoorP));
