@@ -33,21 +33,51 @@ public class PlanUnidad implements Serializable{
 	private Date fecha_inicio;
 	private Date fecha_fin;
 	private Long num_periodos;
+	
+	@Column(name = "objetivos", length = 10485760)
 	private String objetivos;
+	
+	@Column(name = "criterios_evaluacion", length = 10485760)
 	private String criterios_evaluacion;
+	
+	@Column(name = "destrezas", length = 10485760)
 	private String destrezas;
+	
+	@Column(name = "act_experiencia", length = 10485760)
 	private String act_experiencia;
+	
+	@Column(name = "act_reflexion", length = 10485760)
 	private String act_reflexion;
+	
+	@Column(name = "act_conceptualizacion", length = 10485760)
 	private String act_conceptualizacion;
+	
+	@Column(name = "act_aplicacion", length = 10485760)
 	private String act_aplicacion;
+	
+	@Column(name = "recursos", length = 10485760)
 	private String recursos;
+	
+	@Column(name = "indicadores", length = 10485760)
 	private String indicadores;
+	
+	@Column(name = "tecnicas", length = 10485760)
 	private String tecnicas;
+	
+	@Column(name = "adaptaciones_curriculares", length = 10485760)
 	private String adaptaciones_curriculares;
+	
+	@Column(name = "adap_necesidad_educativa", length = 10485760)
 	private String adap_necesidad_educativa;
+	
+	@Column(name = "especificacion_nesesidad", length = 10485760)
 	private String especificacion_nesesidad;
+	
 	private String estado;
+	
+	@Column(name = "observaciones", length = 10485760)
 	private String observaciones;
+	
 	private String coor_academico;
 	private Date fecha_revision;
 	
