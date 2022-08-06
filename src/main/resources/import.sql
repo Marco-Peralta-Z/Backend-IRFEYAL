@@ -1,6 +1,3 @@
---------ROLES Y SEGURIDAD------
-
--------------------PAIS-------------------
 INSERT INTO pais (pais) VALUES ('Ecuador');
 
 INSERT INTO provincia (provincia, id_pais) VALUES ('Azuay',1);
@@ -1650,78 +1647,14 @@ INSERT INTO parroquia (parroquia, id_canton) VALUES	('JOSÉ LUIS TAMAYO (MUEY)',
 
 
 -------------------GENERO-------------------
-INSERT INTO genero (genero) VALUES ('FEMENINO');
-INSERT INTO genero (genero) VALUES ('MASCULINO');
+INSERT INTO genero (genero) VALUES ('Femenino');
+INSERT INTO genero (genero) VALUES ('Masculino');
 
 -------------------PERSONA-------------------
 INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Irfeyal', '0102184322', '1998-04-17 19:00:00', 'Extension-105', 1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Lopez','0102879991','1997-02-18 19:00:00','juan',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ramirez','0107039971','1995-01-01 19:00:00','Ramiro',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez','0107049975','1990-04-23 19:00:00','Paulina',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Morocho','0103079940','1992-10-17 19:00:00','Elena',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pesantez','1056789020','1990-11-17 19:00:00','Alberto',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Reino','1056780100','1997-09-19 19:00:00','Rodrigo',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Sanchez','0100670892','1993-09-30 19:00:00','Naina',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Quito','0108625478','1995-10-31 19:00:00','Ana',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez','0105983216','1990-03-20 19:00:00','Belen',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Murillo','0102587436','1950-08-10 19:00:00','Juana',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Gonzales','0106893251','19987-07-03 19:00:00','Karina',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pauta','0132548740','1992-06-05 19:00:00','Robert',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Salamea','0105986312','1998-05-18 19:00:00','Paulina',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('OrdoÃ±es','0125896314','1993-11-14 19:00:00','Martha',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velez','0302154789','1994-04-02 19:00:00','Andrea',1);
-
--------------------PERSONA ESTUDIANTE-------------------
-
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Acevedo ManrÃ­quez', '0102549612', '1998-04-14 19:00:00', 'MarÃ­a Mireya', 1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Alejo Guerrero','0102877771','1997-02-01 19:00:00','VÃ­ctor Hugo',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Ramirez Ibarra','0107031234','1995-01-15 19:00:00','Pascual Gerardo',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez Santos','0107049456','1990-04-20 19:00:00','Paulina Rocio',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Alarcon Perez','0703079940','1992-10-14 19:00:00','Maria Elena',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pesantez Camacho','0756789020','1990-11-05 19:00:00','Alberto Jose',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Reina Navarro','0756780100','1997-09-19 19:00:00','Rodrigo Jesus',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Sanchez Barbosa','0700670892','1993-09-10 19:00:00','Naina Rocio',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Aleman Martinez','0108225475','1995-10-31 19:00:00','Ana Lucrecia',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Perez Vargas','0705983216','1998-04-20 19:00:00','Belen Ofelia',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Murillo Amaya','0702587436','1995-07-10 19:00:00','Andrea Lucia',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Gonzales Melgar','0708893251','1998-06-03 19:00:00','Karina Rosalia',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Pauta Arbea','0722548740','1992-06-05 19:00:00','Robert Javier',2);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Salamea Burgos','0785986312','1994-05-18 19:00:00','Martha Paula',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('OrdoÃ±es Valladares','0715896314','1993-09-14 19:00:00','Socorro',1);
-INSERT INTO persona (apellido, cedula, fecha_nacimiento, nombre, id_genero) VALUES ('Velez Garcia','0184154789','1994-04-02 19:00:00','Angela',1);
-
-
-
-
 
 -------------------DIRECCION-------------------
 INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Av Tres de Noviembre', 'Unidad Nacional', 1, 1, 1, 1);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Sangurima', 'honorato',1,1,1,1);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('larga', 'benigno malo',2,1,2,2);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('velez', 'matriz',3,1,3,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('sin nombre', 'interseccion',4,1,4,4);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('av torres', '3 noviembre',5,1,5,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('calle mala', 'calle buena',6,1,5,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('americas', 'lazo',7,1,5,4);
-
-
--------------------DIRECCION ESTUDIANTE-------------------
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Honorato', 'calle vieja', 1, 1, 1, 1);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Calle Larga', 'Honorato',1,1,1,1);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Cordero', 'Gran Colombia',2,1,2,2);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Vergel', 'Matriz',3,1,3,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Cisneros', 'Arizaga',4,1,4,4);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Av torres', '3 noviembre',5,1,5,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Francisco', 'Medio Ejido',6,1,5,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Chola Cuencana', 'Huaynacapac',7,1,5,4);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Americas', 'BaÃ±os', 1, 1, 1, 1);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('San Joaquin', 'El Tejar',1,1,1,1);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Chacon', 'Cardenas',2,1,2,2);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Machuca', 'Vargas',3,1,3,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Aguirre', 'Cordoba',4,1,4,4);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Guayas', 'Solano',5,1,5,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('El Batan', 'Medio Ejido',6,1,5,3);
-INSERT INTO direccion (av_principal, av_secundaria, id_canton, id_pais, id_parroquia, id_provincia) VALUES ('Totoracocha', 'Huaynacapac',7,1,5,4);
 
 ------------------- EMPRESA-------------------
 INSERT INTO empresa (nombre_empresa) VALUES ('Unidad Educativa Jose Maria Velaz');
@@ -1729,107 +1662,17 @@ INSERT INTO empresa (nombre_empresa) VALUES ('Unidad Educativa Jose Maria Velaz'
 -------------------EXTENSION-------------------
 INSERT INTO extension (nombre_extension, id_empresa,id_direccion) VALUES ('105_irfeyal', 1,1);
 
-
-
 -------------------TELEFONO-------------------
 INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0987562111', '0723658988',1);
-INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('099999999','0723658788',1);
-INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0987971203','0723503311',1);
-INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0987654591','0723503344',1);
-INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0999454590','0745600652',1);
-INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0983434581','0735660230',1);
-INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0934561294','0734560098',1);
-INSERT INTO telefono (num_celular, telefono, id_extension) VALUES ('0988876491','0723456770',1);
-
-
--------------------TELEFONO ESTUDIANTE-------------------
-INSERT INTO telefono (num_celular, telefono) VALUES ('0912345111','0712358988');
-INSERT INTO telefono (num_celular, telefono) VALUES ('099977799','0723612388');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0987221203','0723503311');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0933354591','0723503123');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0994444590','0712300652');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0975344581','0735123230');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0935931294','0734512398');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0966676491','0712356770');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0912345112','0712358981');
-INSERT INTO telefono (num_celular, telefono) VALUES ('099977794','0723612383');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0987221206','0723503315');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0933354597','0723503128');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0994444599','0712300610');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0975344511','0735123212');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0935931213','0734512314');
-INSERT INTO telefono (num_celular, telefono) VALUES ('0966676415','0712356716');
-
 
 -------------------CORREO_ELECTRONICO-------------------
 INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalmatriz@edu.ec',1);
-INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyaladmi@edu.ec',1);
-INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalgerente@edu.ec',1);
-INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalsecre@edu.ec',1);
-INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalest@edu.ec',1);
-INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalcord@edu.ec',1);
-INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalcordad@edu.ec',1);
-INSERT INTO correo_electronico (correo, id_extension) VALUES ('irfeyalrect@edu.ec',1);
-
-
--------------------CORREO_ELECTRONICO_ESTUDIANTE-------------------
-INSERT INTO correo_electronico (correo) VALUES ('est1@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est2@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est3@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est4@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est5@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est6@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est7@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est8@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est9@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est10@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est11@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est12@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est13@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est14@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est15@edu.ec');
-INSERT INTO correo_electronico (correo) VALUES ('est16@edu.ec');
 
 -------------------EMPLEADO-------------------
 INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('Administrador', 1, 1, 1, 1, 1);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretario 1', 1, 2,2,2,2);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_gerente', 1,3,3,3,3);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretaria', 1,4,1,4,4);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_coordinador administrativo', 1,5,5,5,5);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_cordinador de desarrollo', 1,6,6,6,6);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_rector', 1,7,7,7,7);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_vicerector', 1,8,8,8,8);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_docente', 1, 1, 1, 1, 9);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretario 1', 1, 2,2,2,10);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_gerente', 1,3,3,3,11);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_secretaria', 1,4,1,4,12);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_coordinador administrativo', 1,5,5,5,13);
-INSERT INTO empleado (cargo, id_extension, id_direcion, id_telefono, id_correo, id_persona) VALUES ('contratacion_cordinador de desarrollo', 1,6,6,6,14);
-
 
 -------------------USUARIO-------------------
 INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$nau04Ps5X18uv9e/X0x1xOzXm9iV7yiGOdP57gtLalbP9YAA8g6k2',true,'0102184322',1);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$39Thszk62DPiSgdigkVNquHGuNQPPlyZpxK7GUOQIpd/DLinvL8Mq',true,'0102879991',2);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$/e8KsXdeGrGWjlrWj7unCORNcjJWrzWkq00qKFiQY5vYA5RrSxj5O',true,'0107039971',3);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7Zqo8bxy42s8GyZ8frzQUebr6eMGo4tFUrAHeETvw7PUjd5MzT4IC',true,'0107049975',4);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$KgudhTCVpOXApMV7x/qDyOBHVXO8NqUHLviBgJ4z8FBF/09BNuBYK',true,'0103079940',5);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$oor3IUso1XvSYlSUVMp/IuOJjnQcZblV1KaGLq9j9/TCoQyz2QiCW',true,'1056789020',6);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$MlbvclpzIV74LgAoTkWTNua.KZEMKPVssf6zAHcmoQP1fRZ.qIww2',true,'1056780100',7);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7257qhHd6F0p4hm7p8zTk.VLvMwHGVl0StBmtgRdFqdUP.3OjwLyK',true,'0100670892',8);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$nau04Ps5X18uv9e/X0x1xOzXm9iV7yiGOdP57gtLalbP9YAA8g6k2',true,'0108625478',9);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$39Thszk62DPiSgdigkVNquHGuNQPPlyZpxK7GUOQIpd/DLinvL8Mq',true,'0105983216',10);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$/e8KsXdeGrGWjlrWj7unCORNcjJWrzWkq00qKFiQY5vYA5RrSxj5O',true,'0102587436',11);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$7Zqo8bxy42s8GyZ8frzQUebr6eMGo4tFUrAHeETvw7PUjd5MzT4IC',true,'0106893251',12);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$KgudhTCVpOXApMV7x/qDyOBHVXO8NqUHLviBgJ4z8FBF/09BNuBYK',true,'0132548740',13);
-INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('$2a$10$oor3IUso1XvSYlSUVMp/IuOJjnQcZblV1KaGLq9j9/TCoQyz2QiCW',true,'0105986312',14);
--- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123',true,'usuario_1',1);
--- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc',true,'usuario_2',2);
--- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1abc',true,'usuario_3',3);
--- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('abc1',true,'usuario_4',4);
--- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('def',true,'usuario_5',5);
--- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('123a',true,'usuario_6',6);
--- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1234',true,'usuario_7',7);
--- INSERT INTO usuario (contrasenia,est_usuario,usuario,id_empleado) VALUES ('1234a',true,'usuario_8',8);
 
 -------------------ROL-------------------
 INSERT INTO rol (descripcion) VALUES ('Administrador');
@@ -1865,10 +1708,7 @@ INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,13);
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,14);
 
---Inicio modulo parametrizacion academica
-
 -------------------MODALIDAD-----------------------------
-
 INSERT INTO public.modalidad(descripcion)VALUES('Intensivo');
 INSERT INTO public.modalidad(descripcion) VALUES('No Intensivo');
 
@@ -1876,56 +1716,6 @@ INSERT INTO public.modalidad(descripcion) VALUES('No Intensivo');
 INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('A', '02/02/2022');
 INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('B', '01/01/2022');
 INSERT INTO public.paralelo (descripcion, fecha_creacion) VALUES('C', '07/03/2022');
-
----------------------MALLA-------------------------------
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Educacion Basica Superior', true,'07/04/2022', 1);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Bachillerato General Unificado', true,'07/04/2022', 1);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Educacion Basica Superior', true,'07/20/2022', 2);
-INSERT INTO public.malla (descripcion, estado, fecha_creacion, id_modalidad) VALUES('Bachillerato General Unificado', true,'07/20/2022', 2);
-
-------------------------ASIGNATURA--------------------------
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Matematicas', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Ingles', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Literatura', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Biologia', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Quimica', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Estudios Sociales', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Psicologia', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Lenguaje', '07/04/2022');
-INSERT INTO public.asignatura (descripcion, fecha_creacion) VALUES('Electronica', '07/04/2022');
-
--------------------------------PERIODO---------------------------
-INSERT INTO public.periodo (costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES(30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', true, 1);
-INSERT INTO public.periodo (costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES(30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', true, 1);
-INSERT INTO public.periodo (costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES(30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', false, 1);
-INSERT INTO public.periodo (costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES(30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', true, 1);
-INSERT INTO public.periodo (costo_matricula, costo_mensualidad, fecha_fin, fecha_inicio, ano_inicio, ano_fin, vigencia, id_malla) VALUES(30.0, 50.0, '11/11/2022', '09/01/2022','2022','2023', false, 1);
-
--------------------------------CURSO---------------------------
-INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Octavo', '07/04/2022');
-INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Noveno', '08/04/2022');
-INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Decimo', '09/04/2022');
-INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Primero Bachillerato',  '10/04/2022');
-INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Segundo Bachillerato', '11/04/2022');
-INSERT INTO public.curso (descripcion, fecha_creacion) VALUES('Tercero Bachillerato', '11/04/2022');
-
----------------------TUTOR----------------
-INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,3,1);
-INSERT INTO public.tutor(id_curso, id_empleado, id_paralelo)VALUES(1,3,2);
-
--------------------------HORARIO-----------------------
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(1, '07/04/2022', '08/09/2022 07:00:00', '07/12/2022 08:00:00',1,1, 1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(2, '07/04/2022', '08/09/2022 08:00:00', '07/12/2022 09:00:00',2,1, 2);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(3, '07/04/2022', '08/09/2022 09:00:00', '07/12/2022 10:00:00',3,1, 1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(4, '07/04/2022', '08/09/2022 10:00:00', '07/12/2022 11:00:00',4,1, 2);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(5, '07/04/2022', '08/09/2022 11:00:00', '07/12/2022 12:00:00',5,1, 1);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(6, '07/04/2022', '08/09/2022 12:00:00', '07/12/2022 13:00:00',6,1, 2);
-INSERT INTO public.horario (dia, fecha_creacion, tiempo_fin, tiempo_inicio,id_asignatura, id_empleado, id_tutor) VALUES(7, '07/04/2022', '08/09/2022 13:00:00', '07/12/2022 14:00:00',1,1, 1);
-
-------------------------HORARIO PERIODO-------------------	
-INSERT INTO public.periodo_horario(id_periodo,id_horario)VALUES(1,1);
-INSERT INTO public.periodo_horario(id_periodo,id_horario)VALUES(1,2);
-INSERT INTO public.periodo_horario(id_periodo,id_horario)VALUES(1,3);
 
 ---------------------AREA----------------
 INSERT INTO public.area (descripcion)VALUES('MATEMATICAS');
@@ -1935,146 +1725,9 @@ INSERT INTO public.area (descripcion)VALUES('ESTUDIOS SOCIALES');
 INSERT INTO public.area (descripcion)VALUES('LENGUA EXTRANJERA');
 INSERT INTO public.area (descripcion)VALUES('OPTATIVA');
 
----------------------AREA ASIGNATURA----------------
-INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(1, 1);
-INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(3, 2);
-INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(8, 2);
-INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(9, 2);
-INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(4, 3);
-INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(5, 3);
-INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(7, 4);
-INSERT INTO public.area_asignatura(id_asignatura,id_area)VALUES(2, 5);
-
-------------------------MALLA CURSO-----------------------
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(1, 1);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(2, 1);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(3, 1);
-
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(1, 3);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(2, 3);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(3, 3);
-
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(4, 2);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(5, 2);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(6, 2);
-
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(4, 4);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(5, 4);
-INSERT INTO public.malla_curso (id_curso, id_malla) VALUES(6, 4);
-
----------------MALLA ASIGNATURA---------------
-INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(1, 1);
-INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(2, 2);
-INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(3, 2);
-INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(4, 1);
-INSERT INTO public.malla_asignatura (id_asignatura, id_malla) VALUES(5, 1);
-
-------------ASIGNATURA EMPLEADO--------------
-
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(1, 3);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(2, 3);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(3, 3);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(4, 3);
-INSERT INTO public.asignatura_empleado (id_asignatura, id_empleado) VALUES(5, 3);
-
--- Fin mÃ³dulo parametrizaciÃ³n academica
-
---MATRICULA---------
-
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,17,9,9,9);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,18,10,10,10);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,19,11,11,11);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,20,12,12,12);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,21,13,13,13);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,22,14,14,14);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,23,15,15,15);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,24,16,16,16);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,25,17,17,17);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,26,18,18,18);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,27,19,19,19);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,28,20,20,20);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,29,21,21,21);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,30,22,22,22);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,31,23,23,23);
-INSERT INTO estudiantes (estado_estudiante, id_extension, id_persona, id_correo, id_direccion, id_telefono) VALUES (true,1,32,24,24,24);
-
-
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,3,1,1);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-11-03',2,2,2,3,2,2);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-10-04',3,3,1,3,3,3);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-11-07',4,4,1,3,2,4);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,5);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,3,1,6);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,3,2,7);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',3,3,1,3,3,8);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,1,3,2,9);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,10);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',1,1,1,3,1,11);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',2,2,2,3,2,12);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',3,1,2,3,3,13);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',4,4,1,3,2,14);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,15);
-INSERT INTO matriculas (fecha_matricula,id_periodo, id_curso, id_modalidad, id_usuario, id_paralelo, id_estudiante) VALUES ('2022-12-05',5,5,2,3,1,16);
-
-
---ASISTENCIA-------------
-
-INSERT INTO clase (fec_clase, id_asignatura, id_curso, id_docente, id_paralelo, id_modalidad_id_modalidad, id_periodo_id_periodo) values ('2022/02/01',1, 1, 1, 1, 1, 1);--OJO:no puedo ingresar PERIODO xq en el modulo de parametrizacion da error en esa tabla
-INSERT INTO clase (fec_clase, id_asignatura, id_curso, id_docente, id_paralelo, id_modalidad_id_modalidad, id_periodo_id_periodo) values ('2022/02/02',2, 2, 2, 2, 1, 2);
-INSERT INTO clase (fec_clase, id_asignatura, id_curso, id_docente, id_paralelo, id_modalidad_id_modalidad, id_periodo_id_periodo) values ('2022/02/03',3, 3, 3, 3, 2, 3);
-INSERT INTO clase (fec_clase, id_asignatura, id_curso, id_docente, id_paralelo, id_modalidad_id_modalidad, id_periodo_id_periodo) values ('2022/02/04',4, 4, 4, 1, 2, 4);
-INSERT INTO clase (fec_clase, id_asignatura, id_curso, id_docente, id_paralelo, id_modalidad_id_modalidad, id_periodo_id_periodo) values ('2022/02/05',5, 5, 5, 2, 1, 5);
-
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 1, 1);--OJO:Necesito la clase 
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 2, 2);
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (true, 3, 3);
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 4, 4);
-INSERT INTO asistencia (estado_asis,id_clase,id_estudiante) values (false, 5, 5);
-
 --DOCUMENTOS ACADEMICOS-----------
 
 INSERT INTO unidad (nombre_unidad) VALUES ('Unidad 1'), ('Unidad 2'), ('Unidad 3'), ('Unidad 4'), ('Unidad 5'), ('Unidad 6'), ('Unidad 7'), ('Unidad 8'), ('Unidad 9'), ('Unidad 10');
-
-INSERT INTO plan_unidad (titulo_unidad, fecha_creacion, fecha_inicio, fecha_fin, num_periodos, objetivos, criterios_evaluacion, destrezas, act_experiencia, act_reflexion, act_conceptualizacion, act_aplicacion, recursos, indicadores, tecnicas, adaptaciones_curriculares, adap_necesidad_educativa, especificacion_nesesidad, estado, observaciones, coor_academico, fecha_revision, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, id_curso, id_paralelo) values ('El sistema inmunologico', '19-07-2022', '01-09-2022', '30-06-2023', 1, 'Objetivo9', 'Criterio9', 'Destreza9', 'experiencia9', 'reflexion9', 'conceptualizacion9', 'aplicacion9', 'recursos9', 'indicadores9', 'tecnicas9', 'adaptaciones_curriculares9', 'adap_necesidad_educativa9', 'especificacion_nesesidad9', 'Pendiente', 'Sin observaciones', 'Elena Morocho', '21-07-2022', 3, 3, 4, 1, 4, 2, 3);
-INSERT INTO plan_unidad (titulo_unidad, fecha_creacion, fecha_inicio, fecha_fin, num_periodos, objetivos, criterios_evaluacion, destrezas, act_experiencia, act_reflexion, act_conceptualizacion, act_aplicacion, recursos, indicadores, tecnicas, adaptaciones_curriculares, adap_necesidad_educativa, especificacion_nesesidad, estado, observaciones, coor_academico, fecha_revision, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, id_curso, id_paralelo) values ('Celulas', '12-07-2022', '01-09-2022', '30-06-2023', 1, 'Objetivo1', 'Criterio1', 'Destreza1', 'experiencia1', 'reflexion1', 'conceptualizacion1', 'aplicacion1', 'recursos1', 'indicadores1', 'tecnicas1', 'adaptaciones_curriculares1', 'adap_necesidad_educativa1', 'especificacion_nesesidad1', 'Aprobado', 'Sin observaciones', 'Elena Morocho', '12-07-2022', 3, 3, 4, 2, 4, 3, 1);
-INSERT INTO plan_unidad (titulo_unidad, fecha_creacion, fecha_inicio, fecha_fin, num_periodos, objetivos, criterios_evaluacion, destrezas, act_experiencia, act_reflexion, act_conceptualizacion, act_aplicacion, recursos, indicadores, tecnicas, adaptaciones_curriculares, adap_necesidad_educativa, especificacion_nesesidad, estado, observaciones, coor_academico, fecha_revision, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, id_curso, id_paralelo) values ('Fundamentos de biologia', '12-07-2022', '01-09-2022', '30-06-2023', 1, 'Objetivo2', 'Criterio2', 'Destreza2', 'experiencia2', 'reflexion2', 'conceptualizacion2', 'aplicacion2', 'recursos2', 'indicadores2', 'tecnicas2', 'adaptaciones_curriculares2', 'adap_necesidad_educativa2', 'especificacion_nesesidad2', 'Rechazado', 'Corregir los objetivos de la unidad', 'Elena Morocho', '15-07-2022', 1, 3, 4, 1, 4, 2, 1);
-INSERT INTO plan_unidad (titulo_unidad, fecha_creacion, fecha_inicio, fecha_fin, num_periodos, objetivos, criterios_evaluacion, destrezas, act_experiencia, act_reflexion, act_conceptualizacion, act_aplicacion, recursos, indicadores, tecnicas, adaptaciones_curriculares, adap_necesidad_educativa, especificacion_nesesidad, estado, observaciones, coor_academico, fecha_revision, id_unidad, id_empleado, id_asignatura, id_modalidad, id_periodo, id_curso, id_paralelo) values ('Genetica molecular', '15-07-2022', '01-09-2022', '30-06-2023', 1, 'Objetivo4', 'Criterio4', 'Destreza4', 'experiencia4', 'reflexion4', 'conceptualizacion4', 'aplicacion4', 'recursos4', 'indicadores4', 'tecnicas4', 'adaptaciones_curriculares4', 'adap_necesidad_educativa4', 'especificacion_nesesidad4', 'Rechazado', 'Corregir la fecha de inicio de la unidad', 'Elena Morocho', '16-07-2022', 4, 3, 4, 1, 4, 3, 2);
-
-
---SOLO KIT PARA tipo_comprobante----------
---INVENTARIOS---------- 
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo, stock_minimo) values ('codModI2', 'Ingles 2do EGB', 1, '2do Tomo',1);--OJO:Necesito id del kit que esta con error en el insert\
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo, stock_minimo) values ('codModLL2', 'Lengua y Literatura 2do EGB', 1, '2do Tomo',1);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo, stock_minimo) values ('codModM2', 'Matematica 2do EGB',  1, '2do Tomo',1);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo, stock_minimo) values ('codModES2', 'Estudios Sociales 2do EGB',  1,  '2do Tomo',1);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo , cantidad, numero_modulo, stock_minimo) values ('codModCN2', 'Ciencias Naturales 2do EGB',  1, '2do Tomo',1);
-
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo, stock_minimo) values ('codModI3', 'Ingles 3ero EGB', 1, '3ero Tomo',1);--OJO:Necesito id del kit que esta con error en el insert\
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo, stock_minimo) values ('codModLL3', 'Lengua y Literatura 3ero EGB', 1, '3ero Tomo',1);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo, stock_minimo) values ('codModM3', 'Matematica 3ero EGB',  1,'3ero Tomo',1);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo, stock_minimo) values ('codModES3', 'Estudios Sociales 3ero EGB',  1, '3ero Tomo',1);
-INSERT INTO modulo_libro (cod_modulo, nombre_modulo, cantidad, numero_modulo, stock_minimo) values ('codModCN3', 'Ciencias Naturales 3ero EGB',  1, '3ero Tomo',1);
-
-INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Kit de Octavo',12, 1, 1);
-INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Kit de Noveno',12, 1, 2);
-INSERT INTO kit(nombrekit, precio_kit, id_periodo, id_curso) values ('Kite de decimo',12, 1, 3);
-
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,1);--OJO:Necesito id del kit que esta con error en el insert
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,2);
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,3);
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,4);
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (1,5);
-
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,6);--OJO:Necesito id del kit que esta con error en el insert
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,7);
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,8);
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,9);
-INSERT INTO ingreso_kit (id_kit,id_modulo_libro) values (2,10);
-
-
---INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago 50%', '2022/02/15',3,1);
---INSERT INTO aprobacionkit (id_administrador, tipo_aproba, estado_aproba, detalle_control, fecha_aprobacion, id_estudiante, id_kit) values (6, 'Entrega kit estudiante', false, 'Se aprueba pago completo', '2022/02/16',4,1);
-
 
 --PAGOS-----------
 
@@ -2084,40 +1737,3 @@ INSERT INTO tipo_pago (descripcion) VALUES ('Deposito');
 INSERT INTO concepto_pago (descripcion) VALUES ('Matricula');
 INSERT INTO concepto_pago (descripcion) VALUES ('Mensual');
 INSERT INTO concepto_pago (descripcion) VALUES ('Kit');
-
-----GESTION DE TUTORIAS
-
-
---SECRETARIA 
-
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula', 'Para todos los cursos', 'C/documentos');
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Promocion', 'Para todos los cursos', 'C/documentos');
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago Matricula', 'Para todos los cursos', 'C/documentos');
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago Mensualidad', 'Para todos los cursos', 'C/documentos');
-INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago kit', 'Para todos los cursos', 'C/documentos');
-
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Juan GarcÃ­a', 'Pablo LÃ³pez', '2022/03/16', null, 'Pendiente', 1, 1); --OJO:tipo de patter de timestamp y pilas con id_rol_usuario por  
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jose GarcÃ­a', 'Pablo LÃ³pez', '2022/03/17', null, 'Pendiente', 2, 2); 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Carlos GarcÃ­a', 'Pedro LÃ³pez', '2022/03/17', null, 'Pendiente', 3, 3); 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Jonas GarcÃ­a', 'Pedro LÃ³pez', '2022/03/16', null, 'Pendiente', 4, 4); 
-INSERT INTO registro_bitacora (solicitante, emisor, fecha, hora, estado, id_documento, id_empleado) VALUES ('Luis GarcÃ­a', 'Pablo LÃ³pez', '2022/03/16', null, 'Pendiente', 5, 5); 
-
---INVENTARIOS
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01001', 'AUDIO Y VIDEO');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01002', 'COMPUTACION');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01003', 'HERRAMIENTA');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01004', 'TELEFONO');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01005', 'TV');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01006', 'PARLANTE');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01007', 'MICROFONO');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('02008', 'BICICLETA');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04009', 'PC PORTATIL');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04010', 'PC ESCRITORIO');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04011', 'ACCESORIOS');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('04012', 'IMPRESORA');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10013', 'CELULAR');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('10014', 'TABLET');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('11015', 'TV NO SMART');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('99016', 'PUBLICIDAD');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01017', 'VIDEO');
-INSERT INTO public.categoria (cate_codigo, cate_nombre) VALUES ('01018', 'PROYECTOR');
