@@ -1737,3 +1737,11 @@ INSERT INTO tipo_pago (descripcion) VALUES ('Deposito');
 INSERT INTO concepto_pago (descripcion) VALUES ('Matricula');
 INSERT INTO concepto_pago (descripcion) VALUES ('Mensual');
 INSERT INTO concepto_pago (descripcion) VALUES ('Kit');
+
+--Secretaria--------
+
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Matricula', 'Para todos los cursos', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Certificado Promocion', 'Para todos los cursos', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago Matricula', 'Para todos los cursos', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago Mensualidad', 'Para todos los cursos', 'C/documentos');
+INSERT INTO documento (tipo_documento, descripcion, ubicacion) VALUES ('Comprobante de Pago kit', 'Para todos los cursos', 'C/documentos');
