@@ -1682,7 +1682,6 @@ INSERT INTO rol (descripcion) VALUES ('Coordinador administrativo');
 INSERT INTO rol (descripcion) VALUES ('Coordinador academico');
 INSERT INTO rol (descripcion) VALUES ('Coordinador de desarrollo institucional');
 INSERT INTO rol (descripcion) VALUES ('Rector');
-INSERT INTO rol (descripcion) VALUES ('Coordinador Pedagogico');
 -------------------MODULO-------------------
 INSERT INTO modulo (modulo,url) VALUES ('matriculas','http//localhost/modmatricula.php');
 INSERT INTO modulo (modulo,url) VALUES ('asistencia','http//localhost/modasistencia.php');
