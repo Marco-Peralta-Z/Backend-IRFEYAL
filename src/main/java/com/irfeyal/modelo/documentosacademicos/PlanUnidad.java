@@ -78,7 +78,7 @@ public class PlanUnidad implements Serializable{
 	@Column(name = "observaciones", length = 10485760)
 	private String observaciones;
 	
-	private String coor_academico;
+	private String coor_area;
 	private Date fecha_revision;
 	
 	@ManyToOne
@@ -116,7 +116,7 @@ public class PlanUnidad implements Serializable{
 			Long num_periodos, String objetivos, String criterios_evaluacion, String destrezas, String act_experiencia,
 			String act_reflexion, String act_conceptualizacion, String act_aplicacion, String recursos,
 			String indicadores, String tecnicas, String adaptaciones_curriculares, String adap_necesidad_educativa,
-			String especificacion_nesesidad, String estado, String observaciones, String coor_academico,
+			String especificacion_nesesidad, String estado, String observaciones, String coor_area,
 			Date fecha_revision, Unidad unidad, Empleado empleado, Asignatura asignatura, Curso curso,
 			Paralelo paralelo, Modalidad modalidad, Periodo periodo) {
 		super();
@@ -141,7 +141,7 @@ public class PlanUnidad implements Serializable{
 		this.especificacion_nesesidad = especificacion_nesesidad;
 		this.estado = estado;
 		this.observaciones = observaciones;
-		this.coor_academico = coor_academico;
+		this.coor_area= coor_area;
 		this.fecha_revision = fecha_revision;
 		this.unidad = unidad;
 		this.empleado = empleado;
@@ -320,12 +320,12 @@ public class PlanUnidad implements Serializable{
 		this.observaciones = observaciones;
 	}
 
-	public String getCoor_academico() {
-		return coor_academico;
+	public String getCoor_area() {
+		return coor_area;
 	}
 
-	public void setCoor_academico(String coor_academico) {
-		this.coor_academico = coor_academico;
+	public void setCoor_area(String coor_area) {
+		this.coor_area= coor_area;
 	}
 
 	public Date getFecha_revision() {

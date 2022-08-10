@@ -40,12 +40,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
 		http.authorizeRequests()
 		// Acceso a solo los gets todos los roles
-		.antMatchers(HttpMethod.GET, "/**").hasAnyRole( "Administrador", "Secretaria", "Docente", "Coordinador academico", "Coordinador administrativo","Coordinador de desarrollo institucional" )		
+		.antMatchers(HttpMethod.GET, "/**").hasAnyRole( "Administrador", "Secretaria", "Docente", "Coordinador academico", "Coordinador administrativo","Coordinador de desarrollo institucional", "Coordinador de area" )		
 		//ASISTENCIA
 		.antMatchers("/asistencia/**").hasAnyRole("Administrador","Docente")
 		//DOCUMENTOS ACADÉMICOS
-		.antMatchers("/planunidades/**").hasAnyRole("Administrador","Coordinador academico", "Docente")
-		.antMatchers("/unidades/**")	.hasAnyRole("Administrador","Coordinador academico", "Docente")
+		.antMatchers("/planunidades/**").hasAnyRole("Administrador","Coordinador de area", "Docente")
+		.antMatchers("/unidades/**")	.hasAnyRole("Administrador","Coordinador de area", "Docente")
 		//INVENTARIOS
 		.antMatchers("/aprobacion/**")				.hasAnyRole("Administrador","Coordinador administrativo","Coordinador de desarrollo institucional")
 		.antMatchers("/aprobacionkit/**")			.hasAnyRole("Administrador","Coordinador administrativo","Coordinador de desarrollo institucional")

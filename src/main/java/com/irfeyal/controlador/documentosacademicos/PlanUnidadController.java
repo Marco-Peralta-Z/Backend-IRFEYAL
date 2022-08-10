@@ -1,10 +1,8 @@
 package com.irfeyal.controlador.documentosacademicos;
 
-import java.io.ByteArrayOutputStream;
+
 import java.net.URI;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
-import com.irfeyal.modelo.matricula.Matricula;
 import com.irfeyal.modelo.parametrizacionacademica.Area;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
-import com.irfeyal.modelo.parametrizacionacademica.Malla;
-import com.irfeyal.modelo.rolseguridad.Empleado;
+
 import com.irfeyal.modelo.rolseguridad.Persona;
 import com.irfeyal.modelo.rolseguridad.Usuario;
 import com.irfeyal.servicio.documentosacademicos.PlanUnidadService;
-import com.irfeyal.servicio.parametrizacionacademica.CursoServicesImp;
+
 
 import com.irfeyal.servicio.parametrizacionacademica.ModalidadServicesImp;
 import com.irfeyal.servicio.parametrizacionacademica.ParaleloServicesImp;
@@ -50,8 +46,6 @@ public class PlanUnidadController {
 	@Autowired
 	private PeriodoServicesImp periodoService;
 	
-	@Autowired
-	private CursoServicesImp cursosService;
 	
 	@Autowired
 	private ParaleloServicesImp paraleloService;
@@ -122,21 +116,6 @@ public class PlanUnidadController {
 		return ResponseEntity.ok(planUnidadService.findAreaByAsig(id));
 	}
 	
-//	@GetMapping ("asignaturas/{id}")
-//	private ResponseEntity<List<Asignatura>> getAllAsignaturasByMalla (@PathVariable("id") Long id){
-//		try {
-//			return ResponseEntity.ok(planUnidadService.findAllByMalla(id));
-//		} catch (Exception e) {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-//		}
-//		
-//	}
-//	
-	@GetMapping(path = "cursos")
-	public ResponseEntity<?> getAllCursos() {
-		return new ResponseEntity<>(cursosService.getAllCurso(), HttpStatus.OK);
-	}
-	
 	@GetMapping ("cursos/malla/{id_malla}")
 	private ResponseEntity<List<Curso>> getCursosByMalla (@PathVariable("id_malla") Long id){
 		return ResponseEntity.ok(planUnidadService.findCursosByMalla(id));
@@ -147,6 +126,11 @@ public class PlanUnidadController {
 		return new ResponseEntity<>(paraleloService.getAllParalelo(), HttpStatus.OK);
 	}
 	
+	@GetMapping("paralelos/curso/{id_curso}/empleado/{id_empleado}")
+	public ResponseEntity<?> getAllParalelosByCurso(@PathVariable("id_curso") Long id_curso, @PathVariable("id_empleado") Long id_empleado) {
+		return new ResponseEntity<>(planUnidadService.findParalelosByCurso(id_curso, id_empleado), HttpStatus.OK);
+	}
+	
 	@GetMapping ("{id_unidad}/{id_asignatura}/{id_curso}/{id_paralelo}/{id_periodo}/{id_modalidad}")
 	private ResponseEntity<Boolean> verificarPlanUnidad (@PathVariable("id_unidad") Long id_unidad,
 			@PathVariable("id_asignatura") Long id_asig, @PathVariable("id_curso") Long id_curso,
@@ -155,9 +139,9 @@ public class PlanUnidadController {
 		return ResponseEntity.ok(planUnidadService.findPUByUnidadAsigCurso(id_unidad, id_asig, id_curso,id_paralelo, id_periodo, id_modalidad));
 	}
 	
-	@GetMapping ("coorpedagogico")
-	private ResponseEntity<List<Persona>> getNomUsuariosByRolCoorPedagogico (){
-		return ResponseEntity.ok(planUnidadService.findUsuariosByRolCoorPedagogico());
+	@GetMapping ("cooracademico")
+	private ResponseEntity<List<Persona>> getNomUsuariosByRolCoorAcademico (){
+		return ResponseEntity.ok(planUnidadService.findUsuariosByRolCoorAcademico());
 	}
 	
 	@PostMapping("pdfPlanUnidad/{coorpedagogico}")

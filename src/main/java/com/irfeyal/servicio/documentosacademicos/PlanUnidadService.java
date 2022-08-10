@@ -11,12 +11,15 @@ import com.irfeyal.interfaces.documentosacademicos.PlanUnidadInterface;
 import com.irfeyal.modelo.dao.documentosacademicos.PlanUnidadDAO;
 import com.irfeyal.modelo.dao.parametrizacionacademica.AreaRepository;
 import com.irfeyal.modelo.dao.parametrizacionacademica.MallaRepository;
+import com.irfeyal.modelo.dao.parametrizacionacademica.TutorRepository;
 import com.irfeyal.modelo.dao.rolseguridad.RolUsuarioDAO;
 import com.irfeyal.modelo.dao.rolseguridad.UsuarioDAO;
 import com.irfeyal.modelo.documentosacademicos.PlanUnidad;
 import com.irfeyal.modelo.parametrizacionacademica.Area;
 import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.parametrizacionacademica.Curso;
+import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
+import com.irfeyal.modelo.parametrizacionacademica.Tutor;
 import com.irfeyal.modelo.rolseguridad.Persona;
 import com.irfeyal.modelo.rolseguridad.RolUsuario;
 import com.irfeyal.modelo.rolseguridad.Usuario;
@@ -48,6 +51,9 @@ public class PlanUnidadService implements PlanUnidadInterface {
 	
 	@Autowired
 	private AreaRepository areaRepository;
+	
+	@Autowired
+	private TutorRepository tutorRepository;
 	
 	@Autowired
 	private RolUsuarioDAO rolUsuarioDAO;
@@ -121,19 +127,19 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			}
 			return CursoRespuesta;
 		}
+		
+		//Listar Paralelos by curso y tutor
+		public List<Paralelo> findParalelosByCurso (Long id_curso, Long id_empleado){
+			List<Paralelo> paralelosRespuesta = new ArrayList<>();
+			List<Tutor> tutores = tutorRepository.findAll();
+			for (int i=0; i<tutores.size(); i++) {
+				if (tutores.get(i).getId_curso().getId_curso() == id_curso && tutores.get(i).getId_empleado().getId_empleado() == id_empleado) {
+					paralelosRespuesta.add(tutores.get(i).getId_paralelo());
+				} 
+			}
+			return paralelosRespuesta;
+		}
 	
-//	//listar Asignaturas por Malla
-//		public List<Asignatura> findAllByMalla (Long id){
-//			List<Asignatura> AsigRespuesta = new ArrayList<>();
-//			List<Asignatura> asignaturas = asignaturaRepository.findAll();
-//			for (int i=0; i<asignaturas.size(); i++) {
-//				long id_malla = asignaturas.get(i).getMallas().get(0).getId_malla();
-//				if ( id_malla == id) {
-//					AsigRespuesta.add(asignaturas.get(i));
-//				}
-//			}
-//			return AsigRespuesta;
-//		}
 		
 		//listar Asignaturas por Malla
 		public List<Asignatura> findAsigByMalla (Long id){
@@ -152,11 +158,11 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			Optional<Area> AreaRespuesta = Optional.empty();
 			boolean ban = false;
 			List<Area> areas = areaRepository.findAll();
-				for (long i=1; i<areas.size(); i++) {
-					List<Asignatura> asignaturas = areaRepository.findById(i).get().getListaAsignaturas();
+				for (int i=1; i<areas.size(); i++) {
+					List<Asignatura> asignaturas = areaRepository.findById((long) i).get().getListaAsignaturas();
 					for (int j=0; j<asignaturas.size(); j++) {
 						if (asignaturas.get(j).getId_asignatura() == id_asig) {
-							AreaRespuesta = Optional.of(areas.get((int) i));
+							AreaRespuesta = Optional.of(areas.get(i-1));
 							ban = true;
 							break;
 						}
@@ -193,11 +199,11 @@ public class PlanUnidadService implements PlanUnidadInterface {
 	}
 	
 	//listar Nombres de Usuarios por Ror (Coordinador Pedagogico)
-		public List<Persona> findUsuariosByRolCoorPedagogico (){
+		public List<Persona> findUsuariosByRolCoorAcademico (){
 			List<Persona> personaRespuesta = new ArrayList<>();
 			List<RolUsuario> rolUsuarios = (List<RolUsuario>) rolUsuarioDAO.findAll();
 			for (int i=0; i<rolUsuarios.size(); i++) {
-				if (rolUsuarios.get(i).getRol().getDescripcion().equals("Coordinador Pedagogico")) {
+				if (rolUsuarios.get(i).getRol().getDescripcion().equals("Coordinador academico")) {
 					personaRespuesta.add(rolUsuarios.get(i).getUsuario().getEmpleado().getPersona());
 				} 
 			}
@@ -216,7 +222,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 
 	
 	//Reporte del plan de unidad
-	public FileOutputStream createPDFplanunidad(PlanUnidad datosPlanUnidad, String CoorPedagogico) {
+	public FileOutputStream createPDFplanunidad(PlanUnidad datosPlanUnidad, String CoorAcademico) {
 		try {
 			Document document = new Document(PageSize.A4.rotate());
 			FileOutputStream ficheroPDF = new FileOutputStream("..\\..\\..\\Downloads\\PlanUnidadNo"+datosPlanUnidad.getUnidad().getIdUnidad()+"-"+
@@ -283,7 +289,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			float[] columnWidthsInfo1 = new float[]{9f, 23f, 10f, 20f, 6f, 21f, 9f, 4f};
 			tablaDatoInfo1.setWidths(columnWidthsInfo1);
 			
-			PdfPCell celdaLabelDocente = new PdfPCell(new Phrase("NOMBRE DE DOCENTE:", fontCabeceraTabla));
+			PdfPCell celdaLabelDocente = new PdfPCell(new Phrase("NOMBRE DE TUTOR:", fontCabeceraTabla));
 			celdaLabelDocente.setHorizontalAlignment(Element.ALIGN_LEFT);
 			celdaLabelDocente.setBackgroundColor(sombreado);
 			PdfPCell celdaDocente = new PdfPCell(new Phrase(datosPlanUnidad.getEmpleado().getPersona().getNombre()+" "+datosPlanUnidad.getEmpleado().getPersona().getApellido(), fontDetalleTabla));
@@ -532,7 +538,7 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			
 			//Fila Nombres
 			Paragraph textDocente= new Paragraph();
-			Chunk labelDocente= new Chunk("DOCENTE: ",fontCabeceraTabla);
+			Chunk labelDocente= new Chunk("TUTOR: ",fontCabeceraTabla);
 			Chunk NomDocente= new Chunk(datosPlanUnidad.getEmpleado().getPersona().getNombre()+" "+datosPlanUnidad.getEmpleado().getPersona().getApellido(), fontDetalleTabla);
 			textDocente.add(labelDocente);
 			textDocente.add(NomDocente);
@@ -541,15 +547,15 @@ public class PlanUnidadService implements PlanUnidadInterface {
 			
 			Paragraph textCoorA= new Paragraph();
 			Chunk labelCoorA= new Chunk("COOR. DE ÁREA: ",fontCabeceraTabla);
-			Chunk NomCoorA = new Chunk(datosPlanUnidad.getCoor_academico(), fontDetalleTabla);
+			Chunk NomCoorA = new Chunk(datosPlanUnidad.getCoor_area(), fontDetalleTabla);
 			textCoorA.add(labelCoorA);
 			textCoorA.add(NomCoorA);
 			PdfPCell celdatextCoorA = new PdfPCell(new Phrase(textCoorA));
 			celdatextCoorA.setHorizontalAlignment(Element.ALIGN_LEFT);
 			
 			Paragraph textCoorP= new Paragraph();
-			Chunk labelCoorP= new Chunk("COOR. PEDAGÓGICO: ",fontCabeceraTabla);
-			Chunk NomCoorP = new Chunk(CoorPedagogico, fontDetalleTabla);
+			Chunk labelCoorP= new Chunk("COOR. ACADEMICO: ",fontCabeceraTabla);
+			Chunk NomCoorP = new Chunk(CoorAcademico, fontDetalleTabla);
 			textCoorP.add(labelCoorP);
 			textCoorP.add(NomCoorP);
 			PdfPCell celdatextCoorP = new PdfPCell(new Phrase(textCoorP));
