@@ -1694,19 +1694,7 @@ INSERT INTO modulo (modulo,url) VALUES ('secretaria','http//localhost/modsecreta
 
 ------------------ROL_USUARIO-------------------
 INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,1,2,1);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,3,2);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,3);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,4);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,5);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,6);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,7);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,8);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,2,3,9);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,3,5,10);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,4,1,11);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,5,6,12);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,3,13);
-INSERT INTO rol_usuario (estado, id_rol,id_modulo, id_usuario) VALUES (true,6,1,14);
+
 
 -------------------MODALIDAD-----------------------------
 INSERT INTO public.modalidad(descripcion)VALUES('Intensivo');

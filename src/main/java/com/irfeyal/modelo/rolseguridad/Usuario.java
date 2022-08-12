@@ -27,7 +27,7 @@ public class Usuario implements Serializable {
 	@Column(name="usuario")
 	private String usuario;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "id_empleado")
 	private Empleado empleado;
 	

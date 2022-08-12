@@ -61,7 +61,7 @@ public class UsuarioControler {
 			usuarioSer.findById(id);
 			usuarioSer.deleteUsuario(id);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Erros al eliminar el usuario de la base de datos");
+			response.put("mensaje", "Error al eliminar el usuario de la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
