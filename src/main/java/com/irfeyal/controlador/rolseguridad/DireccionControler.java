@@ -27,7 +27,7 @@ import com.irfeyal.servicio.rolseguridad.DireccionServices;
 
 
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapDireccion")
 public class DireccionControler {

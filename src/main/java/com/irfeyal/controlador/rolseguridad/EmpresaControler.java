@@ -26,8 +26,7 @@ import com.irfeyal.modelo.rolseguridad.Empresa;
 import com.irfeyal.servicio.rolseguridad.EmpresaService;
 
 
-
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapEmpresa")
 public class EmpresaControler {

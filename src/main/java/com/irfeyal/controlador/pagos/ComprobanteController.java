@@ -30,7 +30,7 @@ import com.irfeyal.modelo.inventarios.Kit;
 import com.irfeyal.modelo.pagos.Comprobante;
 import com.irfeyal.servicio.inventarios.IKitService;
 
-@CrossOrigin(origins= {"*"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class ComprobanteController {

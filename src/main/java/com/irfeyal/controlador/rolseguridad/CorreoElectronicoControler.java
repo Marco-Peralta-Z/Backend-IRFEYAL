@@ -23,7 +23,7 @@ import com.irfeyal.modelo.rolseguridad.CorreoElectronico;
 import com.irfeyal.servicio.rolseguridad.CorreoElectronicoServices;
 
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapCorreoElectronico")
 

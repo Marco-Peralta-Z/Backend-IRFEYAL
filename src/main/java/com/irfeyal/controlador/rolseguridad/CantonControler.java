@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.rolseguridad.Canton;
 import com.irfeyal.servicio.rolseguridad.CantonService;
 
-
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapCanton")
 

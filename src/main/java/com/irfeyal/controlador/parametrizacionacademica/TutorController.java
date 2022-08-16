@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.parametrizacionacademica.TutorServices;
 import com.irfeyal.modelo.parametrizacionacademica.Tutor;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/tutor")
 public class TutorController {

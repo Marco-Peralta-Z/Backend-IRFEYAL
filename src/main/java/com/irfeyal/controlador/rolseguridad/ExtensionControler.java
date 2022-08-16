@@ -25,10 +25,7 @@ import com.irfeyal.modelo.rolseguridad.Extension;
 import com.irfeyal.servicio.rolseguridad.ExtensionServices;
 
 
-
-
-
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapExtension")
 public class ExtensionControler {

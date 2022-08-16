@@ -27,7 +27,7 @@ import com.irfeyal.modelo.matricula.Estudiante;
 import com.irfeyal.modelo.rolseguridad.Persona;
 import com.irfeyal.servicio.matricula.EstudianteServiceImpl;
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class EstudianteRestController {

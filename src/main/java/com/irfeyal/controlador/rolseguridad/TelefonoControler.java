@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.rolseguridad.Telefono;
 import com.irfeyal.servicio.rolseguridad.TelefonoServices;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapTelefono")
 public class TelefonoControler {

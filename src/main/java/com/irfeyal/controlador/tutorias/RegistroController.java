@@ -35,8 +35,9 @@ import com.irfeyal.modelo.tutorias.Registro;
 import com.irfeyal.servicio.tutorias.RegistroServiceImpl;
 
 
-@CrossOrigin
+
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/registro")
 public class RegistroController {
 

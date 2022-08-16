@@ -27,8 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.pagos.IDetalleComprobanteService;
 import com.irfeyal.modelo.pagos.DetalleComprobante;
 
-
-@CrossOrigin(origins= {"*"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class DetalleComprobanteController {

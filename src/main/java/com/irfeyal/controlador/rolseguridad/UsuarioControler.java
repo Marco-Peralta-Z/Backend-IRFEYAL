@@ -28,7 +28,7 @@ import com.irfeyal.modelo.rolseguridad.Usuario;
 import com.irfeyal.servicio.rolseguridad.UsuarioServices;
 
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapUsuario")
 public class UsuarioControler {

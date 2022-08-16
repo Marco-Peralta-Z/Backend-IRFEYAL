@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.pagos.TipoPago;
 import com.irfeyal.interfaces.pagos.ITipoPagoService;
 
-@CrossOrigin(origins= {"*"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.rolseguridad.Rol;
 import com.irfeyal.servicio.rolseguridad.RolServices;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapRol")
 public class RolControler {
