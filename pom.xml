@@ -12,12 +12,13 @@
 	<groupId>com.example.apirestproductos</groupId>
 	<artifactId>Backend-IRFEYAL</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+
 	<name>Backend-IRFEYAL</name>
 	<description>Backend Irfeyal</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,11 +55,11 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
-    		<groupId>com.google.code.gson</groupId>
-    		<artifactId>gson</artifactId>
-    		<version>2.8.9</version>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.9</version>
 		</dependency>
-		
+
 
 		<!-- Security -->
 
@@ -96,17 +97,17 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.5.13.3</version>
 		</dependency>
-	    <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>6.18.1</version>
-        </dependency>
-        <dependency>
-    <groupId>net.sf.jasperreports</groupId>
-    <artifactId>jasperreports-fonts</artifactId>
-    <version>6.18.1</version>
-</dependency>
-        
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.18.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+			<version>6.18.1</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>

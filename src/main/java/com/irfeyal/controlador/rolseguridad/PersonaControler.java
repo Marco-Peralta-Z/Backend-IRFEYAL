@@ -21,8 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.rolseguridad.Persona;
 import com.irfeyal.servicio.rolseguridad.PersonaServices;
 
-
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapPersona")
 public class PersonaControler {

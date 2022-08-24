@@ -28,7 +28,7 @@ import com.irfeyal.modelo.parametrizacionacademica.Asignatura;
 import com.irfeyal.modelo.rolseguridad.RolUsuario;
 import com.irfeyal.servicio.rolseguridad.RolUsuarioServices;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/asignatura")
 public class AsignaturaController {

@@ -23,7 +23,7 @@ import com.irfeyal.modelo.rolseguridad.Canton;
 import com.irfeyal.modelo.rolseguridad.Parroquia;
 import com.irfeyal.servicio.rolseguridad.ParroquiaServices;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapParroquia")
 public class ParroquiaControler {

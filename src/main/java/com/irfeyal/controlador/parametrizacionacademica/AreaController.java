@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.parametrizacionacademica.AreaServices;
 import com.irfeyal.modelo.parametrizacionacademica.Area;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/area")
 public class AreaController {

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.modelo.rolseguridad.Empleado;
 import com.irfeyal.servicio.rolseguridad.EmpleadoService;
 
-@CrossOrigin(origins= {"*"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/mapEmpleado")
 public class EmpleadoControler {

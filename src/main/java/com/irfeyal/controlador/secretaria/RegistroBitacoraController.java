@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.secretaria.IRegistroBitacoraService;
 import com.irfeyal.modelo.secretaria.RegistroBitacora;
 
-@CrossOrigin(origins= {"*"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class RegistroBitacoraController {
