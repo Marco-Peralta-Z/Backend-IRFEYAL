@@ -27,7 +27,7 @@ import com.irfeyal.servicio.rolseguridad.ModuloServices;
 
 
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapModulo")
 

@@ -32,7 +32,7 @@ import com.irfeyal.servicio.matricula.EnvioEmail;
 import com.irfeyal.servicio.matricula.MatriculaServiceImpl;
 import com.irfeyal.servicio.parametrizacionacademica.AsignaturaServicesImp;
 
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class MatriculaRestController {

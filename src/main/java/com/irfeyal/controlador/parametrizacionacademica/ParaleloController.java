@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.irfeyal.interfaces.parametrizacionacademica.ParaleloServices;
 import com.irfeyal.modelo.parametrizacionacademica.Paralelo;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/paralelo")
 public class ParaleloController {

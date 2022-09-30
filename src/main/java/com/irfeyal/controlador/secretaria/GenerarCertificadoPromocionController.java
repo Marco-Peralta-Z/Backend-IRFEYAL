@@ -25,7 +25,7 @@ import com.irfeyal.interfaces.secretaria.IGenerarCertificadoPromocionService;
 import com.irfeyal.modelo.secretaria.GenerarCertificadoMatricula;
 import com.irfeyal.modelo.secretaria.GenerarCertificadoPromocion;
 
-@CrossOrigin(origins= {"*"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class GenerarCertificadoPromocionController {

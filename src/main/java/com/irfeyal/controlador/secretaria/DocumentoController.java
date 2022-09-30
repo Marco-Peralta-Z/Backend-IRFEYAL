@@ -19,7 +19,7 @@ import com.irfeyal.interfaces.secretaria.IDocumentoService;
 import com.irfeyal.modelo.secretaria.Documento;
 
 
-@CrossOrigin(origins= {"*"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class DocumentoController {

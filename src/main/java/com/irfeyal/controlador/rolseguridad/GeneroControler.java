@@ -25,7 +25,7 @@ import com.irfeyal.modelo.rolseguridad.Genero;
 import com.irfeyal.servicio.rolseguridad.GeneroService;
 
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapGenero")
 public class GeneroControler {

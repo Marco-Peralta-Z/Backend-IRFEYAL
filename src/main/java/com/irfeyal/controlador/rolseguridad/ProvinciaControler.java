@@ -24,7 +24,7 @@ import com.irfeyal.modelo.rolseguridad.Provincia;
 import com.irfeyal.servicio.rolseguridad.ProvinciaServices;
 
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mapProv")
 public class ProvinciaControler {
